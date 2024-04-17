@@ -37,11 +37,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   quicpacingrate:
-    type: float
+    type: raw
     description:
       - QUIC Video Pacing Rate (Kbps).
   randomsamplingpercentage:
-    type: float
+    type: raw
     description:
       - Random Sampling Percentage.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

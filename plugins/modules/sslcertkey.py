@@ -55,7 +55,7 @@ options:
         any location other than the default might cause inconsistency in a high availability
         setup. /nsconfig/ssl/ is the default path.
   certkey:
-    type: str
+    type: raw
     description:
       - Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -70,7 +70,7 @@ options:
     description:
       - Delete cert/key file from file system.
   expirymonitor:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -116,7 +116,7 @@ options:
     description:
       - Override the check for matching domain names during a certificate update operation.
   notificationperiod:
-    type: float
+    type: raw
     description:
       - Time, in number of days, before certificate expiration, at which to generate
         an alert that the certificate is about to expire.

@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   actionname:
-    type: str
+    type: raw
     description:
       - Name of the dns action.
   actiontype:
@@ -54,7 +54,7 @@ options:
     description:
       - The type of DNS action that is being configured.
   dnsprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DNS profile to be associated with the transaction for which the
         action is chosen
@@ -72,7 +72,7 @@ options:
       - The location list in priority order used for the given action.
     elements: str
   ttl:
-    type: float
+    type: raw
     description:
       - Time to live, in seconds.
   viewname:

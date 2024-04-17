@@ -253,6 +253,9 @@ class ModuleExecutor(object):
         attribute_type = NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"][
             attribute_name
         ]["type"]
+        if attribute_type == "raw":
+            # for "raw" type, compare as string values
+            return str(existing_attribute_value) == str(module_params_attribute_value)
         if attribute_type == "int":
             return int(existing_attribute_value) == int(module_params_attribute_value)
         if attribute_type == "float":
@@ -265,7 +268,8 @@ class ModuleExecutor(object):
                 str(existing_attribute_value).lower()
                 == str(module_params_attribute_value).lower()
             )
-        return existing_attribute_value == module_params_attribute_value
+        # By default, compare as string values
+        return str(existing_attribute_value) == str(module_params_attribute_value)
 
     @trace
     def is_resource_identical(self):

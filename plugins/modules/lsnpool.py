@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   maxportrealloctmq:
-    type: float
+    type: raw
     description:
       - Maximum number of ports for which the port reallocation timeout applies for
         each NAT IP address. In other words, the maximum deallocated-port queue size
@@ -84,7 +84,7 @@ options:
         together. Multiples LSN pools can be bound to an LSN group. A maximum of 16
         LSN pools can be bound to an LSN group.
   poolname:
-    type: str
+    type: raw
     description:
       - 'Name for the LSN pool. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -112,7 +112,7 @@ options:
       - For Deterministic NAT, this parameter is enabled by default, and you cannot
         disable it.
   portrealloctimeout:
-    type: float
+    type: raw
     description:
       - 'The waiting time, in seconds, between deallocating LSN NAT ports (when an
         LSN mapping is removed) and reallocating them for a new LSN session. This

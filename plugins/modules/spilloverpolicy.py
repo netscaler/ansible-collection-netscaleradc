@@ -44,11 +44,11 @@ options:
       - Action for the spillover policy. Action is created using add spillover action
         command
   comment:
-    type: str
+    type: raw
     description:
       - Any comments that you might want to associate with the spillover policy.
   name:
-    type: str
+    type: raw
     description:
       - Name of the spillover policy.
   newname:

@@ -39,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clientcontrol:
-    type: str
+    type: raw
     choices:
       - ALLOW
       - DENY
     description:
       - Allow/Deny user to log off and connect to another Gateway
   locationbasedvpn:
-    type: str
+    type: raw
     choices:
       - Remote
       - Everywhere
@@ -60,11 +60,11 @@ options:
         When set to EveryWhere, the client skips the check to detect if it is on the
         enterprise network and tries to establish the tunnel
   name:
-    type: str
+    type: raw
     description:
       - name of AlwaysON profile
   networkaccessonvpnfailure:
-    type: str
+    type: raw
     choices:
       - onlyToGateway
       - fullAccess

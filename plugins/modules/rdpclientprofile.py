@@ -39,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addusernameinrdpfile:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Add username in rdp file.
   audiocapturemode:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -54,7 +54,7 @@ options:
       - This setting corresponds to the selections in the Remote audio area on the
         Local Resources tab under Options in RDC.
   keyboardhook:
-    type: str
+    type: raw
     choices:
       - OnLocal
       - OnRemote
@@ -63,22 +63,22 @@ options:
       - This setting corresponds to the selection in the Keyboard drop-down list on
         the Local Resources tab under Options in RDC.
   multimonitorsupport:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
     description:
       - Enable/Disable Multiple Monitor Support for Remote Desktop Connection (RDC).
   name:
-    type: str
+    type: raw
     description:
       - The name of the rdp profile
   psk:
-    type: str
+    type: raw
     description:
       - Pre shared key value
   randomizerdpfilename:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -88,26 +88,26 @@ options:
         to avoid the pop-up for replacement of existing rdp file during each rdp connection
         launch, hence providing better end-user experience.
   rdpcookievalidity:
-    type: float
+    type: raw
     description:
       - RDP cookie validity period. RDP cookie validity time is applicable for new
         connection and also for any re-connection that might happen, mostly due to
         network disruption or during fail-over.
   rdpcustomparams:
-    type: str
+    type: raw
     description:
       - Option for RDP custom parameters settings (if any). Custom params needs to
         be separated by '&'
   rdpfilename:
-    type: str
+    type: raw
     description:
       - RDP file name to be sent to End User
   rdphost:
-    type: str
+    type: raw
     description:
       - Fully-qualified domain name (FQDN) of the RDP Listener.
   rdplinkattribute:
-    type: str
+    type: raw
     description:
       - 'Citrix Gateway allows the configuration of rdpLinkAttribute parameter which
         can be used to fetch a list of RDP servers(IP/FQDN) that a user can access,
@@ -116,12 +116,12 @@ options:
       - '            Note: The Attribute mentioned in the rdpLinkAttribute should
         be fetched through corresponding authentication method.'
   rdplistener:
-    type: str
+    type: raw
     description:
       - IP address (or) Fully-qualified domain name(FQDN) of the RDP Listener with
         the port in the format IP:Port (or) FQDN:Port
   rdpurloverride:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -129,7 +129,7 @@ options:
       - This setting determines whether the RDP parameters supplied in the vpn url
         override those specified in the RDP profile.
   rdpvalidateclientip:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -137,7 +137,7 @@ options:
       - This setting determines whether RDC launch is initiated by the valid client
         IP
   redirectclipboard:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -145,7 +145,7 @@ options:
       - This setting corresponds to the Clipboard check box on the Local Resources
         tab under Options in RDC.
   redirectcomports:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -153,7 +153,7 @@ options:
       - This setting corresponds to the selections for comports under More on the
         Local Resources tab under Options in RDC.
   redirectdrives:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -161,7 +161,7 @@ options:
       - This setting corresponds to the selections for Drives under More on the Local
         Resources tab under Options in RDC.
   redirectpnpdevices:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -169,7 +169,7 @@ options:
       - This setting corresponds to the selections for pnpdevices under More on the
         Local Resources tab under Options in RDC.
   redirectprinters:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
@@ -177,7 +177,7 @@ options:
       - This setting corresponds to the selection in the Printers check box on the
         Local Resources tab under Options in RDC.
   videoplaybackmode:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE

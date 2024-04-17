@@ -39,18 +39,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   domain:
-    type: str
+    type: raw
     description:
       - Domain of the server that is used for authentication. If users enter name
         without domain, this parameter is added to username in the authentication
         request to server.
   name:
-    type: str
+    type: raw
     description:
       - Name for the Storefront Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must

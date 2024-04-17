@@ -47,7 +47,7 @@ options:
     description:
       - Display only dynamically learned services.
   accessdown:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -60,14 +60,14 @@ options:
     description:
       - Display both user-configured and dynamically learned services.
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging of AppFlow information.
   cacheable:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -84,7 +84,7 @@ options:
     description:
       - Cache type supported by the cache server.
   cip:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -94,7 +94,7 @@ options:
         IP address for security, accounting, or other purposes, and setting the Use
         Source IP parameter is not a viable option.
   cipheader:
-    type: str
+    type: raw
     description:
       - Name for the HTTP header whose value must be set to the IP address of the
         client. Used with the Client IP parameter. If you set the Client IP parameter,
@@ -105,7 +105,7 @@ options:
         If the global Client IP Header parameter is not specified, the appliance inserts
         a header with the name "client-ip."
   cka:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -117,27 +117,27 @@ options:
       - Port to which clear text data must be sent after the appliance decrypts incoming
         SSL traffic. Applicable to transparent SSL services.
   clttimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which to terminate an idle client connection.
   cmp:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable compression for the service.
   comment:
-    type: str
+    type: raw
     description:
       - Any information about the service.
   contentinspectionprofilename:
-    type: str
+    type: raw
     description:
       - Name of the ContentInspection profile that contains IPS/IDS communication
         related setting for the service
   customserverid:
-    type: str
+    type: raw
     description:
       - Unique identifier for the service. Used when the persistency type for the
         virtual server is set to Custom Server ID.
@@ -151,13 +151,13 @@ options:
         time expires, no requests are sent to the service, and the service is marked
         as unavailable (OUT OF SERVICE).
   dnsprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DNS profile to be associated with the service. DNS profile properties
         will applied to the transactions processed by a service. This parameter is
         valid only for ADNS and ADNS-TCP services.
   downstateflush:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -174,12 +174,12 @@ options:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
   hashid:
-    type: float
+    type: raw
     description:
       - A numerical identifier that can be used by hash based load balancing methods.
         Must be unique for each service.
   healthmonitor:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -189,7 +189,7 @@ options:
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
   httpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
         service.
@@ -202,21 +202,21 @@ options:
     description:
       - The new IP address of the service.
   maxbandwidth:
-    type: float
+    type: raw
     description:
       - Maximum bandwidth, in Kbps, allocated to the service.
   maxclient:
-    type: float
+    type: raw
     description:
       - Maximum number of simultaneous open connections to the service.
   maxreq:
-    type: float
+    type: raw
     description:
       - Maximum number of requests that can be sent on a persistent connection to
         the service.
       - 'Note: Connection requests beyond this value are rejected.'
   monconnectionclose:
-    type: str
+    type: raw
     choices:
       - RESET
       - FIN
@@ -228,19 +228,19 @@ options:
     description:
       - Name of the monitor bound to the specified service.
   monthreshold:
-    type: float
+    type: raw
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
   name:
-    type: str
+    type: raw
     description:
       - Name for the service. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
         period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Cannot be changed after the service has been created.
   netprofile:
-    type: str
+    type: raw
     description:
       - Network profile to use for the service.
   newname:
@@ -250,14 +250,14 @@ options:
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
   pathmonitor:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Path monitoring for clustering
   pathmonitorindv:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -268,7 +268,7 @@ options:
     description:
       - Port number of the service.
   processlocal:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -278,7 +278,7 @@ options:
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
   rtspsessionidremap:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -347,25 +347,25 @@ options:
     description:
       - Protocol in which data is exchanged with the service.
   sp:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable surge protection for the service.
   svrtimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which to terminate an idle server connection.
   tcpb:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable TCP buffering for the service.
   tcpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service.
   td:
@@ -375,7 +375,7 @@ options:
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   useproxyport:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -386,7 +386,7 @@ options:
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
         is set to C(YES).'
   usip:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

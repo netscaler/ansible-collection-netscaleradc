@@ -39,15 +39,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   accessprofilename:
-    type: str
+    type: raw
     description:
       - Name of the ica accessprofile to be associated with this action.
   latencyprofilename:
-    type: str
+    type: raw
     description:
       - Name of the ica latencyprofile to be associated with this action.
   name:
-    type: str
+    type: raw
     description:
       - Name for the ICA action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.authenticationloginschema module – Configuration for 0 resource.<a class="headerlink" href="#netscaler-adc-authenticationloginschema-module-configuration-for-0-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -180,14 +180,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authenticationstrength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationloginschema-module-parameter-authenticationstrength"><strong>authenticationstrength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authenticationstrength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-authenticationstrength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Weight of the current authentication</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationloginschema-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the new login schema. Login schema defines the way login form is rendered. It provides a way to customize the fields that are shown to the user. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after an action is created.</p>
 <p>The following requirement applies only to the Citrix ADC CLI:</p>
@@ -238,14 +238,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-passwdexpression"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationloginschema-module-parameter-passwdexpression"><strong>passwdexpression</strong></p>
-<a class="ansibleOptionLink" href="#parameter-passwdexpression" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-passwdexpression" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Expression for password extraction during login. This can be any relevant advanced policy expression.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-passwordcredentialindex"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationloginschema-module-parameter-passwordcredentialindex"><strong>passwordcredentialindex</strong></p>
-<a class="ansibleOptionLink" href="#parameter-passwordcredentialindex" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-passwordcredentialindex" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The index at which user entered password should be stored in session.</p>
 </div></td>
@@ -265,7 +265,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssocredentials"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationloginschema-module-parameter-ssocredentials"><strong>ssocredentials</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssocredentials" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssocredentials" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option indicates whether current factor credentials are the default SSO (SingleSignOn) credentials.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -293,14 +293,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usercredentialindex"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationloginschema-module-parameter-usercredentialindex"><strong>usercredentialindex</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usercredentialindex" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-usercredentialindex" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The index at which user entered username should be stored in session.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-userexpression"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationloginschema-module-parameter-userexpression"><strong>userexpression</strong></p>
-<a class="ansibleOptionLink" href="#parameter-userexpression" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-userexpression" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Expression for username extraction during login. This can be any relevant advanced policy expression.</p>
 </div></td>

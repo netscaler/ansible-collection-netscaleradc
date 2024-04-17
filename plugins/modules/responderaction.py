@@ -49,24 +49,23 @@ options:
         that might not be present in all requests. If a response refers to a missing
         request element, an empty string is used instead.
   comment:
-    type: str
+    type: raw
     description:
       - Comment. Any type of information about this responder action.
   headers:
-    type: list
+    type: raw
     description:
       - One or more headers to insert into the HTTP response. Each header is specified
         as "name(expr)", where expr is an expression that is evaluated at runtime
         to provide the value for the named header. You can configure a maximum of
         eight headers for a responder action.
-    elements: str
   htmlpage:
     type: str
     description:
       - For respondwithhtmlpage policies, name of the HTML page object to use as the
         response. You must first import the page object.
   name:
-    type: str
+    type: raw
     description:
       - Name for the responder action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -88,13 +87,13 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder action" or my responder action').
   reasonphrase:
-    type: str
+    type: raw
     description:
       - 'Expression specifying the reason phrase of the HTTP response. The reason
         phrase may be a string literal with quotes or a PI expression. For example:
         "Invalid URL: " + HTTP.REQ.URL'
   responsestatuscode:
-    type: float
+    type: raw
     description:
       - HTTP response status code, for example 200, 302, 404, etc. The default value
         for the redirect action type is 302 and for respondwithhtmlpage is 200

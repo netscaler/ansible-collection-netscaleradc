@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authenticationdomain:
-    type: str
+    type: raw
     description:
       - Domain for which TM cookie must to be set. If unspecified, cookie will be
         set for FQDN.
@@ -49,7 +49,7 @@ options:
       - Hostname of the authentication vserver to which user must be redirected for
         authentication.
   authenticationlevel:
-    type: float
+    type: raw
     description:
       - Authentication weight or level of the vserver to which this will bound. This
         is used to order TM vservers based on the protection required. A session that
@@ -60,7 +60,7 @@ options:
     description:
       - Name of the authentication vserver at which authentication should be done.
   name:
-    type: str
+    type: raw
     description:
       - Name for the authentication profile.
       - Must begin with a letter, number, or the underscore character (_), and must

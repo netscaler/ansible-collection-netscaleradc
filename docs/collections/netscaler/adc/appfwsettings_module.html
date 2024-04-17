@@ -131,7 +131,7 @@
 <h1>netscaler.adc.appfwsettings module – Configuration for AS settings resource.<a class="headerlink" href="#netscaler-adc-appfwsettings-module-configuration-for-as-settings-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ceflogging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-ceflogging"><strong>ceflogging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ceflogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ceflogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable CEF format logs.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-centralizedlearning"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-centralizedlearning"><strong>centralizedlearning</strong></p>
-<a class="ansibleOptionLink" href="#parameter-centralizedlearning" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-centralizedlearning" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Flag used to enable/disable ADM centralized learning</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,28 +197,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientiploggingheader"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-clientiploggingheader"><strong>clientiploggingheader</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientiploggingheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientiploggingheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of an HTTP header that contains the IP address that the client used to connect to the protected web site or service.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookiepostencryptprefix"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-cookiepostencryptprefix"><strong>cookiepostencryptprefix</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookiepostencryptprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookiepostencryptprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>String that is prepended to all encrypted cookie values.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-defaultprofile"><strong>defaultprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which sends unmatched connections back to the Citrix ADC without attempting to filter them further.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-entitydecoding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-entitydecoding"><strong>entitydecoding</strong></p>
-<a class="ansibleOptionLink" href="#parameter-entitydecoding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-entitydecoding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Transform multibyte (double- or half-width) characters to single width characters.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -230,7 +230,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-geolocationlogging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-geolocationlogging"><strong>geolocationlogging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-geolocationlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-geolocationlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable Geo-Location Logging in CEF format logs.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -242,14 +242,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-importsizelimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-importsizelimit"><strong>importsizelimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-importsizelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-importsizelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user attempts to upload files with a total byte count higher than the specified limit, the application firewall blocks the request.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-learnratelimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-learnratelimit"><strong>learnratelimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-learnratelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-learnratelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of connections per second that the application firewall learning engine examines to generate new relaxations for learning-enabled security checks. The application firewall drops any connections above this limit from the list of connections used by the learning engine.</p>
 </div></td>
@@ -268,7 +268,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-malformedreqaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-malformedreqaction"><strong>malformedreqaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-malformedreqaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-malformedreqaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>flag to define action on malformed requests that application firewall cannot parse</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -324,28 +324,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxypassword"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-proxypassword"><strong>proxypassword</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxypassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxypassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Password with which proxy user logs on.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-proxyport"><strong>proxyport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Proxy Server Port to get updated signatures from AWS.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-proxyserver"><strong>proxyserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Proxy Server IP to get updated signatures from AWS.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyusername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-proxyusername"><strong>proxyusername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Proxy Username</p>
 </div></td>
@@ -365,7 +365,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessioncookiename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-sessioncookiename"><strong>sessioncookiename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessioncookiename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessioncookiename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the session cookie that the application firewall uses to track user sessions.</p>
 <p>Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.</p>
@@ -375,28 +375,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionlifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-sessionlifetime"><strong>sessionlifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionlifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionlifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum amount of time (in seconds) that the application firewall allows a user session to remain active, regardless of user activity. After this time, the user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-sessionlimit"><strong>sessionlimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of sessions that the application firewall allows to be active, regardless of user activity. After the max_limit reaches, No more user session will be created .</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessiontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-sessiontimeout"><strong>sessiontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-signatureautoupdate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-signatureautoupdate"><strong>signatureautoupdate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-signatureautoupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-signatureautoupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Flag used to enable/disable auto update signatures</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -408,7 +408,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-signatureurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-signatureurl"><strong>signatureurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-signatureurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-signatureurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>URL to download the mapping file from server</p>
 </div></td>
@@ -429,7 +429,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-undefaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-undefaction"><strong>undefaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Profile to use when an application firewall policy evaluates to undefined (UNDEF).</p>
 <p>An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default setting. You can specify a different built-in or user-created profile as the UNDEF profile.</p>
@@ -437,7 +437,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useconfigurablesecretkey"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwsettings-module-parameter-useconfigurablesecretkey"><strong>useconfigurablesecretkey</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useconfigurablesecretkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-useconfigurablesecretkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use configurable secret key in AppFw operations</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

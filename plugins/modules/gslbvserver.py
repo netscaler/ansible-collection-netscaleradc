@@ -43,7 +43,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -56,7 +56,7 @@ options:
         all the services bound to the domain are down, or when the backup chain of
         virtual servers is down.
   backuplbmethod:
-    type: str
+    type: raw
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -79,17 +79,17 @@ options:
         feature can be disabled by setting the value to zero. The created session
         is in effect for a specific client per domain.
   backupvserver:
-    type: str
+    type: raw
     description:
       - Name of the backup GSLB virtual server to which the appliance should to forward
         requests if the status of the primary GSLB virtual server is down or exceeds
         its spillover threshold.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments that you might want to associate with the GSLB virtual server.
   considereffectivestate:
-    type: str
+    type: raw
     choices:
       - NONE
       - STATE_ONLY
@@ -114,7 +114,7 @@ options:
     description:
       - Timeout, in minutes, for the GSLB site cookie.
   disableprimaryondown:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -123,7 +123,7 @@ options:
         virtual server returns to the UP state. Used when spillover is configured
         for the virtual server.
   dnsrecordtype:
-    type: str
+    type: raw
     choices:
       - A
       - AAAA
@@ -137,7 +137,7 @@ options:
       - Domain name for which to change the time to live (TTL) and/or backup service
         IP address.
   dynamicweight:
-    type: str
+    type: raw
     choices:
       - SERVICECOUNT
       - SERVICEWEIGHT
@@ -148,7 +148,7 @@ options:
         the number of services bound to the virtual server help the appliance to select
         the service.
   ecs:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -158,7 +158,7 @@ options:
         persistence (if enabled) instead of the LDNS address. Persistence mask is
         ignored if ECS is enabled.
   ecsaddrvalidation:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -166,7 +166,7 @@ options:
       - Validate if ECS address is a private or unroutable address and in such cases,
         use the LDNS IP.
   edr:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -180,7 +180,7 @@ options:
     description:
       - The IP type for this GSLB vserver.
   lbmethod:
-    type: str
+    type: raw
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -195,14 +195,14 @@ options:
     description:
       - Load balancing method for the GSLB virtual server.
   mir:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include multiple IP addresses in the DNS responses sent to clients.
   name:
-    type: str
+    type: raw
     description:
       - Name for the GSLB virtual server. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -213,7 +213,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my vserver" or 'my vserver').
   netmask:
-    type: str
+    type: raw
     description:
       - IPv4 network mask for use in the SOURCEIPHASH load balancing method.
   newname:
@@ -221,23 +221,23 @@ options:
     description:
       - New name for the GSLB virtual server.
   order:
-    type: float
+    type: raw
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   orderthreshold:
-    type: float
+    type: raw
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
   persistenceid:
-    type: float
+    type: raw
     description:
       - The persistence ID for the GSLB virtual server. The ID is a positive integer
         that enables GSLB sites to identify the GSLB virtual server, and is required
         if source IP address based or spill over based persistence is enabled on the
         virtual server.
   persistencetype:
-    type: str
+    type: raw
     choices:
       - SOURCEIP
       - NONE
@@ -247,12 +247,12 @@ options:
         IP address received in response to the DNS query is used for subsequent requests
         from the same client.
   persistmask:
-    type: str
+    type: raw
     description:
       - The optional IPv4 network mask applied to IPv4 addresses to establish source
         IP address based persistence.
   rule:
-    type: str
+    type: raw
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.
       - This field is applicable only if gslb method or gslb backup method are set
@@ -265,11 +265,11 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   servicegroupname:
-    type: str
+    type: raw
     description:
       - The GSLB service group name bound to the selected GSLB virtual server.
   servicename:
-    type: str
+    type: raw
     description:
       - Name of the GSLB service for which to change the weight.
   servicetype:
@@ -302,7 +302,7 @@ options:
         prefix is configured on a GSLB service) that are associated with this virtual
         server.
   sobackupaction:
-    type: str
+    type: raw
     choices:
       - DROP
       - ACCEPT
@@ -311,7 +311,7 @@ options:
       - Action to be performed if spillover is to take effect, but no backup chain
         to spillover is usable or exists
   somethod:
-    type: str
+    type: raw
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
@@ -337,7 +337,7 @@ options:
         or gslbSvc2 and gslbSvc3 transition to DOWN.'
       - '* C(NONE) - Spillover does not occur.'
   sopersistence:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -345,29 +345,29 @@ options:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup GSLB virtual servers.
   sopersistencetimeout:
-    type: float
+    type: raw
     description:
       - Timeout for spillover persistence, in minutes.
   sothreshold:
-    type: float
+    type: raw
     description:
       - Threshold at which spillover occurs. Specify an integer for the CONNECTION
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
         method (do not enter the units), or a percentage for the HEALTH method (do
         not enter the percentage symbol).
   timeout:
-    type: float
+    type: raw
     description:
       - Idle time, in minutes, after which a persistence entry is cleared.
   toggleorder:
-    type: str
+    type: raw
     choices:
       - ASCENDING
       - DESCENDING
     description:
       - Configure this option to toggle order preference
   tolerance:
-    type: float
+    type: raw
     description:
       - Site selection tolerance, in milliseconds, for implementing the RTT load balancing
         method. If a site's RTT deviates from the lowest RTT by more than the specified
@@ -381,17 +381,17 @@ options:
     description:
       - Time to live (TTL) for the domain.
   v6netmasklen:
-    type: float
+    type: raw
     description:
       - Number of bits to consider, in an IPv6 source IP address, for creating the
         hash that is required by the SOURCEIPHASH load balancing method.
   v6persistmasklen:
-    type: float
+    type: raw
     description:
       - Number of bits to consider in an IPv6 source IP address when creating source
         IP address based persistence sessions.
   weight:
-    type: float
+    type: raw
     description:
       - Weight for the service.
   gslbvserver_domain_binding:

@@ -37,21 +37,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   acl:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Configure auditing to log access control list (ACL) messages.
   alg:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the ALG messages
   appflowexport:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -60,14 +60,14 @@ options:
       - Appflow collectors are entities to which log messages can be sent so that
         some action can be performed on them.
   contentinspectionlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log Content Inspection event information
   dateformat:
-    type: str
+    type: raw
     choices:
       - MMDDYYYY
       - DDMMYYYY
@@ -79,7 +79,7 @@ options:
       - '* C(DDMMYYYY) - European style date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
   logfacility:
-    type: str
+    type: raw
     choices:
       - LOCAL0
       - LOCAL1
@@ -95,7 +95,7 @@ options:
         number indicates where a specific message originated from, such as the Citrix
         ADC itself, the VPN, or external.
   loglevel:
-    type: list
+    type: raw
     choices:
       - ALL
       - EMERGENCY
@@ -120,45 +120,44 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
-    elements: str
   lsn:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the LSN messages
   serverip:
-    type: str
+    type: raw
     description:
       - IP address of the nslog server.
   serverport:
-    type: int
+    type: raw
     description:
       - Port on which the nslog server accepts connections.
   sslinterception:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log SSL Interception event information
   subscriberlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log subscriber session event information
   tcp:
-    type: str
+    type: raw
     choices:
       - NONE
       - ALL
     description:
       - Configure auditing to log TCP messages.
   timezone:
-    type: str
+    type: raw
     choices:
       - GMT_TIME
       - LOCAL_TIME
@@ -168,14 +167,14 @@ options:
       - '* C(GMT_TIME) - Coordinated Universal Time.'
       - '* C(LOCAL_TIME) - Use the server''s timezone setting.'
   urlfiltering:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log URL filtering event information
   userdefinedauditlog:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

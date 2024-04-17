@@ -39,15 +39,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any type of information about this bot policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the bot policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -79,7 +79,7 @@ options:
       - Expression that the policy uses to determine whether to apply bot profile
         on the specified request.
   undefaction:
-    type: str
+    type: raw
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition.

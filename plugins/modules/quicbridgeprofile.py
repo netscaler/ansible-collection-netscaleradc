@@ -39,20 +39,20 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - Name for the QUIC profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@),equals sign (=), and hyphen (-)
         characters. Cannot be changed after the profile is created.
   routingalgorithm:
-    type: str
+    type: raw
     choices:
       - PLAINTEXT
     description:
       - Routing algorithm to generate routable connection IDs.
   serveridlength:
-    type: float
+    type: raw
     description:
       - Length of serverid to encode/decode server information
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.aaaradiusparams module – Configuration for RADIUS parameter resource.<a class="headerlink" href="#netscaler-adc-aaaradiusparams-module-configuration-for-radius-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-accounting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-accounting"><strong>accounting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-accounting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-accounting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Configure the RADIUS server state to accept or refuse accounting messages.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authentication"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-authentication"><strong>authentication</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authentication" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-authentication" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Configure the RADIUS server state to accept or refuse authentication messages.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,21 +197,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authservretry"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-authservretry"><strong>authservretry</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authservretry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-authservretry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of retry by the Citrix ADC before getting response from the RADIUS server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authtimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-authtimeout"><strong>authtimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-authtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of seconds that the Citrix ADC waits for a response from the RADIUS server.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-callingstationid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-callingstationid"><strong>callingstationid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-callingstationid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-callingstationid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send Calling-Station-ID of the client to the RADIUS server. IP Address of the client is sent as its Calling-Station-ID.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -223,21 +223,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultauthenticationgroup"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-defaultauthenticationgroup"><strong>defaultauthenticationgroup</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This is the default group that is chosen when the authentication succeeds in addition to extracted groups.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ipattributetype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-ipattributetype"><strong>ipattributetype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ipattributetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-ipattributetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IP attribute type in the RADIUS response.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ipvendorid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-ipvendorid"><strong>ipvendorid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ipvendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-ipvendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Vendor ID attribute in the RADIUS response.</p>
 <p>If the attribute is not vendor-encoded, it is set to 0.</p>
@@ -287,7 +287,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-passencoding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-passencoding"><strong>passencoding</strong></p>
-<a class="ansibleOptionLink" href="#parameter-passencoding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-passencoding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable password encoding in RADIUS packets that the Citrix ADC sends to the RADIUS server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -301,35 +301,35 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pwdattributetype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-pwdattributetype"><strong>pwdattributetype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pwdattributetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-pwdattributetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Attribute type of the Vendor ID in the RADIUS response.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pwdvendorid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-pwdvendorid"><strong>pwdvendorid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pwdvendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-pwdvendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Vendor ID of the password in the RADIUS response. Used to extract the user password.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-radattributetype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-radattributetype"><strong>radattributetype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-radattributetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-radattributetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Attribute type for RADIUS group extraction.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-radgroupseparator"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-radgroupseparator"><strong>radgroupseparator</strong></p>
-<a class="ansibleOptionLink" href="#parameter-radgroupseparator" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-radgroupseparator" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Group separator string that delimits group names within a RADIUS attribute for RADIUS group extraction.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-radgroupsprefix"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-radgroupsprefix"><strong>radgroupsprefix</strong></p>
-<a class="ansibleOptionLink" href="#parameter-radgroupsprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-radgroupsprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Prefix string that precedes group names within a RADIUS attribute for RADIUS group extraction.</p>
 </div></td>
@@ -344,14 +344,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-radnasid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-radnasid"><strong>radnasid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-radnasid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-radnasid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send the Network Access Server ID (NASID) for your Citrix ADC to the RADIUS server as the nasid part of the Radius protocol.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-radnasip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-radnasip"><strong>radnasip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-radnasip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-radnasip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send the Citrix ADC IP (NSIP) address to the RADIUS server as the Network Access Server IP (NASIP) part of the Radius protocol.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -363,7 +363,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-radvendorid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-radvendorid"><strong>radvendorid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-radvendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-radvendorid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Vendor ID for RADIUS group extraction.</p>
 </div></td>
@@ -383,14 +383,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-serverip"><strong>serverip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IP address of your RADIUS server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-serverport"><strong>serverport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Port number on which the RADIUS server listens for connections.</p>
 </div></td>
@@ -411,7 +411,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tunnelendpointclientip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaradiusparams-module-parameter-tunnelendpointclientip"><strong>tunnelendpointclientip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tunnelendpointclientip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tunnelendpointclientip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send Tunnel Endpoint Client IP address to the RADIUS server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.vpnformssoaction module – Configuration for Form sso action resource.<a class="headerlink" href="#netscaler-adc-vpnformssoaction-module-configuration-for-form-sso-action-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -180,14 +180,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnformssoaction-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the form based single sign-on profile.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-namevaluepair"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnformssoaction-module-parameter-namevaluepair"><strong>namevaluepair</strong></p>
-<a class="ansibleOptionLink" href="#parameter-namevaluepair" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-namevaluepair" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Other name-value pair attributes to send to the server, in addition to sending the user name and password. Value names are separated by an ampersand (&amp;), such as in name1=value1&amp;name2=value2.</p>
 </div></td>
@@ -236,7 +236,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nvtype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnformssoaction-module-parameter-nvtype"><strong>nvtype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nvtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-nvtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>How to process the name-value pair. Available settings function as follows:</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">STATIC</span></code> - The administrator-configured values are used.</p>
@@ -257,7 +257,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-responsesize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnformssoaction-module-parameter-responsesize"><strong>responsesize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-responsesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-responsesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of bytes to allow in the response size. Specifies the number of bytes in the response to be parsed for extracting the forms.</p>
 </div></td>
@@ -300,7 +300,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-submitmethod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnformssoaction-module-parameter-submitmethod"><strong>submitmethod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-submitmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-submitmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>HTTP method (<code class="docutils literal notranslate"><span class="pre">GET</span></code> or <code class="docutils literal notranslate"><span class="pre">POST</span></code>) used by the single sign-on form to send the logon credentials to the logon server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

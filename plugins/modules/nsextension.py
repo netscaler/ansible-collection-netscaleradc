@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about the extension object.
   detail:
@@ -52,7 +52,7 @@ options:
     description:
       - Show detail for extension function.
   name:
-    type: str
+    type: raw
     description:
       - Name to assign to the extension object on the Citrix ADC.
   overwrite:
@@ -67,7 +67,7 @@ options:
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
   trace:
-    type: str
+    type: raw
     choices:
       - 'off'
       - calls
@@ -85,12 +85,12 @@ options:
       - Note that the DEBUG log level must be enabled to see extension tracing.
       - This can be done by set audit syslogParams -loglevel ALL or -loglevel DEBUG.
   tracefunctions:
-    type: str
+    type: raw
     description:
       - Comma-separated list of extension functions to trace. By default, all extension
         functions are traced.
   tracevariables:
-    type: str
+    type: raw
     description:
       - Comma-separated list of variables (in traced extension functions) to trace.
         By default, all variables are traced.

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.tmformssoaction module – Configuration for Form sso action resource.<a class="headerlink" href="#netscaler-adc-tmformssoaction-module-configuration-for-form-sso-action-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -180,7 +180,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-tmformssoaction-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the new form-based single sign-on profile. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after an SSO action is created.</p>
 <p>The following requirement applies only to the Citrix ADC CLI:</p>
@@ -189,7 +189,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-namevaluepair"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-tmformssoaction-module-parameter-namevaluepair"><strong>namevaluepair</strong></p>
-<a class="ansibleOptionLink" href="#parameter-namevaluepair" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-namevaluepair" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name-value pair attributes to send to the server in addition to sending the username and password. Value names are separated by an ampersand (&amp;) (for example, name1=value1&amp;name2=value2).</p>
 </div></td>
@@ -238,7 +238,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nvtype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-tmformssoaction-module-parameter-nvtype"><strong>nvtype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nvtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-nvtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of processing of the name-value pair. If you specify <code class="docutils literal notranslate"><span class="pre">STATIC</span></code>, the values configured by the administrator are used. For <code class="docutils literal notranslate"><span class="pre">DYNAMIC</span></code>, the response is parsed, and the form is extracted and then submitted.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -257,7 +257,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-responsesize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-tmformssoaction-module-parameter-responsesize"><strong>responsesize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-responsesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-responsesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of bytes, in the response, to parse for extracting the forms.</p>
 </div></td>
@@ -300,7 +300,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-submitmethod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-tmformssoaction-module-parameter-submitmethod"><strong>submitmethod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-submitmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-submitmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>HTTP method used by the single sign-on form to send the logon credentials to the logon server. Applies only to STATIC name-value type.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

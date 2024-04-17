@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   conmultiplex:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -47,14 +47,14 @@ options:
       - Use the same server-side connection for multiple client-side requests. Default
         is enabled.
   enablecachingconmuxoff:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable caching when connection multiplexing is OFF.
   interpretquery:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -62,11 +62,11 @@ options:
       - If ENABLED, inspect the query and update the connection information, if required.
         If DISABLED, forward the query to the server.
   kcdaccount:
-    type: str
+    type: raw
     description:
       - Name of the KCD account that is used for Windows authentication.
   name:
-    type: str
+    type: raw
     description:
       - Name for the database profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -76,7 +76,7 @@ options:
         \ in double or single quotation marks (for example, \"my profile\" or 'my\
         \ profile')."
   stickiness:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

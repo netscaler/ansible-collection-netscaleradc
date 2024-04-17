@@ -131,7 +131,7 @@
 <h1>netscaler.adc.clusterinstance module – Configuration for cluster instance resource.<a class="headerlink" href="#netscaler-adc-clusterinstance-module-configuration-for-cluster-instance-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-backplanebasedview"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-backplanebasedview"><strong>backplanebasedview</strong></p>
-<a class="ansibleOptionLink" href="#parameter-backplanebasedview" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-backplanebasedview" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>View based on heartbeat only on bkplane interface</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,14 +185,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-clid"><strong>clid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-clid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Unique number that identifies the cluster.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clusterproxyarp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-clusterproxyarp"><strong>clusterproxyarp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clusterproxyarp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-clusterproxyarp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This field controls the proxy arp feature in cluster. By default the flag is enabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -204,14 +204,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-deadinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-deadinterval"><strong>deadinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-deadinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-deadinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Amount of time, in seconds, after which nodes that do not respond to the heartbeats are assumed to be down.If the value is less than 3 sec, set the helloInterval parameter to 200 msec</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dfdretainl2params"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-dfdretainl2params"><strong>dfdretainl2params</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dfdretainl2params" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dfdretainl2params" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>flag to add ext l2 header during steering. By default the flag is disabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -223,14 +223,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hellointerval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-hellointerval"><strong>hellointerval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hellointerval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-hellointerval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in milliseconds, at which heartbeats are sent to each cluster node to check the health status.Set the value to 200 msec, if the deadInterval parameter is less than 3 sec</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-inc"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-inc"><strong>inc</strong></p>
-<a class="ansibleOptionLink" href="#parameter-inc" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-inc" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is required if the cluster nodes reside on different networks.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -276,7 +276,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nodegroup"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-nodegroup"><strong>nodegroup</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nodegroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-nodegroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The node group in a Cluster system used for transition from L2 to L3.</p>
 </div></td>
@@ -291,7 +291,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-preemption"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-preemption"><strong>preemption</strong></p>
-<a class="ansibleOptionLink" href="#parameter-preemption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-preemption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Preempt a cluster node that is configured as a SPARE if an ACTIVE node becomes available.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -303,7 +303,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-processlocal"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-processlocal"><strong>processlocal</strong></p>
-<a class="ansibleOptionLink" href="#parameter-processlocal" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-processlocal" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>By turning on this option packets destined to a service in a cluster will not under go any steering.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -315,7 +315,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-quorumtype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-quorumtype"><strong>quorumtype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-quorumtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-quorumtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Quorum Configuration Choices  - “Majority” (recommended) requires majority of nodes to be online for the cluster to be UP. “None” relaxes this requirement.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -327,7 +327,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-retainconnectionsoncluster"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-retainconnectionsoncluster"><strong>retainconnectionsoncluster</strong></p>
-<a class="ansibleOptionLink" href="#parameter-retainconnectionsoncluster" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-retainconnectionsoncluster" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option enables you to retain existing connections on a node joining a Cluster system or when a node is being configured for passive timeout. By default, this option is disabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -372,7 +372,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-syncstatusstrictmode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-clusterinstance-module-parameter-syncstatusstrictmode"><strong>syncstatusstrictmode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-syncstatusstrictmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-syncstatusstrictmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>strict mode for sync status of cluster. Depending on the the mode if there are any errors while applying config, sync status is displayed accordingly. By default the flag is disabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

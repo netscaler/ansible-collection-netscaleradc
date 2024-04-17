@@ -43,7 +43,7 @@ options:
     description:
       - Name of the ICAP profile to be attached to the contentInspection action.
   ifserverdown:
-    type: str
+    type: raw
     choices:
       - CONTINUE
       - DROP
@@ -59,7 +59,7 @@ options:
       - '* C(CONTINUE) - It bypasses the ContentIsnpection and Continues/resumes the
         Traffic-Flow to Client/Server.'
   name:
-    type: str
+    type: raw
     description:
       - Name of the remote service action. Must begin with an ASCII alphabetic or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -74,7 +74,7 @@ options:
     description:
       - Name of the LB vserver or service
   serverport:
-    type: float
+    type: raw
     description:
       - Port of remoteService
   type:

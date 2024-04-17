@@ -37,20 +37,20 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   icmpthreshold:
-    type: float
+    type: raw
     description:
       - Number of ICMP packets permitted per 10 milliseconds.
   tcprstthreshold:
-    type: float
+    type: raw
     description:
       - The number of TCP RST packets permitted per 10 milli second. zero means rate
         control is disabled and 0xffffffff means every thing is rate controlled
   tcpthreshold:
-    type: float
+    type: raw
     description:
       - Number of SYNs permitted per 10 milliseconds.
   udpthreshold:
-    type: float
+    type: raw
     description:
       - Number of UDP packets permitted per 10 milliseconds.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   context:
-    type: str
+    type: raw
     choices:
       - geographic
       - custom
@@ -47,7 +47,7 @@ options:
         In C(custom) context, the qualifiers labels can have any meaning that you
         designate.'
   matchwildcardtoany:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -65,32 +65,32 @@ options:
       - '          wildcard qualifiers in the LDNS location do not match'
       - '          non-wildcard qualifiers in an expression'
   q1label:
-    type: str
+    type: raw
     description:
       - Label specifying the meaning of the first qualifier. Can be specified for
         custom context only.
   q2label:
-    type: str
+    type: raw
     description:
       - Label specifying the meaning of the second qualifier. Can be specified for
         custom context only.
   q3label:
-    type: str
+    type: raw
     description:
       - Label specifying the meaning of the third qualifier. Can be specified for
         custom context only.
   q4label:
-    type: str
+    type: raw
     description:
       - Label specifying the meaning of the fourth qualifier. Can be specified for
         custom context only.
   q5label:
-    type: str
+    type: raw
     description:
       - Label specifying the meaning of the fifth qualifier. Can be specified for
         custom context only.
   q6label:
-    type: str
+    type: raw
     description:
       - Label specifying the meaning of the sixth qualifier. Can be specified for
         custom context only.

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.cachecontentgroup module – Configuration for Integrated Cache content group resource.<a class="headerlink" href="#netscaler-adc-cachecontentgroup-module-configuration-for-integrated-cache-content-group-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-absexpiry"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-absexpiry"><strong>absexpiry</strong></p>
-<a class="ansibleOptionLink" href="#parameter-absexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-absexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Local time, up to 4 times a day, at which all objects in the content group must expire.</p>
 <p>CLI Users:</p>
@@ -174,14 +174,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-absexpirygmt"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-absexpirygmt"><strong>absexpirygmt</strong></p>
-<a class="ansibleOptionLink" href="#parameter-absexpirygmt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-absexpirygmt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Coordinated Universal Time (GMT), up to 4 times a day, when all objects in the content group must expire.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-alwaysevalpolicies"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-alwaysevalpolicies"><strong>alwaysevalpolicies</strong></p>
-<a class="ansibleOptionLink" href="#parameter-alwaysevalpolicies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-alwaysevalpolicies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Force policy evaluation for each response arriving from the origin server. Cannot be set to <code class="docutils literal notranslate"><span class="pre">YES</span></code> if the Prefetch parameter is also set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -202,14 +202,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cachecontrol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-cachecontrol"><strong>cachecontrol</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cachecontrol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cachecontrol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert a Cache-Control header into the response.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-expireatlastbyte"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-expireatlastbyte"><strong>expireatlastbyte</strong></p>
-<a class="ansibleOptionLink" href="#parameter-expireatlastbyte" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-expireatlastbyte" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Force expiration of the content immediately after the response is downloaded (upon receipt of the last byte of the response body). Applicable only to positive responses.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -221,7 +221,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-flashcache"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-flashcache"><strong>flashcache</strong></p>
-<a class="ansibleOptionLink" href="#parameter-flashcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-flashcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Perform flash cache. Mutually exclusive with Poll Every Time (PET) on the same content group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -233,21 +233,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-heurexpiryparam"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-heurexpiryparam"><strong>heurexpiryparam</strong></p>
-<a class="ansibleOptionLink" href="#parameter-heurexpiryparam" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-heurexpiryparam" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Heuristic expiry time, in percent of the duration, since the object was last modified.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hitparams"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-hitparams"><strong>hitparams</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hitparams" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-hitparams" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Parameters to use for parameterized hit evaluation of an object. Up to 128 parameters can be specified. Mutually exclusive with the Hit Selector parameter.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hitselector"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-hitselector"><strong>hitselector</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hitselector" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-hitselector" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Selector for evaluating whether an object gets stored in a particular content group. A selector is an abstraction for a collection of PIXL expressions.</p>
 </div></td>
@@ -261,7 +261,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ignoreparamvaluecase"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-ignoreparamvaluecase"><strong>ignoreparamvaluecase</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ignoreparamvaluecase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ignoreparamvaluecase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Ignore case when comparing parameter values during parameterized hit evaluation. (Parameter value case is ignored by default during parameterized invalidation.)</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -273,7 +273,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ignorereloadreq"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-ignorereloadreq"><strong>ignorereloadreq</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ignorereloadreq" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ignorereloadreq" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Ignore any request to reload a cached object from the origin server.</p>
 <p>To guard against Denial of Service attacks, set this parameter to <code class="docutils literal notranslate"><span class="pre">YES</span></code>. For RFC-compliant behavior, set it to <code class="docutils literal notranslate"><span class="pre">NO</span></code>.</p>
@@ -286,7 +286,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ignorereqcachinghdrs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-ignorereqcachinghdrs"><strong>ignorereqcachinghdrs</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ignorereqcachinghdrs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ignorereqcachinghdrs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Ignore Cache-Control and Pragma headers in the incoming request.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -298,7 +298,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-insertage"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-insertage"><strong>insertage</strong></p>
-<a class="ansibleOptionLink" href="#parameter-insertage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-insertage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert an Age header into the response. An Age header contains information about the age of the object, in seconds, as calculated by the integrated cache.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -310,7 +310,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-insertetag"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-insertetag"><strong>insertetag</strong></p>
-<a class="ansibleOptionLink" href="#parameter-insertetag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-insertetag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert an ETag header in the response. With ETag header insertion, the integrated cache does not serve full responses on repeat requests.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -322,7 +322,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-insertvia"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-insertvia"><strong>insertvia</strong></p>
-<a class="ansibleOptionLink" href="#parameter-insertvia" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-insertvia" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert a Via header into the response.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -334,14 +334,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-invalparams"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-invalparams"><strong>invalparams</strong></p>
-<a class="ansibleOptionLink" href="#parameter-invalparams" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-invalparams" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Parameters for parameterized invalidation of an object. You can specify up to 8 parameters. Mutually exclusive with invalSelector.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-invalrestrictedtohost"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-invalrestrictedtohost"><strong>invalrestrictedtohost</strong></p>
-<a class="ansibleOptionLink" href="#parameter-invalrestrictedtohost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-invalrestrictedtohost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Take the host header into account during parameterized invalidation.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -353,14 +353,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-invalselector"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-invalselector"><strong>invalselector</strong></p>
-<a class="ansibleOptionLink" href="#parameter-invalselector" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-invalselector" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Selector for invalidating objects in the content group. A selector is an abstraction for a collection of PIXL expressions.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lazydnsresolve"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-lazydnsresolve"><strong>lazydnsresolve</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lazydnsresolve" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-lazydnsresolve" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Perform DNS resolution for responses only if the destination IP address in the request does not match the destination IP address of the cached response.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -372,7 +372,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-matchcookies"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-matchcookies"><strong>matchcookies</strong></p>
-<a class="ansibleOptionLink" href="#parameter-matchcookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-matchcookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Evaluate for parameters in the cookie header also.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -384,28 +384,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxressize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-maxressize"><strong>maxressize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxressize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxressize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum size of a response that can be cached in this content group.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-memlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-memlimit"><strong>memlimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-memlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-memlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum amount of memory that the cache can use. The effective limit is based on the available memory of the Citrix ADC.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minhits"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-minhits"><strong>minhits</strong></p>
-<a class="ansibleOptionLink" href="#parameter-minhits" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-minhits" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of hits that qualifies a response for storage in this content group.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minressize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-minressize"><strong>minressize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-minressize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-minressize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum size of a response that can be cached in this content group.</p>
 <blockquote>
@@ -415,7 +415,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the content group.  Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after the content group is created.</p>
 </div></td>
@@ -464,7 +464,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-persistha"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-persistha"><strong>persistha</strong></p>
-<a class="ansibleOptionLink" href="#parameter-persistha" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-persistha" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Setting persistHA to <code class="docutils literal notranslate"><span class="pre">YES</span></code> causes IC to save objects in contentgroup to Secondary node in HA deployment.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -476,7 +476,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pinned"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-pinned"><strong>pinned</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pinned" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-pinned" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Do not flush objects from this content group under memory pressure.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -488,7 +488,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-polleverytime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-polleverytime"><strong>polleverytime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-polleverytime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-polleverytime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Always poll for the objects in this content group. That is, retrieve the objects from the origin server whenever they are requested.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -500,7 +500,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prefetch"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-prefetch"><strong>prefetch</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prefetch" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-prefetch" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Attempt to refresh objects that are about to go stale.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -512,21 +512,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prefetchmaxpending"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-prefetchmaxpending"><strong>prefetchmaxpending</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prefetchmaxpending" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-prefetchmaxpending" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of outstanding prefetches that can be queued for the content group.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prefetchperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-prefetchperiod"><strong>prefetchperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prefetchperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-prefetchperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time period, in seconds before an object’s calculated expiry time, during which to attempt prefetch.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prefetchperiodmillisec"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-prefetchperiodmillisec"><strong>prefetchperiodmillisec</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prefetchperiodmillisec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-prefetchperiodmillisec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time period, in milliseconds before an object’s calculated expiry time, during which to attempt prefetch.</p>
 </div></td>
@@ -540,28 +540,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-quickabortsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-quickabortsize"><strong>quickabortsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-quickabortsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-quickabortsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>If the size of an object that is being downloaded is less than or equal to the quick abort value, and a client aborts during the download, the cache stops downloading the response. If the object is larger than the quick abort size, the cache continues to download the response.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-relexpiry"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-relexpiry"><strong>relexpiry</strong></p>
-<a class="ansibleOptionLink" href="#parameter-relexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-relexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Relative expiry time, in seconds, after which to expire an object cached in this content group.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-relexpirymillisec"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-relexpirymillisec"><strong>relexpirymillisec</strong></p>
-<a class="ansibleOptionLink" href="#parameter-relexpirymillisec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-relexpirymillisec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Relative expiry time, in milliseconds, after which to expire an object cached in this content group.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-removecookies"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-removecookies"><strong>removecookies</strong></p>
-<a class="ansibleOptionLink" href="#parameter-removecookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-removecookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Remove cookies from responses.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -648,14 +648,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-weaknegrelexpiry"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-weaknegrelexpiry"><strong>weaknegrelexpiry</strong></p>
-<a class="ansibleOptionLink" href="#parameter-weaknegrelexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-weaknegrelexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Relative expiry time, in seconds, for expiring negative responses. This value is used only if the expiry time cannot be determined from any other source. It is applicable only to the following status codes: 307, 403, 404, and 410.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-weakposrelexpiry"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cachecontentgroup-module-parameter-weakposrelexpiry"><strong>weakposrelexpiry</strong></p>
-<a class="ansibleOptionLink" href="#parameter-weakposrelexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-weakposrelexpiry" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Relative expiry time, in seconds, for expiring positive responses with response codes between 200 and 399. Cannot be used in combination with other Expiry attributes. Similar to -relExpiry but has lower precedence.</p>
 </div></td>

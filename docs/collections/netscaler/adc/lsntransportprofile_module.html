@@ -131,7 +131,7 @@
 <h1>netscaler.adc.lsntransportprofile module – Configuration for LSN Transport Profile resource.<a class="headerlink" href="#netscaler-adc-lsntransportprofile-module-configuration-for-lsn-transport-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-finrsttimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-finrsttimeout"><strong>finrsttimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-finrsttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-finrsttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timeout, in seconds, for a TCP LSN session after a FIN or RST message is received from one of the endpoints.</p>
 <p>If a TCP LSN session is idle (after the Citrix ADC receives a FIN or RST message) for a time that exceeds this value, the Citrix ADC ADC removes the session.</p>
@@ -182,7 +182,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupsessionlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-groupsessionlimit"><strong>groupsessionlimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupsessionlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupsessionlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of concurrent LSN sessions(for the specified protocol) allowed for all subscriber of a group to which this profile has bound. This limit will get split across the Citrix ADCs packet engines and rounded down. When the number of LSN sessions reaches the limit for a group in packet engine, the Citrix ADC does not allow the subscriber of that group to open additional sessions through that packet engine.</p>
 </div></td>
@@ -231,7 +231,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-portpreserveparity"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-portpreserveparity"><strong>portpreserveparity</strong></p>
-<a class="ansibleOptionLink" href="#parameter-portpreserveparity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-portpreserveparity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable port parity between a subscriber port and its mapped LSN NAT port. For example, if a subscriber initiates a connection from an odd numbered port, the Citrix ADC allocates an odd numbered LSN NAT port for this connection.</p>
 <p>You must set this parameter for proper functioning of protocols that require the source port to be even or odd numbered, for example, in peer-to-peer applications that use RTP or RTCP protocol.</p>
@@ -244,7 +244,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-portpreserverange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-portpreserverange"><strong>portpreserverange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-portpreserverange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-portpreserverange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>If a subscriber initiates a connection from a well-known port (0-1023), allocate a NAT port from the well-known port range (0-1023) for this connection. For example, if a subscriber initiates a connection from port 80, the Citrix ADC can allocate port 100 as the NAT port for this connection.</p>
 <p>This parameter applies to dynamic NAT without port block allocation. It also applies to Deterministic NAT if the range of ports allocated includes well-known ports.</p>
@@ -258,7 +258,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-portquota"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-portquota"><strong>portquota</strong></p>
-<a class="ansibleOptionLink" href="#parameter-portquota" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-portquota" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of LSN NAT ports to be used at a time by each subscriber for the specified protocol. For example, each subscriber can be limited to a maximum of 500 TCP NAT ports. When the LSN NAT mappings for a subscriber reach the limit, the Citrix ADC does not allocate additional NAT ports for that subscriber.</p>
 </div></td>
@@ -278,7 +278,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionquota"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-sessionquota"><strong>sessionquota</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionquota" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionquota" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of concurrent LSN sessions allowed for each subscriber for the specified protocol.</p>
 <p>When the number of LSN sessions reaches the limit for a subscriber, the Citrix ADC does not allow the subscriber to open additional sessions.</p>
@@ -286,7 +286,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessiontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-sessiontimeout"><strong>sessiontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timeout, in seconds, for an idle LSN session. If an LSN session is idle for a time that exceeds this value, the Citrix ADC removes the session.</p>
 <p>This timeout does not apply for a TCP LSN session when a FIN or RST message is received from either of the endpoints.</p>
@@ -310,14 +310,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-stuntimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-stuntimeout"><strong>stuntimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-stuntimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-stuntimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>STUN protocol timeout</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-syncheck"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-syncheck"><strong>syncheck</strong></p>
-<a class="ansibleOptionLink" href="#parameter-syncheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-syncheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Silently drop any non-SYN packets for connections for which there is no LSN-NAT session present on the Citrix ADC.</p>
 <p>If you disable this parameter, the Citrix ADC accepts any non-SYN packets and creates a new LSN session entry for this connection.</p>
@@ -333,14 +333,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-synidletimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-synidletimeout"><strong>synidletimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-synidletimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-synidletimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>SYN Idle timeout</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-transportprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsntransportprofile-module-parameter-transportprofilename"><strong>transportprofilename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-transportprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-transportprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the LSN transport profile. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after the LSN transport profile is created. The following requirement applies only to the Citrix ADC CLI: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “lsn transport profile1” or ‘lsn transport profile1’).</p>
 </div></td>

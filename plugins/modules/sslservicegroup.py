@@ -37,12 +37,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   commonname:
-    type: str
+    type: raw
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server
   ocspstapling:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -56,25 +56,25 @@ options:
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
   sendclosenotify:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
   serverauth:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of server authentication support for the SSL service group.
   servicegroupname:
-    type: str
+    type: raw
     description:
       - Name of the SSL service group for which to set advanced configuration.
   sessreuse:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -83,13 +83,13 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
   snienable:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -100,7 +100,7 @@ options:
         same second-level domain name. For example, *.sports.net can be used to secure
         domains such as login.sports.net and help.sports.net.
   ssl3:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -109,11 +109,11 @@ options:
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
   sslprofile:
-    type: str
+    type: raw
     description:
       - Name of the SSL profile that contains SSL settings for the Service Group.
   strictsigdigestcheck:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -121,28 +121,28 @@ options:
       - Parameter indicating to check whether peer's certificate is signed with one
         of signature-hash combination supported by Citrix ADC
   tls1:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service group.
   tls11:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service group.
   tls12:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service group.
   tls13:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

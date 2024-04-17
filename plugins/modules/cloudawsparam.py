@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   rolearn:
-    type: str
+    type: raw
     description:
       - IAM Role ARN
 extends_documentation_fragment: netscaler.adc.netscaler_adc

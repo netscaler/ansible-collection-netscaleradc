@@ -43,14 +43,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging appflow flow information
   authentication:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -58,24 +58,24 @@ options:
       - Authenticate users who request a connection to the content switching virtual
         server.
   authenticationhost:
-    type: str
+    type: raw
     description:
       - FQDN of the authentication virtual server. The service type of the virtual
         server should be either HTTP or SSL.
   authn401:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable HTTP 401-response based authentication.
   authnprofile:
-    type: str
+    type: raw
     description:
       - Name of the authentication profile to be used when authentication is turned
         on.
   authnvsname:
-    type: str
+    type: raw
     description:
       - Name of authentication virtual server that authenticates the incoming user
         requests to this content switching virtual server.
@@ -84,11 +84,11 @@ options:
     description:
       - '0'
   backuppersistencetimeout:
-    type: float
+    type: raw
     description:
       - Time period for which backup persistence is in effect.
   backupvserver:
-    type: str
+    type: raw
     description:
       - Name of the backup virtual server that you are configuring. Must begin with
         an ASCII alphanumeric or underscore (_) character, and must contain only ASCII
@@ -100,7 +100,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks.
   cacheable:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -109,7 +109,7 @@ options:
         or content switching, routes requests to the cache redirection virtual server
         before sending it to the configured servers.
   casesensitive:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -119,7 +119,7 @@ options:
         and can have different targets (set by content switching policies). With the
         C(OFF) setting, /a/1.html and /A/1.HTML are switched to the same target.
   clttimeout:
-    type: float
+    type: raw
     description:
       - 'Idle time, in seconds, after which the client connection is terminated. The
         default values are:'
@@ -128,7 +128,7 @@ options:
       - 120 seconds for DNS-based services.
       - 120 seconds for other UDP-based services.
   comment:
-    type: str
+    type: raw
     description:
       - Information about this virtual server.
   cookiedomain:
@@ -136,7 +136,7 @@ options:
     description:
       - '0'
   cookiename:
-    type: str
+    type: raw
     description:
       - Use this parameter to  specify the cookie name for COOKIE peristence type.
         It specifies the name of cookie with a maximum of 32 characters. If not specified,
@@ -146,11 +146,11 @@ options:
     description:
       - '0'
   dbprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DB profile.
   disableprimaryondown:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -158,13 +158,13 @@ options:
       - Continue forwarding the traffic to backup virtual server even after the primary
         server comes UP from the DOWN state.
   dnsprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DNS profile to be associated with the VServer. DNS profile properties
         will applied to the transactions processed by a VServer. This parameter is
         valid only for DNS and DNS-TCP VServers.
   dnsrecordtype:
-    type: str
+    type: raw
     choices:
       - A
       - AAAA
@@ -178,7 +178,7 @@ options:
       - Domain name for which to change the time to live (TTL) and/or backup service
         IP address.
   downstateflush:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -187,31 +187,31 @@ options:
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
   dtls:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This option starts/stops the dtls service on the vserver
   httpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the HTTP profile containing HTTP configuration settings for the virtual
         server. The service type of the virtual server should be either HTTP or SSL.
   httpsredirecturl:
-    type: str
+    type: raw
     description:
       - URL to which all HTTP traffic received on the port specified in the -redirectFromPort
         parameter is redirected.
   icmpvsrresponse:
-    type: str
+    type: raw
     choices:
       - PASSIVE
       - ACTIVE
     description:
       - Can be active or passive
   insertvserveripport:
-    type: str
+    type: raw
     choices:
       - 'OFF'
       - VIPADDR
@@ -256,7 +256,7 @@ options:
         servers to the same extent, the request is processed by the virtual server
         whose port number matches the port number in the request.
   ipset:
-    type: str
+    type: raw
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
         service on the current cs vserver
@@ -265,55 +265,55 @@ options:
     description:
       - IP address of the content switching virtual server.
   l2conn:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use L2 Parameters to identify a connection
   listenpolicy:
-    type: str
+    type: raw
     description:
       - String specifying the listen policy for the content switching virtual server.
         Can be either the name of an existing expression or an in-line expression.
   listenpriority:
-    type: float
+    type: raw
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
   mssqlserverversion:
-    type: str
+    type: raw
     choices:
-      - '70'
-      - '2000'
+      - 70
+      - 2000
       - 2000SP1
-      - '2005'
-      - '2008'
+      - 2005
+      - 2008
       - 2008R2
-      - '2012'
-      - '2014'
+      - 2012
+      - 2014
     description:
       - The version of the MSSQL server
   mysqlcharacterset:
-    type: float
+    type: raw
     description:
       - The character set returned by the mysql vserver.
   mysqlprotocolversion:
-    type: float
+    type: raw
     description:
       - The protocol version returned by the mysql vserver.
   mysqlservercapabilities:
-    type: float
+    type: raw
     description:
       - The server capabilities returned by the mysql vserver.
   mysqlserverversion:
-    type: str
+    type: raw
     description:
       - The server version string returned by the mysql vserver.
   name:
-    type: str
+    type: raw
     description:
       - Name for the content switching virtual server. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -324,7 +324,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my server or my server).
   netprofile:
-    type: str
+    type: raw
     description:
       - The name of the network profile.
   newname:
@@ -338,14 +338,14 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my name" or 'my name').
   oracleserverversion:
-    type: str
+    type: raw
     choices:
       - 10G
       - 11G
     description:
       - Oracle server version
   persistencebackup:
-    type: str
+    type: raw
     choices:
       - SOURCEIP
       - NONE
@@ -353,11 +353,11 @@ options:
       - Backup persistence type for the virtual server. Becomes operational if the
         primary persistence mechanism fails.
   persistenceid:
-    type: float
+    type: raw
     description:
       - '0'
   persistencetype:
-    type: str
+    type: raw
     choices:
       - SOURCEIP
       - COOKIEINSERT
@@ -373,7 +373,7 @@ options:
       - '* C(SSLSESSION) - Connections that have the same SSL Session ID belong to
         the same persistence session.'
   persistmask:
-    type: str
+    type: raw
     description:
       - Persistence mask for IP based persistence types, for IPv4 virtual servers.
   port:
@@ -381,7 +381,7 @@ options:
     description:
       - Port number for content switching virtual server.
   precedence:
-    type: str
+    type: raw
     choices:
       - RULE
       - URL
@@ -397,7 +397,7 @@ options:
       - Citrix ADC provides support for external health check of the vserver status.
         Select port for HTTP/TCP monitring
   probeprotocol:
-    type: str
+    type: raw
     choices:
       - TCP
       - HTTP
@@ -405,11 +405,11 @@ options:
       - Citrix ADC provides support for external health check of the vserver status.
         Select C(HTTP) or C(TCP) probes for healthcheck
   probesuccessresponsecode:
-    type: str
+    type: raw
     description:
       - HTTP code to return in SUCCESS case.
   push:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -418,13 +418,13 @@ options:
         switching virtual server (specified by the Push VServer parameter). The service
         type of the push virtual server should be either HTTP or SSL.
   pushlabel:
-    type: str
+    type: raw
     description:
       - Expression for extracting the label from the response received from server.
         This string can be either an existing rule name or an inline expression. The
         service type of the virtual server should be either HTTP or SSL.
   pushmulticlients:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -432,13 +432,13 @@ options:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
   pushvserver:
-    type: str
+    type: raw
     description:
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which
         the server pushes updates received on the client-facing load balancing virtual
         server.
   quicprofilename:
-    type: str
+    type: raw
     description:
       - Name of QUIC profile which will be attached to the Content Switching VServer.
   range:
@@ -448,19 +448,19 @@ options:
         the IP Address parameter, to include in a range of addresses assigned to this
         virtual server.
   redirectfromport:
-    type: int
+    type: raw
     description:
       - Port number for the virtual server, from which we absorb the traffic for http
         redirect
   redirectportrewrite:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of port rewrite while performing HTTP redirect.
   redirecturl:
-    type: str
+    type: raw
     description:
       - URL to which traffic is redirected if the virtual server becomes unavailable.
         The service type of the virtual server should be either HTTP or SSL.
@@ -468,7 +468,7 @@ options:
         for a content switching policy. If it does, requests are continuously redirected
         to the unavailable virtual server.'
   rhistate:
-    type: str
+    type: raw
     choices:
       - PASSIVE
       - ACTIVE
@@ -482,7 +482,7 @@ options:
         on the others, the appliance, injects even if one virtual server set to C(ACTIVE)
         is UP.'
   rtspnat:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -526,7 +526,7 @@ options:
     description:
       - '0'
   sobackupaction:
-    type: str
+    type: raw
     choices:
       - DROP
       - ACCEPT
@@ -535,7 +535,7 @@ options:
       - Action to be performed if spillover is to take effect, but no backup chain
         to spillover is usable or exists
   somethod:
-    type: str
+    type: raw
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
@@ -548,24 +548,24 @@ options:
         is based on the number of connections. Bandwidth spillover is based on the
         total Kbps of incoming and outgoing traffic.
   sopersistence:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Maintain source-IP based persistence on primary and backup virtual servers.
   sopersistencetimeout:
-    type: float
+    type: raw
     description:
       - Time-out value, in minutes, for spillover persistence.
   sothreshold:
-    type: float
+    type: raw
     description:
       - Depending on the spillover method, the maximum number of connections or the
         maximum total bandwidth (Kbps) that a virtual server can handle before spillover
         occurs.
   stateupdate:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -589,13 +589,13 @@ options:
     description:
       - Virtual server target type.
   tcpprobeport:
-    type: int
+    type: raw
     description:
       - Port number for external TCP probe. NetScaler provides support for external
         TCP health check of the vserver status over the selected port. This option
         is only supported for vservers assigned with an IPAddress or ipset.
   tcpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the TCP profile containing TCP configuration settings for the virtual
         server.
@@ -606,7 +606,7 @@ options:
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   timeout:
-    type: float
+    type: raw
     description:
       - Time period for which a persistence session is in effect.
   ttl:
@@ -614,11 +614,11 @@ options:
     description:
       - '0'
   v6persistmasklen:
-    type: float
+    type: raw
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
   vipheader:
-    type: str
+    type: raw
     description:
       - Name of virtual server IP and port header, for use with the VServer IP Port
         Insertion parameter.

@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   idleaction:
-    type: str
+    type: raw
     choices:
       - ccrTerminate
       - delete
@@ -51,7 +51,7 @@ options:
       - '3. C(ccrUpdate): Do not C(delete) the session and instead send a CCR-U to
         PCRF requesting for an updated session. !'
   idlettl:
-    type: float
+    type: raw
     description:
       - 'q!Idle Timeout, in seconds, after which Citrix ADC will take an idleAction
         on a subscriber session (refer to ''idleAction'' arguement in ''set subscriber
@@ -61,7 +61,7 @@ options:
         not delete but send a CCR-U''. '
       - Zero value disables the idle timeout. !
   interfacetype:
-    type: str
+    type: raw
     choices:
       - None
       - RadiusOnly
@@ -85,7 +85,7 @@ options:
         to the UE's'
     elements: int
   keytype:
-    type: str
+    type: raw
     choices:
       - IP
       - IPANDVLAN

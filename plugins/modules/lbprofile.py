@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   computedadccookieattribute:
-    type: str
+    type: raw
     description:
       - 'ComputedADCCookieAttribute accepts ns variable as input in form of string
         starting with $ (to understand how to configure ns variable, please check
@@ -59,19 +59,19 @@ options:
       - '             For incoming client request, if above policy evaluates TRUE,
         then SameSite=Strict will be appended to ADC generated cookie'
   cookiepassphrase:
-    type: str
+    type: raw
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
         cookie value. It specifies the passphrase with a maximum of 31 characters.
   dbslb:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
   httponlycookieflag:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -80,7 +80,7 @@ options:
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
   lbhashalgorithm:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - PRAC
@@ -90,17 +90,17 @@ options:
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
   lbhashfingers:
-    type: float
+    type: raw
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory.
   lbprofilename:
-    type: str
+    type: raw
     description:
       - Name of the LB profile.
   literaladccookieattribute:
-    type: str
+    type: raw
     description:
       - 'String configured as LiteralADCCookieAttribute will be appended as attribute
         for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence,
@@ -109,7 +109,7 @@ options:
       - Sample usage -
       - '             add lb profile lbprof -LiteralADCCookieAttribute ";SameSite=None"'
   processlocal:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -119,7 +119,7 @@ options:
       - cket request response mode or when the upstream device is performing a proper
         RSS for connection based distribution.
   storemqttclientidandusername:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -127,14 +127,14 @@ options:
       - This option allows to store the MQTT clientid and username in transactional
         logs
   useencryptedpersistencecookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
   usesecuredpersistencecookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   attributes:
-    type: str
+    type: raw
     description:
       - Name-Value pairs of attributes to be inserted in idtoken. Configuration format
         is name=value_expr@@@name2=value2_expr@@@.
@@ -48,7 +48,7 @@ options:
       - Value is advanced policy expression terminated by @@@ delimiter. Last value
         need not contain the delimiter.
   audience:
-    type: str
+    type: raw
     description:
       - Audience for which token is being sent by Citrix ADC IdP. This is typically
         entity name or url that represents the recipient
@@ -61,31 +61,31 @@ options:
     description:
       - Unique secret string to authorize relying party at authorization server.
   configservice:
-    type: str
+    type: raw
     description:
       - Name of the entity that is used to obtain configuration for the current authentication
         request. It is used only in Citrix Cloud.
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This group will be part of AAA session's internal group list. This will be
         helpful to admin in Nfactor flow to decide right AAA configuration for Relaying
         Party. In authentication policy AAA.USER.IS_MEMBER_OF("<default_auth_group>")  is
         way to use this feature.
   encrypttoken:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to encrypt token when Citrix ADC IDP sends one.
   issuer:
-    type: str
+    type: raw
     description:
       - "The name to be used in requests sent from\tCitrix ADC to IdP to uniquely\
         \ identify Citrix ADC."
   name:
-    type: str
+    type: raw
     description:
       - Name for the new OAuth Identity Provider (IdP) single sign-on profile. Must
         begin with an ASCII alphanumeric or underscore (_) character, and must contain
@@ -101,36 +101,36 @@ options:
     description:
       - URL endpoint on relying party to which the OAuth token is to be sent.
   refreshinterval:
-    type: float
+    type: raw
     description:
       - Interval at which Relying Party metadata is refreshed.
   relyingpartymetadataurl:
-    type: str
+    type: raw
     description:
       - This is the endpoint at which Citrix ADC IdP can get details about Relying
         Party (RP) being configured. Metadata response should include endpoints for
         jwks_uri for RP public key(s).
   sendpassword:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to send encrypted password in idtoken.
   signaturealg:
-    type: str
+    type: raw
     choices:
       - RS256
       - RS512
     description:
       - Algorithm to be used to sign OpenID tokens.
   signatureservice:
-    type: str
+    type: raw
     description:
       - Name of the service in cloud used to sign the data. This is applicable only
         if signature if offloaded to cloud.
   skewtime:
-    type: float
+    type: raw
     description:
       - This option specifies the duration for which the token sent by Citrix ADC
         IdP is valid. For example, if skewTime is 10, then token would be valid from

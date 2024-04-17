@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addvaryheader:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -46,12 +46,12 @@ options:
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
   cmpbypasspct:
-    type: float
+    type: raw
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
         0 - 100'
   cmplevel:
-    type: str
+    type: raw
     choices:
       - optimal
       - bestspeed
@@ -62,7 +62,7 @@ options:
       - ' * Best speed - Corresponds to a gzip level of 1.'
       - ' * Best compression - Corresponds to a gzip level of 9.'
   cmponpush:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -71,7 +71,7 @@ options:
         data. Upon receipt of a packet with a PUSH flag, the appliance immediately
         begins compression of the accumulated packets.
   externalcache:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -99,21 +99,21 @@ options:
       - Threshold compression ratio for heuristic basefile expiry, multiplied by 100.
         For example, to set the threshold ratio to 1.25, specify 125.
   minressize:
-    type: float
+    type: raw
     description:
       - Smallest response size, in bytes, to be compressed.
   policytype:
-    type: str
+    type: raw
     choices:
       - ADVANCED
     description:
       - Type of the policy. The only possible value is C(ADVANCED)
   quantumsize:
-    type: float
+    type: raw
     description:
       - Minimum quantum of data to be filled before compression begins.
   servercmp:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -121,7 +121,7 @@ options:
       - Allow the server to send compressed data to the Citrix ADC. With the default
         setting, the Citrix ADC appliance handles all compression.
   varyheadervalue:
-    type: str
+    type: raw
     description:
       - The value of the HTTP Vary header for compressed responses. If this argument
         is not specified, a default value of "Accept-Encoding" will be used.

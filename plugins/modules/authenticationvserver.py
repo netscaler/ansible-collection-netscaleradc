@@ -43,14 +43,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log AppFlow flow information.
   authentication:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -58,20 +58,20 @@ options:
       - Require users to be authenticated before sending traffic through this virtual
         server.
   authenticationdomain:
-    type: str
+    type: raw
     description:
       - The domain of the authentication cookie set by Authentication vserver
   certkeynames:
-    type: str
+    type: raw
     description:
       - Name of the certificate key that was bound to the corresponding SSL virtual
         server as the Certificate Authority for the device certificate
   comment:
-    type: str
+    type: raw
     description:
       - Any comments associated with this virtual server.
   failedlogintimeout:
-    type: float
+    type: raw
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
@@ -81,11 +81,11 @@ options:
       - IP address of the authentication virtual server, if a single IP address is
         assigned to the virtual server.
   maxloginattempts:
-    type: float
+    type: raw
     description:
       - Maximum Number of login Attempts
   name:
-    type: str
+    type: raw
     description:
       - Name for the new authentication virtual server.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -123,7 +123,7 @@ options:
         numbered, starting with the primary address specified with the IP Address
         parameter.
   samesite:
-    type: str
+    type: raw
     choices:
       - None
       - LAX

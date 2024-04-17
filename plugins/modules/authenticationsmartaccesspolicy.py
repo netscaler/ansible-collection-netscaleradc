@@ -43,11 +43,11 @@ options:
     description:
       - Name of the Smartaccess profile to use if the policy matches.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the Smartaccess policy.
       - Must begin with a letter, number, or the underscore character (_), and must

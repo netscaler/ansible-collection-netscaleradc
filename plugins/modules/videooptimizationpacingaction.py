@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comment. Any type of information about this video optimization detection action.
   name:
-    type: str
+    type: raw
     description:
       - Name for the video optimization pacing action. Must begin with a letter, number,
         or the underscore character (_), and must contain only letters, numbers, and
@@ -57,7 +57,7 @@ options:
         contain only letters, numbers, and the hyphen (-), period (.) hash (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters.
   rate:
-    type: int
+    type: raw
     description:
       - ABR Video Optimization Pacing Rate (in Kbps)
 extends_documentation_fragment: netscaler.adc.netscaler_adc

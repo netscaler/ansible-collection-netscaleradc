@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   nat64fragheader:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -45,26 +45,26 @@ options:
       - When disabled, translator will not insert IPv6 fragmentation header for non
         fragmented IPv4 packets
   nat64ignoretos:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Ignore TOS.
   nat64v6mtu:
-    type: float
+    type: raw
     description:
       - MTU setting for the IPv6 side. If the incoming IPv4 packet greater than this,
         either fragment or send icmp need fragmentation error.
   nat64zerochecksum:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Calculate checksum for UDP packets with zero checksum
   td:
-    type: float
+    type: raw
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part

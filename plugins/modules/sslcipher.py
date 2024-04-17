@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ciphergroupname:
-    type: str
+    type: raw
     description:
       - Name for the user-defined cipher group. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -50,11 +50,11 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my ciphergroup" or 'my ciphergroup').
   ciphername:
-    type: str
+    type: raw
     description:
       - Cipher name.
   cipherpriority:
-    type: float
+    type: raw
     description:
       - This indicates priority assigned to the particular cipher
   ciphgrpalias:

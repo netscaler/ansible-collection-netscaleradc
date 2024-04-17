@@ -131,7 +131,7 @@
 <h1>netscaler.adc.aaakcdaccount module – Configuration for Kerberos constrained delegation account resource.<a class="headerlink" href="#netscaler-adc-aaakcdaccount-module-configuration-for-kerberos-constrained-delegation-account-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cacert"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaakcdaccount-module-parameter-cacert"><strong>cacert</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cacert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cacert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>CA Cert for UserCert or when doing PKINIT backchannel.</p>
 </div></td>
@@ -187,14 +187,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-enterpriserealm"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaakcdaccount-module-parameter-enterpriserealm"><strong>enterpriserealm</strong></p>
-<a class="ansibleOptionLink" href="#parameter-enterpriserealm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-enterpriserealm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enterprise Realm of the user. This should be given only in certain KDC deployments where KDC expects Enterprise username instead of Principal Name</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-kcdaccount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaakcdaccount-module-parameter-kcdaccount"><strong>kcdaccount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-kcdaccount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-kcdaccount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The name of the KCD account.</p>
 </div></td>
@@ -208,7 +208,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-keytab"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaakcdaccount-module-parameter-keytab"><strong>keytab</strong></p>
-<a class="ansibleOptionLink" href="#parameter-keytab" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-keytab" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The path to the keytab file. If specified other parameters in this command need not be given</p>
 </div></td>
@@ -277,7 +277,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-servicespn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaakcdaccount-module-parameter-servicespn"><strong>servicespn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-servicespn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-servicespn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Service SPN. When specified, this will be used to fetch kerberos tickets. If not specified, Citrix ADC will construct SPN using service fqdn</p>
 </div></td>
@@ -300,14 +300,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usercert"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaakcdaccount-module-parameter-usercert"><strong>usercert</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usercert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-usercert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>SSL Cert (including private key) for Delegated User.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-userrealm"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaakcdaccount-module-parameter-userrealm"><strong>userrealm</strong></p>
-<a class="ansibleOptionLink" href="#parameter-userrealm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-userrealm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Realm of the user</p>
 </div></td>

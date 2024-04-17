@@ -131,7 +131,7 @@
 <h1>netscaler.adc.vpnclientlessaccessprofile module – Configuration for Clientless VPN rewrite profile resource.<a class="headerlink" href="#netscaler-adc-vpnclientlessaccessprofile-module-configuration-for-clientless-vpn-rewrite-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,14 +173,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientconsumedcookies"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-clientconsumedcookies"><strong>clientconsumedcookies</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientconsumedcookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientconsumedcookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specify the name of the pattern set containing the names of the cookies, which are allowed between the client and the server. If a pattern set is not specified, Citrix Gateway does not allow any cookies between the client and the server. A cookie that is not specified in the pattern set is handled by Citrix Gateway on behalf of the client.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-javascriptrewritepolicylabel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-javascriptrewritepolicylabel"><strong>javascriptrewritepolicylabel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-javascriptrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-javascriptrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the configured JavaScript rewrite policy label.  If you do not specify a policy label name, then JAVA scripts are not rewritten.</p>
 </div></td>
@@ -229,7 +229,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-profilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-profilename"><strong>profilename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-profilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-profilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the Citrix Gateway clientless access profile. Must begin with an ASCII alphabetic or underscore (_) character, and must consist only of ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after the profile is created.</p>
 <p>The following requirement applies only to the Citrix ADC CLI:</p>
@@ -238,49 +238,49 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-regexforfindingcustomurls"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-regexforfindingcustomurls"><strong>regexforfindingcustomurls</strong></p>
-<a class="ansibleOptionLink" href="#parameter-regexforfindingcustomurls" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-regexforfindingcustomurls" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the pattern set that contains the regular expressions, which match the URLs in the custom content type other than HTML, CSS, XML, XCOMP, and JavaScript. The custom content type should be included in the patset ns_cvpn_custom_content_types.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-regexforfindingurlincss"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-regexforfindingurlincss"><strong>regexforfindingurlincss</strong></p>
-<a class="ansibleOptionLink" href="#parameter-regexforfindingurlincss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-regexforfindingurlincss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the pattern set that contains the regular expressions, which match the URL in the CSS.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-regexforfindingurlinjavascript"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-regexforfindingurlinjavascript"><strong>regexforfindingurlinjavascript</strong></p>
-<a class="ansibleOptionLink" href="#parameter-regexforfindingurlinjavascript" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-regexforfindingurlinjavascript" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the pattern set that contains the regular expressions, which match the URL in Java script.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-regexforfindingurlinxcomponent"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-regexforfindingurlinxcomponent"><strong>regexforfindingurlinxcomponent</strong></p>
-<a class="ansibleOptionLink" href="#parameter-regexforfindingurlinxcomponent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-regexforfindingurlinxcomponent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the pattern set that contains the regular expressions, which match the URL in X Component.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-regexforfindingurlinxml"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-regexforfindingurlinxml"><strong>regexforfindingurlinxml</strong></p>
-<a class="ansibleOptionLink" href="#parameter-regexforfindingurlinxml" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-regexforfindingurlinxml" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the pattern set that contains the regular expressions, which match the URL in XML.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-reqhdrrewritepolicylabel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-reqhdrrewritepolicylabel"><strong>reqhdrrewritepolicylabel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-reqhdrrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-reqhdrrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the configured Request rewrite policy label.  If you do not specify a policy label name, then requests are not rewritten.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-requirepersistentcookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-requirepersistentcookie"><strong>requirepersistentcookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-requirepersistentcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-requirepersistentcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specify whether a persistent session cookie is set and accepted for clientless access. If this parameter is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code>, COM objects, such as MSOffice, which are invoked by the browser can access the files using clientless access. Use caution because the persistent cookie is stored on the disk.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -292,7 +292,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-reshdrrewritepolicylabel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-reshdrrewritepolicylabel"><strong>reshdrrewritepolicylabel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-reshdrrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-reshdrrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the configured Response rewrite policy label.</p>
 </div></td>
@@ -328,7 +328,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-urlrewritepolicylabel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnclientlessaccessprofile-module-parameter-urlrewritepolicylabel"><strong>urlrewritepolicylabel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-urlrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-urlrewritepolicylabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the configured URL rewrite policy label. If you do not specify a policy label name, then URLs are not rewritten.</p>
 </div></td>

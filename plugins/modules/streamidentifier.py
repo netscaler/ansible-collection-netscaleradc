@@ -39,62 +39,62 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   acceptancethreshold:
-    type: str
+    type: raw
     description:
       - Non-Breaching transactions to Total transactions threshold expressed in percent.
       - Maximum of 6 decimal places is supported.
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/disable Appflow logging for stream identifier
   breachthreshold:
-    type: float
+    type: raw
     description:
       - Breaching transactions threshold calculated over interval.
   interval:
-    type: float
+    type: raw
     description:
       - Number of minutes of data to use when calculating session statistics (number
         of requests, bandwidth, and response times). The interval is a moving window
         that keeps the most recently collected data. Older data is discarded at regular
         intervals.
   maxtransactionthreshold:
-    type: float
+    type: raw
     description:
       - Maximum per transcation value of metric. Metric to be tracked is specified
         by tracktransactions attribute.
   mintransactionthreshold:
-    type: float
+    type: raw
     description:
       - Minimum per transcation value of metric. Metric to be tracked is specified
         by tracktransactions attribute.
   name:
-    type: str
+    type: raw
     description:
       - The name of stream identifier.
   samplecount:
-    type: float
+    type: raw
     description:
       - Size of the sample from which to select a request for evaluation. The smaller
         the sample count, the more accurate is the statistical data. To evaluate all
         requests, set the sample count to 1. However, such a low setting can result
         in excessive consumption of memory and processing resources.
   selectorname:
-    type: str
+    type: raw
     description:
       - Name of the selector to use with the stream identifier.
   snmptrap:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/disable SNMP trap for stream identifier
   sort:
-    type: str
+    type: raw
     choices:
       - REQUESTS
       - CONNECTIONS
@@ -108,7 +108,7 @@ options:
         through Citrix ADC policies (for example, compression and caching policies)
         that use functions such as IS_TOP(n).
   trackackonlypackets:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -116,7 +116,7 @@ options:
       - Track ack only packets as well. This setting is applicable only when packet
         rate limiting is being used.
   tracktransactions:
-    type: str
+    type: raw
     choices:
       - RESPTIME
       - NONE

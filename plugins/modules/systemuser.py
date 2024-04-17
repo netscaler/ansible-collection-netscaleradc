@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowedmanagementinterface:
-    type: list
+    type: raw
     choices:
       - CLI
       - API
@@ -48,9 +48,8 @@ options:
         from both C(API) and C(CLI) interfaces. If management interface for a user
         is set to C(API), then user is not allowed to access NS through C(CLI). GUI
         interface will come under C(API) interface
-    elements: str
   externalauth:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -58,14 +57,14 @@ options:
       - Whether to use external authentication servers for the system user authentication
         or not
   logging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Users logging privilege
   maxsession:
-    type: float
+    type: raw
     description:
       - Maximum number of client connection allowed per user
   password:
@@ -73,7 +72,7 @@ options:
     description:
       - Password for the system user. Can include any ASCII character.
   promptstring:
-    type: str
+    type: raw
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
         hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:),
@@ -88,7 +87,7 @@ options:
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
   timeout:
-    type: float
+    type: raw
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         of system parameter is enabled, Timeout can have values in the range [300-86400]
@@ -96,7 +95,7 @@ options:
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
   username:
-    type: str
+    type: raw
     description:
       - Name for a user. Must begin with a letter, number, or the underscore (_) character,
         and must contain only alphanumeric, hyphen (-), period (.), hash (#), space

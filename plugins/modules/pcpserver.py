@@ -43,18 +43,18 @@ options:
     description:
       - The IP address of the PCP server.
   name:
-    type: str
+    type: raw
     description:
       - 'Name for the PCP server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore CLI Users:
         If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my pcpServer" or my pcpServer).'
   pcpprofile:
-    type: str
+    type: raw
     description:
       - pcp profile name
   port:
-    type: int
+    type: raw
     description:
       - Port number for the PCP server.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

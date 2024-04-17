@@ -37,56 +37,56 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ceflogging:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable CEF format logs.
   centralizedlearning:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable ADM centralized learning
   clientiploggingheader:
-    type: str
+    type: raw
     description:
       - Name of an HTTP header that contains the IP address that the client used to
         connect to the protected web site or service.
   cookiepostencryptprefix:
-    type: str
+    type: raw
     description:
       - String that is prepended to all encrypted cookie values.
   defaultprofile:
-    type: str
+    type: raw
     description:
       - Profile to use when a connection does not match any policy. Default setting
         is APPFW_BYPASS, which sends unmatched connections back to the Citrix ADC
         without attempting to filter them further.
   entitydecoding:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Transform multibyte (double- or half-width) characters to single width characters.
   geolocationlogging:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable Geo-Location Logging in CEF format logs.
   importsizelimit:
-    type: float
+    type: raw
     description:
       - Cumulative total maximum number of bytes in web forms imported to a protected
         web site. If a user attempts to upload files with a total byte count higher
         than the specified limit, the application firewall blocks the request.
   learnratelimit:
-    type: float
+    type: raw
     description:
       - Maximum number of connections per second that the application firewall learning
         engine examines to generate new relaxations for learning-enabled security
@@ -101,7 +101,7 @@ options:
       - Log requests that are so malformed that application firewall parsing doesn't
         occur.
   malformedreqaction:
-    type: list
+    type: raw
     choices:
       - none
       - block
@@ -110,25 +110,24 @@ options:
     description:
       - flag to define action on malformed requests that application firewall cannot
         parse
-    elements: str
   proxypassword:
-    type: str
+    type: raw
     description:
       - Password with which proxy user logs on.
   proxyport:
-    type: int
+    type: raw
     description:
       - Proxy Server Port to get updated signatures from AWS.
   proxyserver:
-    type: str
+    type: raw
     description:
       - Proxy Server IP to get updated signatures from AWS.
   proxyusername:
-    type: str
+    type: raw
     description:
       - Proxy Username
   sessioncookiename:
-    type: str
+    type: raw
     description:
       - Name of the session cookie that the application firewall uses to track user
         sessions.
@@ -139,7 +138,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessionlifetime:
-    type: float
+    type: raw
     description:
       - Maximum amount of time (in seconds) that the application firewall allows a
         user session to remain active, regardless of user activity. After this time,
@@ -147,30 +146,30 @@ options:
         site, the user must establish a new session by opening a designated start
         URL.
   sessionlimit:
-    type: float
+    type: raw
     description:
       - Maximum number of sessions that the application firewall allows to be active,
         regardless of user activity. After the max_limit reaches, No more user session
         will be created .
   sessiontimeout:
-    type: float
+    type: raw
     description:
       - Timeout, in seconds, after which a user session is terminated. Before continuing
         to use the protected web site, the user must establish a new session by opening
         a designated start URL.
   signatureautoupdate:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable auto update signatures
   signatureurl:
-    type: str
+    type: raw
     description:
       - URL to download the mapping file from server
   undefaction:
-    type: str
+    type: raw
     description:
       - Profile to use when an application firewall policy evaluates to undefined
         (UNDEF).
@@ -178,7 +177,7 @@ options:
         profile is the default setting. You can specify a different built-in or user-created
         profile as the UNDEF profile.
   useconfigurablesecretkey:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'

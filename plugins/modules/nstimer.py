@@ -39,16 +39,16 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comments associated with this timer.
   interval:
-    type: int
+    type: raw
     description:
       - The frequency at which the policies bound to this timer are invoked. The minimum
         value is 20 msec. The maximum value is 20940 in seconds and 349 in minutes
   name:
-    type: str
+    type: raw
     description:
       - Timer name.
   newname:
@@ -56,7 +56,7 @@ options:
     description:
       - The new name of the timer.
   unit:
-    type: str
+    type: raw
     choices:
       - SEC
       - MIN

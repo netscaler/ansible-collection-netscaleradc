@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   aclname:
-    type: str
+    type: raw
     description:
       - An extended ACL defined for the RNAT entry.
   connfailover:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -51,7 +51,7 @@ options:
       - Synchronize all connection-related information for the RNAT sessions with
         the secondary ADC in a high availability (HA) pair.
   name:
-    type: str
+    type: raw
     description:
       - Name for the RNAT4 rule. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
@@ -69,11 +69,11 @@ options:
         can specify all NetScaler-owned IP addresses, except the NSIP, that fall within
         the specified range.
   netmask:
-    type: str
+    type: raw
     description:
       - The subnet mask for the network address.
   network:
-    type: str
+    type: raw
     description:
       - The network address defined for the RNAT entry.
   newname:
@@ -84,16 +84,16 @@ options:
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
   ownergroup:
-    type: str
+    type: raw
     description:
       - The owner node group in a Cluster for this rnat rule.
   redirectport:
-    type: int
+    type: raw
     description:
       - Port number to which the IPv4 packets are redirected. Applicable to TCP and
         UDP protocols.
   srcippersistency:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -101,13 +101,13 @@ options:
       - Enables the Citrix ADC to use the same NAT IP address for all RNAT sessions
         initiated from a particular server.
   td:
-    type: float
+    type: raw
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   useproxyport:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

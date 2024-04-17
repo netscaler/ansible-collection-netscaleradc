@@ -39,13 +39,13 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bodyexpr:
-    type: str
+    type: raw
     description:
       - An advanced string expression for generating the body of the request. The
         expression can contain a literal string or an expression that derives the
         value (for example, client.ip.src). Mutually exclusive with -fullReqExpr.
   cacheforsecs:
-    type: float
+    type: raw
     description:
       - Duration, in seconds, for which the callout response is cached. The cached
         responses are stored in an integrated caching content group named "calloutContentGroup".
@@ -56,11 +56,11 @@ options:
       - "\t   Note that the calloutContentGroup definition may not be modified or\
         \ removed nor may it be used with other cache policies."
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this HTTP callout.
   fullreqexpr:
-    type: str
+    type: raw
     description:
       - Exact HTTP request, in the form of an expression, which the Citrix ADC sends
         to the callout agent. If you set this parameter, you must not include HTTP
@@ -71,23 +71,22 @@ options:
       - The Citrix ADC does not check the validity of this request. You must manually
         validate the request.
   headers:
-    type: list
+    type: raw
     description:
       - One or more headers to insert into the HTTP request. Each header is specified
         as "name(expr)", where expr is an expression that is evaluated at runtime
         to provide the value for the named header. You can configure a maximum of
         eight headers for an HTTP callout. Mutually exclusive with the full HTTP request
         expression.
-    elements: str
   hostexpr:
-    type: str
+    type: raw
     description:
       - String expression to configure the Host header. Can contain a literal value
         (for example, 10.101.10.11) or a derived value (for example, http.req.header("Host")).
         The literal value can be an IP address or a fully qualified domain name. Mutually
         exclusive with the full HTTP request expression.
   httpmethod:
-    type: str
+    type: raw
     choices:
       - GET
       - POST
@@ -95,14 +94,14 @@ options:
       - Method used in the HTTP request that this callout sends.  Mutually exclusive
         with the full HTTP request expression.
   ipaddress:
-    type: str
+    type: raw
     description:
       - IP Address of the server (callout agent) to which the callout is sent. Can
         be an IPv4 or IPv6 address.
       - Mutually exclusive with the Virtual Server parameter. Therefore, you cannot
         set the <IP Address, Port> and the Virtual Server in the same HTTP callout.
   name:
-    type: str
+    type: raw
     description:
       - Name for the HTTP callout. Not case sensitive. Must begin with an ASCII letter
         or underscore (_) character, and must consist only of ASCII alphanumeric or
@@ -111,22 +110,21 @@ options:
         (such as ASCII). Must not be the name of an existing named expression, pattern
         set, dataset, stringmap, or HTTP callout.
   parameters:
-    type: list
+    type: raw
     description:
       - One or more query parameters to insert into the HTTP request URL (for a GET
         request) or into the request body (for a POST request). Each parameter is
         specified as "name(expr)", where expr is an expression that is evaluated at
         run time to provide the value for the named parameter (name=value). The parameter
         values are URL encoded. Mutually exclusive with the full HTTP request expression.
-    elements: str
   port:
-    type: int
+    type: raw
     description:
       - Server port to which the HTTP callout agent is mapped. Mutually exclusive
         with the Virtual Server parameter. Therefore, you cannot set the <IP Address,
         Port> and the Virtual Server in the same HTTP callout.
   resultexpr:
-    type: str
+    type: raw
     description:
       - 'Expression that extracts the callout results from the response sent by the
         HTTP callout agent. Must be a response based expression, that is, it must
@@ -155,14 +153,14 @@ options:
     description:
       - Type of scheme for the callout server.
   urlstemexpr:
-    type: str
+    type: raw
     description:
       - String expression for generating the URL stem. Can contain a literal string
         (for example, "/mysite/index.html") or an expression that derives the value
         (for example, http.req.url). Mutually exclusive with the full HTTP request
         expression.
   vserver:
-    type: str
+    type: raw
     description:
       - Name of the load balancing, content switching, or cache redirection virtual
         server (the callout agent) to which the HTTP callout is sent. The service

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.analyticsprofile module – Configuration for Analytics profile resource.<a class="headerlink" href="#netscaler-adc-analyticsprofile-module-configuration-for-analytics-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-allhttpheaders"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-allhttpheaders"><strong>allhttpheaders</strong></p>
-<a class="ansibleOptionLink" href="#parameter-allhttpheaders" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-allhttpheaders" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log all the request and response headers.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -176,28 +176,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-analyticsauthtoken"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-analyticsauthtoken"><strong>analyticsauthtoken</strong></p>
-<a class="ansibleOptionLink" href="#parameter-analyticsauthtoken" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-analyticsauthtoken" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Token for authenticating with the endpoint. If the endpoint requires the Authorization header in a particular format, specify the complete format as the value to this parameter. For eg., in case of splunk, the Authorizaiton header is required to be of the form - Splunk &lt;auth-token&gt;.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-analyticsendpointcontenttype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-analyticsendpointcontenttype"><strong>analyticsendpointcontenttype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-analyticsendpointcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-analyticsendpointcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>By default, application/json content-type is used. If this needs to be overridden, specify the value.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-analyticsendpointmetadata"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-analyticsendpointmetadata"><strong>analyticsendpointmetadata</strong></p>
-<a class="ansibleOptionLink" href="#parameter-analyticsendpointmetadata" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-analyticsendpointmetadata" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>If the endpoint requires some metadata to be present before the actual json data, specify the same.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-analyticsendpointurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-analyticsendpointurl"><strong>analyticsendpointurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-analyticsendpointurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-analyticsendpointurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The URL at which to upload the analytics data on the endpoint</p>
 </div></td>
@@ -213,7 +213,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-auditlogs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-auditlogs"><strong>auditlogs</strong></p>
-<a class="ansibleOptionLink" href="#parameter-auditlogs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-auditlogs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option indicates the whether auditlog should be sent to the REST collector.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -225,14 +225,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-collectors"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-collectors"><strong>collectors</strong></p>
-<a class="ansibleOptionLink" href="#parameter-collectors" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-collectors" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The collector can be an IP, an appflow collector name, a service or a vserver. If IP is specified, the transport is considered as logstream and default port of 5557 is taken. If collector name is specified, the collector properties are taken from the configured collector. If service is specified, the configured service is assumed as the collector. If vserver is specified, the services bound to it are considered as collectors and the records are load balanced.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cqareporting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-cqareporting"><strong>cqareporting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cqareporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cqareporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log TCP CQA parameters.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -244,7 +244,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-events"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-events"><strong>events</strong></p>
-<a class="ansibleOptionLink" href="#parameter-events" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-events" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option indicates the whether events should be sent to the REST collector.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -256,7 +256,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-grpcstatus"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-grpcstatus"><strong>grpcstatus</strong></p>
-<a class="ansibleOptionLink" href="#parameter-grpcstatus" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-grpcstatus" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log the gRPC status headers</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -268,7 +268,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpauthentication"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpauthentication"><strong>httpauthentication</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpauthentication" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpauthentication" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log Authentication header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -280,7 +280,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpclientsidemeasurements"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpclientsidemeasurements"><strong>httpclientsidemeasurements</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpclientsidemeasurements" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpclientsidemeasurements" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will insert a javascript into the HTTP response to collect the client side page-timings and will send the same to the configured collectors.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -292,7 +292,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpcontenttype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpcontenttype"><strong>httpcontenttype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log content-length header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -304,7 +304,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpcookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpcookie"><strong>httpcookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log cookie header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -316,7 +316,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpdomainname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpdomainname"><strong>httpdomainname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpdomainname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpdomainname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log domain name.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -328,7 +328,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httphost"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httphost"><strong>httphost</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httphost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httphost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log the Host header in appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -340,7 +340,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httplocation"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httplocation"><strong>httplocation</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httplocation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httplocation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log location header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -352,7 +352,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpmethod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpmethod"><strong>httpmethod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log the method header in appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -364,7 +364,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httppagetracking"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httppagetracking"><strong>httppagetracking</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httppagetracking" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httppagetracking" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will link the embedded objects of a page together.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -376,7 +376,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpreferer"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpreferer"><strong>httpreferer</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpreferer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpreferer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log the referer header in appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -388,7 +388,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpsetcookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpsetcookie"><strong>httpsetcookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpsetcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpsetcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log set-cookie header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -400,7 +400,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpsetcookie2"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpsetcookie2"><strong>httpsetcookie2</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpsetcookie2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpsetcookie2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log set-cookie2 header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -412,7 +412,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpurl"><strong>httpurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log the URL in appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -424,7 +424,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpurlquery"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpurlquery"><strong>httpurlquery</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpurlquery" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpurlquery" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log URL Query.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -436,7 +436,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpuseragent"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpuseragent"><strong>httpuseragent</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpuseragent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpuseragent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log User-Agent header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -448,7 +448,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpvia"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpvia"><strong>httpvia</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpvia" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpvia" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will Via header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -460,7 +460,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpxforwardedforheader"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-httpxforwardedforheader"><strong>httpxforwardedforheader</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpxforwardedforheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpxforwardedforheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log X-Forwarded-For header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -472,7 +472,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-integratedcache"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-integratedcache"><strong>integratedcache</strong></p>
-<a class="ansibleOptionLink" href="#parameter-integratedcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-integratedcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log the Integrated Caching appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -484,7 +484,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-metrics"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-metrics"><strong>metrics</strong></p>
-<a class="ansibleOptionLink" href="#parameter-metrics" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-metrics" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option indicates the whether metrics should be sent to the REST collector.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -496,14 +496,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-metricsexportfrequency"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-metricsexportfrequency"><strong>metricsexportfrequency</strong></p>
-<a class="ansibleOptionLink" href="#parameter-metricsexportfrequency" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-metricsexportfrequency" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is for configuring the metrics export frequency in seconds, frequency value must be in [30,300] seconds range</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the analytics profile. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at</p>
 <p>(&#64;), equals (=), and hyphen (-) characters.</p>
@@ -555,7 +555,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-outputmode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-outputmode"><strong>outputmode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-outputmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-outputmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option indicates the format of REST API POST body. It depends on the consumer of the analytics data.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -581,14 +581,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-schemafile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-schemafile"><strong>schemafile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-schemafile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-schemafile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is for configuring json schema file containing a list of counters to be exported by metricscollector</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-servemode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-servemode"><strong>servemode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-servemode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-servemode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is for setting the mode of how data is provided</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -616,7 +616,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpburstreporting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-tcpburstreporting"><strong>tcpburstreporting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpburstreporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpburstreporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will log TCP burst parameters.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -628,7 +628,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-type"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-type"><strong>type</strong></p>
-<a class="ansibleOptionLink" href="#parameter-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option indicates what information needs to be collected and exported.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -650,7 +650,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-urlcategory"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-analyticsprofile-module-parameter-urlcategory"><strong>urlcategory</strong></p>
-<a class="ansibleOptionLink" href="#parameter-urlcategory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-urlcategory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will send the URL category record.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

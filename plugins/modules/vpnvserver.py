@@ -43,14 +43,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advancedepa:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This option tells whether advanced EPA is enabled on this virtual server
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -61,24 +61,24 @@ options:
         HTTP web addresses, HTTP request methods and response status codes, server
         response time, and latency.
   authentication:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Require authentication for users connecting to Citrix Gateway.
   authnprofile:
-    type: str
+    type: raw
     description:
       - Authentication Profile entity on virtual server. This entity can be used to
         offload authentication to AAA vserver for multi-factor(nFactor) authentication
   certkeynames:
-    type: str
+    type: raw
     description:
       - Name of the certificate key that was bound to the corresponding SSL virtual
         server as the Certificate Authority for the device certificate
   cginfrahomepageredirect:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -88,7 +88,7 @@ options:
         takes the user to the originally requested ShareFile resource after authentication
         (instead of taking the user to the default VPN home page)
   comment:
-    type: str
+    type: raw
     description:
       - Any comments associated with the virtual server.
   deploymenttype:
@@ -101,14 +101,14 @@ options:
     description:
       - '0'
   devicecert:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Indicates whether device certificate check as a part of EPA is on or off.
   doublehop:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -118,7 +118,7 @@ options:
         using three firewalls to divide the DMZ into two stages. Such a deployment
         can have one appliance in the DMZ and one appliance in the secure network.
   downstateflush:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -130,7 +130,7 @@ options:
         be closed when they are marked DOWN.  Do not enable DOWN state flush on servers
         that must complete their transactions.
   dtls:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -142,11 +142,11 @@ options:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
   httpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the HTTP profile to assign to this virtual server.
   icaonly:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -166,7 +166,7 @@ options:
         CVPN. Number of users that can log in and access the resources are limited
         by the CCU licenses in this mode.'
   icaproxysessionmigration:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -174,7 +174,7 @@ options:
       - This option determines if an existing ICA Proxy session is transferred when
         the user logs on from another device.
   icmpvsrresponse:
-    type: str
+    type: raw
     choices:
       - PASSIVE
       - ACTIVE
@@ -184,7 +184,7 @@ options:
         available. With the C(PASSIVE) setting, respond even if the virtual server
         is not available.
   ipset:
-    type: str
+    type: raw
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
         service on the current vpn vserver
@@ -194,7 +194,7 @@ options:
       - IPv4 or IPv6 address of the Citrix Gateway virtual server. Usually a public
         IP address. User devices send connection requests to this IP address.
   l2conn:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -204,7 +204,7 @@ options:
         that is used to identify a connection. Allows multiple TCP and non-TCP connections
         with the same 4-tuple to coexist on the Citrix ADC.
   linuxepapluginupgrade:
-    type: str
+    type: raw
     choices:
       - Always
       - Essential
@@ -212,34 +212,34 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Linux
   listenpolicy:
-    type: str
+    type: raw
     description:
       - String specifying the listen policy for the Citrix Gateway virtual server.
         Can be either a named expression or an expression. The Citrix Gateway virtual
         server processes only the traffic for which the expression evaluates to true.
   listenpriority:
-    type: float
+    type: raw
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
         virtual server, the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
   loginonce:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This option enables/disables seamless SSO for this Vserver.
   logoutonsmartcardremoval:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to VPN plugin behavior when smartcard or its reader is removed
   macepapluginupgrade:
-    type: str
+    type: raw
     choices:
       - Always
       - Essential
@@ -247,17 +247,17 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Mac
   maxaaausers:
-    type: float
+    type: raw
     description:
       - Maximum number of concurrent user sessions allowed on this virtual server.
         The actual number of users allowed to log on to this virtual server depends
         on the total number of user licenses.
   maxloginattempts:
-    type: float
+    type: raw
     description:
       - Maximum number of logon attempts
   name:
-    type: str
+    type: raw
     description:
       - Name for the Citrix Gateway virtual server. Must begin with an ASCII alphabetic
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -268,7 +268,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my server" or 'my server').
   netprofile:
-    type: str
+    type: raw
     description:
       - The name of the network profile.
   newname:
@@ -283,7 +283,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my server" or 'my server').
   pcoipvserverprofilename:
-    type: str
+    type: raw
     description:
       - Name of the PCoIP vserver profile associated with the vserver.
   port:
@@ -298,11 +298,11 @@ options:
         parameter.
       - In the configuration utility, select Network VServer to enter a range.
   rdpserverprofilename:
-    type: str
+    type: raw
     description:
       - Name of the RDP server profile associated with the vserver.
   rhistate:
-    type: str
+    type: raw
     choices:
       - PASSIVE
       - ACTIVE
@@ -316,7 +316,7 @@ options:
         on the others, the appliance injects even if one virtual server set to C(ACTIVE)
         is UP.'
   samesite:
-    type: str
+    type: raw
     choices:
       - None
       - LAX
@@ -333,20 +333,20 @@ options:
     description:
       - Protocol used by the Citrix Gateway virtual server.
   tcpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the TCP profile to assign to this virtual server.
   userdomains:
-    type: str
+    type: raw
     description:
       - List of user domains specified as comma seperated value
   vserverfqdn:
-    type: str
+    type: raw
     description:
       - Fully qualified domain name for a VPN virtual server. This is used during
         StoreFront configuration generation.
   windowsepapluginupgrade:
-    type: str
+    type: raw
     choices:
       - Always
       - Essential

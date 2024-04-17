@@ -43,15 +43,15 @@ options:
     description:
       - Name of the profile to apply to requests or connections that match this policy.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the OAuth Identity Provider (IdP) authentication policy. This is
         used for configuring Citrix ADC as OAuth Identity Provider. Must begin with
@@ -79,7 +79,7 @@ options:
       - Expression that the policy uses to determine whether to respond to the specified
         request.
   undefaction:
-    type: str
+    type: raw
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only DROP/RESET actions

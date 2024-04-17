@@ -43,7 +43,7 @@ options:
     description:
       - The IP address of the WLM.
   katimeout:
-    type: float
+    type: raw
     description:
       - The idle time period after which Citrix ADC would probe the WLM. The value
         ranges from 1 to 1440 minutes.
@@ -56,7 +56,7 @@ options:
     description:
       - The port of the WLM.
   wlmname:
-    type: str
+    type: raw
     description:
       - The name of the Work Load Manager.
   lbwlm_lbvserver_binding:

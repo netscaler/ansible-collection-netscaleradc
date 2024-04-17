@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cipherredirect:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -48,14 +48,14 @@ options:
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
   cipherurl:
-    type: str
+    type: raw
     description:
       - URL of the page to which to redirect the client in case of a cipher mismatch.
         Typically, this page has a clear explanation of the error or an alternative
         location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
   clientauth:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -64,7 +64,7 @@ options:
         terminates the SSL handshake if the SSL client does not provide a valid certificate.
       - This parameter is not applicable when configuring a backend service.
   clientcert:
-    type: str
+    type: raw
     choices:
       - Mandatory
       - Optional
@@ -78,12 +78,12 @@ options:
       - 'Caution: Define proper access control policies before changing this setting
         to C(Optional).'
   commonname:
-    type: str
+    type: raw
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server
   dh:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -91,20 +91,20 @@ options:
       - State of Diffie-Hellman (DH) key exchange. This parameter is not applicable
         when configuring a backend service.
   dhcount:
-    type: float
+    type: raw
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
         every time. This parameter is not applicable when configuring a backend service.
         Allowed DH count values are 0 and >= 500.
   dhfile:
-    type: str
+    type: raw
     description:
       - Name for and, optionally, path to the PEM-format DH parameter file to be installed.
         /nsconfig/ssl/ is the default path. This parameter is not applicable when
         configuring a backend service.
   dhkeyexpsizelimit:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -114,25 +114,25 @@ options:
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
   dtls1:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.0 protocol support for the SSL service.
   dtls12:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.2 protocol support for the SSL service.
   dtlsprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DTLS profile that contains DTLS settings for the service.
   ersa:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -147,13 +147,13 @@ options:
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend service.
   ersacount:
-    type: float
+    type: raw
     description:
       - Refresh count for regeneration of RSA public-key and private-key pair. Zero
         (0) specifies infinite usage (no refresh).
       - This parameter is not applicable when configuring a backend service.
   ocspstapling:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -184,7 +184,7 @@ options:
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
   redirectportrewrite:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -193,25 +193,25 @@ options:
         is set to C(ENABLED), and the URL from the server does not contain the standard
         port, the port is rewritten to the standard.
   sendclosenotify:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
   serverauth:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of server authentication support for the SSL service.
   servicename:
-    type: str
+    type: raw
     description:
       - Name of the SSL service.
   sessreuse:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -220,13 +220,13 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
   snienable:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -237,7 +237,7 @@ options:
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
   ssl2:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -245,7 +245,7 @@ options:
       - State of SSLv2 protocol support for the SSL service.
       - This parameter is not applicable when configuring a backend service.
   ssl3:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -254,11 +254,11 @@ options:
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
   sslprofile:
-    type: str
+    type: raw
     description:
       - Name of the SSL profile that contains SSL settings for the service.
   sslredirect:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -275,7 +275,7 @@ options:
       - ''
       - This parameter is not applicable when configuring a backend service.
   sslv2redirect:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -286,14 +286,14 @@ options:
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
   sslv2url:
-    type: str
+    type: raw
     description:
       - URL of the page to which to redirect the client in case of a protocol version
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
   strictsigdigestcheck:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -301,28 +301,28 @@ options:
       - Parameter indicating to check whether peer's certificate during TLS1.2 handshake
         is signed with one of signature-hash combination supported by Citrix ADC
   tls1:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service.
   tls11:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service.
   tls12:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service.
   tls13:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

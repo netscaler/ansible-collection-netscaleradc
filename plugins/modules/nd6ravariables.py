@@ -38,77 +38,77 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ceaserouteradv:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Cease router advertisements on this vlan.
   currhoplimit:
-    type: float
+    type: raw
     description:
       - Current Hop limit.
   defaultlifetime:
-    type: int
+    type: raw
     description:
       - Default life time, in seconds.
   linkmtu:
-    type: float
+    type: raw
     description:
       - The Link MTU.
   managedaddrconfig:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Value to be placed in the Managed address configuration flag field.
   maxrtadvinterval:
-    type: float
+    type: raw
     description:
       - Maximum time allowed between unsolicited multicast RAs, in seconds.
   minrtadvinterval:
-    type: float
+    type: raw
     description:
       - Minimum time interval between RA messages, in seconds.
   onlyunicastrtadvresponse:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Send only Unicast Router Advertisements in respond to Router Solicitations.
   otheraddrconfig:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Value to be placed in the Other configuration flag field.
   reachabletime:
-    type: float
+    type: raw
     description:
       - Reachable time, in milliseconds.
   retranstime:
-    type: float
+    type: raw
     description:
       - Retransmission time, in milliseconds.
   sendrouteradv:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - whether the router sends periodic RAs and responds to Router Solicitations.
   srclinklayeraddroption:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Include source link layer address option in RA messages.
   vlan:
-    type: float
+    type: raw
     description:
       - The VLAN number.
   nd6ravariables_onlinkipv6prefix_binding:

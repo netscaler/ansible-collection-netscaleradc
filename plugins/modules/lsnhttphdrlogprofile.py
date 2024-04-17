@@ -39,32 +39,32 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   httphdrlogprofilename:
-    type: str
+    type: raw
     description:
       - The name of the HTTP header logging Profile.
   loghost:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Host information is logged if option is enabled.
   logmethod:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - HTTP method information is logged if option is enabled.
   logurl:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - URL information is logged if option is enabled.
   logversion:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

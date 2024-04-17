@@ -43,15 +43,15 @@ options:
     description:
       - Name of the authentication action to be performed if the policy matches.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the advance AUTHENTICATION policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -82,7 +82,7 @@ options:
         to determine whether to attempt to authenticate the user with the AUTHENTICATION
         server.
   undefaction:
-    type: str
+    type: raw
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in

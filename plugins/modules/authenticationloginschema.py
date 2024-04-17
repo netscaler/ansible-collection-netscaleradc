@@ -49,11 +49,11 @@ options:
         Please note that this applies only to loginSchemas that are used with user-defined
         factors, and not the vserver factor.
   authenticationstrength:
-    type: float
+    type: raw
     description:
       - Weight of the current authentication
   name:
-    type: str
+    type: raw
     description:
       - Name for the new login schema. Login schema defines the way login form is
         rendered. It provides a way to customize the fields that are shown to the
@@ -66,16 +66,16 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   passwdexpression:
-    type: str
+    type: raw
     description:
       - Expression for password extraction during login. This can be any relevant
         advanced policy expression.
   passwordcredentialindex:
-    type: float
+    type: raw
     description:
       - The index at which user entered password should be stored in session.
   ssocredentials:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -83,11 +83,11 @@ options:
       - This option indicates whether current factor credentials are the default SSO
         (SingleSignOn) credentials.
   usercredentialindex:
-    type: float
+    type: raw
     description:
       - The index at which user entered username should be stored in session.
   userexpression:
-    type: str
+    type: raw
     description:
       - Expression for username extraction during login. This can be any relevant
         advanced policy expression.

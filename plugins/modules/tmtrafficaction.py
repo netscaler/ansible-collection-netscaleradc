@@ -44,7 +44,7 @@ options:
       - Time interval, in minutes, of user inactivity after which the connection is
         closed.
   forcedtimeout:
-    type: str
+    type: raw
     choices:
       - START
       - STOP
@@ -68,11 +68,11 @@ options:
       - Initiate logout for the traffic management (TM) session if the policy evaluates
         to true. The session is then terminated after two minutes.
   kcdaccount:
-    type: str
+    type: raw
     description:
       - Kerberos constrained delegation account name
   name:
-    type: str
+    type: raw
     description:
       - Name for the traffic action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -83,11 +83,11 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   passwdexpression:
-    type: str
+    type: raw
     description:
       - expression that will be evaluated to obtain password for SingleSignOn
   persistentcookie:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -107,7 +107,7 @@ options:
     description:
       - Use single sign-on for the resource that the user is accessing now.
   userexpression:
-    type: str
+    type: raw
     description:
       - expression that will be evaluated to obtain username for SingleSignOn
 extends_documentation_fragment: netscaler.adc.netscaler_adc

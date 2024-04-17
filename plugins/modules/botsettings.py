@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultnonintrusiveprofile:
-    type: str
+    type: raw
     choices:
       - BOT_BYPASS
       - BOT_STATS
@@ -47,18 +47,18 @@ options:
         checks will be disabled and IPRep cronjob(24 Hours) will be removed if this
         is set to C(BOT_BYPASS).
   defaultprofile:
-    type: str
+    type: raw
     description:
       - Profile to use when a connection does not match any policy. Default setting
         is " ", which sends unmatched connections back to the Citrix ADC without attempting
         to filter them further.
   dfprequestlimit:
-    type: float
+    type: raw
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
   javascriptname:
-    type: str
+    type: raw
     description:
       - Name of the JavaScript that the Bot Management feature  uses in response.
       - Must begin with a letter or number, and can consist of from 1 to 31 letters,
@@ -68,23 +68,23 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   proxypassword:
-    type: str
+    type: raw
     description:
       - Password with which user logs on.
   proxyport:
-    type: int
+    type: raw
     description:
       - Proxy Server Port to get updated signatures from AWS.
   proxyserver:
-    type: str
+    type: raw
     description:
       - Proxy Server IP to get updated signatures from AWS.
   proxyusername:
-    type: str
+    type: raw
     description:
       - Proxy Username
   sessioncookiename:
-    type: str
+    type: raw
     description:
       - Name of the SessionCookie that the Bot Management feature uses for tracking.
       - Must begin with a letter or number, and can consist of from 1 to 31 letters,
@@ -94,22 +94,22 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessiontimeout:
-    type: float
+    type: raw
     description:
       - Timeout, in seconds, after which a user session is terminated.
   signatureautoupdate:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable bot auto update signatures
   signatureurl:
-    type: str
+    type: raw
     description:
       - URL to download the bot signature mapping file from server
   trapurlautogenerate:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -117,11 +117,11 @@ options:
       - Enable/disable trap URL auto generation. When enabled, trap URL is updated
         within the configured interval.
   trapurlinterval:
-    type: float
+    type: raw
     description:
       - Time in seconds after which trap URL is updated.
   trapurllength:
-    type: float
+    type: raw
     description:
       - Length of the auto-generated trap URL.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

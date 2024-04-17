@@ -37,23 +37,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cloudhost:
-    type: str
+    type: raw
     description:
       - URL Filtering Cloud host.
   hoursbetweendbupdates:
-    type: float
+    type: raw
     description:
       - URL Filtering hours between DB updates.
   localdatabasethreads:
-    type: float
+    type: raw
     description:
       - URL Filtering Local DB number of threads.
   seeddbpath:
-    type: str
+    type: raw
     description:
       - URL Filtering Seed DB path.
   timeofdaytoupdatedb:
-    type: str
+    type: raw
     description:
       - URL Filtering time of day to update DB.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

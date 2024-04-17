@@ -39,13 +39,13 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   limitidentifier:
-    type: str
+    type: raw
     description:
       - Name for a rate limit identifier. Must begin with an ASCII letter or underscore
         (_) character, and must consist only of ASCII alphanumeric or underscore characters.
         Reserved words must not be used.
   limittype:
-    type: str
+    type: raw
     choices:
       - BURSTY
       - SMOOTH
@@ -57,11 +57,11 @@ options:
         quota anytime within the timeslice.'
       - This argument is needed only when the mode is set to REQUEST_RATE.
   maxbandwidth:
-    type: float
+    type: raw
     description:
       - Maximum bandwidth permitted, in kbps.
   mode:
-    type: str
+    type: raw
     choices:
       - CONNECTION
       - REQUEST_RATE
@@ -93,27 +93,27 @@ options:
       - set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold
         5000 -limitType BURSTY
   selectorname:
-    type: str
+    type: raw
     description:
       - Name of the rate limit selector. If this argument is NULL, rate limiting will
         be applied on all traffic received by the virtual server or the Citrix ADC
         (depending on whether the limit identifier is bound to a virtual server or
         globally) without any filtering.
   threshold:
-    type: float
+    type: raw
     description:
       - Maximum number of requests that are allowed in the given timeslice when requests
         (mode is set as REQUEST_RATE) are tracked per timeslice.
       - When connections (mode is set as CONNECTION) are tracked, it is the total
         number of connections that would be let through.
   timeslice:
-    type: float
+    type: raw
     description:
       - Time interval, in milliseconds, specified in multiples of 10, during which
         requests are tracked to check if they cross the threshold. This argument is
         needed only when the mode is set to REQUEST_RATE.
   trapsintimeslice:
-    type: float
+    type: raw
     description:
       - Number of traps to be sent in the timeslice configured. A value of 0 indicates
         that traps are disabled.

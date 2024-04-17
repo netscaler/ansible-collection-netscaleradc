@@ -43,15 +43,15 @@ options:
     description:
       - Name of the profile to apply to requests or connections that match this policy.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the SAML Identity Provider (IdP) authentication policy. This is used
         for configuring Citrix ADC as SAML Identity Provider. Must begin with an ASCII
@@ -87,7 +87,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: str
+    type: raw
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in

@@ -39,15 +39,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: str
+    type: raw
     description:
       - The front end optimization action that has to be performed when the rule matches.
   name:
-    type: str
+    type: raw
     description:
       - The name of the front end optimization policy.
   rule:
-    type: str
+    type: raw
     description:
       - The rule associated with the front end optimization policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

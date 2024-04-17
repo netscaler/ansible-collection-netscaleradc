@@ -39,114 +39,114 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   artifactresolutionserviceurl:
-    type: str
+    type: raw
     description:
       - URL of the Artifact Resolution Service on IdP to which Citrix ADC will post
         artifact to get actual SAML token.
   attribute1:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute1. Maximum length of the extracted attribute is 239
         bytes.
   attribute10:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute10. Maximum length of the extracted attribute is 239
         bytes.
   attribute11:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute11. Maximum length of the extracted attribute is 239
         bytes.
   attribute12:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute12. Maximum length of the extracted attribute is 239
         bytes.
   attribute13:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute13. Maximum length of the extracted attribute is 239
         bytes.
   attribute14:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute14. Maximum length of the extracted attribute is 239
         bytes.
   attribute15:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute15. Maximum length of the extracted attribute is 239
         bytes.
   attribute16:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute16. Maximum length of the extracted attribute is 239
         bytes.
   attribute2:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute2. Maximum length of the extracted attribute is 239
         bytes.
   attribute3:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute3. Maximum length of the extracted attribute is 239
         bytes.
   attribute4:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute4. Maximum length of the extracted attribute is 239
         bytes.
   attribute5:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute5. Maximum length of the extracted attribute is 239
         bytes.
   attribute6:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute6. Maximum length of the extracted attribute is 239
         bytes.
   attribute7:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute7. Maximum length of the extracted attribute is 239
         bytes.
   attribute8:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute8. Maximum length of the extracted attribute is 239
         bytes.
   attribute9:
-    type: str
+    type: raw
     description:
       - Name of the attribute in SAML Assertion whose value needs to be extracted
         and stored as attribute9. Maximum length of the extracted attribute is 239
         bytes.
   attributeconsumingserviceindex:
-    type: float
+    type: raw
     description:
       - Index/ID of the attribute specification at Identity Provider (IdP). IdP will
         locate attributes requested by SP using this index and send those attributes
         in Assertion
   attributes:
-    type: str
+    type: raw
     description:
       - List of attribute names separated by ',' which needs to be extracted.
       - Note that preceeding and trailing spaces will be removed.
@@ -155,12 +155,12 @@ options:
       - These attributes have multi-value support separated by ',' and stored as key-value
         pair in AAA session
   audience:
-    type: str
+    type: raw
     description:
       - Audience for which assertion sent by IdP is applicable. This is typically
         entity name or url that represents ServiceProvider
   authnctxclassref:
-    type: list
+    type: raw
     choices:
       - InternetProtocol
       - InternetProtocolPassword
@@ -249,9 +249,8 @@ options:
         means.'
       - 'C(Windows): This indicates that C(Windows) integrated authentication is utilized
         for authentication.'
-    elements: str
   customauthnctxclassref:
-    type: str
+    type: raw
     description:
       - This element specifies the custom authentication class reference to be sent
         as a part of the Authentication Request that is sent by the SP to SAML IDP.
@@ -262,19 +261,19 @@ options:
       - 'Example input: set authentication samlaction samlact1 -customAuthnCtxClassRef
         http://www.class1.com/LoA1,http://www.class2.com/LoA2'
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   digestmethod:
-    type: str
+    type: raw
     choices:
       - SHA1
       - SHA256
     description:
       - Algorithm to be used to compute/verify digest for SAML transactions
   enforceusername:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -282,7 +281,7 @@ options:
       - Option to choose whether the username that is extracted from SAML assertion
         can be edited in login page while doing second factor
   forceauthn:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -290,33 +289,33 @@ options:
       - Option that forces authentication at the Identity Provider (IdP) that receives
         Citrix ADC's request
   groupnamefield:
-    type: str
+    type: raw
     description:
       - Name of the tag in assertion that contains user groups.
   logoutbinding:
-    type: str
+    type: raw
     choices:
       - REDIRECT
       - POST
     description:
       - This element specifies the transport mechanism of saml logout messages.
   logouturl:
-    type: str
+    type: raw
     description:
       - SingleLogout URL on IdP to which logoutRequest will be sent on Citrix ADC
         session cleanup.
   metadatarefreshinterval:
-    type: float
+    type: raw
     description:
       - Interval in minutes for fetching metadata from specified metadata URL
   metadataurl:
-    type: str
+    type: raw
     description:
       - This URL is used for obtaining saml metadata. Note that it fills samlIdPCertName
         and samlredirectUrl fields so those fields should not be updated when metadataUrl
         present
   name:
-    type: str
+    type: raw
     description:
       - Name for the SAML server profile (action).
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -329,7 +328,7 @@ options:
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
   relaystaterule:
-    type: str
+    type: raw
     description:
       - Boolean expression that will be evaluated to validate the SAML Response.
       - 'Examples:'
@@ -338,7 +337,7 @@ options:
       - set authentication samlaction <actionname> -relaystateRule 'AAA.LOGIN.RELAYSTATE.CONTAINS_ANY("patset_name")'
       - set authentication samlAction samlsp -relaystateRule 'AAA.LOGIN.RELAYSTATE.REGEX_MATCH(re#http://<regex>.com/#)'.
   requestedauthncontext:
-    type: str
+    type: raw
     choices:
       - exact
       - minimum
@@ -348,11 +347,11 @@ options:
       - This element specifies the authentication context requirements of authentication
         statements returned in the response.
   samlacsindex:
-    type: float
+    type: raw
     description:
       - Index/ID of the metadata entry corresponding to this configuration.
   samlbinding:
-    type: str
+    type: raw
     choices:
       - REDIRECT
       - POST
@@ -365,17 +364,17 @@ options:
       - Name of the SSL certificate used to verify responses from SAML Identity Provider
         (IdP). Note that if metadateURL is present then this filed should be empty.
   samlissuername:
-    type: str
+    type: raw
     description:
       - "The name to be used in requests sent from\tCitrix ADC to IdP to uniquely\
         \ identify Citrix ADC."
   samlredirecturl:
-    type: str
+    type: raw
     description:
       - URL to which users are redirected for authentication. Note that if metadateURL
         is present then this filed should be empty
   samlrejectunsignedassertion:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -385,51 +384,51 @@ options:
         that is received without signature. C(STRICT) option ensures that both Response
         and Assertion are signed. C(OFF) allows unsigned Assertions.
   samlsigningcertname:
-    type: str
+    type: raw
     description:
       - Name of the SSL certificate to sign requests from ServiceProvider (SP) to
         Identity Provider (IdP).
   samltwofactor:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to enable second factor after SAML
   samluserfield:
-    type: str
+    type: raw
     description:
       - SAML user ID, as given in the SAML assertion.
   sendthumbprint:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to send thumbprint instead of x509 certificate in SAML request
   signaturealg:
-    type: str
+    type: raw
     choices:
       - RSA-SHA1
       - RSA-SHA256
     description:
       - Algorithm to be used to sign/verify SAML transactions
   skewtime:
-    type: float
+    type: raw
     description:
       - This option specifies the allowed clock skew in number of minutes that Citrix
         ADC ServiceProvider allows on an incoming assertion. For example, if skewTime
         is 10, then assertion would be valid from (current time - 10) min to (current
         time + 10) min, ie 20min in all.
   statechecks:
-    type: str
+    type: raw
     description:
       - Boolean expression that will be evaluated to validate HTTP requests on SAML
         endpoints.
       - 'Examples:'
       - set authentication samlaction <actionname> -stateChecks 'HTTP.REQ.HOSTNAME.EQ("https://fqdn.com/")'
   storesamlresponse:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'

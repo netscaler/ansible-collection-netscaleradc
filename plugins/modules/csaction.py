@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comments associated with this cs action.
   name:
-    type: str
+    type: raw
     description:
       - Name for the content switching action. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,

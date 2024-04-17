@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   enablebypass:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -50,7 +50,7 @@ options:
       - This parameter does not affect processing of requests that match any invalidation
         policy.
   enablehaobjpersist:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -59,30 +59,30 @@ options:
         objects can be synced to Secondary in a HA deployment.  If set to C(NO), objects
         will never be synced to Secondary node.
   maxpostlen:
-    type: float
+    type: raw
     description:
       - Maximum number of POST body bytes to consider when evaluating parameters for
         a content group for which you have configured hit parameters and invalidation
         parameters.
   memlimit:
-    type: float
+    type: raw
     description:
       - Amount of memory available for storing the cache objects. In practice, the
         amount of memory available for caching can be less than half the total memory
         of the Citrix ADC.
   prefetchmaxpending:
-    type: float
+    type: raw
     description:
       - Maximum number of outstanding prefetches in the Integrated Cache.
   undefaction:
-    type: str
+    type: raw
     choices:
       - NOCACHE
       - RESET
     description:
       - Action to take when a policy cannot be evaluated.
   verifyusing:
-    type: str
+    type: raw
     choices:
       - HOSTNAME
       - HOSTNAME_AND_IP
@@ -103,7 +103,7 @@ options:
         lookup of the destination server's IP address, and is compared with the set
         of addresses returned by the C(DNS) lookup.
   via:
-    type: str
+    type: raw
     description:
       - String to include in the Via header. A Via header is inserted into all responses
         served from a content group if its Insert Via flag is set.

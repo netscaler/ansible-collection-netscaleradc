@@ -37,14 +37,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advancedanalyticsstats:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Disable/Enable advanace analytics stats
   aftpallowrandomsourceport:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -52,7 +52,7 @@ options:
       - Allow the FTP server to come from a random source port for active FTP data
         connections
   cip:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -65,57 +65,55 @@ options:
       - '* If the CIP header is not specified, the value that has been set will be
         used as the client IP header.'
   cipheader:
-    type: str
+    type: raw
     description:
       - Text that will be used as the client IP address header.
   cookieversion:
-    type: str
+    type: raw
     choices:
-      - '0'
-      - '1'
+      - 0
+      - 1
     description:
       - Version of the cookie inserted by the system.
   crportrange:
-    type: str
+    type: raw
     description:
       - Port range for cache redirection services.
   exclusivequotamaxclient:
-    type: float
+    type: raw
     description:
       - Percentage of maxClient to be given to PEs.
   exclusivequotaspillover:
-    type: float
+    type: raw
     description:
       - Percentage of maximum limit to be given to PEs.
   ftpportrange:
-    type: str
+    type: raw
     description:
       - Minimum and maximum port (port range) that FTP services are allowed to use.
   grantquotamaxclient:
-    type: float
+    type: raw
     description:
       - Percentage of shared quota to be granted at a time for maxClient.
   grantquotaspillover:
-    type: float
+    type: raw
     description:
       - Percentage of shared quota to be granted at a time for spillover.
   httpport:
-    type: list
+    type: raw
     description:
       - HTTP ports on the web server. This allows the system to perform connection
         off-load for any client request that has a destination port matching one of
         these configured ports.
-    elements: int
   icaports:
-    type: list
+    type: raw
     description:
       - The ICA ports on the Web server. This allows the system to perform connection
         off-load for any
       - '                      client request that has a destination port matching
         one of these configured ports.'
-    elements: int
   internaluserlogin:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -124,69 +122,68 @@ options:
         disabling internal user login, you must have key-based authentication set
         up on the appliance. The file name for the key pair must be "ns_comm_key".
   ipttl:
-    type: float
+    type: raw
     description:
       - Set the IP Time to Live (TTL) and Hop Limit value for all outgoing packets
         from Citrix ADC.
   maxconn:
-    type: float
+    type: raw
     description:
       - Maximum number of connections that will be made from the appliance to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
   maxreq:
-    type: float
+    type: raw
     description:
       - Maximum number of requests that the system can pass on a particular connection
         between the appliance and a server attached to it. Setting this value to 0
         allows an unlimited number of requests to be passed. This value is overridden
         by the maximum number of requests configured on the individual service.
   mgmthttpport:
-    type: int
+    type: raw
     description:
       - This allow the configuration of management HTTP port.
   mgmthttpsport:
-    type: int
+    type: raw
     description:
       - This allows the configuration of management HTTPS port.
   pmtumin:
-    type: float
+    type: raw
     description:
       - Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation
         needed message. If the ICMP message contains a value less than this value,
         then this value is used instead.
   pmtutimeout:
-    type: float
+    type: raw
     description:
       - Interval, in minutes, for flushing the PMTU entries.
   proxyprotocol:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Disable/Enable v1 or v2 proxy protocol header for client info insertion
   securecookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable secure flag for persistence cookie.
   secureicaports:
-    type: list
+    type: raw
     description:
       - The Secure ICA ports on the Web server. This allows the system to perform
         connection off-load for any
       - '            client request that has a destination port matching one of these
         configured ports.'
-    elements: int
   servicepathingressvlan:
-    type: float
+    type: raw
     description:
       - VLAN on which the subscriber traffic arrives on the appliance.
   tcpcip:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -196,12 +193,12 @@ options:
         The passed address can then be accessed through a minor modification to the
         server.
   timezone:
-    type: str
+    type: raw
     description:
       - Time zone for the Citrix ADC. Name of the time zone should be specified as
         argument.
   useproxyport:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

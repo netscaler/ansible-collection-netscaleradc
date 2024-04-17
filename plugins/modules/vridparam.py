@@ -37,17 +37,17 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   deadinterval:
-    type: float
+    type: raw
     description:
       - Number of seconds after which a peer node in active-active mode is marked
         down if vrrp advertisements are not received from the peer node.
   hellointerval:
-    type: float
+    type: raw
     description:
       - Interval, in milliseconds, between vrrp advertisement messages sent to the
         peer node in active-active mode.
   sendtomaster:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

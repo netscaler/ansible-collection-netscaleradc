@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   srcippersistency:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -45,7 +45,7 @@ options:
       - Enable source ip persistency, which enables the Citrix ADC to use the RNAT
         ips using source ip.
   tcpproxy:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

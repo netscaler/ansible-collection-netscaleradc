@@ -37,16 +37,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   encalgo:
-    type: list
+    type: raw
     choices:
       - AES
       - AES192
       - AES256
     description:
       - 'Type of encryption algorithm (Note: Selection of C(AES) enables AES128)'
-    elements: str
   hashalgo:
-    type: list
+    type: raw
     choices:
       - HMAC_SHA1
       - HMAC_SHA256
@@ -55,42 +54,41 @@ options:
       - HMAC_MD5
     description:
       - Type of hashing algorithm
-    elements: str
   ikeretryinterval:
-    type: float
+    type: raw
     description:
       - IKE retry interval for bringing up the connection
   ikeversion:
-    type: str
+    type: raw
     choices:
       - V1
       - V2
     description:
       - IKE Protocol Version
   lifetime:
-    type: float
+    type: raw
     description:
       - Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE
         SA/8)
   livenesscheckinterval:
-    type: float
+    type: raw
     description:
       - Number of seconds after which a notify payload is sent to check the liveliness
         of the peer. Additional retries are done as per retransmit interval setting.
         Zero value disables liveliness checks.
   perfectforwardsecrecy:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE
     description:
       - Enable/Disable PFS.
   replaywindowsize:
-    type: float
+    type: raw
     description:
       - IPSec Replay window size for the data traffic
   retransmissiontime:
-    type: float
+    type: raw
     description:
       - The interval in seconds to retry sending the IKE messages to peer, three consecutive
         attempts are done with doubled interval after every failure,

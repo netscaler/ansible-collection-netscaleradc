@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   destport:
-    type: int
+    type: raw
     description:
       - Specifies UDP destination port for Geneve packets. Default port is 6081.
   grepayload:
@@ -60,7 +60,7 @@ options:
       - Type of Citrix ADC owned public IPv4 address, configured on the local Citrix
         ADC and used to set up the tunnel.
   name:
-    type: str
+    type: raw
     description:
       - 'Name for the IP tunnel. Leading character must be a number or letter. Other
         characters allowed, after the first character, are @ _ - . (period) : (colon)
@@ -89,7 +89,7 @@ options:
     description:
       - Subnet mask of the remote IP address of the tunnel.
   tosinherit:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -102,7 +102,7 @@ options:
     description:
       - The vlan for mulicast packets
   vlantagging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

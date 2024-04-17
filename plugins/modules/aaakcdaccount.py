@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cacert:
-    type: str
+    type: raw
     description:
       - CA Cert for UserCert or when doing PKINIT backchannel.
   delegateduser:
@@ -47,12 +47,12 @@ options:
     description:
       - Username that can perform kerberos constrained delegation.
   enterpriserealm:
-    type: str
+    type: raw
     description:
       - Enterprise Realm of the user. This should be given only in certain KDC deployments
         where KDC expects Enterprise username instead of Principal Name
   kcdaccount:
-    type: str
+    type: raw
     description:
       - The name of the KCD account.
   kcdpassword:
@@ -60,7 +60,7 @@ options:
     description:
       - Password for Delegated User.
   keytab:
-    type: str
+    type: raw
     description:
       - The path to the keytab file. If specified other parameters in this command
         need not be given
@@ -69,16 +69,16 @@ options:
     description:
       - Kerberos Realm.
   servicespn:
-    type: str
+    type: raw
     description:
       - Service SPN. When specified, this will be used to fetch kerberos tickets.
         If not specified, Citrix ADC will construct SPN using service fqdn
   usercert:
-    type: str
+    type: raw
     description:
       - SSL Cert (including private key) for Delegated User.
   userrealm:
-    type: str
+    type: raw
     description:
       - Realm of the user
 extends_documentation_fragment: netscaler.adc.netscaler_adc

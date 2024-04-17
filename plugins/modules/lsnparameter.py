@@ -47,7 +47,7 @@ options:
         the amount of active memory.'
       - This command is deprecated, use 'set extendedmemoryparam -memlimit' instead.
   sessionsync:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -64,7 +64,7 @@ options:
         parameters are enabled, the primary node synchronizes information of all LSN
         sessions related to this LSN group with the secondary node.
   subscrsessionremoval:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

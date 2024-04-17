@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comments associated with this encryption key.
   iv:
-    type: str
+    type: raw
     description:
       - 'The initalization voector (IV) for a block cipher, one block of data used
         to initialize the encryption. The best practice is to not specify an IV, in
@@ -141,7 +141,7 @@ options:
         than the other modes because the same plaintext always produces the same encrypted
         text and should only be used if required by an existing application.'
   name:
-    type: str
+    type: raw
     description:
       - 'Key name.  This follows the same syntax rules as other expression entity
         names:'
@@ -152,7 +152,7 @@ options:
       - '   It cannot be used for an existing expression object (HTTP callout, patset,
         dataset, stringmap, or named expression).'
   padding:
-    type: str
+    type: raw
     choices:
       - 'OFF'
       - 'ON'

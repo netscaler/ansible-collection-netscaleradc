@@ -44,7 +44,7 @@ options:
       - Egress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of type INLINEINSPECTION or MIRROR.
   egressvlan:
-    type: float
+    type: raw
     description:
       - Egress Vlan for CI
   ingressinterface:
@@ -53,7 +53,7 @@ options:
       - Ingress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of IPS type.
   ingressvlan:
-    type: float
+    type: raw
     description:
       - Ingress Vlan for CI
   iptunnel:
@@ -62,7 +62,7 @@ options:
       - IP Tunnel for CI profile. It is used while creating a ContentInspection profile
         of type MIRROR when the IDS device is in a different network
   name:
-    type: str
+    type: raw
     description:
       - Name of a ContentInspection profile. Must begin with a letter, number, or
         the underscore \(_\) character. Other characters allowed, after the first

@@ -39,17 +39,17 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   endpointkind:
-    type: str
+    type: raw
     choices:
       - IP
     description:
       - Endpoint kind. Currently, C(IP) endpoints are supported
   endpointlabelsjson:
-    type: str
+    type: raw
     description:
       - String representing labels in json form. Maximum length 16K
   endpointmetadata:
-    type: str
+    type: raw
     description:
       - 'String of qualifiers, in dotted notation, structured metadata for an endpoint.
         Each qualifier is more specific than the one that precedes it, as in cluster.namespace.service.
@@ -57,7 +57,7 @@ options:
       - 'Note: A qualifier that includes a dot (.) or space ( ) must be enclosed in
         double quotation marks.'
   endpointname:
-    type: str
+    type: raw
     description:
       - Name of endpoint, depends on kind. For IP Endpoint - IP address.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

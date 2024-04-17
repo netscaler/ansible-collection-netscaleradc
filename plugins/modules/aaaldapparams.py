@@ -37,64 +37,64 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authtimeout:
-    type: float
+    type: raw
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         LDAP server.
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   groupattrname:
-    type: str
+    type: raw
     description:
       - Attribute name used for group extraction from the LDAP server.
   groupnameidentifier:
-    type: str
+    type: raw
     description:
       - LDAP-group attribute that uniquely identifies the group. No two groups on
         one LDAP server can have the same group name identifier.
   groupsearchattribute:
-    type: str
+    type: raw
     description:
       - LDAP-group attribute that designates the parent group of the specified group.
         Use this attribute to search for a group's parent group.
   groupsearchfilter:
-    type: str
+    type: raw
     description:
       - Search-expression that can be specified for sending group-search requests
         to the LDAP server.
   groupsearchsubattribute:
-    type: str
+    type: raw
     description:
       - LDAP-group subattribute that designates the parent group of the specified
         group. Use this attribute to search for a group's parent group.
   ldapbase:
-    type: str
+    type: raw
     description:
       - Base (the server and location) from which LDAP search commands should start.
       - If the LDAP server is running locally, the default value of base is dc=netscaler,
         dc=com.
   ldapbinddn:
-    type: str
+    type: raw
     description:
       - Complete distinguished name (DN) string used for binding to the LDAP server.
   ldapbinddnpassword:
-    type: str
+    type: raw
     description:
       - Password for binding to the LDAP server.
   ldaploginname:
-    type: str
+    type: raw
     description:
       - Name attribute that the Citrix ADC uses to query the external LDAP server
         or an Active Directory.
   maxnestinglevel:
-    type: float
+    type: raw
     description:
       - Number of levels up to which the system can query nested LDAP groups.
   nestedgroupextraction:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -102,14 +102,14 @@ options:
       - Queries the external LDAP server to determine whether the specified group
         belongs to another group.
   passwdchange:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Accept password change requests.
   searchfilter:
-    type: str
+    type: raw
     description:
       - String to be combined with the default LDAP user search string to form the
         value to use when executing an LDAP search.
@@ -120,7 +120,7 @@ options:
         LDAP search string:'
       - '""(&(vpnallowed=true)(samaccount=bob)""'
   sectype:
-    type: str
+    type: raw
     choices:
       - PLAINTEXT
       - TLS
@@ -129,25 +129,25 @@ options:
       - Type of security used for communications between the Citrix ADC and the LDAP
         server. For the C(PLAINTEXT) setting, no encryption is required.
   serverip:
-    type: str
+    type: raw
     description:
       - IP address of your LDAP server.
   serverport:
-    type: int
+    type: raw
     description:
       - Port number on which the LDAP server listens for connections.
   ssonameattribute:
-    type: str
+    type: raw
     description:
       - Attribute used by the Citrix ADC to query an external LDAP server or Active
         Directory for an alternative username.
       - This alternative username is then used for single sign-on (SSO).
   subattributename:
-    type: str
+    type: raw
     description:
       - Subattribute name used for group extraction from the LDAP server.
   svrtype:
-    type: str
+    type: raw
     choices:
       - AD
       - NDS

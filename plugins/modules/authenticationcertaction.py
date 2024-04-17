@@ -39,18 +39,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   groupnamefield:
-    type: str
+    type: raw
     description:
       - Client-cert field from which the group is extracted.  Must be set to either
         ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
       - 'Format: <field>:<subfield>'
   name:
-    type: str
+    type: raw
     description:
       - Name for the client cert authentication server profile (action).
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -63,7 +63,7 @@ options:
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
   twofactor:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -72,7 +72,7 @@ options:
       - Two factor authentication is client cert authentication followed by password
         authentication.
   usernamefield:
-    type: str
+    type: raw
     description:
       - Client-cert field from which the username is extracted. Must be set to either
         ""Subject"" and ""Issuer"" (include both sets of double quotation marks).

@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any comments associated with the protocol.
   extension:
@@ -48,7 +48,7 @@ options:
       - Name of the extension to add parsing and runtime handling of the protocol
         packets.
   name:
-    type: str
+    type: raw
     description:
       - Unique name for the user protocol. Not case sensitive. Must begin with an
         ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric

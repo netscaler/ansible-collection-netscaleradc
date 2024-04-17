@@ -37,13 +37,13 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cerrequesttimeout:
-    type: float
+    type: raw
     description:
       - q!Healthcheck request timeout, in seconds, after which the Citrix ADC considers
         that no CCA packet received to the initiated CCR. After this time Citrix ADC
         should send again CCR to PCRF server. !
   healthcheck:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -52,13 +52,13 @@ options:
         When the session is idle, healthcheck timer expires and DWR packets are initiated
         in order to check that PCRF server is active. By default set to No. !
   healthcheckttl:
-    type: float
+    type: raw
     description:
       - q!Healthcheck timeout, in seconds, after which the DWR will be sent in order
         to ensure the state of the PCRF server. Any CCR, CCA, RAR or RRA message resets
         the timer. !
   holdonsubscriberabsence:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -76,7 +76,7 @@ options:
         any PCRF activity on a session. Any RAR or CCA message resets the timer.
       - Zero value disables the idle timeout. !
   negativettl:
-    type: float
+    type: raw
     description:
       - q!Negative TTL, in seconds, after which the Gx CCR-I request will be resent
         for sessions that have not been resolved by PCRF due to server being down
@@ -90,7 +90,7 @@ options:
       - Zero value disables the Negative Sessions. And Citrix ADC does not install
         Negative sessions even if subscriber session could not be fetched. !
   negativettllimitedsuccess:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -109,7 +109,7 @@ options:
         the message is to be routed. This is the realm used in Destination-Realm AVP
         by Citrix ADC Gx client (as a Diameter node).
   purgesdbongxfailure:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -117,12 +117,12 @@ options:
       - Set this setting to C(YES) if needed to purge Subscriber Database in case
         of Gx failure. By default set to C(NO).
   requestretryattempts:
-    type: float
+    type: raw
     description:
       - If the request does not complete within requestTimeout time, the request is
         retransmitted for requestRetryAttempts time.
   requesttimeout:
-    type: float
+    type: raw
     description:
       - q!Time, in seconds, within which the Gx CCR request must complete. If the
         request does not complete within this time, the request is retransmitted for
@@ -132,30 +132,29 @@ options:
         use Subscriber attributes.
       - Zero disables the timeout. !
   revalidationtimeout:
-    type: float
+    type: raw
     description:
       - q!Revalidation Timeout, in seconds, after which the Gx CCR-U request will
         be sent after any PCRF activity on a session. Any RAR or CCA message resets
         the timer.
       - Zero value disables the idle timeout. !
   service:
-    type: str
+    type: raw
     description:
       - Name of DIAMETER/SSL_DIAMETER service corresponding to PCRF to which the Gx
         connection is established. The service type of the service must be DIAMETER/SSL_DIAMETER.
         Mutually exclusive with vserver parameter. Therefore, you cannot set both
         Service and the Virtual Server in the Gx Interface.
   servicepathavp:
-    type: list
+    type: raw
     description:
       - The AVP code in which PCRF sends service path applicable for subscriber.
-    elements: int
   servicepathvendorid:
-    type: float
+    type: raw
     description:
       - The vendorid of the AVP in which PCRF sends service path for subscriber.
   vserver:
-    type: str
+    type: raw
     description:
       - Name of the load balancing, or content switching vserver to which the Gx connections
         are established. The service type of the virtual server must be DIAMETER/SSL_DIAMETER.

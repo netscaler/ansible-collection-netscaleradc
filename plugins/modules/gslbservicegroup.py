@@ -43,7 +43,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -65,14 +65,14 @@ options:
     description:
       - Auto scale option for a GSLB servicegroup
   cip:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Insert the Client IP header in requests forwarded to the GSLB service.
   cipheader:
-    type: str
+    type: raw
     description:
       - Name of the HTTP header whose value must be set to the IP address of the client.
         Used with the Client IP parameter. If client IP insertion is enabled, and
@@ -80,11 +80,11 @@ options:
         or the value set by the set ns config command is used as client's IP header
         name.
   clttimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which to terminate an idle client connection.
   comment:
-    type: str
+    type: raw
     description:
       - Any information about the GSLB service group.
   delay:
@@ -98,7 +98,7 @@ options:
         among other available services. After the delay time expires, no new requests
         or connections will be sent to the service.
   downstateflush:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -107,7 +107,7 @@ options:
         service group whose state transitions from UP to DOWN. Do not enable this
         option for applications that must complete their transactions.
   dup_weight:
-    type: float
+    type: raw
     description:
       - weight of the monitor that is bound to GSLB servicegroup.
   graceful:
@@ -119,12 +119,12 @@ options:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
   hashid:
-    type: float
+    type: raw
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
   healthmonitor:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -143,21 +143,21 @@ options:
         the details displayed when a service group name is provided, except that bound
         monitors are not displayed.
   maxbandwidth:
-    type: float
+    type: raw
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the GSLB service
         group.
   maxclient:
-    type: float
+    type: raw
     description:
       - Maximum number of simultaneous open connections for the GSLB service group.
   monitor_name_svc:
-    type: str
+    type: raw
     description:
       - Name of the monitor bound to the GSLB service group. Used to assign a weight
         to the monitor.
   monthreshold:
-    type: float
+    type: raw
     description:
       - Minimum sum of weights of the monitors that are bound to this GSLB service.
         Used to determine whether to mark a GSLB service as UP or DOWN.
@@ -166,30 +166,30 @@ options:
     description:
       - New name for the GSLB service group.
   order:
-    type: float
+    type: raw
     description:
       - Order number to be assigned to the gslb servicegroup member
   port:
-    type: int
+    type: raw
     description:
       - Server port number.
   publicip:
-    type: str
+    type: raw
     description:
       - The public IP address that a NAT device translates to the GSLB service's private
         IP address. Optional.
   publicport:
-    type: int
+    type: raw
     description:
       - The public port associated with the GSLB service's public IP address. The
         port is mapped to the service's private port number. Applicable to the local
         GSLB service. Optional.
   servername:
-    type: str
+    type: raw
     description:
       - Name of the server to which to bind the service group.
   servicegroupname:
-    type: str
+    type: raw
     description:
       - Name of the GSLB service group. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -223,7 +223,7 @@ options:
     description:
       - Name of the GSLB site to which the service group belongs.
   sitepersistence:
-    type: str
+    type: raw
     choices:
       - ConnectionProxy
       - HTTPRedirect
@@ -232,7 +232,7 @@ options:
       - Use cookie-based site persistence. Applicable only to HTTP and SSL non-autoscale
         enabled GSLB servicegroups.
   siteprefix:
-    type: str
+    type: raw
     description:
       - The site's prefix string. When the GSLB service group is bound to a GSLB virtual
         server, a GSLB site domain is generated internally for each bound serviceitem-domain
@@ -241,11 +241,11 @@ options:
         is unset. When implementing HTTP redirect site persistence, the Citrix ADC
         redirects GSLB requests to GSLB services by using their site domains.
   svrtimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which to terminate an idle server connection.
   weight:
-    type: float
+    type: raw
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

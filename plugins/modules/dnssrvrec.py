@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   domain:
-    type: str
+    type: raw
     description:
       - Domain name, which, by convention, is prefixed by the symbolic name of the
         desired service and the symbolic name of the desired protocol, each with an
@@ -65,11 +65,11 @@ options:
         the higher the priority. If multiple target hosts have the same priority,
         selection is based on the Weight parameter.
   target:
-    type: str
+    type: raw
     description:
       - Target host for the specified service.
   ttl:
-    type: float
+    type: raw
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

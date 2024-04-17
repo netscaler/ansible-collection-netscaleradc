@@ -37,50 +37,50 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   accounting:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send accounting messages to the TACACS+ server.
   auditfailedcmds:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - The option for sending accounting messages to the TACACS+ server.
   authorization:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use streaming authorization on the TACACS+ server.
   authtimeout:
-    type: float
+    type: raw
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         TACACS+ server.
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   groupattrname:
-    type: str
+    type: raw
     description:
       - TACACS+ group attribute name.Used for group extraction on the TACACS+ server.
   serverip:
-    type: str
+    type: raw
     description:
       - IP address of your TACACS+ server.
   serverport:
-    type: int
+    type: raw
     description:
       - Port number on which the TACACS+ server listens for connections.
   tacacssecret:
-    type: str
+    type: raw
     description:
       - Key shared between the TACACS+ server and clients. Required for allowing the
         Citrix ADC to communicate with the TACACS+ server.

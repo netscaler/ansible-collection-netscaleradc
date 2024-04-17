@@ -52,17 +52,15 @@ options:
       - '* C(NOCACHE) or C(MAY_NOCACHE) action - negative cachability policy'
       - '* C(INVAL) action - Dynamic Invalidation Policy'
   invalgroups:
-    type: list
+    type: raw
     description:
       - Content group(s) to be invalidated when the INVAL action is applied. Maximum
         number of content groups that can be specified is 16.
-    elements: str
   invalobjects:
-    type: list
+    type: raw
     description:
       - Content groups(s) in which the objects will be invalidated if the action is
         INVAL.
-    elements: str
   newname:
     type: str
     description:
@@ -70,7 +68,7 @@ options:
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
   policyname:
-    type: str
+    type: raw
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -88,14 +86,14 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   storeingroup:
-    type: str
+    type: raw
     description:
       - Name of the content group in which to store the object when the final result
         of policy evaluation is CACHE. The content group must exist before being mentioned
         here. Use the "show cache contentgroup" command to view the list of existing
         content groups.
   undefaction:
-    type: str
+    type: raw
     choices:
       - NOCACHE
       - RESET

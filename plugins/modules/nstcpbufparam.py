@@ -37,11 +37,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   memlimit:
-    type: float
+    type: raw
     description:
       - Maximum memory, in megabytes, that can be used for buffering.
   size:
-    type: float
+    type: raw
     description:
       - TCP buffering size per connection, in kilobytes.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

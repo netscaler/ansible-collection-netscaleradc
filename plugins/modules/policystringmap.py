@@ -39,12 +39,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comments associated with the string map or key-value pair bound to this string
         map.
   name:
-    type: str
+    type: raw
     description:
       - Unique name for the string map. Not case sensitive. Must begin with an ASCII
         letter or underscore (_) character, and must consist only of ASCII alphanumeric

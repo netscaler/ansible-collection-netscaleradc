@@ -39,19 +39,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   rtspalgprofilename:
-    type: str
+    type: raw
     description:
       - The name of the RTSPALG Profile.
   rtspidletimeout:
-    type: float
+    type: raw
     description:
       - Idle timeout for the rtsp sessions in seconds.
   rtspportrange:
-    type: str
+    type: raw
     description:
       - port for the RTSP
   rtsptransportprotocol:
-    type: str
+    type: raw
     choices:
       - TCP
       - UDP

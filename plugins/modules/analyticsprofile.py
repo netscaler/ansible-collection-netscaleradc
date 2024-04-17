@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allhttpheaders:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -47,35 +47,35 @@ options:
       - On enabling this option, the Citrix ADC will log all the request and response
         headers.
   analyticsauthtoken:
-    type: str
+    type: raw
     description:
       - Token for authenticating with the endpoint. If the endpoint requires the Authorization
         header in a particular format, specify the complete format as the value to
         this parameter. For eg., in case of splunk, the Authorizaiton header is required
         to be of the form - Splunk <auth-token>.
   analyticsendpointcontenttype:
-    type: str
+    type: raw
     description:
       - By default, application/json content-type is used. If this needs to be overridden,
         specify the value.
   analyticsendpointmetadata:
-    type: str
+    type: raw
     description:
       - If the endpoint requires some metadata to be present before the actual json
         data, specify the same.
   analyticsendpointurl:
-    type: str
+    type: raw
     description:
       - The URL at which to upload the analytics data on the endpoint
   auditlogs:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option indicates the whether auditlog should be sent to the REST collector.
   collectors:
-    type: str
+    type: raw
     description:
       - The collector can be an IP, an appflow collector name, a service or a vserver.
         If IP is specified, the transport is considered as logstream and default port
@@ -84,35 +84,35 @@ options:
         service is assumed as the collector. If vserver is specified, the services
         bound to it are considered as collectors and the records are load balanced.
   cqareporting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP CQA parameters.
   events:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option indicates the whether events should be sent to the REST collector.
   grpcstatus:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log the gRPC status headers
   httpauthentication:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log Authentication header.
   httpclientsidemeasurements:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -121,28 +121,28 @@ options:
         HTTP response to collect the client side page-timings and will send the same
         to the configured collectors.
   httpcontenttype:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log content-length header.
   httpcookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log cookie header.
   httpdomainname:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log domain name.
   httphost:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -150,14 +150,14 @@ options:
       - On enabling this option, the Citrix ADC will log the Host header in appflow
         records
   httplocation:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log location header.
   httpmethod:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -165,7 +165,7 @@ options:
       - On enabling this option, the Citrix ADC will log the method header in appflow
         records
   httppagetracking:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -173,7 +173,7 @@ options:
       - On enabling this option, the Citrix ADC will link the embedded objects of
         a page together.
   httpreferer:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -181,56 +181,56 @@ options:
       - On enabling this option, the Citrix ADC will log the referer header in appflow
         records
   httpsetcookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log set-cookie header.
   httpsetcookie2:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log set-cookie2 header.
   httpurl:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log the URL in appflow records
   httpurlquery:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log URL Query.
   httpuseragent:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log User-Agent header.
   httpvia:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will Via header.
   httpxforwardedforheader:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log X-Forwarded-For header.
   integratedcache:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -238,19 +238,19 @@ options:
       - On enabling this option, the Citrix ADC will log the Integrated Caching appflow
         records
   metrics:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option indicates the whether metrics should be sent to the REST collector.
   metricsexportfrequency:
-    type: float
+    type: raw
     description:
       - This option is for configuring the metrics export frequency in seconds, frequency
         value must be in [30,300] seconds range
   name:
-    type: str
+    type: raw
     description:
       - Name for the analytics profile. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -261,7 +261,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow profile" or 'my appflow profile').
   outputmode:
-    type: str
+    type: raw
     choices:
       - avro
       - prometheus
@@ -270,26 +270,26 @@ options:
       - This option indicates the format of REST API POST body. It depends on the
         consumer of the analytics data.
   schemafile:
-    type: str
+    type: raw
     description:
       - This option is for configuring json schema file containing a list of counters
         to be exported by metricscollector
   servemode:
-    type: str
+    type: raw
     choices:
       - Push
       - Pull
     description:
       - This option is for setting the mode of how data is provided
   tcpburstreporting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP burst parameters.
   type:
-    type: str
+    type: raw
     choices:
       - global
       - webinsight
@@ -306,7 +306,7 @@ options:
     description:
       - This option indicates what information needs to be collected and exported.
   urlcategory:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

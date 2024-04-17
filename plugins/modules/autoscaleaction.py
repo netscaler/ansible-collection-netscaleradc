@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - ActionScale action name.
   parameters:
@@ -51,7 +51,7 @@ options:
     description:
       - AutoScale profile name.
   quiettime:
-    type: float
+    type: raw
     description:
       - Time in seconds no other policy is evaluated or action is taken
   type:
@@ -62,7 +62,7 @@ options:
     description:
       - The type of action.
   vmdestroygraceperiod:
-    type: float
+    type: raw
     description:
       - Time in minutes a VM is kept in inactive state before destroying
   vserver:

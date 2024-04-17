@@ -43,17 +43,17 @@ options:
     description:
       - Root-relative URL to which the completed form is submitted.
   name:
-    type: str
+    type: raw
     description:
       - Name for the form based single sign-on profile.
   namevaluepair:
-    type: str
+    type: raw
     description:
       - Other name-value pair attributes to send to the server, in addition to sending
         the user name and password. Value names are separated by an ampersand (&),
         such as in name1=value1&name2=value2.
   nvtype:
-    type: str
+    type: raw
     choices:
       - STATIC
       - DYNAMIC
@@ -66,7 +66,7 @@ options:
     description:
       - Name of the form field in which the user types in the password.
   responsesize:
-    type: float
+    type: raw
     description:
       - Maximum number of bytes to allow in the response size. Specifies the number
         of bytes in the response to be parsed for extracting the forms.
@@ -76,7 +76,7 @@ options:
       - Expression that defines the criteria for SSO success. Expression such as checking
         for cookie in the response is a common example.
   submitmethod:
-    type: str
+    type: raw
     choices:
       - GET
       - POST

@@ -39,12 +39,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   deadinterval:
-    type: float
+    type: raw
     description:
       - Number of seconds after which a peer node is marked DOWN if heartbeat messages
         are not received from the peer node.
   failsafe:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -53,7 +53,7 @@ options:
         available node can back up data and handle traffic. This mode is set independently
         on each node.
   haprop:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -71,7 +71,7 @@ options:
         propagation uses port 3010.
       - 'Note: After enabling propagation, run force synchronization on either node.'
   hastatus:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - STAYSECONDARY
@@ -94,7 +94,7 @@ options:
         \ normal HA operation without any constraints/preferences. C(DISABLED) state\
         \ disables the normal HA operation of the node."
   hasync:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -104,12 +104,12 @@ options:
         synchronization requires that this setting be enabled (the default) on the
         current secondary node. Synchronization uses TCP port 3010.
   hellointerval:
-    type: float
+    type: raw
     description:
       - Interval, in milliseconds, between heartbeat messages sent to the peer node.
         The heartbeat messages are UDP packets sent to port 3003 of the peer node.
   id:
-    type: float
+    type: raw
     description:
       - Number that uniquely identifies the node. For self node, it will always be
         0. Peer node values can range from 1-64.
@@ -131,22 +131,22 @@ options:
       - The NSIP or NSIP6 address of the node to be added for an HA configuration.
         This setting is neither propagated nor synchronized.
   maxflips:
-    type: float
+    type: raw
     description:
       - Max number of flips allowed before becoming sticky primary
   maxfliptime:
-    type: float
+    type: raw
     description:
       - Interval after which flipping of node states can again start
   syncstatusstrictmode:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - strict mode flag for sync status
   syncvlan:
-    type: float
+    type: raw
     description:
       - Vlan on which HA related communication is sent. This include sync, propagation
         , connection mirroring , LB persistency config sync, persistent session sync

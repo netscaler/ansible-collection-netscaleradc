@@ -131,7 +131,7 @@
 <h1>netscaler.adc.nslimitidentifier module – Configuration for limit Indetifier resource.<a class="headerlink" href="#netscaler-adc-nslimitidentifier-module-configuration-for-limit-indetifier-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,14 +173,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-limitidentifier"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-limitidentifier"><strong>limitidentifier</strong></p>
-<a class="ansibleOptionLink" href="#parameter-limitidentifier" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-limitidentifier" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for a rate limit identifier. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Reserved words must not be used.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-limittype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-limittype"><strong>limittype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-limittype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-limittype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Smooth or bursty request type.</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code> - When you want the permitted number of requests in a given interval of time to be spread evenly across the timeslice</p>
@@ -195,14 +195,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxbandwidth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-maxbandwidth"><strong>maxbandwidth</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxbandwidth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxbandwidth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum bandwidth permitted, in kbps.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-mode"><strong>mode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Defines the type of traffic to be tracked.</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">REQUEST_RATE</span></code> - Tracks requests/timeslice.</p>
@@ -293,7 +293,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-selectorname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-selectorname"><strong>selectorname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-selectorname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-selectorname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the rate limit selector. If this argument is NULL, rate limiting will be applied on all traffic received by the virtual server or the Citrix ADC (depending on whether the limit identifier is bound to a virtual server or globally) without any filtering.</p>
 </div></td>
@@ -316,7 +316,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-threshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-threshold"><strong>threshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-threshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of requests that are allowed in the given timeslice when requests (mode is set as REQUEST_RATE) are tracked per timeslice.</p>
 <p>When connections (mode is set as CONNECTION) are tracked, it is the total number of connections that would be let through.</p>
@@ -324,14 +324,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-timeslice"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-timeslice"><strong>timeslice</strong></p>
-<a class="ansibleOptionLink" href="#parameter-timeslice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-timeslice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time interval, in milliseconds, specified in multiples of 10, during which requests are tracked to check if they cross the threshold. This argument is needed only when the mode is set to REQUEST_RATE.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-trapsintimeslice"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nslimitidentifier-module-parameter-trapsintimeslice"><strong>trapsintimeslice</strong></p>
-<a class="ansibleOptionLink" href="#parameter-trapsintimeslice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-trapsintimeslice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of traps to be sent in the timeslice configured. A value of 0 indicates that traps are disabled.</p>
 </div></td>

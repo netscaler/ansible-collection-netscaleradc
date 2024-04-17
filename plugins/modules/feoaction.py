@@ -43,34 +43,34 @@ options:
     description:
       - Maxage for cache extension.
   clientsidemeasurements:
-    type: bool
+    type: raw
     description:
       - Send AppFlow records about the web pages optimized by this action. The records
         provide FEO statistics, such as the number of HTTP requests that have been
         reduced for this page. You must enable the Appflow feature before enabling
         this parameter.
   convertimporttolink:
-    type: bool
+    type: raw
     description:
       - Convert CSS import statements to HTML link tags.
   csscombine:
-    type: bool
+    type: raw
     description:
       - Combine one or more CSS files into one file.
   cssimginline:
-    type: bool
+    type: raw
     description:
       - Inline small images (less than 2KB) referred within CSS files as background-URLs
   cssinline:
-    type: bool
+    type: raw
     description:
       - Inline CSS files, whose size is less than 2KB, within the main page.
   cssminify:
-    type: bool
+    type: raw
     description:
       - Remove comments and whitespaces from CSSs.
   cssmovetohead:
-    type: bool
+    type: raw
     description:
       - Move any CSS file present within the body tag of an HTML page to the head
         tag.
@@ -80,60 +80,60 @@ options:
       - Set of domain names that replaces the parent domain.
     elements: str
   domainsharding:
-    type: str
+    type: raw
     description:
       - Domain name of the server
   htmlminify:
-    type: bool
+    type: raw
     description:
       - Remove comments and whitespaces from an HTML page.
   imggiftopng:
-    type: bool
+    type: raw
     description:
       - Convert GIF image formats to PNG formats.
   imginline:
-    type: bool
+    type: raw
     description:
       - Inline images whose size is less than 2KB.
   imglazyload:
-    type: bool
+    type: raw
     description:
       - Download images, only when the user scrolls the page to view them.
   imgshrinktoattrib:
-    type: bool
+    type: raw
     description:
       - Shrink image dimensions as per the height and width attributes specified in
         the <img> tag.
   imgtojpegxr:
-    type: bool
+    type: raw
     description:
       - Convert JPEG, GIF, PNG image formats to JXR format.
   imgtowebp:
-    type: bool
+    type: raw
     description:
       - Convert JPEG, GIF, PNG image formats to WEBP format.
   jpgoptimize:
-    type: bool
+    type: raw
     description:
       - Remove non-image data such as comments from JPEG images.
   jsinline:
-    type: bool
+    type: raw
     description:
       - Convert linked JavaScript files (less than 2KB) to inline JavaScript files.
   jsminify:
-    type: bool
+    type: raw
     description:
       - Remove comments and whitespaces from JavaScript.
   jsmovetoend:
-    type: bool
+    type: raw
     description:
       - Move any JavaScript present in the body tag to the end of the body tag.
   name:
-    type: str
+    type: raw
     description:
       - The name of the front end optimization action.
   pageextendcache:
-    type: bool
+    type: raw
     description:
       - Extend the time period during which the browser can use the cached resource.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

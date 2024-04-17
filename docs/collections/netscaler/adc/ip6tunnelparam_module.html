@@ -131,7 +131,7 @@
 <h1>netscaler.adc.ip6tunnelparam module – Configuration for ip6 tunnel parameter resource.<a class="headerlink" href="#netscaler-adc-ip6tunnelparam-module-configuration-for-ip6-tunnel-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropfrag"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ip6tunnelparam-module-parameter-dropfrag"><strong>dropfrag</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropfrag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropfrag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Drop any packet that requires fragmentation.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropfragcputhreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ip6tunnelparam-module-parameter-dropfragcputhreshold"><strong>dropfragcputhreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropfragcputhreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropfragcputhreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Threshold value, as a percentage of CPU usage, at which to drop packets that require fragmentation. Applies only if dropFragparameter is set to NO.</p>
 </div></td>
@@ -247,14 +247,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-srcip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ip6tunnelparam-module-parameter-srcip"><strong>srcip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-srcip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-srcip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-srciproundrobin"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ip6tunnelparam-module-parameter-srciproundrobin"><strong>srciproundrobin</strong></p>
-<a class="ansibleOptionLink" href="#parameter-srciproundrobin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-srciproundrobin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use a different source IPv6 address for each new session through a particular IPv6 tunnel, as determined by round robin selection of one of the SNIP6 addresses. This setting is ignored if a common global source IPv6 address has been specified for all the IPv6 tunnels. This setting does not apply to a tunnel for which a source IPv6 address has been specified.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -280,7 +280,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useclientsourceipv6"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ip6tunnelparam-module-parameter-useclientsourceipv6"><strong>useclientsourceipv6</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useclientsourceipv6" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-useclientsourceipv6" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use client source IPv6 address as source IPv6 address for outer tunnel IPv6 header</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

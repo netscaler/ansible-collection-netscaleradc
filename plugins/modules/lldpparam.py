@@ -37,14 +37,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   holdtimetxmult:
-    type: float
+    type: raw
     description:
       - A multiplier for calculating the duration for which the receiving device stores
         the LLDP information in its database before discarding or removing it. The
         duration is calculated as the holdtimeTxMult (Holdtime Multiplier) parameter
         value multiplied by the timer (Timer) parameter value.
   mode:
-    type: str
+    type: raw
     choices:
       - NONE
       - TRANSMITTER
@@ -55,7 +55,7 @@ options:
         resultant LLDP mode of an interface depends on the LLDP mode configured at
         the global and the interface levels.
   timer:
-    type: float
+    type: raw
     description:
       - Interval, in seconds, between LLDP packet data units (LLDPDUs).  that the
         Citrix ADC sends to a directly connected device.

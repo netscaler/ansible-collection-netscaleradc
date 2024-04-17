@@ -39,23 +39,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   actionname:
-    type: str
+    type: raw
     description:
       - Name of the dns64 action.
   excluderule:
-    type: str
+    type: raw
     description:
       - The expression to select the criteria for eliminating the corresponding ipv6
         addresses from the response.
   mappedrule:
-    type: str
+    type: raw
     description:
       - The expression to select the criteria for ipv4 addresses to be used for synthesis.
       - '                      Only if the mappedrule is evaluated to true the corresponding
         ipv4 address is used for synthesis using respective prefix,'
       - '                      otherwise the A RR is discarded'
   prefix:
-    type: str
+    type: raw
     description:
       - The dns64 prefix to be used if the after evaluating the rules
 extends_documentation_fragment: netscaler.adc.netscaler_adc

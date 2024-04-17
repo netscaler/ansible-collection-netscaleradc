@@ -39,30 +39,30 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   accounting:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Whether the RADIUS server is currently accepting accounting messages.
   authentication:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
   authservretry:
-    type: float
+    type: raw
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
         server.
   authtimeout:
-    type: float
+    type: raw
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
   callingstationid:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -70,21 +70,21 @@ options:
       - Send Calling-Station-ID of the client to the RADIUS server. IP Address of
         the client is sent as its Calling-Station-ID.
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   ipattributetype:
-    type: float
+    type: raw
     description:
       - Remote IP address attribute type in a RADIUS response.
   ipvendorid:
-    type: float
+    type: raw
     description:
       - Vendor ID of the intranet IP attribute in the RADIUS response.
       - 'NOTE: A value of 0 indicates that the attribute is not vendor encoded.'
   name:
-    type: str
+    type: raw
     description:
       - Name for the RADIUS action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -92,7 +92,7 @@ options:
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
         after the RADIUS action is added.
   passencoding:
-    type: str
+    type: raw
     choices:
       - pap
       - chap
@@ -102,26 +102,26 @@ options:
       - Encoding type for passwords in RADIUS packets that the Citrix ADC sends to
         the RADIUS server.
   pwdattributetype:
-    type: float
+    type: raw
     description:
       - Vendor-specific password attribute type in a RADIUS response.
   pwdvendorid:
-    type: float
+    type: raw
     description:
       - Vendor ID of the attribute, in the RADIUS response, used to extract the user
         password.
   radattributetype:
-    type: float
+    type: raw
     description:
       - RADIUS attribute type, used for RADIUS group extraction.
   radgroupseparator:
-    type: str
+    type: raw
     description:
       - RADIUS group separator string
       - The group separator delimits group names within a RADIUS attribute for RADIUS
         group extraction.
   radgroupsprefix:
-    type: str
+    type: raw
     description:
       - RADIUS groups prefix string.
       - This groups prefix precedes the group names within a RADIUS attribute for
@@ -132,12 +132,12 @@ options:
       - Key shared between the RADIUS server and the Citrix ADC.
       - Required to allow the Citrix ADC to communicate with the RADIUS server.
   radnasid:
-    type: str
+    type: raw
     description:
       - If configured, this string is sent to the RADIUS server as the Network Access
         Server ID (NASID).
   radnasip:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -146,7 +146,7 @@ options:
         as the  Network Access Server IP (NASIP) address.
       - The RADIUS protocol defines the meaning and use of the NASIP address.
   radvendorid:
-    type: float
+    type: raw
     description:
       - RADIUS vendor ID attribute, used for RADIUS group extraction.
   serverip:
@@ -158,16 +158,16 @@ options:
     description:
       - RADIUS server name as a FQDN.  Mutually exclusive with RADIUS IP address.
   serverport:
-    type: int
+    type: raw
     description:
       - Port number on which the RADIUS server listens for connections.
   targetlbvserver:
-    type: str
+    type: raw
     description:
       - If transport mode is TLS, specify the name of LB vserver to associate. The
         LB vserver needs to be of type TCP and service associated needs to be SSL_TCP
   transport:
-    type: str
+    type: raw
     choices:
       - UDP
       - TCP
@@ -175,7 +175,7 @@ options:
     description:
       - Transport mode to RADIUS server.
   tunnelendpointclientip:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

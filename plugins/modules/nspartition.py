@@ -46,35 +46,35 @@ options:
       - Switches to new admin partition without prompt for saving configuration. Configuration
         will not be saved
   maxbandwidth:
-    type: float
+    type: raw
     description:
       - Maximum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits.
   maxconn:
-    type: float
+    type: raw
     description:
       - Maximum number of concurrent connections that can be open in the partition.
         A zero value indicates no limit on number of open connections.
   maxmemlimit:
-    type: float
+    type: raw
     description:
       - Maximum memory, in megabytes, allocated to the partition.  A zero value indicates
         the memory is unlimited on the partition and it can consume up to the system
         limits.
   minbandwidth:
-    type: float
+    type: raw
     description:
       - Minimum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits
   partitionmac:
-    type: str
+    type: raw
     description:
       - Special MAC address for the partition which is used for communication over
         shared vlans in this partition. If not specified, the MAC address is auto-generated.
   partitionname:
-    type: str
+    type: raw
     description:
       - Name of the Partition. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash

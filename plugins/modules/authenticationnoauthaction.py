@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the group that is added to user sessions that match current policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new no-authentication action. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,

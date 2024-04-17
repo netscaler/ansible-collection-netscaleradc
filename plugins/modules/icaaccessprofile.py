@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clientaudioredirection:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
@@ -48,7 +48,7 @@ options:
         through a sound device installed on the client computer, also allows or prevents
         users to record audio input
   clientclipboardredirection:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
@@ -56,21 +56,21 @@ options:
       - Allow Default access/Disable the clipboard on the client device to be mapped
         to the clipboard on the server
   clientcomportredirection:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable COM port redirection to and from the client
   clientdriveredirection:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disables drive redirection to and from the client
   clientprinterredirection:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
@@ -78,7 +78,7 @@ options:
       - Allow Default access/Disable client printers to be mapped to a server when
         a user logs on to a session
   clientusbdriveredirection:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
@@ -86,7 +86,7 @@ options:
       - Allow Default access/Disable the redirection of USB devices to and from the
         client
   connectclientlptports:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
@@ -94,21 +94,21 @@ options:
       - Allow Default access/Disable automatic connection of LPT ports from the client
         when the user logs on
   localremotedatasharing:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable file/data sharing via the Receiver for HTML5
   multistream:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable the multistream feature for the specified users
   name:
-    type: str
+    type: raw
     description:
       - Name for the ICA accessprofile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and

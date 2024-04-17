@@ -39,37 +39,37 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   l7latencymaxnotifycount:
-    type: float
+    type: raw
     description:
       - L7 Latency Max notify Count. This is the upper limit on the number of notifications
         sent to the Insight Center within an interval where the Latency is above the
         threshold.
   l7latencymonitoring:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable L7 Latency monitoring for L7 latency notifications
   l7latencynotifyinterval:
-    type: float
+    type: raw
     description:
       - L7 Latency Notify Interval. This is the interval at which the Citrix ADC sends
         out notifications to the Insight Center after the wait time has passed.
   l7latencythresholdfactor:
-    type: float
+    type: raw
     description:
       - L7 Latency threshold factor. This is the factor by which the active latency
         should be greater than the minimum observed value to determine that the latency
         is high and may need to be reported
   l7latencywaittime:
-    type: float
+    type: raw
     description:
       - L7 Latency Wait time. This is the time for which the Citrix ADC waits after
         the threshold is exceeded before it sends out a Notification to the Insight
         Center.
   name:
-    type: str
+    type: raw
     description:
       - Name for the ICA latencyprofile. Must begin with a letter, number, or the
         underscore character (_), and must contain only letters, numbers, and

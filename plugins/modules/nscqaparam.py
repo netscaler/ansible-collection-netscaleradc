@@ -37,15 +37,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   harqretxdelay:
-    type: float
+    type: raw
     description:
       - HARQ retransmission delay (in ms).
   lr1coeflist:
-    type: str
+    type: raw
     description:
       - coefficients values for Label1.
   lr1probthresh:
-    type: float
+    type: raw
     description:
       - Probability threshold values for LR model to differentiate between NET1 and
         reset(NET2 and NET3).
@@ -59,66 +59,66 @@ options:
       - Probability threshold values for LR model to differentiate between NET2 and
         NET3.
   minrttnet1:
-    type: float
+    type: raw
     description:
       - MIN RTT (in ms) for the first network.
   minrttnet2:
-    type: float
+    type: raw
     description:
       - MIN RTT (in ms) for the second network.
   minrttnet3:
-    type: float
+    type: raw
     description:
       - MIN RTT (in ms) for the third network.
   net1cclscale:
-    type: str
+    type: raw
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
   net1csqscale:
-    type: str
+    type: raw
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
   net1label:
-    type: str
+    type: raw
     description:
       - Name of the network label.
   net1logcoef:
-    type: str
+    type: raw
     description:
       - Connection quality ranking Log coefficients of network 1.
   net2cclscale:
-    type: str
+    type: raw
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
   net2csqscale:
-    type: str
+    type: raw
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
   net2label:
-    type: str
+    type: raw
     description:
       - Name of the network label 2.
   net2logcoef:
-    type: str
+    type: raw
     description:
       - Connnection quality ranking Log coefficients of network 2.
   net3cclscale:
-    type: str
+    type: raw
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
   net3csqscale:
-    type: str
+    type: raw
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
   net3label:
-    type: str
+    type: raw
     description:
       - Name of the network label 3.
   net3logcoef:
-    type: str
+    type: raw
     description:
       - Connection quality ranking Log coefficients of network 3.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

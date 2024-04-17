@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dropfrag:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -45,37 +45,37 @@ options:
       - Drop any IP packet that requires fragmentation before it is sent through the
         tunnel.
   dropfragcputhreshold:
-    type: float
+    type: raw
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation to use the IP tunnel. Applies only if dropFragparameter
         is set to NO. The default value, 0, specifies that this parameter is not set.
   enablestrictrx:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for IPSec packets received through tunnel
   enablestricttx:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for packets to be sent IPSec protected
   mac:
-    type: str
+    type: raw
     description:
       - The shared MAC used for shared IP between cluster nodes/HA peers
   srcip:
-    type: str
+    type: raw
     description:
       - Common source-IP address for all tunnels. For a specific tunnel, this global
         setting is overridden if you have specified another source IP address. Must
         be a MIP or SNIP address.
   srciproundrobin:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -86,7 +86,7 @@ options:
         for all the IP tunnels. This setting does not apply to a tunnel for which
         a source IP address has been specified.
   useclientsourceip:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

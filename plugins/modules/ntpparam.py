@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authentication:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -45,22 +45,21 @@ options:
       - Apply NTP authentication, which enables the NTP client (Citrix ADC) to verify
         that the server is in fact known and trusted.
   autokeylogsec:
-    type: float
+    type: raw
     description:
       - Autokey protocol requires the keys to be refreshed periodically. This parameter
         specifies the interval between regenerations of new session keys. In seconds,
         expressed as a power of 2.
   revokelogsec:
-    type: float
+    type: raw
     description:
       - Interval between re-randomizations of the autokey seeds to prevent brute-force
         attacks on the autokey algorithms.
   trustedkey:
-    type: list
+    type: raw
     description:
       - Key identifiers that are trusted for server authentication with symmetric
         key cryptography in the keys file.
-    elements: int
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

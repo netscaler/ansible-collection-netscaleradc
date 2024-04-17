@@ -39,19 +39,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ackdelayexponent:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         indicating an exponent that the remote QUIC endpoint should use, to decode
         the ACK Delay field in QUIC ACK frames sent by the Citrix ADC.
   activeconnectionidlimit:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the maximum number of QUIC connection IDs from the remote QUIC
         endpoint, that the Citrix ADC is willing to store.
   activeconnectionmigration:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -59,7 +59,7 @@ options:
       - Specify whether the Citrix ADC should allow the remote QUIC endpoint to perform
         active QUIC connection migration.
   congestionctrlalgorithm:
-    type: str
+    type: raw
     choices:
       - Default
       - NewReno
@@ -69,49 +69,49 @@ options:
       - Specify the congestion control algorithm to be used for QUIC connections.
         The default congestion control algorithm is C(CUBIC).
   initialmaxdata:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial value, in bytes, for the maximum amount of data that
         can be sent on a QUIC connection.
   initialmaxstreamdatabidilocal:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial flow control limit, in bytes, for bidirectional QUIC
         streams initiated by the Citrix ADC.
   initialmaxstreamdatabidiremote:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial flow control limit, in bytes, for bidirectional QUIC
         streams initiated by the remote QUIC endpoint.
   initialmaxstreamdatauni:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial flow control limit, in bytes, for unidirectional streams
         initiated by the remote QUIC endpoint.
   initialmaxstreamsbidi:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial maximum number of bidirectional streams the remote
         QUIC endpoint may initiate.
   initialmaxstreamsuni:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial maximum number of unidirectional streams the remote
         QUIC endpoint may initiate.
   maxackdelay:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the maximum amount of time, in milliseconds, by which the Citrix
         ADC will delay sending acknowledgments.
   maxidletimeout:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the maximum idle timeout, in seconds, for a QUIC connection. A
@@ -120,36 +120,36 @@ options:
         the Citrix ADC and the remote QUIC endpoint, and three times the current Probe
         Timeout (PTO).
   maxudpdatagramsperburst:
-    type: float
+    type: raw
     description:
       - An integer value, specifying the maximum number of UDP datagrams that can
         be transmitted by the Citrix ADC in a single transmission burst on a QUIC
         connection.
   maxudppayloadsize:
-    type: float
+    type: raw
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the size of the largest UDP datagram payload, in bytes, that the
         Citrix ADC is willing to receive on a QUIC connection.
   name:
-    type: str
+    type: raw
     description:
       - Name for the QUIC profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@),equals sign (=), and hyphen (-)
         characters. Cannot be changed after the profile is created.
   newtokenvalidityperiod:
-    type: float
+    type: raw
     description:
       - An integer value, specifying the validity period, in seconds, of address validation
         tokens issued through QUIC NEW_TOKEN frames sent by the Citrix ADC.
   retrytokenvalidityperiod:
-    type: float
+    type: raw
     description:
       - An integer value, specifying the validity period, in seconds, of address validation
         tokens issued through QUIC Retry packets sent by the Citrix ADC.
   statelessaddressvalidation:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

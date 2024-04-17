@@ -39,73 +39,73 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   datasessionidletimeout:
-    type: float
+    type: raw
     description:
       - Idle timeout for the data channel sessions in seconds.
   opencontactpinhole:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE ContactPinhole creation.
   openrecordroutepinhole:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RecordRoutePinhole creation.
   openregisterpinhole:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RegisterPinhole creation.
   openroutepinhole:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RoutePinhole creation.
   openviapinhole:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE ViaPinhole creation.
   registrationtimeout:
-    type: float
+    type: raw
     description:
       - SIP registration timeout in seconds.
   rport:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE rport.
   sipalgprofilename:
-    type: str
+    type: raw
     description:
       - The name of the SIPALG Profile.
   sipdstportrange:
-    type: str
+    type: raw
     description:
       - Destination port range for SIP_UDP and SIP_TCP.
   sipsessiontimeout:
-    type: float
+    type: raw
     description:
       - SIP control channel session timeout in seconds.
   sipsrcportrange:
-    type: str
+    type: raw
     description:
       - Source port range for SIP_UDP and SIP_TCP.
   siptransportprotocol:
-    type: str
+    type: raw
     choices:
       - TCP
       - UDP

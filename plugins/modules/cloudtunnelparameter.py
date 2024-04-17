@@ -49,7 +49,7 @@ options:
     description:
       - '0'
   subnetresourcelocationmappings:
-    type: str
+    type: raw
     description:
       - '0'
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.appflowparam module – Configuration for AppFlow parameter resource.<a class="headerlink" href="#netscaler-adc-appflowparam-module-configuration-for-appflow-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-aaausername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-aaausername"><strong>aaausername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-aaausername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-aaausername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable AppFlow AAA Username logging.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -176,7 +176,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-analyticsauthtoken"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-analyticsauthtoken"><strong>analyticsauthtoken</strong></p>
-<a class="ansibleOptionLink" href="#parameter-analyticsauthtoken" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-analyticsauthtoken" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Authentication token to be set by the agent.</p>
 </div></td>
@@ -192,14 +192,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appnamerefresh"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-appnamerefresh"><strong>appnamerefresh</strong></p>
-<a class="ansibleOptionLink" href="#parameter-appnamerefresh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-appnamerefresh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in seconds, at which to send Appnames to the configured collectors. Appname refers to the name of an entity (virtual server, service, or service group) in the Citrix ADC.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-auditlogs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-auditlogs"><strong>auditlogs</strong></p>
-<a class="ansibleOptionLink" href="#parameter-auditlogs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-auditlogs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable Auditlogs to be sent to the Telemetry Agent</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -211,7 +211,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cacheinsight"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-cacheinsight"><strong>cacheinsight</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cacheinsight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cacheinsight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Flag to determine whether cache records need to be exported or not. If this flag is true and IC is enabled, cache records are exported instead of L7 HTTP records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -223,7 +223,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clienttrafficonly"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-clienttrafficonly"><strong>clienttrafficonly</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clienttrafficonly" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-clienttrafficonly" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Generate AppFlow records for only the traffic from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -235,7 +235,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-connectionchaining"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-connectionchaining"><strong>connectionchaining</strong></p>
-<a class="ansibleOptionLink" href="#parameter-connectionchaining" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-connectionchaining" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable connection chaining so that the client server flows of a connection are linked. Also the connection chain ID is propagated across Citrix ADCs, so that in a multi-hop environment the flows belonging to the same logical connection are linked. This id is also logged as part of appflow record</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -247,7 +247,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cqareporting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-cqareporting"><strong>cqareporting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cqareporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cqareporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP CQA reporting enable/disable knob.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -259,7 +259,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-distributedtracing"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-distributedtracing"><strong>distributedtracing</strong></p>
-<a class="ansibleOptionLink" href="#parameter-distributedtracing" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-distributedtracing" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable generation of the distributed tracing templates in the Appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -271,14 +271,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-disttracingsamplingrate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-disttracingsamplingrate"><strong>disttracingsamplingrate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-disttracingsamplingrate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-disttracingsamplingrate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Sampling rate for Distributed Tracing</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-emailaddress"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-emailaddress"><strong>emailaddress</strong></p>
-<a class="ansibleOptionLink" href="#parameter-emailaddress" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-emailaddress" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable AppFlow user email-id logging.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -290,7 +290,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-events"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-events"><strong>events</strong></p>
-<a class="ansibleOptionLink" href="#parameter-events" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-events" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable Events to be sent to the Telemetry Agent</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -302,14 +302,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-flowrecordinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-flowrecordinterval"><strong>flowrecordinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-flowrecordinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-flowrecordinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in seconds, at which to send flow records to the configured collectors.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-gxsessionreporting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-gxsessionreporting"><strong>gxsessionreporting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-gxsessionreporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-gxsessionreporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable this option for Gx session reporting</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -321,7 +321,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpauthorization"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpauthorization"><strong>httpauthorization</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpauthorization" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpauthorization" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the HTTP Authorization header information.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -333,7 +333,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpcontenttype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpcontenttype"><strong>httpcontenttype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the HTTP Content-Type header sent from the server to the client to determine the type of the content sent.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -345,7 +345,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpcookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpcookie"><strong>httpcookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the cookie that was in the HTTP request the appliance received from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -357,7 +357,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpdomain"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpdomain"><strong>httpdomain</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpdomain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpdomain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the http domain request to be exported.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -369,7 +369,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httphost"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httphost"><strong>httphost</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httphost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httphost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the host identified in the HTTP request that the appliance received from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -381,7 +381,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httplocation"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httplocation"><strong>httplocation</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httplocation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httplocation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the HTTP location headers returned from the HTTP responses.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -393,7 +393,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpmethod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpmethod"><strong>httpmethod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpmethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the method that was specified in the HTTP request that the appliance received from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -405,7 +405,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpquerywithurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpquerywithurl"><strong>httpquerywithurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpquerywithurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpquerywithurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the HTTP query segment along with the URL that the Citrix ADC received from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -417,7 +417,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpreferer"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpreferer"><strong>httpreferer</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpreferer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpreferer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the web page that was last visited by the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -429,7 +429,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpsetcookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpsetcookie"><strong>httpsetcookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpsetcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpsetcookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the Set-cookie header sent from the server to the client in response to a HTTP request.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -441,7 +441,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpsetcookie2"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpsetcookie2"><strong>httpsetcookie2</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpsetcookie2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpsetcookie2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the Set-cookie header sent from the server to the client in response to a HTTP request.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -453,7 +453,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpurl"><strong>httpurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the http URL that the Citrix ADC received from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -465,7 +465,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpuseragent"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpuseragent"><strong>httpuseragent</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpuseragent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpuseragent" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the client application through which the HTTP request was received by the Citrix ADC.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -477,7 +477,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpvia"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpvia"><strong>httpvia</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpvia" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpvia" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the httpVia header which contains the IP address of proxy server through which the client accessed the server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -489,7 +489,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpxforwardedfor"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-httpxforwardedfor"><strong>httpxforwardedfor</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpxforwardedfor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpxforwardedfor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the httpXForwardedFor header, which contains the original IP Address of the client using a proxy server to access the server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -501,7 +501,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-identifiername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-identifiername"><strong>identifiername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-identifiername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-identifiername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the stream identifier name to be exported.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -513,7 +513,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-identifiersessionname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-identifiersessionname"><strong>identifiersessionname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-identifiersessionname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-identifiersessionname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the stream identifier session name to be exported.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -525,7 +525,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-logstreamovernsip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-logstreamovernsip"><strong>logstreamovernsip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-logstreamovernsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-logstreamovernsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>To use the Citrix ADC IP to send Logstream records instead of the SNIP</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -537,7 +537,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lsnlogging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-lsnlogging"><strong>lsnlogging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lsnlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-lsnlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the Citrix ADC will send the Large Scale Nat(LSN) records to the configured collectors.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -549,7 +549,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-metrics"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-metrics"><strong>metrics</strong></p>
-<a class="ansibleOptionLink" href="#parameter-metrics" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-metrics" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable Citrix ADC Stats to be sent to the Telemetry Agent</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -603,21 +603,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-observationdomainid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-observationdomainid"><strong>observationdomainid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-observationdomainid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-observationdomainid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>An observation domain groups a set of Citrix ADCs based on deployment: cluster, HA etc. A unique Observation Domain ID is required to be assigned to each such group.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-observationdomainname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-observationdomainname"><strong>observationdomainname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-observationdomainname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-observationdomainname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the Observation Domain defined by the observation domain ID.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-observationpointid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-observationpointid"><strong>observationpointid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-observationpointid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-observationpointid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>An observation point ID is identifier for the NetScaler from which appflow records are being exported. By default, the NetScaler IP is the observation point ID.</p>
 </div></td>
@@ -637,14 +637,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-securityinsightrecordinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-securityinsightrecordinterval"><strong>securityinsightrecordinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-securityinsightrecordinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-securityinsightrecordinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in seconds, at which to send security insight flow records to the configured collectors.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-securityinsighttraffic"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-securityinsighttraffic"><strong>securityinsighttraffic</strong></p>
-<a class="ansibleOptionLink" href="#parameter-securityinsighttraffic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-securityinsighttraffic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable/disable the feature individually on appflow action.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -656,7 +656,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-skipcacheredirectionhttptransaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-skipcacheredirectionhttptransaction"><strong>skipcacheredirectionhttptransaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-skipcacheredirectionhttptransaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-skipcacheredirectionhttptransaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Skip Cache http transaction. This HTTP transaction is specific to Cache Redirection module. In Case of Cache Miss there will be another HTTP transaction initiated by the cache server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -682,7 +682,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-subscriberawareness"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-subscriberawareness"><strong>subscriberawareness</strong></p>
-<a class="ansibleOptionLink" href="#parameter-subscriberawareness" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-subscriberawareness" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable this option for logging end user MSISDN in L4/L7 appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -694,7 +694,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-subscriberidobfuscation"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-subscriberidobfuscation"><strong>subscriberidobfuscation</strong></p>
-<a class="ansibleOptionLink" href="#parameter-subscriberidobfuscation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-subscriberidobfuscation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable this option for obfuscating MSISDN in L4/L7 appflow records</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -706,7 +706,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-subscriberidobfuscationalgo"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-subscriberidobfuscationalgo"><strong>subscriberidobfuscationalgo</strong></p>
-<a class="ansibleOptionLink" href="#parameter-subscriberidobfuscationalgo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-subscriberidobfuscationalgo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Algorithm(<code class="docutils literal notranslate"><span class="pre">MD5</span></code> or <code class="docutils literal notranslate"><span class="pre">SHA256</span></code>) to be used for obfuscating MSISDN</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -718,21 +718,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpattackcounterinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-tcpattackcounterinterval"><strong>tcpattackcounterinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpattackcounterinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpattackcounterinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in seconds, at which to send tcp attack counters to the configured collectors. If 0 is configured, the record is not sent.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-templaterefresh"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-templaterefresh"><strong>templaterefresh</strong></p>
-<a class="ansibleOptionLink" href="#parameter-templaterefresh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-templaterefresh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Refresh interval, in seconds, at which to export the template data. Because data transmission is in UDP, the templates must be resent at regular intervals.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-timeseriesovernsip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-timeseriesovernsip"><strong>timeseriesovernsip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-timeseriesovernsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-timeseriesovernsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>To use the Citrix ADC IP to send Time series data such as metrics and events, instead of the SNIP</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -744,14 +744,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-udppmtu"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-udppmtu"><strong>udppmtu</strong></p>
-<a class="ansibleOptionLink" href="#parameter-udppmtu" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-udppmtu" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>MTU, in bytes, for IPFIX UDP packets.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-urlcategory"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-urlcategory"><strong>urlcategory</strong></p>
-<a class="ansibleOptionLink" href="#parameter-urlcategory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-urlcategory" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the URL category record.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -763,7 +763,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usagerecordinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-usagerecordinterval"><strong>usagerecordinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usagerecordinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-usagerecordinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, the NGS will send bandwidth usage record to configured collectors.</p>
 </div></td>
@@ -782,7 +782,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-videoinsight"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-videoinsight"><strong>videoinsight</strong></p>
-<a class="ansibleOptionLink" href="#parameter-videoinsight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-videoinsight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable/disable the feature individually on appflow action.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -794,7 +794,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-websaasappusagereporting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appflowparam-module-parameter-websaasappusagereporting"><strong>websaasappusagereporting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-websaasappusagereporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-websaasappusagereporting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>On enabling this option, NGS will send data used by Web/saas app at the end of every HTTP transaction to configured collectors.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowboundsvcremoval:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -47,7 +47,7 @@ options:
         removed, even if it bound to vservers. If disabled, an error will be thrown,
         when the user tries to remove a svc/svcgroup without unbinding from its vservers.
   computedadccookieattribute:
-    type: str
+    type: raw
     description:
       - 'ComputedADCCookieAttribute accepts ns variable as input in form of string
         starting with $ (to understand how to configure ns variable, please check
@@ -67,7 +67,7 @@ options:
       - '             For incoming client request, if above policy evaluates TRUE,
         then SameSite=Strict will be appended to ADC generated cookie'
   consolidatedlconn:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -77,17 +77,17 @@ options:
         setting allows consideration of only the number of connections on the packet
         engine that received the new connection.
   cookiepassphrase:
-    type: str
+    type: raw
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
         cookie value. It specifies the passphrase with a maximum of 31 characters.
   dbsttl:
-    type: float
+    type: raw
     description:
       - Specify the TTL for DNS record for domain based service. The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
   dropmqttjumbomessage:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -95,7 +95,7 @@ options:
       - When this option is enabled, MQTT messages of length greater than 64k will
         be dropped and the client/server connections will be reset.
   httponlycookieflag:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -104,7 +104,7 @@ options:
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
   lbhashalgorithm:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - PRAC
@@ -114,13 +114,13 @@ options:
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
   lbhashfingers:
-    type: float
+    type: raw
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory
   literaladccookieattribute:
-    type: str
+    type: raw
     description:
       - 'String configured as LiteralADCCookieAttribute will be appended as attribute
         for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence,
@@ -129,7 +129,7 @@ options:
       - Sample usage -
       - '             set lb parameter -LiteralADCCookieAttribute ";SameSite=None"'
   maxpipelinenat:
-    type: float
+    type: raw
     description:
       - Maximum number of concurrent requests to allow on a single client connection,
         which is identified by the <clientip:port>-<vserver ip:port> tuple. This parameter
@@ -137,7 +137,7 @@ options:
         only when "svrTimeout" is set to zero. A value of 0 (zero) applies no limit
         to the number of concurrent requests allowed on a single client connection
   monitorconnectionclose:
-    type: str
+    type: raw
     choices:
       - RESET
       - FIN
@@ -145,7 +145,7 @@ options:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
   monitorskipmaxclient:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -155,7 +155,7 @@ options:
         by the service's Max Clients setting. Enables monitoring to continue even
         if the service has reached its connection limit.
   preferdirectroute:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -167,7 +167,7 @@ options:
         connected to the appliance. Route lookup is performed after the packets have
         been processed and returned by the intermediary device.
   retainservicestate:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -175,7 +175,7 @@ options:
       - This option is used to retain the original state of service or servicegroup
         member when an enable server command is issued.
   startuprrfactor:
-    type: float
+    type: raw
     description:
       - 'Number of requests, per service, for which to apply the round robin load
         balancing method before switching to the configured load balancing method,
@@ -206,7 +206,7 @@ options:
       - Not applicable to a virtual server for which a hash based load balancing method
         is configured.
   storemqttclientidandusername:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -214,7 +214,7 @@ options:
       - This option allows to store the MQTT clientid and username in transactional
         logs
   undefaction:
-    type: str
+    type: raw
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
         settings function as follows:'
@@ -223,14 +223,14 @@ options:
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
   useencryptedpersistencecookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
   useportforhashlb:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -239,14 +239,14 @@ options:
         load balancing methods. With the C(NO) setting, only the IP address of the
         service is considered when creating a hash.
   usesecuredpersistencecookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
   vserverspecificmac:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

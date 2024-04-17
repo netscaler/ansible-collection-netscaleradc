@@ -131,7 +131,7 @@
 <h1>netscaler.adc.locationparameter module – Configuration for location parameter resource.<a class="headerlink" href="#netscaler-adc-locationparameter-module-configuration-for-location-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-context"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-context"><strong>context</strong></p>
-<a class="ansibleOptionLink" href="#parameter-context" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-context" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Context for describing locations. In <code class="docutils literal notranslate"><span class="pre">geographic</span></code> context, qualifier labels are assigned by default in the following sequence: Continent.Country.Region.City.ISP.Organization. In <code class="docutils literal notranslate"><span class="pre">custom</span></code> context, the qualifiers labels can have any meaning that you designate.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-matchwildcardtoany"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-matchwildcardtoany"><strong>matchwildcardtoany</strong></p>
-<a class="ansibleOptionLink" href="#parameter-matchwildcardtoany" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-matchwildcardtoany" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Indicates whether wildcard qualifiers should match any other</p>
 <p>qualifier including non-wildcard while evaluating</p>
@@ -256,42 +256,42 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-q1label"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-q1label"><strong>q1label</strong></p>
-<a class="ansibleOptionLink" href="#parameter-q1label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-q1label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Label specifying the meaning of the first qualifier. Can be specified for custom context only.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-q2label"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-q2label"><strong>q2label</strong></p>
-<a class="ansibleOptionLink" href="#parameter-q2label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-q2label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Label specifying the meaning of the second qualifier. Can be specified for custom context only.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-q3label"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-q3label"><strong>q3label</strong></p>
-<a class="ansibleOptionLink" href="#parameter-q3label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-q3label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Label specifying the meaning of the third qualifier. Can be specified for custom context only.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-q4label"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-q4label"><strong>q4label</strong></p>
-<a class="ansibleOptionLink" href="#parameter-q4label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-q4label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Label specifying the meaning of the fourth qualifier. Can be specified for custom context only.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-q5label"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-q5label"><strong>q5label</strong></p>
-<a class="ansibleOptionLink" href="#parameter-q5label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-q5label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Label specifying the meaning of the fifth qualifier. Can be specified for custom context only.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-q6label"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-locationparameter-module-parameter-q6label"><strong>q6label</strong></p>
-<a class="ansibleOptionLink" href="#parameter-q6label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-q6label" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Label specifying the meaning of the sixth qualifier. Can be specified for custom context only.</p>
 </div></td>

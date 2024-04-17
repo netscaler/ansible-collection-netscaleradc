@@ -131,7 +131,7 @@
 <h1>netscaler.adc.sslparameter module – Configuration for SSL parameter resource.<a class="headerlink" href="#netscaler-adc-sslparameter-module-configuration-for-ssl-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,21 +173,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crlmemorysizemb"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-crlmemorysizemb"><strong>crlmemorysizemb</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crlmemorysizemb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-crlmemorysizemb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum memory size to use for certificate revocation lists (CRLs). This parameter reserves memory for a CRL but sets a limit to the maximum memory that the CRLs loaded on the appliance can consume.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cryptodevdisablelimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-cryptodevdisablelimit"><strong>cryptodevdisablelimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cryptodevdisablelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-cryptodevdisablelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Limit to the number of disabled SSL chips after which the ADC restarts. A value of zero implies that the ADC does not automatically restart.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-defaultprofile"><strong>defaultprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global parameter used to enable default profile feature.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -199,7 +199,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-denysslreneg"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-denysslreneg"><strong>denysslreneg</strong></p>
-<a class="ansibleOptionLink" href="#parameter-denysslreneg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-denysslreneg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Deny renegotiation in specified circumstances. Available settings function as follows:</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">NO</span></code> - Allow SSL renegotiation.</p>
@@ -219,7 +219,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropreqwithnohostheader"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-dropreqwithnohostheader"><strong>dropreqwithnohostheader</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropreqwithnohostheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropreqwithnohostheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Host header check for SNI enabled sessions. If this check is enabled and the HTTP request does not contain the host header for SNI enabled sessions(i.e vserver or profile bound to vserver has SNI enabled and ‘Client Hello’ arrived with SNI extension), the request is dropped.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -231,14 +231,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-encrypttriggerpktcount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-encrypttriggerpktcount"><strong>encrypttriggerpktcount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-encrypttriggerpktcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-encrypttriggerpktcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of queued packets after which encryption is triggered. Use this setting for SSL transactions that send small packets from server to Citrix ADC.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-heterogeneoussslhw"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-heterogeneoussslhw"><strong>heterogeneoussslhw</strong></p>
-<a class="ansibleOptionLink" href="#parameter-heterogeneoussslhw" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-heterogeneoussslhw" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>To support both cavium and coleto based platforms in cluster environment, this mode has to be enabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -250,7 +250,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hybridfipsmode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-hybridfipsmode"><strong>hybridfipsmode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hybridfipsmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-hybridfipsmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>When this mode is enabled, system will use additional crypto hardware to accelerate symmetric crypto operations.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -262,7 +262,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-insertcertspace"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-insertcertspace"><strong>insertcertspace</strong></p>
-<a class="ansibleOptionLink" href="#parameter-insertcertspace" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-insertcertspace" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>To insert space between lines in the certificate header of request</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -274,7 +274,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-insertionencoding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-insertionencoding"><strong>insertionencoding</strong></p>
-<a class="ansibleOptionLink" href="#parameter-insertionencoding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-insertionencoding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Encoding method used to insert the subject or issuer’s name in HTTP requests to servers.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -286,7 +286,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ndcppcompliancecertcheck"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-ndcppcompliancecertcheck"><strong>ndcppcompliancecertcheck</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ndcppcompliancecertcheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ndcppcompliancecertcheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Applies when the Citrix ADC appliance acts as a client (back-end connection).</p>
 <p>Settings apply as follows:</p>
@@ -343,28 +343,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ocspcachesize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-ocspcachesize"><strong>ocspcachesize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ocspcachesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-ocspcachesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10% of the packet engine memory can be assigned. Because the maximum allowed packet engine memory is 4GB, the maximum value that can be assigned to the OCSP cache is approximately 410 MB.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-operationqueuelimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-operationqueuelimit"><strong>operationqueuelimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-operationqueuelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-operationqueuelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Limit in percentage of capacity of the crypto operations queue beyond which new SSL connections are not accepted until the queue is reduced.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pushenctriggertimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-pushenctriggertimeout"><strong>pushenctriggertimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pushenctriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-pushenctriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>PUSH encryption trigger timeout value. The timeout value is applied only if you set the Push Encryption Trigger parameter to Timer in the SSL virtual server settings.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pushflag"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-pushflag"><strong>pushflag</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pushflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-pushflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag is set to a value other than 0, the buffered records are forwarded on the basis of the value of the PUSH flag. Available settings function as follows:</p>
 <p>0 - Auto (PUSH flag is not set.)</p>
@@ -375,14 +375,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-quantumsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-quantumsize"><strong>quantumsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-quantumsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-quantumsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Amount of data to collect before the data is pushed to the crypto hardware for encryption. For large downloads, a larger quantum size better utilizes the crypto resources.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;4096&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;8192&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;16384&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">4096</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">8192</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">16384</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -401,7 +401,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sendclosenotify"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-sendclosenotify"><strong>sendclosenotify</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sendclosenotify" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sendclosenotify" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send an SSL Close-Notify message to the client at the end of a transaction.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -413,7 +413,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sigdigesttype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-sigdigesttype"><strong>sigdigesttype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sigdigesttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sigdigesttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Signature Digest Algorithms that are supported by appliance. Default value is “<code class="docutils literal notranslate"><span class="pre">ALL</span></code>“ and it will enable the following algorithms depending on the platform.</p>
 <p>On VPX: <code class="docutils literal notranslate"><span class="pre">ECDSA-SHA1</span></code> <code class="docutils literal notranslate"><span class="pre">ECDSA-SHA224</span></code> <code class="docutils literal notranslate"><span class="pre">ECDSA-SHA256</span></code> <code class="docutils literal notranslate"><span class="pre">ECDSA-SHA384</span></code> <code class="docutils literal notranslate"><span class="pre">ECDSA-SHA512</span></code> <code class="docutils literal notranslate"><span class="pre">RSA-SHA1</span></code> <code class="docutils literal notranslate"><span class="pre">RSA-SHA224</span></code> <code class="docutils literal notranslate"><span class="pre">RSA-SHA256</span></code> <code class="docutils literal notranslate"><span class="pre">RSA-SHA384</span></code> <code class="docutils literal notranslate"><span class="pre">RSA-SHA512</span></code> <code class="docutils literal notranslate"><span class="pre">DSA-SHA1</span></code> <code class="docutils literal notranslate"><span class="pre">DSA-SHA224</span></code> <code class="docutils literal notranslate"><span class="pre">DSA-SHA256</span></code> <code class="docutils literal notranslate"><span class="pre">DSA-SHA384</span></code> <code class="docutils literal notranslate"><span class="pre">DSA-SHA512</span></code></p>
@@ -444,7 +444,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-snihttphostmatch"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-snihttphostmatch"><strong>snihttphostmatch</strong></p>
-<a class="ansibleOptionLink" href="#parameter-snihttphostmatch" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-snihttphostmatch" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Controls how the HTTP ‘Host’ header value is validated. These checks are performed only if the session is SNI enabled (i.e when vserver or profile bound to vserver has SNI enabled and ‘Client Hello’ arrived with SNI extension) and HTTP request contains ‘Host’ header.</p>
 <p>Available settings function as follows:</p>
@@ -475,7 +475,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-softwarecryptothreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-softwarecryptothreshold"><strong>softwarecryptothreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-softwarecryptothreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-softwarecryptothreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Citrix ADC CPU utilization threshold (in percentage) beyond which crypto operations are not done in software.</p>
 <p>A value of zero implies that CPU is not utilized for doing crypto in software.</p>
@@ -483,7 +483,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslierrorcache"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-sslierrorcache"><strong>sslierrorcache</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslierrorcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslierrorcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable dynamically learning and caching the learned information to make the subsequent interception or bypass decision. When enabled, NS does the lookup of this cached data to do early bypass.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -495,14 +495,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslimaxerrorcachemem"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-sslimaxerrorcachemem"><strong>sslimaxerrorcachemem</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslimaxerrorcachemem" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslimaxerrorcachemem" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specify the maximum memory that can be used for caching the learned data. This memory is used as a LRU cache so that the old entries gets replaced with new entry once the set memory limit is fully utilised. A value of 0 decides the limit automatically.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssltriggertimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-ssltriggertimeout"><strong>ssltriggertimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssltriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssltriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time, in milliseconds, after which encryption is triggered for transactions that are not tracked on the Citrix ADC because their length is not known. There can be a delay of up to 10ms from the specified timeout value before the packet is pushed into the queue.</p>
 </div></td>
@@ -523,7 +523,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-strictcachecks"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-strictcachecks"><strong>strictcachecks</strong></p>
-<a class="ansibleOptionLink" href="#parameter-strictcachecks" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-strictcachecks" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable strict CA certificate checks on the appliance.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -535,14 +535,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-undefactioncontrol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-undefactioncontrol"><strong>undefactioncontrol</strong></p>
-<a class="ansibleOptionLink" href="#parameter-undefactioncontrol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-undefactioncontrol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the undefined built-in control action: CLIENTAUTH, NOCLIENTAUTH, NOOP, RESET, or DROP.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-undefactiondata"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslparameter-module-parameter-undefactiondata"><strong>undefactiondata</strong></p>
-<a class="ansibleOptionLink" href="#parameter-undefactiondata" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-undefactiondata" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the undefined built-in data action: NOOP, RESET or DROP.</p>
 </div></td>

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.gslbsite module – Configuration for GSLB site resource.<a class="headerlink" href="#netscaler-adc-gslbsite-module-configuration-for-gslb-site-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-backupparentlist"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbsite-module-parameter-backupparentlist"><strong>backupparentlist</strong></p>
-<a class="ansibleOptionLink" href="#parameter-backupparentlist" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-backupparentlist" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The list of backup gslb sites configured in preferred order. Need to be parent gsb sites.</p>
 </div></td>
@@ -187,7 +187,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-metricexchange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbsite-module-parameter-metricexchange"><strong>metricexchange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-metricexchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-metricexchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Exchange metrics with other sites. Metrics are exchanged by using Metric Exchange Protocol (MEP). The appliances in the GSLB setup exchange health information once every second.</p>
 <p>If you disable metrics exchange, you can use only static load balancing methods (such as round robin, static proximity, or the hash-based methods), and if you disable metrics exchange when a dynamic load balancing method (such as least connection) is in operation, the appliance falls back to round robin. Also, if you disable metrics exchange, you must use a monitor to determine the state of GSLB services. Otherwise, the service is marked as DOWN.</p>
@@ -200,7 +200,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-naptrreplacementsuffix"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbsite-module-parameter-naptrreplacementsuffix"><strong>naptrreplacementsuffix</strong></p>
-<a class="ansibleOptionLink" href="#parameter-naptrreplacementsuffix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-naptrreplacementsuffix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The naptr replacement suffix configured here will be used to construct the naptr replacement field in NAPTR record.</p>
 </div></td>
@@ -249,7 +249,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nwmetricexchange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbsite-module-parameter-nwmetricexchange"><strong>nwmetricexchange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nwmetricexchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-nwmetricexchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from communications with various local DNS (LDNS) servers used by clients. RTT information is used in the dynamic RTT load balancing method, and is exchanged every 5 seconds.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -295,7 +295,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionexchange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbsite-module-parameter-sessionexchange"><strong>sessionexchange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionexchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionexchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Exchange persistent session entries with other GSLB sites every five seconds.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -314,7 +314,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sitename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbsite-module-parameter-sitename"><strong>sitename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sitename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sitename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after the virtual server is created.</p>
 <p>CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my gslbsite” or ‘my gslbsite’).</p>
@@ -350,7 +350,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-triggermonitor"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbsite-module-parameter-triggermonitor"><strong>triggermonitor</strong></p>
-<a class="ansibleOptionLink" href="#parameter-triggermonitor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-triggermonitor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specify the conditions under which the GSLB service must be monitored by a monitor, if one is bound. Available settings function as follows:</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">ALWAYS</span></code> - Monitor the GSLB service at all times.</p>

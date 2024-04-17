@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cacheecsresponses:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -50,7 +50,7 @@ options:
         when Citrix ADC is authoritative for a GSLB domain is supported using a knob
         in GSLB vserver. In all other modes, ECS option is ignored.
   cachenegativeresponses:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -61,7 +61,7 @@ options:
         The appliance does not serve negative responses from the cache until this
         parameter is enabled again.
   cacherecords:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -73,14 +73,14 @@ options:
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
   dnsanswerseclogging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - DNS answer section; if enabled, answer section in the response will be logged.
   dnserrorlogging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -88,7 +88,7 @@ options:
       - DNS error logging; if enabled, whenever error is encountered in DNS module
         reason for the error will be logged.
   dnsextendedlogging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -96,11 +96,11 @@ options:
       - DNS extended logging; if enabled, authority and additional section in the
         response will be logged.
   dnsprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DNS profile
   dnsquerylogging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -108,7 +108,7 @@ options:
       - DNS query logging; if enabled, DNS query information such as DNS query id,
         DNS query flags , DNS domain name and DNS query type will be logged
   dropmultiqueryrequest:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

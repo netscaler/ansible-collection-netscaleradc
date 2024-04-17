@@ -51,7 +51,7 @@ options:
     description:
       - Algorithm to generate for zone signing.
   expires:
-    type: float
+    type: raw
     description:
       - Time period for which to consider the key valid, after the key is used to
         sign a zone.
@@ -64,7 +64,7 @@ options:
         prefix to produce the names of the public key, the private key, and the DS
         record, respectively.
   keyname:
-    type: str
+    type: raw
     description:
       - Name of the public-private key pair to publish in the zone.
   keysize:
@@ -81,7 +81,7 @@ options:
     description:
       - Type of key to create.
   notificationperiod:
-    type: float
+    type: raw
     description:
       - Time at which to generate notification of key expiration, specified as number
         of days, hours, or minutes before expiry. Must be less than the expiry period.
@@ -107,14 +107,14 @@ options:
         HTTPS server that requires client certificate authentication for access. This
         is a mandatory argument'
   ttl:
-    type: float
+    type: raw
     description:
       - Time to Live (TTL), in seconds, for the DNSKEY resource record created in
         the zone. TTL is the time for which the record must be cached by the DNS proxies.
         If the TTL is not specified, either the DNS zone's minimum TTL or the default
         value of 3600 is used.
   units1:
-    type: str
+    type: raw
     choices:
       - MINUTES
       - HOURS
@@ -122,7 +122,7 @@ options:
     description:
       - Units for the expiry period.
   units2:
-    type: str
+    type: raw
     choices:
       - MINUTES
       - HOURS

@@ -43,7 +43,7 @@ options:
     description:
       - 'Name of the built-in cache redirection action: CACHE/ORIGIN.'
   logaction:
-    type: str
+    type: raw
     description:
       - The log action associated with the cache redirection policy
   newname:
@@ -51,7 +51,7 @@ options:
     description:
       - The new name of the content switching policy.
   policyname:
-    type: str
+    type: raw
     description:
       - Name for the cache redirection policy. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,

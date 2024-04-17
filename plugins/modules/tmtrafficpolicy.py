@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: str
+    type: raw
     description:
       - Name of the action to apply to requests or connections that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the traffic policy. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -54,7 +54,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
   rule:
-    type: str
+    type: raw
     description:
       - Name of the Citrix ADC named expression, or an expression, that the policy
         uses to determine whether to apply certain action on the current traffic.

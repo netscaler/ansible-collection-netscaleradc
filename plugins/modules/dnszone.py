@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dnssecoffload:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -52,14 +52,14 @@ options:
         sign a zone with up to four keys.
     elements: str
   nsec:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable nsec generation for dnssec offload.
   proxymode:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -92,7 +92,7 @@ options:
         as a proxy server.'
       - '* C(ALL) - Display all the zones configured on the appliance.'
   zonename:
-    type: str
+    type: raw
     description:
       - Name of the zone to create.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.sslservicegroup module – Configuration for SSL service group resource.<a class="headerlink" href="#netscaler-adc-sslservicegroup-module-configuration-for-ssl-service-group-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-commonname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-commonname"><strong>commonname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-commonname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-commonname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name to be checked against the CommonName (CN) field in the server certificate bound to the SSL server</p>
 </div></td>
@@ -222,7 +222,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ocspstapling"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-ocspstapling"><strong>ocspstapling</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ocspstapling" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ocspstapling" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of OCSP stapling support on the SSL virtual server. Supported only if the protocol used is higher than SSLv3. Possible values:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>: The appliance sends a request to the OCSP responder to check the status of the server certificate and caches the response for the specified time. If the response is valid at the time of SSL handshake with the client, the OCSP-based server certificate status is sent to the client during the handshake.</p>
@@ -249,7 +249,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sendclosenotify"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-sendclosenotify"><strong>sendclosenotify</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sendclosenotify" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sendclosenotify" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable sending SSL Close-Notify at the end of a transaction</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -261,7 +261,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverauth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-serverauth"><strong>serverauth</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of server authentication support for the SSL service group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -273,14 +273,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-servicegroupname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-servicegroupname"><strong>servicegroupname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-servicegroupname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-servicegroupname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the SSL service group for which to set advanced configuration.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessreuse"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-sessreuse"><strong>sessreuse</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessreuse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessreuse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of session reuse. Establishing the initial handshake requires CPU-intensive public key encryption operations. With the <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code> setting, session key exchange is avoided for session resumption requests received from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -292,14 +292,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sesstimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-sesstimeout"><strong>sesstimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time, in seconds, for which to keep the session active. Any session resumption request received after the timeout period will require a fresh SSL handshake and establishment of a new SSL session.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-snienable"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-snienable"><strong>snienable</strong></p>
-<a class="ansibleOptionLink" href="#parameter-snienable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-snienable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of the Server Name Indication (SNI) feature on the service. SNI helps to enable SSL encryption on multiple domains on a single virtual server or service if the domains are controlled by the same organization and share the same second-level domain name. For example, *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -311,7 +311,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssl3"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-ssl3"><strong>ssl3</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssl3" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssl3" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of SSLv3 protocol support for the SSL service group.</p>
 <p>Note: On platforms with SSL acceleration chips, if the SSL chip does not support SSLv3, this parameter cannot be set to <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>.</p>
@@ -324,7 +324,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-sslprofile"><strong>sslprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the SSL profile that contains SSL settings for the Service Group.</p>
 </div></td>
@@ -469,7 +469,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-strictsigdigestcheck"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-strictsigdigestcheck"><strong>strictsigdigestcheck</strong></p>
-<a class="ansibleOptionLink" href="#parameter-strictsigdigestcheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-strictsigdigestcheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Parameter indicating to check whether peer’s certificate is signed with one of signature-hash combination supported by Citrix ADC</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -481,7 +481,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls1"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-tls1"><strong>tls1</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.0 protocol support for the SSL service group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -493,7 +493,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls11"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-tls11"><strong>tls11</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls11" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls11" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.1 protocol support for the SSL service group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -505,7 +505,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls12"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-tls12"><strong>tls12</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls12" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls12" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.2 protocol support for the SSL service group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -517,7 +517,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls13"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslservicegroup-module-parameter-tls13"><strong>tls13</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls13" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls13" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.3 protocol support for the SSL service group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

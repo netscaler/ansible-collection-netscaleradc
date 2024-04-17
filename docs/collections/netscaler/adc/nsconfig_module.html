@@ -131,7 +131,7 @@
 <h1>netscaler.adc.nsconfig module – Configuration for system config resource.<a class="headerlink" href="#netscaler-adc-nsconfig-module-configuration-for-system-config-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -313,7 +313,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ifnum"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsconfig-module-parameter-ifnum"><strong>ifnum</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ifnum" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ifnum" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interfaces of the appliances that must be bound to the NSVLAN.</p>
 </div></td>
@@ -332,7 +332,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ipaddress"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsconfig-module-parameter-ipaddress"><strong>ipaddress</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ipaddress" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ipaddress" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IP address of the Citrix ADC. Commonly referred to as NSIP address. This parameter is mandatory to bring up the appliance.</p>
 </div></td>
@@ -380,7 +380,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-netmask"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsconfig-module-parameter-netmask"><strong>netmask</strong></p>
-<a class="ansibleOptionLink" href="#parameter-netmask" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-netmask" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Netmask corresponding to the IP address. This parameter is mandatory to bring up the appliance.</p>
 </div></td>
@@ -429,7 +429,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nsvlan"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsconfig-module-parameter-nsvlan"><strong>nsvlan</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nsvlan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-nsvlan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>VLAN (NSVLAN) for the subnet on which the IP address resides.</p>
 </div></td>
@@ -513,7 +513,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tagged"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsconfig-module-parameter-tagged"><strong>tagged</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tagged" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tagged" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specifies that the interfaces will be added as 802.1q tagged interfaces. Packets sent on these interface on this VLAN will have an additional 4-byte 802.1q tag which identifies the VLAN.</p>
 <p>To use 802.1q tagging, the switch connected to the appliance’s interfaces must also be configured for tagging.</p>

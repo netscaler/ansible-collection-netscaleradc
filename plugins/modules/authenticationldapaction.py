@@ -39,76 +39,76 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   alternateemailattr:
-    type: str
+    type: raw
     description:
       - The NetScaler appliance uses the alternateive email attribute to query the
         Active Directory for the alternative email id of a user
   attribute1:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute1 from the ldap response
   attribute10:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute10 from the ldap response
   attribute11:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute11 from the ldap response
   attribute12:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute12 from the ldap response
   attribute13:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute13 from the ldap response
   attribute14:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute14 from the ldap response
   attribute15:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute15 from the ldap response
   attribute16:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute16 from the ldap response
   attribute2:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute2 from the ldap response
   attribute3:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute3 from the ldap response
   attribute4:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute4 from the ldap response
   attribute5:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute5 from the ldap response
   attribute6:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute6 from the ldap response
   attribute7:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute7 from the ldap response
   attribute8:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute8 from the ldap response
   attribute9:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute9 from the ldap response
   attributes:
-    type: str
+    type: raw
     description:
       - List of attribute names separated by ',' which needs to be fetched from ldap
         server.
@@ -118,7 +118,7 @@ options:
       - These attributes have multi-value support separated by ',' and stored as key-value
         pair in AAA session
   authentication:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -130,11 +130,11 @@ options:
         or where other (non-LDAP) authentication methods are in use and either bound
         to a primary list or flagged as secondary.
   authtimeout:
-    type: float
+    type: raw
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
   cloudattributes:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -142,17 +142,17 @@ options:
       - The Citrix ADC uses the cloud attributes to extract additional attributes
         from LDAP servers required for Citrix Cloud operations
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   email:
-    type: str
+    type: raw
     description:
       - The Citrix ADC uses the email attribute to query the Active Directory for
         the email id of a user
   followreferrals:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -160,21 +160,21 @@ options:
       - Setting this option to C(ON) enables following LDAP referrals received from
         the LDAP server.
   groupattrname:
-    type: str
+    type: raw
     description:
       - LDAP group attribute name.
       - Used for group extraction on the LDAP server.
   groupnameidentifier:
-    type: str
+    type: raw
     description:
       - Name that uniquely identifies a group in LDAP or Active Directory.
   groupsearchattribute:
-    type: str
+    type: raw
     description:
       - LDAP group search attribute.
       - Used to determine to which groups a group belongs.
   groupsearchfilter:
-    type: str
+    type: raw
     description:
       - String to be combined with the default LDAP group search string to form the
         search value.  For example, the group search filter ""vpnallowed=true"" when
@@ -185,61 +185,61 @@ options:
         fetched without applying this filter. (Be sure to enclose the search string
         in two sets of double quotation marks; both sets are needed.)
   groupsearchsubattribute:
-    type: str
+    type: raw
     description:
       - LDAP group search subattribute.
       - Used to determine to which groups a group belongs.
   kbattribute:
-    type: str
+    type: raw
     description:
       - KnowledgeBasedAuthentication(KBA) attribute on AD. This attribute is used
         to store and retrieve preconfigured Question and Answer knowledge base used
         for KBA authentication.
   ldapbase:
-    type: str
+    type: raw
     description:
       - Base (node) from which to start LDAP searches.
       - If the LDAP server is running locally, the default value of base is dc=netscaler,
         dc=com.
   ldapbinddn:
-    type: str
+    type: raw
     description:
       - Full distinguished name (DN) that is used to bind to the LDAP server.
       - 'Default: cn=Manager,dc=netscaler,dc=com'
   ldapbinddnpassword:
-    type: str
+    type: raw
     description:
       - Password used to bind to the LDAP server.
   ldaphostname:
-    type: str
+    type: raw
     description:
       - Hostname for the LDAP server.  If -validateServerCert is ON then this must
         be the host name on the certificate from the LDAP server.
       - A hostname mismatch will cause a connection failure.
   ldaploginname:
-    type: str
+    type: raw
     description:
       - LDAP login name attribute.
       - The Citrix ADC uses the LDAP login name to query external LDAP servers or
         Active Directories.
   maxldapreferrals:
-    type: float
+    type: raw
     description:
       - Specifies the maximum number of nested referrals to follow.
   maxnestinglevel:
-    type: float
+    type: raw
     description:
       - If nested group extraction is ON, specifies the number of levels up to which
         group extraction is performed.
   mssrvrecordlocation:
-    type: str
+    type: raw
     description:
       - MSSRV Specific parameter. Used to locate the DNS node to which the SRV record
         pertains in the domainname. The domainname is appended to it to form the srv
         record.
       - 'Example : For "dc._msdcs", the srv record formed is _ldap._tcp.dc._msdcs.<domainname>.'
   name:
-    type: str
+    type: raw
     description:
       - Name for the new LDAP action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -252,7 +252,7 @@ options:
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
   nestedgroupextraction:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -260,23 +260,23 @@ options:
       - Allow nested group extraction, in which the Citrix ADC queries external LDAP
         servers to determine whether a group is part of another group.
   otpsecret:
-    type: str
+    type: raw
     description:
       - OneTimePassword(OTP) Secret key attribute on AD. This attribute is used to
         store and retrieve secret key used for OTP check
   passwdchange:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow password change requests.
   pushservice:
-    type: str
+    type: raw
     description:
       - Name of the service used to send push notifications
   referraldnslookup:
-    type: str
+    type: raw
     choices:
       - A-REC
       - SRV-REC
@@ -284,7 +284,7 @@ options:
     description:
       - Specifies the DNS Record lookup Type for the referrals
   requireuser:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -295,7 +295,7 @@ options:
         authentication methods are in use and either bound to a primary list or flagged
         as secondary.
   searchfilter:
-    type: str
+    type: raw
     description:
       - String to be combined with the default LDAP user search string to form the
         search value. For example, if the search filter "vpnallowed=true" is combined
@@ -304,7 +304,7 @@ options:
         (Be sure to enclose the search string in two sets of double quotation marks;
         both sets are needed.).
   sectype:
-    type: str
+    type: raw
     choices:
       - PLAINTEXT
       - TLS
@@ -321,7 +321,7 @@ options:
     description:
       - LDAP server name as a FQDN.  Mutually exclusive with LDAP IP address.
   serverport:
-    type: int
+    type: raw
     description:
       - Port on which the LDAP server accepts connections.
   sshpublickey:
@@ -330,25 +330,25 @@ options:
       - SSH PublicKey is attribute on AD. This attribute is used to retrieve ssh PublicKey
         for RBA authentication
   ssonameattribute:
-    type: str
+    type: raw
     description:
       - LDAP single signon (SSO) attribute.
       - The Citrix ADC uses the SSO name attribute to query external LDAP servers
         or Active Directories for an alternate username.
   subattributename:
-    type: str
+    type: raw
     description:
       - LDAP group sub-attribute name.
       - Used for group extraction from the LDAP server.
   svrtype:
-    type: str
+    type: raw
     choices:
       - AD
       - NDS
     description:
       - The type of LDAP server.
   validateservercert:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

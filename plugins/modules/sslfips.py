@@ -41,7 +41,7 @@ options:
     description:
       - Path to the FIPS firmware file.
   hsmlabel:
-    type: str
+    type: raw
     description:
       - Label to identify the Hardware Security Module (HSM).
   inithsm:

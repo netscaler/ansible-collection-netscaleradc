@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cpuyield:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - 'YES'
@@ -66,7 +66,7 @@ options:
     description:
       - This argument is deprecated.
   ownernode:
-    type: float
+    type: raw
     description:
       - ID of the cluster node for which you are setting the cpuyield. It can be configured
         only through the cluster IP address.

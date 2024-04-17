@@ -131,7 +131,7 @@
 <h1>netscaler.adc.authenticationoauthidpprofile module – Configuration for OAuth Identity Provider (IdP) profile resource.<a class="headerlink" href="#netscaler-adc-authenticationoauthidpprofile-module-configuration-for-oauth-identity-provider-idp-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-attributes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-attributes"><strong>attributes</strong></p>
-<a class="ansibleOptionLink" href="#parameter-attributes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-attributes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name-Value pairs of attributes to be inserted in idtoken. Configuration format is name=value_expr&#64;&#64;&#64;name2=value2_expr&#64;&#64;&#64;.</p>
 <p>‘&#64;&#64;&#64;’ is used as delimiter between Name-Value pairs. name is a literal string whose value is 127 characters and does not contain ‘=’ character.</p>
@@ -182,7 +182,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-audience"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-audience"><strong>audience</strong></p>
-<a class="ansibleOptionLink" href="#parameter-audience" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-audience" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Audience for which token is being sent by Citrix ADC IdP. This is typically entity name or url that represents the recipient</p>
 </div></td>
@@ -203,21 +203,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-configservice"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-configservice"><strong>configservice</strong></p>
-<a class="ansibleOptionLink" href="#parameter-configservice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-configservice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the entity that is used to obtain configuration for the current authentication request. It is used only in Citrix Cloud.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultauthenticationgroup"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-defaultauthenticationgroup"><strong>defaultauthenticationgroup</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This group will be part of AAA session’s internal group list. This will be helpful to admin in Nfactor flow to decide right AAA configuration for Relaying Party. In authentication policy AAA.USER.IS_MEMBER_OF(”&lt;default_auth_group&gt;”)  is way to use this feature.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-encrypttoken"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-encrypttoken"><strong>encrypttoken</strong></p>
-<a class="ansibleOptionLink" href="#parameter-encrypttoken" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-encrypttoken" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Option to encrypt token when Citrix ADC IDP sends one.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -229,14 +229,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-issuer"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-issuer"><strong>issuer</strong></p>
-<a class="ansibleOptionLink" href="#parameter-issuer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-issuer" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The name to be used in requests sent from Citrix ADC to IdP to uniquely identify Citrix ADC.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the new OAuth Identity Provider (IdP) single sign-on profile. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after an action is created.</p>
 <p>The following requirement applies only to the Citrix ADC CLI:</p>
@@ -294,14 +294,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-refreshinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-refreshinterval"><strong>refreshinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-refreshinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-refreshinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval at which Relying Party metadata is refreshed.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-relyingpartymetadataurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-relyingpartymetadataurl"><strong>relyingpartymetadataurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-relyingpartymetadataurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-relyingpartymetadataurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This is the endpoint at which Citrix ADC IdP can get details about Relying Party (RP) being configured. Metadata response should include endpoints for jwks_uri for RP public key(s).</p>
 </div></td>
@@ -321,7 +321,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sendpassword"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-sendpassword"><strong>sendpassword</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sendpassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sendpassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Option to send encrypted password in idtoken.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -333,7 +333,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-signaturealg"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-signaturealg"><strong>signaturealg</strong></p>
-<a class="ansibleOptionLink" href="#parameter-signaturealg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-signaturealg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Algorithm to be used to sign OpenID tokens.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -345,14 +345,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-signatureservice"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-signatureservice"><strong>signatureservice</strong></p>
-<a class="ansibleOptionLink" href="#parameter-signatureservice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-signatureservice" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the service in cloud used to sign the data. This is applicable only if signature if offloaded to cloud.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-skewtime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-authenticationoauthidpprofile-module-parameter-skewtime"><strong>skewtime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-skewtime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-skewtime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option specifies the duration for which the token sent by Citrix ADC IdP is valid. For example, if skewTime is 10, then token would be valid from (current time - 10) min to (current time + 10) min, ie 20min in all.</p>
 </div></td>
