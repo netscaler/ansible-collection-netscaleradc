@@ -270,7 +270,6 @@ def get_bindprimary_key(binding_name, binding_member):
                 bindprimary_key = "servername"
             elif "servername" in binding_member and binding_member["servername"]:
                 bindprimary_key = "servername"
-
     return bindprimary_key
 
 
