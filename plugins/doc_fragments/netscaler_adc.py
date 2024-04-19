@@ -64,6 +64,45 @@ options:
             - Base NITRO API path.
             - Define only in case of an ADM service proxy call
         default: "nitro/v1/config"
+    netscaler_console_as_proxy_server:
+        type: bool
+        description:
+            - The IP address of the NetScaler ADC appliance acting as a proxy server.
+            - Define only in case of an ADM service proxy call
+    managed_netscaler_instance_name:
+        type: str
+        description:
+            - The name of the managed NetScaler instance to which NetScaler Console
+            - has to configure as a proxy server.
+            - Define only in case of an ADM service proxy call
+    managed_netscaler_instance_ip:
+        type: str
+        description:
+            - The IP of the managed NetScaler instance to which NetScaler Console
+            - has to configure as a proxy server.
+            - Define only in case of an ADM service proxy call
+    managed_netscaler_instance_id:
+        type: str
+        description:
+            - The ID of the managed NetScaler instance to which NetScaler Console
+            - has to configure as a proxy server.
+            - Define only in case of an ADM service proxy call
+    managed_netscaler_instance_username:
+        type: str
+        description:
+            - The username of the managed NetScaler instance.
+            - Define only in case of an ADM service proxy call
+            - In Settings > Administration > System Configurations > Basic Settings,
+            - if you select Prompt Credentials for Instance Login,
+            - ensure to configure username and password of a managed instance.
+    managed_netscaler_instance_password:
+        type: str
+        description:
+            - The password of the managed NetScaler instance.
+            - Define only in case of an ADM service proxy call
+            - In Settings > Administration > System Configurations > Basic Settings,
+            - if you select Prompt Credentials for Instance Login,
+            - ensure to configure username and password of a managed instance.
 
 notes:
   - For more information on using Ansible to manage NetScaler ADC Network devices see U(https://www.ansible.com/integrations/networks/citrixadc).

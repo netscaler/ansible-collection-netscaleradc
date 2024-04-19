@@ -1,0 +1,49 @@
+---
+- name: Sample Playbook to demonstrate the usage of netscaler console as proxy server to configure the managed device
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | login
+      delegate_to: localhost
+      register: login_result
+      netscaler.adc.login:
+        nsip: "{{ lookup('env', 'NETSCALER_CONSOLE_IP') }}"
+        nitro_protocol: http
+        validate_certs: false
+        # If this is false, then the `login` request will be sent to the ADC instead of the Console
+        netscaler_console_as_proxy_server: true
+        managed_netscaler_instance_ip: "{{ lookup('env', 'NETSCALER_NSIP') }}"
+        managed_netscaler_instance_username: "{{ lookup('env', 'NETSCALER_NITRO_USER') }}"
+        managed_netscaler_instance_password: "{{ lookup('env', 'NETSCALER_NITRO_PASS') }}"
+        username: "{{ lookup('env', 'NETSCALER_CONSOLE_USER') }}"
+        password: "{{ lookup('env', 'NETSCALER_CONSOLE_PASS') }}"
+    - name: Print login sessionid
+      ansible.builtin.debug:
+        var: login_result.sessionid
+    - name: Sample Task | nsip
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        nsip: "{{ lookup('env', 'NETSCALER_CONSOLE_IP') }}"
+        nitro_protocol: http
+        validate_certs: false
+        netscaler_console_as_proxy_server: true
+        managed_netscaler_instance_ip: "{{ lookup('env', 'NETSCALER_NSIP') }}"
+        managed_netscaler_instance_username: "{{ lookup('env', 'NETSCALER_NITRO_USER') }}"
+        managed_netscaler_instance_password: "{{ lookup('env', 'NETSCALER_NITRO_PASS') }}"
+        nitro_auth_token: "{{ login_result.sessionid }}"
+        state: present
+        ipaddress: 4.4.4.4
+        netmask: 255.255.255.192
+        type: VIP
+    - name: Sample Task | logout
+      delegate_to: localhost
+      netscaler.adc.logout:
+        nsip: "{{ lookup('env', 'NETSCALER_CONSOLE_IP') }}"
+        nitro_protocol: http
+        validate_certs: false
+        # If this is false, then the `logout` request will be sent to the ADC instead of the Console
+        netscaler_console_as_proxy_server: true
+        managed_netscaler_instance_ip: "{{ lookup('env', 'NETSCALER_NSIP') }}"
+        managed_netscaler_instance_username: "{{ lookup('env', 'NETSCALER_NITRO_USER') }}"
+        managed_netscaler_instance_password: "{{ lookup('env', 'NETSCALER_NITRO_PASS') }}"
+        nitro_auth_token: "{{ login_result.sessionid }}"

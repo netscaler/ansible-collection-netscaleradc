@@ -81,4 +81,36 @@ NETSCALER_COMMON_ARGUMENTS = dict(
         required=False,
         default="nitro/v1/config",
     ),
+    netscaler_console_as_proxy_server=dict(
+        type="bool",
+        required=False,
+        default=False,
+        fallback=(env_fallback, ["NETSCALER_CONSOLE_AS_PROXY_SERVER"]),
+    ),
+    managed_netscaler_instance_name=dict(
+        type="str",
+        required=False,
+        fallback=(env_fallback, ["MANAGED_NETSCALER_INSTANCE_NAME"]),
+    ),
+    managed_netscaler_instance_ip=dict(
+        type="str",
+        required=False,
+        fallback=(env_fallback, ["MANAGED_NETSCALER_INSTANCE_IP"]),
+    ),
+    managed_netscaler_instance_id=dict(
+        type="str",
+        required=False,
+        fallback=(env_fallback, ["MANAGED_NETSCALER_INSTANCE_ID"]),
+    ),
+    managed_netscaler_instance_username=dict(
+        type="str",
+        required=False,
+        fallback=(env_fallback, ["MANAGED_NETSCALER_INSTANCE_USERNAME"]),
+    ),
+    managed_netscaler_instance_password=dict(
+        type="str",
+        required=False,
+        no_log=True,
+        fallback=(env_fallback, ["MANAGED_NETSCALER_INSTANCE_PASSWORD"]),
+    ),
 )

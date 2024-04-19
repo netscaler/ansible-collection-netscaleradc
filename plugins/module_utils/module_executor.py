@@ -73,18 +73,53 @@ class ModuleExecutor(object):
         self.module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
-            # mutually_exclusive=[
-            #     ("nitro_auth_token", "nitro_user"),
-            #     ("nitro_auth_token", "nitro_pass"),
-            # ],
-            # required_together=[
-            #     ("nitro_user", "nitro_pass"),
-            # ],
+            mutually_exclusive=[
+                #     ("nitro_auth_token", "nitro_user"),
+                #     ("nitro_auth_token", "nitro_pass"),
+                (
+                    "managed_netscaler_instance_name",
+                    "managed_netscaler_instance_ip",
+                    "managed_netscaler_instance_id",
+                ),
+            ],
+            required_together=[
+                ("nitro_user", "nitro_pass"),
+                (
+                    "managed_netscaler_instance_username",
+                    "managed_netscaler_instance_password",
+                ),
+            ],
             # required_one_of=[
             #     ("nitro_auth_token", "nitro_user"),
             #     ("nitro_auth_token", "nitro_pass"),
             # ],
+            required_if=[
+                (
+                    "netscaler_console_as_proxy_server",
+                    True,
+                    (
+                        "managed_netscaler_instance_name",
+                        "managed_netscaler_instance_ip",
+                        "managed_netscaler_instance_id",
+                        "managed_netscaler_instance_username",
+                        "managed_netscaler_instance_password",
+                    ),
+                    True,
+                ),
+            ],
+            # required_by= {
+            # }
         )
+
+        self.netscaler_console_as_proxy_server = self.module.params[
+            "netscaler_console_as_proxy_server"
+        ]
+
+        if self.netscaler_console_as_proxy_server and self.resource_name in {
+            "login",
+            "logout",
+        }:
+            self.module.params["api_path"] = "nitro/v2/config"
 
         self.client = NitroAPIClient(self.module)
         self.ns_major_version, self.ns_minor_version = get_netscaler_version(
@@ -782,7 +817,10 @@ class ModuleExecutor(object):
                     self.return_failure(response_body)
 
                 self.module_result["changed"] = True
-                self.sessionid = response_body["sessionid"]
+                if self.netscaler_console_as_proxy_server:
+                    self.sessionid = response_body[self.resource_name][0]["sessionid"]
+                else:
+                    self.sessionid = response_body["sessionid"]
                 self.return_success()
         except Exception as e:
             msg = "Exception %s: %s" % (type(e), str(e))

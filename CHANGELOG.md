@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.6.0] - 2024-04-19
+
+### Added
+
+- Added support to configure NetScaler via NetScaler Console (ADM) as Proxy server ([#308])
+
 ## [2.5.2] - 2024-04-15
 
 ### Fixed
@@ -116,7 +122,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.2...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.0...HEAD
+[2.6.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.2...2.6.0
 [2.5.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.1...2.5.2
 [2.5.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.0...2.5.1
 [2.5.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.4.0...2.5.0
@@ -134,6 +141,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#295]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/295
 [#297]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/297
 [#307]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/307
+[#308]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/308
 [#310]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/310
 [#311]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/311
 [#312]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/312
