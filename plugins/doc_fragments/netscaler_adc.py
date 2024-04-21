@@ -55,7 +55,6 @@ options:
     nitro_auth_token:
         description:
             - The authentication token provided by a login operation.
-        version_added: "2.6.0"
         type: str
 
     api_path:
@@ -71,6 +70,7 @@ options:
             - The IP address of the NetScaler ADC appliance acting as a proxy server.
             - Define only in case of an ADM service proxy call
         default: false
+        version_added: 2.6.0
 
     managed_netscaler_instance_name:
         type: str
@@ -78,6 +78,7 @@ options:
             - The name of the managed NetScaler instance to which NetScaler Console
             - has to configure as a proxy server.
             - Define only in case of an ADM service proxy call
+        version_added: 2.6.0
 
     managed_netscaler_instance_ip:
         type: str
@@ -85,6 +86,7 @@ options:
             - The IP of the managed NetScaler instance to which NetScaler Console
             - has to configure as a proxy server.
             - Define only in case of an ADM service proxy call
+        version_added: 2.6.0
 
     managed_netscaler_instance_id:
         type: str
@@ -92,6 +94,7 @@ options:
             - The ID of the managed NetScaler instance to which NetScaler Console
             - has to configure as a proxy server.
             - Define only in case of an ADM service proxy call
+        version_added: 2.6.0
 
     managed_netscaler_instance_username:
         type: str
@@ -101,6 +104,7 @@ options:
             - In Settings > Administration > System Configurations > Basic Settings,
             - if you select Prompt Credentials for Instance Login,
             - ensure to configure username and password of a managed instance.
+        version_added: 2.6.0
 
     managed_netscaler_instance_password:
         type: str
@@ -110,6 +114,7 @@ options:
             - In Settings > Administration > System Configurations > Basic Settings,
             - if you select Prompt Credentials for Instance Login,
             - ensure to configure username and password of a managed instance.
+        version_added: 2.6.0
 
 notes:
   - For more information on using Ansible to manage NetScaler ADC Network devices see U(https://www.ansible.com/integrations/networks/citrixadc).
