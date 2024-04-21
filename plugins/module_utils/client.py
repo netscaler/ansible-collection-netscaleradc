@@ -53,6 +53,33 @@ class NitroAPIClient(object):
             self._headers["X-NITRO-USER"] = self._module.params["nitro_user"]
             self._headers["X-NITRO-PASS"] = self._module.params["nitro_pass"]
 
+        # Do header manipulation when using NetScaler Console (ADM) as proxy
+        # Refer: https://docs.netscaler.com/en-us/netscaler-application-delivery-management-software/current-release/adm-as-api-proxy-server.html
+        netscaler_console_as_proxy = self._module.params.get(
+            "netscaler_console_as_proxy_server"
+        )
+        if netscaler_console_as_proxy:
+            if self._module.params.get("managed_netscaler_instance_name"):
+                self._headers[
+                    "_MPS_API_PROXY_MANAGED_INSTANCE_NAME"
+                ] = self._module.params.get("managed_netscaler_instance_name")
+            if self._module.params.get("managed_netscaler_instance_ip"):
+                self._headers[
+                    "_MPS_API_PROXY_MANAGED_INSTANCE_IP"
+                ] = self._module.params.get("managed_netscaler_instance_ip")
+            if self._module.params.get("managed_netscaler_instance_id"):
+                self._headers[
+                    "_MPS_API_PROXY_MANAGED_INSTANCE_ID"
+                ] = self._module.params.get("managed_netscaler_instance_id")
+            if self._module.params.get("managed_netscaler_instance_username"):
+                self._headers[
+                    "_MPS_API_PROXY_MANAGED_INSTANCE_USERNAME"
+                ] = self._module.params.get("managed_netscaler_instance_username")
+            if self._module.params.get("managed_netscaler_instance_password"):
+                self._headers[
+                    "_MPS_API_PROXY_MANAGED_INSTANCE_PASSWORD"
+                ] = self._module.params.get("managed_netscaler_instance_password")
+
     @trace
     def url_builder(
         self,
@@ -193,6 +220,13 @@ class NitroAPIClient(object):
             self._headers.pop("X-NITRO-USER", None)
             self._headers.pop("X-NITRO-PASS", None)
             self._headers.pop("Cookie", None)
+        if resource in {"login", "logout"}:
+            self._headers.pop("_MPS_API_PROXY_MANAGED_INSTANCE_NAME", None)
+            self._headers.pop("_MPS_API_PROXY_MANAGED_INSTANCE_IP", None)
+            self._headers.pop("_MPS_API_PROXY_MANAGED_INSTANCE_ID", None)
+            self._headers.pop("_MPS_API_PROXY_MANAGED_INSTANCE_USERNAME", None)
+            self._headers.pop("_MPS_API_PROXY_MANAGED_INSTANCE_PASSWORD", None)
+            self._headers.pop("_MPS_API_PROXY_MANAGED_INSTANCE_SESSID", None)
         return self.send("POST", url, data)
 
     @trace

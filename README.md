@@ -118,6 +118,22 @@ export NETSCALER_NITRO_AUTH_TOKEN=$(curl -X POST -H "Content-Type:application/js
 echo $NETSCALER_NITRO_AUTH_TOKEN
 ```
 
+## NetScaler Console (ADM) as a Proxy Server
+
+Refer to the [NetScaler ADM as an API proxy server](https://docs.netscaler.com/en-us/citrix-application-delivery-management-software/current-release/adm-as-api-proxy-server.html) for more details.
+
+The collection supports configuring NetScaler Console as a proxy server. This is useful when you have multiple NetScaler ADC appliances and you want to manage them using a single NetScaler Console.
+
+An example can be found in [examples/netscaler_console_as_proxy_server.yaml](examples/netscaler_console_as_proxy_server.yaml)
+
+Also, refer to the [playbook_anatomy.md](playbook_anatomy.md#netscaler-console-as-an-api-proxy-server) for more details.
+
+### Steps to configure NetScaler Console as a proxy server
+
+1. Login to NetScaler Console and get the session ID
+2. Use the session ID in the subsequent tasks to configure the managed NetScalers via the NetScaler Console as a proxy server
+3. Logout from the NetScaler Console (optional)
+
 ## Supported Ansible Versions
 
 This collection is tested for Ansible version 2.14 and above.

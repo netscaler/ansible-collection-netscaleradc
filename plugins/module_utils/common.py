@@ -531,6 +531,8 @@ def adc_logout(client):
     post_data = {
         "logout": {},
     }
+    if client._module.params["netscaler_console_as_proxy_server"]:
+        post_data["logout"]["sessionid"] = client._module.params["nitro_auth_token"]
     status_code, response_body = client.post(
         post_data=post_data,
         resource="logout",

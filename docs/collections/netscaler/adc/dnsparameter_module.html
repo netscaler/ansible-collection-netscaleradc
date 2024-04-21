@@ -131,7 +131,7 @@
 <h1>netscaler.adc.dnsparameter module – Configuration for DNS parameter resource.<a class="headerlink" href="#netscaler-adc-dnsparameter-module-configuration-for-dns-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -258,55 +258,109 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_id"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-managed-netscaler-instance-id"><strong>managed_netscaler_instance_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ID of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_ip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-managed-netscaler-instance-ip"><strong>managed_netscaler_instance_ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-managed-netscaler-instance-name"><strong>managed_netscaler_instance_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The name of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_password"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-managed-netscaler-instance-password"><strong>managed_netscaler_instance_password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_username"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-managed-netscaler-instance-username"><strong>managed_netscaler_instance_username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxcachesize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-maxcachesize"><strong>maxcachesize</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxcachesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum memory, in megabytes, that can be used for dns caching per Packet Engine.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxnegativecachesize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-maxnegativecachesize"><strong>maxnegativecachesize</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxnegativecachesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum memory, in megabytes, that can be used for caching of negative DNS responses per packet engine.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxnegcachettl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-maxnegcachettl"><strong>maxnegcachettl</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxnegcachettl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum time to live (TTL) for all negative records ( NXDONAIN and NODATA ) cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is higher than the value configured for maxnegcacheTTL, the TTL of the record is set to the value of maxnegcacheTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxpipeline"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-maxpipeline"><strong>maxpipeline</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxpipeline" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of concurrent DNS requests to allow on a single client connection, which is identified by the &lt;clientip:port&gt;-&lt;vserver ip:port&gt; tuple. A value of 0 (zero) applies no limit to the number of concurrent DNS requests allowed on a single client connection.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxttl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-maxttl"><strong>maxttl</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is higher than the value configured for maxTTL, the TTL of the record is set to the value of maxTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxudppacketsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-maxudppacketsize"><strong>maxudppacketsize</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxudppacketsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum UDP packet size that can be handled by Citrix ADC. This is the value advertised by Citrix ADC when responding as an authoritative server and it is also used when Citrix ADC queries other name servers as a forwarder. When acting as a proxy, requests from clients are limited by this parameter - if a request contains a size greater than this value in the OPT record, it will be replaced.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minttl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-minttl"><strong>minttl</strong></p>
 <a class="ansibleOptionLink" href="#parameter-minttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum permissible time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is lower than the value configured for minTTL, the TTL of the record is set to the value of minTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-namelookuppriority"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-namelookuppriority"><strong>namelookuppriority</strong></p>
 <a class="ansibleOptionLink" href="#parameter-namelookuppriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -318,10 +372,23 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-netscaler_console_as_proxy_server"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-netscaler-console-as-proxy-server"><strong>netscaler_console_as_proxy_server</strong></p>
+<a class="ansibleOptionLink" href="#parameter-netscaler_console_as_proxy_server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP address of the NetScaler ADC appliance acting as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-dnsparameter-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
-<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
 </div></td>
