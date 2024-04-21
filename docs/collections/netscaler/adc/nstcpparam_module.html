@@ -131,7 +131,7 @@
 <h1>netscaler.adc.nstcpparam module – Configuration for tcp parameters resource.<a class="headerlink" href="#netscaler-adc-nstcpparam-module-configuration-for-tcp-parameters-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -301,62 +301,116 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_id"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-managed-netscaler-instance-id"><strong>managed_netscaler_instance_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ID of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_ip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-managed-netscaler-instance-ip"><strong>managed_netscaler_instance_ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-managed-netscaler-instance-name"><strong>managed_netscaler_instance_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The name of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_password"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-managed-netscaler-instance-password"><strong>managed_netscaler_instance_password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_username"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-managed-netscaler-instance-username"><strong>managed_netscaler_instance_username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxburst"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-maxburst"><strong>maxburst</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxburst" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of TCP segments allowed in a burst.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxdynserverprobes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-maxdynserverprobes"><strong>maxdynserverprobes</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxdynserverprobes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of probes that Citrix ADC can send out in 10 milliseconds, to dynamically learn a service. Citrix ADC probes for the existence of the origin in case of wildcard virtual server or services.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxpktpermss"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-maxpktpermss"><strong>maxpktpermss</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxpktpermss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of TCP packets allowed per maximum segment size (MSS).</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxsynackretx"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-maxsynackretx"><strong>maxsynackretx</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxsynackretx" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>When ‘syncookie’ is disabled in the TCP profile that is bound to the virtual server or service, and the number of TCP SYN+ACK retransmission by Citrix ADC for that virtual server or service crosses this threshold, the Citrix ADC responds by using the TCP SYN-Cookie mechanism.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxsynhold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-maxsynhold"><strong>maxsynhold</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxsynhold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Limit the number of client connections (SYN) waiting for status of probe system wide. Any new SYN packets will be dropped.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxsynholdperprobe"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-maxsynholdperprobe"><strong>maxsynholdperprobe</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxsynholdperprobe" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Limit the number of client connections (SYN) waiting for status of single probe. Any new SYN packets will be dropped.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxtimewaitconn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-maxtimewaitconn"><strong>maxtimewaitconn</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxtimewaitconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of connections to hold in the TCP TIME_WAIT state on a packet engine. New connections entering TIME_WAIT state are proactively cleaned up.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minrto"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-minrto"><strong>minrto</strong></p>
 <a class="ansibleOptionLink" href="#parameter-minrto" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum retransmission timeout, in milliseconds, specified in 10-millisecond increments (value must yield a whole number if divided by 10).</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpchecksum"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpchecksum"><strong>mptcpchecksum</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpchecksum" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -368,7 +422,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpclosemptcpsessiononlastsfclose"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpclosemptcpsessiononlastsfclose"><strong>mptcpclosemptcpsessiononlastsfclose</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpclosemptcpsessiononlastsfclose" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -380,7 +434,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpconcloseonpassivesf"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpconcloseonpassivesf"><strong>mptcpconcloseonpassivesf</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpconcloseonpassivesf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -392,7 +446,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpfastcloseoption"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpfastcloseoption"><strong>mptcpfastcloseoption</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpfastcloseoption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -404,7 +458,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpimmediatesfcloseonfin"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpimmediatesfcloseonfin"><strong>mptcpimmediatesfcloseonfin</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpimmediatesfcloseonfin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -416,28 +470,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpmaxpendingsf"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpmaxpendingsf"><strong>mptcpmaxpendingsf</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpmaxpendingsf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of subflow connections supported in pending join state per mptcp connection.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpmaxsf"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpmaxsf"><strong>mptcpmaxsf</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpmaxsf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of subflow connections supported in established state per mptcp connection.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcppendingjointhreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcppendingjointhreshold"><strong>mptcppendingjointhreshold</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcppendingjointhreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum system level pending join connections allowed.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpreliableaddaddr"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpreliableaddaddr"><strong>mptcpreliableaddaddr</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpreliableaddaddr" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -449,14 +503,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcprtostoswitchsf"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcprtostoswitchsf"><strong>mptcprtostoswitchsf</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcprtostoswitchsf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of RTO’s at subflow level, after which MPCTP should start using other subflow.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpsendsfresetoption"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpsendsfresetoption"><strong>mptcpsendsfresetoption</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpsendsfresetoption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -468,21 +522,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpsfreplacetimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpsfreplacetimeout"><strong>mptcpsfreplacetimeout</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpsfreplacetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The minimum idle time value in seconds for idle mptcp subflows after which the sublow is replaced by new incoming subflow if maximum subflow limit is reached. The priority for replacement is given to those subflow without any transaction</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpsftimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpsftimeout"><strong>mptcpsftimeout</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpsftimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The timeout value in seconds for idle mptcp subflows. If this timeout is not set, idle subflows are cleared after cltTimeout of vserver</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpusebackupondss"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-mptcpusebackupondss"><strong>mptcpusebackupondss</strong></p>
 <a class="ansibleOptionLink" href="#parameter-mptcpusebackupondss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -494,21 +548,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-msslearndelay"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-msslearndelay"><strong>msslearndelay</strong></p>
 <a class="ansibleOptionLink" href="#parameter-msslearndelay" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Frequency, in seconds, at which the virtual servers learn the Maximum segment size (MSS) from the services. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-msslearninterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-msslearninterval"><strong>msslearninterval</strong></p>
 <a class="ansibleOptionLink" href="#parameter-msslearninterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Duration, in seconds, to sample the Maximum Segment Size (MSS) of the services. The Citrix ADC determines the best MSS to set for the virtual server based on this sampling. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nagle"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-nagle"><strong>nagle</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nagle" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -520,10 +574,23 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-netscaler_console_as_proxy_server"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-netscaler-console-as-proxy-server"><strong>netscaler_console_as_proxy_server</strong></p>
+<a class="ansibleOptionLink" href="#parameter-netscaler_console_as_proxy_server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP address of the NetScaler ADC appliance acting as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpparam-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
-<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
 </div></td>

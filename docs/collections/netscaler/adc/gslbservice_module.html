@@ -131,7 +131,7 @@
 <h1>netscaler.adc.gslbservice module – Configuration for GSLB service resource.<a class="headerlink" href="#netscaler-adc-gslbservice-module-configuration-for-gslb-service-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -400,73 +400,141 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_id"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-managed-netscaler-instance-id"><strong>managed_netscaler_instance_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ID of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_ip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-managed-netscaler-instance-ip"><strong>managed_netscaler_instance_ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-managed-netscaler-instance-name"><strong>managed_netscaler_instance_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The name of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_password"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-managed-netscaler-instance-password"><strong>managed_netscaler_instance_password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_username"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-managed-netscaler-instance-username"><strong>managed_netscaler_instance_username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxaaausers"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-maxaaausers"><strong>maxaaausers</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxaaausers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is represented by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxbandwidth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-maxbandwidth"><strong>maxbandwidth</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxbandwidth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Integer specifying the maximum bandwidth allowed for the service. A GSLB service whose bandwidth reaches the maximum is not considered when a GSLB decision is made, until its bandwidth consumption drops below the maximum.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-maxclient"><strong>maxclient</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-monitor_name_svc"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-monitor-name-svc"><strong>monitor_name_svc</strong></p>
 <a class="ansibleOptionLink" href="#parameter-monitor_name_svc" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the monitor to bind to the service.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-monthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-monthreshold"><strong>monthreshold</strong></p>
 <a class="ansibleOptionLink" href="#parameter-monthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are bound to this GSLB service and are in the UP state is not equal to or greater than this threshold value, the service is marked as DOWN.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-naptrdomainttl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-naptrdomainttl"><strong>naptrdomainttl</strong></p>
 <a class="ansibleOptionLink" href="#parameter-naptrdomainttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Modify the TTL of the internally created naptr domain</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-naptrorder"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-naptrorder"><strong>naptrorder</strong></p>
 <a class="ansibleOptionLink" href="#parameter-naptrorder" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>An integer specifying the order in which the NAPTR records MUST be processed in order to accurately represent the ordered list of Rules. The ordering is from lowest to highest</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-naptrpreference"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-naptrpreference"><strong>naptrpreference</strong></p>
 <a class="ansibleOptionLink" href="#parameter-naptrpreference" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>An integer specifying the preference of this NAPTR among NAPTR records having same order. lower the number, higher the preference.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-naptrreplacement"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-naptrreplacement"><strong>naptrreplacement</strong></p>
 <a class="ansibleOptionLink" href="#parameter-naptrreplacement" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The replacement domain name for this NAPTR.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-naptrservices"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-naptrservices"><strong>naptrservices</strong></p>
 <a class="ansibleOptionLink" href="#parameter-naptrservices" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Service Parameters applicable to this delegation path.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-netscaler_console_as_proxy_server"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-netscaler-console-as-proxy-server"><strong>netscaler_console_as_proxy_server</strong></p>
+<a class="ansibleOptionLink" href="#parameter-netscaler_console_as_proxy_server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP address of the NetScaler ADC appliance acting as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -479,7 +547,6 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbservice-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
-<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
 </div></td>

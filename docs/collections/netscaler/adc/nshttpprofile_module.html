@@ -131,7 +131,7 @@
 <h1>netscaler.adc.nshttpprofile module – Configuration for HTTP profile resource.<a class="headerlink" href="#netscaler-adc-nshttpprofile-module-configuration-for-http-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -487,6 +487,60 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_id"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-managed-netscaler-instance-id"><strong>managed_netscaler_instance_id</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ID of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_ip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-managed-netscaler-instance-ip"><strong>managed_netscaler_instance_ip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-managed-netscaler-instance-name"><strong>managed_netscaler_instance_name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The name of the managed NetScaler instance to which NetScaler Console</p>
+<p>has to configure as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_password"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-managed-netscaler-instance-password"><strong>managed_netscaler_instance_password</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_username"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-managed-netscaler-instance-username"><strong>managed_netscaler_instance_username</strong></p>
+<a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username of the managed NetScaler instance.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p>In Settings &gt; Administration &gt; System Configurations &gt; Basic Settings,</p>
+<p>if you select Prompt Credentials for Instance Login,</p>
+<p>ensure to configure username and password of a managed instance.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-markconnreqinval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-markconnreqinval"><strong>markconnreqinval</strong></p>
 <a class="ansibleOptionLink" href="#parameter-markconnreqinval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -498,7 +552,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-markhttp09inval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-markhttp09inval"><strong>markhttp09inval</strong></p>
 <a class="ansibleOptionLink" href="#parameter-markhttp09inval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -510,7 +564,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-markhttpheaderextrawserror"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-markhttpheaderextrawserror"><strong>markhttpheaderextrawserror</strong></p>
 <a class="ansibleOptionLink" href="#parameter-markhttpheaderextrawserror" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -522,7 +576,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-markrfc7230noncompliantinval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-markrfc7230noncompliantinval"><strong>markrfc7230noncompliantinval</strong></p>
 <a class="ansibleOptionLink" href="#parameter-markrfc7230noncompliantinval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -534,7 +588,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-marktracereqinval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-marktracereqinval"><strong>marktracereqinval</strong></p>
 <a class="ansibleOptionLink" href="#parameter-marktracereqinval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -546,42 +600,42 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxheaderfieldlen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-maxheaderfieldlen"><strong>maxheaderfieldlen</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxheaderfieldlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of bytes allowed for header field for HTTP header. If number of bytes exceeds beyond configured value, then request will be marked invalid</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxheaderlen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-maxheaderlen"><strong>maxheaderlen</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxheaderlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of bytes to be queued to look for complete header before returning error. If complete header is not obtained after queuing these many bytes, request will be marked as invalid and no L7 processing will be done for that TCP connection.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxreq"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-maxreq"><strong>maxreq</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxreq" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of requests allowed on a single connection. Zero implies no limit on the number of requests.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxreusepool"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-maxreusepool"><strong>maxreusepool</strong></p>
 <a class="ansibleOptionLink" href="#parameter-maxreusepool" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum limit on the number of connections, from the Citrix ADC to a particular server that are kept in the reuse pool. This setting is helpful for optimal memory utilization and for reducing the idle connections to the server just after the peak time. Zero implies no limit on reuse pool size. If non-zero value is given, it has to be greater than or equal to the number of running Packet Engines.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minreusepool"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-minreusepool"><strong>minreusepool</strong></p>
 <a class="ansibleOptionLink" href="#parameter-minreusepool" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum limit on the number of connections, from the Citrix ADC to a particular server that are kept in the reuse pool. This setting is helpful for optimal memory utilization and for reducing the idle connections to the server just after the peak time. Zero implies no limit on reuse pool size.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-name"><strong>name</strong></p>
 <a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
@@ -589,10 +643,23 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, “my http profile” or ‘my http profile’\).</p>
 </div></td>
 </tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-netscaler_console_as_proxy_server"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-netscaler-console-as-proxy-server"><strong>netscaler_console_as_proxy_server</strong></p>
+<a class="ansibleOptionLink" href="#parameter-netscaler_console_as_proxy_server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The IP address of the NetScaler ADC appliance acting as a proxy server.</p>
+<p>Define only in case of an ADM service proxy call</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nshttpprofile-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
-<p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
 </div></td>
