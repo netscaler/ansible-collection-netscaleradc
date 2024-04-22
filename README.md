@@ -160,7 +160,7 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 - [x] Update supported matrix to have documentation links
 - [x] Add appropriate license to the collection.
 - [x] Upload the collection to Ansible Galaxy.
-- [ ] Support configuring ADC with ADM as proxy. Refer to [NetScaler ADM as an API proxy server](https://docs.netscaler.com/en-us/citrix-application-delivery-management-software/current-release/adm-as-api-proxy-server.html) for more details.
+- [x] Support configuring ADC with ADM as proxy. Refer to [NetScaler ADM as an API proxy server](https://docs.netscaler.com/en-us/citrix-application-delivery-management-software/current-release/adm-as-api-proxy-server.html) for more details.
 - [ ] Implement SSH connection module
 - [ ] Support for generic modules similar to `citrix.adc.nitro_request` and `citrix.adc.nitro_resource`?
 - [ ] migration tool to convert `citrix.adc` playbooks (including generic `citrix.adc.nitro_request` and `citrix.adc.nitro_resource` modules) to `netscaler.adc` modules

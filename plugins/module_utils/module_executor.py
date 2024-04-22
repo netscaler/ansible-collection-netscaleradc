@@ -54,7 +54,11 @@ class ModuleExecutor(object):
         self.supported_operations = NITRO_RESOURCE_MAP[self.resource_name][
             "_supported_operations"
         ]
-
+        self.module_result = dict(
+            changed=False,
+            failed=False,
+            loglines=loglines,
+        )
         module_specific_arguments = NITRO_RESOURCE_MAP[self.resource_name][
             "readwrite_arguments"
         ]
@@ -74,8 +78,6 @@ class ModuleExecutor(object):
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
             mutually_exclusive=[
-                #     ("nitro_auth_token", "nitro_user"),
-                #     ("nitro_auth_token", "nitro_pass"),
                 (
                     "managed_netscaler_instance_name",
                     "managed_netscaler_instance_ip",
@@ -89,10 +91,6 @@ class ModuleExecutor(object):
                     "managed_netscaler_instance_password",
                 ),
             ],
-            # required_one_of=[
-            #     ("nitro_auth_token", "nitro_user"),
-            #     ("nitro_auth_token", "nitro_pass"),
-            # ],
             required_if=[
                 (
                     "netscaler_console_as_proxy_server",
@@ -107,13 +105,26 @@ class ModuleExecutor(object):
                     True,
                 ),
             ],
-            # required_by= {
-            # }
         )
 
         self.netscaler_console_as_proxy_server = self.module.params[
             "netscaler_console_as_proxy_server"
         ]
+
+        if not self.netscaler_console_as_proxy_server:
+            for k in (
+                "managed_netscaler_instance_name",
+                "managed_netscaler_instance_ip",
+                "managed_netscaler_instance_id",
+                "managed_netscaler_instance_username",
+                "managed_netscaler_instance_password",
+            ):
+                if self.module.params[k] is not None:
+                    msg = (
+                        "ERROR: You can only use %s with `netscaler_console_as_proxy_server=true`"
+                        % k
+                    )
+                    self.return_failure(msg)
 
         if self.netscaler_console_as_proxy_server and self.resource_name in {
             "login",
@@ -141,12 +152,6 @@ class ModuleExecutor(object):
         self.resource_module_params = {}
         self.desired_bindings = {}
         self.existing_resource = dict()
-
-        self.module_result = dict(
-            changed=False,
-            failed=False,
-            loglines=loglines,
-        )
 
         log(
             "DEBUG: All params (including non module-specific params) are: %s"
