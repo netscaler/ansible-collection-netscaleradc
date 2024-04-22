@@ -74,8 +74,6 @@ class ModuleExecutor(object):
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
             mutually_exclusive=[
-                #     ("nitro_auth_token", "nitro_user"),
-                #     ("nitro_auth_token", "nitro_pass"),
                 (
                     "managed_netscaler_instance_name",
                     "managed_netscaler_instance_ip",
@@ -89,10 +87,6 @@ class ModuleExecutor(object):
                     "managed_netscaler_instance_password",
                 ),
             ],
-            # required_one_of=[
-            #     ("nitro_auth_token", "nitro_user"),
-            #     ("nitro_auth_token", "nitro_pass"),
-            # ],
             required_if=[
                 (
                     "netscaler_console_as_proxy_server",

@@ -38,20 +38,18 @@ class NitroAPIClient(object):
             self._module.params.get("nitro_pass"),
         )
 
-        if have_token and have_userpass:
-            # FIXME:
-            self._module.fail_json(
-                msg="Cannot define both authentication token and username/password"
-            )
-
+        # Prioritize token over user/pass
         if have_token:
             self._headers["Cookie"] = (
                 "NITRO_AUTH_TOKEN=%s" % self._module.params["nitro_auth_token"]
             )
-
-        if have_userpass:
+        elif have_userpass:
             self._headers["X-NITRO-USER"] = self._module.params["nitro_user"]
             self._headers["X-NITRO-PASS"] = self._module.params["nitro_pass"]
+        else:
+            self._module.fail_json(
+                msg="Either `nitro_auth_token` or `nitro_user/nitro_pass` must be given for authentication"
+            )
 
         # Do header manipulation when using NetScaler Console (ADM) as proxy
         # Refer: https://docs.netscaler.com/en-us/netscaler-application-delivery-management-software/current-release/adm-as-api-proxy-server.html
