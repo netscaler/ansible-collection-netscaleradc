@@ -154,7 +154,7 @@ Refer to the [migrating_from_v1_v2.md](migrating_from_v1_v2.md) file for the mig
 
 Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for the list of supported modules in `netscaler.adc` collection.
 
-## Todo list for `netscaler.adc` collection
+## Todo list for the `netscaler.adc` collection
 
 - [x] Support for `nitro_auth_token` parameter in all modules.
 - [x] Update supported matrix to have documentation links
