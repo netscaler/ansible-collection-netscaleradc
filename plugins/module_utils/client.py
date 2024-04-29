@@ -21,10 +21,11 @@ from .logger import log
 
 
 class NitroAPIClient(object):
-    def __init__(self, module):
+    def __init__(self, module, resource_name):
         self._module = module
         self.check_mode = module.check_mode  # Dry run mode
         self.api_path = self._module.params.get("api_path")
+        self.resource_name = resource_name
 
         # Prepare the http headers according to module arguments
         self._headers = {}
@@ -46,9 +47,13 @@ class NitroAPIClient(object):
         elif have_userpass:
             self._headers["X-NITRO-USER"] = self._module.params["nitro_user"]
             self._headers["X-NITRO-PASS"] = self._module.params["nitro_pass"]
+        elif self.resource_name in {"login", "change_password"}:
+            # Do not set any authentication headers for the `login` resource
+            pass
         else:
             self._module.fail_json(
-                msg="Either `nitro_auth_token` or `nitro_user/nitro_pass` must be given for authentication"
+                msg="Either `nitro_auth_token` or `nitro_user/nitro_pass` must be given for authentication for the resource %s"
+                % self.resource_name
             )
 
         # Do header manipulation when using NetScaler Console (ADM) as proxy
