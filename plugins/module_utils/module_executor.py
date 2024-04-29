@@ -132,7 +132,7 @@ class ModuleExecutor(object):
         }:
             self.module.params["api_path"] = "nitro/v2/config"
 
-        self.client = NitroAPIClient(self.module)
+        self.client = NitroAPIClient(self.module, self.resource_name)
         self.ns_major_version, self.ns_minor_version = get_netscaler_version(
             self.client
         )
