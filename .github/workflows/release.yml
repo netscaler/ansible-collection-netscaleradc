@@ -5,7 +5,7 @@ on:
     types: [published]
 jobs:
   release:
-    uses: ansible/devtools/.github/workflows/release_collection.yml@main
+    uses: ansible/team-devtools/.github/workflows/release_collection.yml@main
     with:
       environment: release
     secrets:
