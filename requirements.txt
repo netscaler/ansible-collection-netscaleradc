@@ -8,3 +8,4 @@ sphinx
 sphinx-ansible-theme
 galaxy-importer==0.5.0
 ansible-core>=2.15.0
+requests==2.32.0
