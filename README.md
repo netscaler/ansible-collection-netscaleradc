@@ -136,7 +136,7 @@ Also, refer to the [playbook_anatomy.md](playbook_anatomy.md#netscaler-console-a
 
 ## Supported Ansible Versions
 
-This collection is tested for Ansible version 2.14 and above.
+This collection is supported for ansible-core version 2.15 and above.
 
 > Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> if you face any issues with the collection.
 

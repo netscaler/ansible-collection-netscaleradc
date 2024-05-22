@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Updated minimum supported ansible-core version to 2.15 as AAP 2.3 aproaches its EoL ([#364])
+
 ## [2.6.1] - 2024-04-29
 
 ### Fixed
@@ -165,6 +169,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#353]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/353
 [#360]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/360
 [#362]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/362
+[#364]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/364
 [#365]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/365
 [#367]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/367
 [#377]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/377
