@@ -154,6 +154,10 @@ Refer to the [migrating_from_v1_v2.md](migrating_from_v1_v2.md) file for the mig
 
 Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for the list of supported modules in `netscaler.adc` collection.
 
+## SSH connection module
+
+Refer https://github.com/netscaler/ansible-collection-netscaleradc/issues/309
+
 ## Todo list for the `netscaler.adc` collection
 
 - [x] Support for `nitro_auth_token` parameter in all modules.
@@ -161,7 +165,7 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 - [x] Add appropriate license to the collection.
 - [x] Upload the collection to Ansible Galaxy.
 - [x] Support configuring ADC with ADM as proxy. Refer to [NetScaler ADM as an API proxy server](https://docs.netscaler.com/en-us/citrix-application-delivery-management-software/current-release/adm-as-api-proxy-server.html) for more details.
-- [ ] Implement SSH connection module
+- [ ] Implement SSH connection module - Refer https://github.com/netscaler/ansible-collection-netscaleradc/issues/309
 - [ ] Support for generic modules similar to `citrix.adc.nitro_request` and `citrix.adc.nitro_resource`?
 - [ ] migration tool to convert `citrix.adc` playbooks (including generic `citrix.adc.nitro_request` and `citrix.adc.nitro_resource` modules) to `netscaler.adc` modules
 - [ ] Add more examples
