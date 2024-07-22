@@ -5,8 +5,8 @@ name: Bug report
 description: Create a report to help us improve
 title: "[Bug]: "
 labels: ["bug", "triage"]
-assignees:
-  - sumanth-lingappa
+# assignees:
+#   - 
 projects: ["netscaler/1"]
 body:
   - type: markdown
