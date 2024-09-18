@@ -672,7 +672,10 @@ class ModuleExecutor(object):
             if to_be_added_bindprimary_keys:
                 self.add_bindings(
                     binding_name=binding_name,
-                    desired_bindings=desired_binding_members,
+                    desired_bindings=[
+                        x for x in desired_binding_members
+                        if x[get_bindprimary_key(binding_name, x)] in to_be_added_bindprimary_keys
+                    ],
                 )
 
             # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
