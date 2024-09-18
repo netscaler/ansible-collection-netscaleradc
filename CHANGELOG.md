@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.6.2] - 2024-09-18
+
+### Fixed
+
+- Ensure to_be_added_bindprimary_keys targets only the correct binding members ([#457])
+
 ## [2.6.1] - 2024-04-29
 
 ### Fixed
@@ -169,3 +175,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#367]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/367
 [#377]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/377
 [#400]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/400
+[#457]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/457
