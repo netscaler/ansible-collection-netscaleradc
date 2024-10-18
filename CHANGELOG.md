@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Ensure to_be_added_bindprimary_keys targets only the correct binding members ([#457])
+- Ensure to_be_added_bindprimary_keys targets only the correct binding members ([#462])
 
 ## [2.6.1] - 2024-04-29
 
