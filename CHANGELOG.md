@@ -175,4 +175,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#367]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/367
 [#377]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/377
 [#400]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/400
-[#457]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/457
+[#462]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/462
