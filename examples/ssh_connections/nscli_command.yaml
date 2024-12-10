@@ -1,0 +1,25 @@
+---
+- name: Run nscli command
+  hosts: demo_netscalers
+  remote_user: nsroot
+  connection: netscaler.adc.ssh_netscaler_adc
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /var/python/bin/python
+
+    # Any valid nscli command works
+    nscli_command: "show ns ip"
+
+
+  tasks:
+    - name: Run nscli command
+      ansible.builtin.command: "nscli -s -U :nsroot:{{ nitro_pass }} {{ nscli_command }}"
+      no_log: true
+      changed_when: false
+      register: nscli_output
+
+    # Actually insecure for production environments since it will show the nitro_pass variable value.
+    # Used here for demonstration purposes only.
+    - name: Show nscli output
+      ansible.builtin.debug:
+        msg: "{{ nscli_output }}"
