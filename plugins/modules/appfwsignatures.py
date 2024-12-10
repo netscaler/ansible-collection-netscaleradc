@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwsignatures
 short_description: Configuration for application firewall signatures XML configuration
   resource.
@@ -24,6 +25,7 @@ description: Configuration for application firewall signatures XML configuration
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -119,6 +121,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwsignatures playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwsignatures
+      delegate_to: localhost
+      netscaler.adc.appfwsignatures:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        src: http://10.217.30.16/test_sigs/v13/sigs/sig-r11.1b0v13s6_enabled.xml
+        name: Space caps
+        nitro_operation: import
+        '#nitro_operation': import
 """
 
 RETURN = r"""

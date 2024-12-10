@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsmxrec
 short_description: Configuration for MX record resource.
 description: Configuration for MX record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   domain:
-    type: raw
+    type: str
     description:
       - Domain name for which to add the MX record.
   ecssubnet:
@@ -47,7 +49,7 @@ options:
     description:
       - Subnet for which the cached MX record need to be removed.
   mx:
-    type: raw
+    type: str
     description:
       - Host name of the mail exchange server.
   nodeid:
@@ -64,7 +66,7 @@ options:
         the mail server with the lowest priority number, and use other configured
         mail servers, in priority order, as backups.
   ttl:
-    type: raw
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -90,6 +92,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsmxrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsmxrec
+      delegate_to: localhost
+      netscaler.adc.dnsmxrec:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        domain: n2.com
+        mx: mail.n1.com
+        pref: '23'
+        ttl: 3601
 """
 
 RETURN = r"""

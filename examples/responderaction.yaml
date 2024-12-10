@@ -1,0 +1,17 @@
+---
+- name: Sample responderaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure responderaction
+      delegate_to: localhost
+      netscaler.adc.responderaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: LB_rsact1
+        type: respondwith
+        target: DIAMETER.NEW_ERROR_ANSWER + DIAMETER.NEW_AVP(263, DIAMETER.REQ.SESSION_ID.VALUE)
+          + DIAMETER.NEW_AVP_UNSIGNED32(268, 3002)

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: mapbmr
 short_description: Configuration for MAP-T Basic Mapping rule resource.
 description: Configuration for MAP-T Basic Mapping rule resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -102,6 +104,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample mapbmr playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure mapbmr
+      delegate_to: localhost
+      netscaler.adc.mapbmr:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: bmr1
+        ruleipv6prefix: 2001:db8:89ab::/48
 """
 
 RETURN = r"""

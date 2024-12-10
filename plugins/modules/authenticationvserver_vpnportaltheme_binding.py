@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationvserver_vpnportaltheme_binding
 short_description: Binding Resource definition for describing association between
   authenticationvserver and vpnportaltheme resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between auth
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -51,6 +53,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationvserver_vpnportaltheme_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver_vpnportaltheme_binding
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver_vpnportaltheme_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: Citrix_AAA_vServer
+        portaltheme: BX_Brand
 """
 
 RETURN = r"""

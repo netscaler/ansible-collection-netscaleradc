@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnappsprofile
 short_description: Configuration for LSN Application Profile resource.
 description: Configuration for LSN Application Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appsprofilename:
-    type: raw
+    type: str
     description:
       - 'Name for the LSN application profile. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -49,7 +51,7 @@ options:
         includes one or more spaces, enclose the name in double or single quotation
         marks (for example, "lsn application profile1" or ''lsn application profile1'').'
   filtering:
-    type: raw
+    type: str
     choices:
       - ENDPOINT-INDEPENDENT
       - ADDRESS-DEPENDENT
@@ -81,7 +83,7 @@ options:
         a specific external host requires that the subscriber first send packets first
         to that external IP address and port.'
   ippooling:
-    type: raw
+    type: str
     choices:
       - PAIRED
       - RANDOM
@@ -98,7 +100,7 @@ options:
       - ''
       - This parameter is applicable to dynamic NAT allocation only.
   l2info:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -106,7 +108,7 @@ options:
       - Enable l2info by creating natpcbs for LSN, which enables the Citrix ADC to
         use L2CONN/MBF with LSN.
   mapping:
-    type: raw
+    type: str
     choices:
       - ENDPOINT-INDEPENDENT
       - ADDRESS-DEPENDENT
@@ -132,7 +134,7 @@ options:
         sent from the same internal IP address and port (X:x) to the same external
         IP address and port (Y:y) while the mapping is still active.'
   tcpproxy:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -140,7 +142,7 @@ options:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the  TCP traffic
         by using Layer 4 features.
   td:
-    type: raw
+    type: float
     description:
       - 'ID of the traffic domain through which the Citrix ADC sends the outbound
         traffic after performing LSN. '
@@ -211,6 +213,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnappsprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnappsprofile
+      delegate_to: localhost
+      netscaler.adc.lsnappsprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        appsprofilename: icmp
+        transportprotocol: ICMP
+        mapping: ENDPOINT-INDEPENDENT
+        filtering: ENDPOINT-INDEPENDENT
+        l2info: ENABLED
 """
 
 RETURN = r"""

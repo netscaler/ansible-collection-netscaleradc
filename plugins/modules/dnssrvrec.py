@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnssrvrec
 short_description: Configuration for server record resource.
 description: Configuration for server record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   domain:
-    type: raw
+    type: str
     description:
       - Domain name, which, by convention, is prefixed by the symbolic name of the
         desired service and the symbolic name of the desired protocol, each with an
@@ -65,11 +67,11 @@ options:
         the higher the priority. If multiple target hosts have the same priority,
         selection is based on the Weight parameter.
   target:
-    type: raw
+    type: str
     description:
       - Target host for the specified service.
   ttl:
-    type: raw
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -100,6 +102,25 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnssrvrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnssrvrec
+      delegate_to: localhost
+      netscaler.adc.dnssrvrec:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        domain: http2.abc.com
+        target: target
+        priority: '23'
+        weight: '23'
+        port: '23'
+        ttl: 3601
 """
 
 RETURN = r"""

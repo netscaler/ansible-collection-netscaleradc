@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaagroup_vpnsessionpolicy_binding
 short_description: Binding Resource definition for describing association between
   aaagroup and vpnsessionpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between aaag
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -72,6 +74,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaagroup_vpnsessionpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaagroup_vpnsessionpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.aaagroup_vpnsessionpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        groupname: External
+        policy: External_receiver_session_pol
+        priority: '110'
+        gotopriorityexpression: NEXT
 """
 
 RETURN = r"""

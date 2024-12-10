@@ -1,0 +1,20 @@
+---
+- name: Sample appflowglobal_appflowpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appflowglobal_appflowpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.appflowglobal_appflowpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: ia_appflowpol12
+        priority: '42'
+        gotopriorityexpression: end
+        type: REQ_OVERRIDE
+        invoke: true
+        labeltype: vserver
+        labelname: cs_invoke1

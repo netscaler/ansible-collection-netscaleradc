@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpcommunity
 short_description: Configuration for community resource.
 description: Configuration for community resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -61,6 +63,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample snmpcommunity playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure snmpcommunity
+      delegate_to: localhost
+      netscaler.adc.snmpcommunity:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        communityname: HP5U7#mmTW2&Yi48
+        permissions: ALL
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: autoscalepolicy
 short_description: Configuration for Autoscale policy resource.
 description: Configuration for Autoscale policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,19 +41,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: raw
+    type: str
     description:
       - The autoscale profile associated with the policy.
   comment:
-    type: raw
+    type: str
     description:
       - Comments associated with this autoscale policy.
   logaction:
-    type: raw
+    type: str
     description:
       - The log action associated with the autoscale policy
   name:
-    type: raw
+    type: str
     description:
       - The name of the autoscale policy.
   newname:
@@ -59,7 +61,7 @@ options:
     description:
       - The new name of the autoscale policy.
   rule:
-    type: raw
+    type: str
     description:
       - The rule associated with the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

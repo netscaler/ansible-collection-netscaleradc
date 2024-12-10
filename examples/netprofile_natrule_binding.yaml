@@ -1,0 +1,17 @@
+---
+- name: Sample netprofile_natrule_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure netprofile_natrule_binding
+      delegate_to: localhost
+      netscaler.adc.netprofile_natrule_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: np101
+        natrule: 11.0.0.0
+        netmask: 255.255.255.0
+        rewriteip: 12.0.0.0

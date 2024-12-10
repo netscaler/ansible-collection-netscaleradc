@@ -1,0 +1,18 @@
+---
+- name: Sample vpnvserver_appflowpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_appflowpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_appflowpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: portal.bx.com
+        policy: af_policy_act_log_10.189.64.10
+        priority: '255'
+        gotopriorityexpression: END
+        bindpoint: ICA_REQUEST

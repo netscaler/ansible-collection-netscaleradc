@@ -1,0 +1,16 @@
+---
+- name: Sample vpnsessionpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnsessionpolicy
+      delegate_to: localhost
+      netscaler.adc.vpnsessionpolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: External_receiver_session_pol
+        rule: HTTP.REQ.HEADER("User-Agent").CONTAINS("CitrixReceiver")
+        action: External_receiver_session_prof

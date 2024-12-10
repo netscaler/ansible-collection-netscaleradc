@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcertfile
 short_description: Configuration for Imported Certfile resource.
 description: Configuration for Imported Certfile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -50,37 +52,14 @@ options:
       - URL specifying the protocol, host, and path, including file name, to the certificate
         file to be imported. For example, http://www.example.com/cert_file.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
-        that requires client certificate authentication for access.'
+        that requires client certificate authentication for access, and the issuer
+        certificate of the HTTPS server is not present in the specific path on NetScaler
+        to authenticate the HTTPS server.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
----
-- name: Sample Playbook
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Sample Task | Copy certfile to netscaler
-      delegate_to: localhost
-      netscaler.adc.systemfile:
-        state: present
-        filecontent: "{{ lookup('file', '../tests/data/test-certfile.crt') | b64encode
-          }}"
-        filelocation: /var/tmp/
-        filename: test-certfile.crt
-    - name: Sample Task | import sslcertfile
-      delegate_to: localhost
-      netscaler.adc.sslcertfile:
-        state: imported
-        name: ansible-test.crt
-        src: local:test-certfile.crt  # `local:` means `/var/tmp/` in netscaler
-        # src: http://10.06.10.10:8000/test-certfile.crt
-    - name: Sample Task | remove sslcertfile
-      delegate_to: localhost
-      netscaler.adc.sslcertfile:
-        state: absent
-        name: ansible-test.crt
 """
 
 RETURN = r"""

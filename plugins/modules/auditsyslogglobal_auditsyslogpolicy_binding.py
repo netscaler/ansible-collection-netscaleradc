@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditsyslogglobal_auditsyslogpolicy_binding
 short_description: Binding Resource definition for describing association between
   auditsyslogglobal and auditsyslogpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between audi
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -107,12 +109,9 @@ options:
       - SYSTEM
       - RISE
       - FEO
-      - LSN
-      - LargeScaleNAT
       - RDPProxy
       - Rep
       - Reputation
-      - URLFiltering
       - VideoOptimization
       - ForwardProxy
       - SSLInterception
@@ -146,6 +145,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditsyslogglobal_auditsyslogpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditsyslogglobal_auditsyslogpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.auditsyslogglobal_auditsyslogpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: sys_pol_name
+        priority: '11'
 """
 
 RETURN = r"""

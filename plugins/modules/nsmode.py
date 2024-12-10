@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsmode
 short_description: Configuration for ns mode resource.
 description: Configuration for ns mode resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -63,6 +65,7 @@ options:
       - RISE_APBR
       - RISE_RHI
       - BridgeBPDUs
+      - SINGLE_IP
       - ULFD
     description:
       - Mode to be enabled. Multiple modes can be specified by providing a blank space

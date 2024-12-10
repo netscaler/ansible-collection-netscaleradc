@@ -1,17 +1,16 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample netprofile playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Add IPSet
-      delegate_to: localhost
-      netscaler.adc.ipset:
-        state: present
-        name: ipset-001
-    - name: Sample Task | netProfile
+    - name: Configure netprofile
       delegate_to: localhost
       netscaler.adc.netprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        name: netprofile-001
-        srcip: ipset-001
-        mbf: DISABLED
+        name: tets_netprofile_dns
+        srcip: 10.189.130.20
+        mbf: ENABLED

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: mapdmr
 short_description: Configuration for MAP-T Default Mapping rule resource.
 description: Configuration for MAP-T Default Mapping rule resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -62,6 +64,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample mapdmr playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure mapdmr
+      delegate_to: localhost
+      netscaler.adc.mapdmr:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: dmr1
+        bripv6prefix: 2001:db8::/64
 """
 
 RETURN = r"""

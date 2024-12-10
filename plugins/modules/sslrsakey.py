@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslrsakey
 short_description: Configuration for RSA key resource.
 description: Configuration for RSA key resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -86,14 +88,25 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Create ssl rsakey intermediate_cert
-  delegate_to: localhost
-  netscaler.adc.sslrsakey:
-    state: created
-    keyfile: certname.key
-    bits: 2048
-    exponent: F4
-    keyform: PEM
+---
+- name: Sample sslrsakey playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslrsakey
+      delegate_to: localhost
+      netscaler.adc.sslrsakey:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        keyfile: ssl_rsa_der_key
+        bits: '2048'
+        exponent: '3'
+        keyform: DER
+        nitro_operation: create
+        '#nitro_operation': create
 """
 
 RETURN = r"""

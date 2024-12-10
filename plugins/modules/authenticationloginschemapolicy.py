@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationloginschemapolicy
 short_description: Configuration for 0 resource.
 description: Configuration for 0 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,15 +51,15 @@ options:
         then resend the request if desired.'
       - '* DROP - Drop the request without sending a response to the user.'
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the LoginSchema policy. This is used for selecting parameters for
         user logon. Must begin with an ASCII alphanumeric or underscore (_) character,
@@ -93,7 +95,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in
@@ -103,6 +105,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationloginschemapolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationloginschemapolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationloginschemapolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: second_factor_schema
+        rule: 'true'
+        action: second_factor_schema_action
 """
 
 RETURN = r"""

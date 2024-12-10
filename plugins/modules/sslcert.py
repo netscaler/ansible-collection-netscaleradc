@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcert
 short_description: Configuration for cerificate resource.
 description: Configuration for cerificate resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -170,21 +172,30 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Create ssl cert certname.cert
-  delegate_to: localhost
-  netscaler.adc.sslcert:
-    state: created
-    certfile: certname.cert
-    reqfile: certname.csr
-    keyform: PEM
-    days: 1480
-    certform: PEM
-    cacert: root_cert.cert
-    cacertform: PEM
-    cakey: root_cert.key
-    cakeyform: PEM
-    caserial: root_cert.srl
-    certtype: SRVR_CERT
+---
+- name: Sample sslcert playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcert
+      delegate_to: localhost
+      netscaler.adc.sslcert:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        certfile: ssl_rsa_der_cert
+        reqfile: ssl_rsa_der_csr
+        certtype: ROOT_CERT
+        keyfile: ssl_rsa_der_key
+        keyform: DER
+        days: '3650'
+        certform: DER
+        cacertform: PEM
+        cakeyform: PEM
+        nitro_operation: create
+        '#nitro_operation': create
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rsskeytype
 short_description: Configuration for RSS key type resource.
 description: Configuration for RSS key type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -47,13 +49,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample rsskeytype playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | rsskeytype
+    - name: Configure rsskeytype
       delegate_to: localhost
       netscaler.adc.rsskeytype:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
         rsstype: ASYMMETRIC
 """

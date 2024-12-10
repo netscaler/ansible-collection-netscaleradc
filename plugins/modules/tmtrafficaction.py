@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tmtrafficaction
 short_description: Configuration for TM traffic action resource.
 description: Configuration for TM traffic action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,7 +46,7 @@ options:
       - Time interval, in minutes, of user inactivity after which the connection is
         closed.
   forcedtimeout:
-    type: raw
+    type: str
     choices:
       - START
       - STOP
@@ -68,11 +70,11 @@ options:
       - Initiate logout for the traffic management (TM) session if the policy evaluates
         to true. The session is then terminated after two minutes.
   kcdaccount:
-    type: raw
+    type: str
     description:
       - Kerberos constrained delegation account name
   name:
-    type: raw
+    type: str
     description:
       - Name for the traffic action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -83,11 +85,11 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   passwdexpression:
-    type: raw
+    type: str
     description:
       - expression that will be evaluated to obtain password for SingleSignOn
   persistentcookie:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -107,7 +109,7 @@ options:
     description:
       - Use single sign-on for the resource that the user is accessing now.
   userexpression:
-    type: raw
+    type: str
     description:
       - expression that will be evaluated to obtain username for SingleSignOn
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -115,6 +117,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample tmtrafficaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmtrafficaction
+      delegate_to: localhost
+      netscaler.adc.tmtrafficaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: kcd_sso1
+        sso: 'ON'
+        userexpression: AAA.USER.NAME
+        passwdexpression: AAA.USER.PASSWD
 """
 
 RETURN = r"""

@@ -1,11 +1,15 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample appfwxmlcontenttype playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | appfwXMLContentType
+    - name: Configure appfwxmlcontenttype
       delegate_to: localhost
       netscaler.adc.appfwxmlcontenttype:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        xmlcontenttypevalue: .*/xml
-        isregex: REGEX
+        xmlcontenttypevalue: END
+        isregex: NOTREGEX

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: gslbservice
 short_description: Configuration for GSLB service resource.
 description: Configuration for GSLB service resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,14 +41,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging appflow flow information
   cip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -55,7 +57,7 @@ options:
         stores the client's IP address. Client IP header insertion is used in connection-proxy
         based site persistence.
   cipheader:
-    type: raw
+    type: str
     description:
       - Name for the HTTP header that stores the client's IP address. Used with the
         Client IP option. If client IP header insertion is enabled on the service
@@ -72,7 +74,7 @@ options:
     description:
       - Canonical name of the GSLB service. Used in CNAME-based GSLB.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments that you might want to associate with the GSLB service.
   cookietimeout:
@@ -81,7 +83,7 @@ options:
       - Timeout value, in minutes, for the cookie, when cookie based site persistence
         is enabled.
   downstateflush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -91,12 +93,12 @@ options:
         complete their transactions. Applicable if connection proxy based site persistence
         is used.
   hashid:
-    type: raw
+    type: float
     description:
       - Unique hash identifier for the GSLB service, used by hash based load balancing
         methods.
   healthmonitor:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -113,20 +115,20 @@ options:
     description:
       - The new IP address of the service.
   maxaaausers:
-    type: raw
+    type: float
     description:
       - Maximum number of SSL VPN users that can be logged on concurrently to the
         VPN virtual server that is represented by this GSLB service. A GSLB service
         whose user count reaches the maximum is not considered when a GSLB decision
         is made, until the count drops below the maximum.
   maxbandwidth:
-    type: raw
+    type: float
     description:
       - Integer specifying the maximum bandwidth allowed for the service. A GSLB service
         whose bandwidth reaches the maximum is not considered when a GSLB decision
         is made, until its bandwidth consumption drops below the maximum.
   maxclient:
-    type: raw
+    type: float
     description:
       - The maximum number of open connections that the service can support at any
         given time. A GSLB service whose connection count reaches the maximum is not
@@ -137,33 +139,33 @@ options:
     description:
       - Name of the monitor to bind to the service.
   monthreshold:
-    type: raw
+    type: float
     description:
       - Monitoring threshold value for the GSLB service. If the sum of the weights
         of the monitors that are bound to this GSLB service and are in the UP state
         is not equal to or greater than this threshold value, the service is marked
         as DOWN.
   naptrdomainttl:
-    type: raw
+    type: float
     description:
       - Modify the TTL of the internally created naptr domain
   naptrorder:
-    type: raw
+    type: float
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
   naptrpreference:
-    type: raw
+    type: float
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
   naptrreplacement:
-    type: raw
+    type: str
     description:
       - The replacement domain name for this NAPTR.
   naptrservices:
-    type: raw
+    type: str
     description:
       - Service Parameters applicable to this delegation path.
   newname:
@@ -175,12 +177,12 @@ options:
     description:
       - Port on which the load balancing entity represented by this GSLB service listens.
   publicip:
-    type: raw
+    type: str
     description:
       - The public IP address that a NAT device translates to the GSLB service's private
         IP address. Optional.
   publicport:
-    type: raw
+    type: int
     description:
       - The public port associated with the GSLB service's public IP address. The
         port is mapped to the service's private port number. Applicable to the local
@@ -190,7 +192,7 @@ options:
     description:
       - Name of the server hosting the GSLB service.
   servicename:
-    type: raw
+    type: str
     description:
       - Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -227,7 +229,7 @@ options:
     description:
       - Name of the GSLB site to which the service belongs.
   sitepersistence:
-    type: raw
+    type: str
     choices:
       - ConnectionProxy
       - HTTPRedirect
@@ -235,7 +237,7 @@ options:
     description:
       - Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.
   siteprefix:
-    type: raw
+    type: str
     description:
       - The site's prefix string. When the service is bound to a GSLB virtual server,
         a GSLB site domain is generated internally for each bound service-domain pair
@@ -369,6 +371,30 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample gslbservice playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbservice
+      delegate_to: localhost
+      netscaler.adc.gslbservice:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        servicename: GSLB_SVC_USE2_storefront.blackstone.com
+        ip: 10.76.126.10
+        servicetype: SSL
+        port: 443
+        publicip: 10.76.126.10
+        publicport: 443
+        maxclient: '0'
+        sitename: GSLB_Site_USE2
+        clttimeout: 180
+        svrtimeout: 360
+        downstateflush: ENABLED
 """
 
 RETURN = r"""

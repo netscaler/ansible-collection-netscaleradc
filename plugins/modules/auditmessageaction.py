@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditmessageaction
 short_description: Configuration for message action resource.
 description: Configuration for message action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bypasssafetycheck:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -69,14 +71,14 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
   logtonewnslog:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Send the message to the new nslog.
   name:
-    type: raw
+    type: str
     description:
       - Name of the audit message action. Must begin with a letter, number, or the
         underscore character (_), and must contain only letters, numbers, and the
@@ -95,6 +97,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditmessageaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditmessageaction
+      delegate_to: localhost
+      netscaler.adc.auditmessageaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: sample
+        loglevel: INFORMATIONAL
+        stringbuilderexpr: client.ip.src
 """
 
 RETURN = r"""

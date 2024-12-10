@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appflowpolicy
 short_description: Configuration for AppFlow policy resource.
 description: Configuration for AppFlow policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,11 +45,11 @@ options:
     description:
       - Name of the action to be associated with this policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments about this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -81,7 +83,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: raw
+    type: str
     description:
       - Name of the appflow action to be associated with this policy when an undef
         event occurs.
@@ -115,6 +117,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appflowpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appflowpolicy
+      delegate_to: localhost
+      netscaler.adc.appflowpolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: af_policy_act_log_10.189.64.10
+        rule: 'true'
+        action: af_action_log_10.189.64.10_nop
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vrid6
 short_description: Configuration for Virtual Router ID for IPv6 resource.
 description: Configuration for Virtual Router ID for IPv6 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,17 +45,17 @@ options:
     description:
       - Remove all configured VMAC6 addresses from the Citrix ADC.
   id:
-    type: raw
+    type: float
     description:
       - Integer value that uniquely identifies a VMAC6 address.
   ownernode:
-    type: raw
+    type: float
     description:
       - In a cluster setup, assign a cluster node as the owner of this VMAC address
         for IP based VRRP configuration. If no owner is configured, ow ner node is
         displayed as ALL and one node is dynamically elected as the owner.
   preemption:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -65,18 +67,18 @@ options:
         master, the backup VIP address remains master until the original master VIP''s
         priority becomes higher than that of the current master.'
   preemptiondelaytimer:
-    type: raw
+    type: float
     description:
       - Preemption delay time in seconds, in an active-active configuration. If any
         high priority node will come in network, it will wait for these many seconds
         before becoming master.
   priority:
-    type: raw
+    type: float
     description:
       - Base priority (BP), in an active-active mode configuration, which ordinarily
         determines the master VIP address.
   sharing:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -84,12 +86,12 @@ options:
       - In an active-active mode configuration, enable the backup VIP address to process
         any traffic instead of dropping it.
   trackifnumpriority:
-    type: raw
+    type: float
     description:
       - Priority by which the Effective priority will be reduced if any of the tracked
         interfaces goes down in an active-active configuration.
   tracking:
-    type: raw
+    type: str
     choices:
       - NONE
       - ONE
@@ -190,6 +192,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vrid6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vrid6
+      delegate_to: localhost
+      netscaler.adc.vrid6:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        id: '13'
 """
 
 RETURN = r"""

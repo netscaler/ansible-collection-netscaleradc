@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnurlaction
 short_description: Configuration for VPN url action resource.
 description: Configuration for VPN url action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,7 +45,7 @@ options:
     description:
       - Web address for the bookmark link.
   applicationtype:
-    type: raw
+    type: str
     choices:
       - CVPN
       - VPN
@@ -51,7 +53,7 @@ options:
     description:
       - The type of application this C(VPN) URL represents. Possible values are C(CVPN)/C(SaaS)/C(VPN)
   clientlessaccess:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -61,11 +63,11 @@ options:
         based session. Allows single sign-on and other HTTP processing on NetScaler
         Gateway for HTTPS resources.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments associated with the bookmark link.
   iconurl:
-    type: raw
+    type: str
     description:
       - URL to fetch icon file for displaying this resource.
   linkname:
@@ -73,7 +75,7 @@ options:
     description:
       - Description of the bookmark link. The description appears in the Access Interface.
   name:
-    type: raw
+    type: str
     description:
       - Name of the bookmark link.
   newname:
@@ -88,11 +90,11 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my vpnurl action" or 'my vpnurl action').
   samlssoprofile:
-    type: raw
+    type: str
     description:
       - Profile to be used for doing SAML SSO
   ssotype:
-    type: raw
+    type: str
     choices:
       - unifiedgateway
       - selfauth
@@ -100,7 +102,7 @@ options:
     description:
       - Single sign on type for unified gateway
   vservername:
-    type: raw
+    type: str
     description:
       - Name of the associated vserver to handle selfAuth SSO
 extends_documentation_fragment: netscaler.adc.netscaler_adc

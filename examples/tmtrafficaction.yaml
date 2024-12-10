@@ -1,0 +1,17 @@
+---
+- name: Sample tmtrafficaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmtrafficaction
+      delegate_to: localhost
+      netscaler.adc.tmtrafficaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: kcd_sso1
+        sso: 'ON'
+        userexpression: AAA.USER.NAME
+        passwdexpression: AAA.USER.PASSWD

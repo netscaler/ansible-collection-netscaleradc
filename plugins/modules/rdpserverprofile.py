@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rdpserverprofile
 short_description: Configuration for RDP serverprofile resource.
 description: Configuration for RDP serverprofile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,23 +41,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: raw
+    type: str
     description:
       - The name of the rdp server profile
   psk:
-    type: raw
+    type: str
     description:
       - Pre shared key value
   rdpip:
-    type: raw
+    type: str
     description:
       - IPv4 or IPv6 address of RDP listener. This terminates client RDP connections.
   rdpport:
-    type: raw
+    type: float
     description:
       - TCP port on which the RDP connection is established.
   rdpredirection:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -68,6 +70,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rdpserverprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rdpserverprofile
+      delegate_to: localhost
+      netscaler.adc.rdpserverprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: rdp_s3
+        rdpip: 12.12.12.12
+        psk: test12
 """
 
 RETURN = r"""

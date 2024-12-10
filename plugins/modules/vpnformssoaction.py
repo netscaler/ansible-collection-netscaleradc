@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnformssoaction
 short_description: Configuration for Form sso action resource.
 description: Configuration for Form sso action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,17 +45,17 @@ options:
     description:
       - Root-relative URL to which the completed form is submitted.
   name:
-    type: raw
+    type: str
     description:
       - Name for the form based single sign-on profile.
   namevaluepair:
-    type: raw
+    type: str
     description:
       - Other name-value pair attributes to send to the server, in addition to sending
         the user name and password. Value names are separated by an ampersand (&),
         such as in name1=value1&name2=value2.
   nvtype:
-    type: raw
+    type: str
     choices:
       - STATIC
       - DYNAMIC
@@ -66,7 +68,7 @@ options:
     description:
       - Name of the form field in which the user types in the password.
   responsesize:
-    type: raw
+    type: float
     description:
       - Maximum number of bytes to allow in the response size. Specifies the number
         of bytes in the response to be parsed for extracting the forms.
@@ -76,7 +78,7 @@ options:
       - Expression that defines the criteria for SSO success. Expression such as checking
         for cookie in the response is a common example.
   submitmethod:
-    type: raw
+    type: str
     choices:
       - GET
       - POST
@@ -92,6 +94,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnformssoaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnformssoaction
+      delegate_to: localhost
+      netscaler.adc.vpnformssoaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: ia_ssoact1
+        actionurl: /owa/auth/owaauth.dll
+        userfield: user
+        passwdfield: freebsd
+        ssosuccessrule: HTTP.RES.IS_VALID
 """
 
 RETURN = r"""

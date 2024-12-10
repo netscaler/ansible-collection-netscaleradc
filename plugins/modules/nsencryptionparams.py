@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsencryptionparams
 short_description: Configuration for default encryption parameters resource.
 description: Configuration for default encryption parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -85,6 +87,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nsencryptionparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nsencryptionparams
+      delegate_to: localhost
+      netscaler.adc.nsencryptionparams:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        method: AES256
+        keyvalue: REQ_PASSWORD
 """
 
 RETURN = r"""

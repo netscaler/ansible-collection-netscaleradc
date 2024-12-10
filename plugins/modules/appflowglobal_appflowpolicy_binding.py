@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appflowglobal_appflowpolicy_binding
 short_description: Binding Resource definition for describing association between
   appflowglobal and appflowpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between appf
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -105,6 +107,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appflowglobal_appflowpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appflowglobal_appflowpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.appflowglobal_appflowpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: ia_appflowpol12
+        priority: '42'
+        gotopriorityexpression: end
+        type: REQ_OVERRIDE
+        invoke: true
+        labeltype: vserver
+        labelname: cs_invoke1
 """
 
 RETURN = r"""

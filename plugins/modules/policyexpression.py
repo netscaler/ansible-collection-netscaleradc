@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policyexpression
 short_description: Configuration for expression resource.
 description: Configuration for expression resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,17 +41,17 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clientsecuritymessage:
-    type: raw
+    type: str
     description:
       - Message to display if the expression fails. Allowed for classic end-point
         check expressions only.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments associated with the expression. Displayed upon viewing the policy
         expression.
   name:
-    type: raw
+    type: str
     description:
       - Unique name for the expression. Not case sensitive. Must begin with an ASCII
         letter or underscore (_) character, and must consist only of ASCII alphanumeric
@@ -73,6 +75,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policyexpression playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policyexpression
+      delegate_to: localhost
+      netscaler.adc.policyexpression:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: Sub_1471612160_23
+        value: CLIENT.IP.SRC.IN_SUBNET(147.161.216.0/23)
 """
 
 RETURN = r"""

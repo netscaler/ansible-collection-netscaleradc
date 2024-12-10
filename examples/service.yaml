@@ -1,49 +1,15 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample service playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | service
+    - name: Configure service
       delegate_to: localhost
       netscaler.adc.service:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        name: service-http
-        servicetype: HTTP
-        ipaddress: 172.18.0.4
-        port: 5000
-    - name: Sample Task | ipset-001
-      delegate_to: localhost
-      netscaler.adc.ipset:
-        state: present
-        name: ipset-001
-    - name: Sample Task | netProfile
-      delegate_to: localhost
-      netscaler.adc.netprofile:
-        state: present
-        name: test-netprofile
-        srcip: ipset-001
-        mbf: DISABLED
-    - name: Sample Task | lbmonitor | 3
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.lbmonitor:
-        state: present
-        monitorname: test-monitor
-        type: TCP
-        interval: 15
-        retries: 20
-    - name: Setup services
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.service:
-        state: present
-        name: 10.123.123.123-tcp-12345
-        servicetype: TCP
-        ipaddress: 10.123.123.123
-        port: 12345
-        healthmonitor: "NO"
-        netprofile: test-netprofile
-        service_lbmonitor_binding:
-          binding_members:
-            - monitor_name: test-monitor
-              name: 10.123.123.123-tcp-12345
+        name: nshttpd-vpn-127.0.0.1-81
+        cip: ENABLED

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaaldapparams
 short_description: Configuration for LDAP parameter resource.
 description: Configuration for LDAP parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,64 +39,64 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authtimeout:
-    type: raw
+    type: float
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         LDAP server.
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   groupattrname:
-    type: raw
+    type: str
     description:
       - Attribute name used for group extraction from the LDAP server.
   groupnameidentifier:
-    type: raw
+    type: str
     description:
       - LDAP-group attribute that uniquely identifies the group. No two groups on
         one LDAP server can have the same group name identifier.
   groupsearchattribute:
-    type: raw
+    type: str
     description:
       - LDAP-group attribute that designates the parent group of the specified group.
         Use this attribute to search for a group's parent group.
   groupsearchfilter:
-    type: raw
+    type: str
     description:
       - Search-expression that can be specified for sending group-search requests
         to the LDAP server.
   groupsearchsubattribute:
-    type: raw
+    type: str
     description:
       - LDAP-group subattribute that designates the parent group of the specified
         group. Use this attribute to search for a group's parent group.
   ldapbase:
-    type: raw
+    type: str
     description:
       - Base (the server and location) from which LDAP search commands should start.
       - If the LDAP server is running locally, the default value of base is dc=netscaler,
         dc=com.
   ldapbinddn:
-    type: raw
+    type: str
     description:
       - Complete distinguished name (DN) string used for binding to the LDAP server.
   ldapbinddnpassword:
-    type: raw
+    type: str
     description:
       - Password for binding to the LDAP server.
   ldaploginname:
-    type: raw
+    type: str
     description:
       - Name attribute that the Citrix ADC uses to query the external LDAP server
         or an Active Directory.
   maxnestinglevel:
-    type: raw
+    type: float
     description:
       - Number of levels up to which the system can query nested LDAP groups.
   nestedgroupextraction:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -102,14 +104,14 @@ options:
       - Queries the external LDAP server to determine whether the specified group
         belongs to another group.
   passwdchange:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Accept password change requests.
   searchfilter:
-    type: raw
+    type: str
     description:
       - String to be combined with the default LDAP user search string to form the
         value to use when executing an LDAP search.
@@ -120,7 +122,7 @@ options:
         LDAP search string:'
       - '""(&(vpnallowed=true)(samaccount=bob)""'
   sectype:
-    type: raw
+    type: str
     choices:
       - PLAINTEXT
       - TLS
@@ -129,25 +131,25 @@ options:
       - Type of security used for communications between the Citrix ADC and the LDAP
         server. For the C(PLAINTEXT) setting, no encryption is required.
   serverip:
-    type: raw
+    type: str
     description:
       - IP address of your LDAP server.
   serverport:
-    type: raw
+    type: int
     description:
       - Port number on which the LDAP server listens for connections.
   ssonameattribute:
-    type: raw
+    type: str
     description:
       - Attribute used by the Citrix ADC to query an external LDAP server or Active
         Directory for an alternative username.
       - This alternative username is then used for single sign-on (SSO).
   subattributename:
-    type: raw
+    type: str
     description:
       - Subattribute name used for group extraction from the LDAP server.
   svrtype:
-    type: raw
+    type: str
     choices:
       - AD
       - NDS
@@ -158,6 +160,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaaldapparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaaldapparams
+      delegate_to: localhost
+      netscaler.adc.aaaldapparams:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        sectype: PLAINTEXT
 """
 
 RETURN = r"""

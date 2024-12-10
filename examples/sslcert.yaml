@@ -1,20 +1,24 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample sslcert playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | sslcert
+    - name: Configure sslcert
       delegate_to: localhost
       netscaler.adc.sslcert:
-        state: created
-        certfile: test1-sni.crt
-        reqfile: test1-sni.csr
-        certtype: SRVR_CERT
-        keyform: PEM
-        days: 1480
-        certform: PEM
-        cacert: ns-root.cert
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        certfile: ssl_rsa_der_cert
+        reqfile: ssl_rsa_der_csr
+        certtype: ROOT_CERT
+        keyfile: ssl_rsa_der_key
+        keyform: DER
+        days: '3650'
+        certform: DER
         cacertform: PEM
-        cakey: ns-root.key
         cakeyform: PEM
-        caserial: ns-root.srl
+        nitro_operation: create
+        '#nitro_operation': create

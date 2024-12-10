@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwpolicylabel
 short_description: Configuration for application firewall policy label resource.
 description: Configuration for application firewall policy label resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -89,6 +91,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwpolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwpolicylabel
+      delegate_to: localhost
+      netscaler.adc.appfwpolicylabel:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        labelname: appfw_label_02
+        policylabeltype: http_req
 """
 
 RETURN = r"""

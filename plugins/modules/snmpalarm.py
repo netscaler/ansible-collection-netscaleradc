@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpalarm
 short_description: Configuration for alarm resource.
 description: Configuration for alarm resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,7 +43,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   logging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -49,13 +51,13 @@ options:
       - Logging status of the alarm. When logging is enabled, the Citrix ADC logs
         every trap message that is generated for this alarm.
   normalvalue:
-    type: raw
+    type: float
     description:
       - Value for the normal threshold. A trap message is generated if the value of
         the respective attribute falls to or below this value after exceeding the
         high threshold.
   severity:
-    type: raw
+    type: str
     choices:
       - Critical
       - Major
@@ -71,13 +73,13 @@ options:
         level lower than the specified level (in the trap listener entry) are not
         sent.
   thresholdvalue:
-    type: raw
+    type: float
     description:
       - Value for the high threshold. The Citrix ADC generates an SNMP trap message
         when the value of the attribute associated with the alarm is greater than
         or equal to the specified high threshold value.
   time:
-    type: raw
+    type: float
     description:
       - 'Interval, in seconds, at which the Citrix ADC generates SNMP trap messages
         when the conditions specified in the SNMP alarm are met.Can be specified for
@@ -85,10 +87,10 @@ options:
         CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM, CLUSTER-VERSION-MISMATCH, CLUSTER-BKHB-FAILED,
         PORT-ALLOC-FAILED, COMPACT-FLASH-ERRORS, HARD-DISK-DRIVE-ERRORS and APPFW
         traps. Default trap time intervals: SYNFLOOD and APPFW traps = 1sec, PORT-ALLOC-FAILED
-        = 3600sec(1 hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), Other Traps = 86400sec(1
-        day)'
+        = 3600sec(1 hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), SYSLOG-CONNECTION-DROPPED
+        = 3600sec(1 hour), Other Traps = 86400sec(1 day)'
   trapname:
-    type: raw
+    type: str
     choices:
       - CPU-USAGE
       - AVERAGE-CPU
@@ -168,6 +170,14 @@ options:
       - APPFW-DEPLOY-RELAXATION-DP
       - APPFW-LEARNED-RULE-APPLIED-DYN-PROF
       - APPFW-CMD
+      - APPFW-SCHEMA-ENDPOINT-NOTFOUND
+      - APPFW-SCHEMA-METHOD-UNSUPPORTED
+      - APPFW-SCHEMA-PARAMETER-MISSING
+      - APPFW-SCHEMA-VALUE-INCORRECT
+      - APPFW-SCHEMA-CONTENTTYPE-UNSUPPORTED
+      - APPFW-SCHEMA-PARAMETER-INVALID
+      - APPFW-SCHEMA-OTHER
+      - APPFW-SCHEMA-RELAXATION-RULE
       - APPFW-POSTBODYLIMIT
       - APPFW-JSON-CMD
       - APPFW-SQL-GRAM
@@ -237,6 +247,13 @@ options:
       - KEK_UPDATE_FAILURE
       - ADC-ANOMALY
       - SYSLOG-CONNECTION-DROPPED
+      - NSROOT_PASSWORD_EXPIRY_WARNING
+      - DNSSEC-KEY-AUTOMGMT-STATUS-FAILURE
+      - DNSSEC-KEY-AUTOMGMT-STATUS-SUCCESS
+      - CLOUD-REST-API-FAILURE
+      - SSL-ASYM-CRYPTO-UTILIZATION
+      - SSL-SYM-CRYPTO-UTILIZATION
+      - INTERFACE-AUTO-RECOVERY
     description:
       - Name of the SNMP alarm. This parameter is required for identifying the SNMP
         alarm and cannot be modified.
@@ -245,6 +262,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample snmpalarm playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure snmpalarm
+      delegate_to: localhost
+      netscaler.adc.snmpalarm:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        trapname: SYSLOG-CONNECTION-DROPPED
+        time: 0
 """
 
 RETURN = r"""

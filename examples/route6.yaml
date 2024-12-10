@@ -1,0 +1,22 @@
+---
+- name: Sample route6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure route6
+      delegate_to: localhost
+      netscaler.adc.route6:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        network: 202::/64
+        gateway: fe80::1234
+        vlan: '23'
+        weight: '10'
+        distance: '10'
+        cost: '10'
+        advertise: ENABLED
+        msr: ENABLED
+        monitor: ia_mon1

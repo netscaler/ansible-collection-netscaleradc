@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rewritepolicy
 short_description: Configuration for rewrite policy resource.
 description: Configuration for rewrite policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -51,15 +53,15 @@ options:
         then resend the request if desired.'
       - '* DROP - Drop the request without sending a response to the user.'
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this rewrite policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the rewrite policy. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -93,7 +95,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in
@@ -128,6 +130,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rewritepolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewritepolicy
+      delegate_to: localhost
+      netscaler.adc.rewritepolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: rw_diam_pol
+        rule: diameter.req.avp(264).value.eq("host1.sayan1.net")
+        action: rw_act_insert_after_diameter_avp
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cmppolicy
 short_description: Configuration for compression policy resource.
 description: Configuration for compression policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -108,6 +110,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cmppolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmppolicy
+      delegate_to: localhost
+      netscaler.adc.cmppolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: Base_cmp_mypolicy3
+        rule: HTTP.RES.HEADER("Content-Type").CONTAINS("text")
+        resaction: Base_cmp_act1
 """
 
 RETURN = r"""

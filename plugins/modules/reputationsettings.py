@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: reputationsettings
 short_description: Configuration for Reputation service settings resource.
 description: Configuration for Reputation service settings resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,19 +39,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   proxypassword:
-    type: raw
+    type: str
     description:
       - Password with which user logs on.
   proxyport:
-    type: raw
+    type: float
     description:
       - Proxy server port.
   proxyserver:
-    type: raw
+    type: str
     description:
       - Proxy server IP to get Reputation data.
   proxyusername:
-    type: raw
+    type: str
     description:
       - Proxy Username
 extends_documentation_fragment: netscaler.adc.netscaler_adc

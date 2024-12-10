@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslservice_sslcipher_binding
 short_description: Binding Resource definition for describing association between
   sslservice and sslcipher resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between ssls
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -42,6 +44,11 @@ options:
     type: str
     description:
       - The cipher group/alias/individual cipher configuration.
+  cipherdefaulton:
+    type: float
+    description:
+      - Flag indicating whether the bound cipher was the DEFAULT cipher, bound at
+        boot time, or any other cipher from the CLI
   ciphername:
     type: str
     description:
@@ -60,6 +67,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslservice_sslcipher_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslservice_sslcipher_binding
+      delegate_to: localhost
+      netscaler.adc.sslservice_sslcipher_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        servicename: ssl
+        ciphername: AES-GCM
 """
 
 RETURN = r"""

@@ -1,11 +1,14 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample locationfile playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | sslcert
+    - name: Configure locationfile
       delegate_to: localhost
       netscaler.adc.locationfile:
-        state: imported
-        locationfile: my_file
-        src: local:my_location_file
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        locationfile: /var/netscaler/locdb/Citrix_Netscaler_InBuilt_GeoIP_DB_IPv4

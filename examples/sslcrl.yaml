@@ -1,0 +1,26 @@
+---
+- name: Sample sslcrl playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcrl
+      delegate_to: localhost
+      netscaler.adc.sslcrl:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        crlname: crl_test_ldap1
+        refresh: ENABLED
+        cacert: ssl_cacert
+        server: 2.2.2.10
+        method: LDAP
+        port: 389
+        basedn: cn=ldap_new_crl_pem,ou=dsd,o=ns,c=in
+        scope: Base
+        day: '23'
+        time: 00:01
+        binddn: cn=Manager,dc=netscaler,dc=com
+        password: free
+        binary: 'YES'

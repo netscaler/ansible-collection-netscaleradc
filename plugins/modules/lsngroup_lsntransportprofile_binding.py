@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsngroup_lsntransportprofile_binding
 short_description: Binding Resource definition for describing association between
   lsngroup and lsntransportprofile resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lsng
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -65,6 +67,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsngroup_lsntransportprofile_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsngroup_lsntransportprofile_binding
+      delegate_to: localhost
+      netscaler.adc.lsngroup_lsntransportprofile_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        groupname: group1
+        transportprofilename: icmp
 """
 
 RETURN = r"""

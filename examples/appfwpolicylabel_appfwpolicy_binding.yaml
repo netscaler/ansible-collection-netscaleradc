@@ -1,0 +1,19 @@
+---
+- name: Sample appfwpolicylabel_appfwpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwpolicylabel_appfwpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.appfwpolicylabel_appfwpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        labelname: appfw_label_01
+        policyname: ia_appfwpol1
+        priority: '1'
+        invoke: true
+        labeltype: policylabel
+        invoke_labelname: appfw_label_02

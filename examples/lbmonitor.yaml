@@ -1,37 +1,22 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample lbmonitor playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | lbmonitor
+    - name: Configure lbmonitor
       delegate_to: localhost
       netscaler.adc.lbmonitor:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        monitorname: ldns-dns
-        type: LDNS-DNS
-        query: .
-        querytype: Address
-        deviation: '0'
-        interval: 6
-        resptimeout: 3
-        downtime: 20
-    - name: Sample Task | lbmonitor | 2
-      delegate_to: localhost
-      netscaler.adc.lbmonitor:
-        state: present
-        monitorname: stasecure
-        type: CITRIX-STA-SERVICE
-        deviation: '0'
-        interval: 2
-        units3: MIN
-        resptimeout: 4
-        downtime: 5
-    - name: Sample Task | lbmonitor | 3
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.lbmonitor:
-        state: present
-        monitorname: test-monitor1
-        type: TCP
-        interval: 15
-        retries: 20
+        monitorname: Storefront
+        type: STOREFRONT
+        scriptname: nssf.pl
+        dispatcherip: 127.0.0.1
+        dispatcherport: 3013
+        lrtm: DISABLED
+        secure: 'YES'
+        storename: Store
+        storefrontcheckbackendservices: 'YES'

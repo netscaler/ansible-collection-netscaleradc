@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslvserver_ecccurve_binding
 short_description: Binding Resource definition for describing association between
   sslvserver and ecccurve resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between sslv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -46,6 +48,7 @@ options:
       - P_256
       - P_384
       - P_521
+      - X_25519
     description:
       - Named ECC curve bound to vserver/service.
   vservername:
@@ -57,6 +60,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslvserver_ecccurve_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslvserver_ecccurve_binding
+      delegate_to: localhost
+      netscaler.adc.sslvserver_ecccurve_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        vservername: dh
+        ecccurvename: P_521
 """
 
 RETURN = r"""

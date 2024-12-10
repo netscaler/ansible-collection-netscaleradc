@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsproxyrecords
 short_description: Configuration for proxy record resource.
 description: Configuration for proxy record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -67,15 +69,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
----
-- name: Sample Playbook for netscaler.adc.dnsproxyrecords
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Flush DNS Proxy records
-      delegate_to: localhost
-      netscaler.adc.dnsproxyrecords:
-        state: flushed
 """
 
 RETURN = r"""

@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationpolicylabel_authenticationpolicy_binding
 short_description: Binding Resource definition for describing association between
   authenticationpolicylabel and authenticationpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between auth
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -64,6 +66,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationpolicylabel_authenticationpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationpolicylabel_authenticationpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.authenticationpolicylabel_authenticationpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        labelname: LDAP_Userextraction_External
+        policyname: LDAP_userextraction_External_pol
+        priority: '100'
+        gotopriorityexpression: END
 """
 
 RETURN = r"""

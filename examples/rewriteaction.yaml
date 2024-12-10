@@ -1,0 +1,17 @@
+---
+- name: Sample rewriteaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewriteaction
+      delegate_to: localhost
+      netscaler.adc.rewriteaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: rw_act_insert_after_diameter_avp
+        type: insert_after
+        target: diameter.req.avp(345678)
+        stringbuilderexpr: diameter.new_avp(3110, "Sayan Inserted AVP")

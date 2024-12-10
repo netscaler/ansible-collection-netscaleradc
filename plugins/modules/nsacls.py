@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsacls
 short_description: Configuration for ACL entry resource.
 description: Configuration for ACL entry resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices: []
@@ -47,6 +49,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nsacls playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nsacls
+      delegate_to: localhost
+      netscaler.adc.nsacls:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        nitro_operation: apply
+        '#nitro_operation': apply
 """
 
 RETURN = r"""

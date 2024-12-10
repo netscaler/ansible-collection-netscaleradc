@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: transformpolicy
 short_description: Configuration for URL Transformation policy resource.
 description: Configuration for URL Transformation policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,15 +41,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this URL Transformation policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Log server to use to log connections that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the URL Transformation policy.
       - Must begin with a letter, number, or the underscore character (_), and must

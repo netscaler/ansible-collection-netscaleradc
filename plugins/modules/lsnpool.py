@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnpool
 short_description: Configuration for LSN pool resource.
 description: Configuration for LSN pool resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   maxportrealloctmq:
-    type: raw
+    type: float
     description:
       - Maximum number of ports for which the port reallocation timeout applies for
         each NAT IP address. In other words, the maximum deallocated-port queue size
@@ -84,7 +86,7 @@ options:
         together. Multiples LSN pools can be bound to an LSN group. A maximum of 16
         LSN pools can be bound to an LSN group.
   poolname:
-    type: raw
+    type: str
     description:
       - 'Name for the LSN pool. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -112,7 +114,7 @@ options:
       - For Deterministic NAT, this parameter is enabled by default, and you cannot
         disable it.
   portrealloctimeout:
-    type: raw
+    type: float
     description:
       - 'The waiting time, in seconds, between deallocating LSN NAT ports (when an
         LSN mapping is removed) and reallocating them for a new LSN session. This
@@ -154,6 +156,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnpool playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnpool
+      delegate_to: localhost
+      netscaler.adc.lsnpool:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        poolname: pool4
 """
 
 RETURN = r"""

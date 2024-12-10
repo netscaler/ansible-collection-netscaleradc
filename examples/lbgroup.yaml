@@ -1,0 +1,16 @@
+---
+- name: Sample lbgroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbgroup
+      delegate_to: localhost
+      netscaler.adc.lbgroup:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: webgrp
+        persistencetype: COOKIEINSERT
+        persistencebackup: SOURCEIP

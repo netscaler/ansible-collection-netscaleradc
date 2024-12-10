@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpntrafficaction
 short_description: Configuration for VPN traffic action resource.
 description: Configuration for VPN traffic action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -64,11 +66,11 @@ options:
     description:
       - Provide hdx proxy to the ICA traffic
   kcdaccount:
-    type: raw
+    type: str
     description:
       - Kerberos constrained delegation account name
   name:
-    type: raw
+    type: str
     description:
       - Name for the traffic action. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -79,11 +81,11 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   passwdexpression:
-    type: raw
+    type: str
     description:
       - expression that will be evaluated to obtain password for SingleSignOn
   proxy:
-    type: raw
+    type: str
     description:
       - IP address and Port of the proxy server to be used for HTTP access for this
         request.
@@ -109,11 +111,11 @@ options:
         \ the user credentials to be sent in plaintext which is not secure if the\
         \ server is running on HTTP (instead of HTTPS)."
   userexpression:
-    type: raw
+    type: str
     description:
       - expression that will be evaluated to obtain username for SingleSignOn
   wanscaler:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -124,6 +126,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpntrafficaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpntrafficaction
+      delegate_to: localhost
+      netscaler.adc.vpntrafficaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: ia_trafact1
+        qual: http
 """
 
 RETURN = r"""

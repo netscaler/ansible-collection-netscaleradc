@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: l2param
 short_description: Configuration for Layer 2 related parameter resource.
 description: Configuration for Layer 2 related parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bdggrpproxyarp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Set/reset proxy ARP in bridge group deployment
   bdgsetting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -53,28 +55,28 @@ options:
         independently. Otherwise, when L2 mode is ON, learned MAC entries on a PE
         will be broadcasted to all other PEs.
   bridgeagetimeout:
-    type: raw
+    type: float
     description:
       - Time-out value for the bridge table entries, in seconds. The new value applies
         only to the entries that are dynamically learned after the new value is set.
         Previously existing bridge table entries expire after the previously configured
         time-out value.
   garponvridintf:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send GARP messagess on VRID-configured interfaces upon failover
   garpreply:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Set/reset REPLY form of GARP
   macmodefwdmypkt:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -82,44 +84,44 @@ options:
       - Allows MAC mode vserver to pick and forward the packets even if it is destined
         to Citrix ADC owned VIP.
   maxbridgecollision:
-    type: raw
+    type: float
     description:
       - Maximum bridge collision for loop detection
   mbfinstlearning:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable instant learning of MAC changes in MBF mode.
   mbfpeermacupdate:
-    type: raw
+    type: float
     description:
       - When mbf_instant_learning is enabled, learn any changes in peer's MAC after
         this time interval, which is in 10ms ticks.
   proxyarp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Proxies the ARP as Citrix ADC MAC for FreeBSD.
   returntoethernetsender:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Return to ethernet sender.
   rstintfonhafo:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the reset interface upon HA failover.
   skipproxyingbsdtraffic:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -128,21 +130,21 @@ options:
         Enabled, source parameters are retained. Else proxy the source parameters
         based on next hop.
   stopmacmoveupdate:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Stop Update of server mac change to NAT sessions.
   usemymac:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use Citrix ADC MAC for all outgoing packets.
   usenetprofilebsdtraffic:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -155,6 +157,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample l2param playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure l2param
+      delegate_to: localhost
+      netscaler.adc.l2param:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        returntoethernetsender: ENABLED
 """
 
 RETURN = r"""

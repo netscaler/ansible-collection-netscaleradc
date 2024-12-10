@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: extendedmemoryparam
 short_description: Configuration for Parameter for extended memory used by LSN and
   Subscriber Store resource.
@@ -25,6 +26,7 @@ description: Configuration for Parameter for extended memory used by LSN and Sub
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   memlimit:
-    type: raw
+    type: float
     description:
       - Amount of Citrix ADC memory to reserve for the memory used by LSN and Subscriber
         Session Store feature, in multiples of 2MB.
@@ -52,6 +54,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample extendedmemoryparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure extendedmemoryparam
+      delegate_to: localhost
+      netscaler.adc.extendedmemoryparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        memlimit: 4380
 """
 
 RETURN = r"""

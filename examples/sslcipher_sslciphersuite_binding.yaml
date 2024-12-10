@@ -1,0 +1,16 @@
+---
+- name: Sample sslcipher_sslciphersuite_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcipher_sslciphersuite_binding
+      delegate_to: localhost
+      netscaler.adc.sslcipher_sslciphersuite_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        ciphergroupname: ssllabs-blackstone
+        ciphername: TLS1.2-DHE-RSA-AES256-GCM-SHA384
+        cipherpriority: '14'

@@ -1,0 +1,16 @@
+---
+- name: Sample cmppolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmppolicy
+      delegate_to: localhost
+      netscaler.adc.cmppolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: Base_cmp_mypolicy3
+        rule: HTTP.RES.HEADER("Content-Type").CONTAINS("text")
+        resaction: Base_cmp_act1

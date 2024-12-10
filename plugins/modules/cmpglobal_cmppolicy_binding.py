@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cmpglobal_cmppolicy_binding
 short_description: Binding Resource definition for describing association between
   cmpglobal and cmppolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between cmpg
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -127,6 +129,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cmpglobal_cmppolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmpglobal_cmppolicy_binding
+      delegate_to: localhost
+      netscaler.adc.cmpglobal_cmppolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: ns_adv_cmp_content_type
+        priority: '10000'
+        gotopriorityexpression: END
+        type: RES_DEFAULT
 """
 
 RETURN = r"""

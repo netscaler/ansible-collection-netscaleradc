@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwlearningsettings
 short_description: Configuration for learning settings resource.
 description: Configuration for learning settings resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,157 +39,157 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   contenttypeautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   contenttypeminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum threshold to learn Content Type information.
   contenttypepercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum threshold in percent to learn Content Type information.
   cookieconsistencyautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   cookieconsistencyminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn cookies.
   cookieconsistencypercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         cookie pattern for the learning engine to learn that cookie.
   creditcardnumberminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum threshold to learn Credit Card information.
   creditcardnumberpercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum threshold in percent to learn Credit Card information.
   crosssitescriptingautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   crosssitescriptingminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn HTML cross-site scripting patterns.
   crosssitescriptingpercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         cross-site scripting pattern for the learning engine to learn that cross-site
         scripting pattern.
   csrftagautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   csrftagminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn cross-site request forgery (CSRF) tags.
   csrftagpercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         CSRF tag for the learning engine to learn that CSRF tag.
   fieldconsistencyautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   fieldconsistencyminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn field consistency information.
   fieldconsistencypercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         field consistency pattern for the learning engine to learn that field consistency
         pattern.
   fieldformatautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   fieldformatminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn field formats.
   fieldformatpercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         web form field pattern for the learning engine to recommend a field format
         for that form field.
   profilename:
-    type: raw
+    type: str
     description:
       - Name of the profile.
   sqlinjectionautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   sqlinjectionminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn HTML SQL injection patterns.
   sqlinjectionpercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         HTML SQL injection pattern for the learning engine to learn that HTML SQL
         injection pattern.
   starturlautodeploygraceperiod:
-    type: raw
+    type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   starturlminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn start URLs.
   starturlpercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         start URL pattern for the learning engine to learn that start URL.
   xmlattachmentminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn XML attachment patterns.
   xmlattachmentpercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         XML attachment pattern for the learning engine to learn that XML attachment
         pattern.
   xmlwsiminthreshold:
-    type: raw
+    type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn web services interoperability (WSI) information.
   xmlwsipercentthreshold:
-    type: raw
+    type: float
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         pattern for the learning engine to learn a web services interoperability (WSI)

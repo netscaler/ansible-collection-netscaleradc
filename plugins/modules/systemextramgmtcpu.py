@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemextramgmtcpu
 short_description: Configuration for 0 resource.
 description: Configuration for 0 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,6 +46,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample systemextramgmtcpu playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemextramgmtcpu
+      delegate_to: localhost
+      netscaler.adc.systemextramgmtcpu:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
 """
 
 RETURN = r"""

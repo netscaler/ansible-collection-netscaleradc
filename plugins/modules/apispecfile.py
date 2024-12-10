@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: apispecfile
-short_description: Configuration for API specificationfile resource.
-description: Configuration for API specificationfile resource.
+short_description: Configuration for API specification file resource.
+description: Configuration for API specification file resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,10 +46,10 @@ options:
         characters. The following requirement applies only to the Citrix ADC CLI:
         If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my file" or ''my file'').'
-  password:
-    type: str
+  overwrite:
+    type: bool
     description:
-      - '0'
+      - Overwrite any existing schema file of the same name.
   src:
     type: str
     description:

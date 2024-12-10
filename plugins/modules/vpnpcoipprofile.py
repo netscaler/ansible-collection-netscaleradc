@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnpcoipprofile
 short_description: Configuration for PCoIP session profile resource.
 description: Configuration for PCoIP session profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,18 +45,18 @@ options:
     description:
       - Connection server URL
   icvverification:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ICV verification for PCOIP transport packets.
   name:
-    type: raw
+    type: str
     description:
       - name of PCoIP profile
   sessionidletimeout:
-    type: raw
+    type: float
     description:
       - PCOIP Idle Session timeout
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -62,6 +64,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnpcoipprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnpcoipprofile
+      delegate_to: localhost
+      netscaler.adc.vpnpcoipprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
 """
 
 RETURN = r"""

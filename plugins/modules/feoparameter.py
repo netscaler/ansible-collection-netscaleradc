@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: feoparameter
 short_description: Configuration for FEO parameter resource.
 description: Configuration for FEO parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,21 +39,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cssinlinethressize:
-    type: raw
+    type: float
     description:
       - Threshold value of the file size (in bytes) for converting external CSS files
         to inline CSS files.
   imginlinethressize:
-    type: raw
+    type: float
     description:
       - Maximum file size of an image (in bytes), for coverting linked images to inline
         images.
   jpegqualitypercent:
-    type: raw
+    type: float
     description:
       - 'The percentage value of a JPEG image quality to be reduced. Range: 0 - 100'
   jsinlinethressize:
-    type: raw
+    type: float
     description:
       - Threshold value of the file size (in bytes), for converting external JavaScript
         files to inline JavaScript files.
@@ -60,6 +62,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample feoparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure feoparameter
+      delegate_to: localhost
+      netscaler.adc.feoparameter:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        jpegqualitypercent: '60'
+        cssinlinethressize: '1024'
+        jsinlinethressize: '1024'
+        imginlinethressize: '1024'
 """
 
 RETURN = r"""

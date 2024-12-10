@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaapreauthenticationaction
 short_description: Configuration for pre authentication action resource.
 description: Configuration for pre authentication action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,21 +41,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultepagroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the EPA check succeeds.
   deletefiles:
-    type: raw
+    type: str
     description:
       - String specifying the path(s) and name(s) of the files to be deleted by the
         endpoint analysis (EPA) tool.
   killprocess:
-    type: raw
+    type: str
     description:
       - String specifying the name of a process to be terminated by the endpoint analysis
         (EPA) tool.
   name:
-    type: raw
+    type: str
     description:
       - Name for the preauthentication action. Must begin with a letter, number, or
         the underscore character (_), and must consist only of letters, numbers, and
@@ -76,6 +78,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaapreauthenticationaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaapreauthenticationaction
+      delegate_to: localhost
+      netscaler.adc.aaapreauthenticationaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: preact
+        preauthenticationaction: ALLOW
 """
 
 RETURN = r"""

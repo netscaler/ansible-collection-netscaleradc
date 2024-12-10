@@ -1,0 +1,16 @@
+---
+- name: Sample tmglobal_tmsessionpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmglobal_tmsessionpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.tmglobal_tmsessionpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: SETTMSESSPARAMS_ADV_POL
+        priority: '65534'
+        gotopriorityexpression: NEXT

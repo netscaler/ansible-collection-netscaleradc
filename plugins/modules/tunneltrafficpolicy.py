@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tunneltrafficpolicy
 short_description: Configuration for tunnel policy resource.
 description: Configuration for tunnel policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,15 +45,15 @@ options:
     description:
       - Name of the built-in compression action to associate with the policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the tunnel traffic policy.
       - Must begin with an ASCII alphanumeric or underscore (_) character, and must
@@ -89,6 +91,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample tunneltrafficpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tunneltrafficpolicy
+      delegate_to: localhost
+      netscaler.adc.tunneltrafficpolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: compress
+        rule: url == /*.asp
 """
 
 RETURN = r"""

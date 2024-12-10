@@ -1,0 +1,23 @@
+---
+- name: Sample authenticationradiusaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationradiusaction
+      delegate_to: localhost
+      netscaler.adc.authenticationradiusaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: RADIUS_10.102.222.187
+        serverip: 10.102.222.187
+        serverport: 1812
+        authtimeout: '3'
+        radkey: freebsd
+        radnasip: DISABLED
+        passencoding: pap
+        ipvendorid: '0'
+        accounting: 'ON'
+        callingstationid: DISABLED

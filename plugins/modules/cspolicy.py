@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cspolicy
 short_description: Configuration for content-switching policy resource.
 description: Configuration for content-switching policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,7 +46,7 @@ options:
       - Content switching action that names the target load balancing virtual server
         to which the traffic is switched.
   logaction:
-    type: raw
+    type: str
     description:
       - The log action associated with the content switching policy
   newname:
@@ -52,7 +54,7 @@ options:
     description:
       - The new name of the content switching policy.
   policyname:
-    type: raw
+    type: str
     description:
       - Name for the content switching policy. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -102,6 +104,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cspolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cspolicy
+      delegate_to: localhost
+      netscaler.adc.cspolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: cs_pol
+        rule: is_vpn_url
+        action: cs_act
 """
 
 RETURN = r"""

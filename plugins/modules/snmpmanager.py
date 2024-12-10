@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpmanager
 short_description: Configuration for manager resource.
 description: Configuration for manager resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   domainresolveretry:
-    type: raw
+    type: int
     description:
       - Amount of time, in seconds, for which the Citrix ADC waits before sending
         another DNS query to resolve the host name of the SNMP manager if the last
@@ -47,7 +49,7 @@ options:
         After a query succeeds, the TTL determines the wait time. The minimum and
         default value is 5.
   ipaddress:
-    type: raw
+    type: str
     description:
       - 'IP address of the SNMP manager. Can be an IPv4 or IPv6 address. You can instead
         specify an IPv4 network address or IPv6 network prefix if you want the Citrix
@@ -58,7 +60,7 @@ options:
       - 'Note: The Citrix ADC does not support host names for SNMP managers that have
         IPv6 addresses.'
   netmask:
-    type: raw
+    type: str
     description:
       - Subnet mask associated with an IPv4 network address. If the IP address specifies
         the address or host name of a specific host, accept the default value of 255.255.255.255.
@@ -67,6 +69,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample snmpmanager playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure snmpmanager
+      delegate_to: localhost
+      netscaler.adc.snmpmanager:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        ipaddress:
+          - citrix.com
+        domainresolveretry: 6
 """
 
 RETURN = r"""

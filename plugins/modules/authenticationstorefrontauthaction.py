@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationstorefrontauthaction
 short_description: Configuration for Storefront authentication action resource.
 description: Configuration for Storefront authentication action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,18 +41,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   domain:
-    type: raw
+    type: str
     description:
       - Domain of the server that is used for authentication. If users enter name
         without domain, this parameter is added to username in the authentication
         request to server.
   name:
-    type: raw
+    type: str
     description:
       - Name for the Storefront Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must

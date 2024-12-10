@@ -1,0 +1,17 @@
+---
+- name: Sample authenticationnegotiateaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationnegotiateaction
+      delegate_to: localhost
+      netscaler.adc.authenticationnegotiateaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: neg1
+        domain: nsi-test.com
+        defaultauthenticationgroup: g1
+        keytab: /nsconfig/krb/kcd-nsi-test.keytab

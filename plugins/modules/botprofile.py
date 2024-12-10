@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: botprofile
 short_description: Configuration for Bot profile resource.
 description: Configuration for Bot profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,59 +40,74 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  addcookieflags:
+    type: str
+    choices:
+      - none
+      - httpOnly
+      - secure
+      - all
+    description:
+      - 'Add the specified flags to bot session cookies. Available settings function
+        as follows:'
+      - '* None - Do not add flags to cookies.'
+      - '* HTTP Only - Add the HTTP Only flag to cookies, which prevents scripts from
+        accessing cookies.'
+      - '* Secure - Add Secure flag to cookies.'
+      - '* All - Add both HTTPOnly and Secure flags to cookies.'
   bot_enable_black_list:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable black-list bot detection.
   bot_enable_ip_reputation:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable IP-reputation bot detection.
   bot_enable_rate_limit:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable rate-limit bot detection.
   bot_enable_tps:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable TPS.
   bot_enable_white_list:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable white-list bot detection.
   clientipexpression:
-    type: raw
+    type: str
     description:
       - Expression to get the client IP.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
   devicefingerprint:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable device-fingerprint bot detection
   devicefingerprintaction:
-    type: raw
+    type: list
     choices:
       - NONE
       - LOG
@@ -100,43 +117,45 @@ options:
       - MITIGATION
     description:
       - Action to be taken for device-fingerprint based bot detection.
+    elements: str
   devicefingerprintmobile:
-    type: raw
+    type: list
     choices:
       - NONE
       - Android
       - iOS
     description:
       - Enabling bot device fingerprint protection for mobile clients
+    elements: str
   dfprequestlimit:
-    type: raw
+    type: float
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
   errorurl:
-    type: raw
+    type: str
     description:
       - URL that Bot protection uses as the Error URL.
   headlessbrowserdetection:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable Headless Browser detection.
   kmdetection:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable keyboard-mouse based bot detection.
   kmeventspostbodylimit:
-    type: raw
+    type: float
     description:
       - Size of the KM data send by the browser, needs to be processed on ADC
   kmjavascriptname:
-    type: raw
+    type: str
     description:
       - Name of the JavaScript file that the Bot Management feature will insert in
         the response for keyboard-mouse based detection.
@@ -149,7 +168,7 @@ options:
         quotation marks (for example, "my javascript file name" or 'my javascript
         file name').
   name:
-    type: raw
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -160,7 +179,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   sessioncookiename:
-    type: raw
+    type: str
     description:
       - Name of the SessionCookie that the Bot Management feature uses for tracking.
       - Must begin with a letter or number, and can consist of from 1 to 31 letters,
@@ -170,15 +189,15 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessiontimeout:
-    type: raw
+    type: float
     description:
       - Timeout, in seconds, after which a user session is terminated.
   signature:
-    type: raw
+    type: str
     description:
       - Name of object containing bot static signature details.
   signaturemultipleuseragentheaderaction:
-    type: raw
+    type: list
     choices:
       - CHECKLAST
       - LOG
@@ -188,8 +207,9 @@ options:
     description:
       - Actions to be taken if multiple User-Agent headers are seen in a request (Applicable
         if Signature check is enabled). Log action should be combined with other actions
+    elements: str
   signaturenouseragentheaderaction:
-    type: raw
+    type: list
     choices:
       - NONE
       - LOG
@@ -199,8 +219,9 @@ options:
     description:
       - Actions to be taken if no User-Agent header in the request (Applicable if
         Signature check is enabled).
+    elements: str
   spoofedreqaction:
-    type: raw
+    type: list
     choices:
       - NONE
       - LOG
@@ -210,15 +231,16 @@ options:
     description:
       - Actions to be taken on a spoofed request (A request spoofing good bot user
         agent string).
+    elements: str
   trap:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable trap bot detection.
   trapaction:
-    type: raw
+    type: list
     choices:
       - NONE
       - LOG
@@ -227,12 +249,13 @@ options:
       - RESET
     description:
       - Action to be taken for bot trap based bot detection.
+    elements: str
   trapurl:
-    type: raw
+    type: str
     description:
       - URL that Bot protection uses as the Trap URL.
   verboseloglevel:
-    type: raw
+    type: str
     choices:
       - NONE
       - HTTP_FULL_HEADER

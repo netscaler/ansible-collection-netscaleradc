@@ -1,0 +1,49 @@
+---
+- name: Sample tmsamlssoprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmsamlssoprofile
+      delegate_to: localhost
+      netscaler.adc.tmsamlssoprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: tm1
+        assertionconsumerserviceurl: https://url
+        relaystaterule: '"relaystate"'
+        attribute1: sam
+        attribute1expr: http.REQ.USER.ATTRIBUTE(1)
+        attribute2: upn
+        attribute2expr: http.REQ.USER.ATTRIBUTE(2)
+        attribute3: userpass
+        attribute3expr: http.REQ.USER.ATTRIBUTE(3)
+        attribute3format: Basic
+        attribute4: street
+        attribute4expr: http.REQ.USER.ATTRIBUTE(4)
+        attribute5: sa
+        attribute5expr: http.REQ.USER.ATTRIBUTE(5)
+        attribute6: stype
+        attribute6expr: http.REQ.USER.ATTRIBUTE(6)
+        attribute7: servicepn
+        attribute7expr: http.REQ.USER.ATTRIBUTE(7)
+        attribute8: sam
+        attribute8expr: http.REQ.USER.ATTRIBUTE(8)
+        attribute9: sam
+        attribute9expr: http.REQ.USER.ATTRIBUTE(9)
+        attribute10: sam
+        attribute10expr: http.REQ.USER.ATTRIBUTE(10)
+        attribute11: sam
+        attribute11expr: http.REQ.USER.ATTRIBUTE(11)
+        attribute12: sam
+        attribute12expr: http.REQ.USER.ATTRIBUTE(12)
+        attribute13: sam
+        attribute13expr: http.REQ.USER.ATTRIBUTE(13)
+        attribute14: sam
+        attribute14expr: http.REQ.USER.ATTRIBUTE(14)
+        attribute15: sam
+        attribute15expr: http.REQ.USER.ATTRIBUTE(15)
+        attribute16: sam
+        attribute16expr: http.REQ.USER.ATTRIBUTE(16)

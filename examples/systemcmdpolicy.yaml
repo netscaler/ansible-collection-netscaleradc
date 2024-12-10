@@ -1,0 +1,17 @@
+---
+- name: Sample systemcmdpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemcmdpolicy
+      delegate_to: localhost
+      netscaler.adc.systemcmdpolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: read-only
+        action: ALLOW
+        cmdspec: (^man.*)|(^show\s+(\?!system)(\?!configstatus)(\?!ns ns\.conf)(\?!ns
+          savedconfig)(\?!ns runningConfig)(\?!gslb runningConfig)(\?!audit messages)(\?!techsupport).*)|(^stat.*)

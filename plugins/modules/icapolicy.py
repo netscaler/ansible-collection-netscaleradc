@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: icapolicy
 short_description: Configuration for ICA policy resource.
 description: Configuration for ICA policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,15 +45,15 @@ options:
     description:
       - Name of the ica action to be associated with this policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any type of information about this ICA policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -90,6 +92,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample icapolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icapolicy
+      delegate_to: localhost
+      netscaler.adc.icapolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: ipo
+        rule: HTTP.REQ.USER.IS_MEMBER_OF("g1")
+        action: ia
 """
 
 RETURN = r"""

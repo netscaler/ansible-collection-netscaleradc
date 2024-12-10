@@ -1,10 +1,24 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample appflowparam playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | appflowparam
+    - name: Configure appflowparam
       delegate_to: localhost
       netscaler.adc.appflowparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        observationpointid: '2370493962'
+        templaterefresh: 3600
+        httpurl: ENABLED
+        httpmethod: ENABLED
+        httphost: ENABLED
+        httpuseragent: ENABLED
+        httpcontenttype: ENABLED
+        cacheinsight: ENABLED
+        httpquerywithurl: ENABLED
+        metrics: ENABLED
+        events: ENABLED
+        observationpointid: '843103498'

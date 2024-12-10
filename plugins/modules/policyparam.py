@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policyparam
 short_description: Configuration for policy parameter resource.
 description: Configuration for policy parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   timeout:
-    type: raw
+    type: float
     description:
       - Maximum time in milliseconds to allow for processing expressions and policies
         without interruption. If the timeout is reached then the evaluation causes
@@ -47,6 +49,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policyparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policyparam
+      delegate_to: localhost
+      netscaler.adc.policyparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        timeout: 5000
 """
 
 RETURN = r"""

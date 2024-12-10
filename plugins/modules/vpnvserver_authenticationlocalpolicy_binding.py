@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnvserver_authenticationlocalpolicy_binding
 short_description: Binding Resource definition for describing association between
   vpnvserver and authenticationlocalpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vpnv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -114,6 +116,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_authenticationlocalpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_authenticationlocalpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_authenticationlocalpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: callbackvs
+        policy: NS_GATEWAY_DEFAULT_LOCAL_POL1
+        priority: '64000'
 """
 
 RETURN = r"""

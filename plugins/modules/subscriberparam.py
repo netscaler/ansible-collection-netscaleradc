@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: subscriberparam
 short_description: Configuration for Subscriber Params resource.
 description: Configuration for Subscriber Params resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   idleaction:
-    type: raw
+    type: str
     choices:
       - ccrTerminate
       - delete
@@ -51,7 +53,7 @@ options:
       - '3. C(ccrUpdate): Do not C(delete) the session and instead send a CCR-U to
         PCRF requesting for an updated session. !'
   idlettl:
-    type: raw
+    type: float
     description:
       - 'q!Idle Timeout, in seconds, after which Citrix ADC will take an idleAction
         on a subscriber session (refer to ''idleAction'' arguement in ''set subscriber
@@ -61,7 +63,7 @@ options:
         not delete but send a CCR-U''. '
       - Zero value disables the idle timeout. !
   interfacetype:
-    type: raw
+    type: str
     choices:
       - None
       - RadiusOnly
@@ -85,7 +87,7 @@ options:
         to the UE's'
     elements: int
   keytype:
-    type: raw
+    type: str
     choices:
       - IP
       - IPANDVLAN
@@ -99,6 +101,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample subscriberparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure subscriberparam
+      delegate_to: localhost
+      netscaler.adc.subscriberparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        ipv6prefixlookuplist:
+          - '120'
+          - '104'
+          - '64'
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tmtrafficpolicy
 short_description: Configuration for TM traffic policy resource.
 description: Configuration for TM traffic policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: raw
+    type: str
     description:
       - Name of the action to apply to requests or connections that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the traffic policy. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -54,7 +56,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
   rule:
-    type: raw
+    type: str
     description:
       - Name of the Citrix ADC named expression, or an expression, that the policy
         uses to determine whether to apply certain action on the current traffic.
@@ -63,6 +65,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample tmtrafficpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmtrafficpolicy
+      delegate_to: localhost
+      netscaler.adc.tmtrafficpolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: ia_tmtrafpol1
+        rule: HTTP.REQ.METHOD.EQ(GET)
+        action: ia_tmtrafact1
 """
 
 RETURN = r"""

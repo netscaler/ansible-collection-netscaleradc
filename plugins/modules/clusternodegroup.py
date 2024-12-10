@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: clusternodegroup
 short_description: Configuration for Node group object type resource.
 description: Configuration for Node group object type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: raw
+    type: str
     description:
       - Name of the nodegroup. The name uniquely identifies the nodegroup on the cluster.
   priority:
@@ -65,7 +67,7 @@ options:
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
   strict:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'

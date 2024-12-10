@@ -1,0 +1,20 @@
+---
+- name: Sample authenticationoauthaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationoauthaction
+      delegate_to: localhost
+      netscaler.adc.authenticationoauthaction:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: cvpn_nac
+        oauthtype: INTUNE
+        tokenendpoint: http://inac.dnpg-blr.com/e6cf700d-68dc-4f92-b7ec-186e6dea36eb/oauth2/token
+        clientid: e6602bad-8007-44b7-b2ec-819035b71ba6
+        clientsecret: 8sOJH51L+uPBVAeCxgPyFDh0Ut+9Y9M6X9jGBJrWwZk=
+        tenantid: e6cf700d-68dc-4f92-b7ec-186e6dea36eb
+        graphendpoint: http://inac.dnpg-blr.com

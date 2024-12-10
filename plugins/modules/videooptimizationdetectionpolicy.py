@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: videooptimizationdetectionpolicy
 short_description: Configuration for videooptimization detectionpolicy resource.
 description: Configuration for videooptimization detectionpolicy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -56,15 +58,15 @@ options:
       - '* RESET - Reset the client connection by closing it.'
       - '* DROP - Drop the connection without sending a response.'
   comment:
-    type: raw
+    type: str
     description:
       - Any type of information about this videooptimization detection policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the videooptimization detection policy. Must begin with a letter,
         number, or the underscore character (_), and must contain only letters, numbers,
@@ -91,7 +93,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in

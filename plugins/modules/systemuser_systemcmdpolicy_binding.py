@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemuser_systemcmdpolicy_binding
 short_description: Binding Resource definition for describing association between
   systemuser and systemcmdpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between syst
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -55,6 +57,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample systemuser_systemcmdpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemuser_systemcmdpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.systemuser_systemcmdpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        username: GD-CTRLUPADC-P-APP
+        policyname: read-only
+        priority: '100'
 """
 
 RETURN = r"""

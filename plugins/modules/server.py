@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: server
 short_description: Configuration for server resource.
 description: Configuration for server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -47,7 +49,7 @@ options:
     description:
       - Display names of the servers that have been created for internal use.
   comment:
-    type: raw
+    type: str
     description:
       - Any information about the server.
   delay:
@@ -93,7 +95,7 @@ options:
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing
         mode, you cannot use the server in the IPv4 addressing mode.
   name:
-    type: raw
+    type: str
     description:
       - Name for the server.
       - Must begin with an ASCII alphabetic or underscore (_) character, and must
@@ -137,23 +139,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample server playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | server
+    - name: Configure server
       delegate_to: localhost
       netscaler.adc.server:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        name: 10.10.10.10
-        ipaddress: 10.10.10.10
-    - name: Sample Task | server 2
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.server:
-        state: present
-        domain: test.ap-southeast-1.example.com
-        name: test.ap-southeast-1.example.com
+        name: 10.79.42.253
+        ipaddress: 10.79.42.253
 """
 
 RETURN = r"""

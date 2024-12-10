@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbmetrictable
 short_description: Configuration for metric table resource.
 description: Configuration for metric table resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -83,6 +85,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbmetrictable playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbmetrictable
+      delegate_to: localhost
+      netscaler.adc.lbmetrictable:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        metrictable: LB_ia_metrictable3
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vrid
 short_description: Configuration for Virtual Router ID resource.
 description: Configuration for Virtual Router ID resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,20 +45,20 @@ options:
     description:
       - Remove all the configured VMAC addresses from the Citrix ADC.
   id:
-    type: raw
+    type: float
     description:
       - Integer that uniquely identifies the VMAC address. The generic VMAC address
         is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with
         a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c,
         where 3c is the hexadecimal representation of 60.
   ownernode:
-    type: raw
+    type: float
     description:
       - In a cluster setup, assign a cluster node as the owner of this VMAC address
         for IP based VRRP configuration. If no owner is configured, owner node is
         displayed as ALL and one node is dynamically elected as the owner.
   preemption:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -68,18 +70,18 @@ options:
         VIP address remains master until the original master VIP's priority becomes
         higher than that of the current master.
   preemptiondelaytimer:
-    type: raw
+    type: float
     description:
       - Preemption delay time, in seconds, in an active-active configuration. If any
         high priority node will come in network, it will wait for these many seconds
         before becoming master.
   priority:
-    type: raw
+    type: float
     description:
       - Base priority (BP), in an active-active mode configuration, which ordinarily
         determines the master VIP address.
   sharing:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -87,12 +89,12 @@ options:
       - In an active-active mode configuration, enable the backup VIP address to process
         any traffic instead of dropping it.
   trackifnumpriority:
-    type: raw
+    type: float
     description:
       - Priority by which the Effective priority will be reduced if any of the tracked
         interfaces goes down in an active-active configuration.
   tracking:
-    type: raw
+    type: str
     choices:
       - NONE
       - ONE
@@ -268,6 +270,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vrid playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vrid
+      delegate_to: localhost
+      netscaler.adc.vrid:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        id: '100'
+        preemptiondelaytimer: 100
 """
 
 RETURN = r"""

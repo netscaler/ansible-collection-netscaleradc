@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnvserver_vpnclientlessaccesspolicy_binding
 short_description: Binding Resource definition for describing association between
   vpnvserver and vpnclientlessaccesspolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vpnv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -88,6 +90,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_vpnclientlessaccesspolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_vpnclientlessaccesspolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_vpnclientlessaccesspolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: _XM_anilxmvip.dnpg-blr.com
+        policy: CLT_LESS_10.100.48.231
+        priority: '80'
+        gotopriorityexpression: END
 """
 
 RETURN = r"""

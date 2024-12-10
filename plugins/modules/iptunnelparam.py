@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: iptunnelparam
 short_description: Configuration for ip tunnel parameter resource.
 description: Configuration for ip tunnel parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dropfrag:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -45,37 +47,37 @@ options:
       - Drop any IP packet that requires fragmentation before it is sent through the
         tunnel.
   dropfragcputhreshold:
-    type: raw
+    type: float
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation to use the IP tunnel. Applies only if dropFragparameter
         is set to NO. The default value, 0, specifies that this parameter is not set.
   enablestrictrx:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for IPSec packets received through tunnel
   enablestricttx:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for packets to be sent IPSec protected
   mac:
-    type: raw
+    type: str
     description:
       - The shared MAC used for shared IP between cluster nodes/HA peers
   srcip:
-    type: raw
+    type: str
     description:
       - Common source-IP address for all tunnels. For a specific tunnel, this global
         setting is overridden if you have specified another source IP address. Must
         be a MIP or SNIP address.
   srciproundrobin:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -86,7 +88,7 @@ options:
         for all the IP tunnels. This setting does not apply to a tunnel for which
         a source IP address has been specified.
   useclientsourceip:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -97,6 +99,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample iptunnelparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure iptunnelparam
+      delegate_to: localhost
+      netscaler.adc.iptunnelparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        srciproundrobin: 'YES'
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwsettings
 short_description: Configuration for AS settings resource.
 description: Configuration for AS settings resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,56 +39,71 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ceflogging:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable CEF format logs.
   centralizedlearning:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable ADM centralized learning
   clientiploggingheader:
-    type: raw
+    type: str
     description:
       - Name of an HTTP header that contains the IP address that the client used to
         connect to the protected web site or service.
+  cookieflags:
+    type: str
+    choices:
+      - none
+      - httpOnly
+      - secure
+      - all
+    description:
+      - 'Add the specified flags to AppFW cookies. Available setttings function as
+        follows:'
+      - '* None - Do not add flags to AppFW cookies.'
+      - '* HTTP Only - Add the HTTP Only flag to AppFW cookies, which prevent scripts
+        from accessing them.'
+      - '* Secure - Add Secure flag to AppFW cookies.'
+      - '* All - Add both HTTPOnly and Secure flag to AppFW cookies.'
   cookiepostencryptprefix:
-    type: raw
+    type: str
     description:
       - String that is prepended to all encrypted cookie values.
   defaultprofile:
-    type: raw
+    type: str
     description:
       - Profile to use when a connection does not match any policy. Default setting
         is APPFW_BYPASS, which sends unmatched connections back to the Citrix ADC
         without attempting to filter them further.
   entitydecoding:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Transform multibyte (double- or half-width) characters to single width characters.
   geolocationlogging:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable Geo-Location Logging in CEF format logs.
   importsizelimit:
-    type: raw
+    type: float
     description:
-      - Cumulative total maximum number of bytes in web forms imported to a protected
-        web site. If a user attempts to upload files with a total byte count higher
-        than the specified limit, the application firewall blocks the request.
+      - Maximum cumulative size in bytes of all objects imported to Netscaler. The
+        user is not allowed to import an object if the operation exceeds the currently
+        configured limit.
   learnratelimit:
-    type: raw
+    type: float
     description:
       - Maximum number of connections per second that the application firewall learning
         engine examines to generate new relaxations for learning-enabled security
@@ -101,7 +118,7 @@ options:
       - Log requests that are so malformed that application firewall parsing doesn't
         occur.
   malformedreqaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -110,24 +127,25 @@ options:
     description:
       - flag to define action on malformed requests that application firewall cannot
         parse
+    elements: str
   proxypassword:
-    type: raw
+    type: str
     description:
       - Password with which proxy user logs on.
   proxyport:
-    type: raw
+    type: int
     description:
       - Proxy Server Port to get updated signatures from AWS.
   proxyserver:
-    type: raw
+    type: str
     description:
       - Proxy Server IP to get updated signatures from AWS.
   proxyusername:
-    type: raw
+    type: str
     description:
       - Proxy Username
   sessioncookiename:
-    type: raw
+    type: str
     description:
       - Name of the session cookie that the application firewall uses to track user
         sessions.
@@ -138,38 +156,38 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessionlifetime:
-    type: raw
+    type: float
     description:
       - Maximum amount of time (in seconds) that the application firewall allows a
         user session to remain active, regardless of user activity. After this time,
         the user session is terminated. Before continuing to use the protected web
         site, the user must establish a new session by opening a designated start
-        URL.
+        URL. A value of 0 represents infinite time.
   sessionlimit:
-    type: raw
+    type: float
     description:
       - Maximum number of sessions that the application firewall allows to be active,
         regardless of user activity. After the max_limit reaches, No more user session
         will be created .
   sessiontimeout:
-    type: raw
+    type: float
     description:
       - Timeout, in seconds, after which a user session is terminated. Before continuing
         to use the protected web site, the user must establish a new session by opening
         a designated start URL.
   signatureautoupdate:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable auto update signatures
   signatureurl:
-    type: raw
+    type: str
     description:
       - URL to download the mapping file from server
   undefaction:
-    type: raw
+    type: str
     description:
       - Profile to use when an application firewall policy evaluates to undefined
         (UNDEF).
@@ -177,7 +195,7 @@ options:
         profile is the default setting. You can specify a different built-in or user-created
         profile as the UNDEF profile.
   useconfigurablesecretkey:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -188,6 +206,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwsettings playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwsettings
+      delegate_to: localhost
+      netscaler.adc.appfwsettings:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        sessiontimeout: '180'
 """
 
 RETURN = r"""

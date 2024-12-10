@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver_rewritepolicy_binding
 short_description: Binding Resource definition for describing association between
   lbvserver and rewritepolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -97,6 +99,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbvserver_rewritepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_rewritepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_rewritepolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: LB_DIA_vs2
+        policyname: rw_diam_pol
+        priority: '10'
+        gotopriorityexpression: END
+        bindpoint: REQUEST
 """
 
 RETURN = r"""

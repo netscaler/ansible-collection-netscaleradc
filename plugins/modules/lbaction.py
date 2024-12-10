@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbaction
 short_description: Configuration for lb action resource.
 description: Configuration for lb action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Comment. Any type of information about this LB action.
   name:
-    type: raw
+    type: str
     description:
       - Name for the LB action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),

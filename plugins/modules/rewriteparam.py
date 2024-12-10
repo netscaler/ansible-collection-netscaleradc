@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rewriteparam
 short_description: Configuration for rewrite parameter resource.
 description: Configuration for rewrite parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   timeout:
-    type: raw
+    type: float
     description:
       - Maximum time in milliseconds to allow for processing all the policies and
         their selected actions without interruption. If the timeout is reached then
         the evaluation causes an UNDEF to be raised and no further processing is performed.
         Note that some rewrites may have already been performed.
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an error condition in evaluating the expression.
@@ -58,6 +60,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rewriteparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewriteparam
+      delegate_to: localhost
+      netscaler.adc.rewriteparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        undefaction: RESET
+        timeout: 5000
 """
 
 RETURN = r"""

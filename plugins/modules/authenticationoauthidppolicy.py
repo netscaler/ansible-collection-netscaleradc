@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationoauthidppolicy
 short_description: Configuration for AAA OAuth IdentityProvider (IdP) policy resource.
 description: Configuration for AAA OAuth IdentityProvider (IdP) policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,15 +45,15 @@ options:
     description:
       - Name of the profile to apply to requests or connections that match this policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the OAuth Identity Provider (IdP) authentication policy. This is
         used for configuring Citrix ADC as OAuth Identity Provider. Must begin with
@@ -79,7 +81,7 @@ options:
       - Expression that the policy uses to determine whether to respond to the specified
         request.
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only DROP/RESET actions

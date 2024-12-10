@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: crvserver
 short_description: Configuration for CR virtual server resource.
 description: Configuration for CR virtual server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,21 +45,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging of AppFlow information.
   arp:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use ARP to determine the destination MAC address.
   backendssl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -65,7 +67,7 @@ options:
       - Decides whether the backend connection made by Citrix ADC to the origin server
         will be HTTP or SSL. Applicable only for SSL type CR Forward proxy vserver.
   backupvserver:
-    type: raw
+    type: str
     description:
       - Name of the backup virtual server to which traffic is forwarded if the active
         server becomes unavailable.
@@ -96,20 +98,20 @@ options:
       - Name of the default cache virtual server to which to redirect requests (the
         default target of the cache redirection virtual server).
   clttimeout:
-    type: raw
+    type: float
     description:
       - Time-out value, in seconds, after which to terminate an idle client connection.
   comment:
-    type: raw
+    type: str
     description:
       - Comments associated with this virtual server.
   destinationvserver:
-    type: raw
+    type: str
     description:
       - Destination virtual server for a transparent or forward proxy cache redirection
         virtual server.
   disableprimaryondown:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -117,7 +119,7 @@ options:
       - Continue sending traffic to a backup virtual server even after the primary
         virtual server comes UP from the DOWN state.
   disallowserviceaccess:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -126,14 +128,14 @@ options:
         parameter is C(DISABLED). When it is C(ENABLED), backend services cannot be
         accessed through a FORWARD type cr vserver.
   dnsvservername:
-    type: raw
+    type: str
     description:
       - Name of the DNS virtual server that resolves domain names arriving at the
         forward proxy virtual server.
       - 'Note: This parameter applies only to forward proxy virtual servers, not reverse
         or transparent.'
   domain:
-    type: raw
+    type: str
     description:
       - Default domain for reverse proxies. Domains are configured to direct an incoming
         request from a specified source domain to a specified target domain. There
@@ -142,7 +144,7 @@ options:
         does not include a source domain, this option sends the request to the specified
         target domain.
   downstateflush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -163,12 +165,12 @@ options:
     description:
       - '0'
   httpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the profile containing HTTP configuration information for cache redirection
         virtual server.
   icmpvsrresponse:
-    type: raw
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -177,7 +179,7 @@ options:
         C(ACTIVE), respond only if the virtual server is available. If C(PASSIVE),
         respond even if the virtual server is not available.
   ipset:
-    type: raw
+    type: str
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
         service on the current cr vserver
@@ -189,19 +191,19 @@ options:
       - 'Note: For a transparent cache redirection virtual server, use an asterisk
         (*) to specify a wildcard virtual server address.'
   l2conn:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use L2 parameters, such as MAC, VLAN, and channel to identify a connection.
   listenpolicy:
-    type: raw
+    type: str
     description:
       - String specifying the listen policy for the cache redirection virtual server.
         Can be either an in-line expression or the name of a named expression.
   listenpriority:
-    type: raw
+    type: float
     description:
       - Priority of the listen policy specified by the Listen Policy parameter. The
         lower the number, higher the priority.
@@ -213,7 +215,7 @@ options:
     description:
       - Obsolete.
   name:
-    type: raw
+    type: str
     description:
       - Name for the cache redirection virtual server. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -224,7 +226,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my server" or 'my server').
   netprofile:
-    type: raw
+    type: str
     description:
       - Name of the network profile containing network configurations for the cache
         redirection virtual server.
@@ -238,7 +240,7 @@ options:
         the name in double or single quotation marks (for example, "my name" or 'my
         name').
   onpolicymatch:
-    type: raw
+    type: str
     choices:
       - CACHE
       - ORIGIN
@@ -248,7 +250,7 @@ options:
       - 'Note: For this option to work, you must set the cache redirection type to
         POLICY.'
   originusip:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -261,7 +263,7 @@ options:
     description:
       - Port number of the virtual server.
   precedence:
-    type: raw
+    type: str
     choices:
       - RULE
       - URL
@@ -288,7 +290,7 @@ options:
       - Citrix ADC provides support for external health check of the vserver status.
         Select port for HTTP/TCP monitring
   probeprotocol:
-    type: raw
+    type: str
     choices:
       - TCP
       - HTTP
@@ -296,7 +298,7 @@ options:
       - Citrix ADC provides support for external health check of the vserver status.
         Select C(HTTP) or C(TCP) probes for healthcheck
   probesuccessresponsecode:
-    type: raw
+    type: str
     description:
       - HTTP code to return in SUCCESS case.
   range:
@@ -306,7 +308,7 @@ options:
         the IPAddress parameter, to include in a range of addresses assigned to this
         virtual server.
   redirect:
-    type: raw
+    type: str
     choices:
       - CACHE
       - POLICY
@@ -319,12 +321,12 @@ options:
         request should be directed to the cache or to the origin.'
       - '* C(ORIGIN) - Direct all requests to the origin server.'
   redirecturl:
-    type: raw
+    type: str
     description:
       - URL of the server to which to redirect traffic if the cache redirection virtual
         server configured on the Citrix ADC becomes unavailable.
   reuse:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -339,7 +341,7 @@ options:
       - If you set the Reuse parameter to C(ON), connections to origin servers and
         connections to cache servers are reused.
   rhistate:
-    type: raw
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -374,19 +376,19 @@ options:
         HEALTH spillover, the percentage of active services (by weight) below which
         spillover occurs.
   srcipexpr:
-    type: raw
+    type: str
     description:
       - Expression used to extract the source IP addresses from the requests originating
         from the cache. Can be either an in-line expression or the name of a named
         expression.
   tcpprobeport:
-    type: raw
+    type: int
     description:
       - Port number for external TCP probe. NetScaler provides support for external
         TCP health check of the vserver status over the selected port. This option
         is only supported for vservers assigned with an IPAddress or ipset.
   tcpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the profile containing TCP configuration information for the cache
         redirection virtual server.
@@ -397,7 +399,7 @@ options:
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   useoriginipportforcache:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -406,7 +408,7 @@ options:
         IP, destination port of the request came to CR vserver to Origin IP and Origin
         Port and forward it to Cache
   useportrange:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -415,7 +417,7 @@ options:
         or in the Create Virtual Server (Cache Redirection) dialog box) as the source
         port in the requests sent to the origin server.
   via:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -803,6 +805,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample crvserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure crvserver
+      delegate_to: localhost
+      netscaler.adc.crvserver:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: cr_fwd
+        servicetype: HTTP
+        ipv46: 1.1.1.2
+        port: 80
+        cachetype: FORWARD
 """
 
 RETURN = r"""

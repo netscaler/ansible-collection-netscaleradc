@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appflowparam
 short_description: Configuration for AppFlow parameter resource.
 description: Configuration for AppFlow parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,31 +39,31 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   aaausername:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow AAA Username logging.
   analyticsauthtoken:
-    type: raw
+    type: str
     description:
       - Authentication token to be set by the agent.
   appnamerefresh:
-    type: raw
+    type: float
     description:
       - Interval, in seconds, at which to send Appnames to the configured collectors.
         Appname refers to the name of an entity (virtual server, service, or service
         group) in the Citrix ADC.
   auditlogs:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable Auditlogs to be sent to the Telemetry Agent
   cacheinsight:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -70,14 +72,14 @@ options:
         flag is true and IC is enabled, cache records are exported instead of L7 HTTP
         records
   clienttrafficonly:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Generate AppFlow records for only the traffic from the client.
   connectionchaining:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -87,57 +89,57 @@ options:
         so that in a multi-hop environment the flows belonging to the same logical
         connection are linked. This id is also logged as part of appflow record
   cqareporting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - TCP CQA reporting enable/disable knob.
   distributedtracing:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable generation of the distributed tracing templates in the Appflow records
   disttracingsamplingrate:
-    type: raw
+    type: float
     description:
       - Sampling rate for Distributed Tracing
   emailaddress:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow user email-id logging.
   events:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable Events to be sent to the Telemetry Agent
   flowrecordinterval:
-    type: raw
+    type: float
     description:
       - Interval, in seconds, at which to send flow records to the configured collectors.
   gxsessionreporting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable this option for Gx session reporting
   httpauthorization:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the HTTP Authorization header information.
   httpcontenttype:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -145,7 +147,7 @@ options:
       - Include the HTTP Content-Type header sent from the server to the client to
         determine the type of the content sent.
   httpcookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -153,14 +155,14 @@ options:
       - Include the cookie that was in the HTTP request the appliance received from
         the client.
   httpdomain:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the http domain request to be exported.
   httphost:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -168,14 +170,14 @@ options:
       - Include the host identified in the HTTP request that the appliance received
         from the client.
   httplocation:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the HTTP location headers returned from the HTTP responses.
   httpmethod:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -183,7 +185,7 @@ options:
       - Include the method that was specified in the HTTP request that the appliance
         received from the client.
   httpquerywithurl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -191,14 +193,14 @@ options:
       - Include the HTTP query segment along with the URL that the Citrix ADC received
         from the client.
   httpreferer:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the web page that was last visited by the client.
   httpsetcookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -206,7 +208,7 @@ options:
       - Include the Set-cookie header sent from the server to the client in response
         to a HTTP request.
   httpsetcookie2:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -214,14 +216,14 @@ options:
       - Include the Set-cookie header sent from the server to the client in response
         to a HTTP request.
   httpurl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the http URL that the Citrix ADC received from the client.
   httpuseragent:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -229,7 +231,7 @@ options:
       - Include the client application through which the HTTP request was received
         by the Citrix ADC.
   httpvia:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -237,7 +239,7 @@ options:
       - Include the httpVia header which contains the IP address of proxy server through
         which the client accessed the server.
   httpxforwardedfor:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -245,28 +247,28 @@ options:
       - Include the httpXForwardedFor header, which contains the original IP Address
         of the client using a proxy server to access the server.
   identifiername:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the stream identifier name to be exported.
   identifiersessionname:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the stream identifier session name to be exported.
   logstreamovernsip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - To use the Citrix ADC IP to send Logstream records instead of the SNIP
   lsnlogging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -274,42 +276,42 @@ options:
       - On enabling this option, the Citrix ADC will send the Large Scale Nat(LSN)
         records to the configured collectors.
   metrics:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable Citrix ADC Stats to be sent to the Telemetry Agent
   observationdomainid:
-    type: raw
+    type: float
     description:
       - 'An observation domain groups a set of Citrix ADCs based on deployment: cluster,
         HA etc. A unique Observation Domain ID is required to be assigned to each
         such group.'
   observationdomainname:
-    type: raw
+    type: str
     description:
       - Name of the Observation Domain defined by the observation domain ID.
   observationpointid:
-    type: raw
+    type: float
     description:
       - An observation point ID is identifier for the NetScaler from which appflow
         records are being exported. By default, the NetScaler IP is the observation
         point ID.
   securityinsightrecordinterval:
-    type: raw
+    type: float
     description:
       - Interval, in seconds, at which to send security insight flow records to the
         configured collectors.
   securityinsighttraffic:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/disable the feature individually on appflow action.
   skipcacheredirectionhttptransaction:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -318,38 +320,38 @@ options:
         module. In Case of Cache Miss there will be another HTTP transaction initiated
         by the cache server.
   subscriberawareness:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable this option for logging end user MSISDN in L4/L7 appflow records
   subscriberidobfuscation:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable this option for obfuscating MSISDN in L4/L7 appflow records
   subscriberidobfuscationalgo:
-    type: raw
+    type: str
     choices:
       - MD5
       - SHA256
     description:
       - Algorithm(C(MD5) or C(SHA256)) to be used for obfuscating MSISDN
   tcpattackcounterinterval:
-    type: raw
+    type: float
     description:
       - Interval, in seconds, at which to send tcp attack counters to the configured
         collectors. If 0 is configured, the record is not sent.
   templaterefresh:
-    type: raw
+    type: float
     description:
       - Refresh interval, in seconds, at which to export the template data. Because
         data transmission is in UDP, the templates must be resent at regular intervals.
   timeseriesovernsip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -357,30 +359,30 @@ options:
       - To use the Citrix ADC IP to send Time series data such as metrics and events,
         instead of the SNIP
   udppmtu:
-    type: raw
+    type: float
     description:
       - MTU, in bytes, for IPFIX UDP packets.
   urlcategory:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include the URL category record.
   usagerecordinterval:
-    type: raw
+    type: float
     description:
       - On enabling this option, the NGS will send bandwidth usage record to configured
         collectors.
   videoinsight:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/disable the feature individually on appflow action.
   websaasappusagereporting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -393,15 +395,29 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample appflowparam playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | appflowparam
+    - name: Configure appflowparam
       delegate_to: localhost
       netscaler.adc.appflowparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        observationpointid: '2370493962'
+        templaterefresh: 3600
+        httpurl: ENABLED
+        httpmethod: ENABLED
+        httphost: ENABLED
+        httpuseragent: ENABLED
+        httpcontenttype: ENABLED
+        cacheinsight: ENABLED
+        httpquerywithurl: ENABLED
+        metrics: ENABLED
+        events: ENABLED
+        observationpointid: '843103498'
 """
 
 RETURN = r"""

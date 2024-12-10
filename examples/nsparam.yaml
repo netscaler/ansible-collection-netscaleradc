@@ -1,10 +1,14 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsparam playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsparam
+    - name: Configure nsparam
       delegate_to: localhost
       netscaler.adc.nsparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        timezone: GMT+09:00-KST-Asia/Seoul
+        cookieversion: '1'

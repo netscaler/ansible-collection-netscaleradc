@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnglobal_sslcertkey_binding
 short_description: Binding Resource definition for describing association between
   vpnglobal and sslcertkey resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vpng
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -45,7 +47,7 @@ options:
   certkeyname:
     type: str
     description:
-      - SSL certkey to use in signing tokens.
+      - SSL certkey to use in signing tokens. Only RSA cert key is allowed
   crlcheck:
     type: str
     choices:

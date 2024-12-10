@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rdpclientprofile
 short_description: Configuration for RDP clientprofile resource.
 description: Configuration for RDP clientprofile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,14 +41,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addusernameinrdpfile:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Add username in rdp file.
   audiocapturemode:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -54,7 +56,7 @@ options:
       - This setting corresponds to the selections in the Remote audio area on the
         Local Resources tab under Options in RDC.
   keyboardhook:
-    type: raw
+    type: str
     choices:
       - OnLocal
       - OnRemote
@@ -63,22 +65,22 @@ options:
       - This setting corresponds to the selection in the Keyboard drop-down list on
         the Local Resources tab under Options in RDC.
   multimonitorsupport:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - Enable/Disable Multiple Monitor Support for Remote Desktop Connection (RDC).
   name:
-    type: raw
+    type: str
     description:
       - The name of the rdp profile
   psk:
-    type: raw
+    type: str
     description:
       - Pre shared key value
   randomizerdpfilename:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -88,26 +90,26 @@ options:
         to avoid the pop-up for replacement of existing rdp file during each rdp connection
         launch, hence providing better end-user experience.
   rdpcookievalidity:
-    type: raw
+    type: float
     description:
       - RDP cookie validity period. RDP cookie validity time is applicable for new
         connection and also for any re-connection that might happen, mostly due to
         network disruption or during fail-over.
   rdpcustomparams:
-    type: raw
+    type: str
     description:
       - Option for RDP custom parameters settings (if any). Custom params needs to
         be separated by '&'
   rdpfilename:
-    type: raw
+    type: str
     description:
       - RDP file name to be sent to End User
   rdphost:
-    type: raw
+    type: str
     description:
       - Fully-qualified domain name (FQDN) of the RDP Listener.
   rdplinkattribute:
-    type: raw
+    type: str
     description:
       - 'Citrix Gateway allows the configuration of rdpLinkAttribute parameter which
         can be used to fetch a list of RDP servers(IP/FQDN) that a user can access,
@@ -116,12 +118,12 @@ options:
       - '            Note: The Attribute mentioned in the rdpLinkAttribute should
         be fetched through corresponding authentication method.'
   rdplistener:
-    type: raw
+    type: str
     description:
       - IP address (or) Fully-qualified domain name(FQDN) of the RDP Listener with
         the port in the format IP:Port (or) FQDN:Port
   rdpurloverride:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -129,7 +131,7 @@ options:
       - This setting determines whether the RDP parameters supplied in the vpn url
         override those specified in the RDP profile.
   rdpvalidateclientip:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -137,7 +139,7 @@ options:
       - This setting determines whether RDC launch is initiated by the valid client
         IP
   redirectclipboard:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -145,7 +147,7 @@ options:
       - This setting corresponds to the Clipboard check box on the Local Resources
         tab under Options in RDC.
   redirectcomports:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -153,7 +155,7 @@ options:
       - This setting corresponds to the selections for comports under More on the
         Local Resources tab under Options in RDC.
   redirectdrives:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -161,7 +163,7 @@ options:
       - This setting corresponds to the selections for Drives under More on the Local
         Resources tab under Options in RDC.
   redirectpnpdevices:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -169,7 +171,7 @@ options:
       - This setting corresponds to the selections for pnpdevices under More on the
         Local Resources tab under Options in RDC.
   redirectprinters:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -177,7 +179,7 @@ options:
       - This setting corresponds to the selection in the Printers check box on the
         Local Resources tab under Options in RDC.
   videoplaybackmode:
-    type: raw
+    type: str
     choices:
       - ENABLE
       - DISABLE
@@ -189,6 +191,25 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rdpclientprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rdpclientprofile
+      delegate_to: localhost
+      netscaler.adc.rdpclientprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: rdpc2
+        rdpurloverride: DISABLE
+        audiocapturemode: ENABLE
+        rdpfilename: mstsc.rdp
+        rdpcustomparams: span monitors:i:1
+        psk: test!@3
 """
 
 RETURN = r"""

@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslvserver_sslcertkey_binding
 short_description: Binding Resource definition for describing association between
   sslvserver and sslcertkey resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between sslv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -80,6 +82,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslvserver_sslcertkey_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslvserver_sslcertkey_binding
+      delegate_to: localhost
+      netscaler.adc.sslvserver_sslcertkey_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        vservername: CitrixAccessCallback
+        certkeyname: callback.blackstone.com
 """
 
 RETURN = r"""

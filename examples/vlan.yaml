@@ -1,11 +1,14 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample vlan playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | vlan
+    - name: Configure vlan
       delegate_to: localhost
       netscaler.adc.vlan:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        id: '301'
-        aliasname: client_side_network
+        vlanid: '10'

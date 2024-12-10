@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsdhcpparams
 short_description: Configuration for DHCP parameters resource.
 description: Configuration for DHCP parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dhcpclient:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -45,7 +47,7 @@ options:
       - Enables DHCP client to acquire IP address from the DHCP server in the next
         boot. When set to C(OFF), disables the DHCP client in the next boot.
   saveroute:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -56,6 +58,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nsdhcpparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nsdhcpparams
+      delegate_to: localhost
+      netscaler.adc.nsdhcpparams:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        saveroute: 'ON'
 """
 
 RETURN = r"""

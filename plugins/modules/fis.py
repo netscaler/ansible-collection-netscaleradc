@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: fis
 short_description: Configuration for "FIS" resource.
 description: Configuration for "FIS" resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -103,6 +105,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample fis playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure fis
+      delegate_to: localhost
+      netscaler.adc.fis:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: ia_fis11
 """
 
 RETURN = r"""

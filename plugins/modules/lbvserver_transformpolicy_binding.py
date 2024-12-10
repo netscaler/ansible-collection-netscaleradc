@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver_transformpolicy_binding
 short_description: Binding Resource definition for describing association between
   lbvserver and transformpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:

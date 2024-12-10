@@ -1,0 +1,16 @@
+---
+- name: Sample sslcertkeybundle playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcertkeybundle
+      delegate_to: localhost
+      netscaler.adc.sslcertkeybundle:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        certkeybundlename: tc11
+        bundlefile: bundle_files/enc_cert.pem
+        passplain: '123456'

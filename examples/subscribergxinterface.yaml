@@ -1,13 +1,17 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample subscribergxinterface playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | subscribergxInterface
+    - name: Configure subscribergxinterface
       delegate_to: localhost
       netscaler.adc.subscribergxinterface:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
         pcrfrealm: pcrf.com
         servicepathavp:
-          - 262099
-        servicepathvendorid: 3845
+          - '262099'
+        servicepathvendorid: '3845'

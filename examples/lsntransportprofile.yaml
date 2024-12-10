@@ -1,0 +1,16 @@
+---
+- name: Sample lsntransportprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsntransportprofile
+      delegate_to: localhost
+      netscaler.adc.lsntransportprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        transportprofilename: icmp
+        transportprotocol: ICMP
+        groupsessionlimit: '10000'

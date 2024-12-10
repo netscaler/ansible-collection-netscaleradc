@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rnat6
 short_description: Configuration for IPv6 RNAT configured route resource.
 description: Configuration for IPv6 RNAT configured route resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -42,7 +44,7 @@ options:
       - Name of any configured ACL6 whose action is ALLOW. The rule of the ACL6 is
         used as an RNAT6 rule.
   name:
-    type: raw
+    type: str
     description:
       - Name for the RNAT6 rule. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
@@ -55,16 +57,16 @@ options:
       - IPv6 address of the network on whose traffic you want the Citrix ADC to do
         RNAT processing.
   ownergroup:
-    type: raw
+    type: str
     description:
       - The owner node group in a Cluster for this rnat rule.
   redirectport:
-    type: raw
+    type: int
     description:
       - Port number to which the IPv6 packets are redirected. Applicable to TCP and
         UDP protocols.
   srcippersistency:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rnatparam
 short_description: Configuration for RNAT parameter resource.
 description: Configuration for RNAT parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   srcippersistency:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -45,7 +47,7 @@ options:
       - Enable source ip persistency, which enables the Citrix ADC to use the RNAT
         ips using source ip.
   tcpproxy:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -57,6 +59,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rnatparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rnatparam
+      delegate_to: localhost
+      netscaler.adc.rnatparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        tcpproxy: DISABLED
 """
 
 RETURN = r"""

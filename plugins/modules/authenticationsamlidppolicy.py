@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationsamlidppolicy
 short_description: Configuration for AAA Saml IdentityProvider (IdP) policy resource.
 description: Configuration for AAA Saml IdentityProvider (IdP) policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,15 +45,15 @@ options:
     description:
       - Name of the profile to apply to requests or connections that match this policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the SAML Identity Provider (IdP) authentication policy. This is used
         for configuring Citrix ADC as SAML Identity Provider. Must begin with an ASCII
@@ -87,7 +89,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in

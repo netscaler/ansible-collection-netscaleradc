@@ -1,0 +1,17 @@
+---
+- name: Sample dnsaaaarec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsaaaarec
+      delegate_to: localhost
+      netscaler.adc.dnsaaaarec:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        hostname: n2.com
+        ipv6address:
+          - 2001::45
+        ttl: 3601

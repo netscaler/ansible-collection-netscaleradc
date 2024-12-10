@@ -1,0 +1,16 @@
+---
+- name: Sample feopolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure feopolicy
+      delegate_to: localhost
+      netscaler.adc.feopolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: pol1_ns
+        rule: HTTP.REQ.HEADER("Accept").CONTAINS("html")
+        action: allact_ns

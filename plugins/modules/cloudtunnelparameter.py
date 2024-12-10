@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cloudtunnelparameter
 short_description: Configuration for Cloudtunnel parameter resource.
 description: Configuration for Cloudtunnel parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,7 +51,7 @@ options:
     description:
       - '0'
   subnetresourcelocationmappings:
-    type: raw
+    type: str
     description:
       - '0'
 extends_documentation_fragment: netscaler.adc.netscaler_adc

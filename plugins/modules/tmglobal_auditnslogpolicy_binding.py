@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tmglobal_auditnslogpolicy_binding
 short_description: Binding Resource definition for describing association between
   tmglobal and auditnslogpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between tmgl
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ip6tunnelparam
 short_description: Configuration for ip6 tunnel parameter resource.
 description: Configuration for ip6 tunnel parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,23 +39,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dropfrag:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Drop any packet that requires fragmentation.
   dropfragcputhreshold:
-    type: raw
+    type: float
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation. Applies only if dropFragparameter is set to NO.
   srcip:
-    type: raw
+    type: str
     description:
       - Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.
   srciproundrobin:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -64,7 +66,7 @@ options:
         for all the IPv6 tunnels. This setting does not apply to a tunnel for which
         a source IPv6 address has been specified.
   useclientsourceipv6:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -77,13 +79,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample ip6tunnelparam playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | ip6TunnelParam
+    - name: Configure ip6tunnelparam
       delegate_to: localhost
       netscaler.adc.ip6tunnelparam:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
         srcip: '::'
 """

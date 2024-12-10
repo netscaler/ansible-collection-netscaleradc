@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbprofile
 short_description: Configuration for LB profile resource.
 description: Configuration for LB profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   computedadccookieattribute:
-    type: raw
+    type: str
     description:
       - 'ComputedADCCookieAttribute accepts ns variable as input in form of string
         starting with $ (to understand how to configure ns variable, please check
@@ -59,19 +61,19 @@ options:
       - '             For incoming client request, if above policy evaluates TRUE,
         then SameSite=Strict will be appended to ADC generated cookie'
   cookiepassphrase:
-    type: raw
+    type: str
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
         cookie value. It specifies the passphrase with a maximum of 31 characters.
   dbslb:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
   httponlycookieflag:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -80,7 +82,7 @@ options:
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
   lbhashalgorithm:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - PRAC
@@ -90,17 +92,17 @@ options:
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
   lbhashfingers:
-    type: raw
+    type: float
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory.
   lbprofilename:
-    type: raw
+    type: str
     description:
       - Name of the LB profile.
   literaladccookieattribute:
-    type: raw
+    type: str
     description:
       - 'String configured as LiteralADCCookieAttribute will be appended as attribute
         for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence,
@@ -109,7 +111,7 @@ options:
       - Sample usage -
       - '             add lb profile lbprof -LiteralADCCookieAttribute ";SameSite=None"'
   processlocal:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -118,8 +120,16 @@ options:
         not under go any steering. Turn this option for single pa
       - cket request response mode or when the upstream device is performing a proper
         RSS for connection based distribution.
+  proximityfromself:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - Use the ADC location instead of client IP for static proximity LB or GSLB
+        decision.
   storemqttclientidandusername:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -127,14 +137,14 @@ options:
       - This option allows to store the MQTT clientid and username in transactional
         logs
   useencryptedpersistencecookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
   usesecuredpersistencecookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -145,6 +155,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbprofile
+      delegate_to: localhost
+      netscaler.adc.lbprofile:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
 """
 
 RETURN = r"""

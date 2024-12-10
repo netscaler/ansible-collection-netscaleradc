@@ -1,20 +1,14 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample ipset playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: IPSET | ADD
+    - name: Configure ipset
       delegate_to: localhost
-      register: result
-      tags: test
       netscaler.adc.ipset:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        name: ipset-001
-    - name: IPSET | DELETE
-      delegate_to: localhost
-      register: result
-      check_mode: false
-      tags: test
-      netscaler.adc.ipset:
-        state: absent
-        name: ipset-001
+        name: ipset_adns

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nspartition
 short_description: Configuration for admin partition resource.
 description: Configuration for admin partition resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -46,35 +48,35 @@ options:
       - Switches to new admin partition without prompt for saving configuration. Configuration
         will not be saved
   maxbandwidth:
-    type: raw
+    type: float
     description:
       - Maximum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits.
   maxconn:
-    type: raw
+    type: float
     description:
       - Maximum number of concurrent connections that can be open in the partition.
         A zero value indicates no limit on number of open connections.
   maxmemlimit:
-    type: raw
+    type: float
     description:
       - Maximum memory, in megabytes, allocated to the partition.  A zero value indicates
         the memory is unlimited on the partition and it can consume up to the system
         limits.
   minbandwidth:
-    type: raw
+    type: float
     description:
       - Minimum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits
   partitionmac:
-    type: raw
+    type: str
     description:
       - Special MAC address for the partition which is used for communication over
         shared vlans in this partition. If not specified, the MAC address is auto-generated.
   partitionname:
-    type: raw
+    type: str
     description:
       - Name of the Partition. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -164,6 +166,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nspartition playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nspartition
+      delegate_to: localhost
+      netscaler.adc.nspartition:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        partitionname: p1
+        vxlan: '1'
+        nitro_operation: unbind
+        '#nitro_operation': unbind
 """
 
 RETURN = r"""

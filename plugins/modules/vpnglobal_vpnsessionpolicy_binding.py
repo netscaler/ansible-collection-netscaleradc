@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnglobal_vpnsessionpolicy_binding
 short_description: Binding Resource definition for describing association between
   vpnglobal and vpnsessionpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vpng
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -107,12 +109,9 @@ options:
       - SYSTEM
       - RISE
       - FEO
-      - LSN
-      - LargeScaleNAT
       - RDPProxy
       - Rep
       - Reputation
-      - URLFiltering
       - VideoOptimization
       - ForwardProxy
       - SSLInterception
@@ -161,6 +160,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnglobal_vpnsessionpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnglobal_vpnsessionpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnglobal_vpnsessionpolicy_binding:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        policyname: SETVPNPARAMS_ADV_POL
+        priority: '65534'
+        gotopriorityexpression: NEXT
 """
 
 RETURN = r"""

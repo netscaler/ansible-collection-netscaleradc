@@ -1,11 +1,17 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsconfig playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsconfig
+    - name: Configure nsconfig
       delegate_to: localhost
       netscaler.adc.nsconfig:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        ipaddress: 10.10.10.10
-        netmask: 255.255.255.0
+        nsvlan: '10'
+        ifnum:
+          - 1/1
+        tagged: 'NO'

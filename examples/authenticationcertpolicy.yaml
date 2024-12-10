@@ -1,0 +1,16 @@
+---
+- name: Sample authenticationcertpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationcertpolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationcertpolicy:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        name: sslrg
+        rule: ns_true
+        reqaction: sslrg

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cmpparameter
 short_description: Configuration for CMP parameter resource.
 description: Configuration for CMP parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addvaryheader:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -46,12 +48,12 @@ options:
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
   cmpbypasspct:
-    type: raw
+    type: float
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
         0 - 100'
   cmplevel:
-    type: raw
+    type: str
     choices:
       - optimal
       - bestspeed
@@ -62,7 +64,7 @@ options:
       - ' * Best speed - Corresponds to a gzip level of 1.'
       - ' * Best compression - Corresponds to a gzip level of 9.'
   cmponpush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -71,7 +73,7 @@ options:
         data. Upon receipt of a packet with a PUSH flag, the appliance immediately
         begins compression of the accumulated packets.
   externalcache:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -99,21 +101,21 @@ options:
       - Threshold compression ratio for heuristic basefile expiry, multiplied by 100.
         For example, to set the threshold ratio to 1.25, specify 125.
   minressize:
-    type: raw
+    type: float
     description:
       - Smallest response size, in bytes, to be compressed.
   policytype:
-    type: raw
+    type: str
     choices:
       - ADVANCED
     description:
       - Type of the policy. The only possible value is C(ADVANCED)
   quantumsize:
-    type: raw
+    type: float
     description:
       - Minimum quantum of data to be filled before compression begins.
   servercmp:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -121,7 +123,7 @@ options:
       - Allow the server to send compressed data to the Citrix ADC. With the default
         setting, the Citrix ADC appliance handles all compression.
   varyheadervalue:
-    type: raw
+    type: str
     description:
       - The value of the HTTP Vary header for compressed responses. If this argument
         is not specified, a default value of "Accept-Encoding" will be used.
@@ -130,6 +132,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cmpparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmpparameter
+      delegate_to: localhost
+      netscaler.adc.cmpparameter:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
+        state: present
+        externalcache: 'YES'
 """
 
 RETURN = r"""

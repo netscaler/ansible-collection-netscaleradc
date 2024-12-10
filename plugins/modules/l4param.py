@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: l4param
 short_description: Configuration for Layer 4 related parameter resource.
 description: Configuration for Layer 4 related parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   l2connmethod:
-    type: raw
+    type: str
     choices:
       - Channel
       - Vlan
@@ -53,7 +55,7 @@ options:
         in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination
         port>).
   l4switch:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED

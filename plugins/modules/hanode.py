@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: hanode
 short_description: Configuration for node resource.
 description: Configuration for node resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,12 +41,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   deadinterval:
-    type: raw
+    type: float
     description:
       - Number of seconds after which a peer node is marked DOWN if heartbeat messages
         are not received from the peer node.
   failsafe:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -53,7 +55,7 @@ options:
         available node can back up data and handle traffic. This mode is set independently
         on each node.
   haprop:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -71,7 +73,7 @@ options:
         propagation uses port 3010.
       - 'Note: After enabling propagation, run force synchronization on either node.'
   hastatus:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - STAYSECONDARY
@@ -94,7 +96,7 @@ options:
         \ normal HA operation without any constraints/preferences. C(DISABLED) state\
         \ disables the normal HA operation of the node."
   hasync:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -104,12 +106,12 @@ options:
         synchronization requires that this setting be enabled (the default) on the
         current secondary node. Synchronization uses TCP port 3010.
   hellointerval:
-    type: raw
+    type: float
     description:
       - Interval, in milliseconds, between heartbeat messages sent to the peer node.
         The heartbeat messages are UDP packets sent to port 3003 of the peer node.
   id:
-    type: raw
+    type: float
     description:
       - Number that uniquely identifies the node. For self node, it will always be
         0. Peer node values can range from 1-64.
@@ -131,22 +133,26 @@ options:
       - The NSIP or NSIP6 address of the node to be added for an HA configuration.
         This setting is neither propagated nor synchronized.
   maxflips:
-    type: raw
+    type: float
     description:
       - Max number of flips allowed before becoming sticky primary
   maxfliptime:
-    type: raw
+    type: float
     description:
       - Interval after which flipping of node states can again start
+  rpcnodepassword:
+    type: str
+    description:
+      - Password to be used in authentication with the peer rpc node.
   syncstatusstrictmode:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - strict mode flag for sync status
   syncvlan:
-    type: raw
+    type: float
     description:
       - Vlan on which HA related communication is sent. This include sync, propagation
         , connection mirroring , LB persistency config sync, persistent session sync
@@ -207,16 +213,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample hanode playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | HAnode
+    - name: Configure hanode
       delegate_to: localhost
       netscaler.adc.hanode:
+        nsip: '{{ nsip }}'
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        validate_certs: '{{ validate_certs }}'
         state: present
-        id: 1
-        ipaddress: 10.10.10.141
+        ipaddress: 10.189.96.60
+        inc: ENABLED
+        hanode_id: '1'
 """
 
 RETURN = r"""
