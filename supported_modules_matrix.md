@@ -4,13 +4,13 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 
 ---
 
-- Total number of resources: **939**
+- Total number of resources: **931**
 - Total number of supported resources: **927**
-- Total number of supported resources with examples: **444**
-- Total number of unsupported resources: **12**
-- Percentage of supported resources: **98.72%**
-- Percentage of supported resources with examples: **47.28%**
-- Percentage of unsupported resources: **1.28%**
+- Total number of supported resources with examples: **446**
+- Total number of unsupported resources: **4**
+- Percentage of supported resources: **99.57%**
+- Percentage of supported resources with examples: **47.91%**
+- Percentage of unsupported resources: **0.43%**
 
 ---
 
@@ -558,7 +558,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [nsencryptionkey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsencryptionkey_module.html) | ✅ | ❌ |
 | [nsencryptionparams](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsencryptionparams_module.html) | ✅ | ✅ |
 | [nsextension](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsextension_module.html) | ✅ | ❌ |
-| [nsfeature](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsfeature_module.html) | ✅ | ❌ |
+| [nsfeature](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsfeature_module.html) | ✅ | ✅ |
 | [nshmackey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nshmackey_module.html) | ✅ | ❌ |
 | [nshostname](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nshostname_module.html) | ✅ | ✅ |
 | [nshttpparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nshttpparam_module.html) | ✅ | ✅ |
@@ -575,7 +575,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | nsmemrecovery | ❌ | ❌ |
 | [nsmgmtparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmgmtparam_module.html) | ✅ | ❌ |
 | [nsmigration](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmigration_module.html) | ✅ | ❌ |
-| [nsmode](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmode_module.html) | ✅ | ❌ |
+| [nsmode](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmode_module.html) | ✅ | ✅ |
 | [nsnextgenapi](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsnextgenapi_module.html) | ✅ | ❌ |
 | [nsparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsparam_module.html) | ✅ | ✅ |
 | [nspartition](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nspartition_module.html) | ✅ | ✅ |
@@ -750,15 +750,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [sslservicegroup_sslcipher_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslservicegroup_sslcipher_binding_module.html) | ✅ | ❌ |
 | [sslservicegroup_sslciphersuite_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslservicegroup_sslciphersuite_binding_module.html) | ✅ | ❌ |
 | [sslvserver](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslvserver_module.html) | ✅ | ✅ |
-| sslvserver_appfwpolicy_binding | ❌ | ❌ |
-| sslvserver_auditnslogpolicy_binding | ❌ | ❌ |
-| sslvserver_auditsyslogpolicy_binding | ❌ | ❌ |
-| sslvserver_authorizationpolicy_binding | ❌ | ❌ |
-| sslvserver_cachepolicy_binding | ❌ | ❌ |
-| sslvserver_cmppolicy_binding | ❌ | ❌ |
 | [sslvserver_ecccurve_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslvserver_ecccurve_binding_module.html) | ✅ | ✅ |
-| sslvserver_responderpolicy_binding | ❌ | ❌ |
-| sslvserver_rewritepolicy_binding | ❌ | ❌ |
 | [sslvserver_sslcacertbundle_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslvserver_sslcacertbundle_binding_module.html) | ✅ | ❌ |
 | [sslvserver_sslcertkey_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslvserver_sslcertkey_binding_module.html) | ✅ | ✅ |
 | [sslvserver_sslcertkeybundle_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslvserver_sslcertkeybundle_binding_module.html) | ✅ | ✅ |
