@@ -21,7 +21,7 @@
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-DOCUMENTATION = '''
+DOCUMENTATION = r"""
     name: ssh_netscaler_adc
     short_description: connect via ssh client binary with Netscaler ADC bypassing the cli
     description:
@@ -316,7 +316,7 @@ DOCUMENTATION = '''
             - name: ANSIBLE_PKCS11_PROVIDER
           vars:
             - name: ansible_pkcs11_provider
-'''
+"""
 
 import codecs
 
