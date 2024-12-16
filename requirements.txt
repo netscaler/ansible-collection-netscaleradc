@@ -7,4 +7,4 @@ antsibull-docs
 sphinx
 sphinx-ansible-theme
 galaxy-importer==0.5.0
-ansible-core>=2.14.0
+ansible-core>=2.18.1

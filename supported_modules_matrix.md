@@ -6,10 +6,10 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 
 - Total number of resources: **931**
 - Total number of supported resources: **927**
-- Total number of supported resources with examples: **446**
+- Total number of supported resources with examples: **444**
 - Total number of unsupported resources: **4**
 - Percentage of supported resources: **99.57%**
-- Percentage of supported resources with examples: **47.91%**
+- Percentage of supported resources with examples: **47.69%**
 - Percentage of unsupported resources: **0.43%**
 
 ---
@@ -558,7 +558,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [nsencryptionkey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsencryptionkey_module.html) | ✅ | ❌ |
 | [nsencryptionparams](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsencryptionparams_module.html) | ✅ | ✅ |
 | [nsextension](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsextension_module.html) | ✅ | ❌ |
-| [nsfeature](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsfeature_module.html) | ✅ | ✅ |
+| [nsfeature](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsfeature_module.html) | ✅ | ❌ |
 | [nshmackey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nshmackey_module.html) | ✅ | ❌ |
 | [nshostname](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nshostname_module.html) | ✅ | ✅ |
 | [nshttpparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nshttpparam_module.html) | ✅ | ✅ |
@@ -575,7 +575,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | nsmemrecovery | ❌ | ❌ |
 | [nsmgmtparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmgmtparam_module.html) | ✅ | ❌ |
 | [nsmigration](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmigration_module.html) | ✅ | ❌ |
-| [nsmode](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmode_module.html) | ✅ | ✅ |
+| [nsmode](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmode_module.html) | ✅ | ❌ |
 | [nsnextgenapi](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsnextgenapi_module.html) | ✅ | ❌ |
 | [nsparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsparam_module.html) | ✅ | ✅ |
 | [nspartition](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nspartition_module.html) | ✅ | ✅ |
