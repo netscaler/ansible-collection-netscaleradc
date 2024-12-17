@@ -29,10 +29,9 @@ DOCUMENTATION = r"""
         - The only authentication method that works with this plugin is with ssh key file.
         - The input options supported by this connection plugin are the same as the ssh connection plugin of Ansible.
     author:
-        - Sergios Lenis (sergios.lenis@citrix.com)
-        - George Nikolopoulos (giorgos.nikolopoulos@citrix.com)
-        - Shiva Shankar Vaddepally (shivashankar.vaddepally@cloud.com)
-    version_added: "2.0.0"
+        - George Nikolopoulos (@giorgos-nikolopoulos)
+        - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
+    version_added: "2.7.0"
     options:
       host:
           description: Hostname/ip to connect to.

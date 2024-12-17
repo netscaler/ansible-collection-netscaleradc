@@ -891,3 +891,4 @@ plugins/modules/vxlan_nsip_binding.py validate-modules:missing-gplv3-license # W
 plugins/modules/vxlan_srcip_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/vxlanvlanmap.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/vxlanvlanmap_vxlan_binding.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/connection/ssh_netscaler_adc.py validate-modules:missing-gplv3-license # We use MIT license
