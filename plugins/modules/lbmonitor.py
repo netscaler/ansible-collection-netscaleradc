@@ -837,10 +837,7 @@ EXAMPLES = r"""
     - name: Configure lbmonitor
       delegate_to: localhost
       netscaler.adc.lbmonitor:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         monitorname: Storefront
         type: STOREFRONT

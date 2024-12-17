@@ -94,10 +94,7 @@ EXAMPLES = r"""
     - name: Configure rewritepolicylabel_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.rewritepolicylabel_rewritepolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         labelname: ns_cvpn_v2_url_label
         policyname: ns_cvpn_v2_bypass_url_pol

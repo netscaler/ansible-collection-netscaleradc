@@ -138,10 +138,7 @@ EXAMPLES = r"""
     - name: Configure rewritepolicy
       delegate_to: localhost
       netscaler.adc.rewritepolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: rw_diam_pol
         rule: diameter.req.avp(264).value.eq("host1.sayan1.net")

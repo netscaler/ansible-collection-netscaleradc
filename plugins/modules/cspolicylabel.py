@@ -146,10 +146,7 @@ EXAMPLES = r"""
     - name: Configure cspolicylabel
       delegate_to: localhost
       netscaler.adc.cspolicylabel:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         labelname: plab1
         newname: plab1_new

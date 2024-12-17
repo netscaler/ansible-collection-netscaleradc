@@ -82,10 +82,7 @@ EXAMPLES = r"""
     - name: Configure authenticationauthnprofile
       delegate_to: localhost
       netscaler.adc.authenticationauthnprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: citrixgw_auth_profile
         authnvsname: Citrix_AAA_vServer

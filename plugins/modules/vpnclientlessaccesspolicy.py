@@ -72,10 +72,7 @@ EXAMPLES = r"""
     - name: Configure vpnclientlessaccesspolicy
       delegate_to: localhost
       netscaler.adc.vpnclientlessaccesspolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ia_cltlsacspol1
         rule: 'true'

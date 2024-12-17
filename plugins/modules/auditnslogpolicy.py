@@ -73,10 +73,7 @@ EXAMPLES = r"""
     - name: Configure auditnslogpolicy
       delegate_to: localhost
       netscaler.adc.auditnslogpolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: nslog_pol
         rule: 'true'

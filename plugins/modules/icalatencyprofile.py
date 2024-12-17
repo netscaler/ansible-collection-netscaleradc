@@ -95,10 +95,7 @@ EXAMPLES = r"""
     - name: Configure icalatencyprofile
       delegate_to: localhost
       netscaler.adc.icalatencyprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: l6
         l7latencywaittime: '5'

@@ -94,10 +94,7 @@ EXAMPLES = r"""
     - name: Configure dnsaction
       delegate_to: localhost
       netscaler.adc.dnsaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         actionname: ia_dnsact8
         actiontype: Rewrite_Response

@@ -116,10 +116,7 @@ EXAMPLES = r"""
     - name: Configure cacheglobal_cachepolicy_binding
       delegate_to: localhost
       netscaler.adc.cacheglobal_cachepolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policy: NOPOLICY
         priority: '185883'

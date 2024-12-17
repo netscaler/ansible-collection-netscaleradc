@@ -109,10 +109,7 @@ EXAMPLES = r"""
     - name: Configure subscriberparam
       delegate_to: localhost
       netscaler.adc.subscriberparam:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         ipv6prefixlookuplist:
           - '120'

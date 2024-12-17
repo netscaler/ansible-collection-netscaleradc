@@ -65,10 +65,7 @@ EXAMPLES = r"""
     - name: Configure arpparam
       delegate_to: localhost
       netscaler.adc.arpparam:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         spoofvalidation: ENABLED
 """

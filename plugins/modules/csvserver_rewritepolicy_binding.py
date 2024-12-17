@@ -105,10 +105,7 @@ EXAMPLES = r"""
     - name: Configure csvserver_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.csvserver_rewritepolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: CSW_v1
         policyname: CSW_rwrtpol1

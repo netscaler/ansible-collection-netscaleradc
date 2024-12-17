@@ -137,10 +137,7 @@ EXAMPLES = r"""
     - name: Configure dnspolicy
       delegate_to: localhost
       netscaler.adc.dnspolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: test5
         rule: dns.length.GT(1)

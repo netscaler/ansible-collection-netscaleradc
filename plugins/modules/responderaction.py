@@ -159,10 +159,7 @@ EXAMPLES = r"""
     - name: Configure responderaction
       delegate_to: localhost
       netscaler.adc.responderaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: LB_rsact1
         type: respondwith

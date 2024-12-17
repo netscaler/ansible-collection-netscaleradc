@@ -67,10 +67,7 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnlogprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnlogprofile_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: lsn_group_1
         logprofilename: msd

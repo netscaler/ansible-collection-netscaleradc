@@ -556,10 +556,7 @@ EXAMPLES = r"""
     - name: Configure authenticationsamlidpprofile
       delegate_to: localhost
       netscaler.adc.authenticationsamlidpprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: samlidp_red1
         samlbinding: REDIRECT

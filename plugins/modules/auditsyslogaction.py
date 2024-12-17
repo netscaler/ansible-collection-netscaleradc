@@ -311,10 +311,7 @@ EXAMPLES = r"""
     - name: Configure auditsyslogaction
       delegate_to: localhost
       netscaler.adc.auditsyslogaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: act1121
         lbvservername: lb511

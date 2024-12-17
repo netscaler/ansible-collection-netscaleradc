@@ -67,10 +67,7 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnhttphdrlogprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnhttphdrlogprofile_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: g1
         httphdrlogprofilename: httplog

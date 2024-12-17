@@ -95,10 +95,7 @@ EXAMPLES = r"""
     - name: Configure aaagroup_intranetip_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_intranetip_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: group1
         intranetip: 192.168.1.80

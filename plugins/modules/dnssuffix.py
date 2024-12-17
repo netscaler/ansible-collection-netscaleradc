@@ -55,10 +55,7 @@ EXAMPLES = r"""
     - name: Configure dnssuffix
       delegate_to: localhost
       netscaler.adc.dnssuffix:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         Dnssuffix: sssss.ssss
 """

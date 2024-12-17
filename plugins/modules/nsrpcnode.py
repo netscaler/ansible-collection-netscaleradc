@@ -79,10 +79,7 @@ EXAMPLES = r"""
     - name: Configure nsrpcnode
       delegate_to: localhost
       netscaler.adc.nsrpcnode:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         ipaddress: 10.76.126.5
         password: REQ_PASSWORD

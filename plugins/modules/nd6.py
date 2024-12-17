@@ -114,10 +114,7 @@ EXAMPLES = r"""
     - name: Configure nd6
       delegate_to: localhost
       netscaler.adc.nd6:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         neighbor: fe80::20
         mac: 00:aa:10:12:13:ef

@@ -140,10 +140,7 @@ EXAMPLES = r"""
     - name: Configure rewriteglobal_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.rewriteglobal_rewritepolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policyname: new_policy_2
         priority: '11'

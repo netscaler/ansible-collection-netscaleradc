@@ -379,10 +379,7 @@ EXAMPLES = r"""
     - name: Configure gslbservice
       delegate_to: localhost
       netscaler.adc.gslbservice:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         servicename: GSLB_SVC_USE2_storefront.blackstone.com
         ip: 10.76.126.10

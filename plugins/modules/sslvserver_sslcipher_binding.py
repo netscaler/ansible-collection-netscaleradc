@@ -70,10 +70,7 @@ EXAMPLES = r"""
     - name: Configure sslvserver_sslcipher_binding
       delegate_to: localhost
       netscaler.adc.sslvserver_sslcipher_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         vservername: lb2
         ciphername: TLS1.2-DHE-RSA-AES-128-SHA256

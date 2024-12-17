@@ -98,10 +98,7 @@ EXAMPLES = r"""
     - name: Configure lbsipparameters
       delegate_to: localhost
       netscaler.adc.lbsipparameters:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         rnatsecuresrcport: 5061
 """

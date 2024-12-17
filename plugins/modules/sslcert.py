@@ -180,10 +180,7 @@ EXAMPLES = r"""
     - name: Configure sslcert
       delegate_to: localhost
       netscaler.adc.sslcert:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         certfile: ssl_rsa_der_cert
         reqfile: ssl_rsa_der_csr

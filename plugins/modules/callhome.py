@@ -93,10 +93,7 @@ EXAMPLES = r"""
     - name: Configure callhome
       delegate_to: localhost
       netscaler.adc.callhome:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         hbcustominterval: '20'
 """

@@ -122,10 +122,7 @@ EXAMPLES = r"""
     - name: Configure cacheparameter
       delegate_to: localhost
       netscaler.adc.cacheparameter:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         via: 'NS-CACHE-10.0:  50'
 """

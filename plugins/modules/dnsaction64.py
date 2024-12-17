@@ -73,10 +73,7 @@ EXAMPLES = r"""
     - name: Configure dnsaction64
       delegate_to: localhost
       netscaler.adc.dnsaction64:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         actionname: dns64_act2
         prefix: 64:ff9b::/96

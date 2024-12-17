@@ -129,10 +129,7 @@ EXAMPLES = r"""
     - name: Configure responderpolicylabel
       delegate_to: localhost
       netscaler.adc.responderpolicylabel:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         labelname: ia_respolabl5
 """

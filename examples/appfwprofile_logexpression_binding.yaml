@@ -6,10 +6,7 @@
     - name: Configure appfwprofile_logexpression_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_logexpression_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: profile2
         logexpression: xyz

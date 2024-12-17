@@ -62,10 +62,7 @@ EXAMPLES = r"""
     - name: Configure crvserver_lbvserver_binding
       delegate_to: localhost
       netscaler.adc.crvserver_lbvserver_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: CR_v2
         lbvserver: CR_cachev2

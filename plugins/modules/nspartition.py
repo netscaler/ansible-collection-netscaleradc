@@ -174,10 +174,7 @@ EXAMPLES = r"""
     - name: Configure nspartition
       delegate_to: localhost
       netscaler.adc.nspartition:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         partitionname: p1
         vxlan: '1'

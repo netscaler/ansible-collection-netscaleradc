@@ -6,10 +6,7 @@
     - name: Configure dnsaaaarec
       delegate_to: localhost
       netscaler.adc.dnsaaaarec:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         hostname: n2.com
         ipv6address:

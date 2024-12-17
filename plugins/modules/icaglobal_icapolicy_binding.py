@@ -83,10 +83,7 @@ EXAMPLES = r"""
     - name: Configure icaglobal_icapolicy_binding
       delegate_to: localhost
       netscaler.adc.icaglobal_icapolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policyname: icapol2
         priority: '2'

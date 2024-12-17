@@ -320,10 +320,7 @@ EXAMPLES = r"""
     - name: Configure authenticationoauthaction
       delegate_to: localhost
       netscaler.adc.authenticationoauthaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: cvpn_nac
         oauthtype: INTUNE

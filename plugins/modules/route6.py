@@ -136,10 +136,7 @@ EXAMPLES = r"""
     - name: Configure route6
       delegate_to: localhost
       netscaler.adc.route6:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         network: 202::/64
         gateway: fe80::1234

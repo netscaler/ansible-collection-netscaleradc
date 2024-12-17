@@ -113,10 +113,7 @@ EXAMPLES = r"""
     - name: Configure policyurlset
       delegate_to: localhost
       netscaler.adc.policyurlset:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: top10k
         imported: false

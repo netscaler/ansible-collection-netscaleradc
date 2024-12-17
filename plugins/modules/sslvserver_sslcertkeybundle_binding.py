@@ -65,10 +65,7 @@ EXAMPLES = r"""
     - name: Configure sslvserver_sslcertkeybundle_binding
       delegate_to: localhost
       netscaler.adc.sslvserver_sslcertkeybundle_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         vservername: v1_1
         certkeybundlename: tc11

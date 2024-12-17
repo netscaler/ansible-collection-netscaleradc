@@ -67,10 +67,7 @@ EXAMPLES = r"""
     - name: Configure lbgroup_lbvserver_binding
       delegate_to: localhost
       netscaler.adc.lbgroup_lbvserver_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: webgrp
         vservername: http_vip

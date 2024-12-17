@@ -96,10 +96,7 @@ EXAMPLES = r"""
     - name: Configure sslrsakey
       delegate_to: localhost
       netscaler.adc.sslrsakey:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         keyfile: ssl_rsa_der_key
         bits: '2048'

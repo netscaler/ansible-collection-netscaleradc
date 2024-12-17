@@ -129,10 +129,7 @@ EXAMPLES = r"""
     - name: Configure ipsecprofile
       delegate_to: localhost
       netscaler.adc.ipsecprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ia_ipsecpro10
         publickey: sample

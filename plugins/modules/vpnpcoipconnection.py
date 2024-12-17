@@ -58,10 +58,7 @@ EXAMPLES = r"""
     - name: Configure vpnpcoipconnection
       delegate_to: localhost
       netscaler.adc.vpnpcoipconnection:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         username: u1
         nitro_operation: kill

@@ -71,10 +71,7 @@ EXAMPLES = r"""
     - name: Configure snmpcommunity
       delegate_to: localhost
       netscaler.adc.snmpcommunity:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         communityname: HP5U7#mmTW2&Yi48
         permissions: ALL

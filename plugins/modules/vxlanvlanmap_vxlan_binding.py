@@ -66,10 +66,7 @@ EXAMPLES = r"""
     - name: Configure vxlanvlanmap_vxlan_binding
       delegate_to: localhost
       netscaler.adc.vxlanvlanmap_vxlan_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: v1
         vxlan: '20'

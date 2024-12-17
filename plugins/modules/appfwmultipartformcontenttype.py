@@ -62,10 +62,7 @@ EXAMPLES = r"""
     - name: Configure appfwmultipartformcontenttype
       delegate_to: localhost
       netscaler.adc.appfwmultipartformcontenttype:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         multipartformcontenttypevalue: multipart/form-data.*
         isregex: REGEX

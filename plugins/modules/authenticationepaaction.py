@@ -87,10 +87,7 @@ EXAMPLES = r"""
     - name: Configure authenticationepaaction
       delegate_to: localhost
       netscaler.adc.authenticationepaaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: EPA_ACT2
         csecexpr: sys.client_expr("proc_0_perl")

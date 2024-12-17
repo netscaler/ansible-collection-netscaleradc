@@ -6,10 +6,7 @@
     - name: Configure policydataset_value_binding
       delegate_to: localhost
       netscaler.adc.policydataset_value_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: SF_LBVIP
         value: 10.76.126.10

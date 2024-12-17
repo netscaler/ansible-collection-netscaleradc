@@ -70,10 +70,7 @@ EXAMPLES = r"""
     - name: Configure lbmonitor_metric_binding
       delegate_to: localhost
       netscaler.adc.lbmonitor_metric_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         monitorname: LB_ia_mon6
         metric: local.CONNECTIONS

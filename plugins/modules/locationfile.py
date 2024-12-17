@@ -84,10 +84,7 @@ EXAMPLES = r"""
     - name: Configure locationfile
       delegate_to: localhost
       netscaler.adc.locationfile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         locationfile: /var/netscaler/locdb/Citrix_Netscaler_InBuilt_GeoIP_DB_IPv4
 """

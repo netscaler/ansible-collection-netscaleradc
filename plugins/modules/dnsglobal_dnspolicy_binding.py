@@ -124,10 +124,7 @@ EXAMPLES = r"""
     - name: Configure dnsglobal_dnspolicy_binding
       delegate_to: localhost
       netscaler.adc.dnsglobal_dnspolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policyname: LB_ia_dnspol2
         priority: '23'

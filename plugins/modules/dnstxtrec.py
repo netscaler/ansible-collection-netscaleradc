@@ -99,10 +99,7 @@ EXAMPLES = r"""
     - name: Configure dnstxtrec
       delegate_to: localhost
       netscaler.adc.dnstxtrec:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         domain: sample2
         String:

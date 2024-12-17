@@ -99,10 +99,7 @@ EXAMPLES = r"""
     - name: Configure appfwpolicylabel
       delegate_to: localhost
       netscaler.adc.appfwpolicylabel:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         labelname: appfw_label_02
         policylabeltype: http_req

@@ -70,10 +70,7 @@ EXAMPLES = r"""
     - name: Configure netprofile_natrule_binding
       delegate_to: localhost
       netscaler.adc.netprofile_natrule_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: np101
         natrule: 11.0.0.0

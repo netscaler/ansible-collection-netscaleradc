@@ -114,10 +114,7 @@ EXAMPLES = r"""
     - name: Configure authenticationpolicylabel
       delegate_to: localhost
       netscaler.adc.authenticationpolicylabel:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         labelname: LDAP_Userextraction_External
         loginschema: LSCHEMA_INT

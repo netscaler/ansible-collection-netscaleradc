@@ -132,10 +132,7 @@ EXAMPLES = r"""
     - name: Configure nslimitidentifier
       delegate_to: localhost
       netscaler.adc.nslimitidentifier:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         limitidentifier: LB_rslm1
         threshold: '100'

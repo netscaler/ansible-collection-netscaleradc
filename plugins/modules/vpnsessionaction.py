@@ -677,10 +677,7 @@ EXAMPLES = r"""
     - name: Configure vpnsessionaction
       delegate_to: localhost
       netscaler.adc.vpnsessionaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: External_receiver_session_prof
         sesstimeout: 20

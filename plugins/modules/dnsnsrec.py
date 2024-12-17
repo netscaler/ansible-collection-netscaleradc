@@ -89,10 +89,7 @@ EXAMPLES = r"""
     - name: Configure dnsnsrec
       delegate_to: localhost
       netscaler.adc.dnsnsrec:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         domain: .
         nameserver: m.root-servers.net

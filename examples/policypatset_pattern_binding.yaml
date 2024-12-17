@@ -6,10 +6,7 @@
     - name: Configure policypatset_pattern_binding
       delegate_to: localhost
       netscaler.adc.policypatset_pattern_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: prod_patset
         string: https://portal2.bx.com

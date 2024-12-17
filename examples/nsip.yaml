@@ -6,10 +6,7 @@
     - name: Configure nsip
       delegate_to: localhost
       netscaler.adc.nsip:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         ipaddress: 10.189.130.5
         netmask: 255.255.255.255

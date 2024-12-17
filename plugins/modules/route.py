@@ -151,10 +151,7 @@ EXAMPLES = r"""
     - name: Configure route
       delegate_to: localhost
       netscaler.adc.route:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         network: 169.254.169.254
         netmask: 255.255.255.255

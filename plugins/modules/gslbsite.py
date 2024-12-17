@@ -170,10 +170,7 @@ EXAMPLES = r"""
     - name: Configure gslbsite
       delegate_to: localhost
       netscaler.adc.gslbsite:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         sitename: GSLB_Site_USE2
         siteipaddress: 10.76.126.5

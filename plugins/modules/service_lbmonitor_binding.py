@@ -80,10 +80,7 @@ EXAMPLES = r"""
     - name: Configure service_lbmonitor_binding
       delegate_to: localhost
       netscaler.adc.service_lbmonitor_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: use1_sf1_ssl_svc
         monitor_name: Storefront

@@ -228,10 +228,7 @@ EXAMPLES = r"""
     - name: Configure rewriteaction
       delegate_to: localhost
       netscaler.adc.rewriteaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: rw_act_insert_after_diameter_avp
         type: insert_after

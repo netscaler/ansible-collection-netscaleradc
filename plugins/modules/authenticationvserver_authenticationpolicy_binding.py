@@ -98,10 +98,7 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_authenticationpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: Citrix_AAA_vServer
         policy: OKta_SAML_External

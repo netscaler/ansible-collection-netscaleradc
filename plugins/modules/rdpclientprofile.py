@@ -199,10 +199,7 @@ EXAMPLES = r"""
     - name: Configure rdpclientprofile
       delegate_to: localhost
       netscaler.adc.rdpclientprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: rdpc2
         rdpurloverride: DISABLE

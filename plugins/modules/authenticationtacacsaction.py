@@ -204,10 +204,7 @@ EXAMPLES = r"""
     - name: Configure authenticationtacacsaction
       delegate_to: localhost
       netscaler.adc.authenticationtacacsaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: t1
         serverip: 77.77.77.77

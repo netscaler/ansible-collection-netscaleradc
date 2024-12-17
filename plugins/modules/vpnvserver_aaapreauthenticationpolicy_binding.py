@@ -124,10 +124,7 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_aaapreauthenticationpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_aaapreauthenticationpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: vpn_ssl
         policy: preact

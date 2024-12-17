@@ -104,10 +104,7 @@ EXAMPLES = r"""
     - name: Configure sslvserver_sslpolicy_binding
       delegate_to: localhost
       netscaler.adc.sslvserver_sslpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         vservername: new_XM_LB_MDM_titan.dnpg-blr.com_10.100.48.233_443
         policyname: new_XM_MDM_titan.dnpg-blr.com_POLICY1

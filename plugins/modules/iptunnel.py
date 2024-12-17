@@ -128,10 +128,7 @@ EXAMPLES = r"""
     - name: Configure iptunnel
       delegate_to: localhost
       netscaler.adc.iptunnel:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: t11
         remote: 1.1.1.14

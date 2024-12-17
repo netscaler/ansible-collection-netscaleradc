@@ -68,10 +68,7 @@ EXAMPLES = r"""
     - name: Configure appfwwsdl
       delegate_to: localhost
       netscaler.adc.appfwwsdl:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         src: http://10.217.30.16/testsite/Signatures/44_38_1_36/YellowPages.xml
         name: Https_Wsd l 2

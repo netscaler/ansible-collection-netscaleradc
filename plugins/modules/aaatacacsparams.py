@@ -99,10 +99,7 @@ EXAMPLES = r"""
     - name: Configure aaatacacsparams
       delegate_to: localhost
       netscaler.adc.aaatacacsparams:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         serverip: 10.102.25.65
         tacacssecret: REQ_PASSWORD

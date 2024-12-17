@@ -129,10 +129,7 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_authenticationlocalpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationlocalpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ia_authnvs71
         policy: ia_authnlocalpol1

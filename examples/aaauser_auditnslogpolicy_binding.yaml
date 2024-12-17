@@ -6,10 +6,7 @@
     - name: Configure aaauser_auditnslogpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaauser_auditnslogpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         username: aaauser
         policy: ia_nspol1

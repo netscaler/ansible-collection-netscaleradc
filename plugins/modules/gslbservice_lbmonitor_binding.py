@@ -74,10 +74,7 @@ EXAMPLES = r"""
     - name: Configure gslbservice_lbmonitor_binding
       delegate_to: localhost
       netscaler.adc.gslbservice_lbmonitor_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         servicename: GSLB_SVC_USE1_storefront.blackstone.com
         monitor_name: tcp

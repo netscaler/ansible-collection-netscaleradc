@@ -102,10 +102,7 @@ EXAMPLES = r"""
     - name: Configure gslbvserver_domain_binding
       delegate_to: localhost
       netscaler.adc.gslbvserver_domain_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: GSLB_VSRV_storefront.blackstone.com
         domainname: storefront.gslb.blackstone.com

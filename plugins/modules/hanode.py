@@ -220,10 +220,7 @@ EXAMPLES = r"""
     - name: Configure hanode
       delegate_to: localhost
       netscaler.adc.hanode:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         ipaddress: 10.189.96.60
         inc: ENABLED

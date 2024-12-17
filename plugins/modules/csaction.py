@@ -90,10 +90,7 @@ EXAMPLES = r"""
     - name: Configure csaction
       delegate_to: localhost
       netscaler.adc.csaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: cs_act
         targetvserver: vpn1

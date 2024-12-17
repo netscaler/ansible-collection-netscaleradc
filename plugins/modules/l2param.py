@@ -165,10 +165,7 @@ EXAMPLES = r"""
     - name: Configure l2param
       delegate_to: localhost
       netscaler.adc.l2param:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         returntoethernetsender: ENABLED
 """

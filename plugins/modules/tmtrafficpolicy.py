@@ -73,10 +73,7 @@ EXAMPLES = r"""
     - name: Configure tmtrafficpolicy
       delegate_to: localhost
       netscaler.adc.tmtrafficpolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ia_tmtrafpol1
         rule: HTTP.REQ.METHOD.EQ(GET)

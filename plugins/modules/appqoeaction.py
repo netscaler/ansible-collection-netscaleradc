@@ -155,10 +155,7 @@ EXAMPLES = r"""
     - name: Configure appqoeaction
       delegate_to: localhost
       netscaler.adc.appqoeaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: appact22_ns
         priority: MEDIUM

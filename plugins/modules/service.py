@@ -501,10 +501,7 @@ EXAMPLES = r"""
     - name: Configure service
       delegate_to: localhost
       netscaler.adc.service:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: nshttpd-vpn-127.0.0.1-81
         cip: ENABLED

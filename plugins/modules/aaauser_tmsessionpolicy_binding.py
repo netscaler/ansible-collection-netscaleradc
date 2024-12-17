@@ -82,10 +82,7 @@ EXAMPLES = r"""
     - name: Configure aaauser_tmsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaauser_tmsessionpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         username: aaauser1
         policy: ia_tmsespol1

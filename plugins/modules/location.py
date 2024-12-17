@@ -84,10 +84,7 @@ EXAMPLES = r"""
     - name: Configure location
       delegate_to: localhost
       netscaler.adc.location:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         ipfrom: 1.1.1.1
         ipto: 2.2.2.2

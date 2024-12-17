@@ -355,10 +355,7 @@ EXAMPLES = r"""
     - name: Configure analyticsprofile
       delegate_to: localhost
       netscaler.adc.analyticsprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: telemetry_metrics_profile
         type: timeseries

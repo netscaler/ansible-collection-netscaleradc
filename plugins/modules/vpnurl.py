@@ -111,10 +111,7 @@ EXAMPLES = r"""
     - name: Configure vpnurl
       delegate_to: localhost
       netscaler.adc.vpnurl:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         urlname: url3
         linkname: url3

@@ -1193,10 +1193,7 @@ EXAMPLES = r"""
     - name: Configure csvserver
       delegate_to: localhost
       netscaler.adc.csvserver:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ADNS_TCP_EXT
         servicetype: DNS_TCP

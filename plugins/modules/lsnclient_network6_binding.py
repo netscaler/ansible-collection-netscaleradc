@@ -84,10 +84,7 @@ EXAMPLES = r"""
     - name: Configure lsnclient_network6_binding
       delegate_to: localhost
       netscaler.adc.lsnclient_network6_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         clientname: client12
         network6: 3ffe:100::6/128

@@ -500,10 +500,7 @@ EXAMPLES = r"""
     - name: Configure lsngroup
       delegate_to: localhost
       netscaler.adc.lsngroup:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: dsl_http
         clientname: dsl_http

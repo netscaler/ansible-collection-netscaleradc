@@ -110,10 +110,7 @@ EXAMPLES = r"""
     - name: Configure contentinspectionaction
       delegate_to: localhost
       netscaler.adc.contentinspectionaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ci_act_test
         type: NOINSPECTION

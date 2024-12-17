@@ -6,10 +6,7 @@
     - name: Configure lbvserver_dnspolicy64_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_dnspolicy64_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: lb_tcp1
         policyname: dns64_pol2

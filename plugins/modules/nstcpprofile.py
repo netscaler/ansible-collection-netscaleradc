@@ -434,10 +434,7 @@ EXAMPLES = r"""
     - name: Configure nstcpprofile
       delegate_to: localhost
       netscaler.adc.nstcpprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: nstcp_default_profile
         flavor: Westwood

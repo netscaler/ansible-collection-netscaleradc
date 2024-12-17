@@ -77,10 +77,7 @@ EXAMPLES = r"""
     - name: Configure snmpmanager
       delegate_to: localhost
       netscaler.adc.snmpmanager:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         ipaddress:
           - citrix.com

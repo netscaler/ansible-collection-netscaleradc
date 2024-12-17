@@ -75,10 +75,7 @@ EXAMPLES = r"""
     - name: Configure bridgegroup_nsip_binding
       delegate_to: localhost
       netscaler.adc.bridgegroup_nsip_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         id: '2'
         ipaddress: 2.2.2.1

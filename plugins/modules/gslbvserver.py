@@ -536,10 +536,7 @@ EXAMPLES = r"""
     - name: Configure gslbvserver
       delegate_to: localhost
       netscaler.adc.gslbvserver:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: backup_gslb_portal.bx.com
         servicetype: SSL

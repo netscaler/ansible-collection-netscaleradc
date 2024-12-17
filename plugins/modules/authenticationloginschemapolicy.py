@@ -113,10 +113,7 @@ EXAMPLES = r"""
     - name: Configure authenticationloginschemapolicy
       delegate_to: localhost
       netscaler.adc.authenticationloginschemapolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: second_factor_schema
         rule: 'true'

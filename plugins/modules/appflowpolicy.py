@@ -125,10 +125,7 @@ EXAMPLES = r"""
     - name: Configure appflowpolicy
       delegate_to: localhost
       netscaler.adc.appflowpolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: af_policy_act_log_10.189.64.10
         rule: 'true'

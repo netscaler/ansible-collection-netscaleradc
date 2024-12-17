@@ -91,10 +91,7 @@ EXAMPLES = r"""
     - name: Configure dnspolicylabel
       delegate_to: localhost
       netscaler.adc.dnspolicylabel:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         labelname: invoke_labelname2
         transform: dns_res

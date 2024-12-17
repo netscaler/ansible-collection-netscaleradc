@@ -55,10 +55,7 @@ EXAMPLES = r"""
     - name: Configure dnsview
       delegate_to: localhost
       netscaler.adc.dnsview:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         viewname: view1
 """

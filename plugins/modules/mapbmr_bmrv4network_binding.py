@@ -76,10 +76,7 @@ EXAMPLES = r"""
     - name: Configure mapbmr_bmrv4network_binding
       delegate_to: localhost
       netscaler.adc.mapbmr_bmrv4network_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: bmr1
         network: 192.0.2.0

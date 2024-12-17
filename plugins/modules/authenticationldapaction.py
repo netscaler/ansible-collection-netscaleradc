@@ -369,10 +369,7 @@ EXAMPLES = r"""
     - name: Configure authenticationldapaction
       delegate_to: localhost
       netscaler.adc.authenticationldapaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ldap_userextraction_External_noauth
         servername: awsdcs-amer.blackstone.com

@@ -155,10 +155,7 @@ EXAMPLES = r"""
     - name: Configure dnsprofile
       delegate_to: localhost
       netscaler.adc.dnsprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         dnsprofilename: p1
         cacherecords: ENABLED

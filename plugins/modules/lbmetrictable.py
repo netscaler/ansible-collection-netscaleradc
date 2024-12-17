@@ -93,10 +93,7 @@ EXAMPLES = r"""
     - name: Configure lbmetrictable
       delegate_to: localhost
       netscaler.adc.lbmetrictable:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         metrictable: LB_ia_metrictable3
 """

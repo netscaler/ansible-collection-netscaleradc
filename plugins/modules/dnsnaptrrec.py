@@ -121,10 +121,7 @@ EXAMPLES = r"""
     - name: Configure dnsnaptrrec
       delegate_to: localhost
       netscaler.adc.dnsnaptrrec:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         domain: citrix.com1
         order: '10'

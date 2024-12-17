@@ -85,10 +85,7 @@ EXAMPLES = r"""
     - name: Configure lsnhttphdrlogprofile
       delegate_to: localhost
       netscaler.adc.lsnhttphdrlogprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         httphdrlogprofilename: httplog
         logurl: ENABLED

@@ -65,10 +65,7 @@ EXAMPLES = r"""
     - name: Configure ssldhparam
       delegate_to: localhost
       netscaler.adc.ssldhparam:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         dhfile: dfile
         bits: '512'

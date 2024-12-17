@@ -96,10 +96,7 @@ EXAMPLES = r"""
     - name: Configure aaakcdaccount
       delegate_to: localhost
       netscaler.adc.aaakcdaccount:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         kcdaccount: kcdaccount1
         realmstr: dnpg

@@ -73,10 +73,7 @@ EXAMPLES = r"""
     - name: Configure aaapreauthenticationpolicy
       delegate_to: localhost
       netscaler.adc.aaapreauthenticationpolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: preact
         rule: client.os(win8.1) exists || client.os(win8) exists

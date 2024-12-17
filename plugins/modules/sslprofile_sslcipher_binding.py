@@ -73,10 +73,7 @@ EXAMPLES = r"""
     - name: Configure sslprofile_sslcipher_binding
       delegate_to: localhost
       netscaler.adc.sslprofile_sslcipher_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: blackstone_ssl_profile
         ciphername: DEFAULT

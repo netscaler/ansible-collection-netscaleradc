@@ -129,10 +129,7 @@ EXAMPLES = r"""
     - name: Configure appfwsignatures
       delegate_to: localhost
       netscaler.adc.appfwsignatures:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         src: http://10.217.30.16/test_sigs/v13/sigs/sig-r11.1b0v13s6_enabled.xml
         name: Space caps

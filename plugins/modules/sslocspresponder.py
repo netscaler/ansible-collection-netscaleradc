@@ -150,10 +150,7 @@ EXAMPLES = r"""
     - name: Configure sslocspresponder
       delegate_to: localhost
       netscaler.adc.sslocspresponder:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ocspresp5
         url: http://2.2.2.7:80/

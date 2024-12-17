@@ -156,10 +156,7 @@ EXAMPLES = r"""
     - name: Configure sslcertreq
       delegate_to: localhost
       netscaler.adc.sslcertreq:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         reqfile: ssl_rsa_der_csr
         keyfile: ssl_rsa_der_key

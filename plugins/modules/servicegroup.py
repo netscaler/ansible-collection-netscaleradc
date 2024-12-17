@@ -484,10 +484,7 @@ EXAMPLES = r"""
     - name: Configure servicegroup
       delegate_to: localhost
       netscaler.adc.servicegroup:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         servicegroupname: LB_ia_svcgrp13916
         servicetype: SSL

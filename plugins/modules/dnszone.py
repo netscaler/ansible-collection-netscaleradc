@@ -110,10 +110,7 @@ EXAMPLES = r"""
     - name: Configure dnszone
       delegate_to: localhost
       netscaler.adc.dnszone:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         zonename: gslb.blackstone.com
         proxymode: 'NO'

@@ -61,10 +61,7 @@ EXAMPLES = r"""
     - name: Configure systemgroup_systemuser_binding
       delegate_to: localhost
       netscaler.adc.systemgroup_systemuser_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: network
         username: net_ron

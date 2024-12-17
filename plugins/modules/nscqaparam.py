@@ -136,10 +136,7 @@ EXAMPLES = r"""
     - name: Configure nscqaparam
       delegate_to: localhost
       netscaler.adc.nscqaparam:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         lr1probthresh: 0.0
         lr2probthresh: 0.0

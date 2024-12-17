@@ -70,10 +70,7 @@ EXAMPLES = r"""
     - name: Configure lsnappsprofile_port_binding
       delegate_to: localhost
       netscaler.adc.lsnappsprofile_port_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         appsprofilename: app21
         lsnport: 1-65535

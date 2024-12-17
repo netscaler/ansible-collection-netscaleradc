@@ -770,10 +770,7 @@ EXAMPLES = r"""
     - name: Configure sslvserver
       delegate_to: localhost
       netscaler.adc.sslvserver:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         vservername: backup_gslb_portal.bx.com
         sslprofile: ns_default_ssl_profile_frontend

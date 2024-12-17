@@ -266,10 +266,7 @@ EXAMPLES = r"""
     - name: Configure nsconfig
       delegate_to: localhost
       netscaler.adc.nsconfig:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         nsvlan: '10'
         ifnum:

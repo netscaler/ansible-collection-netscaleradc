@@ -135,10 +135,7 @@ EXAMPLES = r"""
     - name: Configure tmsessionaction
       delegate_to: localhost
       netscaler.adc.tmsessionaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ia_tmsesact1
         sesstimeout: 2

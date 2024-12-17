@@ -91,10 +91,7 @@ EXAMPLES = r"""
     - name: Configure aaauser_vpnurl_binding
       delegate_to: localhost
       netscaler.adc.aaauser_vpnurl_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         username: phani2222
         urlname: owa2k7FqdnHttp

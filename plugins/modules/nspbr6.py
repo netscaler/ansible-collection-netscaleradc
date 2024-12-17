@@ -387,10 +387,7 @@ EXAMPLES = r"""
     - name: Configure nspbr6
       delegate_to: localhost
       netscaler.adc.nspbr6:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: test3
         action: DENY

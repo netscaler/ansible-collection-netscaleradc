@@ -112,10 +112,7 @@ EXAMPLES = r"""
     - name: Configure mapbmr
       delegate_to: localhost
       netscaler.adc.mapbmr:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: bmr1
         ruleipv6prefix: 2001:db8:89ab::/48

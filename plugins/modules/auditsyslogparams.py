@@ -213,10 +213,7 @@ EXAMPLES = r"""
     - name: Configure auditsyslogparams
       delegate_to: localhost
       netscaler.adc.auditsyslogparams:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         loglevel:
           - EMERGENCY

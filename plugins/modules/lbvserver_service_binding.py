@@ -79,10 +79,7 @@ EXAMPLES = r"""
     - name: Configure lbvserver_service_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_service_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: lb_dns_01
         servicename: dns_svc_03

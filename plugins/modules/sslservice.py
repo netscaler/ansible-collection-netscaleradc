@@ -618,10 +618,7 @@ EXAMPLES = r"""
     - name: Configure sslservice
       delegate_to: localhost
       netscaler.adc.sslservice:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         servicename: nsrpcs-127.0.0.1-3008
         sslprofile: ns_default_ssl_profile_frontend

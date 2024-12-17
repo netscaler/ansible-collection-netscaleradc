@@ -747,10 +747,7 @@ EXAMPLES = r"""
     - name: Configure vpnparameter
       delegate_to: localhost
       netscaler.adc.vpnparameter:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         forcecleanup:
           - none

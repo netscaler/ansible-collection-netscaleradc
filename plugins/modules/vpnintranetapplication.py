@@ -127,10 +127,7 @@ EXAMPLES = r"""
     - name: Configure vpnintranetapplication
       delegate_to: localhost
       netscaler.adc.vpnintranetapplication:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         intranetapplication: intra_app21
         protocol: TCP

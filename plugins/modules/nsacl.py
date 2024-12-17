@@ -445,10 +445,7 @@ EXAMPLES = r"""
     - name: Configure nsacl
       delegate_to: localhost
       netscaler.adc.nsacl:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         aclname: ACL_SF_Allow_USE1-B
         aclaction: ALLOW

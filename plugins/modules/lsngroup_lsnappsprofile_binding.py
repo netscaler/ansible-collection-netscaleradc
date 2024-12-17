@@ -77,10 +77,7 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnappsprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnappsprofile_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: g15
         appsprofilename: app_udp

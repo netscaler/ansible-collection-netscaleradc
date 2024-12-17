@@ -125,10 +125,7 @@ EXAMPLES = r"""
     - name: Configure dnssoarec
       delegate_to: localhost
       netscaler.adc.dnssoarec:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         domain: gslb.blackstone.com
         originserver: portal-adnsuse1.bx.com

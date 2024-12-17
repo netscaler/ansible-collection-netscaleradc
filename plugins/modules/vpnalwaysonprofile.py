@@ -88,10 +88,7 @@ EXAMPLES = r"""
     - name: Configure vpnalwaysonprofile
       delegate_to: localhost
       netscaler.adc.vpnalwaysonprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: aop1
         networkaccessonvpnfailure: fullAccess

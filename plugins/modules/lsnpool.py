@@ -164,10 +164,7 @@ EXAMPLES = r"""
     - name: Configure lsnpool
       delegate_to: localhost
       netscaler.adc.lsnpool:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         poolname: pool4
 """

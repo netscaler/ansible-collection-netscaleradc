@@ -101,10 +101,7 @@ EXAMPLES = r"""
     - name: Configure authenticationnegotiateaction
       delegate_to: localhost
       netscaler.adc.authenticationnegotiateaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: neg1
         domain: nsi-test.com

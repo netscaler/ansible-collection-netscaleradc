@@ -259,10 +259,7 @@ EXAMPLES = r"""
     - name: Configure channel
       delegate_to: localhost
       netscaler.adc.channel:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         id: LA/4
         ifnum:

@@ -115,10 +115,7 @@ EXAMPLES = r"""
     - name: Configure appflowglobal_appflowpolicy_binding
       delegate_to: localhost
       netscaler.adc.appflowglobal_appflowpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policyname: ia_appflowpol12
         priority: '42'

@@ -70,10 +70,7 @@ EXAMPLES = r"""
     - name: Configure feoparameter
       delegate_to: localhost
       netscaler.adc.feoparameter:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         jpegqualitypercent: '60'
         cssinlinethressize: '1024'

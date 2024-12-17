@@ -124,10 +124,7 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_authenticationlocalpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_authenticationlocalpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: callbackvs
         policy: NS_GATEWAY_DEFAULT_LOCAL_POL1

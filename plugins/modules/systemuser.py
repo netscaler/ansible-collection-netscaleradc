@@ -170,10 +170,7 @@ EXAMPLES = r"""
     - name: Configure systemuser
       delegate_to: localhost
       netscaler.adc.systemuser:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         username: GD-CTRLUPADC-P-APP
         password: REQ_PASSWORD

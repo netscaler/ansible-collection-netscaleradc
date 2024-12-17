@@ -60,10 +60,7 @@ EXAMPLES = r"""
     - name: Configure lacp
       delegate_to: localhost
       netscaler.adc.lacp:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         syspriority: '32768'
         mac: 12:31:4d:59:3f:9f

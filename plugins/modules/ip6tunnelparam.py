@@ -86,10 +86,7 @@ EXAMPLES = r"""
     - name: Configure ip6tunnelparam
       delegate_to: localhost
       netscaler.adc.ip6tunnelparam:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         srcip: '::'
 """

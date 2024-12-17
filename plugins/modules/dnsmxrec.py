@@ -100,10 +100,7 @@ EXAMPLES = r"""
     - name: Configure dnsmxrec
       delegate_to: localhost
       netscaler.adc.dnsmxrec:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         domain: n2.com
         mx: mail.n1.com

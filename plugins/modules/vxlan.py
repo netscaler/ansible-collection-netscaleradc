@@ -208,10 +208,7 @@ EXAMPLES = r"""
     - name: Configure vxlan
       delegate_to: localhost
       netscaler.adc.vxlan:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         id: '1'
 """

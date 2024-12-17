@@ -236,10 +236,7 @@ EXAMPLES = r"""
     - name: Configure systemparameter
       delegate_to: localhost
       netscaler.adc.systemparameter:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         maxclient: '40'
         forcepasswordchange: ENABLED

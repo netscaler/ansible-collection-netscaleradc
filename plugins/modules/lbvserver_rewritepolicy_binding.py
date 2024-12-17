@@ -107,10 +107,7 @@ EXAMPLES = r"""
     - name: Configure lbvserver_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_rewritepolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: LB_DIA_vs2
         policyname: rw_diam_pol

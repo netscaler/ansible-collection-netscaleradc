@@ -120,10 +120,7 @@ EXAMPLES = r"""
     - name: Configure nshttpparam
       delegate_to: localhost
       netscaler.adc.nshttpparam:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         dropinvalreqs: 'ON'
 """

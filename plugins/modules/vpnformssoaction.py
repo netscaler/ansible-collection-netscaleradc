@@ -102,10 +102,7 @@ EXAMPLES = r"""
     - name: Configure vpnformssoaction
       delegate_to: localhost
       netscaler.adc.vpnformssoaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ia_ssoact1
         actionurl: /owa/auth/owaauth.dll

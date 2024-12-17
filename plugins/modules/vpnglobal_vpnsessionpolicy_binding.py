@@ -168,10 +168,7 @@ EXAMPLES = r"""
     - name: Configure vpnglobal_vpnsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnglobal_vpnsessionpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policyname: SETVPNPARAMS_ADV_POL
         priority: '65534'

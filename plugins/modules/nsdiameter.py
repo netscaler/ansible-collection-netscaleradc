@@ -82,10 +82,7 @@ EXAMPLES = r"""
     - name: Configure nsdiameter
       delegate_to: localhost
       netscaler.adc.nsdiameter:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         identity: netscaler.com
         realm: com

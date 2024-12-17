@@ -176,10 +176,7 @@ EXAMPLES = r"""
     - name: Configure dnskey
       delegate_to: localhost
       netscaler.adc.dnskey:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         keyname: com.ksk.4096
         publickey: /nsconfig/dns/com.ksK.key

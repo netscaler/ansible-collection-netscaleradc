@@ -100,10 +100,7 @@ EXAMPLES = r"""
     - name: Configure icapolicy
       delegate_to: localhost
       netscaler.adc.icapolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ipo
         rule: HTTP.REQ.USER.IS_MEMBER_OF("g1")

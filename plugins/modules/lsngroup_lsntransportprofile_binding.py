@@ -75,10 +75,7 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsntransportprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsntransportprofile_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: group1
         transportprofilename: icmp

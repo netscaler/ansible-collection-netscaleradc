@@ -114,10 +114,7 @@ EXAMPLES = r"""
     - name: Configure appfwprofile_fieldformat_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_fieldformat_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: Test_profile
         fieldformat: text_area

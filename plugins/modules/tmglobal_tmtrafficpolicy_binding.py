@@ -106,10 +106,7 @@ EXAMPLES = r"""
     - name: Configure tmglobal_tmtrafficpolicy_binding
       delegate_to: localhost
       netscaler.adc.tmglobal_tmtrafficpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policyname: ia_tmtrafpol1
         priority: '1'

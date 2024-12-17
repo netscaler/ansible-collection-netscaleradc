@@ -161,10 +161,7 @@ EXAMPLES = r"""
     - name: Configure lsnclient
       delegate_to: localhost
       netscaler.adc.lsnclient:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         clientname: dsl_http
 """

@@ -76,10 +76,7 @@ EXAMPLES = r"""
     - name: Configure authenticationtacacspolicy
       delegate_to: localhost
       netscaler.adc.authenticationtacacspolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: primaryIPv4TACACSpolicy
         rule: ns_true

@@ -6,10 +6,7 @@
     - name: Configure cachepolicy
       delegate_to: localhost
       netscaler.adc.cachepolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         policyname: n_XM_CACHE_WO_DEVICEID_10.100.39.132
         rule: HTTP.REQ.HEADER("Host").CONTAINS("callout") && HTTP.REQ.URL.QUERY.CONTAINS("DeviceId").NOT

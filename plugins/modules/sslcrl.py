@@ -197,10 +197,7 @@ EXAMPLES = r"""
     - name: Configure sslcrl
       delegate_to: localhost
       netscaler.adc.sslcrl:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         crlname: crl_test_ldap1
         refresh: ENABLED

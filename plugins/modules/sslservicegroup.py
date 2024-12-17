@@ -288,10 +288,7 @@ EXAMPLES = r"""
     - name: Configure sslservicegroup
       delegate_to: localhost
       netscaler.adc.sslservicegroup:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         servicegroupname: LB_ia_svcgrp13916
         sessreuse: ENABLED

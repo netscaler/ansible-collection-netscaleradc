@@ -63,10 +63,7 @@ EXAMPLES = r"""
     - name: Configure nslicenseproxyserver
       delegate_to: localhost
       netscaler.adc.nslicenseproxyserver:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         serverip: 10.102.201.245
         port: '28000'

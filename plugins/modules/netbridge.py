@@ -161,10 +161,7 @@ EXAMPLES = r"""
     - name: Configure netbridge
       delegate_to: localhost
       netscaler.adc.netbridge:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: ia_netbridge2
 """

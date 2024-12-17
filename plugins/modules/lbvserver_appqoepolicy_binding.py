@@ -115,10 +115,7 @@ EXAMPLES = r"""
     - name: Configure lbvserver_appqoepolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_appqoepolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: Base_appqoe_v1
         policyname: Base_appqoe_pol7

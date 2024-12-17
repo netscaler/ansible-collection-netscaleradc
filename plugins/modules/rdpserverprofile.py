@@ -78,10 +78,7 @@ EXAMPLES = r"""
     - name: Configure rdpserverprofile
       delegate_to: localhost
       netscaler.adc.rdpserverprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: rdp_s3
         rdpip: 12.12.12.12

@@ -72,10 +72,7 @@ EXAMPLES = r"""
     - name: Configure lsnrtspalgprofile
       delegate_to: localhost
       netscaler.adc.lsnrtspalgprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         rtspalgprofilename: rtspprofile1
         rtspidletimeout: '100'

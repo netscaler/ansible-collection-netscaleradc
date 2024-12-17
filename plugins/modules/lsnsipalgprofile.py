@@ -126,10 +126,7 @@ EXAMPLES = r"""
     - name: Configure lsnsipalgprofile
       delegate_to: localhost
       netscaler.adc.lsnsipalgprofile:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         sipalgprofilename: sipalgprofile_udp
         registrationtimeout: '3600'

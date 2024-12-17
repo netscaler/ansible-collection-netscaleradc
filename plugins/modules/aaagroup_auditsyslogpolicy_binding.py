@@ -107,10 +107,7 @@ EXAMPLES = r"""
     - name: Configure aaagroup_auditsyslogpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_auditsyslogpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         groupname: aaagrp
         policy: ia_syspol1

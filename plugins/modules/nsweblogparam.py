@@ -68,10 +68,7 @@ EXAMPLES = r"""
     - name: Configure nsweblogparam
       delegate_to: localhost
       netscaler.adc.nsweblogparam:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         buffersizemb: '3'
 """

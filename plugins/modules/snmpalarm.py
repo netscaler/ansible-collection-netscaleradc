@@ -270,10 +270,7 @@ EXAMPLES = r"""
     - name: Configure snmpalarm
       delegate_to: localhost
       netscaler.adc.snmpalarm:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         trapname: SYSLOG-CONNECTION-DROPPED
         time: 0

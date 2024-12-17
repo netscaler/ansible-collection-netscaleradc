@@ -113,10 +113,7 @@ EXAMPLES = r"""
     - name: Configure cmpaction
       delegate_to: localhost
       netscaler.adc.cmpaction:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: Base_cmp_act1
         cmptype: compress

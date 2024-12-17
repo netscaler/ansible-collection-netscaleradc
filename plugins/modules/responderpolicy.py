@@ -135,10 +135,7 @@ EXAMPLES = r"""
     - name: Configure responderpolicy
       delegate_to: localhost
       netscaler.adc.responderpolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: P1
         rule: SIP.REQ.METHOD.EQ("INVITE")||SIP.REQ.METHOD.EQ("ACK")||SIP.REQ.METHOD.EQ("BYE")

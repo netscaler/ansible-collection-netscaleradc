@@ -108,10 +108,7 @@ EXAMPLES = r"""
     - name: Configure servicegroup_lbmonitor_binding
       delegate_to: localhost
       netscaler.adc.servicegroup_lbmonitor_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         servicegroupname: LB_sergrp
         monitor_name: LB_ia_mon8

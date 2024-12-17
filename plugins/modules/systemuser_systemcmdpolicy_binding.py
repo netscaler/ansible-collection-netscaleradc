@@ -65,10 +65,7 @@ EXAMPLES = r"""
     - name: Configure systemuser_systemcmdpolicy_binding
       delegate_to: localhost
       netscaler.adc.systemuser_systemcmdpolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         username: GD-CTRLUPADC-P-APP
         policyname: read-only

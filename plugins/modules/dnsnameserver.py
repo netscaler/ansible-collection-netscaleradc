@@ -90,10 +90,7 @@ EXAMPLES = r"""
     - name: Configure dnsnameserver
       delegate_to: localhost
       netscaler.adc.dnsnameserver:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         dnsvservername: lb_dns_01
 """

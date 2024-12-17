@@ -6,10 +6,7 @@
     - name: Configure mapdmr
       delegate_to: localhost
       netscaler.adc.mapdmr:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: dmr1
         bripv6prefix: 2001:db8::/64

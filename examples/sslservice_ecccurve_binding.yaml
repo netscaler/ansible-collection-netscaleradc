@@ -6,10 +6,7 @@
     - name: Configure sslservice_ecccurve_binding
       delegate_to: localhost
       netscaler.adc.sslservice_ecccurve_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         servicename: s1345
         ecccurvename: ALL

@@ -101,10 +101,7 @@ EXAMPLES = r"""
     - name: Configure csvserver_cspolicy_binding
       delegate_to: localhost
       netscaler.adc.csvserver_cspolicy_binding:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: LB_cs_diameter
         policyname: LB_pcrf_policy

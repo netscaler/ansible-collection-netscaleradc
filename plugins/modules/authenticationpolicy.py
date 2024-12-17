@@ -128,10 +128,7 @@ EXAMPLES = r"""
     - name: Configure authenticationpolicy
       delegate_to: localhost
       netscaler.adc.authenticationpolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: OKta_SAML_Internal_ZS_SubnetsMisc
         rule: Sub_58220950_24 || Sub_941881310_25 || Sub_1242481410_24 || Sub_1281771250_24

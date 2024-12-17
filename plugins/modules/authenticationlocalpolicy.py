@@ -69,10 +69,7 @@ EXAMPLES = r"""
     - name: Configure authenticationlocalpolicy
       delegate_to: localhost
       netscaler.adc.authenticationlocalpolicy:
-        nsip: '{{ nsip }}'
-        nitro_user: '{{ nitro_user }}'
-        nitro_pass: '{{ nitro_pass }}'
-        validate_certs: '{{ validate_certs }}'
+
         state: present
         name: NS_GATEWAY_DEFAULT_LOCAL_POL1
         rule: NS_TRUE
