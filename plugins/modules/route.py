@@ -151,7 +151,6 @@ EXAMPLES = r"""
     - name: Configure route
       delegate_to: localhost
       netscaler.adc.route:
-
         state: present
         network: 169.254.169.254
         netmask: 255.255.255.255

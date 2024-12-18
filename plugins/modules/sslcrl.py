@@ -197,7 +197,6 @@ EXAMPLES = r"""
     - name: Configure sslcrl
       delegate_to: localhost
       netscaler.adc.sslcrl:
-
         state: present
         crlname: crl_test_ldap1
         refresh: ENABLED

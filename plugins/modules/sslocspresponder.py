@@ -150,7 +150,6 @@ EXAMPLES = r"""
     - name: Configure sslocspresponder
       delegate_to: localhost
       netscaler.adc.sslocspresponder:
-
         state: present
         name: ocspresp5
         url: http://2.2.2.7:80/

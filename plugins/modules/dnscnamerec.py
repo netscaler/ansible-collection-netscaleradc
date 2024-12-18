@@ -89,7 +89,6 @@ EXAMPLES = r"""
     - name: Configure dnscnamerec
       delegate_to: localhost
       netscaler.adc.dnscnamerec:
-
         state: present
         aliasname: www2.n1.com
         canonicalname: n1.com

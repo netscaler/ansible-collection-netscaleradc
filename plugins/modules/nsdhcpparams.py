@@ -66,7 +66,6 @@ EXAMPLES = r"""
     - name: Configure nsdhcpparams
       delegate_to: localhost
       netscaler.adc.nsdhcpparams:
-
         state: present
         saveroute: 'ON'
 """

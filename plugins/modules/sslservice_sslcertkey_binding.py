@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure sslservice_sslcertkey_binding
       delegate_to: localhost
       netscaler.adc.sslservice_sslcertkey_binding:
-
         state: present
         servicename: nsrpcs-127.0.0.1-3008
         certkeyname: ns-server-certificate

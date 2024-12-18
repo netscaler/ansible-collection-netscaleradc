@@ -379,7 +379,6 @@ EXAMPLES = r"""
     - name: Configure gslbservice
       delegate_to: localhost
       netscaler.adc.gslbservice:
-
         state: present
         servicename: GSLB_SVC_USE2_storefront.blackstone.com
         ip: 10.76.126.10

@@ -181,7 +181,6 @@ EXAMPLES = r"""
     - name: Configure streamidentifier
       delegate_to: localhost
       netscaler.adc.streamidentifier:
-
         state: present
         name: xyz
         selectorname: insight_sel

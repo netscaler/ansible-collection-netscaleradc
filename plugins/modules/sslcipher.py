@@ -109,7 +109,6 @@ EXAMPLES = r"""
     - name: Configure sslcipher
       delegate_to: localhost
       netscaler.adc.sslcipher:
-
         state: present
         ciphergroupname: ssllabs-blackstone
 """

@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup_auditsyslogpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_auditsyslogpolicy_binding:
-
         state: present
         groupname: aaagrp
         policy: ia_syspol1

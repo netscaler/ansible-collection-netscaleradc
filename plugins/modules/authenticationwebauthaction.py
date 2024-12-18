@@ -177,7 +177,6 @@ EXAMPLES = r"""
     - name: Configure authenticationwebauthaction
       delegate_to: localhost
       netscaler.adc.authenticationwebauthaction:
-
         state: present
         name: webauthact
         serverip: 2.2.2.2

@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure nsencryptionparams
       delegate_to: localhost
       netscaler.adc.nsencryptionparams:
-
         state: present
         method: AES256
         keyvalue: REQ_PASSWORD

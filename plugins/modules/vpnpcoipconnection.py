@@ -58,7 +58,6 @@ EXAMPLES = r"""
     - name: Configure vpnpcoipconnection
       delegate_to: localhost
       netscaler.adc.vpnpcoipconnection:
-
         state: present
         username: u1
         nitro_operation: kill

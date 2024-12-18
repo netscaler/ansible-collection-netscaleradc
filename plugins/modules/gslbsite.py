@@ -170,7 +170,6 @@ EXAMPLES = r"""
     - name: Configure gslbsite
       delegate_to: localhost
       netscaler.adc.gslbsite:
-
         state: present
         sitename: GSLB_Site_USE2
         siteipaddress: 10.76.126.5

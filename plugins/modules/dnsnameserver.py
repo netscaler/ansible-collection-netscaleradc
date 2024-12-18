@@ -90,7 +90,6 @@ EXAMPLES = r"""
     - name: Configure dnsnameserver
       delegate_to: localhost
       netscaler.adc.dnsnameserver:
-
         state: present
         dnsvservername: lb_dns_01
 """

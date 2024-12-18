@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnhttphdrlogprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnhttphdrlogprofile_binding:
-
         state: present
         groupname: g1
         httphdrlogprofilename: httplog

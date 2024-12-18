@@ -70,7 +70,6 @@ EXAMPLES = r"""
     - name: Configure feoparameter
       delegate_to: localhost
       netscaler.adc.feoparameter:
-
         state: present
         jpegqualitypercent: '60'
         cssinlinethressize: '1024'

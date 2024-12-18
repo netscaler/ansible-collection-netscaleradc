@@ -96,7 +96,6 @@ EXAMPLES = r"""
     - name: Configure pcpprofile
       delegate_to: localhost
       netscaler.adc.pcpprofile:
-
         state: present
         name: pcp_profile_1
         mapping: ENABLED

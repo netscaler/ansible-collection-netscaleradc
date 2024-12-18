@@ -168,7 +168,6 @@ EXAMPLES = r"""
     - name: Configure aaaldapparams
       delegate_to: localhost
       netscaler.adc.aaaldapparams:
-
         state: present
         sectype: PLAINTEXT
 """

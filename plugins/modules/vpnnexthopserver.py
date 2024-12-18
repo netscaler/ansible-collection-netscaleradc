@@ -81,7 +81,6 @@ EXAMPLES = r"""
     - name: Configure vpnnexthopserver
       delegate_to: localhost
       netscaler.adc.vpnnexthopserver:
-
         state: present
         name: nh3
         nexthopip: 10.102.80.57

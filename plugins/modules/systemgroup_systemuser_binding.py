@@ -61,7 +61,6 @@ EXAMPLES = r"""
     - name: Configure systemgroup_systemuser_binding
       delegate_to: localhost
       netscaler.adc.systemgroup_systemuser_binding:
-
         state: present
         groupname: network
         username: net_ron

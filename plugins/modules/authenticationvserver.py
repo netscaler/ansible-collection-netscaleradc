@@ -696,7 +696,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver
       delegate_to: localhost
       netscaler.adc.authenticationvserver:
-
         state: present
         name: Citrix_AAA_vServer
         servicetype: SSL

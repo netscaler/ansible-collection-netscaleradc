@@ -68,7 +68,6 @@ EXAMPLES = r"""
     - name: Configure nsweblogparam
       delegate_to: localhost
       netscaler.adc.nsweblogparam:
-
         state: present
         buffersizemb: '3'
 """

@@ -87,7 +87,6 @@ EXAMPLES = r"""
     - name: Configure authenticationepaaction
       delegate_to: localhost
       netscaler.adc.authenticationepaaction:
-
         state: present
         name: EPA_ACT2
         csecexpr: sys.client_expr("proc_0_perl")

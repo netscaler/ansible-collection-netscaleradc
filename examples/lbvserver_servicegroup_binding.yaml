@@ -6,7 +6,6 @@
     - name: Configure lbvserver_servicegroup_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_servicegroup_binding:
-
         state: present
         name: CR_cachev21
         servicename: CR_SVG

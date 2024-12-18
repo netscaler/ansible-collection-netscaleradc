@@ -96,7 +96,6 @@ EXAMPLES = r"""
     - name: Configure sslpolicylabel
       delegate_to: localhost
       netscaler.adc.sslpolicylabel:
-
         state: present
         labelname: invoke_labelname
         type: CONTROL

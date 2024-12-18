@@ -433,7 +433,6 @@ EXAMPLES = r"""
     - name: Configure nsacl6
       delegate_to: localhost
       netscaler.adc.nsacl6:
-
         state: present
         acl6name: net_acl6
         acl6action: ALLOW

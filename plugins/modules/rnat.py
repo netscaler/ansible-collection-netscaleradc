@@ -229,7 +229,6 @@ EXAMPLES = r"""
     - name: Configure rnat
       delegate_to: localhost
       netscaler.adc.rnat:
-
         state: present
         name: RNAT_SF_Allow_USE1-A
         aclname: ACL_SF_Allow_USE1-A

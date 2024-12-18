@@ -68,7 +68,6 @@ EXAMPLES = r"""
     - name: Configure csvserver_lbvserver_binding
       delegate_to: localhost
       netscaler.adc.csvserver_lbvserver_binding:
-
         state: present
         name: vip_cs
         lbvserver: vip_lb

@@ -70,7 +70,6 @@ EXAMPLES = r"""
     - name: Configure sslvserver_sslcipher_binding
       delegate_to: localhost
       netscaler.adc.sslvserver_sslcipher_binding:
-
         state: present
         vservername: lb2
         ciphername: TLS1.2-DHE-RSA-AES-128-SHA256

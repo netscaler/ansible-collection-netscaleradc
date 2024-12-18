@@ -288,7 +288,6 @@ EXAMPLES = r"""
     - name: Configure sslservicegroup
       delegate_to: localhost
       netscaler.adc.sslservicegroup:
-
         state: present
         servicegroupname: LB_ia_svcgrp13916
         sessreuse: ENABLED

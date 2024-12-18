@@ -63,7 +63,6 @@ EXAMPLES = r"""
     - name: Configure vpnglobal_vpneula_binding
       delegate_to: localhost
       netscaler.adc.vpnglobal_vpneula_binding:
-
         state: present
         eula: e1
 """

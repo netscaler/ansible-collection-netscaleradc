@@ -96,7 +96,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_cachepolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_cachepolicy_binding:
-
         state: present
         name: Citrix_AAA_vServer
         policy: _noCacheRest

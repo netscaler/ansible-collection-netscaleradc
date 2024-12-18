@@ -93,7 +93,6 @@ EXAMPLES = r"""
     - name: Configure lbmetrictable
       delegate_to: localhost
       netscaler.adc.lbmetrictable:
-
         state: present
         metrictable: LB_ia_metrictable3
 """

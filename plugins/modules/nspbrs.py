@@ -46,7 +46,6 @@ EXAMPLES = r"""
     - name: Configure nspbrs
       delegate_to: localhost
       netscaler.adc.nspbrs:
-
         state: present
         action: apply
 """

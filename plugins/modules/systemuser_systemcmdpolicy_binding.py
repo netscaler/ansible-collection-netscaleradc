@@ -65,7 +65,6 @@ EXAMPLES = r"""
     - name: Configure systemuser_systemcmdpolicy_binding
       delegate_to: localhost
       netscaler.adc.systemuser_systemcmdpolicy_binding:
-
         state: present
         username: GD-CTRLUPADC-P-APP
         policyname: read-only

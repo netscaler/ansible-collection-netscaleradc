@@ -121,7 +121,6 @@ EXAMPLES = r"""
     - name: Configure lsnstatic
       delegate_to: localhost
       netscaler.adc.lsnstatic:
-
         state: present
         nattype: DS-Lite
 """

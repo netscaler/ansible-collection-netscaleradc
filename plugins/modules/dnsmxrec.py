@@ -100,7 +100,6 @@ EXAMPLES = r"""
     - name: Configure dnsmxrec
       delegate_to: localhost
       netscaler.adc.dnsmxrec:
-
         state: present
         domain: n2.com
         mx: mail.n1.com

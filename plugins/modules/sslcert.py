@@ -180,7 +180,6 @@ EXAMPLES = r"""
     - name: Configure sslcert
       delegate_to: localhost
       netscaler.adc.sslcert:
-
         state: present
         certfile: ssl_rsa_der_cert
         reqfile: ssl_rsa_der_csr

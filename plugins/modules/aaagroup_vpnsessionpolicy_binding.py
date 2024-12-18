@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup_vpnsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_vpnsessionpolicy_binding:
-
         state: present
         groupname: External
         policy: External_receiver_session_pol

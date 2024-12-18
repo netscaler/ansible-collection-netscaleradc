@@ -151,7 +151,6 @@ EXAMPLES = r"""
     - name: Configure nd6ravariables
       delegate_to: localhost
       netscaler.adc.nd6ravariables:
-
         state: present
         vlan: '1'
 """

@@ -61,7 +61,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_vpneula_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpneula_binding:
-
         state: present
         name: vpnlb
         eula: e1

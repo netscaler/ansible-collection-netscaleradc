@@ -70,7 +70,6 @@ EXAMPLES = r"""
     - name: Configure lsnappsprofile_port_binding
       delegate_to: localhost
       netscaler.adc.lsnappsprofile_port_binding:
-
         state: present
         appsprofilename: app21
         lsnport: 1-65535

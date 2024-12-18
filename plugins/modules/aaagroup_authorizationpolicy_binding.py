@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup_authorizationpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_authorizationpolicy_binding:
-
         state: present
         groupname: aaagrp1
         policy: ia_authorpol1

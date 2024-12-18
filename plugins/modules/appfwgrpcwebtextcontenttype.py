@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure appfwgrpcwebtextcontenttype
       delegate_to: localhost
       netscaler.adc.appfwgrpcwebtextcontenttype:
-
         state: present
         grpcwebtextcontenttypevalue: application/grpc-web-text
 """

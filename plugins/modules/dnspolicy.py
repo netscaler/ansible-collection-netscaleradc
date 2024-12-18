@@ -137,7 +137,6 @@ EXAMPLES = r"""
     - name: Configure dnspolicy
       delegate_to: localhost
       netscaler.adc.dnspolicy:
-
         state: present
         name: test5
         rule: dns.length.GT(1)

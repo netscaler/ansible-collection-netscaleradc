@@ -69,7 +69,6 @@ EXAMPLES = r"""
     - name: Configure streamselector
       delegate_to: localhost
       netscaler.adc.streamselector:
-
         state: present
         name: insight_sel
         rule:

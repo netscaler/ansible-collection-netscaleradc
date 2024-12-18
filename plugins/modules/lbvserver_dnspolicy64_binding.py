@@ -115,7 +115,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_dnspolicy64_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_dnspolicy64_binding:
-
         state: present
         name: lb_tcp1
         policyname: dns64_pol2

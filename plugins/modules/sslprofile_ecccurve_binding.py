@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure sslprofile_ecccurve_binding
       delegate_to: localhost
       netscaler.adc.sslprofile_ecccurve_binding:
-
         state: present
         name: blackstone_ssl_profile
         ecccurvename: P_521

@@ -80,7 +80,6 @@ EXAMPLES = r"""
     - name: Configure vxlanvlanmap
       delegate_to: localhost
       netscaler.adc.vxlanvlanmap:
-
         state: present
         name: v2
 """

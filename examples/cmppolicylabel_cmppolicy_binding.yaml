@@ -6,7 +6,6 @@
     - name: Configure cmppolicylabel_cmppolicy_binding
       delegate_to: localhost
       netscaler.adc.cmppolicylabel_cmppolicy_binding:
-
         state: present
         labelname: Base_cmp_pol_label
         policyname: Base_cmp_mypolicy3

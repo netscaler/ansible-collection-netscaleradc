@@ -115,7 +115,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_appqoepolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_appqoepolicy_binding:
-
         state: present
         name: Base_appqoe_v1
         policyname: Base_appqoe_pol7

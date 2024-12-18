@@ -56,7 +56,6 @@ EXAMPLES = r"""
     - name: Configure rsskeytype
       delegate_to: localhost
       netscaler.adc.rsskeytype:
-
         state: present
         rsstype: ASYMMETRIC
 """

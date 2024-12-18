@@ -68,7 +68,6 @@ EXAMPLES = r"""
     - name: Configure rewriteparam
       delegate_to: localhost
       netscaler.adc.rewriteparam:
-
         state: present
         undefaction: RESET
         timeout: 5000

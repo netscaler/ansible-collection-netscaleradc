@@ -155,7 +155,6 @@ EXAMPLES = r"""
     - name: Configure dnsprofile
       delegate_to: localhost
       netscaler.adc.dnsprofile:
-
         state: present
         dnsprofilename: p1
         cacherecords: ENABLED

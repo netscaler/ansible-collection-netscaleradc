@@ -338,7 +338,6 @@ EXAMPLES = r"""
     - name: Configure cachecontentgroup
       delegate_to: localhost
       netscaler.adc.cachecontentgroup:
-
         state: present
         name: NSFEO
         maxressize: 1994752

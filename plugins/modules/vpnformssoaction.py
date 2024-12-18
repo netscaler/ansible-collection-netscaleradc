@@ -102,7 +102,6 @@ EXAMPLES = r"""
     - name: Configure vpnformssoaction
       delegate_to: localhost
       netscaler.adc.vpnformssoaction:
-
         state: present
         name: ia_ssoact1
         actionurl: /owa/auth/owaauth.dll

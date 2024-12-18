@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_cmppolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_cmppolicy_binding:
-
         state: present
         name: Base_v-cmp
         policyname: Base_cmp_mypolicy

@@ -140,7 +140,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_tmtrafficpolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_tmtrafficpolicy_binding:
-
         state: present
         name: lbvs
         policyname: ia_tmtrafpol1

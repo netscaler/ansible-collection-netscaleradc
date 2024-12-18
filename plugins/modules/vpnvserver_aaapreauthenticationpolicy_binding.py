@@ -124,7 +124,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_aaapreauthenticationpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_aaapreauthenticationpolicy_binding:
-
         state: present
         name: vpn_ssl
         policy: preact

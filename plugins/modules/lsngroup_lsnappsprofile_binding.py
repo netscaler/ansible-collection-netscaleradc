@@ -77,7 +77,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnappsprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnappsprofile_binding:
-
         state: present
         groupname: g15
         appsprofilename: app_udp

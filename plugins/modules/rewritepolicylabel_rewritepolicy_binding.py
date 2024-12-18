@@ -94,7 +94,6 @@ EXAMPLES = r"""
     - name: Configure rewritepolicylabel_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.rewritepolicylabel_rewritepolicy_binding:
-
         state: present
         labelname: ns_cvpn_v2_url_label
         policyname: ns_cvpn_v2_bypass_url_pol

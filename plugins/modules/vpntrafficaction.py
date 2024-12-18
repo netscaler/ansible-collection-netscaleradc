@@ -134,7 +134,6 @@ EXAMPLES = r"""
     - name: Configure vpntrafficaction
       delegate_to: localhost
       netscaler.adc.vpntrafficaction:
-
         state: present
         name: ia_trafact1
         qual: http

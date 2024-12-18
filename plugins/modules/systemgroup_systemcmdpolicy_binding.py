@@ -65,7 +65,6 @@ EXAMPLES = r"""
     - name: Configure systemgroup_systemcmdpolicy_binding
       delegate_to: localhost
       netscaler.adc.systemgroup_systemcmdpolicy_binding:
-
         state: present
         groupname: Network - CitrixADC - P - ReadOnly
         policyname: read-only

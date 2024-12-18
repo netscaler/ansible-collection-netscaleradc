@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure rnatparam
       delegate_to: localhost
       netscaler.adc.rnatparam:
-
         state: present
         tcpproxy: DISABLED
 """

@@ -90,7 +90,6 @@ EXAMPLES = r"""
     - name: Configure sslvserver_sslcertkey_binding
       delegate_to: localhost
       netscaler.adc.sslvserver_sslcertkey_binding:
-
         state: present
         vservername: CitrixAccessCallback
         certkeyname: callback.blackstone.com

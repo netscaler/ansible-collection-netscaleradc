@@ -74,7 +74,6 @@ EXAMPLES = r"""
     - name: Configure gslbservice_lbmonitor_binding
       delegate_to: localhost
       netscaler.adc.gslbservice_lbmonitor_binding:
-
         state: present
         servicename: GSLB_SVC_USE1_storefront.blackstone.com
         monitor_name: tcp

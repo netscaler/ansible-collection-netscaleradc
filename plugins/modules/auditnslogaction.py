@@ -225,7 +225,6 @@ EXAMPLES = r"""
     - name: Configure auditnslogaction
       delegate_to: localhost
       netscaler.adc.auditnslogaction:
-
         state: present
         name: nslog_act1
         serverip: 10.102.8.183

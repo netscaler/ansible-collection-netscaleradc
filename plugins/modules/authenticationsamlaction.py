@@ -458,7 +458,6 @@ EXAMPLES = r"""
     - name: Configure authenticationsamlaction
       delegate_to: localhost
       netscaler.adc.authenticationsamlaction:
-
         state: present
         name: prod_okta
         samlidpcertname: okta_cert

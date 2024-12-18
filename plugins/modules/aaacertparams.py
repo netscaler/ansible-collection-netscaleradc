@@ -64,7 +64,6 @@ EXAMPLES = r"""
     - name: Configure aaacertparams
       delegate_to: localhost
       netscaler.adc.aaacertparams:
-
         state: present
         usernamefield: Subject:CN
         groupnamefield: Subject:OU

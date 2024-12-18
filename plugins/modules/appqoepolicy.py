@@ -64,7 +64,6 @@ EXAMPLES = r"""
     - name: Configure appqoepolicy
       delegate_to: localhost
       netscaler.adc.appqoepolicy:
-
         state: present
         name: apppol3_ns
         rule: SUBSCRIBER.AVP(250).VALUE.CONTAINS("name")

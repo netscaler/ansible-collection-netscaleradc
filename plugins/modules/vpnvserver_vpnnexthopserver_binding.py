@@ -61,7 +61,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_vpnnexthopserver_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnnexthopserver_binding:
-
         state: present
         name: dh
         nexthopserver: fqdn

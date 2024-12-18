@@ -220,7 +220,6 @@ EXAMPLES = r"""
     - name: Configure hanode
       delegate_to: localhost
       netscaler.adc.hanode:
-
         state: present
         ipaddress: 10.189.96.60
         inc: ENABLED

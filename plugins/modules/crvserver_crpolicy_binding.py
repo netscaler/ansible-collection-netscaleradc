@@ -101,7 +101,6 @@ EXAMPLES = r"""
     - name: Configure crvserver_crpolicy_binding
       delegate_to: localhost
       netscaler.adc.crvserver_crpolicy_binding:
-
         state: present
         name: CR_v1
         policyname: CR_cspol1

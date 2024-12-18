@@ -83,7 +83,6 @@ EXAMPLES = r"""
     - name: Configure policyexpression
       delegate_to: localhost
       netscaler.adc.policyexpression:
-
         state: present
         name: Sub_1471612160_23
         value: CLIENT.IP.SRC.IN_SUBNET(147.161.216.0/23)

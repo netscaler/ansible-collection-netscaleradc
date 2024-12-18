@@ -1560,7 +1560,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver
       delegate_to: localhost
       netscaler.adc.lbvserver:
-
         state: present
         name: lb_dns_01
         servicetype: DNS

@@ -63,7 +63,6 @@ EXAMPLES = r"""
     - name: Configure vpnglobal_vpnportaltheme_binding
       delegate_to: localhost
       netscaler.adc.vpnglobal_vpnportaltheme_binding:
-
         state: present
         portaltheme: p2
 """

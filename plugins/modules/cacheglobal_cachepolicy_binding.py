@@ -116,7 +116,6 @@ EXAMPLES = r"""
     - name: Configure cacheglobal_cachepolicy_binding
       delegate_to: localhost
       netscaler.adc.cacheglobal_cachepolicy_binding:
-
         state: present
         policy: NOPOLICY
         priority: '185883'

@@ -101,7 +101,6 @@ EXAMPLES = r"""
     - name: Configure csvserver_cspolicy_binding
       delegate_to: localhost
       netscaler.adc.csvserver_cspolicy_binding:
-
         state: present
         name: LB_cs_diameter
         policyname: LB_pcrf_policy

@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_responderpolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_responderpolicy_binding:
-
         state: present
         name: v666
         policyname: P1

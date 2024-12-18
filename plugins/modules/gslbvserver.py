@@ -536,7 +536,6 @@ EXAMPLES = r"""
     - name: Configure gslbvserver
       delegate_to: localhost
       netscaler.adc.gslbvserver:
-
         state: present
         name: backup_gslb_portal.bx.com
         servicetype: SSL

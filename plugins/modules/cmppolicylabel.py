@@ -111,7 +111,6 @@ EXAMPLES = r"""
     - name: Configure cmppolicylabel
       delegate_to: localhost
       netscaler.adc.cmppolicylabel:
-
         state: present
         labelname: Base_cmp_pol_label
         type: RES

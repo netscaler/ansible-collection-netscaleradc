@@ -159,7 +159,6 @@ EXAMPLES = r"""
     - name: Configure responderaction
       delegate_to: localhost
       netscaler.adc.responderaction:
-
         state: present
         name: LB_rsact1
         type: respondwith

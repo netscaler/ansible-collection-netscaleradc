@@ -167,7 +167,6 @@ EXAMPLES = r"""
     - name: Configure aaaradiusparams
       delegate_to: localhost
       netscaler.adc.aaaradiusparams:
-
         state: present
         serverip: 10.102.25.64
         radkey: test123

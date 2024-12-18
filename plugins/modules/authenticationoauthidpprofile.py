@@ -150,7 +150,6 @@ EXAMPLES = r"""
     - name: Configure authenticationoauthidpprofile
       delegate_to: localhost
       netscaler.adc.authenticationoauthidpprofile:
-
         state: present
         name: OAuthIDPProfileIDP
         relyingpartymetadataurl: https://10.221.136.42/oauth/idp/.well-known/openid-configuration

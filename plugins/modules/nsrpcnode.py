@@ -79,7 +79,6 @@ EXAMPLES = r"""
     - name: Configure nsrpcnode
       delegate_to: localhost
       netscaler.adc.nsrpcnode:
-
         state: present
         ipaddress: 10.76.126.5
         password: REQ_PASSWORD

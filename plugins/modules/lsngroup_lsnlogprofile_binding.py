@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnlogprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnlogprofile_binding:
-
         state: present
         groupname: lsn_group_1
         logprofilename: msd

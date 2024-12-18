@@ -129,7 +129,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_authenticationsamlpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationsamlpolicy_binding:
-
         state: present
         name: ia_authnvs71
         policy: samlsecureauthidppol

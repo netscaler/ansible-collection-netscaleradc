@@ -90,7 +90,6 @@ EXAMPLES = r"""
     - name: Configure mapdomain
       delegate_to: localhost
       netscaler.adc.mapdomain:
-
         state: present
         name: map1
         mapdmrname: dmr1

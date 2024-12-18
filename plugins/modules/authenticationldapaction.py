@@ -369,7 +369,6 @@ EXAMPLES = r"""
     - name: Configure authenticationldapaction
       delegate_to: localhost
       netscaler.adc.authenticationldapaction:
-
         state: present
         name: ldap_userextraction_External_noauth
         servername: awsdcs-amer.blackstone.com

@@ -83,7 +83,6 @@ EXAMPLES = r"""
     - name: Configure appfwfieldtype
       delegate_to: localhost
       netscaler.adc.appfwfieldtype:
-
         state: present
         name: CM1454107840652651
         regex: ^[A-Z\\a-z]+$

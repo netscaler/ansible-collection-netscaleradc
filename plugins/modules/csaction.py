@@ -90,7 +90,6 @@ EXAMPLES = r"""
     - name: Configure csaction
       delegate_to: localhost
       netscaler.adc.csaction:
-
         state: present
         name: cs_act
         targetvserver: vpn1

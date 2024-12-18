@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure bridgegroup_nsip_binding
       delegate_to: localhost
       netscaler.adc.bridgegroup_nsip_binding:
-
         state: present
         id: '2'
         ipaddress: 2.2.2.1

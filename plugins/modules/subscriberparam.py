@@ -109,7 +109,6 @@ EXAMPLES = r"""
     - name: Configure subscriberparam
       delegate_to: localhost
       netscaler.adc.subscriberparam:
-
         state: present
         ipv6prefixlookuplist:
           - '120'

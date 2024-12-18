@@ -2472,7 +2472,6 @@ EXAMPLES = r"""
     - name: Configure appfwprofile
       delegate_to: localhost
       netscaler.adc.appfwprofile:
-
         state: present
         name: pr_appfw
         starturlaction:

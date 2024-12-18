@@ -69,7 +69,6 @@ EXAMPLES = r"""
     - name: Configure vridparam
       delegate_to: localhost
       netscaler.adc.vridparam:
-
         state: present
         sendtomaster: ENABLED
 """

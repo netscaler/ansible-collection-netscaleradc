@@ -106,7 +106,6 @@ EXAMPLES = r"""
     - name: Configure tmglobal_tmtrafficpolicy_binding
       delegate_to: localhost
       netscaler.adc.tmglobal_tmtrafficpolicy_binding:
-
         state: present
         policyname: ia_tmtrafpol1
         priority: '1'

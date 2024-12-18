@@ -80,7 +80,6 @@ EXAMPLES = r"""
     - name: Configure service_lbmonitor_binding
       delegate_to: localhost
       netscaler.adc.service_lbmonitor_binding:
-
         state: present
         name: use1_sf1_ssl_svc
         monitor_name: Storefront

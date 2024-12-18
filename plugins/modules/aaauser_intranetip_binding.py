@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure aaauser_intranetip_binding
       delegate_to: localhost
       netscaler.adc.aaauser_intranetip_binding:
-
         state: present
         username: test
         intranetip: 10.102.111.13

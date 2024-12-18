@@ -110,7 +110,6 @@ EXAMPLES = r"""
     - name: Configure policypatset
       delegate_to: localhost
       netscaler.adc.policypatset:
-
         state: present
         name: prod_patset
 """

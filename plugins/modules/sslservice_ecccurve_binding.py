@@ -68,7 +68,6 @@ EXAMPLES = r"""
     - name: Configure sslservice_ecccurve_binding
       delegate_to: localhost
       netscaler.adc.sslservice_ecccurve_binding:
-
         state: present
         servicename: s1345
         ecccurvename: ALL

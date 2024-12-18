@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup_intranetip_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_intranetip_binding:
-
         state: present
         groupname: group1
         intranetip: 192.168.1.80

@@ -58,7 +58,6 @@ EXAMPLES = r"""
     - name: Configure nshostname
       delegate_to: localhost
       netscaler.adc.nshostname:
-
         state: present
         hostname: ns
 """

@@ -320,7 +320,6 @@ EXAMPLES = r"""
     - name: Configure authenticationoauthaction
       delegate_to: localhost
       netscaler.adc.authenticationoauthaction:
-
         state: present
         name: cvpn_nac
         oauthtype: INTUNE

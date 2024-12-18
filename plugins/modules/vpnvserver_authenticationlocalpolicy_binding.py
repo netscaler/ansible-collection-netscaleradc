@@ -124,7 +124,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_authenticationlocalpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_authenticationlocalpolicy_binding:
-
         state: present
         name: callbackvs
         policy: NS_GATEWAY_DEFAULT_LOCAL_POL1

@@ -110,7 +110,6 @@ EXAMPLES = r"""
     - name: Configure contentinspectionaction
       delegate_to: localhost
       netscaler.adc.contentinspectionaction:
-
         state: present
         name: ci_act_test
         type: NOINSPECTION

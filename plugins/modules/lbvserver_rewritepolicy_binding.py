@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_rewritepolicy_binding:
-
         state: present
         name: LB_DIA_vs2
         policyname: rw_diam_pol

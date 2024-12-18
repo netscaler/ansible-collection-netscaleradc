@@ -262,7 +262,6 @@ EXAMPLES = r"""
     - name: Configure aaaparameter
       delegate_to: localhost
       netscaler.adc.aaaparameter:
-
         state: present
         maxaaausers: '4294967295'
         aaasessionloglevel: DEBUG

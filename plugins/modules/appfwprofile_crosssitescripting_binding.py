@@ -131,7 +131,6 @@ EXAMPLES = r"""
     - name: Configure appfwprofile_crosssitescripting_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_crosssitescripting_binding:
-
         state: present
         name: Test_profile
         crosssitescripting: text_area

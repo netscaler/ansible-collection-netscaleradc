@@ -70,7 +70,6 @@ EXAMPLES = r"""
     - name: Configure netprofile_natrule_binding
       delegate_to: localhost
       netscaler.adc.netprofile_natrule_binding:
-
         state: present
         name: np101
         natrule: 11.0.0.0

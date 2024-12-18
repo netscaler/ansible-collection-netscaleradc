@@ -125,7 +125,6 @@ EXAMPLES = r"""
     - name: Configure dnssoarec
       delegate_to: localhost
       netscaler.adc.dnssoarec:
-
         state: present
         domain: gslb.blackstone.com
         originserver: portal-adnsuse1.bx.com

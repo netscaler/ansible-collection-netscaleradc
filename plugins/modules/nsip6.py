@@ -297,7 +297,6 @@ EXAMPLES = r"""
     - name: Configure nsip6
       delegate_to: localhost
       netscaler.adc.nsip6:
-
         state: present
         ipv6address: fe80::1031:4dff:fe59:3f9f/64
         scope: link-local

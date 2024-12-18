@@ -112,7 +112,6 @@ EXAMPLES = r"""
     - name: Configure mapbmr
       delegate_to: localhost
       netscaler.adc.mapbmr:
-
         state: present
         name: bmr1
         ruleipv6prefix: 2001:db8:89ab::/48

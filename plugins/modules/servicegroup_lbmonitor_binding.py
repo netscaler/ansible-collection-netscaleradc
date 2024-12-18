@@ -108,7 +108,6 @@ EXAMPLES = r"""
     - name: Configure servicegroup_lbmonitor_binding
       delegate_to: localhost
       netscaler.adc.servicegroup_lbmonitor_binding:
-
         state: present
         servicegroupname: LB_sergrp
         monitor_name: LB_ia_mon8

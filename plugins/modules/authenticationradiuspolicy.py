@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure authenticationradiuspolicy
       delegate_to: localhost
       netscaler.adc.authenticationradiuspolicy:
-
         state: present
         name: test_radius
         rule: ns_true

@@ -79,7 +79,6 @@ EXAMPLES = r"""
     - name: Configure vpntrafficpolicy
       delegate_to: localhost
       netscaler.adc.vpntrafficpolicy:
-
         state: present
         name: ia_trafpol1
         rule: ns_true

@@ -92,7 +92,6 @@ EXAMPLES = r"""
     - name: Configure policystringmap
       delegate_to: localhost
       netscaler.adc.policystringmap:
-
         state: present
         name: ia_polstrmap1
 """

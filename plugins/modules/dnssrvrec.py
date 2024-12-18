@@ -110,7 +110,6 @@ EXAMPLES = r"""
     - name: Configure dnssrvrec
       delegate_to: localhost
       netscaler.adc.dnssrvrec:
-
         state: present
         domain: http2.abc.com
         target: target

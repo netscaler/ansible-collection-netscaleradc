@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure appfwjsoncontenttype
       delegate_to: localhost
       netscaler.adc.appfwjsoncontenttype:
-
         state: present
         jsoncontenttypevalue: ^application/json$
         isregex: REGEX

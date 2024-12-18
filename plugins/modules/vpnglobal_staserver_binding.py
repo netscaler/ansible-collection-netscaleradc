@@ -70,7 +70,6 @@ EXAMPLES = r"""
     - name: Configure vpnglobal_staserver_binding
       delegate_to: localhost
       netscaler.adc.vpnglobal_staserver_binding:
-
         state: present
         staserver: https://use1bxctxcca03.blackstone.com
 """

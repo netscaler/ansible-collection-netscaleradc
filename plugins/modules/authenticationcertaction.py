@@ -92,7 +92,6 @@ EXAMPLES = r"""
     - name: Configure authenticationcertaction
       delegate_to: localhost
       netscaler.adc.authenticationcertaction:
-
         state: present
         name: ca5
         twofactor: 'ON'

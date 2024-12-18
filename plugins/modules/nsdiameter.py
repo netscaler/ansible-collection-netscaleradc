@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure nsdiameter
       delegate_to: localhost
       netscaler.adc.nsdiameter:
-
         state: present
         identity: netscaler.com
         realm: com

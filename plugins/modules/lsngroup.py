@@ -500,7 +500,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup
       delegate_to: localhost
       netscaler.adc.lsngroup:
-
         state: present
         groupname: dsl_http
         clientname: dsl_http

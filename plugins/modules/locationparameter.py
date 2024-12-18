@@ -109,7 +109,6 @@ EXAMPLES = r"""
     - name: Configure locationparameter
       delegate_to: localhost
       netscaler.adc.locationparameter:
-
         state: present
         q2label: Country_Code
         q3label: Subdivision_1_Name

@@ -124,7 +124,6 @@ EXAMPLES = r"""
     - name: Configure dnsglobal_dnspolicy_binding
       delegate_to: localhost
       netscaler.adc.dnsglobal_dnspolicy_binding:
-
         state: present
         policyname: LB_ia_dnspol2
         priority: '23'

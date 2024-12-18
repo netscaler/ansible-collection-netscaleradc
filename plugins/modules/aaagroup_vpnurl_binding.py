@@ -91,7 +91,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup_vpnurl_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_vpnurl_binding:
-
         state: present
         groupname: baluGrp2
         urlname: sp2k7FqdnHttps

@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure lsnrtspalgprofile
       delegate_to: localhost
       netscaler.adc.lsnrtspalgprofile:
-
         state: present
         rtspalgprofilename: rtspprofile1
         rtspidletimeout: '100'

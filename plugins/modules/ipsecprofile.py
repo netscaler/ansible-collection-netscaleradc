@@ -129,7 +129,6 @@ EXAMPLES = r"""
     - name: Configure ipsecprofile
       delegate_to: localhost
       netscaler.adc.ipsecprofile:
-
         state: present
         name: ia_ipsecpro10
         publickey: sample

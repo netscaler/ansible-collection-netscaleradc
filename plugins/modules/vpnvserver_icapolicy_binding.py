@@ -101,7 +101,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_icapolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_icapolicy_binding:
-
         state: present
         name: wionnsvs
         policy: icapol1

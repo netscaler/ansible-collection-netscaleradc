@@ -113,7 +113,6 @@ EXAMPLES = r"""
     - name: Configure policyurlset
       delegate_to: localhost
       netscaler.adc.policyurlset:
-
         state: present
         name: top10k
         imported: false

@@ -106,7 +106,6 @@ EXAMPLES = r"""
     - name: Configure appflowpolicylabel
       delegate_to: localhost
       netscaler.adc.appflowpolicylabel:
-
         state: present
         labelname: ia_appflow_polabl3
 """

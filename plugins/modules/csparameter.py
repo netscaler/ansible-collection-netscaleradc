@@ -59,7 +59,6 @@ EXAMPLES = r"""
     - name: Configure csparameter
       delegate_to: localhost
       netscaler.adc.csparameter:
-
         state: present
         stateupdate: ENABLED
 """

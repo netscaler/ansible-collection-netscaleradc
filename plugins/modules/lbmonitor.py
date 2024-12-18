@@ -837,7 +837,6 @@ EXAMPLES = r"""
     - name: Configure lbmonitor
       delegate_to: localhost
       netscaler.adc.lbmonitor:
-
         state: present
         monitorname: Storefront
         type: STOREFRONT

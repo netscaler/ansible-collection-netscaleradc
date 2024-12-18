@@ -165,7 +165,6 @@ EXAMPLES = r"""
     - name: Configure systemglobal_authenticationtacacspolicy_binding
       delegate_to: localhost
       netscaler.adc.systemglobal_authenticationtacacspolicy_binding:
-
         state: present
         policyname: acsPolicy1
         priority: '1'

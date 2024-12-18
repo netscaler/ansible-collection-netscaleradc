@@ -113,7 +113,6 @@ EXAMPLES = r"""
     - name: Configure cmpaction
       delegate_to: localhost
       netscaler.adc.cmpaction:
-
         state: present
         name: Base_cmp_act1
         cmptype: compress

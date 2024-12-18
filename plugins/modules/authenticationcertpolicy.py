@@ -77,7 +77,6 @@ EXAMPLES = r"""
     - name: Configure authenticationcertpolicy
       delegate_to: localhost
       netscaler.adc.authenticationcertpolicy:
-
         state: present
         name: sslrg
         rule: ns_true

@@ -84,7 +84,6 @@ EXAMPLES = r"""
     - name: Configure lsnclient_network6_binding
       delegate_to: localhost
       netscaler.adc.lsnclient_network6_binding:
-
         state: present
         clientname: client12
         network6: 3ffe:100::6/128

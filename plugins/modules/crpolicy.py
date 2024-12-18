@@ -86,7 +86,6 @@ EXAMPLES = r"""
     - name: Configure crpolicy
       delegate_to: localhost
       netscaler.adc.crpolicy:
-
         state: present
         policyname: crp1
         rule: 'true'

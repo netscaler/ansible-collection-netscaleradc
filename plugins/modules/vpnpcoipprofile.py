@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure vpnpcoipprofile
       delegate_to: localhost
       netscaler.adc.vpnpcoipprofile:
-
         state: present
 """
 

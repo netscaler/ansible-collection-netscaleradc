@@ -91,7 +91,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup_aaauser_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_aaauser_binding:
-
         state: present
         groupname: group1
         username: user1

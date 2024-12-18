@@ -259,7 +259,6 @@ EXAMPLES = r"""
     - name: Configure channel
       delegate_to: localhost
       netscaler.adc.channel:
-
         state: present
         id: LA/4
         ifnum:

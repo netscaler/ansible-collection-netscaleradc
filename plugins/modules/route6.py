@@ -136,7 +136,6 @@ EXAMPLES = r"""
     - name: Configure route6
       delegate_to: localhost
       netscaler.adc.route6:
-
         state: present
         network: 202::/64
         gateway: fe80::1234

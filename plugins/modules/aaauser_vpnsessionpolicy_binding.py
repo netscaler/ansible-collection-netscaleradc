@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure aaauser_vpnsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaauser_vpnsessionpolicy_binding:
-
         state: present
         username: q11
         policy: csec

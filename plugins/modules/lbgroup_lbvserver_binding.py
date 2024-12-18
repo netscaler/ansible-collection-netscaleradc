@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure lbgroup_lbvserver_binding
       delegate_to: localhost
       netscaler.adc.lbgroup_lbvserver_binding:
-
         state: present
         name: webgrp
         vservername: http_vip

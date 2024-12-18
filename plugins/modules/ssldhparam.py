@@ -65,7 +65,6 @@ EXAMPLES = r"""
     - name: Configure ssldhparam
       delegate_to: localhost
       netscaler.adc.ssldhparam:
-
         state: present
         dhfile: dfile
         bits: '512'

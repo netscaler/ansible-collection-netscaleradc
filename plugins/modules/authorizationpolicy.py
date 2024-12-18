@@ -103,7 +103,6 @@ EXAMPLES = r"""
     - name: Configure authorizationpolicy
       delegate_to: localhost
       netscaler.adc.authorizationpolicy:
-
         state: present
         name: EPAautho1
         rule: client.app.proc(notepad) exists

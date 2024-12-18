@@ -151,7 +151,6 @@ EXAMPLES = r"""
     - name: Configure feoaction
       delegate_to: localhost
       netscaler.adc.feoaction:
-
         state: present
         name: allact_ns
         clientsidemeasurements: true

@@ -105,7 +105,6 @@ EXAMPLES = r"""
     - name: Configure csvserver_responderpolicy_binding
       delegate_to: localhost
       netscaler.adc.csvserver_responderpolicy_binding:
-
         state: present
         name: CSW_v1
         policyname: CSW_resppol1

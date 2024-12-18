@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure auditnslogpolicy
       delegate_to: localhost
       netscaler.adc.auditnslogpolicy:
-
         state: present
         name: nslog_pol
         rule: 'true'

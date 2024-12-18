@@ -124,7 +124,6 @@ EXAMPLES = r"""
     - name: Configure sslpolicy
       delegate_to: localhost
       netscaler.adc.sslpolicy:
-
         state: present
         name: new_XM_MDM_titan.dnpg-blr.com_POLICY1
         rule: CLIENT.SSL.CLIENT_CERT.EXISTS

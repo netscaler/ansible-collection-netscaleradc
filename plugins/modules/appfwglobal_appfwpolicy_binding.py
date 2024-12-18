@@ -103,7 +103,6 @@ EXAMPLES = r"""
     - name: Configure appfwglobal_appfwpolicy_binding
       delegate_to: localhost
       netscaler.adc.appfwglobal_appfwpolicy_binding:
-
         state: present
         policyname: pr_appfw_pol
         priority: '1'

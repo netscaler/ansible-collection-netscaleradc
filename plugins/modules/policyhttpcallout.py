@@ -184,7 +184,6 @@ EXAMPLES = r"""
     - name: Configure policyhttpcallout
       delegate_to: localhost
       netscaler.adc.policyhttpcallout:
-
         state: present
         name: _XM_W_DEVICEID_10_102_39_132_2
         vserver: _XM_LB_CACHE_10.100.39.132

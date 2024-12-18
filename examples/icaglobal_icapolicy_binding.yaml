@@ -6,7 +6,6 @@
     - name: Configure icaglobal_icapolicy_binding
       delegate_to: localhost
       netscaler.adc.icaglobal_icapolicy_binding:
-
         state: present
         policyname: icapol2
         priority: '2'

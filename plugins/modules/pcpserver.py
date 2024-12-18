@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure pcpserver
       delegate_to: localhost
       netscaler.adc.pcpserver:
-
         state: present
         name: pcp_server_1
         port: 34

@@ -96,7 +96,6 @@ EXAMPLES = r"""
     - name: Configure aaakcdaccount
       delegate_to: localhost
       netscaler.adc.aaakcdaccount:
-
         state: present
         kcdaccount: kcdaccount1
         realmstr: dnpg

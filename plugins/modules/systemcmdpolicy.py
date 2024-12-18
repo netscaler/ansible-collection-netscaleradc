@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure systemcmdpolicy
       delegate_to: localhost
       netscaler.adc.systemcmdpolicy:
-
         state: present
         policyname: read-only
         action: ALLOW

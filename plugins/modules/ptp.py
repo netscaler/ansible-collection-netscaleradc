@@ -49,7 +49,6 @@ EXAMPLES = r"""
     - name: Configure ptp
       delegate_to: localhost
       netscaler.adc.ptp:
-
         state: present
 """
 

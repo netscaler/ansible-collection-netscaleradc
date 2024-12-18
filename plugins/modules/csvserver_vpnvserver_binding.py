@@ -64,7 +64,6 @@ EXAMPLES = r"""
     - name: Configure csvserver_vpnvserver_binding
       delegate_to: localhost
       netscaler.adc.csvserver_vpnvserver_binding:
-
         state: present
         name: CS123
         vserver: vpn51

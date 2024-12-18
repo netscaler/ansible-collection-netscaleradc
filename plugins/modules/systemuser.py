@@ -170,7 +170,6 @@ EXAMPLES = r"""
     - name: Configure systemuser
       delegate_to: localhost
       netscaler.adc.systemuser:
-
         state: present
         username: GD-CTRLUPADC-P-APP
         password: REQ_PASSWORD

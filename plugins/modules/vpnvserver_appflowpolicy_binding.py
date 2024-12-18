@@ -98,7 +98,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_appflowpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_appflowpolicy_binding:
-
         state: present
         name: portal.bx.com
         policy: af_policy_act_log_10.189.64.10

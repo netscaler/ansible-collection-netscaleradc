@@ -6,7 +6,6 @@
     - name: Configure sslcipher_sslciphersuite_binding
       delegate_to: localhost
       netscaler.adc.sslcipher_sslciphersuite_binding:
-
         state: present
         ciphergroupname: ssllabs-blackstone
         ciphername: TLS1.2-DHE-RSA-AES256-GCM-SHA384

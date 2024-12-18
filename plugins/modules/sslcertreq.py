@@ -156,7 +156,6 @@ EXAMPLES = r"""
     - name: Configure sslcertreq
       delegate_to: localhost
       netscaler.adc.sslcertreq:
-
         state: present
         reqfile: ssl_rsa_der_csr
         keyfile: ssl_rsa_der_key

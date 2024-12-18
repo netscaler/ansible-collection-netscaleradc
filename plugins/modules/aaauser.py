@@ -350,7 +350,6 @@ EXAMPLES = r"""
     - name: Configure aaauser
       delegate_to: localhost
       netscaler.adc.aaauser:
-
         state: present
         username: msiuser1
 """

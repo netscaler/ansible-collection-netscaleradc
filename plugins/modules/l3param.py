@@ -160,7 +160,6 @@ EXAMPLES = r"""
     - name: Configure l3param
       delegate_to: localhost
       netscaler.adc.l3param:
-
         state: present
         icmperrgenerate: DISABLED
 """

@@ -168,7 +168,6 @@ EXAMPLES = r"""
     - name: Configure vpnglobal_vpnsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnglobal_vpnsessionpolicy_binding:
-
         state: present
         policyname: SETVPNPARAMS_ADV_POL
         priority: '65534'

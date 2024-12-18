@@ -278,7 +278,6 @@ EXAMPLES = r"""
     - name: Configure vrid
       delegate_to: localhost
       netscaler.adc.vrid:
-
         state: present
         id: '100'
         preemptiondelaytimer: 100

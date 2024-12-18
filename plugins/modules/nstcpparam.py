@@ -382,7 +382,6 @@ EXAMPLES = r"""
     - name: Configure nstcpparam
       delegate_to: localhost
       netscaler.adc.nstcpparam:
-
         state: present
         autosyncookietimeout: '100'
 """

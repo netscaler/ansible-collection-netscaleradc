@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure iptunnelparam
       delegate_to: localhost
       netscaler.adc.iptunnelparam:
-
         state: present
         srciproundrobin: 'YES'
 """

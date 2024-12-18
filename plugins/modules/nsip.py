@@ -369,7 +369,6 @@ EXAMPLES = r"""
     - name: Configure nsip
       delegate_to: localhost
       netscaler.adc.nsip:
-
         state: present
         ipaddress: 10.189.130.5
         netmask: 255.255.255.255

@@ -85,7 +85,6 @@ EXAMPLES = r"""
     - name: Configure ssllogprofile
       delegate_to: localhost
       netscaler.adc.ssllogprofile:
-
         state: present
         name: ssllogp1
 """

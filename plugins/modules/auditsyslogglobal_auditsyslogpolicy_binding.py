@@ -153,7 +153,6 @@ EXAMPLES = r"""
     - name: Configure auditsyslogglobal_auditsyslogpolicy_binding
       delegate_to: localhost
       netscaler.adc.auditsyslogglobal_auditsyslogpolicy_binding:
-
         state: present
         policyname: sys_pol_name
         priority: '11'

@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnsipalgprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnsipalgprofile_binding:
-
         state: present
         groupname: g15
         sipalgprofilename: sipalgprofile_udp

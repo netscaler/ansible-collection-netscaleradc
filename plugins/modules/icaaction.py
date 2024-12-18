@@ -81,7 +81,6 @@ EXAMPLES = r"""
     - name: Configure icaaction
       delegate_to: localhost
       netscaler.adc.icaaction:
-
         state: present
         name: ia
         accessprofilename: ipr

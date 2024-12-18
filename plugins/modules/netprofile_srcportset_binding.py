@@ -63,7 +63,6 @@ EXAMPLES = r"""
     - name: Configure netprofile_srcportset_binding
       delegate_to: localhost
       netscaler.adc.netprofile_srcportset_binding:
-
         state: present
         name: np221
         srcportrange:

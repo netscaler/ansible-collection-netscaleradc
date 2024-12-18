@@ -78,7 +78,6 @@ EXAMPLES = r"""
     - name: Configure rdpserverprofile
       delegate_to: localhost
       netscaler.adc.rdpserverprofile:
-
         state: present
         name: rdp_s3
         rdpip: 12.12.12.12

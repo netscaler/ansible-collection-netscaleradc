@@ -99,7 +99,6 @@ EXAMPLES = r"""
     - name: Configure dnstxtrec
       delegate_to: localhost
       netscaler.adc.dnstxtrec:
-
         state: present
         domain: sample2
         String:

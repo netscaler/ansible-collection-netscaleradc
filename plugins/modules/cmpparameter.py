@@ -140,7 +140,6 @@ EXAMPLES = r"""
     - name: Configure cmpparameter
       delegate_to: localhost
       netscaler.adc.cmpparameter:
-
         state: present
         externalcache: 'YES'
 """

@@ -84,7 +84,6 @@ EXAMPLES = r"""
     - name: Configure locationfile
       delegate_to: localhost
       netscaler.adc.locationfile:
-
         state: present
         locationfile: /var/netscaler/locdb/Citrix_Netscaler_InBuilt_GeoIP_DB_IPv4
 """

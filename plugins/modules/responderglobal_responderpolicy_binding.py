@@ -157,7 +157,6 @@ EXAMPLES = r"""
     - name: Configure responderglobal_responderpolicy_binding
       delegate_to: localhost
       netscaler.adc.responderglobal_responderpolicy_binding:
-
         state: present
         policyname: policy_1
         priority: '10'

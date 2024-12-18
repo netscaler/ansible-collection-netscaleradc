@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure appfwmultipartformcontenttype
       delegate_to: localhost
       netscaler.adc.appfwmultipartformcontenttype:
-
         state: present
         multipartformcontenttypevalue: multipart/form-data.*
         isregex: REGEX

@@ -149,7 +149,6 @@ EXAMPLES = r"""
     - name: Configure tmglobal_tmsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.tmglobal_tmsessionpolicy_binding:
-
         state: present
         policyname: SETTMSESSPARAMS_ADV_POL
         priority: '65534'

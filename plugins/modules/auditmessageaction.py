@@ -105,7 +105,6 @@ EXAMPLES = r"""
     - name: Configure auditmessageaction
       delegate_to: localhost
       netscaler.adc.auditmessageaction:
-
         state: present
         name: sample
         loglevel: INFORMATIONAL

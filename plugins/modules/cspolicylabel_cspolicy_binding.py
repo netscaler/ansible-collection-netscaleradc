@@ -88,7 +88,6 @@ EXAMPLES = r"""
     - name: Configure cspolicylabel_cspolicy_binding
       delegate_to: localhost
       netscaler.adc.cspolicylabel_cspolicy_binding:
-
         state: present
         labelname: CSW_polabl5
         policyname: CSW_pol4

@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure authenticationsamlpolicy
       delegate_to: localhost
       netscaler.adc.authenticationsamlpolicy:
-
         state: present
         name: samlsecureauthidppol
         rule: ns_true

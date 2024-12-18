@@ -813,7 +813,6 @@ EXAMPLES = r"""
     - name: Configure crvserver
       delegate_to: localhost
       netscaler.adc.crvserver:
-
         state: present
         name: cr_fwd
         servicetype: HTTP

@@ -91,7 +91,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup_vpnintranetapplication_binding
       delegate_to: localhost
       netscaler.adc.aaagroup_vpnintranetapplication_binding:
-
         state: present
         groupname: group1
         intranetapplication: intra_app2

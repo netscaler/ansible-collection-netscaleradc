@@ -770,7 +770,6 @@ EXAMPLES = r"""
     - name: Configure sslvserver
       delegate_to: localhost
       netscaler.adc.sslvserver:
-
         state: present
         vservername: backup_gslb_portal.bx.com
         sslprofile: ns_default_ssl_profile_frontend

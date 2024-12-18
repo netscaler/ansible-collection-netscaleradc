@@ -55,7 +55,6 @@ EXAMPLES = r"""
     - name: Configure dnsview
       delegate_to: localhost
       netscaler.adc.dnsview:
-
         state: present
         viewname: view1
 """

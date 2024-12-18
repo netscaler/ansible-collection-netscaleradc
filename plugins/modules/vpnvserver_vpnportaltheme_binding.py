@@ -61,7 +61,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_vpnportaltheme_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnportaltheme_binding:
-
         state: present
         name: portal.bx.com
         portaltheme: BX_Brand

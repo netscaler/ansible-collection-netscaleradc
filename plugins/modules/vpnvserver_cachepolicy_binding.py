@@ -98,7 +98,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_cachepolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_cachepolicy_binding:
-
         state: present
         name: CitrixAccessCallback
         policy: _noCacheRest

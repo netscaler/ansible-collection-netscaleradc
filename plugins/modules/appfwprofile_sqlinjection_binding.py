@@ -129,7 +129,6 @@ EXAMPLES = r"""
     - name: Configure appfwprofile_sqlinjection_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_sqlinjection_binding:
-
         state: present
         name: Test_profile
         sqlinjection: text_area

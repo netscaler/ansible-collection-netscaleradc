@@ -99,7 +99,6 @@ EXAMPLES = r"""
     - name: Configure appflowcollector
       delegate_to: localhost
       netscaler.adc.appflowcollector:
-
         state: present
         name: af_collector_logstream_10.189.64.10
         ipaddress: 10.189.64.10

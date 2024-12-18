@@ -86,7 +86,6 @@ EXAMPLES = r"""
     - name: Configure aaapreauthenticationaction
       delegate_to: localhost
       netscaler.adc.aaapreauthenticationaction:
-
         state: present
         name: preact
         preauthenticationaction: ALLOW

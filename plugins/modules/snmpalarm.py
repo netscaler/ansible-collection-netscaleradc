@@ -270,7 +270,6 @@ EXAMPLES = r"""
     - name: Configure snmpalarm
       delegate_to: localhost
       netscaler.adc.snmpalarm:
-
         state: present
         trapname: SYSLOG-CONNECTION-DROPPED
         time: 0

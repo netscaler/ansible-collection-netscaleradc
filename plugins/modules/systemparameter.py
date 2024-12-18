@@ -236,7 +236,6 @@ EXAMPLES = r"""
     - name: Configure systemparameter
       delegate_to: localhost
       netscaler.adc.systemparameter:
-
         state: present
         maxclient: '40'
         forcepasswordchange: ENABLED

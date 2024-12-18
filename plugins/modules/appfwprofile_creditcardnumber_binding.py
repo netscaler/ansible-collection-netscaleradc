@@ -96,7 +96,6 @@ EXAMPLES = r"""
     - name: Configure appfwprofile_creditcardnumber_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_creditcardnumber_binding:
-
         state: present
         name: Test_profile
         creditcardnumber: '348238190706900'

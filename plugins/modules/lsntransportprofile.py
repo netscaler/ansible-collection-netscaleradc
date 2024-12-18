@@ -171,7 +171,6 @@ EXAMPLES = r"""
     - name: Configure lsntransportprofile
       delegate_to: localhost
       netscaler.adc.lsntransportprofile:
-
         state: present
         transportprofilename: icmp
         transportprotocol: ICMP

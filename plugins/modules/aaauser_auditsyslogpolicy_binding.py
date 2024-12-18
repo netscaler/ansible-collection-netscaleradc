@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure aaauser_auditsyslogpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaauser_auditsyslogpolicy_binding:
-
         state: present
         username: aaauser
         policy: ia_syspol1

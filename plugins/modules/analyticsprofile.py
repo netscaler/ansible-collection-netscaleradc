@@ -355,7 +355,6 @@ EXAMPLES = r"""
     - name: Configure analyticsprofile
       delegate_to: localhost
       netscaler.adc.analyticsprofile:
-
         state: present
         name: telemetry_metrics_profile
         type: timeseries

@@ -677,7 +677,6 @@ EXAMPLES = r"""
     - name: Configure vpnsessionaction
       delegate_to: localhost
       netscaler.adc.vpnsessionaction:
-
         state: present
         name: External_receiver_session_prof
         sesstimeout: 20

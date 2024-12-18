@@ -79,7 +79,6 @@ EXAMPLES = r"""
     - name: Configure lsnclient_network_binding
       delegate_to: localhost
       netscaler.adc.lsnclient_network_binding:
-
         state: present
         clientname: dsl_http
         network: 94.94.94.94

@@ -110,7 +110,6 @@ EXAMPLES = r"""
     - name: Configure forwardingsession
       delegate_to: localhost
       netscaler.adc.forwardingsession:
-
         state: present
         name: ia_forsess5
         nitro_operation: rm

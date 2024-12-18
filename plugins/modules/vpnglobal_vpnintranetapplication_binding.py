@@ -63,7 +63,6 @@ EXAMPLES = r"""
     - name: Configure vpnglobal_vpnintranetapplication_binding
       delegate_to: localhost
       netscaler.adc.vpnglobal_vpnintranetapplication_binding:
-
         state: present
         intranetapplication: javaclt
 """

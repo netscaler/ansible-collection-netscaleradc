@@ -102,7 +102,6 @@ EXAMPLES = r"""
     - name: Configure gslbvserver_domain_binding
       delegate_to: localhost
       netscaler.adc.gslbvserver_domain_binding:
-
         state: present
         name: GSLB_VSRV_storefront.blackstone.com
         domainname: storefront.gslb.blackstone.com

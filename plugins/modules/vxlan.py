@@ -208,7 +208,6 @@ EXAMPLES = r"""
     - name: Configure vxlan
       delegate_to: localhost
       netscaler.adc.vxlan:
-
         state: present
         id: '1'
 """

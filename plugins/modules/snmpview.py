@@ -77,7 +77,6 @@ EXAMPLES = r"""
     - name: Configure snmpview
       delegate_to: localhost
       netscaler.adc.snmpview:
-
         state: present
         name: ia_snmpview1
         subtree: 1.3.6.1.4.1.5951.4.1.1.20

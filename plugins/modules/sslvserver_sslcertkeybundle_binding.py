@@ -65,7 +65,6 @@ EXAMPLES = r"""
     - name: Configure sslvserver_sslcertkeybundle_binding
       delegate_to: localhost
       netscaler.adc.sslvserver_sslcertkeybundle_binding:
-
         state: present
         vservername: v1_1
         certkeybundlename: tc11

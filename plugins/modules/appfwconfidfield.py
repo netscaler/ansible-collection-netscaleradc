@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure appfwconfidfield
       delegate_to: localhost
       netscaler.adc.appfwconfidfield:
-
         state: present
         fieldname: ia_appfwfield1
         url: http://url

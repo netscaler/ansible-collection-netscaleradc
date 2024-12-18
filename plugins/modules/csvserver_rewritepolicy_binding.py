@@ -105,7 +105,6 @@ EXAMPLES = r"""
     - name: Configure csvserver_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.csvserver_rewritepolicy_binding:
-
         state: present
         name: CSW_v1
         policyname: CSW_rwrtpol1

@@ -139,7 +139,6 @@ EXAMPLES = r"""
     - name: Configure appfwprofile_xmlvalidationurl_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_xmlvalidationurl_binding:
-
         state: present
         name: XMLSchema_2
         xmlvalidationurl: .*

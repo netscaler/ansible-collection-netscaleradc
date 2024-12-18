@@ -114,7 +114,6 @@ EXAMPLES = r"""
     - name: Configure authenticationpolicylabel
       delegate_to: localhost
       netscaler.adc.authenticationpolicylabel:
-
         state: present
         labelname: LDAP_Userextraction_External
         loginschema: LSCHEMA_INT

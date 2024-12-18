@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure tmtrafficpolicy
       delegate_to: localhost
       netscaler.adc.tmtrafficpolicy:
-
         state: present
         name: ia_tmtrafpol1
         rule: HTTP.REQ.METHOD.EQ(GET)

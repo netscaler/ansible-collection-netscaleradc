@@ -321,7 +321,6 @@ EXAMPLES = r"""
     - name: Configure interface
       delegate_to: localhost
       netscaler.adc.interface:
-
         state: present
         hamonitor: 'OFF'
         haheartbeat: 'OFF'

@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure authenticationauthnprofile
       delegate_to: localhost
       netscaler.adc.authenticationauthnprofile:
-
         state: present
         name: citrixgw_auth_profile
         authnvsname: Citrix_AAA_vServer

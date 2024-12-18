@@ -138,7 +138,6 @@ EXAMPLES = r"""
     - name: Configure rewritepolicy
       delegate_to: localhost
       netscaler.adc.rewritepolicy:
-
         state: present
         name: rw_diam_pol
         rule: diameter.req.avp(264).value.eq("host1.sayan1.net")

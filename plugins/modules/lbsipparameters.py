@@ -98,7 +98,6 @@ EXAMPLES = r"""
     - name: Configure lbsipparameters
       delegate_to: localhost
       netscaler.adc.lbsipparameters:
-
         state: present
         rnatsecuresrcport: 5061
 """

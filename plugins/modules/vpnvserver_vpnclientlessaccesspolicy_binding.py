@@ -98,7 +98,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_vpnclientlessaccesspolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnclientlessaccesspolicy_binding:
-
         state: present
         name: _XM_anilxmvip.dnpg-blr.com
         policy: CLT_LESS_10.100.48.231

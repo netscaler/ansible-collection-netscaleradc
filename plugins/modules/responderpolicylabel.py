@@ -129,7 +129,6 @@ EXAMPLES = r"""
     - name: Configure responderpolicylabel
       delegate_to: localhost
       netscaler.adc.responderpolicylabel:
-
         state: present
         labelname: ia_respolabl5
 """

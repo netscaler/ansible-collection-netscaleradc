@@ -222,7 +222,6 @@ EXAMPLES = r"""
     - name: Configure vlan
       delegate_to: localhost
       netscaler.adc.vlan:
-
         state: present
         vlanid: '10'
 """

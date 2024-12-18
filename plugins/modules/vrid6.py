@@ -200,7 +200,6 @@ EXAMPLES = r"""
     - name: Configure vrid6
       delegate_to: localhost
       netscaler.adc.vrid6:
-
         state: present
         id: '13'
 """

@@ -6,7 +6,6 @@
     - name: Configure policydataset_value_binding
       delegate_to: localhost
       netscaler.adc.policydataset_value_binding:
-
         state: present
         name: SF_LBVIP
         value: 10.76.126.10

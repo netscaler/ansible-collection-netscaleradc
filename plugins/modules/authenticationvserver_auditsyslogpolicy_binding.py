@@ -125,7 +125,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_auditsyslogpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_auditsyslogpolicy_binding:
-
         state: present
         name: ia_authnvs7
         policy: ia_syspol1

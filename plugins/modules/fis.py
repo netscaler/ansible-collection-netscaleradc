@@ -113,7 +113,6 @@ EXAMPLES = r"""
     - name: Configure fis
       delegate_to: localhost
       netscaler.adc.fis:
-
         state: present
         name: ia_fis11
 """

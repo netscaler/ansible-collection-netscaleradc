@@ -150,7 +150,6 @@ EXAMPLES = r"""
     - name: Configure rewritepolicylabel
       delegate_to: localhost
       netscaler.adc.rewritepolicylabel:
-
         state: present
         labelname: ia_rwrtpolabl6
         transform: http_req

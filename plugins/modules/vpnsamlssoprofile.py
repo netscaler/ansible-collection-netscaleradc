@@ -489,7 +489,6 @@ EXAMPLES = r"""
     - name: Configure vpnsamlssoprofile
       delegate_to: localhost
       netscaler.adc.vpnsamlssoprofile:
-
         state: present
         name: new
         assertionconsumerserviceurl: http://a.com

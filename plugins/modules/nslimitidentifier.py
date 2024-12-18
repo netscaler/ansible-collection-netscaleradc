@@ -132,7 +132,6 @@ EXAMPLES = r"""
     - name: Configure nslimitidentifier
       delegate_to: localhost
       netscaler.adc.nslimitidentifier:
-
         state: present
         limitidentifier: LB_rslm1
         threshold: '100'

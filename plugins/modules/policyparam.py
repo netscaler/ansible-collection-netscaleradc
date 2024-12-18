@@ -57,7 +57,6 @@ EXAMPLES = r"""
     - name: Configure policyparam
       delegate_to: localhost
       netscaler.adc.policyparam:
-
         state: present
         timeout: 5000
 """

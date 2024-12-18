@@ -66,7 +66,6 @@ EXAMPLES = r"""
     - name: Configure responderparam
       delegate_to: localhost
       netscaler.adc.responderparam:
-
         state: present
         undefaction: NOOP
 """

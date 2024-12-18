@@ -176,7 +176,6 @@ EXAMPLES = r"""
     - name: Configure dnskey
       delegate_to: localhost
       netscaler.adc.dnskey:
-
         state: present
         keyname: com.ksk.4096
         publickey: /nsconfig/dns/com.ksK.key

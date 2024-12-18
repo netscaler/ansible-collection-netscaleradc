@@ -55,7 +55,6 @@ EXAMPLES = r"""
     - name: Configure dnssuffix
       delegate_to: localhost
       netscaler.adc.dnssuffix:
-
         state: present
         Dnssuffix: sssss.ssss
 """

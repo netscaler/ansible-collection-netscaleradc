@@ -485,7 +485,6 @@ EXAMPLES = r"""
     - name: Configure tmsamlssoprofile
       delegate_to: localhost
       netscaler.adc.tmsamlssoprofile:
-
         state: present
         name: tm1
         assertionconsumerserviceurl: https://url

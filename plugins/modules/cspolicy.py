@@ -112,7 +112,6 @@ EXAMPLES = r"""
     - name: Configure cspolicy
       delegate_to: localhost
       netscaler.adc.cspolicy:
-
         state: present
         policyname: cs_pol
         rule: is_vpn_url

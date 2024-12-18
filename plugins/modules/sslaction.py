@@ -241,7 +241,6 @@ EXAMPLES = r"""
     - name: Configure sslaction
       delegate_to: localhost
       netscaler.adc.sslaction:
-
         state: present
         name: _XM_MDM_titan.dnpg-blr.com_ACTION
         clientcert: ENABLED

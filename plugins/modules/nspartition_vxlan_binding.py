@@ -63,7 +63,6 @@ EXAMPLES = r"""
     - name: Configure nspartition_vxlan_binding
       delegate_to: localhost
       netscaler.adc.nspartition_vxlan_binding:
-
         state: present
         partitionname: p1
         vxlan: '1'

@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure onlinkipv6prefix
       delegate_to: localhost
       netscaler.adc.onlinkipv6prefix:
-
         state: present
         ipv6prefix: 2001::/64
         onlinkprefix: 'NO'

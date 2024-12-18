@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_pcpserver_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_pcpserver_binding:
-
         state: present
         groupname: lsn_group_1
         pcpserver: pcp_server_1

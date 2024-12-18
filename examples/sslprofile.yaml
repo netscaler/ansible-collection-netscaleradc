@@ -6,6 +6,5 @@
     - name: Configure sslprofile
       delegate_to: localhost
       netscaler.adc.sslprofile:
-
         state: present
         name: ns_default_ssl_profile_internal_frontend_service

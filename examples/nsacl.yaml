@@ -6,7 +6,6 @@
     - name: Configure nsacl
       delegate_to: localhost
       netscaler.adc.nsacl:
-
         state: present
         aclname: ACL_SF_Allow_USE1-B
         aclaction: ALLOW

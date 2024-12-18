@@ -89,7 +89,6 @@ EXAMPLES = r"""
     - name: Configure dnsnsrec
       delegate_to: localhost
       netscaler.adc.dnsnsrec:
-
         state: present
         domain: .
         nameserver: m.root-servers.net

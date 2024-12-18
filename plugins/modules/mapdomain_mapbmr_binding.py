@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure mapdomain_mapbmr_binding
       delegate_to: localhost
       netscaler.adc.mapdomain_mapbmr_binding:
-
         state: present
         name: map1
         mapbmrname: bmr1

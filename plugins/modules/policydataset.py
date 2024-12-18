@@ -118,7 +118,6 @@ EXAMPLES = r"""
     - name: Configure policydataset
       delegate_to: localhost
       netscaler.adc.policydataset:
-
         state: present
         name: SF_LBVIP
         type: ipv4

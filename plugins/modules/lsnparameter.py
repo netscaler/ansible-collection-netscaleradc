@@ -89,7 +89,6 @@ EXAMPLES = r"""
     - name: Configure lsnparameter
       delegate_to: localhost
       netscaler.adc.lsnparameter:
-
         state: present
         subscrsessionremoval: ENABLED
 """

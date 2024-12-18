@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure appfwpolicylabel_appfwpolicy_binding
       delegate_to: localhost
       netscaler.adc.appfwpolicylabel_appfwpolicy_binding:
-
         state: present
         labelname: appfw_label_01
         policyname: ia_appfwpol1

@@ -163,7 +163,6 @@ EXAMPLES = r"""
     - name: Configure gslbparameter
       delegate_to: localhost
       netscaler.adc.gslbparameter:
-
         state: present
 """
 

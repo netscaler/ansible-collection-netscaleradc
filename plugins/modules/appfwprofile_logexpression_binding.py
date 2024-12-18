@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure appfwprofile_logexpression_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_logexpression_binding:
-
         state: present
         name: profile2
         logexpression: xyz

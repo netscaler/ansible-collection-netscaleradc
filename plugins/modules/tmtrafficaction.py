@@ -125,7 +125,6 @@ EXAMPLES = r"""
     - name: Configure tmtrafficaction
       delegate_to: localhost
       netscaler.adc.tmtrafficaction:
-
         state: present
         name: kcd_sso1
         sso: 'ON'

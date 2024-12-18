@@ -63,7 +63,6 @@ EXAMPLES = r"""
     - name: Configure nslicenseproxyserver
       delegate_to: localhost
       netscaler.adc.nslicenseproxyserver:
-
         state: present
         serverip: 10.102.201.245
         port: '28000'

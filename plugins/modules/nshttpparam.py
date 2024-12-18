@@ -120,7 +120,6 @@ EXAMPLES = r"""
     - name: Configure nshttpparam
       delegate_to: localhost
       netscaler.adc.nshttpparam:
-
         state: present
         dropinvalreqs: 'ON'
 """

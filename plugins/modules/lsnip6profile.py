@@ -77,7 +77,6 @@ EXAMPLES = r"""
     - name: Configure lsnip6profile
       delegate_to: localhost
       netscaler.adc.lsnip6profile:
-
         state: present
         name: ds1
         type: DS-Lite

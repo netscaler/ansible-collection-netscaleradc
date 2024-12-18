@@ -115,7 +115,6 @@ EXAMPLES = r"""
     - name: Configure ipset
       delegate_to: localhost
       netscaler.adc.ipset:
-
         state: present
         name: ipset_adns
 """

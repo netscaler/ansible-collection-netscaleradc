@@ -148,7 +148,6 @@ EXAMPLES = r"""
     - name: Configure bridgegroup
       delegate_to: localhost
       netscaler.adc.bridgegroup:
-
         state: present
         id: '23'
         ipv6dynamicrouting: ENABLED

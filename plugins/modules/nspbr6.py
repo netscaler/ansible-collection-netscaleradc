@@ -387,7 +387,6 @@ EXAMPLES = r"""
     - name: Configure nspbr6
       delegate_to: localhost
       netscaler.adc.nspbr6:
-
         state: present
         name: test3
         action: DENY

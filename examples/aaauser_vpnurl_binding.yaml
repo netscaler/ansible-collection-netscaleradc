@@ -6,7 +6,6 @@
     - name: Configure aaauser_vpnurl_binding
       delegate_to: localhost
       netscaler.adc.aaauser_vpnurl_binding:
-
         state: present
         username: phani2222
         urlname: owa2k7FqdnHttp

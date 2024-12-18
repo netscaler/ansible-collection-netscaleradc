@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure appfwgrpccontenttype
       delegate_to: localhost
       netscaler.adc.appfwgrpccontenttype:
-
         state: present
         grpccontenttypevalue: application/grpc-web+proto
 """

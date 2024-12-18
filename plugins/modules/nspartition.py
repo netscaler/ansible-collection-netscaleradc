@@ -174,7 +174,6 @@ EXAMPLES = r"""
     - name: Configure nspartition
       delegate_to: localhost
       netscaler.adc.nspartition:
-
         state: present
         partitionname: p1
         vxlan: '1'

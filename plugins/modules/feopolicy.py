@@ -65,7 +65,6 @@ EXAMPLES = r"""
     - name: Configure feopolicy
       delegate_to: localhost
       netscaler.adc.feopolicy:
-
         state: present
         name: pol1_ns
         rule: HTTP.REQ.HEADER("Accept").CONTAINS("html")

@@ -94,7 +94,6 @@ EXAMPLES = r"""
     - name: Configure dnsaction
       delegate_to: localhost
       netscaler.adc.dnsaction:
-
         state: present
         actionname: ia_dnsact8
         actiontype: Rewrite_Response

@@ -74,7 +74,6 @@ EXAMPLES = r"""
     - name: Configure sslcertkeybundle
       delegate_to: localhost
       netscaler.adc.sslcertkeybundle:
-
         state: present
         certkeybundlename: tc11
         bundlefile: bundle_files/enc_cert.pem

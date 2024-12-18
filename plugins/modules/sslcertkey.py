@@ -174,7 +174,6 @@ EXAMPLES = r"""
     - name: Configure sslcertkey
       delegate_to: localhost
       netscaler.adc.sslcertkey:
-
         state: present
         certkey: callback.blackstone.com
         linkcertkeyname: blackstone_sub

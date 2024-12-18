@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure appfwurlencodedformcontenttype
       delegate_to: localhost
       netscaler.adc.appfwurlencodedformcontenttype:
-
         state: present
         urlencodedformcontenttypevalue: application/x-www-form-urlencoded.*
         isregex: REGEX

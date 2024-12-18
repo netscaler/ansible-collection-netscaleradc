@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnrtspalgprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnrtspalgprofile_binding:
-
         state: present
         groupname: group12
         rtspalgprofilename: rtspprofile1

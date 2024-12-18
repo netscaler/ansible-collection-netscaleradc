@@ -6,7 +6,6 @@
     - name: Configure authenticationvserver_authenticationpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationpolicy_binding:
-
         state: present
         name: Citrix_AAA_vServer
         policy: OKta_SAML_External

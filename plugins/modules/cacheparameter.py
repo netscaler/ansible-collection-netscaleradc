@@ -122,7 +122,6 @@ EXAMPLES = r"""
     - name: Configure cacheparameter
       delegate_to: localhost
       netscaler.adc.cacheparameter:
-
         state: present
         via: 'NS-CACHE-10.0:  50'
 """

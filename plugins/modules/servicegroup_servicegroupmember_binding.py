@@ -104,7 +104,6 @@ EXAMPLES = r"""
     - name: Configure servicegroup_servicegroupmember_binding
       delegate_to: localhost
       netscaler.adc.servicegroup_servicegroupmember_binding:
-
         state: present
         servicegroupname: CR_SVG
         ip: 172.168.1.20

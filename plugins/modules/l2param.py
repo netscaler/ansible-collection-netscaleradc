@@ -165,7 +165,6 @@ EXAMPLES = r"""
     - name: Configure l2param
       delegate_to: localhost
       netscaler.adc.l2param:
-
         state: present
         returntoethernetsender: ENABLED
 """

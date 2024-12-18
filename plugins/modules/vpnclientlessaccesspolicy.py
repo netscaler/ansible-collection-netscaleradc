@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure vpnclientlessaccesspolicy
       delegate_to: localhost
       netscaler.adc.vpnclientlessaccesspolicy:
-
         state: present
         name: ia_cltlsacspol1
         rule: 'true'

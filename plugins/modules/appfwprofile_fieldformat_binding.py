@@ -114,7 +114,6 @@ EXAMPLES = r"""
     - name: Configure appfwprofile_fieldformat_binding
       delegate_to: localhost
       netscaler.adc.appfwprofile_fieldformat_binding:
-
         state: present
         name: Test_profile
         fieldformat: text_area

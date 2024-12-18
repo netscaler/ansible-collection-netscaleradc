@@ -66,7 +66,6 @@ EXAMPLES = r"""
     - name: Configure dbuser
       delegate_to: localhost
       netscaler.adc.dbuser:
-
         state: present
         username: us1
 """

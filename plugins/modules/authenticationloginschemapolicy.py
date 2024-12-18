@@ -113,7 +113,6 @@ EXAMPLES = r"""
     - name: Configure authenticationloginschemapolicy
       delegate_to: localhost
       netscaler.adc.authenticationloginschemapolicy:
-
         state: present
         name: second_factor_schema
         rule: 'true'

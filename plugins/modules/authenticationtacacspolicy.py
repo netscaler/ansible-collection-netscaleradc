@@ -76,7 +76,6 @@ EXAMPLES = r"""
     - name: Configure authenticationtacacspolicy
       delegate_to: localhost
       netscaler.adc.authenticationtacacspolicy:
-
         state: present
         name: primaryIPv4TACACSpolicy
         rule: ns_true

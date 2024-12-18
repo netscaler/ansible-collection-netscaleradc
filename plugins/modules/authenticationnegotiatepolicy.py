@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure authenticationnegotiatepolicy
       delegate_to: localhost
       netscaler.adc.authenticationnegotiatepolicy:
-
         state: present
         name: negpol
         rule: ns_true

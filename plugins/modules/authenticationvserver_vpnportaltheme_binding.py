@@ -61,7 +61,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_vpnportaltheme_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_vpnportaltheme_binding:
-
         state: present
         name: Citrix_AAA_vServer
         portaltheme: BX_Brand

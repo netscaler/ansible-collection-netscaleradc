@@ -747,7 +747,6 @@ EXAMPLES = r"""
     - name: Configure vpnparameter
       delegate_to: localhost
       netscaler.adc.vpnparameter:
-
         state: present
         forcecleanup:
           - none

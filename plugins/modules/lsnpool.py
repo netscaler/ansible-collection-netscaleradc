@@ -164,7 +164,6 @@ EXAMPLES = r"""
     - name: Configure lsnpool
       delegate_to: localhost
       netscaler.adc.lsnpool:
-
         state: present
         poolname: pool4
 """

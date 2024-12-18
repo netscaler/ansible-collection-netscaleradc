@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure tmsessionpolicy
       delegate_to: localhost
       netscaler.adc.tmsessionpolicy:
-
         state: present
         name: ia_tmsespol1
         rule: REQ.HTTP.METHOD == GET

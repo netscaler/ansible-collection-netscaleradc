@@ -140,7 +140,6 @@ EXAMPLES = r"""
     - name: Configure rewriteglobal_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.rewriteglobal_rewritepolicy_binding:
-
         state: present
         policyname: new_policy_2
         priority: '11'

@@ -119,7 +119,6 @@ EXAMPLES = r"""
     - name: Configure appfwpolicy
       delegate_to: localhost
       netscaler.adc.appfwpolicy:
-
         state: present
         name: pr_appfw_pol
         rule: HTTP.REQ.HEADER("Host").EXISTS

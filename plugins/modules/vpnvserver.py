@@ -1416,7 +1416,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver
       delegate_to: localhost
       netscaler.adc.vpnvserver:
-
         state: present
         name: CitrixAccessCallback
         servicetype: SSL

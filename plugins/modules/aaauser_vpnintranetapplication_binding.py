@@ -91,7 +91,6 @@ EXAMPLES = r"""
     - name: Configure aaauser_vpnintranetapplication_binding
       delegate_to: localhost
       netscaler.adc.aaauser_vpnintranetapplication_binding:
-
         state: present
         username: user1
         policy: vpn_sespol1

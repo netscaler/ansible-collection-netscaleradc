@@ -484,7 +484,6 @@ EXAMPLES = r"""
     - name: Configure servicegroup
       delegate_to: localhost
       netscaler.adc.servicegroup:
-
         state: present
         servicegroupname: LB_ia_svcgrp13916
         servicetype: SSL

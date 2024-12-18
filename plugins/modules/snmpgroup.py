@@ -86,7 +86,6 @@ EXAMPLES = r"""
     - name: Configure snmpgroup
       delegate_to: localhost
       netscaler.adc.snmpgroup:
-
         state: present
         name: ia_snmpgrp1
         securitylevel: noAuthNoPriv

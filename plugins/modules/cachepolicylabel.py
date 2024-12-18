@@ -103,7 +103,6 @@ EXAMPLES = r"""
     - name: Configure cachepolicylabel
       delegate_to: localhost
       netscaler.adc.cachepolicylabel:
-
         state: present
         labelname: _httpquicResBuiltinDefaults
         evaluates: HTTPQUIC_RES

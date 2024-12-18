@@ -199,7 +199,6 @@ EXAMPLES = r"""
     - name: Configure rdpclientprofile
       delegate_to: localhost
       netscaler.adc.rdpclientprofile:
-
         state: present
         name: rdpc2
         rdpurloverride: DISABLE

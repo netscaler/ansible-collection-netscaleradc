@@ -167,7 +167,6 @@ EXAMPLES = r"""
     - name: Configure tunnelglobal_tunneltrafficpolicy_binding
       delegate_to: localhost
       netscaler.adc.tunnelglobal_tunneltrafficpolicy_binding:
-
         state: present
         policyname: ns_tunnel_nocmp
 """

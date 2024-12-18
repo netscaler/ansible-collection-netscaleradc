@@ -166,7 +166,6 @@ EXAMPLES = r"""
     - name: Configure policypatset_pattern_binding
       delegate_to: localhost
       netscaler.adc.policypatset_pattern_binding:
-
         state: present
         name: prod_patset
         string: https://portal2.bx.com

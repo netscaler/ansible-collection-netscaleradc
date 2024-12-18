@@ -163,7 +163,6 @@ EXAMPLES = r"""
     - name: Configure lbprofile
       delegate_to: localhost
       netscaler.adc.lbprofile:
-
         state: present
 """
 

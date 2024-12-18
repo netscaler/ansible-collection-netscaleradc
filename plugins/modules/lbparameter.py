@@ -283,7 +283,6 @@ EXAMPLES = r"""
     - name: Configure lbparameter
       delegate_to: localhost
       netscaler.adc.lbparameter:
-
         state: present
 """
 

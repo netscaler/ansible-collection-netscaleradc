@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure aaapreauthenticationpolicy
       delegate_to: localhost
       netscaler.adc.aaapreauthenticationpolicy:
-
         state: present
         name: preact
         rule: client.os(win8.1) exists || client.os(win8) exists

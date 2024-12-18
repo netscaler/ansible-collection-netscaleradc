@@ -85,7 +85,6 @@ EXAMPLES = r"""
     - name: Configure lbmonitor_sslcertkey_binding
       delegate_to: localhost
       netscaler.adc.lbmonitor_sslcertkey_binding:
-
         state: present
         monitorname: https
         certkeyname: myclient

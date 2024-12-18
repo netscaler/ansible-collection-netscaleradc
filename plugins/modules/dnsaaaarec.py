@@ -89,7 +89,6 @@ EXAMPLES = r"""
     - name: Configure dnsaaaarec
       delegate_to: localhost
       netscaler.adc.dnsaaaarec:
-
         state: present
         hostname: n2.com
         ipv6address:

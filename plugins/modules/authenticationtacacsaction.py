@@ -204,7 +204,6 @@ EXAMPLES = r"""
     - name: Configure authenticationtacacsaction
       delegate_to: localhost
       netscaler.adc.authenticationtacacsaction:
-
         state: present
         name: t1
         serverip: 77.77.77.77

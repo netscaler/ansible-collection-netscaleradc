@@ -68,7 +68,6 @@ EXAMPLES = r"""
     - name: Configure sslvserver_ecccurve_binding
       delegate_to: localhost
       netscaler.adc.sslvserver_ecccurve_binding:
-
         state: present
         vservername: dh
         ecccurvename: P_521

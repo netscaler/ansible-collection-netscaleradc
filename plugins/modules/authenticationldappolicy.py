@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure authenticationldappolicy
       delegate_to: localhost
       netscaler.adc.authenticationldappolicy:
-
         state: present
         name: LDAP_Basic_Policy
         rule: ns_true

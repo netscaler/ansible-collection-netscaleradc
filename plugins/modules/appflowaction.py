@@ -185,7 +185,6 @@ EXAMPLES = r"""
     - name: Configure appflowaction
       delegate_to: localhost
       netscaler.adc.appflowaction:
-
         state: present
         name: af_action_log_10.189.64.10_nop
         collectors:

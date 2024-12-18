@@ -84,7 +84,6 @@ EXAMPLES = r"""
     - name: Configure location
       delegate_to: localhost
       netscaler.adc.location:
-
         state: present
         ipfrom: 1.1.1.1
         ipto: 2.2.2.2

@@ -85,7 +85,6 @@ EXAMPLES = r"""
     - name: Configure lsnhttphdrlogprofile
       delegate_to: localhost
       netscaler.adc.lsnhttphdrlogprofile:
-
         state: present
         httphdrlogprofilename: httplog
         logurl: ENABLED

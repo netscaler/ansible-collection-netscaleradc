@@ -63,7 +63,6 @@ EXAMPLES = r"""
     - name: Configure vpnglobal_vpnurl_binding
       delegate_to: localhost
       netscaler.adc.vpnglobal_vpnurl_binding:
-
         state: present
         urlname: SPnew
 """

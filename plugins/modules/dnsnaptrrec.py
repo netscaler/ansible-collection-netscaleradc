@@ -121,7 +121,6 @@ EXAMPLES = r"""
     - name: Configure dnsnaptrrec
       delegate_to: localhost
       netscaler.adc.dnsnaptrrec:
-
         state: present
         domain: citrix.com1
         order: '10'

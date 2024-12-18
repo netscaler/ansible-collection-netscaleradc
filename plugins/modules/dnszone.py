@@ -110,7 +110,6 @@ EXAMPLES = r"""
     - name: Configure dnszone
       delegate_to: localhost
       netscaler.adc.dnszone:
-
         state: present
         zonename: gslb.blackstone.com
         proxymode: 'NO'

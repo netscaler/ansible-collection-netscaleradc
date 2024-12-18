@@ -172,7 +172,6 @@ EXAMPLES = r"""
     - name: Configure netprofile
       delegate_to: localhost
       netscaler.adc.netprofile:
-
         state: present
         name: tets_netprofile_dns
         srcip: 10.189.130.20

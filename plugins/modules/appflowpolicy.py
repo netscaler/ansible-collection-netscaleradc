@@ -125,7 +125,6 @@ EXAMPLES = r"""
     - name: Configure appflowpolicy
       delegate_to: localhost
       netscaler.adc.appflowpolicy:
-
         state: present
         name: af_policy_act_log_10.189.64.10
         rule: 'true'

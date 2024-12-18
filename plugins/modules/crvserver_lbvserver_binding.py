@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure crvserver_lbvserver_binding
       delegate_to: localhost
       netscaler.adc.crvserver_lbvserver_binding:
-
         state: present
         name: CR_v2
         lbvserver: CR_cachev2

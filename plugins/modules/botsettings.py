@@ -139,7 +139,6 @@ EXAMPLES = r"""
     - name: Configure botsettings
       delegate_to: localhost
       netscaler.adc.botsettings:
-
         state: present
         proxyport: 0
 """

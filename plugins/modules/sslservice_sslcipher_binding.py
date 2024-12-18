@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure sslservice_sslcipher_binding
       delegate_to: localhost
       netscaler.adc.sslservice_sslcipher_binding:
-
         state: present
         servicename: ssl
         ciphername: AES-GCM

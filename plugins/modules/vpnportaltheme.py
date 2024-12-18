@@ -64,7 +64,6 @@ EXAMPLES = r"""
     - name: Configure vpnportaltheme
       delegate_to: localhost
       netscaler.adc.vpnportaltheme:
-
         state: present
         name: BX_Brand
         basetheme: RfWebUI

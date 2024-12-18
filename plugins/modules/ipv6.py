@@ -108,7 +108,6 @@ EXAMPLES = r"""
     - name: Configure ipv6
       delegate_to: localhost
       netscaler.adc.ipv6:
-
         state: present
         routerredirection: ENABLED
         ndbasereachtime: '20000'

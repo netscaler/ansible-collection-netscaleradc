@@ -93,7 +93,6 @@ EXAMPLES = r"""
     - name: Configure callhome
       delegate_to: localhost
       netscaler.adc.callhome:
-
         state: present
         hbcustominterval: '20'
 """

@@ -100,7 +100,6 @@ EXAMPLES = r"""
     - name: Configure icapolicy
       delegate_to: localhost
       netscaler.adc.icapolicy:
-
         state: present
         name: ipo
         rule: HTTP.REQ.USER.IS_MEMBER_OF("g1")

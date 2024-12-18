@@ -74,7 +74,6 @@ EXAMPLES = r"""
     - name: Configure gslbvserver_gslbservice_binding
       delegate_to: localhost
       netscaler.adc.gslbvserver_gslbservice_binding:
-
         state: present
         name: backup_gslb_portal.bx.com
         servicename: GSLB_SVC_USE2_portal.bx.com

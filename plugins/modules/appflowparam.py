@@ -402,7 +402,6 @@ EXAMPLES = r"""
     - name: Configure appflowparam
       delegate_to: localhost
       netscaler.adc.appflowparam:
-
         state: present
         templaterefresh: 3600
         httpurl: ENABLED

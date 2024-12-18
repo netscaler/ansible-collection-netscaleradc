@@ -87,7 +87,6 @@ EXAMPLES = r"""
     - name: Configure feoglobal_feopolicy_binding
       delegate_to: localhost
       netscaler.adc.feoglobal_feopolicy_binding:
-
         state: present
         policyname: pol1_ns
         priority: '3'

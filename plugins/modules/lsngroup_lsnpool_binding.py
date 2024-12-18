@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsnpool_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsnpool_binding:
-
         state: present
         groupname: group4
         poolname: pool4

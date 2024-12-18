@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure mapdmr
       delegate_to: localhost
       netscaler.adc.mapdmr:
-
         state: present
         name: dmr1
         bripv6prefix: 2001:db8::/64

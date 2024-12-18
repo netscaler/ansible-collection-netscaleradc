@@ -146,7 +146,6 @@ EXAMPLES = r"""
     - name: Configure cspolicylabel
       delegate_to: localhost
       netscaler.adc.cspolicylabel:
-
         state: present
         labelname: plab1
         newname: plab1_new

@@ -129,7 +129,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_authenticationwebauthpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationwebauthpolicy_binding:
-
         state: present
         name: ia_authnvs71
         policy: webauthpol

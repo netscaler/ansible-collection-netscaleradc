@@ -55,7 +55,6 @@ EXAMPLES = r"""
     - name: Configure vpneula
       delegate_to: localhost
       netscaler.adc.vpneula:
-
         state: present
         name: e2
 """

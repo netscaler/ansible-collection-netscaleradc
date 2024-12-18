@@ -291,7 +291,6 @@ EXAMPLES = r"""
     - name: Configure sslparameter
       delegate_to: localhost
       netscaler.adc.sslparameter:
-
         state: present
         defaultprofile: ENABLED
 """

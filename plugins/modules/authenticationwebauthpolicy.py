@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure authenticationwebauthpolicy
       delegate_to: localhost
       netscaler.adc.authenticationwebauthpolicy:
-
         state: present
         name: webauthpol
         rule: ns_true

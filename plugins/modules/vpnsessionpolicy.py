@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure vpnsessionpolicy
       delegate_to: localhost
       netscaler.adc.vpnsessionpolicy:
-
         state: present
         name: External_receiver_session_pol
         rule: HTTP.REQ.HEADER("User-Agent").CONTAINS("CitrixReceiver")

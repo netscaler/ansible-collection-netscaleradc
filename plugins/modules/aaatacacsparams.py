@@ -99,7 +99,6 @@ EXAMPLES = r"""
     - name: Configure aaatacacsparams
       delegate_to: localhost
       netscaler.adc.aaatacacsparams:
-
         state: present
         serverip: 10.102.25.65
         tacacssecret: REQ_PASSWORD

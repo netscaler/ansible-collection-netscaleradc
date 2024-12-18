@@ -172,7 +172,6 @@ EXAMPLES = r"""
     - name: Configure systemgroup
       delegate_to: localhost
       netscaler.adc.systemgroup:
-
         state: present
         groupname: Network - CitrixADC - P - ReadOnly
         allowedmanagementinterface:

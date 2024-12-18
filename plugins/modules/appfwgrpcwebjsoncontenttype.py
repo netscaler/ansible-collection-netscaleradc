@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure appfwgrpcwebjsoncontenttype
       delegate_to: localhost
       netscaler.adc.appfwgrpcwebjsoncontenttype:
-
         state: present
         grpcwebjsoncontenttypevalue: application/grpc-web+json
 """

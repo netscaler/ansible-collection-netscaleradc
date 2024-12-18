@@ -221,7 +221,6 @@ EXAMPLES = r"""
     - name: Configure lsnappsprofile
       delegate_to: localhost
       netscaler.adc.lsnappsprofile:
-
         state: present
         appsprofilename: icmp
         transportprotocol: ICMP

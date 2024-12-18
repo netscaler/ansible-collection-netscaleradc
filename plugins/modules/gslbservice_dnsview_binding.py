@@ -67,7 +67,6 @@ EXAMPLES = r"""
     - name: Configure gslbservice_dnsview_binding
       delegate_to: localhost
       netscaler.adc.gslbservice_dnsview_binding:
-
         state: present
         servicename: gslbService1
         viewname: view1

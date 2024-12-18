@@ -114,7 +114,6 @@ EXAMPLES = r"""
     - name: Configure nd6
       delegate_to: localhost
       netscaler.adc.nd6:
-
         state: present
         neighbor: fe80::20
         mac: 00:aa:10:12:13:ef

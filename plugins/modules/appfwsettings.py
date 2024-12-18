@@ -214,7 +214,6 @@ EXAMPLES = r"""
     - name: Configure appfwsettings
       delegate_to: localhost
       netscaler.adc.appfwsettings:
-
         state: present
         sessiontimeout: '180'
 """

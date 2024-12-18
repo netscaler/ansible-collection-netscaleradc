@@ -372,7 +372,6 @@ EXAMPLES = r"""
     - name: Configure aaagroup
       delegate_to: localhost
       netscaler.adc.aaagroup:
-
         state: present
         groupname: External
 """

@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure appfwxmlcontenttype
       delegate_to: localhost
       netscaler.adc.appfwxmlcontenttype:
-
         state: present
         xmlcontenttypevalue: END
         isregex: NOTREGEX

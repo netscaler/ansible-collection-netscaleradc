@@ -61,7 +61,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_vpnurl_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnurl_binding:
-
         state: present
         name: baluVpn2
         urlname: sp2k7FqdnHttp

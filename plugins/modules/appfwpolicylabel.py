@@ -99,7 +99,6 @@ EXAMPLES = r"""
     - name: Configure appfwpolicylabel
       delegate_to: localhost
       netscaler.adc.appfwpolicylabel:
-
         state: present
         labelname: appfw_label_02
         policylabeltype: http_req

@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure nat64
       delegate_to: localhost
       netscaler.adc.nat64:
-
         state: present
         name: ia_nat2
         acl6name: net_acl6

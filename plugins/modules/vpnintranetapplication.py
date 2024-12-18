@@ -127,7 +127,6 @@ EXAMPLES = r"""
     - name: Configure vpnintranetapplication
       delegate_to: localhost
       netscaler.adc.vpnintranetapplication:
-
         state: present
         intranetapplication: intra_app21
         protocol: TCP

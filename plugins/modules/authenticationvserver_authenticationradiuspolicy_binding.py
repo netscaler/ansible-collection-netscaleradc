@@ -129,7 +129,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_authenticationradiuspolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationradiuspolicy_binding:
-
         state: present
         name: ia_authnvs71
         policy: ia_authnradpol2

@@ -176,7 +176,6 @@ EXAMPLES = r"""
     - name: Configure subscribergxinterface
       delegate_to: localhost
       netscaler.adc.subscribergxinterface:
-
         state: present
         pcrfrealm: pcrf.com
         servicepathavp:

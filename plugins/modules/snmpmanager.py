@@ -77,7 +77,6 @@ EXAMPLES = r"""
     - name: Configure snmpmanager
       delegate_to: localhost
       netscaler.adc.snmpmanager:
-
         state: present
         ipaddress:
           - citrix.com

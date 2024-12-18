@@ -161,7 +161,6 @@ EXAMPLES = r"""
     - name: Configure lsnclient
       delegate_to: localhost
       netscaler.adc.lsnclient:
-
         state: present
         clientname: dsl_http
 """

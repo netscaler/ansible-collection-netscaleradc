@@ -266,7 +266,6 @@ EXAMPLES = r"""
     - name: Configure nsconfig
       delegate_to: localhost
       netscaler.adc.nsconfig:
-
         state: present
         nsvlan: '10'
         ifnum:

@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure tmformssoaction
       delegate_to: localhost
       netscaler.adc.tmformssoaction:
-
         state: present
         name: ia_formssoact5
         actionurl: /owa/auth/owaauth.dll

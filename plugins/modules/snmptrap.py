@@ -159,7 +159,6 @@ EXAMPLES = r"""
     - name: Configure snmptrap
       delegate_to: localhost
       netscaler.adc.snmptrap:
-
         state: present
         trapclass: specific
         trapdestination:

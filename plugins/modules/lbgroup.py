@@ -164,7 +164,6 @@ EXAMPLES = r"""
     - name: Configure lbgroup
       delegate_to: localhost
       netscaler.adc.lbgroup:
-
         state: present
         name: webgrp
         persistencetype: COOKIEINSERT

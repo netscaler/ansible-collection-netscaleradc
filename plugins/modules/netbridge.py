@@ -161,7 +161,6 @@ EXAMPLES = r"""
     - name: Configure netbridge
       delegate_to: localhost
       netscaler.adc.netbridge:
-
         state: present
         name: ia_netbridge2
 """

@@ -136,7 +136,6 @@ EXAMPLES = r"""
     - name: Configure nscqaparam
       delegate_to: localhost
       netscaler.adc.nscqaparam:
-
         state: present
         lr1probthresh: 0.0
         lr2probthresh: 0.0

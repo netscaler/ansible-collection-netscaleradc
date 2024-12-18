@@ -6,7 +6,6 @@
     - name: Configure cachepolicy
       delegate_to: localhost
       netscaler.adc.cachepolicy:
-
         state: present
         policyname: n_XM_CACHE_WO_DEVICEID_10.100.39.132
         rule: HTTP.REQ.HEADER("Host").CONTAINS("callout") && HTTP.REQ.URL.QUERY.CONTAINS("DeviceId").NOT

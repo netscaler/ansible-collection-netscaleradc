@@ -91,7 +91,6 @@ EXAMPLES = r"""
     - name: Configure dnsaddrec
       delegate_to: localhost
       netscaler.adc.dnsaddrec:
-
         state: present
         hostname: e.root-servers.net
         ipaddress:

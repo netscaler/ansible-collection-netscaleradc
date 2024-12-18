@@ -90,7 +90,6 @@ EXAMPLES = r"""
     - name: Configure cachepolicylabel_cachepolicy_binding
       delegate_to: localhost
       netscaler.adc.cachepolicylabel_cachepolicy_binding:
-
         state: present
         labelname: _httpquicResBuiltinDefaults
         policyname: _personalizedRes

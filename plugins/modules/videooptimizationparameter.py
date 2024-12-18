@@ -59,7 +59,6 @@ EXAMPLES = r"""
     - name: Configure videooptimizationparameter
       delegate_to: localhost
       netscaler.adc.videooptimizationparameter:
-
         state: present
         randomsamplingpercentage: 0.0
 """

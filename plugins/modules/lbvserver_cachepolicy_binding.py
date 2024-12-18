@@ -107,7 +107,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_cachepolicy_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_cachepolicy_binding:
-
         state: present
         name: _XM_LB_CACHE_10.100.39.1321
         policyname: n_XM_CACHE_WO_DEVICEID_10.100.39.132

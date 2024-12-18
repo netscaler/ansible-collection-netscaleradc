@@ -88,7 +88,6 @@ EXAMPLES = r"""
     - name: Configure vpnalwaysonprofile
       delegate_to: localhost
       netscaler.adc.vpnalwaysonprofile:
-
         state: present
         name: aop1
         networkaccessonvpnfailure: fullAccess

@@ -155,7 +155,6 @@ EXAMPLES = r"""
     - name: Configure appqoeaction
       delegate_to: localhost
       netscaler.adc.appqoeaction:
-
         state: present
         name: appact22_ns
         priority: MEDIUM

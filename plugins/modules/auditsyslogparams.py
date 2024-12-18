@@ -213,7 +213,6 @@ EXAMPLES = r"""
     - name: Configure auditsyslogparams
       delegate_to: localhost
       netscaler.adc.auditsyslogparams:
-
         state: present
         loglevel:
           - EMERGENCY

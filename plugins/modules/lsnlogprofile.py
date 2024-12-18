@@ -89,7 +89,6 @@ EXAMPLES = r"""
     - name: Configure lsnlogprofile
       delegate_to: localhost
       netscaler.adc.lsnlogprofile:
-
         state: present
         logprofilename: msd
         logsubscrinfo: ENABLED

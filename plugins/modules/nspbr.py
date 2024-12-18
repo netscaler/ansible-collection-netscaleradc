@@ -404,7 +404,6 @@ EXAMPLES = r"""
     - name: Configure nspbr
       delegate_to: localhost
       netscaler.adc.nspbr:
-
         state: present
         name: mgmt_pbr
         action: ALLOW

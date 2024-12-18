@@ -6,7 +6,6 @@
     - name: Configure dnspolicylabel
       delegate_to: localhost
       netscaler.adc.dnspolicylabel:
-
         state: present
         labelname: invoke_labelname2
         transform: dns_res

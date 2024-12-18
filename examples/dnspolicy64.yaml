@@ -6,7 +6,6 @@
     - name: Configure dnspolicy64
       delegate_to: localhost
       netscaler.adc.dnspolicy64:
-
         state: present
         name: dns64_pol2
         rule: client.IP.SRC.IN_SUBNET(10.102.0.0/16)

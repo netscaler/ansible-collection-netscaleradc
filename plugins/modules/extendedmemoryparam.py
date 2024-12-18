@@ -62,7 +62,6 @@ EXAMPLES = r"""
     - name: Configure extendedmemoryparam
       delegate_to: localhost
       netscaler.adc.extendedmemoryparam:
-
         state: present
         memlimit: 4380
 """

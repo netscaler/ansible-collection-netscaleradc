@@ -72,7 +72,6 @@ EXAMPLES = r"""
     - name: Configure sslcertkey_sslocspresponder_binding
       delegate_to: localhost
       netscaler.adc.sslcertkey_sslocspresponder_binding:
-
         state: present
         certkey: baluVpn2
 """

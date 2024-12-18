@@ -73,7 +73,6 @@ EXAMPLES = r"""
     - name: Configure auditsyslogpolicy
       delegate_to: localhost
       netscaler.adc.auditsyslogpolicy:
-
         state: present
         name: syslog_pol1
         rule: REQ.IP.DESTIP == 10.102.58.0 -netmask 255.255.255.0

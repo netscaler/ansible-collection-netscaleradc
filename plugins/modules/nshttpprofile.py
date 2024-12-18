@@ -432,7 +432,6 @@ EXAMPLES = r"""
     - name: Configure nshttpprofile
       delegate_to: localhost
       netscaler.adc.nshttpprofile:
-
         state: present
         name: nshttp_default_profile
         dropinvalreqs: ENABLED

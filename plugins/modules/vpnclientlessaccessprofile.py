@@ -128,7 +128,6 @@ EXAMPLES = r"""
     - name: Configure vpnclientlessaccessprofile
       delegate_to: localhost
       netscaler.adc.vpnclientlessaccessprofile:
-
         state: present
         profilename: ia_cltlsacsprof1
 """

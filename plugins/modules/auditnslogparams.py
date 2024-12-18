@@ -199,7 +199,6 @@ EXAMPLES = r"""
     - name: Configure auditnslogparams
       delegate_to: localhost
       netscaler.adc.auditnslogparams:
-
         state: present
         loglevel:
           - ALL

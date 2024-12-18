@@ -65,7 +65,6 @@ EXAMPLES = r"""
     - name: Configure arpparam
       delegate_to: localhost
       netscaler.adc.arpparam:
-
         state: present
         spoofvalidation: ENABLED
 """

@@ -99,7 +99,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_authenticationloginschemapolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationloginschemapolicy_binding:
-
         state: present
         name: auth
         policy: first_factor_schema

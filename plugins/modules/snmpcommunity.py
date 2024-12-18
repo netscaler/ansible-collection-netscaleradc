@@ -71,7 +71,6 @@ EXAMPLES = r"""
     - name: Configure snmpcommunity
       delegate_to: localhost
       netscaler.adc.snmpcommunity:
-
         state: present
         communityname: HP5U7#mmTW2&Yi48
         permissions: ALL

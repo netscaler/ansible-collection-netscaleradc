@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure aaauser_tmsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaauser_tmsessionpolicy_binding:
-
         state: present
         username: aaauser1
         policy: ia_tmsespol1

@@ -95,7 +95,6 @@ EXAMPLES = r"""
     - name: Configure icalatencyprofile
       delegate_to: localhost
       netscaler.adc.icalatencyprofile:
-
         state: present
         name: l6
         l7latencywaittime: '5'

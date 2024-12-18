@@ -556,7 +556,6 @@ EXAMPLES = r"""
     - name: Configure authenticationsamlidpprofile
       delegate_to: localhost
       netscaler.adc.authenticationsamlidpprofile:
-
         state: present
         name: samlidp_red1
         samlbinding: REDIRECT

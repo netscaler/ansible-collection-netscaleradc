@@ -94,7 +94,6 @@ EXAMPLES = r"""
     - name: Configure inatparam
       delegate_to: localhost
       netscaler.adc.inatparam:
-
         state: present
         nat46fragheader: DISABLED
 """

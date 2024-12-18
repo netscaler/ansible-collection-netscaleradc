@@ -163,7 +163,6 @@ EXAMPLES = r"""
     - name: Configure systemglobal_authenticationpolicy_binding
       delegate_to: localhost
       netscaler.adc.systemglobal_authenticationpolicy_binding:
-
         state: present
         policyname: ldap_mgmt_pol
         priority: '100'

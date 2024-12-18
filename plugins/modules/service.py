@@ -501,7 +501,6 @@ EXAMPLES = r"""
     - name: Configure service
       delegate_to: localhost
       netscaler.adc.service:
-
         state: present
         name: nshttpd-vpn-127.0.0.1-81
         cip: ENABLED

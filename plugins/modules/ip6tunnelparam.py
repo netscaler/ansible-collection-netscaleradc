@@ -86,7 +86,6 @@ EXAMPLES = r"""
     - name: Configure ip6tunnelparam
       delegate_to: localhost
       netscaler.adc.ip6tunnelparam:
-
         state: present
         srcip: '::'
 """

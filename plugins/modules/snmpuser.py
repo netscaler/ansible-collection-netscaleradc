@@ -114,7 +114,6 @@ EXAMPLES = r"""
     - name: Configure snmpuser
       delegate_to: localhost
       netscaler.adc.snmpuser:
-
         state: present
         name: ia_snmpuser3
         group: ia_group1

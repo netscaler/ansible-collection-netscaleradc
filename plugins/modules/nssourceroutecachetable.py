@@ -48,7 +48,6 @@ EXAMPLES = r"""
     - name: Configure nssourceroutecachetable
       delegate_to: localhost
       netscaler.adc.nssourceroutecachetable:
-
         state: present
 """
 

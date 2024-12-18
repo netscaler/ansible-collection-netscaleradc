@@ -69,7 +69,6 @@ EXAMPLES = r"""
     - name: Configure authenticationlocalpolicy
       delegate_to: localhost
       netscaler.adc.authenticationlocalpolicy:
-
         state: present
         name: NS_GATEWAY_DEFAULT_LOCAL_POL1
         rule: NS_TRUE

@@ -70,7 +70,6 @@ EXAMPLES = r"""
     - name: Configure lbmonitor_metric_binding
       delegate_to: localhost
       netscaler.adc.lbmonitor_metric_binding:
-
         state: present
         monitorname: LB_ia_mon6
         metric: local.CONNECTIONS

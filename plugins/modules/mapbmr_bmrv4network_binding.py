@@ -76,7 +76,6 @@ EXAMPLES = r"""
     - name: Configure mapbmr_bmrv4network_binding
       delegate_to: localhost
       netscaler.adc.mapbmr_bmrv4network_binding:
-
         state: present
         name: bmr1
         network: 192.0.2.0

@@ -79,7 +79,6 @@ EXAMPLES = r"""
     - name: Configure lbvserver_service_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_service_binding:
-
         state: present
         name: lb_dns_01
         servicename: dns_svc_03

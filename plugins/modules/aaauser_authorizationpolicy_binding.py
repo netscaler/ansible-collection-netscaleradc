@@ -82,7 +82,6 @@ EXAMPLES = r"""
     - name: Configure aaauser_authorizationpolicy_binding
       delegate_to: localhost
       netscaler.adc.aaauser_authorizationpolicy_binding:
-
         state: present
         username: ns
         policy: deny_raaga

@@ -124,7 +124,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_vpnsessionpolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnsessionpolicy_binding:
-
         state: present
         name: portal.bx.com
         policy: External_receiver_session_pol

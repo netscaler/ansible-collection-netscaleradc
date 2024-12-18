@@ -111,7 +111,6 @@ EXAMPLES = r"""
     - name: Configure vpnurl
       delegate_to: localhost
       netscaler.adc.vpnurl:
-
         state: present
         urlname: url3
         linkname: url3

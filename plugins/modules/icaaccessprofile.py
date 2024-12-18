@@ -185,7 +185,6 @@ EXAMPLES = r"""
     - name: Configure icaaccessprofile
       delegate_to: localhost
       netscaler.adc.icaaccessprofile:
-
         state: present
         name: ipr
         clientclipboardredirection: DEFAULT

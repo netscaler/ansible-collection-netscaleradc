@@ -129,7 +129,6 @@ EXAMPLES = r"""
     - name: Configure authenticationvserver_authenticationcertpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationcertpolicy_binding:
-
         state: present
         name: ia_authnvs71
         policy: ia_authncertpol2

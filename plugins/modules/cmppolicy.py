@@ -118,7 +118,6 @@ EXAMPLES = r"""
     - name: Configure cmppolicy
       delegate_to: localhost
       netscaler.adc.cmppolicy:
-
         state: present
         name: Base_cmp_mypolicy3
         rule: HTTP.RES.HEADER("Content-Type").CONTAINS("text")

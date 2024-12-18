@@ -124,7 +124,6 @@ EXAMPLES = r"""
     - name: Configure vpnvserver_authenticationldappolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_authenticationldappolicy_binding:
-
         state: present
         name: ns.pcoip.net
         policy: ldap24

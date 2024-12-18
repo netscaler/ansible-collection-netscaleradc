@@ -75,7 +75,6 @@ EXAMPLES = r"""
     - name: Configure lsngroup_lsntransportprofile_binding
       delegate_to: localhost
       netscaler.adc.lsngroup_lsntransportprofile_binding:
-
         state: present
         groupname: group1
         transportprofilename: icmp

@@ -101,7 +101,6 @@ EXAMPLES = r"""
     - name: Configure authenticationnegotiateaction
       delegate_to: localhost
       netscaler.adc.authenticationnegotiateaction:
-
         state: present
         name: neg1
         domain: nsi-test.com

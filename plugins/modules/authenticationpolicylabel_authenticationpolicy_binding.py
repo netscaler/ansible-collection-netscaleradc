@@ -74,7 +74,6 @@ EXAMPLES = r"""
     - name: Configure authenticationpolicylabel_authenticationpolicy_binding
       delegate_to: localhost
       netscaler.adc.authenticationpolicylabel_authenticationpolicy_binding:
-
         state: present
         labelname: LDAP_Userextraction_External
         policyname: LDAP_userextraction_External_pol

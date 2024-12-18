@@ -126,7 +126,6 @@ EXAMPLES = r"""
     - name: Configure lsnsipalgprofile
       delegate_to: localhost
       netscaler.adc.lsnsipalgprofile:
-
         state: present
         sipalgprofilename: sipalgprofile_udp
         registrationtimeout: '3600'

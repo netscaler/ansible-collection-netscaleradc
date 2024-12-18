@@ -135,7 +135,6 @@ EXAMPLES = r"""
     - name: Configure tmsessionaction
       delegate_to: localhost
       netscaler.adc.tmsessionaction:
-
         state: present
         name: ia_tmsesact1
         sesstimeout: 2

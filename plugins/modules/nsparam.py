@@ -237,7 +237,6 @@ EXAMPLES = r"""
     - name: Configure nsparam
       delegate_to: localhost
       netscaler.adc.nsparam:
-
         state: present
         cookieversion: '1'
 """

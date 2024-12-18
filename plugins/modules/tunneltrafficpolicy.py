@@ -99,7 +99,6 @@ EXAMPLES = r"""
     - name: Configure tunneltrafficpolicy
       delegate_to: localhost
       netscaler.adc.tunneltrafficpolicy:
-
         state: present
         name: compress
         rule: url == /*.asp

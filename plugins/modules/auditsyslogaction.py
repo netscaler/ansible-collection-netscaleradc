@@ -311,7 +311,6 @@ EXAMPLES = r"""
     - name: Configure auditsyslogaction
       delegate_to: localhost
       netscaler.adc.auditsyslogaction:
-
         state: present
         name: act1121
         lbvservername: lb511

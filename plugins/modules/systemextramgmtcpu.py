@@ -54,7 +54,6 @@ EXAMPLES = r"""
     - name: Configure systemextramgmtcpu
       delegate_to: localhost
       netscaler.adc.systemextramgmtcpu:
-
         state: present
 """
 

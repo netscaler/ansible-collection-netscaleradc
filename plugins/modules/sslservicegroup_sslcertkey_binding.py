@@ -84,7 +84,6 @@ EXAMPLES = r"""
     - name: Configure sslservicegroup_sslcertkey_binding
       delegate_to: localhost
       netscaler.adc.sslservicegroup_sslcertkey_binding:
-
         state: present
         servicegroupname: ssl_sg4
         certkeyname: ssl_cert_ca20

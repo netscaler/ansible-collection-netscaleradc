@@ -106,7 +106,6 @@ EXAMPLES = r"""
     - name: Configure authenticationloginschema
       delegate_to: localhost
       netscaler.adc.authenticationloginschema:
-
         state: present
         name: single_auth
         authenticationschema: /nsconfig/loginschema/LoginSchema/SingleAuth.xml

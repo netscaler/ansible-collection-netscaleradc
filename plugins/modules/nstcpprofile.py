@@ -434,7 +434,6 @@ EXAMPLES = r"""
     - name: Configure nstcpprofile
       delegate_to: localhost
       netscaler.adc.nstcpprofile:
-
         state: present
         name: nstcp_default_profile
         flavor: Westwood

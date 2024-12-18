@@ -61,7 +61,6 @@ EXAMPLES = r"""
     - name: Configure ipset_nsip_binding
       delegate_to: localhost
       netscaler.adc.ipset_nsip_binding:
-
         state: present
         name: ipset_adns
         ipaddress:

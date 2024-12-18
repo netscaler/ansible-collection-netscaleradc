@@ -128,7 +128,6 @@ EXAMPLES = r"""
     - name: Configure iptunnel
       delegate_to: localhost
       netscaler.adc.iptunnel:
-
         state: present
         name: t11
         remote: 1.1.1.14

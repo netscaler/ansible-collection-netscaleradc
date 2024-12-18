@@ -69,7 +69,6 @@ EXAMPLES = r"""
     - name: Configure appfwxmlschema
       delegate_to: localhost
       netscaler.adc.appfwxmlschema:
-
         state: present
         src: http://10.217.30.16/testsite/Signatures/44_38_1_36/schema.xml
         name: lower_schema

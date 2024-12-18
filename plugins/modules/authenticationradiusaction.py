@@ -196,7 +196,6 @@ EXAMPLES = r"""
     - name: Configure authenticationradiusaction
       delegate_to: localhost
       netscaler.adc.authenticationradiusaction:
-
         state: present
         name: RADIUS_10.102.222.187
         serverip: 10.102.222.187

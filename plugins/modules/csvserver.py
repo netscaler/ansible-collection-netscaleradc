@@ -1193,7 +1193,6 @@ EXAMPLES = r"""
     - name: Configure csvserver
       delegate_to: localhost
       netscaler.adc.csvserver:
-
         state: present
         name: ADNS_TCP_EXT
         servicetype: DNS_TCP
