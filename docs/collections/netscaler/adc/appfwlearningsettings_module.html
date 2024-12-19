@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.appfwlearningsettings module – Configuration for learning settings resource. &mdash; Ansible collections  documentation</title>
@@ -13,15 +15,11 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.appfwmultipartformcontenttype module – Configuration for Multipart form content type resource." href="appfwmultipartformcontenttype_module.html" />
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.appfwlearningsettings module – Configuration for learning settings resource.<a class="headerlink" href="#netscaler-adc-appfwlearningsettings-module-configuration-for-learning-settings-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -143,8 +141,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
 <li><p><a class="reference internal" href="#parameters" id="id2">Parameters</a></p></li>
 <li><p><a class="reference internal" href="#notes" id="id3">Notes</a></p></li>
-<li><p><a class="reference internal" href="#examples" id="id4">Examples</a></p></li>
-<li><p><a class="reference internal" href="#return-values" id="id5">Return Values</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id4">Return Values</a></p></li>
 </ul>
 </nav>
 <section id="synopsis">
@@ -173,140 +170,140 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-contenttypeautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-contenttypeautodeploygraceperiod"><strong>contenttypeautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-contenttypeautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-contenttypeautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-contenttypeminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-contenttypeminthreshold"><strong>contenttypeminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-contenttypeminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-contenttypeminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum threshold to learn Content Type information.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-contenttypepercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-contenttypepercentthreshold"><strong>contenttypepercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-contenttypepercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-contenttypepercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum threshold in percent to learn Content Type information.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookieconsistencyautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-cookieconsistencyautodeploygraceperiod"><strong>cookieconsistencyautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookieconsistencyautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookieconsistencyautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookieconsistencyminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-cookieconsistencyminthreshold"><strong>cookieconsistencyminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookieconsistencyminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookieconsistencyminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn cookies.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookieconsistencypercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-cookieconsistencypercentthreshold"><strong>cookieconsistencypercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookieconsistencypercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookieconsistencypercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular cookie pattern for the learning engine to learn that cookie.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-creditcardnumberminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-creditcardnumberminthreshold"><strong>creditcardnumberminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-creditcardnumberminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-creditcardnumberminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum threshold to learn Credit Card information.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-creditcardnumberpercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-creditcardnumberpercentthreshold"><strong>creditcardnumberpercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-creditcardnumberpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-creditcardnumberpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum threshold in percent to learn Credit Card information.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crosssitescriptingautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-crosssitescriptingautodeploygraceperiod"><strong>crosssitescriptingautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crosssitescriptingautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-crosssitescriptingautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crosssitescriptingminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-crosssitescriptingminthreshold"><strong>crosssitescriptingminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crosssitescriptingminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-crosssitescriptingminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn HTML cross-site scripting patterns.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crosssitescriptingpercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-crosssitescriptingpercentthreshold"><strong>crosssitescriptingpercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crosssitescriptingpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-crosssitescriptingpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular cross-site scripting pattern for the learning engine to learn that cross-site scripting pattern.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-csrftagautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-csrftagautodeploygraceperiod"><strong>csrftagautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-csrftagautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-csrftagautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-csrftagminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-csrftagminthreshold"><strong>csrftagminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-csrftagminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-csrftagminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn cross-site request forgery (CSRF) tags.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-csrftagpercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-csrftagpercentthreshold"><strong>csrftagpercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-csrftagpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-csrftagpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular CSRF tag for the learning engine to learn that CSRF tag.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldconsistencyautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-fieldconsistencyautodeploygraceperiod"><strong>fieldconsistencyautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldconsistencyautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldconsistencyautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldconsistencyminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-fieldconsistencyminthreshold"><strong>fieldconsistencyminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldconsistencyminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldconsistencyminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn field consistency information.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldconsistencypercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-fieldconsistencypercentthreshold"><strong>fieldconsistencypercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldconsistencypercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldconsistencypercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular field consistency pattern for the learning engine to learn that field consistency pattern.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldformatautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-fieldformatautodeploygraceperiod"><strong>fieldformatautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldformatautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldformatautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldformatminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-fieldformatminthreshold"><strong>fieldformatminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldformatminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldformatminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn field formats.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldformatpercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-fieldformatpercentthreshold"><strong>fieldformatpercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldformatpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldformatpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular web form field pattern for the learning engine to recommend a field format for that form field.</p>
 </div></td>
@@ -422,7 +419,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-profilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-profilename"><strong>profilename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-profilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-profilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the profile.</p>
 </div></td>
@@ -442,42 +439,42 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectionautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-sqlinjectionautodeploygraceperiod"><strong>sqlinjectionautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectionautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectionautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectionminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-sqlinjectionminthreshold"><strong>sqlinjectionminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectionminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectionminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn HTML SQL injection patterns.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectionpercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-sqlinjectionpercentthreshold"><strong>sqlinjectionpercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectionpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectionpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular HTML SQL injection pattern for the learning engine to learn that HTML SQL injection pattern.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-starturlautodeploygraceperiod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-starturlautodeploygraceperiod"><strong>starturlautodeploygraceperiod</strong></p>
-<a class="ansibleOptionLink" href="#parameter-starturlautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-starturlautodeploygraceperiod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The number of minutes after the threshold hit alert the learned rule will be deployed</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-starturlminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-starturlminthreshold"><strong>starturlminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-starturlminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-starturlminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn start URLs.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-starturlpercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-starturlpercentthreshold"><strong>starturlpercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-starturlpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-starturlpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular start URL pattern for the learning engine to learn that start URL.</p>
 </div></td>
@@ -510,28 +507,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlattachmentminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-xmlattachmentminthreshold"><strong>xmlattachmentminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlattachmentminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlattachmentminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn XML attachment patterns.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlattachmentpercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-xmlattachmentpercentthreshold"><strong>xmlattachmentpercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlattachmentpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlattachmentpercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular XML attachment pattern for the learning engine to learn that XML attachment pattern.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlwsiminthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-xmlwsiminthreshold"><strong>xmlwsiminthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlwsiminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlwsiminthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of application firewall sessions that the learning engine must observe to learn web services interoperability (WSI) information.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlwsipercentthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwlearningsettings-module-parameter-xmlwsipercentthreshold"><strong>xmlwsipercentthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlwsipercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlwsipercentthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum percentage of application firewall sessions that must contain a particular pattern for the learning engine to learn a web services interoperability (WSI) pattern.</p>
 </div></td>
@@ -548,14 +545,8 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div>
 </section>
-<section id="examples">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</section>
 <section id="return-values">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
 <p>Common return values are documented <a class="reference external" href="https://docs.ansible.com/ansible/devel/reference_appendices/common_return_values.html#common-return-values" title="(in Ansible vdevel)"><span class="xref std std-ref">here</span></a>, the following are the fields unique to this module:</p>
 <table class="longtable ansible-option-table docutils align-default" style="width: 100%">
 <thead>
@@ -615,6 +606,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">

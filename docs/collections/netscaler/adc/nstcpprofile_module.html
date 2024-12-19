@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.nstcpprofile module – Configuration for TCP profile resource. &mdash; Ansible collections  documentation</title>
@@ -13,18 +15,14 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="netscaler.adc.nstimeout module – Configuration for timeout resource." href="nstimeout_module.html" />
+    <link rel="next" title="netscaler.adc.nstestlicense module – Configuration for testlicense resource." href="nstestlicense_module.html" />
     <link rel="prev" title="netscaler.adc.nstcpparam module – Configuration for tcp parameters resource." href="nstcpparam_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 
 
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.nstcpprofile module – Configuration for TCP profile resource.<a class="headerlink" href="#netscaler-adc-nstcpprofile-module-configuration-for-tcp-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +162,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ackaggregation"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-ackaggregation"><strong>ackaggregation</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ackaggregation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ackaggregation" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable ACK Aggregation.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -176,7 +174,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ackonpush"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-ackonpush"><strong>ackonpush</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ackonpush" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ackonpush" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send immediate positive acknowledgement (ACK) on receipt of TCP packets with PUSH flag.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,7 +195,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-applyadaptivetcp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-applyadaptivetcp"><strong>applyadaptivetcp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-applyadaptivetcp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-applyadaptivetcp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Apply Adaptive TCP optimizations</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -209,14 +207,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-buffersize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-buffersize"><strong>buffersize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-buffersize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-buffersize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP buffering size, in bytes.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-burstratecontrol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-burstratecontrol"><strong>burstratecontrol</strong></p>
-<a class="ansibleOptionLink" href="#parameter-burstratecontrol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-burstratecontrol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP Burst Rate Control <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>/<code class="docutils literal notranslate"><span class="pre">FIXED</span></code>/<code class="docutils literal notranslate"><span class="pre">DYNAMIC</span></code>. <code class="docutils literal notranslate"><span class="pre">FIXED</span></code> requires a TCP rate to be set.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -229,7 +227,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientiptcpoption"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-clientiptcpoption"><strong>clientiptcpoption</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientiptcpoption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientiptcpoption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Client IP in TCP options</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -241,21 +239,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientiptcpoptionnumber"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-clientiptcpoptionnumber"><strong>clientiptcpoptionnumber</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientiptcpoptionnumber" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientiptcpoptionnumber" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>ClientIP TCP Option number</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-delayedack"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-delayedack"><strong>delayedack</strong></p>
-<a class="ansibleOptionLink" href="#parameter-delayedack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-delayedack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timeout for TCP delayed ACK, in milliseconds.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropestconnontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-dropestconnontimeout"><strong>dropestconnontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropestconnontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropestconnontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Silently drop tcp established connections on idle timeout</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -267,7 +265,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-drophalfclosedconnontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-drophalfclosedconnontimeout"><strong>drophalfclosedconnontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-drophalfclosedconnontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-drophalfclosedconnontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Silently drop tcp half closed connections on idle timeout</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -279,7 +277,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dsack"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-dsack"><strong>dsack</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dsack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dsack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable DSACK.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -291,14 +289,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dupackthresh"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-dupackthresh"><strong>dupackthresh</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dupackthresh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dupackthresh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP dupack threshold.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dynamicreceivebuffering"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-dynamicreceivebuffering"><strong>dynamicreceivebuffering</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dynamicreceivebuffering" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dynamicreceivebuffering" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable dynamic receive buffering. When enabled, allows the receive buffer to be adjusted dynamically based on memory and network conditions.</p>
 <p>Note: The buffer size argument must be set for dynamic adjustments to take place.</p>
@@ -311,7 +309,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ecn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-ecn"><strong>ecn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ecn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ecn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable TCP Explicit Congestion Notification.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -323,7 +321,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-establishclientconn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-establishclientconn"><strong>establishclientconn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-establishclientconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-establishclientconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Establishing Client Client connection on First data/ Final-ACK / Automatic</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -336,7 +334,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fack"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-fack"><strong>fack</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable FACK (Forward ACK).</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -348,7 +346,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-flavor"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-flavor"><strong>flavor</strong></p>
-<a class="ansibleOptionLink" href="#parameter-flavor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-flavor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Set TCP congestion control algorithm.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -358,12 +356,13 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;BIC&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CUBIC&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;Nile&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;BBR&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-frto"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-frto"><strong>frto</strong></p>
-<a class="ansibleOptionLink" href="#parameter-frto" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-frto" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable FRTO (Forward RTO-Recovery).</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -375,7 +374,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hystart"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-hystart"><strong>hystart</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hystart" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-hystart" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable CUBIC Hystart</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -387,14 +386,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-initialcwnd"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-initialcwnd"><strong>initialcwnd</strong></p>
-<a class="ansibleOptionLink" href="#parameter-initialcwnd" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-initialcwnd" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Initial maximum upper limit on the number of TCP packets that can be outstanding on the TCP link to the server.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ka"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-ka"><strong>ka</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ka" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ka" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send periodic TCP keep-alive (KA) probes to check if peer is still up.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -406,28 +405,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-kaconnidletime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-kaconnidletime"><strong>kaconnidletime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-kaconnidletime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-kaconnidletime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Duration, in seconds, for the connection to be idle, before sending a keep-alive (KA) probe.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-kamaxprobes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-kamaxprobes"><strong>kamaxprobes</strong></p>
-<a class="ansibleOptionLink" href="#parameter-kamaxprobes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-kamaxprobes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of keep-alive (KA) probes to be sent when not acknowledged, before assuming the peer to be down.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-kaprobeinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-kaprobeinterval"><strong>kaprobeinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-kaprobeinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-kaprobeinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time interval, in seconds, before the next keep-alive (KA) probe, if the peer does not respond.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-kaprobeupdatelastactivity"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-kaprobeupdatelastactivity"><strong>kaprobeupdatelastactivity</strong></p>
-<a class="ansibleOptionLink" href="#parameter-kaprobeupdatelastactivity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-kaprobeupdatelastactivity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Update last activity for the connection after receiving keep-alive (KA) probes.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -493,35 +492,35 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxburst"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-maxburst"><strong>maxburst</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxburst" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxburst" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of TCP segments allowed in a burst.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxcwnd"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-maxcwnd"><strong>maxcwnd</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxcwnd" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxcwnd" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP Maximum Congestion Window.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxpktpermss"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-maxpktpermss"><strong>maxpktpermss</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxpktpermss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxpktpermss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of TCP packets allowed per maximum segment size (MSS).</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minrto"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-minrto"><strong>minrto</strong></p>
-<a class="ansibleOptionLink" href="#parameter-minrto" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-minrto" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Minimum retransmission timeout, in milliseconds, specified in 10-millisecond increments (value must yield a whole number if divided by  10).</p>
+<td><div class="ansible-option-cell"><p>Minimum retransmission timeout, in milliseconds, specified in 10-millisecond increments (value must yield a whole number if divided by 10).</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mpcapablecbit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-mpcapablecbit"><strong>mpcapablecbit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mpcapablecbit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-mpcapablecbit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Set C bit in MP-CAPABLE Syn-Ack sent by Citrix ADC</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -533,7 +532,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-mptcp"><strong>mptcp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mptcp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-mptcp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable Multipath TCP.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -545,7 +544,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpdropdataonpreestsf"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-mptcpdropdataonpreestsf"><strong>mptcpdropdataonpreestsf</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mptcpdropdataonpreestsf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-mptcpdropdataonpreestsf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable silently dropping the data on Pre-Established subflow. When enabled, DSS data packets are dropped silently instead of dropping the connection when data is received on pre established subflow.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -557,7 +556,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpfastopen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-mptcpfastopen"><strong>mptcpfastopen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mptcpfastopen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-mptcpfastopen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable Multipath TCP fastopen. When enabled, DSS data packets are accepted before receiving the third ack of SYN handshake.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -569,21 +568,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mptcpsessiontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-mptcpsessiontimeout"><strong>mptcpsessiontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mptcpsessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-mptcpsessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>MPTCP session timeout in seconds. If this value is not set, idle MPTCP sessions are flushed after vserver’s client idle timeout.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mss"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-mss"><strong>mss</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-mss" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of octets to allow in a TCP data segment.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nagle"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-nagle"><strong>nagle</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nagle" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-nagle" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable the Nagle algorithm on TCP connections.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -595,7 +594,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for a TCP profile. Must begin with a letter, number, or the underscore \(_\) character. Other characters allowed, after the first character, are the hyphen \(-\), period \(.\), hash \(\#\), space \( \), at \(&#64;\), colon \(:\), and equal \(=\) characters. The name of a TCP profile cannot be changed after it is created.</p>
 <p>CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, “my tcp profile” or ‘my tcp profile’\).</p>
@@ -658,28 +657,40 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-oooqsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-oooqsize"><strong>oooqsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-oooqsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-oooqsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum size of out-of-order packets queue. A value of 0 means no limit.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pktperretx"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-pktperretx"><strong>pktperretx</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pktperretx" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-pktperretx" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum limit on the number of packets that should be retransmitted on receiving a partial ACK.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rateqmax"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-rateqmax"><strong>rateqmax</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rateqmax" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-rateqmax" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum connection queue size in bytes, when BurstRateControl is used</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rfc5961compliance"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-rfc5961compliance"><strong>rfc5961compliance</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rfc5961compliance" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable or disable RFC 5961 compliance to protect against tcp spoofing(RST/SYN/Data). When enabled, will be compliant with RFC 5961.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rstmaxack"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-rstmaxack"><strong>rstmaxack</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rstmaxack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-rstmaxack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable acceptance of RST that is out of window yet echoes highest ACK sequence number. Useful only in proxy mode.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -689,9 +700,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rstwindowattenuate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-rstwindowattenuate"><strong>rstwindowattenuate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rstwindowattenuate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-rstwindowattenuate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable RST window attenuation to protect against spoofing. When enabled, will reply with corrective ACK when a sequence number is invalid.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -701,9 +712,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sack"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-sack"><strong>sack</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sack" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable Selective ACKnowledgement (SACK).</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -713,7 +724,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-save_config"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-save-config"><strong>save_config</strong></p>
 <a class="ansibleOptionLink" href="#parameter-save_config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -726,16 +737,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sendbuffsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-sendbuffsize"><strong>sendbuffsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sendbuffsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sendbuffsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP Send Buffer Size</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sendclientportintcpoption"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-sendclientportintcpoption"><strong>sendclientportintcpoption</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sendclientportintcpoption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sendclientportintcpoption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send Client Port number along with Client IP in TCP-Options. ClientIpTcpOption must be <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code></p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -745,23 +756,23 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-slowstartincr"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-slowstartincr"><strong>slowstartincr</strong></p>
-<a class="ansibleOptionLink" href="#parameter-slowstartincr" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-slowstartincr" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Multiplier that determines the rate at which slow start increases the size of the TCP transmission window after each acknowledgement of successful transmission.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-slowstartthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-slowstartthreshold"><strong>slowstartthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-slowstartthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-slowstartthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP Slow Start Threhsold Value.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-spoofsyndrop"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-spoofsyndrop"><strong>spoofsyndrop</strong></p>
-<a class="ansibleOptionLink" href="#parameter-spoofsyndrop" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-spoofsyndrop" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable drop of invalid SYN packets to protect against spoofing. When disabled, established connections will be reset when a SYN packet is received.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -771,7 +782,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-state"><strong>state</strong></p>
 <a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -787,9 +798,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-syncookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-syncookie"><strong>syncookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-syncookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-syncookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable the SYNCOOKIE mechanism for TCP handshake with clients. Disabling SYNCOOKIE prevents SYN attack protection on the Citrix ADC.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -799,9 +810,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-taillossprobe"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-taillossprobe"><strong>taillossprobe</strong></p>
-<a class="ansibleOptionLink" href="#parameter-taillossprobe" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-taillossprobe" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP tail loss probe optimizations</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -811,9 +822,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpfastopen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-tcpfastopen"><strong>tcpfastopen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpfastopen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpfastopen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable TCP Fastopen. When enabled, NS can receive or send Data in SYN or SYN-ACK packets.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -823,16 +834,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpfastopencookiesize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-tcpfastopencookiesize"><strong>tcpfastopencookiesize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpfastopencookiesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpfastopencookiesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP FastOpen Cookie size. This accepts only even numbers. Odd number is trimmed down to nearest even number.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpmode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-tcpmode"><strong>tcpmode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP Optimization modes <code class="docutils literal notranslate"><span class="pre">TRANSPARENT</span></code> / <code class="docutils literal notranslate"><span class="pre">ENDPOINT</span></code>.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -842,16 +853,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcprate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-tcprate"><strong>tcprate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcprate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcprate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TCP connection payload send rate in Kb/s</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpsegoffload"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-tcpsegoffload"><strong>tcpsegoffload</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpsegoffload" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpsegoffload" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Offload TCP segmentation to the NIC. If set to <code class="docutils literal notranslate"><span class="pre">AUTOMATIC</span></code>, TCP segmentation will be offloaded to the NIC, if the NIC supports it.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -861,9 +872,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-timestamp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-timestamp"><strong>timestamp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-timestamp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-timestamp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or Disable TCP Timestamp option (RFC 1323)</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -873,7 +884,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-validate-certs"><strong>validate_certs</strong></p>
 <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -885,9 +896,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ws"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-ws"><strong>ws</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ws" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ws" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable window scaling.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -897,9 +908,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-wsval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstcpprofile-module-parameter-wsval"><strong>wsval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-wsval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-wsval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Factor used to calculate the new window size.</p>
 <p>This argument is needed only when window scaling is enabled.</p>
@@ -920,16 +931,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <section id="examples">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Playbook</span>
-<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample nstcpprofile playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
 <span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Task | nstcpProfile</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure nstcpprofile</span>
 <span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
 <span class="w">      </span><span class="nt">netscaler.adc.nstcpprofile</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcpprofile-mptcp</span>
-<span class="w">        </span><span class="nt">mptcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLED</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nstcp_default_profile</span>
+<span class="w">        </span><span class="nt">flavor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Westwood</span>
 </pre></div>
 </div>
 </section>
@@ -994,6 +1005,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">
@@ -1013,7 +1025,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="nstcpparam_module.html" class="btn btn-neutral float-left" title="netscaler.adc.nstcpparam module – Configuration for tcp parameters resource." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="nstimeout_module.html" class="btn btn-neutral float-right" title="netscaler.adc.nstimeout module – Configuration for timeout resource." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nstestlicense_module.html" class="btn btn-neutral float-right" title="netscaler.adc.nstestlicense module – Configuration for testlicense resource." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

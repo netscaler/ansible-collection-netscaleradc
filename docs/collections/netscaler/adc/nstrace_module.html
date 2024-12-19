@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.nstrace module – Configuration for nstrace operations resource. &mdash; Ansible collections  documentation</title>
@@ -13,15 +15,11 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.nstrafficdomain module – Configuration for Traffic Domain resource." href="nstrafficdomain_module.html" />
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.nstrace module – Configuration for nstrace operations resource.<a class="headerlink" href="#netscaler-adc-nstrace-module-configuration-for-nstrace-operations-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -143,8 +141,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
 <li><p><a class="reference internal" href="#parameters" id="id2">Parameters</a></p></li>
 <li><p><a class="reference internal" href="#notes" id="id3">Notes</a></p></li>
-<li><p><a class="reference internal" href="#examples" id="id4">Examples</a></p></li>
-<li><p><a class="reference internal" href="#return-values" id="id5">Return Values</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id4">Return Values</a></p></li>
 </ul>
 </nav>
 <section id="synopsis">
@@ -188,9 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <a class="ansibleOptionLink" href="#parameter-capsslkeys" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Capture SSL Master keys. Master keys will not be captured on FIPS machine.</p>
-<blockquote>
-<div><p>Warning: The captured keys can be used to decrypt information that may be confidential. The captured key files have to be stored in a secure environment</p>
-</div></blockquote>
+<p>Warning: The captured keys can be used to decrypt information that may be confidential. The captured key files have to be stored in a secure environment</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
@@ -236,148 +231,120 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <a class="ansibleOptionLink" href="#parameter-filter" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Filter expression for nstrace. Maximum length of filter is 255 and it can be of following format:</p>
-<blockquote>
-<div><p>&lt;expression&gt; [&lt;relop&gt; &lt;expression&gt;]</p>
+<p>&lt;expression&gt; [&lt;relop&gt; &lt;expression&gt;]</p>
 <p>&lt;relop&gt; = ( &amp;&amp; | || )</p>
 <p>&lt;expression&gt; =:</p>
 <p>CONNECTION.&lt;qualifier&gt;.&lt;qualifier-method&gt;.(&lt;qualifier-value&gt;)</p>
 <p>&lt;qualifier&gt; = SRCIP</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  = A valid IPv4 address.</p>
+<p>&lt;qualifier-value&gt; = A valid IPv4 address.</p>
 <p>example = CONNECTION.SRCIP.EQ(127.0.0.1)</p>
 <p>&lt;qualifier&gt; = DSTIP</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  = A valid IPv4 address.</p>
+<p>&lt;qualifier-value&gt; = A valid IPv4 address.</p>
 <p>example = CONNECTION.DSTIP.EQ(127.0.0.1)</p>
 <p>&lt;qualifier&gt; = IP</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  = A valid IPv4 address.</p>
+<p>&lt;qualifier-value&gt; = A valid IPv4 address.</p>
 <p>example = CONNECTION.IP.EQ(127.0.0.1)</p>
 <p>&lt;qualifier&gt; = SRCIPv6</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  = A valid IPv6 address.</p>
+<p>&lt;qualifier-value&gt; = A valid IPv6 address.</p>
 <p>example = CONNECTION.SRCIPv6.EQ(2001:db8:0:0:1::1)</p>
 <p>&lt;qualifier&gt; = DSTIPv6</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  = A valid IPv6 address.</p>
+<p>&lt;qualifier-value&gt; = A valid IPv6 address.</p>
 <p>example = CONNECTION.DSTIPv6.EQ(2001:db8:0:0:1::1)</p>
 <p>&lt;qualifier&gt; = IPv6</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  = A valid IPv6 address.</p>
+<p>&lt;qualifier-value&gt; = A valid IPv6 address.</p>
 <p>example = CONNECTION.IPv6.EQ(2001:db8:0:0:1::1)</p>
 <p>&lt;qualifier&gt; = SRCPORT</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">BETWEEN ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid port number.</p>
+<p>&lt;qualifier-value&gt; = A valid port number.</p>
 <p>example = CONNECTION.SRCPORT.EQ(80)</p>
 <p>&lt;qualifier&gt; = DSTPORT</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">BETWEEN ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid port number.</p>
+<p>&lt;qualifier-value&gt; = A valid port number.</p>
 <p>example = CONNECTION.DSTPORT.EQ(80)</p>
 <p>&lt;qualifier&gt; = PORT</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">BETWEEN ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid port number.</p>
+<p>&lt;qualifier-value&gt; = A valid port number.</p>
 <p>example = CONNECTION.PORT.EQ(80)</p>
 <p>&lt;qualifier&gt; = VLANID</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">BETWEEN ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid VLAN ID.</p>
+<p>&lt;qualifier-value&gt; = A valid VLAN ID.</p>
 <p>example = CONNECTION.VLANID.EQ(0)</p>
 <p>&lt;qualifier&gt; = CONNID</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">BETWEEN ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid PCB dev number.</p>
+<p>&lt;qualifier-value&gt; = A valid PCB dev number.</p>
 <p>example = CONNECTION.CONNID.EQ(0)</p>
 <p>&lt;qualifier&gt; = PPEID</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">BETWEEN ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid core ID.</p>
-<blockquote>
-<div><p>example = CONNECTION.PPEID.EQ(0)</p>
-</div></blockquote>
+<p>&lt;qualifier-value&gt; = A valid core ID.</p>
+<p>example = CONNECTION.PPEID.EQ(0)</p>
 <p>&lt;qualifier&gt; = SVCNAME</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | CONTAINS | STARTSWITH</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">ENDSWITH ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid text string.</p>
+<p>&lt;qualifier-value&gt; = A valid text string.</p>
 <p>example = CONNECTION.SVCNAME.EQ(“name”)</p>
 <p>&lt;qualifier&gt; = LB_VSERVER.NAME</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | CONTAINS | STARTSWITH</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">ENDSWITH ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = LB vserver name.</p>
+<p>&lt;qualifier-value&gt; = LB vserver name.</p>
 <p>example = CONNECTION.LB_VSERVER.NAME.EQ(“name”)</p>
 <p>&lt;qualifier&gt; = CS_VSERVER.NAME</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | CONTAINS | STARTSWITH</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">ENDSWITH ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = CS vserver name.</p>
+<p>&lt;qualifier-value&gt; = CS vserver name.</p>
 <p>example = CONNECTION.CS_VSERVER.NAME.EQ(“name”)</p>
 <p>&lt;qualifier&gt; = INTF</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  =  A valid interface id in the</p>
-<blockquote>
-<div><p>form of x/y.</p>
-</div></blockquote>
+<p>&lt;qualifier-value&gt; = A valid interface id in the</p>
+<p>form of x/y.</p>
 <p>example = CONNECTION.INTF.EQ(“x/y”)</p>
 <p>&lt;qualifier&gt; = SERVICE_TYPE</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
-<p>&lt;qualifier-value&gt;  = ( SVC_HTTP | FTP | TCP | UDP | SSL |</p>
-<blockquote>
-<div><p>SSL_BRIDGE | SSL_TCP | NNTP | RPCSVR | RPCSVRS |</p>
+<p>&lt;qualifier-value&gt; = ( SVC_HTTP | FTP | TCP | UDP | SSL |</p>
+<p>SSL_BRIDGE | SSL_TCP | NNTP | RPCSVR | RPCSVRS |</p>
 <p>RPCCLNT | SVC_DNS | ADNS | SNMP | RTSP | DHCPRA | ANY|</p>
 <p>MONITOR | MONITOR_UDP | MONITOR_PING | SIP_UDP |</p>
 <p>SVC_MYSQL | SVC_MSSQL | FIX | SSL_FIX | PKTSTEER |</p>
 <p>SVC_AAA | SERVICE_UNKNOWN )</p>
-</div></blockquote>
 <p>example = CONNECTION.SERVICE_TYPE.EQ(ANY)</p>
 <p>&lt;qualifier&gt; = TRAFFIC_DOMAIN_ID</p>
 <p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">BETWEEN ]</div>
 </div>
-</div></blockquote>
-<p>&lt;qualifier-value&gt;  = A valid traffic domain ID.</p>
+<p>&lt;qualifier-value&gt; = A valid traffic domain ID.</p>
 <p>example = CONNECTION.TRAFFIC_DOMAIN_ID.EQ(0)</p>
 <p>eg: start nstrace -filter “CONNECTION.SRCIP.EQ(127.0.0.1) || (CONNECTION.SVCNAME.NE(“s1”) &amp;&amp; CONNECTION.SRCPORT.EQ(80))”</p>
 <p>The filter expression should be given in double quotes.</p>
-</div></blockquote>
 <p>common use cases:</p>
 <p>Trace capturing full sized traffic from/to ip 10.102.44.111, excluding loopback traffic</p>
 <p>start nstrace -size 0 -filter “CONNECTION.IP.NE(127.0.0.1) &amp;&amp; CONNECTION.IP.EQ(10.102.44.111)”</p>
@@ -489,18 +456,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Capturing mode for trace. Mode can be any of the following values or combination of these values:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">RX</span></code>          Received packets before NIC pipelining (Filter does not work when <code class="docutils literal notranslate"><span class="pre">RX</span></code> capturing mode is ON)</p>
-<p><code class="docutils literal notranslate"><span class="pre">NEW_RX</span></code>      Received packets after NIC pipelining</p>
-<p><code class="docutils literal notranslate"><span class="pre">TX</span></code>          Transmitted packets</p>
-<p><code class="docutils literal notranslate"><span class="pre">TXB</span></code>         Packets buffered for transmission</p>
-<p><code class="docutils literal notranslate"><span class="pre">IPV6</span></code>        Translated IPv6 packets</p>
-<p><code class="docutils literal notranslate"><span class="pre">C2C</span></code>         Capture <code class="docutils literal notranslate"><span class="pre">C2C</span></code> message</p>
-<p><code class="docutils literal notranslate"><span class="pre">NS_FR_TX</span></code>    <code class="docutils literal notranslate"><span class="pre">TX</span></code>/<code class="docutils literal notranslate"><span class="pre">TXB</span></code> packets are not captured in flow receiver.</p>
-<p><code class="docutils literal notranslate"><span class="pre">MPTCP</span></code>       <code class="docutils literal notranslate"><span class="pre">MPTCP</span></code> master flow</p>
-<p><code class="docutils literal notranslate"><span class="pre">HTTP_QUIC</span></code>   HTTP-over-QUIC stream data and stream events</p>
+<p><code class="docutils literal notranslate"><span class="pre">RX</span></code> Received packets before NIC pipelining (Filter does not work when <code class="docutils literal notranslate"><span class="pre">RX</span></code> capturing mode is ON)</p>
+<p><code class="docutils literal notranslate"><span class="pre">NEW_RX</span></code> Received packets after NIC pipelining</p>
+<p><code class="docutils literal notranslate"><span class="pre">TX</span></code> Transmitted packets</p>
+<p><code class="docutils literal notranslate"><span class="pre">TXB</span></code> Packets buffered for transmission</p>
+<p><code class="docutils literal notranslate"><span class="pre">IPV6</span></code> Translated IPv6 packets</p>
+<p><code class="docutils literal notranslate"><span class="pre">C2C</span></code> Capture <code class="docutils literal notranslate"><span class="pre">C2C</span></code> message</p>
+<p><code class="docutils literal notranslate"><span class="pre">NS_FR_TX</span></code> <code class="docutils literal notranslate"><span class="pre">TX</span></code>/<code class="docutils literal notranslate"><span class="pre">TXB</span></code> packets are not captured in flow receiver.</p>
+<p><code class="docutils literal notranslate"><span class="pre">MPTCP</span></code> <code class="docutils literal notranslate"><span class="pre">MPTCP</span></code> master flow</p>
+<p><code class="docutils literal notranslate"><span class="pre">HTTP_QUIC</span></code> HTTP-over-QUIC stream data and stream events</p>
 <p>Default mode: <code class="docutils literal notranslate"><span class="pre">NEW_RX</span></code> <code class="docutils literal notranslate"><span class="pre">TXB</span></code></p>
-</div></blockquote>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TX&quot;</span></code></p></li>
@@ -707,14 +672,8 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div>
 </section>
-<section id="examples">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</section>
 <section id="return-values">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Link to this heading"></a></h2>
 <p>Common return values are documented <a class="reference external" href="https://docs.ansible.com/ansible/devel/reference_appendices/common_return_values.html#common-return-values" title="(in Ansible vdevel)"><span class="xref std std-ref">here</span></a>, the following are the fields unique to this module:</p>
 <table class="longtable ansible-option-table docutils align-default" style="width: 100%">
 <thead>
@@ -774,6 +733,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">
