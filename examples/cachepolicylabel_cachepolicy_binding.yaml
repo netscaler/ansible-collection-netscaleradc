@@ -1,0 +1,13 @@
+---
+- name: Sample cachepolicylabel_cachepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cachepolicylabel_cachepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.cachepolicylabel_cachepolicy_binding:
+        state: present
+        labelname: _httpquicResBuiltinDefaults
+        policyname: _personalizedRes
+        priority: '800'
+        gotopriorityexpression: END

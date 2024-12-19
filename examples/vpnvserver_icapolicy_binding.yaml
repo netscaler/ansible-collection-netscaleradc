@@ -1,0 +1,12 @@
+---
+- name: Sample vpnvserver_icapolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_icapolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_icapolicy_binding:
+        state: present
+        name: wionnsvs
+        policy: icapol1
+        priority: '3'

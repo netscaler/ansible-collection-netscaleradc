@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: feoaction
 short_description: Configuration for Front end optimization action resource.
 description: Configuration for Front end optimization action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,34 +45,34 @@ options:
     description:
       - Maxage for cache extension.
   clientsidemeasurements:
-    type: raw
+    type: bool
     description:
       - Send AppFlow records about the web pages optimized by this action. The records
         provide FEO statistics, such as the number of HTTP requests that have been
         reduced for this page. You must enable the Appflow feature before enabling
         this parameter.
   convertimporttolink:
-    type: raw
+    type: bool
     description:
       - Convert CSS import statements to HTML link tags.
   csscombine:
-    type: raw
+    type: bool
     description:
       - Combine one or more CSS files into one file.
   cssimginline:
-    type: raw
+    type: bool
     description:
       - Inline small images (less than 2KB) referred within CSS files as background-URLs
   cssinline:
-    type: raw
+    type: bool
     description:
       - Inline CSS files, whose size is less than 2KB, within the main page.
   cssminify:
-    type: raw
+    type: bool
     description:
       - Remove comments and whitespaces from CSSs.
   cssmovetohead:
-    type: raw
+    type: bool
     description:
       - Move any CSS file present within the body tag of an HTML page to the head
         tag.
@@ -80,60 +82,60 @@ options:
       - Set of domain names that replaces the parent domain.
     elements: str
   domainsharding:
-    type: raw
+    type: str
     description:
       - Domain name of the server
   htmlminify:
-    type: raw
+    type: bool
     description:
       - Remove comments and whitespaces from an HTML page.
   imggiftopng:
-    type: raw
+    type: bool
     description:
       - Convert GIF image formats to PNG formats.
   imginline:
-    type: raw
+    type: bool
     description:
       - Inline images whose size is less than 2KB.
   imglazyload:
-    type: raw
+    type: bool
     description:
       - Download images, only when the user scrolls the page to view them.
   imgshrinktoattrib:
-    type: raw
+    type: bool
     description:
       - Shrink image dimensions as per the height and width attributes specified in
         the <img> tag.
   imgtojpegxr:
-    type: raw
+    type: bool
     description:
       - Convert JPEG, GIF, PNG image formats to JXR format.
   imgtowebp:
-    type: raw
+    type: bool
     description:
       - Convert JPEG, GIF, PNG image formats to WEBP format.
   jpgoptimize:
-    type: raw
+    type: bool
     description:
       - Remove non-image data such as comments from JPEG images.
   jsinline:
-    type: raw
+    type: bool
     description:
       - Convert linked JavaScript files (less than 2KB) to inline JavaScript files.
   jsminify:
-    type: raw
+    type: bool
     description:
       - Remove comments and whitespaces from JavaScript.
   jsmovetoend:
-    type: raw
+    type: bool
     description:
       - Move any JavaScript present in the body tag to the end of the body tag.
   name:
-    type: raw
+    type: str
     description:
       - The name of the front end optimization action.
   pageextendcache:
-    type: raw
+    type: bool
     description:
       - Extend the time period during which the browser can use the cached resource.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -141,6 +143,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample feoaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure feoaction
+      delegate_to: localhost
+      netscaler.adc.feoaction:
+        state: present
+        name: allact_ns
+        clientsidemeasurements: true
 """
 
 RETURN = r"""

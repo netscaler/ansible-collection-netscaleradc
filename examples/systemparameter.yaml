@@ -1,10 +1,11 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample systemparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | systemparameter
+    - name: Configure systemparameter
       delegate_to: localhost
       netscaler.adc.systemparameter:
         state: present
-        promptstring: '%u@%s'
+        maxclient: '40'
+        forcepasswordchange: ENABLED

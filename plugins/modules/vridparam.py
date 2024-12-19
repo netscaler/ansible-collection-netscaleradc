@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vridparam
 short_description: Configuration for VR ID parameter resource.
 description: Configuration for VR ID parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,17 +39,17 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   deadinterval:
-    type: raw
+    type: float
     description:
       - Number of seconds after which a peer node in active-active mode is marked
         down if vrrp advertisements are not received from the peer node.
   hellointerval:
-    type: raw
+    type: float
     description:
       - Interval, in milliseconds, between vrrp advertisement messages sent to the
         peer node in active-active mode.
   sendtomaster:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -59,6 +61,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vridparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vridparam
+      delegate_to: localhost
+      netscaler.adc.vridparam:
+        state: present
+        sendtomaster: ENABLED
 """
 
 RETURN = r"""

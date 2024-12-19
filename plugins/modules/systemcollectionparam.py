@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemcollectionparam
 short_description: Configuration for collection parameter resource.
 description: Configuration for collection parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,11 +43,11 @@ options:
     description:
       - SNMPv1 community name for authentication.
   datapath:
-    type: raw
+    type: str
     description:
       - specify the data path to the database.
   loglevel:
-    type: raw
+    type: str
     description:
       - specify the log level. Possible values CRITICAL,WARNING,INFO,DEBUG1,DEBUG2
 extends_documentation_fragment: netscaler.adc.netscaler_adc

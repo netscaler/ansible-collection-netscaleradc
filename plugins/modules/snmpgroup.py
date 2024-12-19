@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpgroup
 short_description: Configuration for SNMP group resource.
 description: Configuration for SNMP group resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -77,17 +79,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample snmpgroup playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | snmpgroup
+    - name: Configure snmpgroup
       delegate_to: localhost
       netscaler.adc.snmpgroup:
         state: present
-        name: v3_grp
+        name: ia_snmpgrp1
         securitylevel: noAuthNoPriv
-        readviewname: v3_grp_view
+        readviewname: sample
 """
 
 RETURN = r"""

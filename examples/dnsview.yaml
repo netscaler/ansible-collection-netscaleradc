@@ -1,0 +1,10 @@
+---
+- name: Sample dnsview playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsview
+      delegate_to: localhost
+      netscaler.adc.dnsview:
+        state: present
+        viewname: view1

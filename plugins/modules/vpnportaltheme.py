@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnportaltheme
 short_description: Configuration for portaltheme resource.
 description: Configuration for portaltheme resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,6 +56,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnportaltheme playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnportaltheme
+      delegate_to: localhost
+      netscaler.adc.vpnportaltheme:
+        state: present
+        name: BX_Brand
+        basetheme: RfWebUI
 """
 
 RETURN = r"""

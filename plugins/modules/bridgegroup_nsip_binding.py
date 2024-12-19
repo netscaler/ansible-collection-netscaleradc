@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: bridgegroup_nsip_binding
 short_description: Binding Resource definition for describing association between
   bridgegroup and nsip resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between brid
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -65,6 +67,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample bridgegroup_nsip_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure bridgegroup_nsip_binding
+      delegate_to: localhost
+      netscaler.adc.bridgegroup_nsip_binding:
+        state: present
+        id: '2'
+        ipaddress: 2.2.2.1
+        netmask: 255.255.255.0
 """
 
 RETURN = r"""

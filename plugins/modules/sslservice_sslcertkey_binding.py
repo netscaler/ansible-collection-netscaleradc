@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslservice_sslcertkey_binding
 short_description: Binding Resource definition for describing association between
   sslservice and sslcertkey resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between ssls
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -85,6 +87,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslservice_sslcertkey_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslservice_sslcertkey_binding
+      delegate_to: localhost
+      netscaler.adc.sslservice_sslcertkey_binding:
+        state: present
+        servicename: nsrpcs-127.0.0.1-3008
+        certkeyname: ns-server-certificate
 """
 
 RETURN = r"""

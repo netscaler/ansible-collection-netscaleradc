@@ -1,0 +1,11 @@
+---
+- name: Sample sslpolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslpolicylabel
+      delegate_to: localhost
+      netscaler.adc.sslpolicylabel:
+        state: present
+        labelname: invoke_labelname
+        type: CONTROL

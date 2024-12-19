@@ -1,0 +1,10 @@
+---
+- name: Sample csparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure csparameter
+      delegate_to: localhost
+      netscaler.adc.csparameter:
+        state: present
+        stateupdate: ENABLED

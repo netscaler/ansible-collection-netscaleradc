@@ -1,0 +1,16 @@
+---
+- name: Sample analyticsprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure analyticsprofile
+      delegate_to: localhost
+      netscaler.adc.analyticsprofile:
+        state: present
+        name: telemetry_metrics_profile
+        type: timeseries
+        outputmode: prometheus
+        metrics: ENABLED
+        servemode: Pull
+        schemafile: ./telemetry_collect_ns_metrics_schema.json
+        metricsexportfrequency: '300'

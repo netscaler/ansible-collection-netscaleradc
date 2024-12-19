@@ -1,0 +1,17 @@
+---
+- name: Sample ipsecprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ipsecprofile
+      delegate_to: localhost
+      netscaler.adc.ipsecprofile:
+        state: present
+        name: ia_ipsecpro10
+        publickey: sample
+        privatekey: sample
+        peerpublickey: sample
+        livenesscheckinterval: '23'
+        replaywindowsize: '23'
+        ikeretryinterval: '60'
+        retransmissiontime: '23'

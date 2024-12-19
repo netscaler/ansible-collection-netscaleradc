@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnpcoipvserverprofile
 short_description: Configuration for PCoIP vserver profile resource.
 description: Configuration for PCoIP vserver profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,11 +45,11 @@ options:
     description:
       - Login domain for PCoIP users
   name:
-    type: raw
+    type: str
     description:
       - name of PCoIP vserver profile
   udpport:
-    type: raw
+    type: int
     description:
       - UDP port for PCoIP data traffic
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -55,6 +57,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnpcoipvserverprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnpcoipvserverprofile
+      delegate_to: localhost
+      netscaler.adc.vpnpcoipvserverprofile:
+        state: present
 """
 
 RETURN = r"""

@@ -1,0 +1,11 @@
+---
+- name: Sample aaakcdaccount playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaakcdaccount
+      delegate_to: localhost
+      netscaler.adc.aaakcdaccount:
+        state: present
+        kcdaccount: kcdaccount1
+        realmstr: dnpg

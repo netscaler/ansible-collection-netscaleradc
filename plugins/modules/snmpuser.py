@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpuser
 short_description: Configuration for SNMP user resource.
 description: Configuration for SNMP user resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authpasswd:
-    type: raw
+    type: str
     description:
       - Plain-text pass phrase to be used by the authentication algorithm specified
         by the authType (Authentication Type) parameter. Can consist of 1 to 31 characters
@@ -51,10 +53,12 @@ options:
       - If the pass phrase includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my phrase" or 'my phrase').
   authtype:
-    type: raw
+    type: str
     choices:
       - MD5
       - SHA
+      - SHA256
+      - SHA512
     description:
       - Authentication algorithm used by the Citrix ADC and the SNMPv3 user for authenticating
         the communication between them. You must specify the same authentication algorithm
@@ -66,7 +70,7 @@ options:
         access rights (bound SNMPv3 views) and security level set for this group are
         assigned to this user.
   name:
-    type: raw
+    type: str
     description:
       - Name for the SNMPv3 user. Can consist of 1 to 31 characters that include uppercase
         and lowercase letters, numbers, and the hyphen (-), period (.) pound (#),
@@ -76,7 +80,7 @@ options:
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my user" or 'my user').
   privpasswd:
-    type: raw
+    type: str
     description:
       - Encryption key to be used by the encryption algorithm specified by the privType
         (Encryption Type) parameter. Can consist of 1 to 31 characters that include
@@ -87,10 +91,12 @@ options:
       - If the key includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my key" or 'my key').
   privtype:
-    type: raw
+    type: str
     choices:
       - DES
       - AES
+      - AES192
+      - AES256
     description:
       - Encryption algorithm used by the Citrix ADC and the SNMPv3 user for encrypting
         the communication between them. You must specify the same encryption algorithm
@@ -101,16 +107,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample snmpuser playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | snmpuser
+    - name: Configure snmpuser
       delegate_to: localhost
       netscaler.adc.snmpuser:
         state: present
-        name: v3
-        group: v3_grp
+        name: ia_snmpuser3
+        group: ia_group1
+        authtype: MD5
+        authpasswd: freebsd_1
+        privtype: DES
+        privpasswd: freebsd_1
 """
 
 RETURN = r"""

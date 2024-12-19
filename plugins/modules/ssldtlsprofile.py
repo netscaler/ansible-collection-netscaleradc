@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ssldtlsprofile
 short_description: Configuration for DTLS profile resource.
 description: Configuration for DTLS profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,44 +41,48 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   helloverifyrequest:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send a Hello Verify request to validate the client.
+  initialretrytimeout:
+    type: float
+    description:
+      - Initial time out value to retransmit the last flight sent from the NetScaler.
   maxbadmacignorecount:
-    type: raw
+    type: float
     description:
       - Maximum number of bad MAC errors to ignore for a connection prior disconnect.
         Disabling parameter terminateSession terminates session immediately when bad
         MAC is detected in the connection.
   maxholdqlen:
-    type: raw
+    type: float
     description:
       - Maximum number of datagrams that can be queued at DTLS layer for processing
   maxpacketsize:
-    type: raw
+    type: float
     description:
       - Maximum number of packets to reassemble. This value helps protect against
         a fragmented packet attack.
   maxrecordsize:
-    type: raw
+    type: float
     description:
       - Maximum size of records that can be sent if PMTU is disabled.
   maxretrytime:
-    type: raw
+    type: float
     description:
       - Wait for the specified time, in seconds, before resending the request.
   name:
-    type: raw
+    type: str
     description:
       - Name for the DTLS profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@),equals sign (=), and hyphen (-)
         characters. Cannot be changed after the profile is created.
   pmtudiscovery:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -84,7 +90,7 @@ options:
       - Source for the maximum record size value. If C(ENABLED), the value is taken
         from the PMTU table. If C(DISABLED), the value is taken from the profile.
   terminatesession:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED

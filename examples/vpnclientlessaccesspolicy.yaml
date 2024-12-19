@@ -1,0 +1,12 @@
+---
+- name: Sample vpnclientlessaccesspolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnclientlessaccesspolicy
+      delegate_to: localhost
+      netscaler.adc.vpnclientlessaccesspolicy:
+        state: present
+        name: ia_cltlsacspol1
+        rule: 'true'
+        profilename: ia_cltlsacsprof1

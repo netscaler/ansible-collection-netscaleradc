@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: subscriberradiusinterface
 short_description: Configuration for RADIUS interface Parameters resource.
 description: Configuration for RADIUS interface Parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,7 +43,7 @@ options:
     description:
       - Name of RADIUS LISTENING service that will process RADIUS accounting requests.
   radiusinterimasstart:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED

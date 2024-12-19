@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nscapacity
 short_description: Configuration for capacity resource.
 description: Configuration for capacity resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bandwidth:
-    type: raw
+    type: float
     description:
       - System bandwidth limit.
   edition:
@@ -53,7 +55,7 @@ options:
     description:
       - Unique number that identifies the cluster node.
   platform:
-    type: raw
+    type: str
     choices:
       - VS10
       - VE10
@@ -105,7 +107,7 @@ options:
     description:
       - Bandwidth unit.
   vcpu:
-    type: raw
+    type: bool
     description:
       - licensed using vcpu pool.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

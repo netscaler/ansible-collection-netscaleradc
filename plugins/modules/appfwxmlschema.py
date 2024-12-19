@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwxmlschema
 short_description: Configuration for XML schema resource.
 description: Configuration for XML schema resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -59,6 +61,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwxmlschema playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwxmlschema
+      delegate_to: localhost
+      netscaler.adc.appfwxmlschema:
+        state: present
+        src: http://10.217.30.16/testsite/Signatures/44_38_1_36/schema.xml
+        name: lower_schema
+        nitro_operation: import
+        '#nitro_operation': import
 """
 
 RETURN = r"""

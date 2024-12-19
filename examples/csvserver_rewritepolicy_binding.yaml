@@ -1,0 +1,17 @@
+---
+- name: Sample csvserver_rewritepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure csvserver_rewritepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.csvserver_rewritepolicy_binding:
+        state: present
+        name: CSW_v1
+        policyname: CSW_rwrtpol1
+        priority: '23'
+        gotopriorityexpression: END
+        bindpoint: RESPONSE
+        invoke: true
+        labeltype: policylabel
+        labelname: CSW_invoke_labelname

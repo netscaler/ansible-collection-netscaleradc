@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnvserver_icapolicy_binding
 short_description: Binding Resource definition for describing association between
   vpnvserver and icapolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vpnv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -91,6 +93,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_icapolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_icapolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_icapolicy_binding:
+        state: present
+        name: wionnsvs
+        policy: icapol1
+        priority: '3'
 """
 
 RETURN = r"""

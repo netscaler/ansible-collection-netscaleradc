@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwfieldtype
 short_description: Configuration for application firewall form field type resource.
 description: Configuration for application firewall form field type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -73,6 +75,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwfieldtype playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwfieldtype
+      delegate_to: localhost
+      netscaler.adc.appfwfieldtype:
+        state: present
+        name: CM1454107840652651
+        regex: ^[A-Z\\a-z]+$
+        priority: '10'
 """
 
 RETURN = r"""

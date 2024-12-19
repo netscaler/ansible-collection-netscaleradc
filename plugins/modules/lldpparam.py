@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lldpparam
 short_description: Configuration for lldp params resource.
 description: Configuration for lldp params resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   holdtimetxmult:
-    type: raw
+    type: float
     description:
       - A multiplier for calculating the duration for which the receiving device stores
         the LLDP information in its database before discarding or removing it. The
         duration is calculated as the holdtimeTxMult (Holdtime Multiplier) parameter
         value multiplied by the timer (Timer) parameter value.
   mode:
-    type: raw
+    type: str
     choices:
       - NONE
       - TRANSMITTER
@@ -55,7 +57,7 @@ options:
         resultant LLDP mode of an interface depends on the LLDP mode configured at
         the global and the interface levels.
   timer:
-    type: raw
+    type: float
     description:
       - Interval, in seconds, between LLDP packet data units (LLDPDUs).  that the
         Citrix ADC sends to a directly connected device.

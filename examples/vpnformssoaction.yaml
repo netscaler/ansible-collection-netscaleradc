@@ -1,0 +1,14 @@
+---
+- name: Sample vpnformssoaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnformssoaction
+      delegate_to: localhost
+      netscaler.adc.vpnformssoaction:
+        state: present
+        name: ia_ssoact1
+        actionurl: /owa/auth/owaauth.dll
+        userfield: user
+        passwdfield: freebsd
+        ssosuccessrule: HTTP.RES.IS_VALID

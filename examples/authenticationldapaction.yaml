@@ -1,0 +1,26 @@
+---
+- name: Sample authenticationldapaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationldapaction
+      delegate_to: localhost
+      netscaler.adc.authenticationldapaction:
+        state: present
+        name: ldap_userextraction_External_noauth
+        servername: awsdcs-amer.blackstone.com
+        serverport: 636
+        ldapbase: OU=New AD Structure,DC=Blackstone,DC=com
+        ldapbinddn: CN=GD-CITRIXADC-P-APP,OU=Service Accounts,OU=Elevated,OU=New AD
+          Structure,DC=Blackstone,DC=com
+        ldapbinddnpassword: REQ_PASSWORD
+        ldaploginname: sAMAccountName
+        groupattrname: memberOf
+        subattributename: cn
+        sectype: SSL
+        authentication: DISABLED
+        passwdchange: ENABLED
+        nestedgroupextraction: 'ON'
+        groupnameidentifier: sAMAccountName
+        groupsearchattribute: sAMAccountName
+        defaultauthenticationgroup: External

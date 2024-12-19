@@ -1,0 +1,13 @@
+---
+- name: Sample responderglobal_responderpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure responderglobal_responderpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.responderglobal_responderpolicy_binding:
+        state: present
+        policyname: policy_1
+        priority: '10'
+        gotopriorityexpression: END
+        type: DNS_REQ_DEFAULT

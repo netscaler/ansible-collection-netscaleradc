@@ -1,0 +1,10 @@
+---
+- name: Sample aaagroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaagroup
+      delegate_to: localhost
+      netscaler.adc.aaagroup:
+        state: present
+        groupname: External

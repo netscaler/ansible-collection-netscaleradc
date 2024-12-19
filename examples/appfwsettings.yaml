@@ -1,0 +1,10 @@
+---
+- name: Sample appfwsettings playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwsettings
+      delegate_to: localhost
+      netscaler.adc.appfwsettings:
+        state: present
+        sessiontimeout: '180'

@@ -1,0 +1,10 @@
+---
+- name: Sample inatparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure inatparam
+      delegate_to: localhost
+      netscaler.adc.inatparam:
+        state: present
+        nat46fragheader: DISABLED

@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnclient_network_binding
 short_description: Binding Resource definition for describing association between
   lsnclient and network resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lsnc
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -69,6 +71,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnclient_network_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnclient_network_binding
+      delegate_to: localhost
+      netscaler.adc.lsnclient_network_binding:
+        state: present
+        clientname: dsl_http
+        network: 94.94.94.94
+        netmask: 255.255.255.255
 """
 
 RETURN = r"""

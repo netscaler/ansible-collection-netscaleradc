@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwurlencodedformcontenttype
 short_description: Configuration for Urlencoded form content type resource.
 description: Configuration for Urlencoded form content type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -53,16 +55,11 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample appfwurlencodedformcontenttype playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | appfwurlEncodedFormContentType
-      delegate_to: localhost
-      netscaler.adc.appfwurlencodedformcontenttype:
-        state: present
-        urlencodedformcontenttypevalue: application/x-www-form-urlencoded
-    - name: Sample Task | appfwurlEncodedFormContentType | 2
+    - name: Configure appfwurlencodedformcontenttype
       delegate_to: localhost
       netscaler.adc.appfwurlencodedformcontenttype:
         state: present

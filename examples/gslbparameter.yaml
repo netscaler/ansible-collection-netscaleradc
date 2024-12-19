@@ -1,0 +1,9 @@
+---
+- name: Sample gslbparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbparameter
+      delegate_to: localhost
+      netscaler.adc.gslbparameter:
+        state: present

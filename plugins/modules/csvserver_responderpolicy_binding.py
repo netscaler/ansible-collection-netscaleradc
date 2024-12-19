@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: csvserver_responderpolicy_binding
 short_description: Binding Resource definition for describing association between
   csvserver and responderpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between csvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -95,6 +97,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample csvserver_responderpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure csvserver_responderpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.csvserver_responderpolicy_binding:
+        state: present
+        name: CSW_v1
+        policyname: CSW_resppol1
+        priority: '23'
+        gotopriorityexpression: END
+        bindpoint: REQUEST
+        invoke: true
+        labeltype: reqvserver
+        labelname: CSW_invoke_labelname
 """
 
 RETURN = r"""

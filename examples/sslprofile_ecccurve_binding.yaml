@@ -1,0 +1,11 @@
+---
+- name: Sample sslprofile_ecccurve_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslprofile_ecccurve_binding
+      delegate_to: localhost
+      netscaler.adc.sslprofile_ecccurve_binding:
+        state: present
+        name: blackstone_ssl_profile
+        ecccurvename: P_521

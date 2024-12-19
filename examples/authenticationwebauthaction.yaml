@@ -1,0 +1,15 @@
+---
+- name: Sample authenticationwebauthaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationwebauthaction
+      delegate_to: localhost
+      netscaler.adc.authenticationwebauthaction:
+        state: present
+        name: webauthact
+        serverip: 2.2.2.2
+        serverport: 20
+        fullreqexpr: '"GET /basic.html/"'
+        scheme: https
+        successrule: http.res.status.eq(200)

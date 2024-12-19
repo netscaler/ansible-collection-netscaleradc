@@ -1,13 +1,13 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample vpnparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | vpnparameter
+    - name: Configure vpnparameter
       delegate_to: localhost
       netscaler.adc.vpnparameter:
         state: present
         forcecleanup:
           - none
         clientconfiguration:
-          - trace
+          - all

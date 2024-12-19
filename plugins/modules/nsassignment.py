@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsassignment
 short_description: Configuration for assignment resource.
 description: Configuration for assignment resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,11 +56,11 @@ options:
       - Clear the variable value. Deallocates a text value, and for a map, the text
         key.
   comment:
-    type: raw
+    type: str
     description:
       - Comment. Can be used to preserve information about this rewrite action.
   name:
-    type: raw
+    type: str
     description:
       - Name for the assignment. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),

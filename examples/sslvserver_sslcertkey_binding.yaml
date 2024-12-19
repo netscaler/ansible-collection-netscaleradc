@@ -1,0 +1,11 @@
+---
+- name: Sample sslvserver_sslcertkey_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslvserver_sslcertkey_binding
+      delegate_to: localhost
+      netscaler.adc.sslvserver_sslcertkey_binding:
+        state: present
+        vservername: CitrixAccessCallback
+        certkeyname: callback.blackstone.com

@@ -1,0 +1,13 @@
+---
+- name: Sample nd6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nd6
+      delegate_to: localhost
+      netscaler.adc.nd6:
+        state: present
+        neighbor: fe80::20
+        mac: 00:aa:10:12:13:ef
+        ifnum: 1/2
+        vlan: 1

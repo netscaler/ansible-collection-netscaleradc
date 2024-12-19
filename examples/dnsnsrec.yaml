@@ -1,12 +1,12 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample dnsnsrec playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | dnsnsRec
+    - name: Configure dnsnsrec
       delegate_to: localhost
       netscaler.adc.dnsnsrec:
         state: present
         domain: .
-        nameserver: a.root-servers.net
+        nameserver: m.root-servers.net
         ttl: 3600000

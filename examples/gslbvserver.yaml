@@ -1,0 +1,14 @@
+---
+- name: Sample gslbvserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbvserver
+      delegate_to: localhost
+      netscaler.adc.gslbvserver:
+        state: present
+        name: backup_gslb_portal.bx.com
+        servicetype: SSL
+        backuplbmethod: ROUNDROBIN
+        tolerance: '0'
+        appflowlog: DISABLED

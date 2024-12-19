@@ -1,0 +1,12 @@
+---
+- name: Sample appfwprofile_creditcardnumber_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_creditcardnumber_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_creditcardnumber_binding:
+        state: present
+        name: Test_profile
+        creditcardnumber: '348238190706900'
+        creditcardnumberurl: ^http://test.net/credit.html$

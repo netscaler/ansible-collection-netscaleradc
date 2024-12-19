@@ -1,0 +1,15 @@
+---
+- name: Sample sslrsakey playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslrsakey
+      delegate_to: localhost
+      netscaler.adc.sslrsakey:
+        state: present
+        keyfile: ssl_rsa_der_key
+        bits: '2048'
+        exponent: '3'
+        keyform: DER
+        nitro_operation: create
+        '#nitro_operation': create

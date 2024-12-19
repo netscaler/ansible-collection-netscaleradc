@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationcertpolicy
 short_description: Configuration for CERT policy resource.
 description: Configuration for CERT policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: raw
+    type: str
     description:
       - Name for the client certificate authentication policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -52,12 +54,12 @@ options:
         quotation marks (for example, "my authentication policy" or 'my authentication
         policy').
   reqaction:
-    type: raw
+    type: str
     description:
       - Name of the client cert authentication action to be performed if the policy
         matches.
   rule:
-    type: raw
+    type: str
     description:
       - Name of the Citrix ADC named rule, or an expression, that the policy uses
         to determine whether to attempt to authenticate the user with the authentication
@@ -67,6 +69,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationcertpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationcertpolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationcertpolicy:
+        state: present
+        name: sslrg
+        rule: ns_true
+        reqaction: sslrg
 """
 
 RETURN = r"""

@@ -1,0 +1,14 @@
+---
+- name: Sample lbvserver_rewritepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_rewritepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_rewritepolicy_binding:
+        state: present
+        name: LB_DIA_vs2
+        policyname: rw_diam_pol
+        priority: '10'
+        gotopriorityexpression: END
+        bindpoint: REQUEST

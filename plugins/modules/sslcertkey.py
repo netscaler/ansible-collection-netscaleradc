@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcertkey
 short_description: Configuration for certificate key resource.
 description: Configuration for certificate key resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -55,7 +57,7 @@ options:
         any location other than the default might cause inconsistency in a high availability
         setup. /nsconfig/ssl/ is the default path.
   certkey:
-    type: raw
+    type: str
     description:
       - Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -70,7 +72,7 @@ options:
     description:
       - Delete cert/key file from file system.
   expirymonitor:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -116,7 +118,7 @@ options:
     description:
       - Override the check for matching domain names during a certificate update operation.
   notificationperiod:
-    type: raw
+    type: float
     description:
       - Time, in number of days, before certificate expiration, at which to generate
         an alert that the certificate is about to expire.
@@ -164,14 +166,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Create and link server ssl certkey
-  delegate_to: localhost
-  netscaler.adc.sslcertkey:
-    state: present
-    certkey: test-certkey
-    cert: test-cert.cert
-    key: test-cert.key
-    linkcertkeyname: root-certkey  # This will link the root certkey to the server certkey
+---
+- name: Sample sslcertkey playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcertkey
+      delegate_to: localhost
+      netscaler.adc.sslcertkey:
+        state: present
+        certkey: callback.blackstone.com
+        linkcertkeyname: blackstone_sub
+        nitro_operation: link
+        '#nitro_operation': link
 """
 
 RETURN = r"""

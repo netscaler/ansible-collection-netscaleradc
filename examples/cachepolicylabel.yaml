@@ -1,11 +1,11 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample cachepolicylabel playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | cachepolicylabel
+    - name: Configure cachepolicylabel
       delegate_to: localhost
       netscaler.adc.cachepolicylabel:
         state: present
-        labelname: _reqBuiltinDefaults
-        evaluates: REQ
+        labelname: _httpquicResBuiltinDefaults
+        evaluates: HTTPQUIC_RES

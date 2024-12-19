@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: servicegroup_servicegroupmember_binding
 short_description: Binding Resource definition for describing association between
   servicegroup and servicegroupmember resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between serv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -94,6 +96,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample servicegroup_servicegroupmember_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure servicegroup_servicegroupmember_binding
+      delegate_to: localhost
+      netscaler.adc.servicegroup_servicegroupmember_binding:
+        state: present
+        servicegroupname: CR_SVG
+        ip: 172.168.1.20
+        port: 80
 """
 
 RETURN = r"""

@@ -1,0 +1,13 @@
+---
+- name: Sample lsnsipalgprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnsipalgprofile
+      delegate_to: localhost
+      netscaler.adc.lsnsipalgprofile:
+        state: present
+        sipalgprofilename: sipalgprofile_udp
+        registrationtimeout: '3600'
+        sipdstportrange: '5060'
+        siptransportprotocol: UDP

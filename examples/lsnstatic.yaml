@@ -1,0 +1,10 @@
+---
+- name: Sample lsnstatic playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnstatic
+      delegate_to: localhost
+      netscaler.adc.lsnstatic:
+        state: present
+        nattype: DS-Lite

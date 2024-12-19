@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: contentinspectioncallout
 short_description: Configuration for Content Inspection callout resource.
 description: Configuration for Content Inspection callout resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this Content Inspection callout.
   name:
-    type: raw
+    type: str
     description:
       - Name for the Content Inspection callout. Not case sensitive. Must begin with
         an ASCII letter or underscore (_) character, and must consist only of ASCII
@@ -90,7 +92,7 @@ options:
         server IP address and port parameters. The service type must be TCP or SSL_TCP.
         If there are vservers and services with the same name, then vserver is selected.
   serverport:
-    type: raw
+    type: float
     description:
       - Port of the Content Inspection server.
   type:

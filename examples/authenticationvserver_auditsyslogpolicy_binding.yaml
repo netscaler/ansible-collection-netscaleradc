@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationvserver_auditsyslogpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver_auditsyslogpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver_auditsyslogpolicy_binding:
+        state: present
+        name: ia_authnvs7
+        policy: ia_syspol1
+        priority: '112'

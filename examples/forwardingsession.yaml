@@ -1,0 +1,12 @@
+---
+- name: Sample forwardingsession playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure forwardingsession
+      delegate_to: localhost
+      netscaler.adc.forwardingsession:
+        state: present
+        name: ia_forsess5
+        nitro_operation: rm
+        '#nitro_operation': rm

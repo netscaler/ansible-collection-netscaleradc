@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nstimer
 short_description: Configuration for Timer resource.
 description: Configuration for Timer resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,16 +41,16 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Comments associated with this timer.
   interval:
-    type: raw
+    type: int
     description:
       - The frequency at which the policies bound to this timer are invoked. The minimum
         value is 20 msec. The maximum value is 20940 in seconds and 349 in minutes
   name:
-    type: raw
+    type: str
     description:
       - Timer name.
   newname:
@@ -56,7 +58,7 @@ options:
     description:
       - The new name of the timer.
   unit:
-    type: raw
+    type: str
     choices:
       - SEC
       - MIN

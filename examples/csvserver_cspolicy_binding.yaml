@@ -1,0 +1,13 @@
+---
+- name: Sample csvserver_cspolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure csvserver_cspolicy_binding
+      delegate_to: localhost
+      netscaler.adc.csvserver_cspolicy_binding:
+        state: present
+        name: LB_cs_diameter
+        policyname: LB_pcrf_policy
+        targetlbvserver: LB_vs_pcrf
+        priority: '100'

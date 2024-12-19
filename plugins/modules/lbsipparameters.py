@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbsipparameters
 short_description: Configuration for SIP parameters resource.
 description: Configuration for SIP parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addrportvip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -45,41 +47,41 @@ options:
       - Add the rport parameter to the VIA headers of SIP requests that virtual servers
         receive from clients or servers.
   retrydur:
-    type: raw
+    type: int
     description:
       - Time, in seconds, for which a client must wait before initiating a connection
         after receiving a 503 Service Unavailable response from the SIP server. The
         time value is sent in the "Retry-After" header in the 503 response.
   rnatdstport:
-    type: raw
+    type: int
     description:
       - Port number with which to match the destination port in server-initiated SIP
         traffic. The rport parameter is added, without a value, to SIP packets that
         have a matching destination port number, and CALL-ID based persistence is
         implemented for the responses received by the virtual server.
   rnatsecuredstport:
-    type: raw
+    type: int
     description:
       - Port number with which to match the destination port in server-initiated SIP
         over SSL traffic. The rport parameter is added, without a value, to SIP packets
         that have a matching destination port number, and CALL-ID based persistence
         is implemented for the responses received by the virtual server.
   rnatsecuresrcport:
-    type: raw
+    type: int
     description:
       - Port number with which to match the source port in server-initiated SIP over
         SSL traffic. The rport parameter is added, without a value, to SIP packets
         that have a matching source port number, and CALL-ID based persistence is
         implemented for the responses received by the virtual server.
   rnatsrcport:
-    type: raw
+    type: int
     description:
       - Port number with which to match the source port in server-initiated SIP traffic.
         The rport parameter is added, without a value, to SIP packets that have a
         matching source port number, and CALL-ID based persistence is implemented
         for the responses received by the virtual server.
   sip503ratethreshold:
-    type: raw
+    type: float
     description:
       - Maximum number of 503 Service Unavailable responses to generate, once every
         10 milliseconds, when a SIP virtual server becomes unavailable.
@@ -88,6 +90,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbsipparameters playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbsipparameters
+      delegate_to: localhost
+      netscaler.adc.lbsipparameters:
+        state: present
+        rnatsecuresrcport: 5061
 """
 
 RETURN = r"""

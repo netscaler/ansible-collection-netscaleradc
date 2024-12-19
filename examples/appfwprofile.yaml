@@ -1,0 +1,14 @@
+---
+- name: Sample appfwprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile
+      delegate_to: localhost
+      netscaler.adc.appfwprofile:
+        state: present
+        name: pr_appfw
+        starturlaction:
+          - learn
+          - log
+          - stats

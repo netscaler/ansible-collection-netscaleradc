@@ -1,0 +1,14 @@
+---
+- name: Sample lsnhttphdrlogprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnhttphdrlogprofile
+      delegate_to: localhost
+      netscaler.adc.lsnhttphdrlogprofile:
+        state: present
+        httphdrlogprofilename: httplog
+        logurl: ENABLED
+        logmethod: ENABLED
+        logversion: ENABLED
+        loghost: ENABLED

@@ -1,0 +1,11 @@
+---
+- name: Sample authenticationvserver_authenticationwebauthpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver_authenticationwebauthpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver_authenticationwebauthpolicy_binding:
+        state: present
+        name: ia_authnvs71
+        policy: webauthpol

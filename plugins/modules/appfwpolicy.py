@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwpolicy
 short_description: Configuration for application firewall policy resource.
 description: Configuration for application firewall policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,15 +41,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about the policy for later reference.
   logaction:
-    type: raw
+    type: str
     description:
       - Where to log information for connections that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the policy.
       - Must begin with a letter, number, or the underscore character \(_\), and must
@@ -109,6 +111,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwpolicy
+      delegate_to: localhost
+      netscaler.adc.appfwpolicy:
+        state: present
+        name: pr_appfw_pol
+        rule: HTTP.REQ.HEADER("Host").EXISTS
+        profilename: pr_appfw
 """
 
 RETURN = r"""

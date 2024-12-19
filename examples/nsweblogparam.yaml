@@ -1,9 +1,9 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsweblogparam playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsweblogparam
+    - name: Configure nsweblogparam
       delegate_to: localhost
       netscaler.adc.nsweblogparam:
         state: present

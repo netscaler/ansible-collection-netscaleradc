@@ -1,0 +1,10 @@
+---
+- name: Sample policyparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policyparam
+      delegate_to: localhost
+      netscaler.adc.policyparam:
+        state: present
+        timeout: 5000

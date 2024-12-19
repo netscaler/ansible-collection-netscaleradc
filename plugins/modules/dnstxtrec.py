@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnstxtrec
 short_description: Configuration for TXT record resource.
 description: Configuration for TXT record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -89,6 +91,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnstxtrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnstxtrec
+      delegate_to: localhost
+      netscaler.adc.dnstxtrec:
+        state: present
+        domain: sample2
+        String:
+          - sample
+        ttl: 36000
 """
 
 RETURN = r"""

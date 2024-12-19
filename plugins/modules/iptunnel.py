@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: iptunnel
 short_description: Configuration for ip Tunnel resource.
 description: Configuration for ip Tunnel resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   destport:
-    type: raw
+    type: int
     description:
       - Specifies UDP destination port for Geneve packets. Default port is 6081.
   grepayload:
@@ -60,7 +62,7 @@ options:
       - Type of Citrix ADC owned public IPv4 address, configured on the local Citrix
         ADC and used to set up the tunnel.
   name:
-    type: raw
+    type: str
     description:
       - 'Name for the IP tunnel. Leading character must be a number or letter. Other
         characters allowed, after the first character, are @ _ - . (period) : (colon)
@@ -89,7 +91,7 @@ options:
     description:
       - Subnet mask of the remote IP address of the tunnel.
   tosinherit:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -102,7 +104,7 @@ options:
     description:
       - The vlan for mulicast packets
   vlantagging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -118,6 +120,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample iptunnel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure iptunnel
+      delegate_to: localhost
+      netscaler.adc.iptunnel:
+        state: present
+        name: t11
+        remote: 1.1.1.14
+        remotesubnetmask: 255.255.255.255
+        local: 1.1.1.22
+        protocol: VXLAN
 """
 
 RETURN = r"""

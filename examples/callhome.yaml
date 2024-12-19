@@ -1,10 +1,10 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample callhome playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | callhome
+    - name: Configure callhome
       delegate_to: localhost
       netscaler.adc.callhome:
         state: present
-        hbcustominterval: '30'
+        hbcustominterval: '20'

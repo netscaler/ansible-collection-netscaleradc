@@ -1,0 +1,11 @@
+---
+- name: Sample nsacls playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nsacls
+      delegate_to: localhost
+      netscaler.adc.nsacls:
+        state: present
+        nitro_operation: apply
+        '#nitro_operation': apply

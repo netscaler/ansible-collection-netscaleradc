@@ -1,0 +1,8 @@
+---
+- name: Sample playbook
+  hosts: localhost
+  tasks:
+    - name: Enable ntpsync
+      delegate_to: localhost
+      netscaler.adc.ntpsync:
+        state: enabled

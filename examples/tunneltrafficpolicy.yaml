@@ -1,0 +1,11 @@
+---
+- name: Sample tunneltrafficpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tunneltrafficpolicy
+      delegate_to: localhost
+      netscaler.adc.tunneltrafficpolicy:
+        state: present
+        name: compress
+        rule: url == /*.asp

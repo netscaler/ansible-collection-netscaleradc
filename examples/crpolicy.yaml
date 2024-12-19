@@ -1,0 +1,12 @@
+---
+- name: Sample crpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure crpolicy
+      delegate_to: localhost
+      netscaler.adc.crpolicy:
+        state: present
+        policyname: crp1
+        rule: 'true'
+        action: origin

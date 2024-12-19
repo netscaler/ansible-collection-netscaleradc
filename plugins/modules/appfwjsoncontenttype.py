@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwjsoncontenttype
 short_description: Configuration for JSON content type resource.
 description: Configuration for JSON content type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -53,15 +55,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample appfwjsoncontenttype playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | appfwJSONContentType
+    - name: Configure appfwjsoncontenttype
       delegate_to: localhost
       netscaler.adc.appfwjsoncontenttype:
         state: present
-        jsoncontenttypevalue: "^application/json$"
+        jsoncontenttypevalue: ^application/json$
         isregex: REGEX
 """
 

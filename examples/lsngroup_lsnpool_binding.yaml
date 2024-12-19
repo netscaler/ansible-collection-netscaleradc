@@ -1,0 +1,11 @@
+---
+- name: Sample lsngroup_lsnpool_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsngroup_lsnpool_binding
+      delegate_to: localhost
+      netscaler.adc.lsngroup_lsnpool_binding:
+        state: present
+        groupname: group4
+        poolname: pool4

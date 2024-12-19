@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslparameter
 short_description: Configuration for SSL parameter resource.
 description: Configuration for SSL parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,25 +39,25 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   crlmemorysizemb:
-    type: raw
+    type: float
     description:
       - Maximum memory size to use for certificate revocation lists (CRLs). This parameter
         reserves memory for a CRL but sets a limit to the maximum memory that the
         CRLs loaded on the appliance can consume.
   cryptodevdisablelimit:
-    type: raw
+    type: float
     description:
       - Limit to the number of disabled SSL chips after which the ADC restarts. A
         value of zero implies that the ADC does not automatically restart.
   defaultprofile:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Global parameter used to enable default profile feature.
   denysslreneg:
-    type: raw
+    type: str
     choices:
       - 'NO'
       - FRONTEND_CLIENT
@@ -74,7 +76,7 @@ options:
       - '* C(NONSECURE) - Deny nonsecure SSL renegotiation. Allows only clients that
         support RFC 5746.'
   dropreqwithnohostheader:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -84,13 +86,13 @@ options:
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
   encrypttriggerpktcount:
-    type: raw
+    type: float
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
         ADC.
   heterogeneoussslhw:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -98,7 +100,7 @@ options:
       - To support both cavium and coleto based platforms in cluster environment,
         this mode has to be enabled.
   hybridfipsmode:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -106,14 +108,14 @@ options:
       - When this mode is enabled, system will use additional crypto hardware to accelerate
         symmetric crypto operations.
   insertcertspace:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - To insert space between lines in the certificate header of request
   insertionencoding:
-    type: raw
+    type: str
     choices:
       - Unicode
       - UTF-8
@@ -121,7 +123,7 @@ options:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
   ndcppcompliancecertcheck:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -132,25 +134,25 @@ options:
         present in the certificate.
       - C(NO) - Do not ignore common name.
   ocspcachesize:
-    type: raw
+    type: float
     description:
       - Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10%
         of the packet engine memory can be assigned. Because the maximum allowed packet
         engine memory is 4GB, the maximum value that can be assigned to the OCSP cache
         is approximately 410 MB.
   operationqueuelimit:
-    type: raw
+    type: float
     description:
       - Limit in percentage of capacity of the crypto operations queue beyond which
         new SSL connections are not accepted until the queue is reduced.
   pushenctriggertimeout:
-    type: raw
+    type: float
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
   pushflag:
-    type: raw
+    type: float
     description:
       - 'Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag
         is set to a value other than 0, the buffered records are forwarded on the
@@ -160,24 +162,24 @@ options:
       - 2 -Insert PUSH flag into every encrypted record.
       - 3 - Insert PUSH flag into every decrypted and encrypted record.
   quantumsize:
-    type: raw
+    type: str
     choices:
-      - 4096
-      - 8192
-      - 16384
+      - '4096'
+      - '8192'
+      - '16384'
     description:
       - Amount of data to collect before the data is pushed to the crypto hardware
         for encryption. For large downloads, a larger quantum size better utilizes
         the crypto resources.
   sendclosenotify:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Send an SSL Close-Notify message to the client at the end of a transaction.
   sigdigesttype:
-    type: raw
+    type: list
     choices:
       - ALL
       - RSA-MD5
@@ -207,8 +209,9 @@ options:
         C(ECDSA-SHA384) C(ECDSA-SHA512)'
       - 'Others: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512).'
       - Note:C(ALL) doesnot include C(RSA-MD5) for any platform.
+    elements: str
   snihttphostmatch:
-    type: raw
+    type: str
     choices:
       - 'NO'
       - CERT
@@ -231,13 +234,13 @@ options:
       - C(NO)     - No validation is performed on the HTTP 'Host'
       - '         header value.'
   softwarecryptothreshold:
-    type: raw
+    type: float
     description:
       - Citrix ADC CPU utilization threshold (in percentage) beyond which crypto operations
         are not done in software.
       - A value of zero implies that CPU is not utilized for doing crypto in software.
   sslierrorcache:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -246,33 +249,33 @@ options:
         to make the subsequent interception or bypass decision. When enabled, NS does
         the lookup of this cached data to do early bypass.
   sslimaxerrorcachemem:
-    type: raw
+    type: float
     description:
       - Specify the maximum memory that can be used for caching the learned data.
         This memory is used as a LRU cache so that the old entries gets replaced with
         new entry once the set memory limit is fully utilised. A value of 0 decides
         the limit automatically.
   ssltriggertimeout:
-    type: raw
+    type: float
     description:
       - Time, in milliseconds, after which encryption is triggered for transactions
         that are not tracked on the Citrix ADC because their length is not known.
         There can be a delay of up to 10ms from the specified timeout value before
         the packet is pushed into the queue.
   strictcachecks:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable strict CA certificate checks on the appliance.
   undefactioncontrol:
-    type: raw
+    type: str
     description:
       - 'Name of the undefined built-in control action: CLIENTAUTH, NOCLIENTAUTH,
         NOOP, RESET, or DROP.'
   undefactiondata:
-    type: raw
+    type: str
     description:
       - 'Name of the undefined built-in data action: NOOP, RESET or DROP.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -280,6 +283,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslparameter
+      delegate_to: localhost
+      netscaler.adc.sslparameter:
+        state: present
+        defaultprofile: ENABLED
 """
 
 RETURN = r"""

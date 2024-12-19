@@ -1,11 +1,15 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample snmpuser playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | snmpuser
+    - name: Configure snmpuser
       delegate_to: localhost
       netscaler.adc.snmpuser:
         state: present
-        name: v3
-        group: v3_grp
+        name: ia_snmpuser3
+        group: ia_group1
+        authtype: MD5
+        authpasswd: freebsd_1
+        privtype: DES
+        privpasswd: freebsd_1

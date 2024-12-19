@@ -1,0 +1,14 @@
+---
+- name: Sample ssldhparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ssldhparam
+      delegate_to: localhost
+      netscaler.adc.ssldhparam:
+        state: present
+        dhfile: dfile
+        bits: '512'
+        gen: '2'
+        nitro_operation: create
+        '#nitro_operation': create

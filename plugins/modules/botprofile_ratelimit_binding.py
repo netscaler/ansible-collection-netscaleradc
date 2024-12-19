@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: botprofile_ratelimit_binding
 short_description: Binding Resource definition for describing association between
   botprofile and ratelimit resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between botp
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -50,10 +52,11 @@ options:
       - DROP
       - REDIRECT
       - RESET
+      - RESPOND_STATUS_TOO_MANY_REQUESTS
     description:
       - One or more actions to be taken when the current rate becomes more than the
-        configured rate. Only C(LOG) action can be combined with C(DROP), C(REDIRECT)
-        or C(RESET) action.
+        configured rate. Only C(LOG) action can be combined with C(DROP), C(REDIRECT),
+        C(RESPOND_STATUS_TOO_MANY_REQUESTS) or C(RESET) action.
     elements: str
   bot_rate_limit_enabled:
     type: str
@@ -89,6 +92,11 @@ options:
         only one binding is allowed for a cookie name. To update the values of an
         existing binding, user has to first unbind that binding, and then needs to
         bind again with new values.
+  condition:
+    type: str
+    description:
+      - Expression to be used in a rate-limiting condition. This expression result
+        must be a boolean value.
   cookiename:
     type: str
     description:
@@ -347,6 +355,13 @@ options:
       - ZW
     description:
       - Country name which is used for geolocation rate-limiting.
+  limittype:
+    type: str
+    choices:
+      - BURSTY
+      - SMOOTH
+    description:
+      - Rate-Limiting traffic Type
   logmessage:
     type: str
     description:

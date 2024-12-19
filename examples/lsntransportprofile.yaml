@@ -1,0 +1,12 @@
+---
+- name: Sample lsntransportprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsntransportprofile
+      delegate_to: localhost
+      netscaler.adc.lsntransportprofile:
+        state: present
+        transportprofilename: icmp
+        transportprotocol: ICMP
+        groupsessionlimit: '10000'

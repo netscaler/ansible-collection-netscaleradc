@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: icaaction
 short_description: Configuration for ica action resource.
 description: Configuration for ica action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,15 +41,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   accessprofilename:
-    type: raw
+    type: str
     description:
       - Name of the ica accessprofile to be associated with this action.
   latencyprofilename:
-    type: raw
+    type: str
     description:
       - Name of the ica latencyprofile to be associated with this action.
   name:
-    type: raw
+    type: str
     description:
       - Name for the ICA action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -71,6 +73,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample icaaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icaaction
+      delegate_to: localhost
+      netscaler.adc.icaaction:
+        state: present
+        name: ia
+        accessprofilename: ipr
 """
 
 RETURN = r"""

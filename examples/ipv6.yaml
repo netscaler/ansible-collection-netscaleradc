@@ -1,0 +1,14 @@
+---
+- name: Sample ipv6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ipv6
+      delegate_to: localhost
+      netscaler.adc.ipv6:
+        state: present
+        routerredirection: ENABLED
+        ndbasereachtime: '20000'
+        ndretransmissiontime: '2000'
+        natprefix: 2001::/96
+        dodad: ENABLED

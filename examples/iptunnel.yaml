@@ -1,0 +1,14 @@
+---
+- name: Sample iptunnel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure iptunnel
+      delegate_to: localhost
+      netscaler.adc.iptunnel:
+        state: present
+        name: t11
+        remote: 1.1.1.14
+        remotesubnetmask: 255.255.255.255
+        local: 1.1.1.22
+        protocol: VXLAN

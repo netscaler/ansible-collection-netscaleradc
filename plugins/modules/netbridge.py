@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: netbridge
 short_description: Configuration for network bridge resource.
 description: Configuration for network bridge resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: raw
+    type: str
     description:
       - The name of the network bridge.
   vxlanvlanmap:
-    type: raw
+    type: str
     description:
       - The vlan to vxlan mapping to be applied to this netbridge.
   netbridge_iptunnel_binding:
@@ -151,6 +153,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample netbridge playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure netbridge
+      delegate_to: localhost
+      netscaler.adc.netbridge:
+        state: present
+        name: ia_netbridge2
 """
 
 RETURN = r"""

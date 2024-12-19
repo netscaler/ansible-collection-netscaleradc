@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nstcpbufparam
 short_description: Configuration for tcp buffer parameter resource.
 description: Configuration for tcp buffer parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   memlimit:
-    type: raw
+    type: float
     description:
       - Maximum memory, in megabytes, that can be used for buffering.
   size:
-    type: raw
+    type: float
     description:
       - TCP buffering size per connection, in kilobytes.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

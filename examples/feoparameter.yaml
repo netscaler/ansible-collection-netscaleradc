@@ -1,0 +1,13 @@
+---
+- name: Sample feoparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure feoparameter
+      delegate_to: localhost
+      netscaler.adc.feoparameter:
+        state: present
+        jpegqualitypercent: '60'
+        cssinlinethressize: '1024'
+        jsinlinethressize: '1024'
+        imginlinethressize: '1024'

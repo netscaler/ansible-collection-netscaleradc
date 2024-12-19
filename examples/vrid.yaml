@@ -1,0 +1,11 @@
+---
+- name: Sample vrid playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vrid
+      delegate_to: localhost
+      netscaler.adc.vrid:
+        state: present
+        id: '100'
+        preemptiondelaytimer: 100

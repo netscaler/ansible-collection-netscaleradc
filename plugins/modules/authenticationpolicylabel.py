@@ -17,17 +17,20 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationpolicylabel
 short_description: Configuration for authentication policy label resource.
 description: Configuration for authentication policy label resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -35,6 +38,7 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
     type: str
@@ -102,6 +106,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationpolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationpolicylabel
+      delegate_to: localhost
+      netscaler.adc.authenticationpolicylabel:
+        state: present
+        labelname: LDAP_Userextraction_External
+        loginschema: LSCHEMA_INT
 """
 
 RETURN = r"""

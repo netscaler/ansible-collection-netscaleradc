@@ -1,0 +1,10 @@
+---
+- name: Sample vrid6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vrid6
+      delegate_to: localhost
+      netscaler.adc.vrid6:
+        state: present
+        id: '13'

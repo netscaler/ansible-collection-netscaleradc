@@ -1,0 +1,12 @@
+---
+- name: Sample lsnrtspalgprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnrtspalgprofile
+      delegate_to: localhost
+      netscaler.adc.lsnrtspalgprofile:
+        state: present
+        rtspalgprofilename: rtspprofile1
+        rtspidletimeout: '100'
+        rtspportrange: '554'

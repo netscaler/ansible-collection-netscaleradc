@@ -1,0 +1,15 @@
+---
+- name: Sample aaauser_vpnintranetapplication_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaauser_vpnintranetapplication_binding
+      delegate_to: localhost
+      netscaler.adc.aaauser_vpnintranetapplication_binding:
+        state: present
+        username: user1
+        policy: vpn_sespol1
+        intranetapplication: intra_app11
+        urlname: vpn_url
+        intranetip: 192.168.1.80
+        netmask: 255.255.255.240

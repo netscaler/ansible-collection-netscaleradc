@@ -1,0 +1,13 @@
+---
+- name: Sample vxlanvlanmap_vxlan_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vxlanvlanmap_vxlan_binding
+      delegate_to: localhost
+      netscaler.adc.vxlanvlanmap_vxlan_binding:
+        state: present
+        name: v1
+        vxlan: '20'
+        vlan:
+          - '2'

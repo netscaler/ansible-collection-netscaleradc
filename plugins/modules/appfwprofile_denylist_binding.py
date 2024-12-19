@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwprofile_denylist_binding
 short_description: Binding Resource definition for describing association between
   appfwprofile and denylist resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between appf
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,6 +40,13 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  alertonly:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Send SNMP alert?
   as_deny_list:
     type: str
     description:
@@ -58,6 +67,8 @@ options:
       - IPv4
       - IPv6
       - URL
+      - HeaderName
+      - HeaderValue
     description:
       - Deny List scan location
   as_deny_list_value_type:

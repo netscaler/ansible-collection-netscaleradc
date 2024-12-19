@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationcaptchaaction
 short_description: Configuration for Captcha Action resource.
 description: Configuration for Captcha Action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the group that is added to user sessions that match current policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the new captcha action. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -58,7 +60,7 @@ options:
     description:
       - Secret of gateway as established at the captcha source.
   serverurl:
-    type: raw
+    type: str
     description:
       - This is the endpoint at which captcha response is validated.
   sitekey:

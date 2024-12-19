@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lacp
 short_description: Configuration for Link aggregation control protocol resource.
 description: Configuration for Link aggregation control protocol resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -51,15 +53,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample lacp playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | lacp
+    - name: Configure lacp
       delegate_to: localhost
       netscaler.adc.lacp:
         state: present
         syspriority: '32768'
+        mac: 12:31:4d:59:3f:9f
 """
 
 RETURN = r"""

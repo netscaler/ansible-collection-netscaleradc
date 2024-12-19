@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslfips
 short_description: Configuration for fips resource.
 description: Configuration for fips resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,7 +43,7 @@ options:
     description:
       - Path to the FIPS firmware file.
   hsmlabel:
-    type: raw
+    type: str
     description:
       - Label to identify the Hardware Security Module (HSM).
   inithsm:

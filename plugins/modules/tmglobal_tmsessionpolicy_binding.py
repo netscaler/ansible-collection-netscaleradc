@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tmglobal_tmsessionpolicy_binding
 short_description: Binding Resource definition for describing association between
   tmglobal and tmsessionpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between tmgl
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -107,12 +109,9 @@ options:
       - SYSTEM
       - RISE
       - FEO
-      - LSN
-      - LargeScaleNAT
       - RDPProxy
       - Rep
       - Reputation
-      - URLFiltering
       - VideoOptimization
       - ForwardProxy
       - SSLInterception
@@ -142,6 +141,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample tmglobal_tmsessionpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmglobal_tmsessionpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.tmglobal_tmsessionpolicy_binding:
+        state: present
+        policyname: SETTMSESSPARAMS_ADV_POL
+        priority: '65534'
+        gotopriorityexpression: NEXT
 """
 
 RETURN = r"""

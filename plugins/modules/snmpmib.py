@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpmib
 short_description: Configuration for SNMP mib resource.
 description: Configuration for SNMP mib resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   contact:
-    type: raw
+    type: str
     description:
       - Name of the administrator for this Citrix ADC. Along with the name, you can
         include information on how to contact this person, such as a phone number
@@ -49,7 +51,7 @@ options:
       - If the information includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my contact" or 'my contact').
   customid:
-    type: raw
+    type: str
     description:
       - Custom identification number for the Citrix ADC. Can consist of 1 to 127 characters
         that include uppercase and lowercase letters, numbers, and the hyphen (-),
@@ -61,7 +63,7 @@ options:
       - If the ID includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my ID" or 'my ID').
   location:
-    type: raw
+    type: str
     description:
       - Physical location of the Citrix ADC. For example, you can specify building
         name, lab number, and rack number. Can consist of 1 to 127 characters that
@@ -73,7 +75,7 @@ options:
       - If the location includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my location" or 'my location').
   name:
-    type: raw
+    type: str
     description:
       - Name for this Citrix ADC. Can consist of 1 to 127 characters that include
         uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound
@@ -84,7 +86,7 @@ options:
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my name" or 'my name').
   ownernode:
-    type: raw
+    type: float
     description:
       - ID of the cluster node for which we are setting the mib. This is a mandatory
         argument to set snmp mib on CLIP.

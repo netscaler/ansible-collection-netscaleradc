@@ -1,11 +1,11 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nshttpprofile playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nshttpProfile
+    - name: Configure nshttpprofile
       delegate_to: localhost
       netscaler.adc.nshttpprofile:
         state: present
-        name: httpprofile-HTTP2-0
-        http2: ENABLED
+        name: nshttp_default_profile
+        dropinvalreqs: ENABLED

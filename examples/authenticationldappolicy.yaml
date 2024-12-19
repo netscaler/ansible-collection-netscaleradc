@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationldappolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationldappolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationldappolicy:
+        state: present
+        name: LDAP_Basic_Policy
+        rule: ns_true
+        reqaction: ldap_mgmt_act

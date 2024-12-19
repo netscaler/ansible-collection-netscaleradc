@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwprofile
 short_description: Configuration for application firewall profile resource.
 description: Configuration for application firewall profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addcookieflags:
-    type: raw
+    type: str
     choices:
       - none
       - httpOnly
@@ -53,7 +55,7 @@ options:
       - '* Secure - Add Secure flag to cookies.'
       - '* All - Add both HTTPOnly and Secure flags to cookies.'
   apispec:
-    type: raw
+    type: str
     description:
       - Name of the API Specification.
   archivename:
@@ -61,14 +63,14 @@ options:
     description:
       - Source for tar archive.
   as_prof_bypass_list_enable:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable bypass list for the profile.
   as_prof_deny_list_enable:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -79,7 +81,7 @@ options:
     description:
       - Augment Relaxation Rules during import
   blockkeywordaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -95,8 +97,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -blockKeywordAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -blockKeywordAction C(none)".'
+    elements: str
   bufferoverflowaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -112,34 +115,35 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -bufferOverflowAction C(none)".'
+    elements: str
   bufferoverflowmaxcookielength:
-    type: raw
+    type: float
     description:
       - Maximum length, in characters, for cookies sent to your protected web sites.
         Requests with longer cookies are blocked.
   bufferoverflowmaxheaderlength:
-    type: raw
+    type: float
     description:
       - Maximum length, in characters, for HTTP headers in requests sent to your protected
         web sites. Requests with longer headers are blocked.
   bufferoverflowmaxquerylength:
-    type: raw
+    type: float
     description:
       - Maximum length, in bytes, for query string sent to your protected web sites.
         Requests with longer query strings are blocked.
   bufferoverflowmaxtotalheaderlength:
-    type: raw
+    type: float
     description:
       - Maximum length, in bytes, for the total HTTP header length in requests sent
         to your protected web sites. The minimum value of this and maxHeaderLen in
         httpProfile will be used. Requests with longer length are blocked.
   bufferoverflowmaxurllength:
-    type: raw
+    type: float
     description:
       - Maximum length, in characters, for URLs on your protected web sites. Requests
         with longer URLs are blocked.
   canonicalizehtmlresponse:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -147,14 +151,14 @@ options:
       - Perform HTML entity encoding for any special characters in responses sent
         by your protected web sites.
   ceflogging:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable CEF format logs for the profile.
   checkrequestheaders:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -162,11 +166,11 @@ options:
       - Check request headers as well as web forms for injected SQL and cross-site
         scripts.
   clientipexpression:
-    type: raw
+    type: str
     description:
       - Expression to get the client IP.
   cmdinjectionaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -182,15 +186,16 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -cmdInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -cmdInjectionAction C(none)".'
+    elements: str
   cmdinjectiongrammar:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Check for CMD injection using CMD grammar
   cmdinjectiontype:
-    type: raw
+    type: str
     choices:
       - CMDSplChar
       - CMDKeyword
@@ -206,12 +211,12 @@ options:
       - '-C(None)                    : Disables checking using both CMD Special Char
         and Keyword'
   comment:
-    type: raw
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
   contenttypeaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -230,8 +235,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -contentTypeaction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -contentTypeaction C(none)".'
+    elements: str
   cookieconsistencyaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -250,8 +256,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -cookieConsistencyAction C(none)".'
+    elements: str
   cookieencryption:
-    type: raw
+    type: str
     choices:
       - none
       - decryptOnly
@@ -264,7 +271,7 @@ options:
       - '* Encrypt Session Only - Encrypt session cookies, but not permanent cookies.'
       - '* Encrypt All - Encrypt all cookies.'
   cookiehijackingaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -282,8 +289,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -cookieHijackingAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -cookieHijackingAction C(none)".'
+    elements: str
   cookieproxying:
-    type: raw
+    type: str
     choices:
       - none
       - sessionOnly
@@ -293,7 +301,7 @@ options:
       - '* Session Only - Proxy session cookies by using the Citrix ADC session ID,
         but do not proxy permanent cookies.'
   cookiesamesiteattribute:
-    type: raw
+    type: str
     choices:
       - None
       - LAX
@@ -303,7 +311,7 @@ options:
         for all set-cookies including appfw session cookies. Default value will be
         "SameSite=Lax".
   cookietransforms:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -318,7 +326,7 @@ options:
         any cookie transformations. If it is set to C(OFF), no cookie transformations
         are performed regardless of any other settings.'
   creditcard:
-    type: raw
+    type: list
     choices:
       - none
       - visa
@@ -329,8 +337,9 @@ options:
       - dinersclub
     description:
       - Credit card types that the application firewall should protect.
+    elements: str
   creditcardaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -347,14 +356,15 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -creditCardAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -creditCardAction C(none)".'
+    elements: str
   creditcardmaxallowed:
-    type: raw
+    type: float
     description:
       - This parameter value is used by the block action. It represents the maximum
         number of credit card numbers that can appear on a web page served by your
         protected web sites. Pages that contain more credit card numbers are blocked.
   creditcardxout:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -362,7 +372,7 @@ options:
       - Mask any credit card number detected in a response by replacing each digit,
         except the digits in the final group, with the letter "X."
   crosssitescriptingaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -382,8 +392,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -crossSiteScriptingAction C(none)".'
+    elements: str
   crosssitescriptingcheckcompleteurls:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -391,7 +402,7 @@ options:
       - Check complete URLs for cross-site scripts, instead of just the query portions
         of URLs.
   crosssitescriptingtransformunsafehtml:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -402,7 +413,7 @@ options:
         any cross-site scripting transformations. If it is set to C(OFF), no cross-site
         scripting transformations are performed regardless of any other settings.'
   csrftagaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -422,13 +433,14 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -CSRFTagAction C(none)".'
+    elements: str
   customsettings:
     type: str
     description:
       - Object name for custom settings.
       - 'This check is applicable to Profile Type: HTML, XML.'
   defaultcharset:
-    type: raw
+    type: str
     description:
       - 'Default character set for protected web pages. Web pages sent by your protected
         web sites in response to user requests are assigned this character set if
@@ -443,19 +455,23 @@ options:
       - '* utf-8 (Unicode)'
       - '* euc-kr (Korean)'
   defaultfieldformatmaxlength:
-    type: raw
+    type: float
     description:
       - Maximum length, in characters, for data entered into a field that is assigned
         the default field type.
+  defaultfieldformatmaxoccurrences:
+    type: float
+    description:
+      - Maxiumum allowed occurrences of the form field name in a request.
   defaultfieldformatminlength:
-    type: raw
+    type: float
     description:
       - Minimum length, in characters, for data entered into a field that is assigned
         the default field type.
       - To disable the minimum and maximum length settings and allow data of any length
         to be entered into the field, set this parameter to zero (0).
   defaultfieldformattype:
-    type: raw
+    type: str
     description:
       - Designate a default field type to be applied to web form fields that do not
         have a field type explicitly assigned to them.
@@ -478,7 +494,7 @@ options:
         by using the add appfw profile command, and then use the set appfw profile
         command to configure the other option.'
   denyurlaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -499,8 +515,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -denyURLaction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -denyURLaction C(none)".'
+    elements: str
   dosecurecreditcardlogging:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -508,7 +525,7 @@ options:
       - Setting this option logs credit card numbers in the response when the match
         is found.
   dynamiclearning:
-    type: raw
+    type: list
     choices:
       - none
       - SQLInjection
@@ -532,8 +549,9 @@ options:
         "set appfw profile -dynamicLearning" followed by the security checks to be
         enabled. To turn off dynamic learning on all security checks, type "set appfw
         profile -dynamicLearning C(none)".'
+    elements: str
   enableformtagging:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -541,18 +559,18 @@ options:
       - Enable tagging of web form fields for use by the Form Field Consistency and
         CSRF Form Tagging checks.
   errorurl:
-    type: raw
+    type: str
     description:
       - URL that application firewall uses as the Error URL.
   excludefileuploadfromchecks:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Exclude uploaded files from Form checks.
   exemptclosureurlsfromsecuritychecks:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -561,7 +579,7 @@ options:
         script, field format and field consistency security checks at locations other
         than headers.
   fakeaccountdetection:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -569,7 +587,7 @@ options:
       - 'Fake account detection flag : C(ON)/C(OFF). If set to C(ON) fake account
         detection in enabled on ADC, if set to C(OFF) fake account detection is disabled.'
   fieldconsistencyaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -589,8 +607,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -fieldConsistencyAction C(none)".'
+    elements: str
   fieldformataction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -609,13 +628,25 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -fieldFormatAction C(none)".'
+    elements: str
+  fieldscan:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Check if formfield limit scan is C(ON) or C(OFF).
+  fieldscanlimit:
+    type: float
+    description:
+      - Field scan limit value for HTML
   fileuploadmaxnum:
-    type: raw
+    type: float
     description:
       - Maximum allowed number of file uploads per form-submission request. The maximum
         setting (65535) allows an unlimited number of uploads.
   fileuploadtypesaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -631,15 +662,16 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -fileUploadTypeAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -fileUploadTypeAction C(none)".'
+    elements: str
   geolocationlogging:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable Geo-Location Logging in CEF format logs for the profile.
   grpcaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -647,8 +679,9 @@ options:
       - stats
     description:
       - gRPC validation
+    elements: str
   htmlerrorobject:
-    type: raw
+    type: str
     description:
       - Name to assign to the HTML Error Object.
       - Must begin with a letter, number, or the underscore character \(_\), and must
@@ -660,13 +693,13 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks \(for example, "my HTML error object" or 'my HTML error object'\).
   htmlerrorstatuscode:
-    type: raw
+    type: float
     description:
       - Response status code associated with HTML error page. Non-empty HTML error
         object must be imported to the application firewall profile for the status
         code.
   htmlerrorstatusmessage:
-    type: raw
+    type: str
     description:
       - Response status message associated with HTML error page
   importprofilename:
@@ -675,7 +708,7 @@ options:
       - Name of the profile which will be created/updated to associate the relaxation
         rules
   infercontenttypexmlpayloadaction:
-    type: raw
+    type: list
     choices:
       - block
       - log
@@ -697,15 +730,16 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -inferContentTypeXMLPayloadAction C(none)". Please note "C(none)"
         action cannot be used with any other action type.'
+    elements: str
   insertcookiesamesiteattribute:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Configure whether application firewall should add samesite attribute for set-cookies
   inspectcontenttypes:
-    type: raw
+    type: list
     choices:
       - none
       - application/x-www-form-urlencoded
@@ -722,8 +756,9 @@ options:
       - ''
       - 'CLI users: To enable, type "set appfw profile -InspectContentTypes" followed
         by the content types to be inspected.'
+    elements: str
   inspectquerycontenttypes:
-    type: raw
+    type: list
     choices:
       - HTML
       - XML
@@ -732,8 +767,9 @@ options:
     description:
       - Inspect request query as well as web forms for injected SQL and cross-site
         scripts for following content types.
+    elements: str
   invalidpercenthandling:
-    type: raw
+    type: str
     choices:
       - asp_mode
       - secure_mode
@@ -743,7 +779,7 @@ options:
       - '* C(asp_mode) - Microsoft ASP format.'
       - '* C(secure_mode) - Secure format.'
   jsonblockkeywordaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -759,8 +795,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONBlockKeywordAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -JSONBlockKeywordAction C(none)".'
+    elements: str
   jsoncmdinjectionaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -776,15 +813,16 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONCMDInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -JSONCMDInjectionAction C(none)".'
+    elements: str
   jsoncmdinjectiongrammar:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Check for CMD injection using CMD grammar in JSON
   jsoncmdinjectiontype:
-    type: raw
+    type: str
     choices:
       - CMDSplChar
       - CMDKeyword
@@ -800,7 +838,7 @@ options:
       - '-C(None)                    : Disables checking using both SQL Special Char
         and Keyword'
   jsondosaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -817,8 +855,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONDoSAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -JSONDoSAction C(none)".'
+    elements: str
   jsonerrorobject:
-    type: raw
+    type: str
     description:
       - Name to the imported JSON Error Object to be set on application firewall profile.
       - ''
@@ -826,17 +865,39 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks \(for example, "my JSON error object" or 'my JSON error object'\).
   jsonerrorstatuscode:
-    type: raw
+    type: float
     description:
       - Response status code associated with JSON error page. Non-empty JSON error
         object must be imported to the application firewall profile for the status
         code.
   jsonerrorstatusmessage:
-    type: raw
+    type: str
     description:
       - Response status message associated with JSON error page
+  jsonfieldscan:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Check if JSON field limit scan is C(ON) or C(OFF).
+  jsonfieldscanlimit:
+    type: float
+    description:
+      - Field scan limit value for JSON
+  jsonmessagescan:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Check if JSON message limit scan is C(ON) or C(OFF)
+  jsonmessagescanlimit:
+    type: float
+    description:
+      - Message scan limit value for JSON
   jsonsqlinjectionaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -852,15 +913,16 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONSQLInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -JSONSQLInjectionAction C(none)".'
+    elements: str
   jsonsqlinjectiongrammar:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Check for SQL injection using SQL grammar in JSON
   jsonsqlinjectiontype:
-    type: raw
+    type: str
     choices:
       - SQLSplChar
       - SQLKeyword
@@ -876,7 +938,7 @@ options:
       - '-C(None)                    : Disables checking using both SQL Special Char
         and Keyword'
   jsonxssaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -893,8 +955,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONXssAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -JSONXssAction C(none)".'
+    elements: str
   logeverypolicyhit:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -904,8 +967,28 @@ options:
     type: str
     description:
       - Match this action url in archived Relaxation Rules to replace.
+  messagescan:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Check if HTML message limit scan is C(ON) or C(OFF)
+  messagescanlimit:
+    type: float
+    description:
+      - Message scan limit value for HTML
+  messagescanlimitcontenttypes:
+    type: list
+    choices:
+      - FORM-DATA
+      - JSON
+      - NONE
+    description:
+      - Enable Message Scan Limit for following content types.
+    elements: str
   multipleheaderaction:
-    type: raw
+    type: list
     choices:
       - block
       - keepLast
@@ -928,8 +1011,9 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -multipleHeaderAction"
         followed by the actions to be enabled.'
+    elements: str
   name:
-    type: raw
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -940,7 +1024,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   optimizepartialreqs:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -956,7 +1040,7 @@ options:
     description:
       - Purge existing Relaxation Rules and replace during import
   percentdecoderecursively:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -964,13 +1048,13 @@ options:
       - Configure whether the application firewall should use percentage recursive
         decoding
   postbodylimit:
-    type: raw
+    type: float
     description:
       - Maximum allowed HTTP post body size, in bytes. Maximum supported value is
         10GB. Citrix recommends enabling streaming option for large values of post
         body limit (>20MB).
   postbodylimitaction:
-    type: raw
+    type: list
     choices:
       - block
       - log
@@ -984,18 +1068,19 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -PostBodyLimitAction
         C(block)" followed by the other actions to be enabled.'
+    elements: str
   postbodylimitsignature:
-    type: raw
+    type: float
     description:
       - Maximum allowed HTTP post body size for signature inspection for location
         HTTP_POST_BODY in the signatures, in bytes. Note that the changes in value
         could impact CPU and latency profile.
   protofileobject:
-    type: raw
+    type: str
     description:
       - Name of the imported proto file.
   refererheadercheck:
-    type: raw
+    type: str
     choices:
       - 'OFF'
       - if_present
@@ -1018,19 +1103,19 @@ options:
       - Replace matched url string with this action url string while restoring Relaxation
         Rules
   requestcontenttype:
-    type: raw
+    type: str
     description:
       - Default Content-Type header for requests.
       - A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-)
         and underscore (_) characters.
   responsecontenttype:
-    type: raw
+    type: str
     description:
       - Default Content-Type header for responses.
       - A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-)
         and underscore (_) characters.
   restaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1038,19 +1123,20 @@ options:
       - stats
     description:
       - rest validation
+    elements: str
   rfcprofile:
-    type: raw
+    type: str
     description:
       - Object name of the rfc profile.
   semicolonfieldseparator:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Allow ';' as a form field separator in URL queries and POST form bodies.
   sessioncookiename:
-    type: raw
+    type: str
     description:
       - Name of the session cookie that the application firewall uses to track user
         sessions.
@@ -1061,7 +1147,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessionlessfieldconsistency:
-    type: raw
+    type: str
     choices:
       - 'OFF'
       - 'ON'
@@ -1069,7 +1155,7 @@ options:
     description:
       - Perform sessionless Field Consistency Checks.
   sessionlessurlclosure:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -1077,12 +1163,12 @@ options:
       - Enable session less URL Closure Checks.
       - 'This check is applicable to Profile Type: HTML.'
   signatures:
-    type: raw
+    type: str
     description:
       - Object name for signatures.
       - 'This check is applicable to Profile Type: HTML, XML.'
   sqlinjectionaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1101,22 +1187,23 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -SQLInjectionAction C(none)".'
+    elements: str
   sqlinjectionchecksqlwildchars:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Check for form fields that contain SQL wild chars .
   sqlinjectiongrammar:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Check for SQL injection using SQL grammar
   sqlinjectiononlycheckfieldswithsqlchars:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -1126,7 +1213,7 @@ options:
       - Most SQL servers require a special string to activate an SQL request, so SQL
         code without a special string is harmless to most SQL servers.
   sqlinjectionparsecomments:
-    type: raw
+    type: str
     choices:
       - checkall
       - ansi
@@ -1141,7 +1228,7 @@ options:
       - '* Nested - Exempt content that is part of a C(nested) (Microsoft-style) comment.'
       - '* ANSI Nested - Exempt content that is part of any type of comment.'
   sqlinjectionruletype:
-    type: raw
+    type: str
     choices:
       - ALLOW
       - DENY
@@ -1150,7 +1237,7 @@ options:
         is configured then allow list rules are used, if C(DENY) rule type is configured
         then deny rules are used.'
   sqlinjectiontransformspecialchars:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -1163,7 +1250,7 @@ options:
         any SQL injection transformations. If it is set to C(OFF), no SQL injection
         transformations are performed regardless of any other settings.'
   sqlinjectiontype:
-    type: raw
+    type: str
     choices:
       - SQLSplChar
       - SQLKeyword
@@ -1179,7 +1266,7 @@ options:
       - '-C(None)                    : Disables checking using both SQL Special Char
         and Keyword'
   starturlaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1198,15 +1285,16 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -startURLaction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -startURLaction C(none)".'
+    elements: str
   starturlclosure:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Toggle  the state of Start URL Closure.
   streaming:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -1227,7 +1315,7 @@ options:
       - Strip HTML comments.
       - 'This check is applicable to Profile Type: HTML.'
   striphtmlcomments:
-    type: raw
+    type: str
     choices:
       - none
       - all
@@ -1236,7 +1324,7 @@ options:
       - Strip HTML comments before forwarding a web page sent by a protected web site
         in response to a user request.
   stripxmlcomments:
-    type: raw
+    type: str
     choices:
       - none
       - all
@@ -1244,14 +1332,14 @@ options:
       - Strip XML comments before forwarding a web page sent by a protected web site
         in response to a user request.
   trace:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Toggle  the state of trace
   type:
-    type: raw
+    type: list
     choices:
       - HTML
       - XML
@@ -1269,8 +1357,9 @@ options:
       - '* C(XML) C(JSON)   - Sites that contain both C(XML) and C(JSON) content.'
       - '* C(HTML) C(XML) C(JSON)   - Sites that contain C(HTML), C(XML) and C(JSON)
         content.'
+    elements: str
   urldecoderequestcookies:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -1278,7 +1367,7 @@ options:
       - URL Decode request cookies before subjecting them to SQL and cross-site scripting
         checks.
   usehtmlerrorobject:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -1286,7 +1375,7 @@ options:
       - Send an imported HTML Error object to a user when a request is blocked, instead
         of redirecting the user to the designated Error URL.
   verboseloglevel:
-    type: raw
+    type: str
     choices:
       - pattern
       - patternPayload
@@ -1294,7 +1383,7 @@ options:
     description:
       - Detailed Logging Verbose Log Level.
   xmlattachmentaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1313,8 +1402,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLAttachmentAction C(none)".'
+    elements: str
   xmldosaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1334,8 +1424,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLDoSAction C(none)".'
+    elements: str
   xmlerrorobject:
-    type: raw
+    type: str
     description:
       - Name to assign to the XML Error Object, which the application firewall displays
         when a user request is blocked.
@@ -1348,16 +1439,16 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks \(for example, "my XML error object" or 'my XML error object'\).
   xmlerrorstatuscode:
-    type: raw
+    type: float
     description:
       - Response status code associated with XML error page. Non-empty XML error object
         must be imported to the application firewall profile for the status code.
   xmlerrorstatusmessage:
-    type: raw
+    type: str
     description:
       - Response status message associated with XML error page
   xmlformataction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1373,8 +1464,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLFormatAction C(none)".'
+    elements: str
   xmlsoapfaultaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1393,8 +1485,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLSOAPFaultAction C(none)".'
+    elements: str
   xmlsqlinjectionaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1410,15 +1503,16 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLSQLInjectionAction C(none)".'
+    elements: str
   xmlsqlinjectionchecksqlwildchars:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Check for form fields that contain SQL wild chars .
   xmlsqlinjectiononlycheckfieldswithsqlchars:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -1426,7 +1520,7 @@ options:
       - Check only form fields that contain SQL special characters, which most SQL
         servers require before accepting an SQL command, for injected SQL.
   xmlsqlinjectionparsecomments:
-    type: raw
+    type: str
     choices:
       - checkall
       - ansi
@@ -1442,7 +1536,7 @@ options:
       - '* Nested - Exempt content that is part of a C(nested) (Microsoft-style) comment.'
       - '* ANSI Nested - Exempt content that is part of any type of comment.'
   xmlsqlinjectiontype:
-    type: raw
+    type: str
     choices:
       - SQLSplChar
       - SQLKeyword
@@ -1456,7 +1550,7 @@ options:
       - '-C(SQLSplCharANDKeyword)    : Checks for both and blocks if both are found'
       - '-C(SQLSplCharORKeyword)     : Checks for both and blocks if anyone is found'
   xmlvalidationaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1472,8 +1566,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLValidationAction C(none)".'
+    elements: str
   xmlwsiaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1493,8 +1588,9 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLWSIAction C(none)".'
+    elements: str
   xmlxssaction:
-    type: raw
+    type: list
     choices:
       - none
       - block
@@ -1512,6 +1608,7 @@ options:
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction"
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -XMLXSSAction C(none)".'
+    elements: str
   appfwprofile_appfwconfidfield_binding:
     type: dict
     description: Bindings for appfwprofile_appfwconfidfield_binding resource
@@ -1912,6 +2009,31 @@ options:
         elements: dict
         description: List of binding members
         default: []
+  appfwprofile_grpcvalidation_binding:
+    type: dict
+    description: Bindings for appfwprofile_grpcvalidation_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
   appfwprofile_jsonblockkeyword_binding:
     type: dict
     description: Bindings for appfwprofile_jsonblockkeyword_binding resource
@@ -2040,6 +2162,31 @@ options:
   appfwprofile_logexpression_binding:
     type: dict
     description: Bindings for appfwprofile_logexpression_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_restvalidation_binding:
+    type: dict
+    description: Bindings for appfwprofile_restvalidation_binding resource
     suboptions:
       mode:
         type: str
@@ -2317,6 +2464,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile
+      delegate_to: localhost
+      netscaler.adc.appfwprofile:
+        state: present
+        name: pr_appfw
+        starturlaction:
+          - learn
+          - log
+          - stats
 """
 
 RETURN = r"""

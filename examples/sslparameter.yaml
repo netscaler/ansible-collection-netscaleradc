@@ -1,0 +1,10 @@
+---
+- name: Sample sslparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslparameter
+      delegate_to: localhost
+      netscaler.adc.sslparameter:
+        state: present
+        defaultprofile: ENABLED

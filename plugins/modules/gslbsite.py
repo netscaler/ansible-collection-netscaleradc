@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: gslbsite
 short_description: Configuration for GSLB site resource.
 description: Configuration for GSLB site resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,10 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   backupparentlist:
-    type: raw
+    type: list
     description:
       - The list of backup gslb sites configured in preferred order. Need to be parent
         gsb sites.
+    elements: str
   clip:
     type: str
     description:
@@ -50,7 +53,7 @@ options:
         site for GSLB auto-sync. Note: The cluster IP address is defined when creating
         the cluster.'
   metricexchange:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -66,12 +69,16 @@ options:
         Also, if you disable metrics exchange, you must use a monitor to determine
         the state of GSLB services. Otherwise, the service is marked as DOWN.
   naptrreplacementsuffix:
-    type: raw
+    type: str
     description:
       - The naptr replacement suffix configured here will be used to construct the
         naptr replacement field in NAPTR record.
+  newname:
+    type: str
+    description:
+      - New name for the GSLB site.
   nwmetricexchange:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -96,7 +103,7 @@ options:
         in a private address space and the site has a public IP address hosted on
         an external firewall or a NAT device.
   sessionexchange:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -110,7 +117,7 @@ options:
         by the appliance (for example, a SNIP or MIP address, or the IP address of
         the ADNS service).
   sitename:
-    type: raw
+    type: str
     description:
       - Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -119,6 +126,10 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my gslbsite" or ''my gslbsite'').'
+  sitepassword:
+    type: str
+    description:
+      - Password to be used for mep communication between gslb site nodes.
   sitetype:
     type: str
     choices:
@@ -131,7 +142,7 @@ options:
         example, a MIP address or SNIP address), the site is a local site. Otherwise,
         it is a remote site.
   triggermonitor:
-    type: raw
+    type: str
     choices:
       - ALWAYS
       - MEPDOWN
@@ -151,6 +162,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample gslbsite playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbsite
+      delegate_to: localhost
+      netscaler.adc.gslbsite:
+        state: present
+        sitename: GSLB_Site_USE2
+        siteipaddress: 10.76.126.5
+        publicip: 10.76.126.5
+        triggermonitor: MEPDOWN_SVCDOWN
 """
 
 RETURN = r"""

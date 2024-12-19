@@ -1,0 +1,15 @@
+---
+- name: Sample authenticationepaaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationepaaction
+      delegate_to: localhost
+      netscaler.adc.authenticationepaaction:
+        state: present
+        name: EPA_ACT2
+        csecexpr: sys.client_expr("proc_0_perl")
+        killprocess: process2
+        deletefiles: file2
+        defaultepagroup: DG2
+        quarantinegroup: QG2

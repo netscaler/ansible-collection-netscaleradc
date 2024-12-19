@@ -1,0 +1,11 @@
+---
+- name: Sample cmppolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmppolicylabel
+      delegate_to: localhost
+      netscaler.adc.cmppolicylabel:
+        state: present
+        labelname: Base_cmp_pol_label
+        type: RES

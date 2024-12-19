@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: urlfilteringparameter
 short_description: Configuration for URLFILTERING paramter resource.
 description: Configuration for URLFILTERING paramter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,23 +39,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cloudhost:
-    type: raw
+    type: str
     description:
       - URL Filtering Cloud host.
   hoursbetweendbupdates:
-    type: raw
+    type: float
     description:
       - URL Filtering hours between DB updates.
   localdatabasethreads:
-    type: raw
+    type: float
     description:
       - URL Filtering Local DB number of threads.
   seeddbpath:
-    type: raw
+    type: str
     description:
       - URL Filtering Seed DB path.
   timeofdaytoupdatedb:
-    type: raw
+    type: str
     description:
       - URL Filtering time of day to update DB.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

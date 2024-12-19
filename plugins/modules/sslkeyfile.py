@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslkeyfile
 short_description: Configuration for Imported ssl key files resource.
 description: Configuration for Imported ssl key files resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,7 +56,9 @@ options:
       - URL specifying the protocol, host, and path, including file name, to the key
         file to be imported. For example, http://www.example.com/key_file.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
-        that requires client certificate authentication for access.'
+        that requires client certificate authentication for access, and the issuer
+        certificate of the HTTPS server is not present in the specific path on NetScaler
+        to authenticate the HTTPS server.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

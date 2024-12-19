@@ -1,14 +1,9 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample appfwurlencodedformcontenttype playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | appfwurlEncodedFormContentType
-      delegate_to: localhost
-      netscaler.adc.appfwurlencodedformcontenttype:
-        state: present
-        urlencodedformcontenttypevalue: application/x-www-form-urlencoded
-    - name: Sample Task | appfwurlEncodedFormContentType | 2
+    - name: Configure appfwurlencodedformcontenttype
       delegate_to: localhost
       netscaler.adc.appfwurlencodedformcontenttype:
         state: present

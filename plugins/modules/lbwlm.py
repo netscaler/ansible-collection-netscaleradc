@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbwlm
 short_description: Configuration for web log manager resource.
 description: Configuration for web log manager resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,7 +45,7 @@ options:
     description:
       - The IP address of the WLM.
   katimeout:
-    type: raw
+    type: float
     description:
       - The idle time period after which Citrix ADC would probe the WLM. The value
         ranges from 1 to 1440 minutes.
@@ -56,7 +58,7 @@ options:
     description:
       - The port of the WLM.
   wlmname:
-    type: raw
+    type: str
     description:
       - The name of the Work Load Manager.
   lbwlm_lbvserver_binding:

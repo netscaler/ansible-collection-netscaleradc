@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cloudngsparameter
 short_description: Configuration for cloud ngsparameter resource.
 description: Configuration for cloud ngsparameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowdtls12:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enables DTLS1.2 for client connections on CGS
   allowedudtversion:
-    type: raw
+    type: str
     choices:
       - V4
       - V5
@@ -53,7 +55,7 @@ options:
     description:
       - Enables the required UDT version to EDT connections in the CGS deployment
   blockonallowedngstktprof:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -61,7 +63,7 @@ options:
       - Enables blocking connections authenticated with a ticket createdby by an entity
         not whitelisted in allowedngstktprofile
   csvserverticketingdecouple:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'

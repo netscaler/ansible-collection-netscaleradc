@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnspolicylabel
 short_description: Configuration for dns policy label resource.
 description: Configuration for dns policy label resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -81,6 +83,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnspolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnspolicylabel
+      delegate_to: localhost
+      netscaler.adc.dnspolicylabel:
+        state: present
+        labelname: invoke_labelname2
+        transform: dns_res
 """
 
 RETURN = r"""

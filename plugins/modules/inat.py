@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: inat
 short_description: Configuration for inbound nat resource.
 description: Configuration for inbound nat resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   connfailover:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -48,7 +50,7 @@ options:
         availability (HA) pair. That is, synchronize all connection-related information
         for the INAT session
   ftp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -56,13 +58,13 @@ options:
       - Enable the FTP protocol on the server for transferring files between the client
         and the server.
   mode:
-    type: raw
+    type: str
     choices:
       - STATELESS
     description:
       - Stateless translation.
   name:
-    type: raw
+    type: str
     description:
       - 'Name for the Inbound NAT (INAT) entry. Leading character must be a number
         or letter. Other characters allowed, after the first character, are @ _ -
@@ -73,7 +75,7 @@ options:
       - IP address of the server to which the packet is sent by the Citrix ADC. Can
         be an IPv4 or IPv6 address.
   proxyip:
-    type: raw
+    type: str
     description:
       - Unique IP address used as the source IP address in packets sent to the server.
         Must be a MIP or SNIP address.
@@ -83,7 +85,7 @@ options:
       - Public IP address of packets received on the Citrix ADC. Can be aNetScaler-owned
         VIP or VIP6 address.
   tcpproxy:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -97,14 +99,14 @@ options:
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   tftp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - To enable/disable TFTP (Default C(DISABLED)).
   useproxyport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -112,7 +114,7 @@ options:
       - Enable the Citrix ADC to proxy the source port of packets before sending the
         packets to the server.
   usip:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -120,7 +122,7 @@ options:
       - Enable the Citrix ADC to retain the source IP address of packets before sending
         the packets to the server.
   usnip:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'

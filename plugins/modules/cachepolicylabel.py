@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cachepolicylabel
 short_description: Configuration for cache policy label resource.
 description: Configuration for cache policy label resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -94,16 +96,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample cachepolicylabel playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | cachepolicylabel
+    - name: Configure cachepolicylabel
       delegate_to: localhost
       netscaler.adc.cachepolicylabel:
         state: present
-        labelname: _reqBuiltinDefaults
-        evaluates: REQ
+        labelname: _httpquicResBuiltinDefaults
+        evaluates: HTTPQUIC_RES
 """
 
 RETURN = r"""

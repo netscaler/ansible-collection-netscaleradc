@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cloudprofile
 short_description: Configuration for cloud profile resource.
 description: Configuration for cloud profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -99,6 +101,9 @@ options:
       - MQTT
       - MQTT_TLS
       - QUIC_BRIDGE
+      - DOT
+      - ADNS_DOT
+      - HTTP_QUIC
     description:
       - The type of bound service
   delay:
@@ -180,6 +185,8 @@ options:
       - MQTT_TLS
       - QUIC_BRIDGE
       - HTTP_QUIC
+      - DOT
+      - SSL_PROXY
     description:
       - Protocol used by the service (also called the service type).
   type:

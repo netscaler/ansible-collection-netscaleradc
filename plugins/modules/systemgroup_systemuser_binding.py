@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemgroup_systemuser_binding
 short_description: Binding Resource definition for describing association between
   systemgroup and systemuser resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between syst
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -51,6 +53,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample systemgroup_systemuser_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemgroup_systemuser_binding
+      delegate_to: localhost
+      netscaler.adc.systemgroup_systemuser_binding:
+        state: present
+        groupname: network
+        username: net_ron
 """
 
 RETURN = r"""

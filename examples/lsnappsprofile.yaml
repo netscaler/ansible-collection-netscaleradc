@@ -1,0 +1,14 @@
+---
+- name: Sample lsnappsprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnappsprofile
+      delegate_to: localhost
+      netscaler.adc.lsnappsprofile:
+        state: present
+        appsprofilename: icmp
+        transportprotocol: ICMP
+        mapping: ENDPOINT-INDEPENDENT
+        filtering: ENDPOINT-INDEPENDENT
+        l2info: ENABLED

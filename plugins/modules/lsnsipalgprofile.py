@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnsipalgprofile
 short_description: Configuration for LSN SIPALG Profile resource.
 description: Configuration for LSN SIPALG Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,73 +41,73 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   datasessionidletimeout:
-    type: raw
+    type: float
     description:
       - Idle timeout for the data channel sessions in seconds.
   opencontactpinhole:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE ContactPinhole creation.
   openrecordroutepinhole:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RecordRoutePinhole creation.
   openregisterpinhole:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RegisterPinhole creation.
   openroutepinhole:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RoutePinhole creation.
   openviapinhole:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE ViaPinhole creation.
   registrationtimeout:
-    type: raw
+    type: float
     description:
       - SIP registration timeout in seconds.
   rport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE rport.
   sipalgprofilename:
-    type: raw
+    type: str
     description:
       - The name of the SIPALG Profile.
   sipdstportrange:
-    type: raw
+    type: str
     description:
       - Destination port range for SIP_UDP and SIP_TCP.
   sipsessiontimeout:
-    type: raw
+    type: float
     description:
       - SIP control channel session timeout in seconds.
   sipsrcportrange:
-    type: raw
+    type: str
     description:
       - Source port range for SIP_UDP and SIP_TCP.
   siptransportprotocol:
-    type: raw
+    type: str
     choices:
       - TCP
       - UDP
@@ -116,6 +118,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnsipalgprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnsipalgprofile
+      delegate_to: localhost
+      netscaler.adc.lsnsipalgprofile:
+        state: present
+        sipalgprofilename: sipalgprofile_udp
+        registrationtimeout: '3600'
+        sipdstportrange: '5060'
+        siptransportprotocol: UDP
 """
 
 RETURN = r"""

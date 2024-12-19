@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: hasync
 short_description: Configuration for sync resource.
 description: Configuration for sync resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -52,10 +54,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sync HA Config
-  netscaler.adc.hasync:
-    save: "YES"
-    force: true
 """
 
 RETURN = r"""

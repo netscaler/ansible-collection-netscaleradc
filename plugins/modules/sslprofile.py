@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslprofile
 short_description: Configuration for SSL profile resource.
 description: Configuration for SSL profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowextendedmastersecret:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -50,7 +52,7 @@ options:
       - in order to be enabled during a handshake. This setting applies to both
       - frontend and backend SSL profiles.
   allowunknownsni:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -64,7 +66,7 @@ options:
         a default cert is bound.
       - DISLABED  - handshakes with an unknown SNI are not allowed to continue.
   alpnprotocol:
-    type: raw
+    type: str
     choices:
       - NONE
       - HTTP1.1
@@ -76,15 +78,15 @@ options:
         hence remain unknown to the TLS layer. This parameter is relevant only if
         SSL connection is handled by the virtual server of the type SSL_TCP.
   ciphername:
-    type: raw
+    type: str
     description:
       - The cipher group/alias/individual cipher configuration
   cipherpriority:
-    type: raw
+    type: float
     description:
       - cipher priority
   cipherredirect:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -95,16 +97,16 @@ options:
         server or service and the client.
       - This parameter is not applicable when configuring a backend profile.
   cipherurl:
-    type: raw
+    type: str
     description:
       - The redirect URL to be used with the Cipher Redirect feature.
   cleartextport:
-    type: raw
+    type: int
     description:
       - Port on which clear-text data is sent by the appliance to the server. Do not
         specify this parameter for SSL offloading with end-to-end encryption.
   clientauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -113,7 +115,7 @@ options:
         terminates the SSL handshake if the SSL client does not provide a valid certificate.
       - This parameter is not applicable when configuring a backend profile.
   clientauthuseboundcachain:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -121,19 +123,19 @@ options:
       - Certficates bound on the VIP are used for validating the client cert. Certficates
         came along with client cert are not used for validating the client cert
   clientcert:
-    type: raw
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The rule for client certificate requirement in client authentication.
   commonname:
-    type: raw
+    type: str
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server.
   denysslreneg:
-    type: raw
+    type: str
     choices:
       - 'NO'
       - FRONTEND_CLIENT
@@ -152,7 +154,7 @@ options:
       - '* C(NONSECURE) - Deny nonsecure SSL renegotiation. Allows only clients that
         support RFC 5746.'
   dh:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -160,7 +162,7 @@ options:
       - State of Diffie-Hellman (DH) key exchange.
       - This parameter is not applicable when configuring a backend profile.
   dhcount:
-    type: raw
+    type: float
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
@@ -168,7 +170,7 @@ options:
       - This parameter is not applicable when configuring a backend profile. Allowed
         DH count values are 0 and >= 500.
   dhekeyexchangewithpsk:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -184,11 +186,11 @@ options:
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
   dhfile:
-    type: raw
+    type: str
     description:
       - The file name and path for the DH parameter.
   dhkeyexpsizelimit:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -198,7 +200,7 @@ options:
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
   dropreqwithnohostheader:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -208,13 +210,13 @@ options:
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
   encrypttriggerpktcount:
-    type: raw
+    type: float
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
         ADC.
   ersa:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -229,12 +231,12 @@ options:
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend profile.
   ersacount:
-    type: raw
+    type: float
     description:
       - The  refresh  count  for the re-generation of RSA public-key and private-key
         pair.
   hsts:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -242,7 +244,7 @@ options:
       - State of HSTS protocol support for the SSL profile. Using HSTS, a server can
         enforce the use of an HTTPS connection for all communication with a client
   includesubdomains:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -250,7 +252,7 @@ options:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
   insertionencoding:
-    type: raw
+    type: str
     choices:
       - Unicode
       - UTF-8
@@ -258,19 +260,26 @@ options:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
   maxage:
-    type: raw
+    type: float
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
         during which the client must send only HTTPS requests to the server
+  maxrenegrate:
+    type: float
+    description:
+      - Maximum number of renegotiation requests allowed, in one second, to each SSL
+        entity to which this profile is bound. When set to 0, an unlimited number
+        of renegotiation requests are allowed. Applicable only when Deny SSL renegotiation
+        is set to a value other than ALL.
   name:
-    type: raw
+    type: str
     description:
       - Name for the SSL profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Cannot be changed after the profile is created.
   ocspstapling:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -284,19 +293,19 @@ options:
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
   preload:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Flag indicates the consent of the site owner to have their domain preloaded.
   prevsessionkeylifetime:
-    type: raw
+    type: float
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
   pushenctrigger:
-    type: raw
+    type: str
     choices:
       - Always
       - Merge
@@ -313,13 +322,13 @@ options:
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
   pushenctriggertimeout:
-    type: raw
+    type: float
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
   pushflag:
-    type: raw
+    type: float
     description:
       - 'Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag
         is set to a value other than 0, the buffered records are forwarded on the
@@ -329,17 +338,17 @@ options:
       - 2 -Insert PUSH flag into every encrypted record.
       - 3 - Insert PUSH flag into every decrypted and encrypted record.
   quantumsize:
-    type: raw
+    type: str
     choices:
-      - 4096
-      - 8192
-      - 16384
+      - '4096'
+      - '8192'
+      - '16384'
     description:
       - Amount of data to collect before the data is pushed to the crypto hardware
         for encryption. For large downloads, a larger quantum size better utilizes
         the crypto resources.
   redirectportrewrite:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -348,48 +357,48 @@ options:
         is set to C(ENABLED), and the URL from the server does not contain the standard
         port, the port is rewritten to the standard.
   sendclosenotify:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction.
   serverauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of server authentication support for the SSL Backend profile.
   sessionkeylifetime:
-    type: raw
+    type: float
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
   sessionticket:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option enables the use of session tickets, as per the RFC 5077
   sessionticketkeydata:
-    type: raw
+    type: str
     description:
       - Session ticket enc/dec key , admin can set it
   sessionticketkeyrefresh:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option enables the use of session tickets, as per the RFC 5077
   sessionticketlifetime:
-    type: raw
+    type: float
     description:
       - This option sets the life time of session tickets issued by NS in secs
   sessreuse:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -398,11 +407,11 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: raw
+    type: float
     description:
       - The Session timeout value in seconds.
   skipclientcertpolicycheck:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -412,7 +421,7 @@ options:
         This option can be used only when Client Authentication is Enabled and ClientCert
         is set to Mandatory
   snienable:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -423,7 +432,7 @@ options:
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
   snihttphostmatch:
-    type: raw
+    type: str
     choices:
       - 'NO'
       - CERT
@@ -446,7 +455,7 @@ options:
       - C(NO)     - No validation is performed on the HTTP 'Host'
       - '         header value.'
   ssl3:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -455,27 +464,27 @@ options:
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
   sslimaxsessperserver:
-    type: raw
+    type: float
     description:
       - Maximum ssl session to be cached per dynamic origin server. A unique ssl session
         is created for each SNI received from the client on ClientHello and the matching
         session is used for server session reuse.
   sslinterception:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable transparent interception of SSL sessions.
   ssliocspcheck:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable OCSP check for origin server certificate.
   sslireneg:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -483,7 +492,7 @@ options:
       - Enable or disable triggering the client renegotiation when renegotiation request
         is received from the origin server.
   ssllogprofile:
-    type: raw
+    type: str
     description:
       - The name of the ssllogprofile.
   sslprofiletype:
@@ -492,12 +501,13 @@ options:
       - BackEnd
       - FrontEnd
       - QUIC-FrontEnd
+      - QUIC-BackEnd
     description:
       - Type of profile. Front end profiles apply to the entity that receives requests
         from a client. Backend profiles apply to the entity that sends client requests
         to a server.
   sslredirect:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -512,21 +522,21 @@ options:
         from http:// to https:// and the SSL session does not break.
       - This parameter is not applicable when configuring a backend profile.
   ssltriggertimeout:
-    type: raw
+    type: float
     description:
       - Time, in milliseconds, after which encryption is triggered for transactions
         that are not tracked on the Citrix ADC because their length is not known.
         There can be a delay of up to 10ms from the specified timeout value before
         the packet is pushed into the queue.
   strictcachecks:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable strict CA certificate checks on the appliance.
   strictsigdigestcheck:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -535,35 +545,35 @@ options:
         handshake is signed with one of signature-hash combination supported by Citrix
         ADC.
   tls1:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL profile.
   tls11:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL profile.
   tls12:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL profile.
   tls13:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL profile.
   tls13sessionticketsperauthcontext:
-    type: raw
+    type: float
     description:
       - Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated,
         ticket-based resumption is enabled, and either (1) a handshake completes or
@@ -572,7 +582,7 @@ options:
         using a fresh ticket for each connection.
       - No tickets are sent if resumption is disabled.
   zerorttearlydata:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -687,6 +697,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslprofile
+      delegate_to: localhost
+      netscaler.adc.sslprofile:
+        state: present
+        name: ns_default_ssl_profile_internal_frontend_service
 """
 
 RETURN = r"""

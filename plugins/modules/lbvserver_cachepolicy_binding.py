@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver_cachepolicy_binding
 short_description: Binding Resource definition for describing association between
   lbvserver and cachepolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -97,6 +99,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbvserver_cachepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_cachepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_cachepolicy_binding:
+        state: present
+        name: _XM_LB_CACHE_10.100.39.1321
+        policyname: n_XM_CACHE_WO_DEVICEID_10.100.39.132
+        priority: '90'
+        gotopriorityexpression: END
+        bindpoint: REQUEST
 """
 
 RETURN = r"""

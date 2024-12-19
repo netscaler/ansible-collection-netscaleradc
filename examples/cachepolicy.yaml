@@ -1,22 +1,14 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample cachepolicy playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | cachepolicy
+    - name: Configure cachepolicy
       delegate_to: localhost
       netscaler.adc.cachepolicy:
         state: present
-        policyname: _nonGetReq
-        rule: '!HTTP.REQ.METHOD.eq(GET)'
-        action: NOCACHE
-    - name: Sample Task | cachepolicy | 2
-      delegate_to: localhost
-      netscaler.adc.cachepolicy:
-        state: present
-        policyname: _cacheableCacheControlRes
-        rule: ((HTTP.RES.CACHE_CONTROL.IS_PUBLIC) || (HTTP.RES.CACHE_CONTROL.IS_MAX_AGE)
-          || (HTTP.RES.CACHE_CONTROL.IS_MUST_REVALIDATE) || (HTTP.RES.CACHE_CONTROL.IS_PROXY_REVALIDATE)
-          || (HTTP.RES.CACHE_CONTROL.IS_S_MAXAGE))
+        policyname: n_XM_CACHE_WO_DEVICEID_10.100.39.132
+        rule: HTTP.REQ.HEADER("Host").CONTAINS("callout") && HTTP.REQ.URL.QUERY.CONTAINS("DeviceId").NOT
+          && HTTP.REQ.URL.QUERY.CONTAINS("url")
         action: CACHE
-        storeingroup: DEFAULT
+        storeingroup: n_XM_WO_DEVICEID_10.100.39.132

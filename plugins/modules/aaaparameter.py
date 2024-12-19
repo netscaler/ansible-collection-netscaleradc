@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaaparameter
 short_description: Configuration for AAA parameter resource.
 description: Configuration for AAA parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   aaadloglevel:
-    type: raw
+    type: str
     choices:
       - EMERGENCY
       - ALERT
@@ -59,11 +61,11 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
   aaadnatip:
-    type: raw
+    type: str
     description:
       - Source IP address to use for traffic that is sent to the authentication server.
   aaasessionloglevel:
-    type: raw
+    type: str
     choices:
       - EMERGENCY
       - ALERT
@@ -86,14 +88,14 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
   apitokencache:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to enable/disable API cache feature.
   defaultauthtype:
-    type: raw
+    type: str
     choices:
       - LOCAL
       - LDAP
@@ -103,21 +105,21 @@ options:
     description:
       - The default authentication server type.
   defaultcspheader:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Parameter to enable/disable default CSP header
   dynaddr:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Set by the DHCP client when the IP address was fetched dynamically.
   enableenhancedauthfeedback:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -125,27 +127,34 @@ options:
       - Enhanced auth feedback provides more information to the end user about the
         reason for an authentication failure.  The default value is set to C(NO).
   enablesessionstickiness:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enables/Disables stickiness to authentication servers
   enablestaticpagecaching:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - The default state of VPN Static Page caching. Static Page caching is enabled
         by default.
+  enhancedepa:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Parameter to enable/disable EPA v2 functionality
   failedlogintimeout:
     type: float
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
   ftmode:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - HA
@@ -154,50 +163,50 @@ options:
       - First time user mode determines which configuration options are shown by default
         when logging in to the GUI. This setting is controlled by the GUI.
   httponlycookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Parameter to set/reset HttpOnly Flag for NSC_AAAC/NSC_TMAS cookies in nfactor
   loginencryption:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Parameter to encrypt login information for nFactor flow
   maxaaausers:
-    type: raw
+    type: float
     description:
       - Maximum number of concurrent users allowed to log on to VPN simultaneously.
   maxkbquestions:
-    type: raw
+    type: float
     description:
       - This will set maximum number of Questions to be asked for KB Validation. Default
         value is 2, Max Value is 6
   maxloginattempts:
-    type: raw
+    type: float
     description:
       - Maximum Number of login Attempts
   maxsamldeflatesize:
-    type: raw
+    type: float
     description:
       - This will set the maximum deflate size in case of SAML Redirect binding.
   persistentloginattempts:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Persistent storage of unsuccessful user login attempts
   pwdexpirynotificationdays:
-    type: raw
+    type: float
     description:
       - This will set the threshold time in days for password expiry notification.
         Default value is 0, which means no notification is sent
   samesite:
-    type: raw
+    type: str
     choices:
       - None
       - LAX
@@ -206,26 +215,57 @@ options:
       - SameSite attribute value for Cookies generated in AAATM context. This attribute
         value will be appended only for the cookies which are specified in the builtin
         patset ns_cookies_samesite
+  securityinsights:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - On enabling this option, the Citrix ADC will send the security insight records
+        to the configured collectors when request comes to Authentication endpoint.
+      - '* If cs vserver is frontend with Authentication vserver as target for cs
+        action, then record is sent using Authentication vserver name.'
+      - '* If vpn/lb/cs vserver are configured with Authentication ON, then then record
+        is sent using vpn/lb/cs vserver name accordingly.'
+      - '* If authentication vserver is frontend, then record is sent using Authentication
+        vserver name.'
   tokenintrospectioninterval:
-    type: raw
+    type: float
     description:
       - Frequency at which a token must be verified at the Authorization Server (AS)
         despite being found in cache.
+  wafprotection:
+    type: list
+    choices:
+      - DISABLED
+      - AUTH
+      - VPN
+    description:
+      - Entities for which WAF Protection need to be applied.
+      - 'Available settings function as follows:'
+      - '* C(AUTH) - Endpoints used for Authentication applicable for both AAATM,
+        IDP, GATEWAY use cases.'
+      - '* C(VPN) - Endpoints used for Gateway use cases.'
+      - '* C(DISABLED) - No Endpoint WAF protection.'
+      - Currently supported only in default partition
+    elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample aaaparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | aaaparameter
+    - name: Configure aaaparameter
       delegate_to: localhost
       netscaler.adc.aaaparameter:
         state: present
         maxaaausers: '4294967295'
+        aaasessionloglevel: DEBUG
+        aaadloglevel: ALERT
 """
 
 RETURN = r"""

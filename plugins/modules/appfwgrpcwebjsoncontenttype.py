@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwgrpcwebjsoncontenttype
 short_description: Configuration for gRRPC-Web-json content type resource.
 description: Configuration for gRRPC-Web-json content type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -52,6 +54,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwgrpcwebjsoncontenttype playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwgrpcwebjsoncontenttype
+      delegate_to: localhost
+      netscaler.adc.appfwgrpcwebjsoncontenttype:
+        state: present
+        grpcwebjsoncontenttypevalue: application/grpc-web+json
 """
 
 RETURN = r"""

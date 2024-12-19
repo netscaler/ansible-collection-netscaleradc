@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ntpserver
 short_description: Configuration for NTP server resource.
 description: Configuration for NTP server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   autokey:
-    type: raw
+    type: bool
     description:
       - Use the Autokey protocol for key management for this server, with the cryptographic
         values (for example, symmetric key, host and public certificate files, and
@@ -47,24 +49,24 @@ options:
         communication with the server, you must set either the value of this parameter
         or the key parameter.
   key:
-    type: raw
+    type: float
     description:
       - Key to use for encrypting authentication fields. All packets sent to and received
         from the server must include authentication fields encrypted by using this
         key. To require authentication for communication with the server, you must
         set either the value of this parameter or the autokey parameter.
   maxpoll:
-    type: raw
+    type: float
     description:
       - Maximum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.
   minpoll:
-    type: raw
+    type: float
     description:
       - Minimum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.
   preferredntpserver:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -72,11 +74,11 @@ options:
       - Preferred NTP server. The Citrix ADC chooses this NTP server for time synchronization
         among a set of correctly operating hosts.
   serverip:
-    type: raw
+    type: str
     description:
       - IP address of the NTP server.
   servername:
-    type: raw
+    type: str
     description:
       - Fully qualified domain name of the NTP server.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

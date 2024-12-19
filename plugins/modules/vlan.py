@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vlan
 short_description: Configuration for "VLAN" resource.
 description: Configuration for "VLAN" resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   aliasname:
-    type: raw
+    type: str
     description:
       - A name for the VLAN. Must begin with a letter, a number, or the underscore
         symbol, and can consist of from 1 to 31 letters, numbers, and the hyphen (-),
@@ -48,18 +50,18 @@ options:
         you cannot perform any VLAN operation by specifying this name instead of the
         VLAN ID.
   dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing on this VLAN.
   id:
-    type: raw
+    type: float
     description:
       - A positive integer that uniquely identifies a VLAN.
   ipv6dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -68,13 +70,13 @@ options:
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
   mtu:
-    type: raw
+    type: float
     description:
       - Specifies the maximum transmission unit (MTU), in bytes. The MTU is the largest
         packet size, excluding 14 bytes of ethernet header and 4 bytes of crc, that
         can be transmitted and received over this VLAN.
   sharing:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -213,16 +215,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample vlan playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | vlan
+    - name: Configure vlan
       delegate_to: localhost
       netscaler.adc.vlan:
         state: present
-        id: '301'
-        aliasname: client_side_network
+        vlanid: '10'
 """
 
 RETURN = r"""

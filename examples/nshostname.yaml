@@ -1,10 +1,10 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nshostname playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nshostName
+    - name: Configure nshostname
       delegate_to: localhost
       netscaler.adc.nshostname:
         state: present
-        hostname: ansible-test
+        hostname: ns

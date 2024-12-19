@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nslicenseproxyserver
 short_description: Configuration for licenseproxyserver resource.
 description: Configuration for licenseproxyserver resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -53,6 +55,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nslicenseproxyserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nslicenseproxyserver
+      delegate_to: localhost
+      netscaler.adc.nslicenseproxyserver:
+        state: present
+        serverip: 10.102.201.245
+        port: '28000'
 """
 
 RETURN = r"""

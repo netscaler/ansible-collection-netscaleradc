@@ -1,0 +1,10 @@
+---
+- name: Sample vxlan playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vxlan
+      delegate_to: localhost
+      netscaler.adc.vxlan:
+        state: present
+        id: '1'

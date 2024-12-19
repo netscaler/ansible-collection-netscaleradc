@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: subscriberprofile
 short_description: Configuration for Subscriber Profile resource.
 description: Configuration for Subscriber Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ip:
-    type: raw
+    type: str
     description:
       - Subscriber ip address
   servicepath:
-    type: raw
+    type: str
     description:
       - Name of the servicepath to be taken for this subscriber.
   subscriberrules:

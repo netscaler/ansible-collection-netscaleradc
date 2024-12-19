@@ -1,0 +1,10 @@
+---
+- name: Sample vridparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vridparam
+      delegate_to: localhost
+      netscaler.adc.vridparam:
+        state: present
+        sendtomaster: ENABLED

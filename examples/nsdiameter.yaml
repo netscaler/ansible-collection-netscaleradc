@@ -1,9 +1,9 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsdiameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsdiameter
+    - name: Configure nsdiameter
       delegate_to: localhost
       netscaler.adc.nsdiameter:
         state: present

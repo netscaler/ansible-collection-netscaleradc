@@ -1,0 +1,9 @@
+---
+- name: Sample nssourceroutecachetable playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nssourceroutecachetable
+      delegate_to: localhost
+      netscaler.adc.nssourceroutecachetable:
+        state: present

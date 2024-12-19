@@ -1,0 +1,11 @@
+---
+- name: Sample sslservicegroup_ecccurve_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslservicegroup_ecccurve_binding
+      delegate_to: localhost
+      netscaler.adc.sslservicegroup_ecccurve_binding:
+        state: present
+        servicegroupname: sg2
+        ecccurvename: P_521

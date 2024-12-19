@@ -1,0 +1,10 @@
+---
+- name: Sample fis playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure fis
+      delegate_to: localhost
+      netscaler.adc.fis:
+        state: present
+        name: ia_fis11

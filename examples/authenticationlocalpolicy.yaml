@@ -1,0 +1,11 @@
+---
+- name: Sample authenticationlocalpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationlocalpolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationlocalpolicy:
+        state: present
+        name: NS_GATEWAY_DEFAULT_LOCAL_POL1
+        rule: NS_TRUE

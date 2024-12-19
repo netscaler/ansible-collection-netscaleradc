@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpengineid
 short_description: Configuration for SNMP engine id resource.
 description: Configuration for SNMP engine id resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,7 +43,7 @@ options:
     description:
       - A hexadecimal value of at least 10 characters, uniquely identifying the engineid
   ownernode:
-    type: raw
+    type: float
     description:
       - ID of the cluster node for which you are setting the engineid
 extends_documentation_fragment: netscaler.adc.netscaler_adc

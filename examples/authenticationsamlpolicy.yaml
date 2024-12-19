@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationsamlpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationsamlpolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationsamlpolicy:
+        state: present
+        name: samlsecureauthidppol
+        rule: ns_true
+        reqaction: secureauth_idp

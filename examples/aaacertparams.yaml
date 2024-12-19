@@ -1,0 +1,12 @@
+---
+- name: Sample aaacertparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaacertparams
+      delegate_to: localhost
+      netscaler.adc.aaacertparams:
+        state: present
+        usernamefield: Subject:CN
+        groupnamefield: Subject:OU
+        defaultauthenticationgroup: abc

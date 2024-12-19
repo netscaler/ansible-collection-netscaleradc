@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ipsecprofile
 short_description: Configuration for IPSEC profile resource.
 description: Configuration for IPSEC profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -119,6 +121,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ipsecprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ipsecprofile
+      delegate_to: localhost
+      netscaler.adc.ipsecprofile:
+        state: present
+        name: ia_ipsecpro10
+        publickey: sample
+        privatekey: sample
+        peerpublickey: sample
+        livenesscheckinterval: '23'
+        replaywindowsize: '23'
+        ikeretryinterval: '60'
+        retransmissiontime: '23'
 """
 
 RETURN = r"""

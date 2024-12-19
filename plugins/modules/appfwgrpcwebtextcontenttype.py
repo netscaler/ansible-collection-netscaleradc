@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwgrpcwebtextcontenttype
 short_description: Configuration for gRRPC-Web-text content type resource.
 description: Configuration for gRRPC-Web-text content type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -52,6 +54,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwgrpcwebtextcontenttype playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwgrpcwebtextcontenttype
+      delegate_to: localhost
+      netscaler.adc.appfwgrpcwebtextcontenttype:
+        state: present
+        grpcwebtextcontenttypevalue: application/grpc-web-text
 """
 
 RETURN = r"""

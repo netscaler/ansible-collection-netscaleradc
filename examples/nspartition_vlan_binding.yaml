@@ -1,0 +1,11 @@
+---
+- name: Sample nspartition_vlan_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nspartition_vlan_binding
+      delegate_to: localhost
+      netscaler.adc.nspartition_vlan_binding:
+        state: present
+        partitionname: p11
+        vlan: '11'

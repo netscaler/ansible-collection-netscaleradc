@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: responderpolicy
 short_description: Configuration for responder policy resource.
 description: Configuration for responder policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -50,19 +52,19 @@ options:
         then resend the request if desired.'
       - '* DROP - Drop the request without sending a response to the user.'
   appflowaction:
-    type: raw
+    type: str
     description:
       - AppFlow action to invoke for requests that match this policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any type of information about this responder policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the responder policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -90,7 +92,7 @@ options:
       - Expression that the policy uses to determine whether to respond to the specified
         request.
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in
@@ -125,6 +127,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample responderpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure responderpolicy
+      delegate_to: localhost
+      netscaler.adc.responderpolicy:
+        state: present
+        name: P1
+        rule: SIP.REQ.METHOD.EQ("INVITE")||SIP.REQ.METHOD.EQ("ACK")||SIP.REQ.METHOD.EQ("BYE")
+        action: noop
 """
 
 RETURN = r"""

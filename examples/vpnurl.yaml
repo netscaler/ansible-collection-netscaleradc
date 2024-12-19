@@ -1,0 +1,14 @@
+---
+- name: Sample vpnurl playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnurl
+      delegate_to: localhost
+      netscaler.adc.vpnurl:
+        state: present
+        urlname: url3
+        linkname: url3
+        actualurl: https://a.c.com/
+        ssotype: samlauth
+        samlssoprofile: new

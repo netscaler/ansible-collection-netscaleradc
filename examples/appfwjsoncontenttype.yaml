@@ -1,11 +1,11 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample appfwjsoncontenttype playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | appfwJSONContentType
+    - name: Configure appfwjsoncontenttype
       delegate_to: localhost
       netscaler.adc.appfwjsoncontenttype:
         state: present
-        jsoncontenttypevalue: "^application/json$"
+        jsoncontenttypevalue: ^application/json$
         isregex: REGEX

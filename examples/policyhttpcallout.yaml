@@ -1,0 +1,24 @@
+---
+- name: Sample policyhttpcallout playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policyhttpcallout
+      delegate_to: localhost
+      netscaler.adc.policyhttpcallout:
+        state: present
+        name: _XM_W_DEVICEID_10_102_39_132_2
+        vserver: _XM_LB_CACHE_10.100.39.132
+        returntype: TEXT
+        httpmethod: GET
+        hostexpr: '"callout.asfilter.internal"'
+        urlstemexpr: '"/services/ActiveSync/Authorize"'
+        parameters:
+          - user(HTTP.REQ.HEADER("authorization").AFTER_STR("Basic ").B64DECODE.BEFORE_STR(":").HTTP_URL_SAFE)
+          - agent(HTTP.REQ.HEADER("user-agent").HTTP_URL_SAFE)
+          - ip(CLIENT.IP.SRC)
+          - url(("https://"+HTTP.REQ.HOSTNAME+HTTP.REQ.URL).B64ENCODE)
+          - resultType("json")
+          - DeviceId(HTTP.REQ.URL.QUERY.VALUE("DeviceId"))
+        scheme: http
+        resultexpr: HTTP.RES.BODY(20)

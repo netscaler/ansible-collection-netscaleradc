@@ -1,0 +1,11 @@
+---
+- name: Sample authenticationloginschema playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationloginschema
+      delegate_to: localhost
+      netscaler.adc.authenticationloginschema:
+        state: present
+        name: single_auth
+        authenticationschema: /nsconfig/loginschema/LoginSchema/SingleAuth.xml

@@ -1,0 +1,13 @@
+---
+- name: Sample lbvserver_responderpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_responderpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_responderpolicy_binding:
+        state: present
+        name: v666
+        policyname: P1
+        priority: '5'
+        bindpoint: REQUEST

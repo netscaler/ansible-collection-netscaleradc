@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnintranetapplication
 short_description: Configuration for SSLVPN intranet application resource.
 description: Configuration for SSLVPN intranet application resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -117,6 +119,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnintranetapplication playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnintranetapplication
+      delegate_to: localhost
+      netscaler.adc.vpnintranetapplication:
+        state: present
+        intranetapplication: intra_app21
+        protocol: TCP
+        destip: 10.100.0.57
+        interception: PROXY
 """
 
 RETURN = r"""

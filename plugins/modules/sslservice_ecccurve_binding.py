@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslservice_ecccurve_binding
 short_description: Binding Resource definition for describing association between
   sslservice and ecccurve resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between ssls
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -46,6 +48,7 @@ options:
       - P_256
       - P_384
       - P_521
+      - X_25519
     description:
       - Named ECC curve bound to service/vserver.
   servicename:
@@ -57,6 +60,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslservice_ecccurve_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslservice_ecccurve_binding
+      delegate_to: localhost
+      netscaler.adc.sslservice_ecccurve_binding:
+        state: present
+        servicename: s1345
+        ecccurvename: ALL
 """
 
 RETURN = r"""

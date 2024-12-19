@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: service
 short_description: Configuration for service resource.
 description: Configuration for service resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -47,7 +49,7 @@ options:
     description:
       - Display only dynamically learned services.
   accessdown:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -60,14 +62,14 @@ options:
     description:
       - Display both user-configured and dynamically learned services.
   appflowlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging of AppFlow information.
   cacheable:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -84,7 +86,7 @@ options:
     description:
       - Cache type supported by the cache server.
   cip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -94,7 +96,7 @@ options:
         IP address for security, accounting, or other purposes, and setting the Use
         Source IP parameter is not a viable option.
   cipheader:
-    type: raw
+    type: str
     description:
       - Name for the HTTP header whose value must be set to the IP address of the
         client. Used with the Client IP parameter. If you set the Client IP parameter,
@@ -105,7 +107,7 @@ options:
         If the global Client IP Header parameter is not specified, the appliance inserts
         a header with the name "client-ip."
   cka:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -117,27 +119,27 @@ options:
       - Port to which clear text data must be sent after the appliance decrypts incoming
         SSL traffic. Applicable to transparent SSL services.
   clttimeout:
-    type: raw
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle client connection.
   cmp:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable compression for the service.
   comment:
-    type: raw
+    type: str
     description:
       - Any information about the service.
   contentinspectionprofilename:
-    type: raw
+    type: str
     description:
       - Name of the ContentInspection profile that contains IPS/IDS communication
         related setting for the service
   customserverid:
-    type: raw
+    type: str
     description:
       - Unique identifier for the service. Used when the persistency type for the
         virtual server is set to Custom Server ID.
@@ -151,13 +153,13 @@ options:
         time expires, no requests are sent to the service, and the service is marked
         as unavailable (OUT OF SERVICE).
   dnsprofilename:
-    type: raw
+    type: str
     description:
       - Name of the DNS profile to be associated with the service. DNS profile properties
         will applied to the transactions processed by a service. This parameter is
-        valid only for ADNS and ADNS-TCP services.
+        valid only for ADNS, ADNS-TCP and ADNS-DOT services.
   downstateflush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -174,12 +176,12 @@ options:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
   hashid:
-    type: raw
+    type: float
     description:
       - A numerical identifier that can be used by hash based load balancing methods.
         Must be unique for each service.
   healthmonitor:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -189,7 +191,7 @@ options:
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
   httpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
         service.
@@ -202,21 +204,21 @@ options:
     description:
       - The new IP address of the service.
   maxbandwidth:
-    type: raw
+    type: float
     description:
       - Maximum bandwidth, in Kbps, allocated to the service.
   maxclient:
-    type: raw
+    type: float
     description:
       - Maximum number of simultaneous open connections to the service.
   maxreq:
-    type: raw
+    type: float
     description:
       - Maximum number of requests that can be sent on a persistent connection to
         the service.
       - 'Note: Connection requests beyond this value are rejected.'
   monconnectionclose:
-    type: raw
+    type: str
     choices:
       - RESET
       - FIN
@@ -228,19 +230,19 @@ options:
     description:
       - Name of the monitor bound to the specified service.
   monthreshold:
-    type: raw
+    type: float
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
   name:
-    type: raw
+    type: str
     description:
       - Name for the service. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
         period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Cannot be changed after the service has been created.
   netprofile:
-    type: raw
+    type: str
     description:
       - Network profile to use for the service.
   newname:
@@ -250,14 +252,14 @@ options:
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
   pathmonitor:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Path monitoring for clustering
   pathmonitorindv:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -268,7 +270,7 @@ options:
     description:
       - Port number of the service.
   processlocal:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -277,8 +279,12 @@ options:
         not under go any steering. Turn this option for single packet request response
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
+  quicprofilename:
+    type: str
+    description:
+      - Name of QUIC profile which will be attached to the service.
   rtspsessionidremap:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -344,28 +350,31 @@ options:
       - MQTT
       - MQTT_TLS
       - QUIC_BRIDGE
+      - DOT
+      - ADNS_DOT
+      - HTTP_QUIC
     description:
       - Protocol in which data is exchanged with the service.
   sp:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable surge protection for the service.
   svrtimeout:
-    type: raw
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle server connection.
   tcpb:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable TCP buffering for the service.
   tcpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service.
   td:
@@ -375,7 +384,7 @@ options:
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   useproxyport:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -386,7 +395,7 @@ options:
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
         is set to C(YES).'
   usip:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -485,54 +494,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample service playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | service
+    - name: Configure service
       delegate_to: localhost
       netscaler.adc.service:
         state: present
-        name: service-http
-        servicetype: HTTP
-        ipaddress: 172.18.0.4
-        port: 5000
-    - name: Sample Task | ipset-001
-      delegate_to: localhost
-      netscaler.adc.ipset:
-        state: present
-        name: ipset-001
-    - name: Sample Task | netProfile
-      delegate_to: localhost
-      netscaler.adc.netprofile:
-        state: present
-        name: test-netprofile
-        srcip: ipset-001
-        mbf: DISABLED
-    - name: Sample Task | lbmonitor | 3
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.lbmonitor:
-        state: present
-        monitorname: test-monitor
-        type: TCP
-        interval: 15
-        retries: 20
-    - name: Setup services
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.service:
-        state: present
-        name: 10.123.123.123-tcp-12345
-        servicetype: TCP
-        ipaddress: 10.123.123.123
-        port: 12345
-        healthmonitor: "NO"
-        netprofile: test-netprofile
-        service_lbmonitor_binding:
-          binding_members:
-            - monitor_name: test-monitor
-              name: 10.123.123.123-tcp-12345
+        name: nshttpd-vpn-127.0.0.1-81
+        cip: ENABLED
 """
 
 RETURN = r"""

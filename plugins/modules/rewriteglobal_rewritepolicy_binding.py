@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rewriteglobal_rewritepolicy_binding
 short_description: Binding Resource definition for describing association between
   rewriteglobal and rewritepolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between rewr
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -130,6 +132,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rewriteglobal_rewritepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewriteglobal_rewritepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.rewriteglobal_rewritepolicy_binding:
+        state: present
+        policyname: new_policy_2
+        priority: '11'
+        gotopriorityexpression: END
+        type: DNS_RES_DEFAULT
 """
 
 RETURN = r"""

@@ -1,0 +1,13 @@
+---
+- name: Sample appfwprofile_xmlvalidationurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_xmlvalidationurl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_xmlvalidationurl_binding:
+        state: present
+        name: XMLSchema_2
+        xmlvalidationurl: .*
+        xmlrequestschema: Xml_Schema_2
+        xmlresponseschema: Xml_Schema_2

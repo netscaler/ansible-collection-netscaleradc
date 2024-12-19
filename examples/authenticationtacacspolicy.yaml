@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationtacacspolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationtacacspolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationtacacspolicy:
+        state: present
+        name: primaryIPv4TACACSpolicy
+        rule: ns_true
+        reqaction: primaryIPv4TACACSaction

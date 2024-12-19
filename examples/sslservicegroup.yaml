@@ -1,0 +1,12 @@
+---
+- name: Sample sslservicegroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslservicegroup
+      delegate_to: localhost
+      netscaler.adc.sslservicegroup:
+        state: present
+        servicegroupname: LB_ia_svcgrp13916
+        sessreuse: ENABLED
+        sesstimeout: '120'

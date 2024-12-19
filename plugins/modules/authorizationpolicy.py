@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authorizationpolicy
 short_description: Configuration for authorization policy resource.
 description: Configuration for authorization policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -93,6 +95,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authorizationpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authorizationpolicy
+      delegate_to: localhost
+      netscaler.adc.authorizationpolicy:
+        state: present
+        name: EPAautho1
+        rule: client.app.proc(notepad) exists
+        action: ALLOW
 """
 
 RETURN = r"""

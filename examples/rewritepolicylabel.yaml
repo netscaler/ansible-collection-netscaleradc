@@ -1,0 +1,11 @@
+---
+- name: Sample rewritepolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewritepolicylabel
+      delegate_to: localhost
+      netscaler.adc.rewritepolicylabel:
+        state: present
+        labelname: ia_rwrtpolabl6
+        transform: http_req

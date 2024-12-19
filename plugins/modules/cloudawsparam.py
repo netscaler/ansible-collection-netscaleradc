@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cloudawsparam
 short_description: Configuration for cloud awsParam resource.
 description: Configuration for cloud awsParam resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   rolearn:
-    type: raw
+    type: str
     description:
       - IAM Role ARN
 extends_documentation_fragment: netscaler.adc.netscaler_adc

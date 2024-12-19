@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: arp
 short_description: Configuration for arp resource.
 description: Configuration for arp resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -86,6 +88,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample arp playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure arp
+      delegate_to: localhost
+      netscaler.adc.arp:
+        state: present
+        ipaddress: 177.0.0.31
+        mac: 96:f1:a0:2b:98:1f
+        ifnum: 1/2
 """
 
 RETURN = r"""

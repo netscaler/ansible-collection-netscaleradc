@@ -1,0 +1,10 @@
+---
+- name: Sample nsdhcpparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nsdhcpparams
+      delegate_to: localhost
+      netscaler.adc.nsdhcpparams:
+        state: present
+        saveroute: 'ON'

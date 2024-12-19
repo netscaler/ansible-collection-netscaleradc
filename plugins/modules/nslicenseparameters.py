@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nslicenseparameters
 short_description: Configuration for licenseparameters resource.
 description: Configuration for licenseparameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,27 +39,27 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   alert1gracetimeout:
-    type: raw
+    type: float
     description:
       - If ADC remains in grace for the configured hours then first grace alert will
         be raised
   alert2gracetimeout:
-    type: raw
+    type: float
     description:
       - If ADC remains in grace for the configured hours then major grace alert will
         be raised
   heartbeatinterval:
-    type: raw
+    type: float
     description:
       - Heartbeat between ADC and Licenseserver is configurable and applicable in
         case of pooled licensing
   inventoryrefreshinterval:
-    type: raw
+    type: float
     description:
       - Inventory refresh interval between ADC and Licenseserver is configurable and
         applicable in case of pooled licensing
   licenseexpiryalerttime:
-    type: raw
+    type: float
     description:
       - If ADC termed license is nearer to expiry then SNMP expiry alert will be raised
 extends_documentation_fragment: netscaler.adc.netscaler_adc

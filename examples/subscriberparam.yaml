@@ -1,0 +1,13 @@
+---
+- name: Sample subscriberparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure subscriberparam
+      delegate_to: localhost
+      netscaler.adc.subscriberparam:
+        state: present
+        ipv6prefixlookuplist:
+          - '120'
+          - '104'
+          - '64'

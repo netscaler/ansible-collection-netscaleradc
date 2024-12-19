@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnip6profile
 short_description: Configuration for LSN ip6 Profile resource.
 description: Configuration for LSN ip6 Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -67,6 +69,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnip6profile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnip6profile
+      delegate_to: localhost
+      netscaler.adc.lsnip6profile:
+        state: present
+        name: ds1
+        type: DS-Lite
+        network6: 3ffe:100::1
 """
 
 RETURN = r"""

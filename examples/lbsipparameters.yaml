@@ -1,0 +1,10 @@
+---
+- name: Sample lbsipparameters playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbsipparameters
+      delegate_to: localhost
+      netscaler.adc.lbsipparameters:
+        state: present
+        rnatsecuresrcport: 5061

@@ -1,0 +1,11 @@
+---
+- name: Sample lsnlogprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnlogprofile
+      delegate_to: localhost
+      netscaler.adc.lsnlogprofile:
+        state: present
+        logprofilename: msd
+        logsubscrinfo: ENABLED

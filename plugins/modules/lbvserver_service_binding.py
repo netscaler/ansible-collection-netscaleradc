@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver_service_binding
 short_description: Binding Resource definition for describing association between
   lbvserver and service resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -70,23 +72,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Simple lbvserver_service_binding playbook
-  hosts: localhost
+- name: Sample lbvserver_service_binding playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | lbvserver_service_binding
+    - name: Configure lbvserver_service_binding
       delegate_to: localhost
       netscaler.adc.lbvserver_service_binding:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-        state: absent
-        name: test_lbvser
-        servicename: s1
-        weight: 16
+        state: present
+        name: lb_dns_01
+        servicename: dns_svc_03
 """
 
 RETURN = r"""

@@ -1,0 +1,9 @@
+---
+- name: Sample ptp playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ptp
+      delegate_to: localhost
+      netscaler.adc.ptp:
+        state: present

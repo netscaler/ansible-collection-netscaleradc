@@ -1,0 +1,12 @@
+---
+- name: Sample mapbmr_bmrv4network_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure mapbmr_bmrv4network_binding
+      delegate_to: localhost
+      netscaler.adc.mapbmr_bmrv4network_binding:
+        state: present
+        name: bmr1
+        network: 192.0.2.0
+        netmask: 255.255.255.0

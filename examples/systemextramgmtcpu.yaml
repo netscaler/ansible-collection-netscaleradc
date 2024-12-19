@@ -1,0 +1,9 @@
+---
+- name: Sample systemextramgmtcpu playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemextramgmtcpu
+      delegate_to: localhost
+      netscaler.adc.systemextramgmtcpu:
+        state: present

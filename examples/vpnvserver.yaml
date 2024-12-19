@@ -1,0 +1,15 @@
+---
+- name: Sample vpnvserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver
+      delegate_to: localhost
+      netscaler.adc.vpnvserver:
+        state: present
+        name: CitrixAccessCallback
+        servicetype: SSL
+        ipv46: 10.189.130.19
+        port: 443
+        downstateflush: DISABLED
+        listenpolicy: NONE

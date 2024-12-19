@@ -1,0 +1,14 @@
+---
+- name: Sample authenticationvserver_authenticationpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver_authenticationpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver_authenticationpolicy_binding:
+        state: present
+        name: Citrix_AAA_vServer
+        policy: OKta_SAML_External
+        priority: '500'
+        nextfactor: LDAP_Userextraction_External
+        gotopriorityexpression: NEXT

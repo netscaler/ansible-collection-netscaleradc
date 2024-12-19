@@ -1,0 +1,10 @@
+---
+- name: Sample vpnclientlessaccessprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnclientlessaccessprofile
+      delegate_to: localhost
+      netscaler.adc.vpnclientlessaccessprofile:
+        state: present
+        profilename: ia_cltlsacsprof1

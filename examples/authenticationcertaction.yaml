@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationcertaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationcertaction
+      delegate_to: localhost
+      netscaler.adc.authenticationcertaction:
+        state: present
+        name: ca5
+        twofactor: 'ON'
+        groupnamefield: Subject:OU

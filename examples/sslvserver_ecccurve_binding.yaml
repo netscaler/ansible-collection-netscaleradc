@@ -1,0 +1,11 @@
+---
+- name: Sample sslvserver_ecccurve_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslvserver_ecccurve_binding
+      delegate_to: localhost
+      netscaler.adc.sslvserver_ecccurve_binding:
+        state: present
+        vservername: dh
+        ecccurvename: P_521

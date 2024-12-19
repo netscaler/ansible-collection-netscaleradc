@@ -1,0 +1,12 @@
+---
+- name: Sample tmsessionpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmsessionpolicy
+      delegate_to: localhost
+      netscaler.adc.tmsessionpolicy:
+        state: present
+        name: ia_tmsespol1
+        rule: REQ.HTTP.METHOD == GET
+        action: ia_tmsesact1

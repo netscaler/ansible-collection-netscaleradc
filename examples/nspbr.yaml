@@ -1,0 +1,21 @@
+---
+- name: Sample nspbr playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nspbr
+      delegate_to: localhost
+      netscaler.adc.nspbr:
+        state: present
+        name: mgmt_pbr
+        action: ALLOW
+        srcip: true
+        srcipop: '='
+        srcipval: 10.189.64.50
+        destip: true
+        destipop: '!='
+        destipval: 10.189.64.1-10.189.64.254
+        nexthop: true
+        nexthopval: 10.189.64.1
+        priority: '10'
+        kernelstate: SFAPPLIED61
