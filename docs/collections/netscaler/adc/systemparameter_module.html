@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.systemparameter module – Configuration for system parameter resource. &mdash; Ansible collections  documentation</title>
@@ -13,19 +15,15 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.systemrestorepoint module – Configuration for Setting restorepoints for auto restore resource." href="systemrestorepoint_module.html" />
-    <link rel="prev" title="netscaler.adc.systemkek module – Configuration for Key encryption Key resource." href="systemkek_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+    <link rel="prev" title="netscaler.adc.systemlevelreporting module – Configuration for Make entity count for reporting equal to system threshold count cumulatively resource." href="systemlevelreporting_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 
 
 
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.systemparameter module – Configuration for system parameter resource.<a class="headerlink" href="#netscaler-adc-systemparameter-module-configuration-for-system-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +171,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-basicauth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-basicauth"><strong>basicauth</strong></p>
-<a class="ansibleOptionLink" href="#parameter-basicauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-basicauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable basic authentication for Nitro API.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +183,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cliloglevel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-cliloglevel"><strong>cliloglevel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cliloglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cliloglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Audit log level, which specifies the types of events to log for cli executed commands.</p>
 <p>Available values function as follows:</p>
@@ -211,8 +209,15 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-daystoexpire"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-daystoexpire"><strong>daystoexpire</strong></p>
+<a class="ansibleOptionLink" href="#parameter-daystoexpire" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>nsroot password expire days</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-doppler"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-doppler"><strong>doppler</strong></p>
-<a class="ansibleOptionLink" href="#parameter-doppler" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-doppler" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable Doppler</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -222,9 +227,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fipsusermode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-fipsusermode"><strong>fipsusermode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fipsusermode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fipsusermode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use this option to set the FIPS mode for key user-land processes. When enabled, these user-land processes will operate in FIPS mode. In this mode, these processes will use FIPS 140-2 certified crypto algorithms.</p>
 <p>With a FIPS license, it is enabled by default and cannot be disabled.</p>
@@ -236,9 +241,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-forcepasswordchange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-forcepasswordchange"><strong>forcepasswordchange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-forcepasswordchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-forcepasswordchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable force password change for nsroot user</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -248,9 +253,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-googleanalytics"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-googleanalytics"><strong>googleanalytics</strong></p>
-<a class="ansibleOptionLink" href="#parameter-googleanalytics" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-googleanalytics" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable Google analytics</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -260,9 +265,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-localauth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-localauth"><strong>localauth</strong></p>
-<a class="ansibleOptionLink" href="#parameter-localauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-localauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>When enabled, local users can access Citrix ADC even when external authentication is configured. When disabled, local users are not allowed to access the Citrix ADC, Local users can access the Citrix ADC only when the configured external authentication servers are unavailable. This parameter is not applicable to SSH Key-based authentication</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -272,7 +277,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_id"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-managed-netscaler-instance-id"><strong>managed_netscaler_instance_id</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -282,7 +287,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_ip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-managed-netscaler-instance-ip"><strong>managed_netscaler_instance_ip</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -292,7 +297,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-managed-netscaler-instance-name"><strong>managed_netscaler_instance_name</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -302,7 +307,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_password"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-managed-netscaler-instance-password"><strong>managed_netscaler_instance_password</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -314,7 +319,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>ensure to configure username and password of a managed instance.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_username"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-managed-netscaler-instance-username"><strong>managed_netscaler_instance_username</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -326,30 +331,30 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>ensure to configure username and password of a managed instance.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxsessionperuser"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-maxsessionperuser"><strong>maxsessionperuser</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxsessionperuser" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxsessionperuser" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of client connection allowed per user.The maxsessionperuser value ranges from 1 to 40</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minpasswordlen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-minpasswordlen"><strong>minpasswordlen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-minpasswordlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-minpasswordlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum length of system user password. When strong password is enabled default minimum length is 8. User entered value can be greater than or equal to 8. Default mininum value is 1 when strong password is disabled. Maximum value is 127 in both cases.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-natpcbforceflushlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-natpcbforceflushlimit"><strong>natpcbforceflushlimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-natpcbforceflushlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-natpcbforceflushlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Flush the system if the number of Network Address Translation Protocol Control Blocks (NATPCBs) exceeds this value.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-natpcbrstontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-natpcbrstontimeout"><strong>natpcbrstontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-natpcbrstontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-natpcbrstontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send a reset signal to client and server connections when their NATPCBs time out. Avoids the buildup of idle TCP connections on both the sides.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -359,7 +364,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-netscaler_console_as_proxy_server"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-netscaler-console-as-proxy-server"><strong>netscaler_console_as_proxy_server</strong></p>
 <a class="ansibleOptionLink" href="#parameter-netscaler_console_as_proxy_server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -373,21 +378,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_pass"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-nitro-pass"><strong>nitro_pass</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_pass" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The password with which to authenticate to the NetScaler ADC node.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_protocol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-nitro-protocol"><strong>nitro_protocol</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_protocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -399,14 +404,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_user"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-nitro-user"><strong>nitro_user</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The username with which to authenticate to the NetScaler ADC node.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nsip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-nsip"><strong>nsip</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
 </div></td>
@@ -414,9 +419,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-promptstring"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-promptstring"><strong>promptstring</strong></p>
-<a class="ansibleOptionLink" href="#parameter-promptstring" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-promptstring" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>String to display at the command-line prompt. Can consist of letters, numbers, hyphen (-), period (.), hash (#), space ( ), at (&#64;), equal (=), colon (:), underscore (_), and the following variables:</p>
 <p>* %u - Will be replaced by the user name.</p>
@@ -428,9 +433,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Note: The 63-character limit for the length of the string does not apply to the characters that replace the variables.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rbaonresponse"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-rbaonresponse"><strong>rbaonresponse</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rbaonresponse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-rbaonresponse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable Role-Based Authentication (RBA) on responses.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -440,9 +445,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-reauthonauthparamchange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-reauthonauthparamchange"><strong>reauthonauthparamchange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-reauthonauthparamchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-reauthonauthparamchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable External user reauthentication when authentication parameter changes</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -452,9 +457,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-removesensitivefiles"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-removesensitivefiles"><strong>removesensitivefiles</strong></p>
-<a class="ansibleOptionLink" href="#parameter-removesensitivefiles" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-removesensitivefiles" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use this option to remove the sensitive files from the system like authorise keys, public keys etc. The commands which will remove sensitive files when this system paramter is enabled are rm cluster instance, rm cluster node, rm ha node, clear config full, join cluster and add cluster instance.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -464,11 +469,11 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-restrictedtimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-restrictedtimeout"><strong>restrictedtimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-restrictedtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-restrictedtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Enable/Disable the restricted timeout behaviour. When enabled, timeout cannot be configured beyond admin configured timeout  and also it will have the [minimum - maximum] range check. When disabled, timeout will have the old behaviour. By default the value is disabled</p>
+<td><div class="ansible-option-cell"><p>Enable/Disable the restricted timeout behaviour. When enabled, timeout cannot be configured beyond admin configured timeout and also it will have the [minimum - maximum] range check. When disabled, timeout will have the old behaviour. By default the value is disabled</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
@@ -476,7 +481,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-save_config"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-save-config"><strong>save_config</strong></p>
 <a class="ansibleOptionLink" href="#parameter-save_config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -489,7 +494,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-state"><strong>state</strong></p>
 <a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -503,9 +508,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-strongpassword"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-strongpassword"><strong>strongpassword</strong></p>
-<a class="ansibleOptionLink" href="#parameter-strongpassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-strongpassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>After enabling strong password (<code class="docutils literal notranslate"><span class="pre">enableall</span></code> / <code class="docutils literal notranslate"><span class="pre">enablelocal</span></code> - not included in exclude list), all the passwords / sensitive information must have - Atleast 1 Lower case character, Atleast 1 Upper case character, Atleast 1 numeric character, Atleast 1 special character ( ~, `, !, &#64;, #, $, %, ^, &amp;, *, -, _, =, +, {, }, [, ], <a href="#id1"><span class="problematic" id="id2">|</span></a>, \, :, &lt;, &gt;, /, ., ,, “ “). Exclude list in case of <code class="docutils literal notranslate"><span class="pre">enablelocal</span></code> is - NS_FIPS, NS_CRL, NS_RSAKEY, NS_PKCS12, NS_PKCS8, NS_LDAP, NS_TACACS, NS_TACACSACTION, NS_RADIUS, NS_RADIUSACTION, NS_ENCRYPTION_PARAMS. So no Strong Password checks will be performed on these ObjectType commands for <code class="docutils literal notranslate"><span class="pre">enablelocal</span></code> case.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -516,22 +521,22 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-timeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-timeout"><strong>timeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>CLI session inactivity timeout, in seconds. If Restrictedtimeout argument is enabled, Timeout can have values in the range [300-86400] seconds.</p>
 <p>If Restrictedtimeout argument is disabled, Timeout can have values in the range [0, 10-100000000] seconds. Default value is 900 seconds.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-totalauthtimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-totalauthtimeout"><strong>totalauthtimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-totalauthtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-totalauthtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Total time a request can take for authentication/authorization</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-validate-certs"><strong>validate_certs</strong></p>
 <a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -541,6 +546,13 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-warnpriorndays"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-systemparameter-module-parameter-warnpriorndays"><strong>warnpriorndays</strong></p>
+<a class="ansibleOptionLink" href="#parameter-warnpriorndays" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of days before which password expiration warning would be thrown with respect to datstoexpire</p>
 </div></td>
 </tr>
 </tbody>
@@ -558,15 +570,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <section id="examples">
 <h2><a class="toc-backref" href="#id6" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Playbook</span>
-<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample systemparameter playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
 <span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Task | systemparameter</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure systemparameter</span>
 <span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
 <span class="w">      </span><span class="nt">netscaler.adc.systemparameter</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
-<span class="w">        </span><span class="nt">promptstring</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;%u@%s&#39;</span>
+<span class="w">        </span><span class="nt">maxclient</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;40&#39;</span>
+<span class="w">        </span><span class="nt">forcepasswordchange</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLED</span>
 </pre></div>
 </div>
 </section>
@@ -631,6 +644,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">
@@ -649,7 +663,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
           
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="systemkek_module.html" class="btn btn-neutral float-left" title="netscaler.adc.systemkek module – Configuration for Key encryption Key resource." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="systemlevelreporting_module.html" class="btn btn-neutral float-left" title="netscaler.adc.systemlevelreporting module – Configuration for Make entity count for reporting equal to system threshold count cumulatively resource." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="systemrestorepoint_module.html" class="btn btn-neutral float-right" title="netscaler.adc.systemrestorepoint module – Configuration for Setting restorepoints for auto restore resource." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

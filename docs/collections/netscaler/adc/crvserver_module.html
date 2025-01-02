@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.crvserver module – Configuration for CR virtual server resource. &mdash; Ansible collections  documentation</title>
@@ -13,15 +15,11 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.crvserver_analyticsprofile_binding module – Binding Resource definition for describing association between crvserver and analyticsprofile resources" href="crvserver_analyticsprofile_binding_module.html" />
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.crvserver module – Configuration for CR virtual server resource.<a class="headerlink" href="#netscaler-adc-crvserver-module-configuration-for-cr-virtual-server-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +171,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appflowlog"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-appflowlog"><strong>appflowlog</strong></p>
-<a class="ansibleOptionLink" href="#parameter-appflowlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-appflowlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable logging of AppFlow information.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +183,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-arp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-arp"><strong>arp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-arp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-arp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use ARP to determine the destination MAC address.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,7 +195,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-backendssl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-backendssl"><strong>backendssl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-backendssl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-backendssl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Decides whether the backend connection made by Citrix ADC to the origin server will be HTTP or SSL. Applicable only for SSL type CR Forward proxy vserver.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -209,7 +207,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-backupvserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-backupvserver"><strong>backupvserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-backupvserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-backupvserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the backup virtual server to which traffic is forwarded if the active server becomes unavailable.</p>
 </div></td>
@@ -240,14 +238,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clttimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-clttimeout"><strong>clttimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-clttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time-out value, in seconds, after which to terminate an idle client connection.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-comment"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-comment"><strong>comment</strong></p>
-<a class="ansibleOptionLink" href="#parameter-comment" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-comment" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Comments associated with this virtual server.</p>
 </div></td>
@@ -719,14 +717,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-destinationvserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-destinationvserver"><strong>destinationvserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-destinationvserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-destinationvserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Destination virtual server for a transparent or forward proxy cache redirection virtual server.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-disableprimaryondown"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-disableprimaryondown"><strong>disableprimaryondown</strong></p>
-<a class="ansibleOptionLink" href="#parameter-disableprimaryondown" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-disableprimaryondown" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Continue sending traffic to a backup virtual server even after the primary virtual server comes UP from the DOWN state.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -738,7 +736,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-disallowserviceaccess"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-disallowserviceaccess"><strong>disallowserviceaccess</strong></p>
-<a class="ansibleOptionLink" href="#parameter-disallowserviceaccess" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-disallowserviceaccess" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This is effective when a FORWARD type cr vserver is added. By default, this parameter is <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>. When it is <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>, backend services cannot be accessed through a FORWARD type cr vserver.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -750,7 +748,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dnsvservername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-dnsvservername"><strong>dnsvservername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dnsvservername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dnsvservername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the DNS virtual server that resolves domain names arriving at the forward proxy virtual server.</p>
 <p>Note: This parameter applies only to forward proxy virtual servers, not reverse or transparent.</p>
@@ -758,14 +756,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-domain"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-domain"><strong>domain</strong></p>
-<a class="ansibleOptionLink" href="#parameter-domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-domain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Default domain for reverse proxies. Domains are configured to direct an incoming request from a specified source domain to a specified target domain. There can be several configured pairs of source and target domains. You can select one pair to be the default. If the host header or URL of an incoming request does not include a source domain, this option sends the request to the specified target domain.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-downstateflush"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-downstateflush"><strong>downstateflush</strong></p>
-<a class="ansibleOptionLink" href="#parameter-downstateflush" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-downstateflush" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Perform delayed cleanup of connections to this virtual server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -801,14 +799,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-httpprofilename"><strong>httpprofilename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the profile containing HTTP configuration information for cache redirection virtual server.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-icmpvsrresponse"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-icmpvsrresponse"><strong>icmpvsrresponse</strong></p>
-<a class="ansibleOptionLink" href="#parameter-icmpvsrresponse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-icmpvsrresponse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Criterion for responding to PING requests sent to this virtual server. If <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>, respond only if the virtual server is available. If <code class="docutils literal notranslate"><span class="pre">PASSIVE</span></code>, respond even if the virtual server is not available.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -820,7 +818,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ipset"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-ipset"><strong>ipset</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ipset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ipset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The list of IPv4/IPv6 addresses bound to ipset would form a part of listening service on the current cr vserver</p>
 </div></td>
@@ -835,7 +833,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-l2conn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-l2conn"><strong>l2conn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-l2conn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-l2conn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use L2 parameters, such as MAC, VLAN, and channel to identify a connection.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -847,14 +845,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-listenpolicy"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-listenpolicy"><strong>listenpolicy</strong></p>
-<a class="ansibleOptionLink" href="#parameter-listenpolicy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-listenpolicy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>String specifying the listen policy for the cache redirection virtual server. Can be either an in-line expression or the name of a named expression.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-listenpriority"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-listenpriority"><strong>listenpriority</strong></p>
-<a class="ansibleOptionLink" href="#parameter-listenpriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-listenpriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Priority of the listen policy specified by the Listen Policy parameter. The lower the number, higher the priority.</p>
 </div></td>
@@ -927,7 +925,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the cache redirection virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (&#64;), equal sign (=), and hyphen (-) characters. Can be changed after the cache redirection virtual server is created.</p>
 <p>The following requirement applies only to the Citrix ADC CLI:</p>
@@ -936,7 +934,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-netprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-netprofile"><strong>netprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-netprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-netprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the network profile containing network configurations for the cache redirection virtual server.</p>
 </div></td>
@@ -1005,7 +1003,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-onpolicymatch"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-onpolicymatch"><strong>onpolicymatch</strong></p>
-<a class="ansibleOptionLink" href="#parameter-onpolicymatch" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-onpolicymatch" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Redirect requests that match the policy to either the cache or the origin server, as specified.</p>
 <p>Note: For this option to work, you must set the cache redirection type to POLICY.</p>
@@ -1018,7 +1016,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-originusip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-originusip"><strong>originusip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-originusip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-originusip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use the client’s IP address as the source IP address in requests sent to the origin server.</p>
 <p>Note: You can enable this parameter to implement fully transparent CR deployment.</p>
@@ -1038,7 +1036,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-precedence"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-precedence"><strong>precedence</strong></p>
-<a class="ansibleOptionLink" href="#parameter-precedence" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-precedence" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of policy (<code class="docutils literal notranslate"><span class="pre">URL</span></code> or <code class="docutils literal notranslate"><span class="pre">RULE</span></code>) that takes precedence on the cache redirection virtual server. Applies only to cache redirection virtual servers that have both <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">RULE</span></code> based policies. If you specify <code class="docutils literal notranslate"><span class="pre">URL</span></code>, <code class="docutils literal notranslate"><span class="pre">URL</span></code> based policies are applied first, in the following order:</p>
 <ol class="arabic simple">
@@ -1070,7 +1068,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-probeprotocol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-probeprotocol"><strong>probeprotocol</strong></p>
-<a class="ansibleOptionLink" href="#parameter-probeprotocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-probeprotocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Citrix ADC provides support for external health check of the vserver status. Select <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> or <code class="docutils literal notranslate"><span class="pre">TCP</span></code> probes for healthcheck</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1082,7 +1080,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-probesuccessresponsecode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-probesuccessresponsecode"><strong>probesuccessresponsecode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-probesuccessresponsecode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-probesuccessresponsecode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>HTTP code to return in SUCCESS case.</p>
 </div></td>
@@ -1096,7 +1094,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-redirect"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-redirect"><strong>redirect</strong></p>
-<a class="ansibleOptionLink" href="#parameter-redirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-redirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of cache server to which to redirect HTTP requests. Available settings function as follows:</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">CACHE</span></code> - Direct all requests to the cache.</p>
@@ -1112,14 +1110,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-redirecturl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-redirecturl"><strong>redirecturl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-redirecturl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-redirecturl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>URL of the server to which to redirect traffic if the cache redirection virtual server configured on the Citrix ADC becomes unavailable.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-reuse"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-reuse"><strong>reuse</strong></p>
-<a class="ansibleOptionLink" href="#parameter-reuse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-reuse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Reuse TCP connections to the origin server across client connections. Do not set this parameter unless the Service Type parameter is set to HTTP. If you set this parameter to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, the possible settings of the Redirect parameter function as follows:</p>
 <p>* CACHE - TCP connections to the cache servers are not reused.</p>
@@ -1135,14 +1133,12 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rhistate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-rhistate"><strong>rhistate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rhistate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-rhistate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>A host route is injected according to the setting on the virtual servers</p>
-<blockquote>
-<div><p>* If set to <code class="docutils literal notranslate"><span class="pre">PASSIVE</span></code> on all the virtual servers that share the IP address, the appliance always injects the hostroute.</p>
+<p>* If set to <code class="docutils literal notranslate"><span class="pre">PASSIVE</span></code> on all the virtual servers that share the IP address, the appliance always injects the hostroute.</p>
 <p>* If set to <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> on all the virtual servers that share the IP address, the appliance injects even if one virtual server is UP.</p>
 <p>* If set to <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> on some virtual servers and <code class="docutils literal notranslate"><span class="pre">PASSIVE</span></code> on the others, the appliance, injects even if one virtual server set to <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> is UP.</p>
-</div></blockquote>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;PASSIVE&quot;</span></code></p></li>
@@ -1193,7 +1189,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-srcipexpr"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-srcipexpr"><strong>srcipexpr</strong></p>
-<a class="ansibleOptionLink" href="#parameter-srcipexpr" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-srcipexpr" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Expression used to extract the source IP addresses from the requests originating from the cache. Can be either an in-line expression or the name of a named expression.</p>
 </div></td>
@@ -1220,14 +1216,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpprobeport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-tcpprobeport"><strong>tcpprobeport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpprobeport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpprobeport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Port number for external TCP probe. NetScaler provides support for external TCP health check of the vserver status over the selected port. This option is only supported for vservers assigned with an IPAddress or ipset.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-tcpprofilename"><strong>tcpprofilename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the profile containing TCP configuration information for the cache redirection virtual server.</p>
 </div></td>
@@ -1241,7 +1237,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useoriginipportforcache"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-useoriginipportforcache"><strong>useoriginipportforcache</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useoriginipportforcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-useoriginipportforcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use origin ip/port while forwarding request to the cache. Change the destination IP, destination port of the request came to CR vserver to Origin IP and Origin Port and forward it to Cache</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1253,7 +1249,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useportrange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-useportrange"><strong>useportrange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useportrange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-useportrange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use a port number from the port range (set by using the set ns param command, or in the Create Virtual Server (Cache Redirection) dialog box) as the source port in the requests sent to the origin server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1277,7 +1273,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-via"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-crvserver-module-parameter-via"><strong>via</strong></p>
-<a class="ansibleOptionLink" href="#parameter-via" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-via" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert a via header in each HTTP request. In the case of a cache miss, the request is redirected from the cache server to the origin server. This header indicates whether the request is being sent from a cache server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1301,7 +1297,20 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </section>
 <section id="examples">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample crvserver playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
+<span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure crvserver</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.crvserver</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr_fwd</span>
+<span class="w">        </span><span class="nt">servicetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+<span class="w">        </span><span class="nt">ipv46</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.2</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">        </span><span class="nt">cachetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FORWARD</span>
 </pre></div>
 </div>
 </section>
@@ -1366,6 +1375,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">
