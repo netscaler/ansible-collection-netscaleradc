@@ -1,0 +1,12 @@
+---
+- name: Sample rewritepolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewritepolicy
+      delegate_to: localhost
+      netscaler.adc.rewritepolicy:
+        state: present
+        name: rw_diam_pol
+        rule: diameter.req.avp(264).value.eq("host1.sayan1.net")
+        action: rw_act_insert_after_diameter_avp

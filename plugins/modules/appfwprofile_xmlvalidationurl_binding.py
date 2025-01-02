@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwprofile_xmlvalidationurl_binding
 short_description: Binding Resource definition for describing association between
   appfwprofile and xmlvalidationurl resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between appf
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -129,6 +131,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile_xmlvalidationurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_xmlvalidationurl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_xmlvalidationurl_binding:
+        state: present
+        name: XMLSchema_2
+        xmlvalidationurl: .*
+        xmlrequestschema: Xml_Schema_2
+        xmlresponseschema: Xml_Schema_2
 """
 
 RETURN = r"""

@@ -1,11 +1,12 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample hanode playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | HAnode
+    - name: Configure hanode
       delegate_to: localhost
       netscaler.adc.hanode:
         state: present
-        id: 1
-        ipaddress: 10.10.10.141
+        ipaddress: 10.189.96.60
+        inc: ENABLED
+        hanode_id: '1'

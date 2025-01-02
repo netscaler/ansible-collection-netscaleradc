@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnpcoipconnection
 short_description: Configuration for PCoIP connection resource.
 description: Configuration for PCoIP connection resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices: []
@@ -48,6 +50,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnpcoipconnection playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnpcoipconnection
+      delegate_to: localhost
+      netscaler.adc.vpnpcoipconnection:
+        state: present
+        username: u1
+        nitro_operation: kill
+        '#nitro_operation': kill
 """
 
 RETURN = r"""

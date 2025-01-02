@@ -1,0 +1,16 @@
+---
+- name: Sample auditsyslogaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditsyslogaction
+      delegate_to: localhost
+      netscaler.adc.auditsyslogaction:
+        state: present
+        name: act1121
+        lbvservername: lb511
+        loglevel:
+          - ALL
+        lsn: ENABLED
+        transport: TCP
+        maxlogdatasizetohold: '1000'

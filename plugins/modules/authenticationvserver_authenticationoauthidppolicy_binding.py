@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationvserver_authenticationoauthidppolicy_binding
 short_description: Binding Resource definition for describing association between
   authenticationvserver and authenticationoauthidppolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between auth
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:

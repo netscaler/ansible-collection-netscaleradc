@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: icalatencyprofile
 short_description: Configuration for Profile for Latency monitoring resource.
 description: Configuration for Profile for Latency monitoring resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,37 +41,37 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   l7latencymaxnotifycount:
-    type: raw
+    type: float
     description:
       - L7 Latency Max notify Count. This is the upper limit on the number of notifications
         sent to the Insight Center within an interval where the Latency is above the
         threshold.
   l7latencymonitoring:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable L7 Latency monitoring for L7 latency notifications
   l7latencynotifyinterval:
-    type: raw
+    type: float
     description:
       - L7 Latency Notify Interval. This is the interval at which the Citrix ADC sends
         out notifications to the Insight Center after the wait time has passed.
   l7latencythresholdfactor:
-    type: raw
+    type: float
     description:
       - L7 Latency threshold factor. This is the factor by which the active latency
         should be greater than the minimum observed value to determine that the latency
         is high and may need to be reported
   l7latencywaittime:
-    type: raw
+    type: float
     description:
       - L7 Latency Wait time. This is the time for which the Citrix ADC waits after
         the threshold is exceeded before it sends out a Notification to the Insight
         Center.
   name:
-    type: raw
+    type: str
     description:
       - Name for the ICA latencyprofile. Must begin with a letter, number, or the
         underscore character (_), and must contain only letters, numbers, and
@@ -85,6 +87,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample icalatencyprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icalatencyprofile
+      delegate_to: localhost
+      netscaler.adc.icalatencyprofile:
+        state: present
+        name: l6
+        l7latencywaittime: '5'
 """
 
 RETURN = r"""

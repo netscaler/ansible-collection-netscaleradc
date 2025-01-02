@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: locationfile
 short_description: Configuration for location file resource.
 description: Configuration for location file resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -75,16 +77,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample locationfile playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | sslcert
+    - name: Configure locationfile
       delegate_to: localhost
       netscaler.adc.locationfile:
-        state: imported
-        locationfile: my_file
-        src: local:my_location_file
+        state: present
+        locationfile: /var/netscaler/locdb/Citrix_Netscaler_InBuilt_GeoIP_DB_IPv4
 """
 
 RETURN = r"""

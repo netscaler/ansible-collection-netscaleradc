@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appalgparam
 short_description: Configuration for AppAlg Param resource.
 description: Configuration for AppAlg Param resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   pptpgreidletimeout:
-    type: raw
+    type: float
     description:
       - Interval in sec, after which data sessions of PPTP GRE is cleared.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: streamselector
 short_description: Configuration for selector resource.
 description: Configuration for selector resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -59,6 +61,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample streamselector playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure streamselector
+      delegate_to: localhost
+      netscaler.adc.streamselector:
+        state: present
+        name: insight_sel
+        rule:
+          - http.req.url
 """
 
 RETURN = r"""

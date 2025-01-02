@@ -1,0 +1,10 @@
+---
+- name: Sample policypatset playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policypatset
+      delegate_to: localhost
+      netscaler.adc.policypatset:
+        state: present
+        name: prod_patset

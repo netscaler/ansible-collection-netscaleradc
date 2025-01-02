@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: icaglobal_icapolicy_binding
 short_description: Binding Resource definition for describing association between
   icaglobal and icapolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between icag
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -73,6 +75,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample icaglobal_icapolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icaglobal_icapolicy_binding
+      delegate_to: localhost
+      netscaler.adc.icaglobal_icapolicy_binding:
+        state: present
+        policyname: icapol2
+        priority: '2'
+        type: ICA_REQ_DEFAULT
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsaddrec
 short_description: Configuration for address type record resource.
 description: Configuration for address type record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -82,16 +84,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample dnsaddrec playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | dnsaddRec
+    - name: Configure dnsaddrec
       delegate_to: localhost
       netscaler.adc.dnsaddrec:
         state: present
-        hostname: k.root-servers.net
-        ipaddress: 193.0.14.129
+        hostname: e.root-servers.net
+        ipaddress:
+          - 192.203.230.10
         ttl: 3600000
 """
 

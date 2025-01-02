@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nd6ravariables_onlinkipv6prefix_binding
 short_description: Binding Resource definition for describing association between
   nd6ravariables and onlinkipv6prefix resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between nd6r
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:

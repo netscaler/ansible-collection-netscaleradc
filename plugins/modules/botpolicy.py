@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: botpolicy
 short_description: Configuration for Bot policy resource.
 description: Configuration for Bot policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,15 +41,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any type of information about this bot policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the bot policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -79,7 +81,7 @@ options:
       - Expression that the policy uses to determine whether to apply bot profile
         on the specified request.
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition.

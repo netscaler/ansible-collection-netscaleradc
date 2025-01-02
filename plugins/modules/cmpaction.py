@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cmpaction
 short_description: Configuration for compression action resource.
 description: Configuration for compression action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addvaryheader:
-    type: raw
+    type: str
     choices:
       - GLOBAL
       - DISABLED
@@ -72,7 +74,7 @@ options:
     description:
       - The type of delta action (if delta type compression action is defined).
   name:
-    type: raw
+    type: str
     description:
       - Name of the compression action. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -103,6 +105,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cmpaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmpaction
+      delegate_to: localhost
+      netscaler.adc.cmpaction:
+        state: present
+        name: Base_cmp_act1
+        cmptype: compress
 """
 
 RETURN = r"""

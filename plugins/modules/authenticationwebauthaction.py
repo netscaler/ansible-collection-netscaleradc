@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationwebauthaction
 short_description: Configuration for Web authentication action resource.
 description: Configuration for Web authentication action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,99 +41,99 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   attribute1:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute1 from the webauth
         response
   attribute10:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute10 from the webauth
         response
   attribute11:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute11 from the webauth
         response
   attribute12:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute12 from the webauth
         response
   attribute13:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute13 from the webauth
         response
   attribute14:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute14 from the webauth
         response
   attribute15:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute15 from the webauth
         response
   attribute16:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute16 from the webauth
         response
   attribute2:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute2 from the webauth
         response
   attribute3:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute3 from the webauth
         response
   attribute4:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute4 from the webauth
         response
   attribute5:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute5 from the webauth
         response
   attribute6:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute6 from the webauth
         response
   attribute7:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute7 from the webauth
         response
   attribute8:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute8 from the webauth
         response
   attribute9:
-    type: raw
+    type: str
     description:
       - Expression that would be evaluated to extract attribute9 from the webauth
         response
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   fullreqexpr:
-    type: raw
+    type: str
     description:
       - Exact HTTP request, in the form of an expression, which the Citrix ADC sends
         to the authentication server.
       - The Citrix ADC does not check the validity of this request. One must manually
         validate the request.
   name:
-    type: raw
+    type: str
     description:
       - Name for the Web Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -151,11 +153,11 @@ options:
     description:
       - Type of scheme for the web server.
   serverip:
-    type: raw
+    type: str
     description:
       - IP address of the web server to be used for authentication.
   serverport:
-    type: raw
+    type: int
     description:
       - Port on which the web server accepts connections.
   successrule:
@@ -167,6 +169,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationwebauthaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationwebauthaction
+      delegate_to: localhost
+      netscaler.adc.authenticationwebauthaction:
+        state: present
+        name: webauthact
+        serverip: 2.2.2.2
+        serverport: 20
+        fullreqexpr: '"GET /basic.html/"'
+        scheme: https
+        successrule: http.res.status.eq(200)
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: uservserver
 short_description: Configuration for virtual server resource.
 description: Configuration for virtual server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,11 +45,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   params:
-    type: raw
+    type: str
     description:
       - Any comments associated with the protocol.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments that you might want to associate with the virtual server.
   defaultlb:
@@ -61,7 +63,7 @@ options:
     description:
       - IPv4 or IPv6 address to assign to the virtual server.
   name:
-    type: raw
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash

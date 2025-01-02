@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbpolicy
 short_description: Configuration for lb policy resource.
 description: Configuration for lb policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,15 +45,15 @@ options:
     description:
       - Name of action to use if the request matches this LB policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any type of information about this LB policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name of the LB policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -76,7 +78,7 @@ options:
     description:
       - Expression against which traffic is evaluated.
   undefaction:
-    type: raw
+    type: str
     description:
       - 'Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Available settings function

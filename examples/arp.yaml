@@ -1,0 +1,12 @@
+---
+- name: Sample arp playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure arp
+      delegate_to: localhost
+      netscaler.adc.arp:
+        state: present
+        ipaddress: 177.0.0.31
+        mac: 96:f1:a0:2b:98:1f
+        ifnum: 1/2

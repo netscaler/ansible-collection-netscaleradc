@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsnaptrrec
 short_description: Configuration for NAPTR record resource.
 description: Configuration for NAPTR record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -111,6 +113,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsnaptrrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsnaptrrec
+      delegate_to: localhost
+      netscaler.adc.dnsnaptrrec:
+        state: present
+        domain: citrix.com1
+        order: '10'
+        preference: '10'
+        flags: U
+        services: E2U+sip
+        regexp: '!^.*$!sip:customer-service@example.com!'
+        ttl: 3600
 """
 
 RETURN = r"""

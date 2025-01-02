@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: crpolicy
 short_description: Configuration for cache redirection policy resource.
 description: Configuration for cache redirection policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,7 +45,7 @@ options:
     description:
       - 'Name of the built-in cache redirection action: CACHE/ORIGIN.'
   logaction:
-    type: raw
+    type: str
     description:
       - The log action associated with the cache redirection policy
   newname:
@@ -51,7 +53,7 @@ options:
     description:
       - The new name of the content switching policy.
   policyname:
-    type: raw
+    type: str
     description:
       - Name for the cache redirection policy. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -76,6 +78,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample crpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure crpolicy
+      delegate_to: localhost
+      netscaler.adc.crpolicy:
+        state: present
+        policyname: crp1
+        rule: 'true'
+        action: origin
 """
 
 RETURN = r"""

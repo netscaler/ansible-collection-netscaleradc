@@ -1,0 +1,13 @@
+---
+- name: Sample vpnintranetapplication playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnintranetapplication
+      delegate_to: localhost
+      netscaler.adc.vpnintranetapplication:
+        state: present
+        intranetapplication: intra_app21
+        protocol: TCP
+        destip: 10.100.0.57
+        interception: PROXY

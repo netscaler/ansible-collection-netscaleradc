@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbmonitor_metric_binding
 short_description: Binding Resource definition for describing association between
   lbmonitor and metric resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbmo
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -60,6 +62,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbmonitor_metric_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbmonitor_metric_binding
+      delegate_to: localhost
+      netscaler.adc.lbmonitor_metric_binding:
+        state: present
+        monitorname: LB_ia_mon6
+        metric: local.CONNECTIONS
+        metricthreshold: '23'
+        metricweight: '10'
 """
 
 RETURN = r"""

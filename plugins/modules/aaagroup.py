@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaagroup
 short_description: Configuration for AAA group resource.
 description: Configuration for AAA group resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -362,6 +364,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaagroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaagroup
+      delegate_to: localhost
+      netscaler.adc.aaagroup:
+        state: present
+        groupname: External
 """
 
 RETURN = r"""

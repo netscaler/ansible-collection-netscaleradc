@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsweblogparam
 short_description: Configuration for Web log parameters resource.
 description: Configuration for Web log parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,31 +39,33 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   buffersizemb:
-    type: raw
+    type: float
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.
   customreqhdrs:
-    type: raw
+    type: list
     description:
       - Name(s) of HTTP request headers whose values should be exported by the Web
         Logging feature.
+    elements: str
   customrsphdrs:
-    type: raw
+    type: list
     description:
       - Name(s) of HTTP response headers whose values should be exported by the Web
         Logging feature.
+    elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsweblogparam playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsweblogparam
+    - name: Configure nsweblogparam
       delegate_to: localhost
       netscaler.adc.nsweblogparam:
         state: present

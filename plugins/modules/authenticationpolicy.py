@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationpolicy
 short_description: Configuration for Authentication Policy resource.
 description: Configuration for Authentication Policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,15 +45,15 @@ options:
     description:
       - Name of the authentication action to be performed if the policy matches.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the advance AUTHENTICATION policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -82,7 +84,7 @@ options:
         to determine whether to attempt to authenticate the user with the AUTHENTICATION
         server.
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in
@@ -118,6 +120,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationpolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationpolicy:
+        state: present
+        name: OKta_SAML_Internal_ZS_SubnetsMisc
+        rule: Sub_58220950_24 || Sub_941881310_25 || Sub_1242481410_24 || Sub_1281771250_24
+          || Sub_137831540_24 || Sub_154113230_24 || Sub_197982010_24 || Sub_211144190_24
+          || Sub_213521020_24
+        action: prod_okta
 """
 
 RETURN = r"""

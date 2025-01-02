@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbmetrictable_metric_binding
 short_description: Binding Resource definition for describing association between
   lbmetrictable and metric resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbme
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -55,6 +57,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbmetrictable_metric_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbmetrictable_metric_binding
+      delegate_to: localhost
+      netscaler.adc.lbmetrictable_metric_binding:
+        state: present
+        metrictable: LB_ia_metrictable3
+        metric: ia_metric
+        snmpoid: 1.1.1.115.4.1.5951.4.1.1.46.3.9
 """
 
 RETURN = r"""

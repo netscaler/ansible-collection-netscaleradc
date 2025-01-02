@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaapreauthenticationpolicy
 short_description: Configuration for pre authentication policy resource.
 description: Configuration for pre authentication policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -63,6 +65,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaapreauthenticationpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaapreauthenticationpolicy
+      delegate_to: localhost
+      netscaler.adc.aaapreauthenticationpolicy:
+        state: present
+        name: preact
+        rule: client.os(win8.1) exists || client.os(win8) exists
+        reqaction: preact
 """
 
 RETURN = r"""

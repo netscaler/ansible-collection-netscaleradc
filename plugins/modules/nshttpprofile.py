@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nshttpprofile
 short_description: Configuration for HTTP profile resource.
 description: Configuration for HTTP profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   adpttimeout:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -47,7 +49,7 @@ options:
       - Adapts the configured request timeout based on flow conditions. The timeout
         is increased or decreased internally and applied on the flow.
   allowonlywordcharactersandhyphen:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -57,19 +59,19 @@ options:
         other characters. When disabled allows any visible (printing) characters (%21-%7E)
         except delimiters (double quotes and "(),/:;<=>?@[]{}").
   altsvc:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Choose whether to enable support for Alternative Services.
   altsvcvalue:
-    type: raw
+    type: str
     description:
       - Configure a custom Alternative Services header value that should be inserted
         in the response to advertise a HTTP/SSL/HTTP_QUIC vserver.
   apdexcltresptimethreshold:
-    type: raw
+    type: float
     description:
       - This option sets the satisfactory threshold (T) for client response time in
         milliseconds to be used for APDEX calculations. This means a transaction responding
@@ -79,69 +81,77 @@ options:
         tolerable and frustrating transcations. And client response time related apdex
         counters are only updated on a vserver which receives clients traffic.
   clientiphdrexpr:
-    type: raw
+    type: str
     description:
       - Name of the header that contains the real client IP address.
   cmponpush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Start data compression on receiving a TCP packet with PUSH flag set.
   conmultiplex:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Reuse server connections for requests from more than one client connections.
   dropextracrlf:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Drop any extra 'CR' and 'LF' characters present after the header.
   dropextradata:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Drop any extra data when server sends more data than the specified content-length.
   dropinvalreqs:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Drop invalid HTTP requests or responses.
   grpcholdlimit:
-    type: raw
+    type: float
     description:
       - Maximum size in bytes allowed to buffer gRPC packets till trailer is received
   grpcholdtimeout:
-    type: raw
+    type: float
     description:
       - Maximum time in milliseconds allowed to buffer gRPC packets till trailer is
         received. The value should be in multiples of 100
   grpclengthdelimitation:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Set to C(DISABLED) for gRPC without a length delimitation.
+  hostheadervalidation:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Validates the length of the Host header and its syntax. Also includes validation
+        of the port number if specified
   http2:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Choose whether to enable support for HTTP/2.
   http2altsvcframe:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -150,154 +160,181 @@ options:
         the ADC sends HTTP/2 ALTSVC frames to HTTP/2 clients, instead of the Alt-Svc
         response header field. Not applicable to servers.
   http2direct:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Choose whether to enable support for Direct HTTP/2.
   http2headertablesize:
-    type: raw
+    type: float
     description:
       - Maximum size of the header compression table used to decode header blocks,
         in bytes.
   http2initialconnwindowsize:
-    type: raw
+    type: float
     description:
       - Initial window size for connection level flow control, in bytes.
   http2initialwindowsize:
-    type: raw
+    type: float
     description:
       - Initial window size for stream level flow control, in bytes.
   http2maxconcurrentstreams:
-    type: raw
+    type: float
     description:
       - Maximum number of concurrent streams that is allowed per connection.
   http2maxemptyframespermin:
-    type: raw
+    type: float
     description:
-      - Maximum number of empty  frames allowed in HTTP2 connection per minute
+      - Maximum number of empty frames allowed in HTTP2 connection per minute
   http2maxframesize:
-    type: raw
+    type: float
     description:
       - Maximum size of the frame payload that the Citrix ADC is willing to receive,
         in bytes.
   http2maxheaderlistsize:
-    type: raw
+    type: float
     description:
       - 'Maximum size of header list that the Citrix ADC is prepared to accept, in
         bytes. NOTE: The actual plain text header size that the Citrix ADC accepts
         is limited by maxHeaderLen. Please change maxHeaderLen parameter as well when
         modifying http2MaxHeaderListSize.'
   http2maxpingframespermin:
-    type: raw
+    type: float
     description:
-      - Maximum number of ping frames allowed in HTTP2 connection per minute
+      - Maximum number of PING frames allowed in HTTP2 connection per minute
   http2maxresetframespermin:
-    type: raw
+    type: float
     description:
-      - Maximum number of reset frames allowed in HTTP/2 connection per minute
+      - Maximum number of outgoing RST_STREAM frames allowed in HTTP/2 connection
+        per minute
+  http2maxrxresetframespermin:
+    type: float
+    description:
+      - Maximum number of incoming RST_STREAM frames allowed in HTTP/2 connection
+        per minute
   http2maxsettingsframespermin:
-    type: raw
+    type: float
     description:
-      - Maximum number of settings frames allowed in HTTP2 connection per minute
+      - Maximum number of SETTINGS frames allowed in HTTP2 connection per minute
   http2minseverconn:
-    type: raw
+    type: float
     description:
       - Minimum number of HTTP2 connections established to backend server, on receiving
         HTTP requests from client before multiplexing the streams into the available
         HTTP/2 connections.
   http2strictcipher:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Choose whether to enable strict HTTP/2 cipher selection
   http3:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Choose whether to enable support for HTTP/3.
   http3maxheaderblockedstreams:
-    type: raw
+    type: float
     description:
       - Maximum number of HTTP/3 streams that can be blocked while HTTP/3 headers
         are being decoded.
   http3maxheaderfieldsectionsize:
-    type: raw
+    type: float
     description:
       - Maximum size of the HTTP/3 header field section, in bytes.
   http3maxheadertablesize:
-    type: raw
+    type: float
     description:
       - Maximum size of the HTTP/3 QPACK dynamic header table, in bytes.
+  http3minseverconn:
+    type: float
+    description:
+      - Minimum number of HTTP/3 connections established to backend server, on receiving
+        HTTP requests from client before multiplexing the streams into the available
+        HTTP/3 connections.
+  http3webtransport:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Choose whether to enable support for WebTransport over HTTP/3.
   httppipelinebuffsize:
-    type: raw
+    type: float
     description:
       - Application pipeline request buffering size, in bytes.
   incomphdrdelay:
-    type: raw
+    type: float
     description:
       - Maximum time to wait, in milliseconds, between incomplete header packets.
         If the header packets take longer to arrive at Citrix ADC, the connection
         is silently dropped.
   markconnreqinval:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Mark CONNECT requests as invalid.
   markhttp09inval:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Mark HTTP/0.9 requests as invalid.
   markhttpheaderextrawserror:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Mark Http header with extra white space as invalid
   markrfc7230noncompliantinval:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Mark RFC7230 non-compliant transaction as invalid
   marktracereqinval:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Mark TRACE requests as invalid.
+  maxduplicateheaderfields:
+    type: float
+    description:
+      - Maximum number of allowed occurrences of header fields that share the same
+        field name. This threshold is enforced only for well-known header field names
+        recognized by NetScaler. If the value is set to 0, then it will be similar
+        to previous behavior, Where we store only 15 duplicate headers and rest are
+        parsed and send to the server.
   maxheaderfieldlen:
-    type: raw
+    type: float
     description:
       - Number of bytes allowed for header field for HTTP header. If number of bytes
         exceeds beyond configured value, then request will be marked invalid
   maxheaderlen:
-    type: raw
+    type: float
     description:
       - Number of bytes to be queued to look for complete header before returning
         error. If complete header is not obtained after queuing these many bytes,
         request will be marked as invalid and no L7 processing will be done for that
         TCP connection.
   maxreq:
-    type: raw
+    type: float
     description:
       - Maximum number of requests allowed on a single connection. Zero implies no
         limit on the number of requests.
   maxreusepool:
-    type: raw
+    type: float
     description:
       - Maximum limit on the number of connections, from the Citrix ADC to a particular
         server that are kept in the reuse pool. This setting is helpful for optimal
@@ -306,14 +343,14 @@ options:
         value is given, it has to be greater than or equal to the number of running
         Packet Engines.
   minreusepool:
-    type: raw
+    type: float
     description:
       - Minimum limit on the number of connections, from the Citrix ADC to a particular
         server that are kept in the reuse pool. This setting is helpful for optimal
         memory utilization and for reducing the idle connections to the server just
         after the peak time. Zero implies no limit on reuse pool size.
   name:
-    type: raw
+    type: str
     description:
       - Name for an HTTP profile. Must begin with a letter, number, or the underscore
         \(_\) character. Other characters allowed, after the first character, are
@@ -324,14 +361,14 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks \(for example, "my http profile" or ''my http profile''\).'
   passprotocolupgrade:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Pass protocol upgrade request to the server.
   persistentetag:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -339,13 +376,13 @@ options:
       - Generate the persistent Citrix ADC specific ETag for the HTTP response with
         ETag header.
   reqtimeout:
-    type: raw
+    type: float
     description:
       - Time, in seconds, within which the HTTP request must complete. If the request
         does not complete within this time, the specified request timeout action is
         executed. Zero disables the timeout.
   reqtimeoutaction:
-    type: raw
+    type: str
     description:
       - 'Action to take when the HTTP request does not complete within the specified
         request timeout duration. You can configure the following actions:'
@@ -354,12 +391,12 @@ options:
       - '* Custom responder action - Name of the responder action to trigger when
         timeout occurs, used to send custom message.'
   reusepooltimeout:
-    type: raw
+    type: float
     description:
       - Idle timeout (in seconds) for server connections in re-use pool. Connections
         in the re-use pool are flushed, if they remain idle for the configured timeout.
   rtsptunnel:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -368,14 +405,14 @@ options:
         or Content-Type header, Citrix ADC does not process Layer 7 traffic on this
         connection.
   weblog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable web logging.
   websocket:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -388,16 +425,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nshttpprofile playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nshttpProfile
+    - name: Configure nshttpprofile
       delegate_to: localhost
       netscaler.adc.nshttpprofile:
         state: present
-        name: httpprofile-HTTP2-0
-        http2: ENABLED
+        name: nshttp_default_profile
+        dropinvalreqs: ENABLED
 """
 
 RETURN = r"""

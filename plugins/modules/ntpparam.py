@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ntpparam
 short_description: Configuration for NTP parameter resource.
 description: Configuration for NTP parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authentication:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -45,21 +47,22 @@ options:
       - Apply NTP authentication, which enables the NTP client (Citrix ADC) to verify
         that the server is in fact known and trusted.
   autokeylogsec:
-    type: raw
+    type: float
     description:
       - Autokey protocol requires the keys to be refreshed periodically. This parameter
         specifies the interval between regenerations of new session keys. In seconds,
         expressed as a power of 2.
   revokelogsec:
-    type: raw
+    type: float
     description:
       - Interval between re-randomizations of the autokey seeds to prevent brute-force
         attacks on the autokey algorithms.
   trustedkey:
-    type: raw
+    type: list
     description:
       - Key identifiers that are trusted for server authentication with symmetric
         key cryptography in the keys file.
+    elements: int
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: transformaction
 short_description: Configuration for transform action resource.
 description: Configuration for transform action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,21 +41,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this URL Transformation action.
   cookiedomainfrom:
-    type: raw
+    type: str
     description:
       - Pattern that matches the domain to be transformed in Set-Cookie headers.
   cookiedomaininto:
-    type: raw
+    type: str
     description:
       - 'PCRE-format regular expression that describes the transformation to be performed
         on cookie domains that match the cookieDomainFrom pattern. '
       - 'NOTE: The cookie domain to be transformed is extracted from the request.'
   name:
-    type: raw
+    type: str
     description:
       - Name for the URL transformation action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -76,22 +78,22 @@ options:
     description:
       - Name of the URL Transformation profile with which to associate this action.
   requrlfrom:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the request URL pattern to be
         transformed.
   requrlinto:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the reqUrlFrom pattern.
   resurlfrom:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the response URL pattern to
         be transformed.
   resurlinto:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the resUrlFrom pattern.

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnstatic
 short_description: Configuration for static mapping resource.
 description: Configuration for static mapping resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -111,6 +113,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnstatic playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnstatic
+      delegate_to: localhost
+      netscaler.adc.lsnstatic:
+        state: present
+        nattype: DS-Lite
 """
 
 RETURN = r"""

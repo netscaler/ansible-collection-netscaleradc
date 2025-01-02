@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: responderaction
 short_description: Configuration for responder action resource.
 description: Configuration for responder action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,23 +51,24 @@ options:
         that might not be present in all requests. If a response refers to a missing
         request element, an empty string is used instead.
   comment:
-    type: raw
+    type: str
     description:
       - Comment. Any type of information about this responder action.
   headers:
-    type: raw
+    type: list
     description:
       - One or more headers to insert into the HTTP response. Each header is specified
         as "name(expr)", where expr is an expression that is evaluated at runtime
         to provide the value for the named header. You can configure a maximum of
         eight headers for a responder action.
+    elements: str
   htmlpage:
     type: str
     description:
       - For respondwithhtmlpage policies, name of the HTML page object to use as the
         response. You must first import the page object.
   name:
-    type: raw
+    type: str
     description:
       - Name for the responder action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -87,13 +90,13 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder action" or my responder action').
   reasonphrase:
-    type: raw
+    type: str
     description:
       - 'Expression specifying the reason phrase of the HTTP response. The reason
         phrase may be a string literal with quotes or a PI expression. For example:
         "Invalid URL: " + HTTP.REQ.URL'
   responsestatuscode:
-    type: raw
+    type: float
     description:
       - HTTP response status code, for example 200, 302, 404, etc. The default value
         for the redirect action type is 302 and for respondwithhtmlpage is 200
@@ -148,6 +151,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample responderaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure responderaction
+      delegate_to: localhost
+      netscaler.adc.responderaction:
+        state: present
+        name: LB_rsact1
+        type: respondwith
+        target: DIAMETER.NEW_ERROR_ANSWER + DIAMETER.NEW_AVP(263, DIAMETER.REQ.SESSION_ID.VALUE)
+          + DIAMETER.NEW_AVP_UNSIGNED32(268, 3002)
 """
 
 RETURN = r"""

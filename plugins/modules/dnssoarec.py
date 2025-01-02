@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnssoarec
 short_description: Configuration for SOA record resource.
 description: Configuration for SOA record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -45,7 +47,7 @@ options:
         email address, replace the @ sign with a period (.). For example, enter domainadmin.example.com
         instead of domainadmin@example.com.
   domain:
-    type: raw
+    type: str
     description:
       - Domain name for which to add the SOA record.
   ecssubnet:
@@ -53,7 +55,7 @@ options:
     description:
       - Subnet for which the cached SOA record need to be removed.
   expire:
-    type: raw
+    type: float
     description:
       - Time, in seconds, after which the zone data on a secondary name server can
         no longer be considered authoritative because all refresh and retry attempts
@@ -61,7 +63,7 @@ options:
         server stops serving the zone. Typically one week. Not used by the primary
         server.
   minimum:
-    type: raw
+    type: float
     description:
       - Default time to live (TTL) for all records in the zone. Can be overridden
         for individual records.
@@ -74,22 +76,22 @@ options:
     description:
       - Domain name of the name server that responds authoritatively for the domain.
   refresh:
-    type: raw
+    type: float
     description:
       - Time, in seconds, for which a secondary server must wait between successive
         checks on the value of the serial number.
   retry:
-    type: raw
+    type: float
     description:
       - Time, in seconds, between retries if a secondary server's attempt to contact
         the primary server for a zone refresh fails.
   serial:
-    type: raw
+    type: float
     description:
       - The secondary server uses this parameter to determine whether it requires
         a zone transfer from the primary server.
   ttl:
-    type: raw
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -115,6 +117,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnssoarec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnssoarec
+      delegate_to: localhost
+      netscaler.adc.dnssoarec:
+        state: present
+        domain: gslb.blackstone.com
+        originserver: portal-adnsuse1.bx.com
+        contact: stephen.tozzi.blackstone.com
 """
 
 RETURN = r"""

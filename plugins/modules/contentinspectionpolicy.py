@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: contentinspectionpolicy
 short_description: Configuration for ContentInspection policy resource.
 description: Configuration for ContentInspection policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -52,15 +54,15 @@ options:
         then resend the request if desired.'
       - '    * DROP - Drop the request without sending a response to the user.'
   comment:
-    type: raw
+    type: str
     description:
       - Any type of information about this contentInspection policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the contentInspection policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -90,7 +92,7 @@ options:
       - Expression that the policy uses to determine whether to execute the specified
         action.
   undefaction:
-    type: raw
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in

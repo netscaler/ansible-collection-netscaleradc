@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appflowpolicylabel
 short_description: Configuration for AppFlow policy label resource.
 description: Configuration for AppFlow policy label resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -96,6 +98,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appflowpolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appflowpolicylabel
+      delegate_to: localhost
+      netscaler.adc.appflowpolicylabel:
+        state: present
+        labelname: ia_appflow_polabl3
 """
 
 RETURN = r"""

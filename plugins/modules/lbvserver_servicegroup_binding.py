@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver_servicegroup_binding
 short_description: Binding Resource definition for describing association between
   lbvserver and servicegroup resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -72,22 +74,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Create a lb
-  delegate_to: localhost
-  netscaler.adc.lbvserver:
-    name: test_lb
-    servicetype: SSL
-- name: Create a servicegroup
-  delegate_to: localhost
-  netscaler.adc.servicegroup:
-    servicegroupname: test_sg
-    servicetype: SSL
-- name: Create a servicegroup
-  delegate_to: localhost
-  netscaler.adc.lbvserver_servicegroup_binding:
-    weight: 1
-    name: test_lb
-    servicename: test_sg
+---
+- name: Sample lbvserver_servicegroup_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_servicegroup_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_servicegroup_binding:
+        state: present
+        name: CR_cachev21
+        servicename: CR_SVG
 """
 
 RETURN = r"""

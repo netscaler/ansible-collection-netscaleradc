@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcertkeybundle
 short_description: Configuration for certkey bundle resource.
 description: Configuration for certkey bundle resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -64,6 +66,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslcertkeybundle playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcertkeybundle
+      delegate_to: localhost
+      netscaler.adc.sslcertkeybundle:
+        state: present
+        certkeybundlename: tc11
+        bundlefile: bundle_files/enc_cert.pem
+        passplain: '123456'
 """
 
 RETURN = r"""

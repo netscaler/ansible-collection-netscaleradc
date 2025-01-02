@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsappflowparam
 short_description: Configuration for appflowParam resource.
 description: Configuration for appflowParam resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,60 +39,60 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clienttrafficonly:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Control whether AppFlow records should be generated only for client-side traffic.
   httpcookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP cookie logging.
   httphost:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP host logging.
   httpmethod:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP method logging.
   httpreferer:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP referer logging.
   httpurl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP URL logging.
   httpuseragent:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP user-agent logging.
   templaterefresh:
-    type: raw
+    type: float
     description:
       - IPFIX template refresh interval (in seconds).
   udppmtu:
-    type: raw
+    type: float
     description:
       - MTU to be used for IPFIX UDP packets.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

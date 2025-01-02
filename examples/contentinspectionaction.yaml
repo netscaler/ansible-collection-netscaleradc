@@ -1,0 +1,11 @@
+---
+- name: Sample contentinspectionaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure contentinspectionaction
+      delegate_to: localhost
+      netscaler.adc.contentinspectionaction:
+        state: present
+        name: ci_act_test
+        type: NOINSPECTION

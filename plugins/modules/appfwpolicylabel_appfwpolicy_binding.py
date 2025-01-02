@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwpolicylabel_appfwpolicy_binding
 short_description: Binding Resource definition for describing association between
   appfwpolicylabel and appfwpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between appf
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -85,6 +87,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwpolicylabel_appfwpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwpolicylabel_appfwpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.appfwpolicylabel_appfwpolicy_binding:
+        state: present
+        labelname: appfw_label_01
+        policyname: ia_appfwpol1
+        priority: '1'
+        invoke: true
+        labeltype: policylabel
+        invoke_labelname: appfw_label_02
 """
 
 RETURN = r"""

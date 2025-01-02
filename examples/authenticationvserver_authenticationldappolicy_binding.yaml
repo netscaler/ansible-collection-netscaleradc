@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationvserver_authenticationldappolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver_authenticationldappolicy_binding
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver_authenticationldappolicy_binding:
+        state: present
+        name: ia_authnvs71
+        policy: ia_authnldappol2
+        secondary: true

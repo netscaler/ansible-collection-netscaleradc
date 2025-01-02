@@ -1,0 +1,10 @@
+---
+- name: Sample nstcpparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nstcpparam
+      delegate_to: localhost
+      netscaler.adc.nstcpparam:
+        state: present
+        autosyncookietimeout: '100'

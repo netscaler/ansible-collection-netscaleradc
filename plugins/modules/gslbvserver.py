@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: gslbvserver
 short_description: Configuration for Global Server Load Balancing Virtual Server resource.
 description: Configuration for Global Server Load Balancing Virtual Server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,7 +45,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -56,7 +58,7 @@ options:
         all the services bound to the domain are down, or when the backup chain of
         virtual servers is down.
   backuplbmethod:
-    type: raw
+    type: str
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -79,17 +81,17 @@ options:
         feature can be disabled by setting the value to zero. The created session
         is in effect for a specific client per domain.
   backupvserver:
-    type: raw
+    type: str
     description:
       - Name of the backup GSLB virtual server to which the appliance should to forward
         requests if the status of the primary GSLB virtual server is down or exceeds
         its spillover threshold.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments that you might want to associate with the GSLB virtual server.
   considereffectivestate:
-    type: raw
+    type: str
     choices:
       - NONE
       - STATE_ONLY
@@ -114,7 +116,7 @@ options:
     description:
       - Timeout, in minutes, for the GSLB site cookie.
   disableprimaryondown:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -123,7 +125,7 @@ options:
         virtual server returns to the UP state. Used when spillover is configured
         for the virtual server.
   dnsrecordtype:
-    type: raw
+    type: str
     choices:
       - A
       - AAAA
@@ -137,7 +139,7 @@ options:
       - Domain name for which to change the time to live (TTL) and/or backup service
         IP address.
   dynamicweight:
-    type: raw
+    type: str
     choices:
       - SERVICECOUNT
       - SERVICEWEIGHT
@@ -148,7 +150,7 @@ options:
         the number of services bound to the virtual server help the appliance to select
         the service.
   ecs:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -158,7 +160,7 @@ options:
         persistence (if enabled) instead of the LDNS address. Persistence mask is
         ignored if ECS is enabled.
   ecsaddrvalidation:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -166,7 +168,7 @@ options:
       - Validate if ECS address is a private or unroutable address and in such cases,
         use the LDNS IP.
   edr:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -180,7 +182,7 @@ options:
     description:
       - The IP type for this GSLB vserver.
   lbmethod:
-    type: raw
+    type: str
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -195,14 +197,14 @@ options:
     description:
       - Load balancing method for the GSLB virtual server.
   mir:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Include multiple IP addresses in the DNS responses sent to clients.
   name:
-    type: raw
+    type: str
     description:
       - Name for the GSLB virtual server. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -213,7 +215,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my vserver" or 'my vserver').
   netmask:
-    type: raw
+    type: str
     description:
       - IPv4 network mask for use in the SOURCEIPHASH load balancing method.
   newname:
@@ -221,23 +223,23 @@ options:
     description:
       - New name for the GSLB virtual server.
   order:
-    type: raw
+    type: float
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   orderthreshold:
-    type: raw
+    type: float
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
   persistenceid:
-    type: raw
+    type: float
     description:
       - The persistence ID for the GSLB virtual server. The ID is a positive integer
         that enables GSLB sites to identify the GSLB virtual server, and is required
         if source IP address based or spill over based persistence is enabled on the
         virtual server.
   persistencetype:
-    type: raw
+    type: str
     choices:
       - SOURCEIP
       - NONE
@@ -247,12 +249,12 @@ options:
         IP address received in response to the DNS query is used for subsequent requests
         from the same client.
   persistmask:
-    type: raw
+    type: str
     description:
       - The optional IPv4 network mask applied to IPv4 addresses to establish source
         IP address based persistence.
   rule:
-    type: raw
+    type: str
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.
       - This field is applicable only if gslb method or gslb backup method are set
@@ -265,11 +267,11 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   servicegroupname:
-    type: raw
+    type: str
     description:
       - The GSLB service group name bound to the selected GSLB virtual server.
   servicename:
-    type: raw
+    type: str
     description:
       - Name of the GSLB service for which to change the weight.
   servicetype:
@@ -302,7 +304,7 @@ options:
         prefix is configured on a GSLB service) that are associated with this virtual
         server.
   sobackupaction:
-    type: raw
+    type: str
     choices:
       - DROP
       - ACCEPT
@@ -311,7 +313,7 @@ options:
       - Action to be performed if spillover is to take effect, but no backup chain
         to spillover is usable or exists
   somethod:
-    type: raw
+    type: str
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
@@ -337,7 +339,7 @@ options:
         or gslbSvc2 and gslbSvc3 transition to DOWN.'
       - '* C(NONE) - Spillover does not occur.'
   sopersistence:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -345,53 +347,55 @@ options:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup GSLB virtual servers.
   sopersistencetimeout:
-    type: raw
+    type: float
     description:
       - Timeout for spillover persistence, in minutes.
   sothreshold:
-    type: raw
+    type: float
     description:
       - Threshold at which spillover occurs. Specify an integer for the CONNECTION
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
         method (do not enter the units), or a percentage for the HEALTH method (do
         not enter the percentage symbol).
   timeout:
-    type: raw
+    type: float
     description:
       - Idle time, in minutes, after which a persistence entry is cleared.
   toggleorder:
-    type: raw
+    type: str
     choices:
       - ASCENDING
       - DESCENDING
     description:
       - Configure this option to toggle order preference
   tolerance:
-    type: raw
+    type: float
     description:
-      - Site selection tolerance, in milliseconds, for implementing the RTT load balancing
-        method. If a site's RTT deviates from the lowest RTT by more than the specified
-        tolerance, the site is not considered when the Citrix ADC makes a GSLB decision.
-        The appliance implements the round robin method of global server load balancing
-        between sites whose RTT values are within the specified tolerance. If the
-        tolerance is 0 (zero), the appliance always sends clients the IP address of
-        the site with the lowest RTT.
+      - Tolerance in milliseconds. Tolerance value is used in deciding which sites
+        in a GSLB configuration must be considered for implementing the RTT load balancing
+        method. The sites having the RTT value less than or equal to the sum of the
+        lowest RTT and tolerance value are considered. NetScaler implements the round
+        robin method of global server load balancing among these considered sites.
+        The sites that have RTT value greater than this value are not considered.
+        The logic is applied for each LDNS and based on the LDNS, the sites that are
+        considered might change. For example, a site that is considered for requests
+        coming from LDNS1 might not be considered for requests coming from LDNS2.
   ttl:
     type: float
     description:
       - Time to live (TTL) for the domain.
   v6netmasklen:
-    type: raw
+    type: float
     description:
       - Number of bits to consider, in an IPv6 source IP address, for creating the
         hash that is required by the SOURCEIPHASH load balancing method.
   v6persistmasklen:
-    type: raw
+    type: float
     description:
       - Number of bits to consider in an IPv6 source IP address when creating source
         IP address based persistence sessions.
   weight:
-    type: raw
+    type: float
     description:
       - Weight for the service.
   gslbvserver_domain_binding:
@@ -524,6 +528,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample gslbvserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbvserver
+      delegate_to: localhost
+      netscaler.adc.gslbvserver:
+        state: present
+        name: backup_gslb_portal.bx.com
+        servicetype: SSL
+        backuplbmethod: ROUNDROBIN
+        tolerance: '0'
+        appflowlog: DISABLED
 """
 
 RETURN = r"""

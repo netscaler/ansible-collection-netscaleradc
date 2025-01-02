@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditsyslogpolicy
 short_description: Configuration for system log policy resource.
 description: Configuration for system log policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -63,6 +65,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditsyslogpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditsyslogpolicy
+      delegate_to: localhost
+      netscaler.adc.auditsyslogpolicy:
+        state: present
+        name: syslog_pol1
+        rule: REQ.IP.DESTIP == 10.102.58.0 -netmask 255.255.255.0
+        action: sys_act1
 """
 
 RETURN = r"""

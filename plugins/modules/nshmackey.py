@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nshmackey
 short_description: Configuration for HMAC key resource.
 description: Configuration for HMAC key resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Comments associated with this encryption key.
   digest:
@@ -78,7 +80,7 @@ options:
       - intended for use cases where the NetScaler both generates and verifies an
         HMAC on  the same data.
   name:
-    type: raw
+    type: str
     description:
       - 'Key name.  This follows the same syntax rules as other expression entity
         names:'

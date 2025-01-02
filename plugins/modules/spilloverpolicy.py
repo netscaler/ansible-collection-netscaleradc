@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: spilloverpolicy
 short_description: Configuration for Spillover policy resource.
 description: Configuration for Spillover policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,11 +46,11 @@ options:
       - Action for the spillover policy. Action is created using add spillover action
         command
   comment:
-    type: raw
+    type: str
     description:
       - Any comments that you might want to associate with the spillover policy.
   name:
-    type: raw
+    type: str
     description:
       - Name of the spillover policy.
   newname:

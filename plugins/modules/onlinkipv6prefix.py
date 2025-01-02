@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: onlinkipv6prefix
 short_description: Configuration for on-link IPv6 global prefixes for Router Advertisment
   resource.
@@ -25,6 +26,7 @@ description: Configuration for on-link IPv6 global prefixes for Router Advertism
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,43 +43,43 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   autonomusprefix:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
   decrementprefixlifetimes:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
   depricateprefix:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Depricate the prefix.
   ipv6prefix:
-    type: raw
+    type: str
     description:
       - Onlink prefixes for RA messages.
   onlinkprefix:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix onlink flag.
   prefixpreferredlifetime:
-    type: raw
+    type: float
     description:
       - Preferred life time of the prefix, in seconds.
   prefixvalidelifetime:
-    type: raw
+    type: float
     description:
       - Valide life time of the prefix, in seconds.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -85,6 +87,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample onlinkipv6prefix playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure onlinkipv6prefix
+      delegate_to: localhost
+      netscaler.adc.onlinkipv6prefix:
+        state: present
+        ipv6prefix: 2001::/64
+        onlinkprefix: 'NO'
+        autonomusprefix: 'NO'
+        depricateprefix: 'YES'
+        decrementprefixlifetimes: 'YES'
+        prefixvalidelifetime: '30'
+        prefixpreferredlifetime: '20'
 """
 
 RETURN = r"""

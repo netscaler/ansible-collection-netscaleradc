@@ -1,0 +1,16 @@
+---
+- name: Sample appfwprofile_sqlinjection_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_sqlinjection_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_sqlinjection_binding:
+        state: present
+        name: Test_profile
+        sqlinjection: text_area
+        formactionurl_sql: ^http://test.net/forms/login.php$
+        as_scan_location_sql: FORMFIELD
+        as_value_type_sql: SpecialString
+        as_value_expr_sql: ;
+        isvalueregex_sql: NOTREGEX

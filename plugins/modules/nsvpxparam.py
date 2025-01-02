@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsvpxparam
 short_description: Configuration for "VPX" resource.
 description: Configuration for "VPX" resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cpuyield:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - 'YES'
@@ -58,6 +60,25 @@ options:
       - 2. In cluster setup, use '-ownerNode' to specify ID of the cluster node.
       - 3. This setting is a system wide implementation and not granular to vCPUs.
       - 4. No effect on the management PE.
+  kvmvirtiomultiqueue:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - This setting applicable on KVM VPX with virtio NICs, is to configure multiple
+        queues for all virtio interfaces.
+      - ''
+      - '* There are 2 options for this behavior:'
+      - 1. C(YES) - Allows VPX to use multiple queues for each virtio interface as
+        configured through the KVM Hypervisor.
+      - 2. C(NO) - Each virtio interface within VPX will use a single queue for transmit
+        and receive.
+      - ''
+      - '* Its behavior in different scenarios:'
+      - 1. As this setting is node specific only, it will not be propagated to other
+        nodes, when executed on Cluster(CLIP) and HA(Primary).
+      - 2. In cluster setup, use '-ownerNode' to specify ID of the cluster node.
   masterclockcpu1:
     type: str
     choices:
@@ -66,25 +87,15 @@ options:
     description:
       - This argument is deprecated.
   ownernode:
-    type: raw
+    type: float
     description:
-      - ID of the cluster node for which you are setting the cpuyield. It can be configured
-        only through the cluster IP address.
+      - ID of the cluster node for which you are setting the cpuyield and/or KVMVirtioMultiqueue.
+        It can be configured only through the cluster IP address.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
----
-- name: Sample Playbook
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsvpxparam
-      delegate_to: localhost
-      netscaler.adc.nsvpxparam:
-        state: present
-        cpuyield: 'YES'
 """
 
 RETURN = r"""

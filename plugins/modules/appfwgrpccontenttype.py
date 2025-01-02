@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwgrpccontenttype
 short_description: Configuration for gRRPC content type resource.
 description: Configuration for gRRPC content type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -52,6 +54,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwgrpccontenttype playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwgrpccontenttype
+      delegate_to: localhost
+      netscaler.adc.appfwgrpccontenttype:
+        state: present
+        grpccontenttypevalue: application/grpc-web+proto
 """
 
 RETURN = r"""

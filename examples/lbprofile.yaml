@@ -1,0 +1,9 @@
+---
+- name: Sample lbprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbprofile
+      delegate_to: localhost
+      netscaler.adc.lbprofile:
+        state: present

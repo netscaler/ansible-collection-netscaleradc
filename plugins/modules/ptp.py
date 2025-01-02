@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ptp
 short_description: Configuration for Precision Time Protocol resource.
 description: Configuration for Precision Time Protocol resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,6 +41,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ptp playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ptp
+      delegate_to: localhost
+      netscaler.adc.ptp:
+        state: present
 """
 
 RETURN = r"""

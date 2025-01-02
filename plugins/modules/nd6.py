@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nd6
 short_description: Configuration for nd6 resource.
 description: Configuration for nd6 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -104,6 +106,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nd6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nd6
+      delegate_to: localhost
+      netscaler.adc.nd6:
+        state: present
+        neighbor: fe80::20
+        mac: 00:aa:10:12:13:ef
+        ifnum: 1/2
+        vlan: 1
 """
 
 RETURN = r"""

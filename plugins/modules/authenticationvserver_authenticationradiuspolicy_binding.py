@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationvserver_authenticationradiuspolicy_binding
 short_description: Binding Resource definition for describing association between
   authenticationvserver and authenticationradiuspolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between auth
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -119,6 +121,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationvserver_authenticationradiuspolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver_authenticationradiuspolicy_binding
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver_authenticationradiuspolicy_binding:
+        state: present
+        name: ia_authnvs71
+        policy: ia_authnradpol2
 """
 
 RETURN = r"""

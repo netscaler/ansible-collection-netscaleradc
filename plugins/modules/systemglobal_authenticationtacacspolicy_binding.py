@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemglobal_authenticationtacacspolicy_binding
 short_description: Binding Resource definition for describing association between
   systemglobal and authenticationtacacspolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between syst
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -107,12 +109,9 @@ options:
       - SYSTEM
       - RISE
       - FEO
-      - LSN
-      - LargeScaleNAT
       - RDPProxy
       - Rep
       - Reputation
-      - URLFiltering
       - VideoOptimization
       - ForwardProxy
       - SSLInterception
@@ -158,6 +157,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample systemglobal_authenticationtacacspolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemglobal_authenticationtacacspolicy_binding
+      delegate_to: localhost
+      netscaler.adc.systemglobal_authenticationtacacspolicy_binding:
+        state: present
+        policyname: acsPolicy1
+        priority: '1'
 """
 
 RETURN = r"""

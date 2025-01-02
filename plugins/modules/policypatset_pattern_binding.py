@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policypatset_pattern_binding
 short_description: Binding Resource definition for describing association between
   policypatset and pattern resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between poli
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -129,12 +131,9 @@ options:
       - SYSTEM
       - RISE
       - FEO
-      - LSN
-      - LargeScaleNAT
       - RDPProxy
       - Rep
       - Reputation
-      - URLFiltering
       - VideoOptimization
       - ForwardProxy
       - SSLInterception
@@ -159,6 +158,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policypatset_pattern_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policypatset_pattern_binding
+      delegate_to: localhost
+      netscaler.adc.policypatset_pattern_binding:
+        state: present
+        name: prod_patset
+        string: https://portal2.bx.com
+        index: '4'
 """
 
 RETURN = r"""

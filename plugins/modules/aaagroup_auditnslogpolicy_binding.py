@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaagroup_auditnslogpolicy_binding
 short_description: Binding Resource definition for describing association between
   aaagroup and auditnslogpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between aaag
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -97,6 +99,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaagroup_auditnslogpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaagroup_auditnslogpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.aaagroup_auditnslogpolicy_binding:
+        state: present
+        groupname: aaagrp
+        policy: ia_nspol1
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: pcpprofile
 short_description: Configuration for PCP Profile resource.
 description: Configuration for PCP Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,42 +41,42 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   announcemulticount:
-    type: raw
+    type: float
     description:
       - Integer value that identify the number announce message to be send.
   mapping:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This argument is for enabling/disabling the MAP opcode  of current PCP Profile
   maxmaplife:
-    type: raw
+    type: float
     description:
       - Integer value that identify the maximum mapping lifetime (in seconds) for
         a pcp profile. default(86400s = 24Hours).
   minmaplife:
-    type: raw
+    type: float
     description:
       - Integer value that identify the minimum mapping lifetime (in seconds) for
         a pcp profile. default(120s)
   name:
-    type: raw
+    type: str
     description:
       - 'Name for the PCP Profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore CLI Users:
         If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my pcpProfile" or my pcpProfile).'
   peer:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This argument is for enabling/disabling the PEER opcode of current PCP Profile
   thirdparty:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -86,6 +88,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample pcpprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure pcpprofile
+      delegate_to: localhost
+      netscaler.adc.pcpprofile:
+        state: present
+        name: pcp_profile_1
+        mapping: ENABLED
 """
 
 RETURN = r"""

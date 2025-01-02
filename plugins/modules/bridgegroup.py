@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: bridgegroup
 short_description: Configuration for bridge group resource.
 description: Configuration for bridge group resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,18 +41,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing for this bridgegroup.
   id:
-    type: raw
+    type: float
     description:
       - An integer that uniquely identifies the bridge group.
   ipv6dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -138,6 +140,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample bridgegroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure bridgegroup
+      delegate_to: localhost
+      netscaler.adc.bridgegroup:
+        state: present
+        id: '23'
+        ipv6dynamicrouting: ENABLED
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ipv6
 short_description: Configuration for ip v6 resource.
 description: Configuration for ip v6 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dodad:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -47,7 +49,7 @@ options:
         whether they are obtained through stateless auto configuration, DHCPv6, or
         manual configuration.
   natprefix:
-    type: raw
+    type: str
     description:
       - Prefix used for translating packets from private IPv6 servers to IPv4 packets.
         This prefix has a length of 96 bits (128-32 = 96). The IPv6 servers embed
@@ -57,19 +59,19 @@ options:
         addressed to this prefix have to be routed to the Citrix ADC to ensure that
         the IPv6-IPv4 translation is done by the appliance.
   ndbasereachtime:
-    type: raw
+    type: float
     description:
       - Base reachable time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, that the Citrix ADC assumes an adjacent device is reachable
         after receiving a reachability confirmation.
   ndretransmissiontime:
-    type: raw
+    type: float
     description:
       - Retransmission time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, between retransmitted Neighbor Solicitation (NS) messages, to
         an adjacent device.
   ralearning:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -77,20 +79,20 @@ options:
       - Enable the Citrix ADC to learn about various routes from Router Advertisement
         (RA) and Router Solicitation (RS) messages sent by the routers.
   routerredirection:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the Citrix ADC to do Router Redirection.
   td:
-    type: raw
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   usipnatprefix:
-    type: raw
+    type: str
     description:
       - IPV6 NATPREFIX used in NAT46 scenario when USIP is turned on
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -98,6 +100,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ipv6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ipv6
+      delegate_to: localhost
+      netscaler.adc.ipv6:
+        state: present
+        routerredirection: ENABLED
+        ndbasereachtime: '20000'
+        ndretransmissiontime: '2000'
+        natprefix: 2001::/96
+        dodad: ENABLED
 """
 
 RETURN = r"""

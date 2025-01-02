@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnvserver_staserver_binding
 short_description: Binding Resource definition for describing association between
   vpnvserver and staserver resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vpnv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -58,6 +60,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_staserver_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_staserver_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_staserver_binding:
+        state: present
+        name: portal.bx.com
+        staserver: https://use1bxctxccp01.blackstone.com
 """
 
 RETURN = r"""

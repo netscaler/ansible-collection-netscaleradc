@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tmsessionparameter
 short_description: Configuration for session parameter resource.
 description: Configuration for session parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthorizationaction:
-    type: raw
+    type: str
     choices:
       - ALLOW
       - DENY
@@ -45,12 +47,12 @@ options:
       - Allow or deny access to content for which there is no specific authorization
         policy.
   homepage:
-    type: raw
+    type: str
     description:
       - Web address of the home page that a user is displayed when authentication
         vserver is bookmarked and used to login.
   httponlycookie:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -58,11 +60,11 @@ options:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
   kcdaccount:
-    type: raw
+    type: str
     description:
       - Kerberos constrained delegation account name
   persistentcookie:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -71,17 +73,17 @@ options:
         on the user device and is sent with each HTTP request. The cookie becomes
         stale if the session ends.
   persistentcookievalidity:
-    type: raw
+    type: float
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
         valid. Can be set only if the persistence cookie setting is enabled.
   sesstimeout:
-    type: raw
+    type: float
     description:
       - Session timeout, in minutes. If there is no traffic during the timeout period,
         the user is disconnected and must reauthenticate to access the intranet resources.
   sso:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -93,14 +95,14 @@ options:
         or Negotiate Sign Flag). Use TM TrafficAction to configure SSO for these authentication
         types.
   ssocredential:
-    type: raw
+    type: str
     choices:
       - PRIMARY
       - SECONDARY
     description:
       - Use primary or secondary authentication credentials for single sign-on.
   ssodomain:
-    type: raw
+    type: str
     description:
       - Domain to use for single sign-on.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

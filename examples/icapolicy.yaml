@@ -1,0 +1,12 @@
+---
+- name: Sample icapolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icapolicy
+      delegate_to: localhost
+      netscaler.adc.icapolicy:
+        state: present
+        name: ipo
+        rule: HTTP.REQ.USER.IS_MEMBER_OF("g1")
+        action: ia

@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwglobal_auditnslogpolicy_binding
 short_description: Binding Resource definition for describing association between
   appfwglobal and auditnslogpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between appf
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:

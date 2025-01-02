@@ -1,0 +1,13 @@
+---
+- name: Sample nspbr6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nspbr6
+      delegate_to: localhost
+      netscaler.adc.nspbr6:
+        state: present
+        name: test3
+        action: DENY
+        srcmac: 4a:69:a2:33:00:03
+        srcmacmask: '000000001111'

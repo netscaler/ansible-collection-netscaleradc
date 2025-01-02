@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationldappolicy
 short_description: Configuration for LDAP policy resource.
 description: Configuration for LDAP policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: raw
+    type: str
     description:
       - Name for the LDAP policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -52,11 +54,11 @@ options:
         quotation marks (for example, "my authentication policy" or 'my authentication
         policy').
   reqaction:
-    type: raw
+    type: str
     description:
       - Name of the LDAP action to perform if the policy matches.
   rule:
-    type: raw
+    type: str
     description:
       - Name of the Citrix ADC named rule, or an expression, that the policy uses
         to determine whether to attempt to authenticate the user with the LDAP server.
@@ -65,6 +67,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationldappolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationldappolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationldappolicy:
+        state: present
+        name: LDAP_Basic_Policy
+        rule: ns_true
+        reqaction: ldap_mgmt_act
 """
 
 RETURN = r"""

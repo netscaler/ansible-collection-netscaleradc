@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationnoauthaction
 short_description: Configuration for no authentication action resource.
 description: Configuration for no authentication action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the group that is added to user sessions that match current policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the new no-authentication action. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,

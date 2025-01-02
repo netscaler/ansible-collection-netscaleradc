@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslprofile_sslcipher_binding
 short_description: Binding Resource definition for describing association between
   sslprofile and sslcipher resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between sslp
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -63,6 +65,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslprofile_sslcipher_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslprofile_sslcipher_binding
+      delegate_to: localhost
+      netscaler.adc.sslprofile_sslcipher_binding:
+        state: present
+        name: blackstone_ssl_profile
+        ciphername: DEFAULT
+        cipherpriority: '2'
 """
 
 RETURN = r"""

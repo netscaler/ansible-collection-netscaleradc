@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditnslogpolicy
 short_description: Configuration for ns log policy resource.
 description: Configuration for ns log policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -63,6 +65,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditnslogpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditnslogpolicy
+      delegate_to: localhost
+      netscaler.adc.auditnslogpolicy:
+        state: present
+        name: nslog_pol
+        rule: 'true'
+        action: nslog_act1
 """
 
 RETURN = r"""

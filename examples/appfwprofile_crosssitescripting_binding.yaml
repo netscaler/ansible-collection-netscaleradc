@@ -1,0 +1,16 @@
+---
+- name: Sample appfwprofile_crosssitescripting_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_crosssitescripting_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_crosssitescripting_binding:
+        state: present
+        name: Test_profile
+        crosssitescripting: text_area
+        formactionurl_xss: ^http://test.net/forms/login.php$
+        as_scan_location_xss: FORMFIELD
+        as_value_type_xss: Pattern
+        as_value_expr_xss: onblur
+        isvalueregex_xss: NOTREGEX

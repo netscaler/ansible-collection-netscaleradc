@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ssldhparam
 short_description: Configuration for dh Parameter resource.
 description: Configuration for dh Parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -55,6 +57,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ssldhparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ssldhparam
+      delegate_to: localhost
+      netscaler.adc.ssldhparam:
+        state: present
+        dhfile: dfile
+        bits: '512'
+        gen: '2'
+        nitro_operation: create
+        '#nitro_operation': create
 """
 
 RETURN = r"""

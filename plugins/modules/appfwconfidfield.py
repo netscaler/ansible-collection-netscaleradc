@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwconfidfield
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,15 +41,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about the form field designation.
   fieldname:
-    type: raw
+    type: str
     description:
       - Name of the form field to designate as confidential.
   isregex:
-    type: raw
+    type: str
     choices:
       - REGEX
       - NOTREGEX
@@ -57,7 +59,7 @@ options:
       - '* C(REGEX). Form field is a regular expression.'
       - '* C(NOTREGEX). Form field is a literal string.'
   url:
-    type: raw
+    type: str
     description:
       - URL of the web page that contains the web form.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -65,6 +67,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwconfidfield playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwconfidfield
+      delegate_to: localhost
+      netscaler.adc.appfwconfidfield:
+        state: present
+        fieldname: ia_appfwfield1
+        url: http://url
+        isregex: NOTREGEX
+        comment: sample
 """
 
 RETURN = r"""

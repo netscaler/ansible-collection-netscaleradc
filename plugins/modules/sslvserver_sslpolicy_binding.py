@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslvserver_sslpolicy_binding
 short_description: Binding Resource definition for describing association between
   sslvserver and sslpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between sslv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -94,6 +96,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslvserver_sslpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslvserver_sslpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.sslvserver_sslpolicy_binding:
+        state: present
+        vservername: new_XM_LB_MDM_titan.dnpg-blr.com_10.100.48.233_443
+        policyname: new_XM_MDM_titan.dnpg-blr.com_POLICY1
+        priority: '100'
+        gotopriorityexpression: END
 """
 
 RETURN = r"""

@@ -1,0 +1,12 @@
+---
+- name: Sample snmpmanager playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure snmpmanager
+      delegate_to: localhost
+      netscaler.adc.snmpmanager:
+        state: present
+        ipaddress:
+          - citrix.com
+        domainresolveretry: 6

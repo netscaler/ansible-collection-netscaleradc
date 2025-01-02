@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policystringmap
 short_description: Configuration for string map resource.
 description: Configuration for string map resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,12 +41,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Comments associated with the string map or key-value pair bound to this string
         map.
   name:
-    type: raw
+    type: str
     description:
       - Unique name for the string map. Not case sensitive. Must begin with an ASCII
         letter or underscore (_) character, and must consist only of ASCII alphanumeric
@@ -82,6 +84,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policystringmap playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policystringmap
+      delegate_to: localhost
+      netscaler.adc.policystringmap:
+        state: present
+        name: ia_polstrmap1
 """
 
 RETURN = r"""

@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: netprofile_natrule_binding
 short_description: Binding Resource definition for describing association between
   netprofile and natrule resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between netp
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -60,6 +62,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample netprofile_natrule_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure netprofile_natrule_binding
+      delegate_to: localhost
+      netscaler.adc.netprofile_natrule_binding:
+        state: present
+        name: np101
+        natrule: 11.0.0.0
+        netmask: 255.255.255.0
+        rewriteip: 12.0.0.0
 """
 
 RETURN = r"""

@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: quicparam
 short_description: Configuration for Citrix ADC QUIC parameters resource.
 description: Configuration for Citrix ADC QUIC parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   quicsecrettimeout:
-    type: raw
+    type: float
     description:
       - Rotation frequency, in seconds, for the secret used to generate address validation
         tokens that will be issued in QUIC Retry packets and QUIC NEW_TOKEN frames

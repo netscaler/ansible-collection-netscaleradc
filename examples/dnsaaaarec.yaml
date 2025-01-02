@@ -1,0 +1,13 @@
+---
+- name: Sample dnsaaaarec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsaaaarec
+      delegate_to: localhost
+      netscaler.adc.dnsaaaarec:
+        state: present
+        hostname: n2.com
+        ipv6address:
+          - 2001::45
+        ttl: 3601

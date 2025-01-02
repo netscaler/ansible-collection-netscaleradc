@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaauser_vpnurl_binding
 short_description: Binding Resource definition for describing association between
   aaauser and vpnurl resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between aaau
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -81,6 +83,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaauser_vpnurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaauser_vpnurl_binding
+      delegate_to: localhost
+      netscaler.adc.aaauser_vpnurl_binding:
+        state: present
+        username: phani2222
+        urlname: owa2k7FqdnHttp
 """
 
 RETURN = r"""

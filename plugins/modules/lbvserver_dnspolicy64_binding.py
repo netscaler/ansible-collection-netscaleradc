@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver_dnspolicy64_binding
 short_description: Binding Resource definition for describing association between
   lbvserver and dnspolicy64 resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -105,6 +107,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbvserver_dnspolicy64_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_dnspolicy64_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_dnspolicy64_binding:
+        state: present
+        name: lb_tcp1
+        policyname: dns64_pol2
+        priority: '2'
+        gotopriorityexpression: END
+        bindpoint: REQUEST
 """
 
 RETURN = r"""

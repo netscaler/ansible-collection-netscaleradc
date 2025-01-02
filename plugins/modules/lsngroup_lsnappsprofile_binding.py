@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsngroup_lsnappsprofile_binding
 short_description: Binding Resource definition for describing association between
   lsngroup and lsnappsprofile resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lsng
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -67,6 +69,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsngroup_lsnappsprofile_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsngroup_lsnappsprofile_binding
+      delegate_to: localhost
+      netscaler.adc.lsngroup_lsnappsprofile_binding:
+        state: present
+        groupname: g15
+        appsprofilename: app_udp
 """
 
 RETURN = r"""

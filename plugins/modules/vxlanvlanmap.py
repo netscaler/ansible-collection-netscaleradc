@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vxlanvlanmap
 short_description: Configuration for vxlan vlan mapping resource.
 description: Configuration for vxlan vlan mapping resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -70,6 +72,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vxlanvlanmap playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vxlanvlanmap
+      delegate_to: localhost
+      netscaler.adc.vxlanvlanmap:
+        state: present
+        name: v2
 """
 
 RETURN = r"""

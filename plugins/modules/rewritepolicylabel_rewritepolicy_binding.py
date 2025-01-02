@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rewritepolicylabel_rewritepolicy_binding
 short_description: Binding Resource definition for describing association between
   rewritepolicylabel and rewritepolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between rewr
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -84,6 +86,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rewritepolicylabel_rewritepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewritepolicylabel_rewritepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.rewritepolicylabel_rewritepolicy_binding:
+        state: present
+        labelname: ns_cvpn_v2_url_label
+        policyname: ns_cvpn_v2_bypass_url_pol
+        priority: '20000'
+        gotopriorityexpression: NEXT
 """
 
 RETURN = r"""

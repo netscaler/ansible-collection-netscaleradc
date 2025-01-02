@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsip
 short_description: Configuration for ip resource.
 description: Configuration for ip resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,25 +45,25 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advertiseondefaultpartition:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Advertise VIPs from Shared VLAN on Default Partition.
   arp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to ARP requests for this IP address.
   arpowner:
-    type: raw
+    type: float
     description:
       - The arp owner in a Cluster for this IP address. It can vary from 0 to 31.
   arpresponse:
-    type: raw
+    type: str
     choices:
       - NONE
       - ONE_VSERVER
@@ -85,7 +87,7 @@ options:
     description:
       - Use this option to enable or disable BGP on this IP address for the entity.
   decrementttl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -93,21 +95,21 @@ options:
       - Decrement TTL by 1 when C(ENABLED).This setting is applicable only for UDP
         traffic.
   dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow dynamic routing on this IP address. Specific to Subnet IP (SNIP) address.
   ftp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow File Transfer Protocol (FTP) access to this IP address.
   gui:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - SECUREONLY
@@ -115,7 +117,7 @@ options:
     description:
       - Allow graphical user interface (GUI) access to this IP address.
   hostroute:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -123,18 +125,18 @@ options:
       - Option to push the VIP to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocols
   hostrtgw:
-    type: raw
+    type: str
     description:
       - IP address of the gateway of the route for this VIP address.
   icmp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to ICMP requests for this IP address.
   icmpresponse:
-    type: raw
+    type: str
     choices:
       - NONE
       - ONE_VSERVER
@@ -162,24 +164,24 @@ options:
       - '* When you set ICMP VSERVER RESPONSE to ACTIVE on some and PASSIVE on others,
         Citrix ADC responds if even one virtual server set to ACTIVE is UP.'
   ipaddress:
-    type: raw
+    type: str
     description:
       - IPv4 address to create on the Citrix ADC. Cannot be changed after the IP address
         is created.
   metric:
-    type: raw
+    type: int
     description:
       - Integer value to add to or subtract from the cost of the route advertised
         for the VIP address.
   mgmtaccess:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow access to management applications on this IP address.
   mptcpadvertise:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -187,11 +189,11 @@ options:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
   netmask:
-    type: raw
+    type: str
     description:
       - Subnet mask associated with the IP address.
   networkroute:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -206,14 +208,14 @@ options:
     description:
       - Use this option to enable or disable OSPF on this IP address for the entity.
   ospfarea:
-    type: raw
+    type: float
     description:
       - ID of the area in which the type1 link-state advertisements (LSAs) are to
         be advertised for this virtual IP (VIP)  address by the OSPF protocol running
         on the Citrix ADC.  When this parameter is not set, the VIP is advertised
         on all areas.
   ospflsatype:
-    type: raw
+    type: str
     choices:
       - TYPE1
       - TYPE5
@@ -221,7 +223,7 @@ options:
       - Type of LSAs to be used by the OSPF protocol, running on the Citrix ADC, for
         advertising the route for this VIP address.
   ownerdownresponse:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -234,7 +236,7 @@ options:
       - The owner node in a Cluster for this IP address. Owner node can vary from
         0 to 31. If ownernode is not specified then the IP is treated as Striped IP.
   restrictaccess:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -250,32 +252,32 @@ options:
     description:
       - Use this option to enable or disable RIP on this IP address for the entity.
   snmp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow Simple Network Management Protocol (SNMP) access to this IP address.
   ssh:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow secure shell (SSH) access to this IP address.
   tag:
-    type: raw
+    type: float
     description:
       - Tag value for the network/host route associated with this IP.
   td:
-    type: raw
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0. TD id 4095 is used reserved
         for  LSN use
   telnet:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -310,13 +312,13 @@ options:
         All cluster configurations must be performed by accessing the cluster through
         this IP address.'
   vrid:
-    type: raw
+    type: float
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
         configuration using VRRP.
   vserver:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -324,7 +326,7 @@ options:
       - Use this option to set (enable or disable) the virtual server attribute for
         this IP address.
   vserverrhilevel:
-    type: raw
+    type: str
     choices:
       - ONE_VSERVER
       - ALL_VSERVERS
@@ -360,43 +362,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsip playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsip
+    - name: Configure nsip
       delegate_to: localhost
       netscaler.adc.nsip:
         state: present
-        ipaddress: 1.1.1.1
-        netmask: 255.255.255.192
-        type: VIP
-    - name: Sample Task | nsip | 2
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.188.1.1
-        netmask: 255.255.255.0
-        vserver: DISABLED
-        dynamicrouting: ENABLED
-    - name: Sample Task | nsip | 3
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.179.1.1
+        ipaddress: 10.189.130.5
         netmask: 255.255.255.255
-        type: VIP
-        arp: DISABLED
-        snmp: DISABLED
-        hostroute: ENABLED
-        hostrtgw: 0.0.0.0
-    - name: Sample Task | nsip | 4
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.188.1.2
-        netmask: 255.255.0.0
+        type: GSLBsiteIP
         vserver: DISABLED
+        telnet: DISABLED
+        ftp: DISABLED
+        gui: DISABLED
+        snmp: DISABLED
+        mgmtaccess: ENABLED
 """
 
 RETURN = r"""

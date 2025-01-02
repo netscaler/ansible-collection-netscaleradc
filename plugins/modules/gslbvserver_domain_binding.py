@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: gslbvserver_domain_binding
 short_description: Binding Resource definition for describing association between
   gslbvserver and domain resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between gslb
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -92,6 +94,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample gslbvserver_domain_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbvserver_domain_binding
+      delegate_to: localhost
+      netscaler.adc.gslbvserver_domain_binding:
+        state: present
+        name: GSLB_VSRV_storefront.blackstone.com
+        domainname: storefront.gslb.blackstone.com
+        ttl: 5
 """
 
 RETURN = r"""

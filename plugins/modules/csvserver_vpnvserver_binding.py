@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: csvserver_vpnvserver_binding
 short_description: Binding Resource definition for describing association between
   csvserver and vpnvserver resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between csvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,6 +56,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample csvserver_vpnvserver_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure csvserver_vpnvserver_binding
+      delegate_to: localhost
+      netscaler.adc.csvserver_vpnvserver_binding:
+        state: present
+        name: CS123
+        vserver: vpn51
 """
 
 RETURN = r"""

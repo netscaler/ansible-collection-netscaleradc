@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslpolicy
 short_description: Configuration for SSL policy resource.
 description: Configuration for SSL policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -45,11 +47,11 @@ options:
         built-in actions are NOOP, RESET, DROP, CLIENTAUTH, NOCLIENTAUTH, INTERCEPT
         AND BYPASS.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments associated with this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the new SSL policy. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -78,7 +80,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: raw
+    type: str
     description:
       - 'Name of the action to be performed when the result of rule evaluation is
         undefined. Possible values for control policies: CLIENTAUTH, NOCLIENTAUTH,
@@ -114,6 +116,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslpolicy
+      delegate_to: localhost
+      netscaler.adc.sslpolicy:
+        state: present
+        name: new_XM_MDM_titan.dnpg-blr.com_POLICY1
+        rule: CLIENT.SSL.CLIENT_CERT.EXISTS
+        action: _XM_MDM_titan.dnpg-blr.com_ACTION
 """
 
 RETURN = r"""

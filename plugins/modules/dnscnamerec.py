@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnscnamerec
 short_description: Configuration for CNAME record resource.
 description: Configuration for CNAME record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -79,6 +81,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnscnamerec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnscnamerec
+      delegate_to: localhost
+      netscaler.adc.dnscnamerec:
+        state: present
+        aliasname: www2.n1.com
+        canonicalname: n1.com
+        ttl: 3601
 """
 
 RETURN = r"""

@@ -1,0 +1,10 @@
+---
+- name: Sample arpparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure arpparam
+      delegate_to: localhost
+      netscaler.adc.arpparam:
+        state: present
+        spoofvalidation: ENABLED

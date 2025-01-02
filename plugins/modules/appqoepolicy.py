@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appqoepolicy
 short_description: Configuration for AppQoS policy resource.
 description: Configuration for AppQoS policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,6 +56,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appqoepolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appqoepolicy
+      delegate_to: localhost
+      netscaler.adc.appqoepolicy:
+        state: present
+        name: apppol3_ns
+        rule: SUBSCRIBER.AVP(250).VALUE.CONTAINS("name")
+        action: appact22_ns
 """
 
 RETURN = r"""

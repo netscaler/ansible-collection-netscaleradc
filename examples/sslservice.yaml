@@ -1,16 +1,11 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample sslservice playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | sslservice
+    - name: Configure sslservice
       delegate_to: localhost
       netscaler.adc.sslservice:
         state: present
-        servicename: nsrnatsip-127.0.0.1-5061
-        ersa: ENABLED
-        sessreuse: DISABLED
-        ssl3: DISABLED
-        tls1: DISABLED
-        tls11: DISABLED
-        dtls1: DISABLED
+        servicename: nsrpcs-127.0.0.1-3008
+        sslprofile: ns_default_ssl_profile_frontend

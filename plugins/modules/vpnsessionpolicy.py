@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnsessionpolicy
 short_description: Configuration for VPN session policy resource.
 description: Configuration for VPN session policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,16 +41,16 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: raw
+    type: str
     description:
       - Action to be applied by the new session policy if the rule criteria are met.
   name:
-    type: raw
+    type: str
     description:
       - Name for the new session policy that is applied after the user logs on to
         Citrix Gateway.
   rule:
-    type: raw
+    type: str
     description:
       - Expression, or name of a named expression, specifying the traffic that matches
         the policy.
@@ -65,6 +67,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnsessionpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnsessionpolicy
+      delegate_to: localhost
+      netscaler.adc.vpnsessionpolicy:
+        state: present
+        name: External_receiver_session_pol
+        rule: HTTP.REQ.HEADER("User-Agent").CONTAINS("CitrixReceiver")
+        action: External_receiver_session_prof
 """
 
 RETURN = r"""

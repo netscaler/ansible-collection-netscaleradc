@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaagroup_aaauser_binding
 short_description: Binding Resource definition for describing association between
   aaagroup and aaauser resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between aaag
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -81,6 +83,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaagroup_aaauser_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaagroup_aaauser_binding
+      delegate_to: localhost
+      netscaler.adc.aaagroup_aaauser_binding:
+        state: present
+        groupname: group1
+        username: user1
 """
 
 RETURN = r"""
