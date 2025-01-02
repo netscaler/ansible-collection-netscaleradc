@@ -1,0 +1,19 @@
+---
+- name: Ansible ssh playbook
+  hosts: demo_netscalers
+  connection: netscaler.adc.ssh_netscaler_adc
+  remote_user: nsroot
+  gather_facts: false
+
+  vars:
+    ansible_python_interpreter: /var/python/bin/python
+
+  tasks:
+    - name: Calling shell module
+      register: echo_result
+      changed_when: false
+      ansible.builtin.command: "echo hello"
+
+    - name: Show command output
+      ansible.builtin.debug:
+        msg: "{{ echo_result }}"
