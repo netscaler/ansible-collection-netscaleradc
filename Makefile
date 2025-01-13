@@ -1,37 +1,17 @@
 fmt:
 	autoflake plugins/modules/*.py
 	autoflake plugins/module_utils/*.py
-	autoflake tools/module_generator.py
 	autoflake --recursive tests/
 
 	black plugins/modules/*.py
 	black plugins/module_utils/*.py
-	black tools/module_generator.py
 	black tests/
 
 	isort plugins/modules/*.py
 	isort plugins/module_utils/*.py
-	isort tools/module_generator.py
 	isort tests/
 
 	yamlfmt .
-
-fmt_tools:
-	# ignore if file not found
-	-autoflake tools/generated_modules/*.py
-	-autoflake tools/module_generator.py
-	-autoflake tools/nitro_resource_map.py
-
-	-black tools/generated_modules/*.py
-	-black tools/module_generator.py
-	-black tools/nitro_resource_map.py
-
-	-isort tools/generated_modules/*.py
-	-isort tools/module_generator.py
-	-isort tools/nitro_resource_map.py
-
-generate_modules:
-	python3 tools/module_generator.py
 
 install:
 	ansible-galaxy collection install . --force
