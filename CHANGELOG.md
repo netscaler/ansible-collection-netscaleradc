@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.7.0] - 2025-01-02
+
+### Added
+
+- Supported more modules
+- Added more examples
+
 ## [2.6.2] - 2024-10-18
 
 ### Fixed
@@ -134,7 +141,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.1...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.0...HEAD
+[2.7.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.2...2.7.0
+[2.6.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.1...2.6.2
 [2.6.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.0...2.6.1
 [2.6.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.2...2.6.0
 [2.5.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.1...2.5.2

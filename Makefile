@@ -59,7 +59,7 @@ build:
 	ansible-galaxy collection build --force
 
 galaxy_importer: build
-	python3 -m galaxy_importer.main netscaler-adc-2.6.2.tar.gz
+	python3 -m galaxy_importer.main netscaler-adc-2.7.0.tar.gz
 
 # build_docs:
 # 	rm -rf _built_docs
