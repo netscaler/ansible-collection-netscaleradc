@@ -49,8 +49,10 @@ class ModuleExecutor(object):
         self.resource_name = resource_name
         if self.resource_name == "login":
             self.sessionid = ""
-        log("DEBUG: Initializing ModuleExecutor for resource %s" % self.resource_name)
         self.valid_states = get_valid_desired_states(self.resource_name)
+        if resource_name == "gslbservice":
+            self.valid_states.add("enabled")
+            self.valid_states.add("disabled")
         self.supported_operations = NITRO_RESOURCE_MAP[self.resource_name][
             "_supported_operations"
         ]

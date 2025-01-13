@@ -462,16 +462,22 @@ def save_config(client, all=False):
 @trace
 def enable_resource(client, resource_name, resource_params):
     post_payload = {resource_name: {}}
-    enable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]
+    if resource_name == "gslbservice":
+        post_payload = {"service": {}}
+        enable_payload_keys = NITRO_RESOURCE_MAP["service"]["enable_payload_keys"]
+        resource_params["name"] = resource_params["servicename"]
+    else:
+        post_payload = {resource_name: {}}
+        enable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]
 
     for key in enable_payload_keys:
         try:
-            post_payload[resource_name][key] = resource_params[key]
+            post_payload[list(post_payload.keys())[0]][key] = resource_params[key]
         except KeyError:
             continue  # TODO: Should we return False here? Or should we just log and continue?
 
     status_code, response_body = client.post(
-        post_data=post_payload, resource=resource_name, action="enable"
+        post_data=post_payload, resource=list(post_payload.keys())[0], action="enable"
     )
     return return_response(
         status_code=status_code,
@@ -483,17 +489,22 @@ def enable_resource(client, resource_name, resource_params):
 
 @trace
 def disable_resource(client, resource_name, resource_params):
-    post_payload = {resource_name: {}}
-    disable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]
+    if resource_name == "gslbservice":
+        post_payload = {"service": {}}
+        disable_payload_keys = NITRO_RESOURCE_MAP["service"]["disable_payload_keys"]
+        resource_params["name"] = resource_params["servicename"]
+    else:
+        post_payload = {resource_name: {}}
+        disable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]
 
     for key in disable_payload_keys:
         try:
-            post_payload[resource_name][key] = resource_params[key]
+            post_payload[list(post_payload.keys())[0]][key] = resource_params[key]
         except KeyError:
             continue  # TODO: Should we return False here? Or should we just log and continue?
 
     status_code, response_body = client.post(
-        post_data=post_payload, resource=resource_name, action="disable"
+        post_data=post_payload, resource=list(post_payload.keys())[0], action="disable"
     )
     return return_response(
         status_code=status_code,
