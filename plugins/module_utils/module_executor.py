@@ -65,6 +65,11 @@ class ModuleExecutor(object):
         argument_spec = dict()
         argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
+
+        if self.resource_name == "gslbservice":
+            self.valid_states.add("enabled")
+            self.valid_states.add("disabled")
+
         module_state_argument = dict(
             state=dict(
                 type="str",

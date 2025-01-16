@@ -11,3 +11,4 @@
         siteipaddress: 10.76.126.5
         publicip: 10.76.126.5
         triggermonitor: MEPDOWN_SVCDOWN
+        sitepassword: 1234

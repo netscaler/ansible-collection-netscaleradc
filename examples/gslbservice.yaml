@@ -7,7 +7,7 @@
       delegate_to: localhost
       netscaler.adc.gslbservice:
         state: present
-        servicename: GSLB_SVC_USE2_storefront.blackstone.com
+        servicename: GSLB_SVC_USE2_storefront.citrix.com
         ip: 10.76.126.10
         servicetype: SSL
         port: 443
