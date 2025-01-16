@@ -461,9 +461,14 @@ def save_config(client, all=False):
 
 @trace
 def enable_resource(client, resource_name, resource_params):
-    post_payload = {resource_name: {}}
-    enable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]
-
+    if resource_name == "gslbservice":
+        post_payload = {"service": {}}
+        enable_payload_keys = NITRO_RESOURCE_MAP["service"]["enable_payload_keys"]
+        resource_params["name"] = resource_params["servicename"]
+    else:
+        post_payload = {resource_name: {}}
+        enable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]
+        
     for key in enable_payload_keys:
         try:
             post_payload[resource_name][key] = resource_params[key]
@@ -483,9 +488,16 @@ def enable_resource(client, resource_name, resource_params):
 
 @trace
 def disable_resource(client, resource_name, resource_params):
-    post_payload = {resource_name: {}}
-    disable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]
-
+    
+    if resource_name == "gslbservice":
+        post_payload = {"service": {}}
+        disable_payload_keys = NITRO_RESOURCE_MAP["service"]["disable_payload_keys"]
+        resource_params["name"] = resource_params["servicename"]
+        
+    else: 
+        post_payload = {resource_name: {}}
+        disable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]
+        
     for key in disable_payload_keys:
         try:
             post_payload[resource_name][key] = resource_params[key]
