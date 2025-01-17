@@ -61,6 +61,7 @@ jobs:
         ansible:
           - stable-2.15
           - stable-2.16
+          - stable-2.17
         python-version:
           - "3.11"
     steps:
