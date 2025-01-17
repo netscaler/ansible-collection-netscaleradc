@@ -66,7 +66,7 @@ class ModuleExecutor(object):
         argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
 
-        if self.resource_name is "gslbservice":
+        if self.resource_name == "gslbservice":
             self.valid_states.add("enabled")
             self.valid_states.add("disabled")
 
