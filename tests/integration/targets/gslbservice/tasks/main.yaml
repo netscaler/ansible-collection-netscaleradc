@@ -18,13 +18,13 @@
     port: 65530
     servicename: test-gslb-service
     servicetype: TCP
-    sitename: test-gslbsite
+    sitename: GSLB_Site_USE2
 - name: Assert | GSLBSERVICE | ADD | --check
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==true"
+    - "result.failed==false"
+    - "result.changed==true"
 - name: GSLBSERVICE | ADD
   delegate_to: localhost
   register: result
@@ -42,12 +42,12 @@
     port: 65530
     servicename: test-gslb-service
     servicetype: TCP
-    sitename: test-gslbsite
+    sitename: GSLB_Site_USE2
 - name: Assert | GSLBSERVICE | ADD
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==true"
+    - "result.failed==false"
+    - "result.changed==true"
 - name: GSLBSERVICE | ADD | idempotent
   delegate_to: localhost
   register: result
@@ -65,13 +65,13 @@
     port: 65530
     servicename: test-gslb-service
     servicetype: TCP
-    sitename: test-gslbsite
+    sitename: GSLB_Site_USE2
 - name: Assert | GSLBSERVICE | ADD | idempotent
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==false"
+    - "result.failed==false"
+    - "result.changed==false"
 - name: GSLBSERVICE | DELETE | --check
   delegate_to: localhost
   register: result
@@ -89,13 +89,13 @@
     port: 65530
     servicename: test-gslb-service
     servicetype: TCP
-    sitename: test-gslbsite
+    sitename: GSLB_Site_USE2
 - name: Assert | GSLBSERVICE | DELETE | --check
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==true"
+    - "result.failed==false"
+    - "result.changed==true"
 - name: GSLBSERVICE | DELETE
   delegate_to: localhost
   register: result
@@ -113,12 +113,12 @@
     port: 65530
     servicename: test-gslb-service
     servicetype: TCP
-    sitename: test-gslbsite
+    sitename: GSLB_Site_USE2
 - name: Assert | GSLBSERVICE | DELETE
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==true"
+    - "result.failed==false"
+    - "result.changed==true"
 - name: GSLBSERVICE | DELETE | idempotent
   delegate_to: localhost
   register: result
@@ -136,12 +136,12 @@
     port: 65530
     servicename: test-gslb-service
     servicetype: TCP
-    sitename: test-gslbsite
+    sitename: GSLB_Site_USE2
 - name: Assert | GSLBSERVICE | DELETE | idempotent
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==false"
+    - "result.failed==false"
+    - "result.changed==false"
 - name: Include prerequisite tasks
   ansible.builtin.include_tasks: teardown.yaml

@@ -9,6 +9,8 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: present
-    sitename: test-gslbsite
+    sitename: GSLB_Site_USE2
     siteipaddress: 10.10.10.10
+    publicip: 10.10.10.10
+    triggermonitor: MEPDOWN_SVCDOWN
     sitepassword: 1234
