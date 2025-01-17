@@ -65,6 +65,11 @@ class ModuleExecutor(object):
         argument_spec = dict()
         argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
+
+        if self.resource_name == "gslbservice":
+            self.valid_states.add("enabled")
+            self.valid_states.add("disabled")
+
         module_state_argument = dict(
             state=dict(
                 type="str",
@@ -407,7 +412,7 @@ class ModuleExecutor(object):
                 )
             )
 
-            if is_module_params_contain_update_params:
+            if is_module_params_contain_update_params and self.resource_name != "gslbservice":
                 log(
                     "INFO: module_params has keys %s which are not part of `add_payload_keys`. Hence updating the resource again"
                     % keys_in_upload_payload_and_not_in_add_payload
@@ -912,6 +917,7 @@ class ModuleExecutor(object):
                             % self.module.params["state"]
                         )
                     else:
+                        
                         self.enable_or_disable(self.module.params["state"])
                 # Bindings
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
