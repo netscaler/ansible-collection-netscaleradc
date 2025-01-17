@@ -19,8 +19,8 @@
   tags: test
   ansible.builtin.assert:
     that:
-    - "result.failed==false"
-    - "result.changed==true"
+      - "result.failed==false"
+      - "result.changed==true"
 - name: GSLBSITE | ADD
   delegate_to: localhost
   register: result
@@ -40,8 +40,8 @@
 - name: Assert | GSLBSITE | ADD
   ansible.builtin.assert:
     that:
-    - "result.failed==false"
-    - "result.changed==true"
+      - "result.failed==false"
+      - "result.changed==true"
 - name: GSLBSITE | ADD | idempotent
   delegate_to: localhost
   register: result
@@ -62,8 +62,8 @@
   tags: test
   ansible.builtin.assert:
     that:
-    - "result.failed==false"
-    - "result.changed==false"
+      - "result.failed==false"
+      - "result.changed==false"
 - name: GSLBSITE | DELETE | --check
   delegate_to: localhost
   register: result
@@ -83,8 +83,8 @@
   tags: test
   ansible.builtin.assert:
     that:
-    - "result.failed==false"
-    - "result.changed==true"
+      - "result.failed==false"
+      - "result.changed==true"
 - name: GSLBSITE | DELETE
   delegate_to: localhost
   register: result
@@ -103,8 +103,8 @@
 - name: Assert | GSLBSITE | DELETE
   ansible.builtin.assert:
     that:
-    - "result.failed==false"
-    - "result.changed==true"
+      - "result.failed==false"
+      - "result.changed==true"
 - name: GSLBSITE | DELETE | idempotent
   delegate_to: localhost
   register: result
@@ -124,5 +124,5 @@
   tags: test
   ansible.builtin.assert:
     that:
-    - "result.failed==false"
-    - "result.changed==false"
+      - "result.failed==false"
+      - "result.changed==false"
