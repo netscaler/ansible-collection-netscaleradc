@@ -925,7 +925,6 @@ class ModuleExecutor(object):
                             % self.module.params["state"]
                         )
                     else:
-                        
                         self.enable_or_disable(self.module.params["state"])
                 # Bindings
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
