@@ -415,8 +415,7 @@ class ModuleExecutor(object):
             if self.resource_name == "gslbservice":
                 sitename = self.resource_module_params.get("sitename", None)
                 self.resource_module_params.pop("sitename", None)
-            
-                
+
             if is_module_params_contain_update_params:
                 log(
                     "INFO: module_params has keys %s which are not part of `add_payload_keys`. Hence updating the resource again"
@@ -429,7 +428,7 @@ class ModuleExecutor(object):
                     self.return_failure(err)
             if sitename:
                 self.resource_module_params["sitename"] = sitename
-                
+
         else:
             # Update only if resource is not identical (idempotent)
             if self.is_resource_identical():
