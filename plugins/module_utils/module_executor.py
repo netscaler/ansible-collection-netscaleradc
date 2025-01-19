@@ -65,6 +65,11 @@ class ModuleExecutor(object):
         argument_spec = dict()
         argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
+
+        if self.resource_name == "gslbservice":
+            self.valid_states.add("enabled")
+            self.valid_states.add("disabled")
+
         module_state_argument = dict(
             state=dict(
                 type="str",
@@ -406,6 +411,10 @@ class ModuleExecutor(object):
                     set(self.resource_module_params.keys())
                 )
             )
+            sitename = None
+            if self.resource_name == "gslbservice":
+                sitename = self.resource_module_params.get("sitename", None)
+                self.resource_module_params.pop("sitename", None)
 
             if is_module_params_contain_update_params:
                 log(
@@ -417,6 +426,9 @@ class ModuleExecutor(object):
                 )
                 if not ok:
                     self.return_failure(err)
+            if sitename:
+                self.resource_module_params["sitename"] = sitename
+
         else:
             # Update only if resource is not identical (idempotent)
             if self.is_resource_identical():
