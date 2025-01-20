@@ -65,6 +65,9 @@ class ModuleExecutor(object):
         argument_spec = dict()
         argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
+        if self.resource_name == "gslbservice":
+        self.valid_states.add("enabled")
+        self.valid_states.add("disabled")
         module_state_argument = dict(
             state=dict(
                 type="str",
@@ -412,11 +415,17 @@ class ModuleExecutor(object):
                     "INFO: module_params has keys %s which are not part of `add_payload_keys`. Hence updating the resource again"
                     % keys_in_upload_payload_and_not_in_add_payload
                 )
+                siteName = None
+                if self.resource_name == "gslbservice":
+                    siteName = self.resource_module_params.get("sitename")
+                    self.resource_module_params.pop("sitename", None)
                 ok, err = update_resource(
                     self.client, self.resource_name, self.resource_module_params
                 )
                 if not ok:
                     self.return_failure(err)
+                if siteName:
+                    self.resource_module_params["sitename"] = siteName
         else:
             # Update only if resource is not identical (idempotent)
             if self.is_resource_identical():

@@ -78,7 +78,7 @@
     save_config: "{{ save_config }}"
     state: unset
     username: testuser
-    timeout: true
+
 - name: Assert | SYSTEMUSER | UNSET
   tags: test
   ansible.builtin.assert:
@@ -99,7 +99,7 @@
     save_config: "{{ save_config }}"
     state: unset
     username: testuser
-    timeout: true
+
 - name: Assert | SYSTEMUSER | UNSET | idempotent
   tags: test
   ansible.builtin.assert:
