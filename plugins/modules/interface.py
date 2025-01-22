@@ -294,8 +294,7 @@ options:
     description:
       - This argument is deprecated by tagall.
   trunkallowedvlan:
-    type: list
-    elements: str
+    type: str
     description:
       - 'VLAN ID or range of VLAN IDs will be allowed on this trunk interface. In
         the command line interface, separate the range with a hyphen. For example:

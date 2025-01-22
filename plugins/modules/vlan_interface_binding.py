@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: int
+    type: float
     description:
       - Specifies the virtual LAN ID.
   ifnum:
