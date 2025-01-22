@@ -9,5 +9,3 @@
         state: present
         src: http://10.217.30.16/testsite/Signatures/44_38_1_36/credit_card.html
         name: Xml_Error_1
-        nitro_operation: import
-        

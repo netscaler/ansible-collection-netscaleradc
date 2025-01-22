@@ -9,5 +9,4 @@
         state: present
         certkey: callback.blackstone.com
         linkcertkeyname: blackstone_sub
-        nitro_operation: link
         

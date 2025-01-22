@@ -9,5 +9,3 @@
         state: present
         labelname: plab1
         newname: plab1_new
-        nitro_operation: rename
-        

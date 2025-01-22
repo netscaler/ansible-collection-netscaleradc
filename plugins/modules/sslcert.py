@@ -190,8 +190,6 @@ EXAMPLES = r"""
         certform: DER
         cacertform: PEM
         cakeyform: PEM
-        nitro_operation: create
-        '#nitro_operation': create
 """
 
 RETURN = r"""

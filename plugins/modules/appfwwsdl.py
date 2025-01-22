@@ -71,8 +71,6 @@ EXAMPLES = r"""
         state: present
         src: http://10.217.30.16/testsite/Signatures/44_38_1_36/YellowPages.xml
         name: Https_Wsd l 2
-        nitro_operation: import
-        '#nitro_operation': import
 """
 
 RETURN = r"""

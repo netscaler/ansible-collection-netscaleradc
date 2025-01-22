@@ -188,8 +188,6 @@ EXAMPLES = r"""
         state: present
         certkey: callback.blackstone.com
         linkcertkeyname: blackstone_sub
-        nitro_operation: link
-        '#nitro_operation': link
 """
 
 RETURN = r"""

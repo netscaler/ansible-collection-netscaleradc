@@ -10,5 +10,4 @@
         dhfile: dfile
         bits: '512'
         gen: '2'
-        nitro_operation: create
         

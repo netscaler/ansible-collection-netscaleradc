@@ -72,8 +72,6 @@ EXAMPLES = r"""
         state: present
         src: http://10.217.30.16/testsite/Signatures/44_38_1_36/credit_card.html
         name: Html_ Error_2
-        nitro_operation: import
-        '#nitro_operation': import
 """
 
 RETURN = r"""

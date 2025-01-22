@@ -149,8 +149,6 @@ EXAMPLES = r"""
         state: present
         labelname: plab1
         newname: plab1_new
-        nitro_operation: rename
-        '#nitro_operation': rename
 """
 
 RETURN = r"""
