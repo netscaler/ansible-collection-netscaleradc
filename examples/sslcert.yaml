@@ -17,4 +17,4 @@
         cacertform: PEM
         cakeyform: PEM
         nitro_operation: create
-        '#nitro_operation': create
+        

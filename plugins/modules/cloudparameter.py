@@ -86,6 +86,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cloudparameter playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure cloudparameter
+      delegate_to: localhost
+      netscaler.adc.cloudparameter:
+        state: present
+        deployment: Production
 """
 
 RETURN = r"""

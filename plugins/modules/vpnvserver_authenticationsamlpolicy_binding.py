@@ -116,6 +116,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_authenticationsamlpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure vpnvserver_authenticationsamlpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_authenticationsamlpolicy_binding:
+        state: present
+        name: nsgw_wp_direct2dll_com
+        policy: saml_pol_aad_wp
+        priority: '90'
 """
 
 RETURN = r"""

@@ -256,6 +256,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsparameter playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure dnsparameter
+      delegate_to: localhost
+      netscaler.adc.dnsparameter:
+        state: present
+        namelookuppriority: DNS
 """
 
 RETURN = r"""

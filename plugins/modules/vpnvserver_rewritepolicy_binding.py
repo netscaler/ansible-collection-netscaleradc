@@ -90,6 +90,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_rewritepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure vpnvserver_rewritepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_rewritepolicy_binding:
+        state: present
+        name: nsgw_wp_direct2dll_com
+        policy: rw_pol_insert_loginfooter
+        priority: '100'
+        gotopriorityexpression: END
+        bindpoint: RESPONSE
 """
 
 RETURN = r"""

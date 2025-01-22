@@ -67,6 +67,17 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cert" or 'my cert').
+  deletecertkeyfilesonremoval:
+    type: str
+    choices:
+      - 'NO'
+      - ALWAYS
+      - IF_EXPIRED
+    description:
+      - This option is used to automatically delete certificate/key files from physical
+        device when the added certkey is removed. When deleteCertKeyFilesOnRemoval
+        option is used at rm certkey command, it overwrites the deleteCertKeyFilesOnRemoval
+        setting used at add/set certkey command
   deletefromdevice:
     type: bool
     description:

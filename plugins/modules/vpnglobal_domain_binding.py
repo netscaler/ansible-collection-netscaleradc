@@ -55,6 +55,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnglobal_domain_binding playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure vpnglobal_domain_binding
+      delegate_to: localhost
+      netscaler.adc.vpnglobal_domain_binding:
+        state: present
+        intranetdomain: '*.dll.corp'
 """
 
 RETURN = r"""

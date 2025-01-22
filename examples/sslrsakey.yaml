@@ -12,4 +12,4 @@
         exponent: '3'
         keyform: DER
         nitro_operation: create
-        '#nitro_operation': create
+        

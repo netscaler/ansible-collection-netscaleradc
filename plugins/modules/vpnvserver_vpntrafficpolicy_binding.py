@@ -116,6 +116,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_vpntrafficpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure vpnvserver_vpntrafficpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_vpntrafficpolicy_binding:
+        state: present
+        name: nsgw_wp_direct2dll_com
+        policy: traffic_pol_vpn_sso_gw
+        priority: '64000'
 """
 
 RETURN = r"""

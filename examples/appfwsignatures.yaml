@@ -10,4 +10,4 @@
         src: http://10.217.30.16/test_sigs/v13/sigs/sig-r11.1b0v13s6_enabled.xml
         name: Space caps
         nitro_operation: import
-        '#nitro_operation': import
+        

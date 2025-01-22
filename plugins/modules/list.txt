@@ -1,0 +1,1044 @@
+diff --git a/plugins/modules/analyticsprofile.py b/plugins/modules/analyticsprofile.py
+index c30a2a0c..ccaa12c8 100644
+--- a/plugins/modules/analyticsprofile.py
++++ b/plugins/modules/analyticsprofile.py
+@@ -141,6 +141,11 @@ options:
+       - DISABLED
+     description:
+       - On enabling this option, the Citrix ADC will log cookie header.
++  httpcustomheaders:
++    type: list
++    description:
++      - Specify the list of custom headers to be exported in web transaction records.
++    elements: str
+   httpdomainname:
+     type: str
+     choices:
+diff --git a/plugins/modules/appflowglobal_appflowpolicy_binding.py b/plugins/modules/appflowglobal_appflowpolicy_binding.py
+index c5f0364d..d9971dc2 100644
+--- a/plugins/modules/appflowglobal_appflowpolicy_binding.py
++++ b/plugins/modules/appflowglobal_appflowpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/appfwglobal_appfwpolicy_binding.py b/plugins/modules/appfwglobal_appfwpolicy_binding.py
+index cca597fe..3aa461fa 100644
+--- a/plugins/modules/appfwglobal_appfwpolicy_binding.py
++++ b/plugins/modules/appfwglobal_appfwpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/auditnslogglobal_auditnslogpolicy_binding.py b/plugins/modules/auditnslogglobal_auditnslogpolicy_binding.py
+index 9314ba3b..f12361e4 100644
+--- a/plugins/modules/auditnslogglobal_auditnslogpolicy_binding.py
++++ b/plugins/modules/auditnslogglobal_auditnslogpolicy_binding.py
+@@ -57,6 +57,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   policyname:
+@@ -72,6 +73,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample auditnslogglobal_auditnslogpolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure auditnslogglobal_auditnslogpolicy_binding
++      delegate_to: localhost
++      netscaler.adc.auditnslogglobal_auditnslogpolicy_binding:
++        state: present
++        policyname: SETNSLOGPARAMS_ADV_POL
++        priority: '2000000000'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/auditsyslogaction.py b/plugins/modules/auditsyslogaction.py
+index c3a6a506..88c8b746 100644
+--- a/plugins/modules/auditsyslogaction.py
++++ b/plugins/modules/auditsyslogaction.py
+@@ -252,6 +252,14 @@ options:
+       - DISABLED
+     description:
+       - Log subscriber session event information
++  syslogcompliance:
++    type: str
++    choices:
++      - RFC5424
++    description:
++      - Setting this parameter ensures that all the Audit Logs generated for this
++        Syslog Action comply with an RFC. For example, set it to C(RFC5424) to ensure
++        RFC 5424 compliance
+   tcp:
+     type: str
+     choices:
+diff --git a/plugins/modules/auditsyslogglobal_auditsyslogpolicy_binding.py b/plugins/modules/auditsyslogglobal_auditsyslogpolicy_binding.py
+index 759b2b4e..388f3b2a 100644
+--- a/plugins/modules/auditsyslogglobal_auditsyslogpolicy_binding.py
++++ b/plugins/modules/auditsyslogglobal_auditsyslogpolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   policyname:
+diff --git a/plugins/modules/authenticationepaaction.py b/plugins/modules/authenticationepaaction.py
+index eecd7877..12a18fa9 100644
+--- a/plugins/modules/authenticationepaaction.py
++++ b/plugins/modules/authenticationepaaction.py
+@@ -53,6 +53,13 @@ options:
+     description:
+       - String specifying the path(s) and name(s) of the files to be deleted by the
+         endpoint analysis (EPA) tool. Multiple files to be delimited by comma
++  deviceposture:
++    type: str
++    choices:
++      - ENABLED
++      - DISABLED
++    description:
++      - Parameter to enable/disable device posture service scan
+   killprocess:
+     type: str
+     description:
+diff --git a/plugins/modules/authenticationnoauthaction.py b/plugins/modules/authenticationnoauthaction.py
+index da715043..c9c63309 100644
+--- a/plugins/modules/authenticationnoauthaction.py
++++ b/plugins/modules/authenticationnoauthaction.py
+@@ -60,6 +60,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample authenticationnoauthaction playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure authenticationnoauthaction
++      delegate_to: localhost
++      netscaler.adc.authenticationnoauthaction:
++        state: present
++        name: NO_AUTHN
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/botglobal_botpolicy_binding.py b/plugins/modules/botglobal_botpolicy_binding.py
+index 41806aef..b7036c72 100644
+--- a/plugins/modules/botglobal_botpolicy_binding.py
++++ b/plugins/modules/botglobal_botpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/cacheglobal_cachepolicy_binding.py b/plugins/modules/cacheglobal_cachepolicy_binding.py
+index 734bef4a..8f80e569 100644
+--- a/plugins/modules/cacheglobal_cachepolicy_binding.py
++++ b/plugins/modules/cacheglobal_cachepolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/cloudparameter.py b/plugins/modules/cloudparameter.py
+index a0210188..193e5ec5 100644
+--- a/plugins/modules/cloudparameter.py
++++ b/plugins/modules/cloudparameter.py
+@@ -86,6 +86,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample cloudparameter playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure cloudparameter
++      delegate_to: localhost
++      netscaler.adc.cloudparameter:
++        state: present
++        deployment: Production
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/cmpglobal_cmppolicy_binding.py b/plugins/modules/cmpglobal_cmppolicy_binding.py
+index 58ef85bc..f8bdd242 100644
+--- a/plugins/modules/cmpglobal_cmppolicy_binding.py
++++ b/plugins/modules/cmpglobal_cmppolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/contentinspectionglobal_contentinspectionpolicy_binding.py b/plugins/modules/contentinspectionglobal_contentinspectionpolicy_binding.py
+index 8beb399e..bb83c448 100644
+--- a/plugins/modules/contentinspectionglobal_contentinspectionpolicy_binding.py
++++ b/plugins/modules/contentinspectionglobal_contentinspectionpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/dnsglobal_dnspolicy_binding.py b/plugins/modules/dnsglobal_dnspolicy_binding.py
+index 3f956ce1..cbd8bc5f 100644
+--- a/plugins/modules/dnsglobal_dnspolicy_binding.py
++++ b/plugins/modules/dnsglobal_dnspolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/dnsparameter.py b/plugins/modules/dnsparameter.py
+index 7fe0ae04..959d941c 100644
+--- a/plugins/modules/dnsparameter.py
++++ b/plugins/modules/dnsparameter.py
+@@ -256,6 +256,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample dnsparameter playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure dnsparameter
++      delegate_to: localhost
++      netscaler.adc.dnsparameter:
++        state: present
++        namelookuppriority: DNS
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/dnsproxyrecords.py b/plugins/modules/dnsproxyrecords.py
+index 5c0ded08..ec84670a 100644
+--- a/plugins/modules/dnsproxyrecords.py
++++ b/plugins/modules/dnsproxyrecords.py
+@@ -69,6 +69,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample Playbook for netscaler.adc.dnsproxyrecords
++  hosts: localhost
++  gather_facts: false
++  tasks:
++    - name: Flush DNS Proxy records
++      delegate_to: localhost
++      netscaler.adc.dnsproxyrecords:
++        state: flushed
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/feoglobal_feopolicy_binding.py b/plugins/modules/feoglobal_feopolicy_binding.py
+index c6f041e7..303b890d 100644
+--- a/plugins/modules/feoglobal_feopolicy_binding.py
++++ b/plugins/modules/feoglobal_feopolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/icaglobal_icapolicy_binding.py b/plugins/modules/icaglobal_icapolicy_binding.py
+index 26c7399e..d5e86e26 100644
+--- a/plugins/modules/icaglobal_icapolicy_binding.py
++++ b/plugins/modules/icaglobal_icapolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/ipsecparameter.py b/plugins/modules/ipsecparameter.py
+index 701fdf4f..7f780834 100644
+--- a/plugins/modules/ipsecparameter.py
++++ b/plugins/modules/ipsecparameter.py
+@@ -102,6 +102,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample ipsecparameter playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure ipsecparameter
++      delegate_to: localhost
++      netscaler.adc.ipsecparameter:
++        state: present
++        lifetime: '28800'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/lbglobal_lbpolicy_binding.py b/plugins/modules/lbglobal_lbpolicy_binding.py
+index 4e619aff..48525827 100644
+--- a/plugins/modules/lbglobal_lbpolicy_binding.py
++++ b/plugins/modules/lbglobal_lbpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/lbvserver_appflowpolicy_binding.py b/plugins/modules/lbvserver_appflowpolicy_binding.py
+index 07b82e47..7dac79c6 100644
+--- a/plugins/modules/lbvserver_appflowpolicy_binding.py
++++ b/plugins/modules/lbvserver_appflowpolicy_binding.py
+@@ -99,6 +99,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample lbvserver_appflowpolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure lbvserver_appflowpolicy_binding
++      delegate_to: localhost
++      netscaler.adc.lbvserver_appflowpolicy_binding:
++        state: present
++        name: lb_vs_storefront_https
++        policyname: af_policy_act_log_web_172.27.205.75
++        priority: '255'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/nsfeature.py b/plugins/modules/nsfeature.py
+index 0bbd7abe..04ce88c6 100644
+--- a/plugins/modules/nsfeature.py
++++ b/plugins/modules/nsfeature.py
+@@ -117,6 +117,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample Playbook
++  hosts: localhost
++  gather_facts: false
++  tasks:
++    - name: Sample Task | nsfeature
++      delegate_to: localhost
++      netscaler.adc.nsfeature:
++        state: enabled
++        feature:
++          - CS
++          - LB
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/nslicenseparameters.py b/plugins/modules/nslicenseparameters.py
+index 5e3b0cc3..1b037793 100644
+--- a/plugins/modules/nslicenseparameters.py
++++ b/plugins/modules/nslicenseparameters.py
+@@ -61,7 +61,8 @@ options:
+   licenseexpiryalerttime:
+     type: float
+     description:
+-      - If ADC termed license is nearer to expiry then SNMP expiry alert will be raised
++      - If ADC license contract expiry date is nearer then GUI/SNMP license expiry
++        alert will be raised
+ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ 
+ """
+diff --git a/plugins/modules/nsmode.py b/plugins/modules/nsmode.py
+index 06a1f4d7..228cae16 100644
+--- a/plugins/modules/nsmode.py
++++ b/plugins/modules/nsmode.py
+@@ -76,6 +76,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample nsmode playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure nsmode
++      delegate_to: localhost
++      netscaler.adc.nsmode:
++        state: present
++        fr: 'true'
++        l3: 'true'
++        mbf: 'true'
++        usnip: 'true'
++        pmtud: 'true'
++        ulfd: 'true'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/nsspparams.py b/plugins/modules/nsspparams.py
+index 237e60b3..be29f271 100644
+--- a/plugins/modules/nsspparams.py
++++ b/plugins/modules/nsspparams.py
+@@ -56,6 +56,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample Task
++  hosts: localhost
++  gather_facts: false
++  tasks:
++    - name: Sample playbook
++      delegate_to: localhost
++      netscaler.adc.nsspparams:
++        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
++        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
++        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
++        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
++        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
++        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
++        state: present
++        basethreshold: 200
++        throttle: Aggressive
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/nstcpbufparam.py b/plugins/modules/nstcpbufparam.py
+index 6a2ccdaf..f5b6c93d 100644
+--- a/plugins/modules/nstcpbufparam.py
++++ b/plugins/modules/nstcpbufparam.py
+@@ -51,6 +51,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample nstcpbufparam playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure nstcpbufparam
++      delegate_to: localhost
++      netscaler.adc.nstcpbufparam:
++        state: present
++        memlimit: 600
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/nstimeout.py b/plugins/modules/nstimeout.py
+index 62b99b02..4c6a47fa 100644
+--- a/plugins/modules/nstimeout.py
++++ b/plugins/modules/nstimeout.py
+@@ -126,6 +126,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample nstimeout playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure nstimeout
++      delegate_to: localhost
++      netscaler.adc.nstimeout:
++        state: present
++        newconnidletimeout: '25'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/nsvpxparam.py b/plugins/modules/nsvpxparam.py
+index 1d55c50b..eacd5399 100644
+--- a/plugins/modules/nsvpxparam.py
++++ b/plugins/modules/nsvpxparam.py
+@@ -96,6 +96,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample Playbook
++  hosts: localhost
++  gather_facts: false
++  tasks:
++    - name: Sample Task | nsvpxparam
++      delegate_to: localhost
++      netscaler.adc.nsvpxparam:
++        state: present
++        cpuyield: 'YES'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/ntpsync.py b/plugins/modules/ntpsync.py
+index e0e74604..b5696ce2 100644
+--- a/plugins/modules/ntpsync.py
++++ b/plugins/modules/ntpsync.py
+@@ -42,6 +42,14 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample playbook
++  hosts: localhost
++  tasks:
++    - name: Enable ntpsync
++      delegate_to: localhost
++      netscaler.adc.ntpsync:
++        state: enabled
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/responderglobal_responderpolicy_binding.py b/plugins/modules/responderglobal_responderpolicy_binding.py
+index 0e520b3d..2aedafbc 100644
+--- a/plugins/modules/responderglobal_responderpolicy_binding.py
++++ b/plugins/modules/responderglobal_responderpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/rewriteglobal_rewritepolicy_binding.py b/plugins/modules/rewriteglobal_rewritepolicy_binding.py
+index 6289c4f1..682a5c9d 100644
+--- a/plugins/modules/rewriteglobal_rewritepolicy_binding.py
++++ b/plugins/modules/rewriteglobal_rewritepolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/sslcertfile.py b/plugins/modules/sslcertfile.py
+index b11af449..bfdff1cc 100644
+--- a/plugins/modules/sslcertfile.py
++++ b/plugins/modules/sslcertfile.py
+@@ -60,6 +60,31 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample Playbook
++  hosts: localhost
++  gather_facts: false
++  tasks:
++    - name: Sample Task | Copy certfile to netscaler
++      delegate_to: localhost
++      netscaler.adc.systemfile:
++        state: present
++        filecontent: "{{ lookup('file', '../tests/data/test-certfile.crt') | b64encode
++          }}"
++        filelocation: /var/tmp/
++        filename: test-certfile.crt
++    - name: Sample Task | import sslcertfile
++      delegate_to: localhost
++      netscaler.adc.sslcertfile:
++        state: imported
++        name: ansible-test.crt
++        src: local:test-certfile.crt  # `local:` means `/var/tmp/` in netscaler
++        # src: http://10.06.10.10:8000/test-certfile.crt
++    - name: Sample Task | remove sslcertfile
++      delegate_to: localhost
++      netscaler.adc.sslcertfile:
++        state: absent
++        name: ansible-test.crt
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/sslcertkey.py b/plugins/modules/sslcertkey.py
+index 0761a1d4..2a33f2e0 100644
+--- a/plugins/modules/sslcertkey.py
++++ b/plugins/modules/sslcertkey.py
+@@ -67,6 +67,17 @@ options:
+       - 'The following requirement applies only to the Citrix ADC CLI:'
+       - If the name includes one or more spaces, enclose the name in double or single
+         quotation marks (for example, "my cert" or 'my cert').
++  deletecertkeyfilesonremoval:
++    type: str
++    choices:
++      - 'NO'
++      - ALWAYS
++      - IF_EXPIRED
++    description:
++      - This option is used to automatically delete certificate/key files from physical
++        device when the added certkey is removed. When deleteCertKeyFilesOnRemoval
++        option is used at rm certkey command, it overwrites the deleteCertKeyFilesOnRemoval
++        setting used at add/set certkey command
+   deletefromdevice:
+     type: bool
+     description:
+diff --git a/plugins/modules/sslglobal_sslpolicy_binding.py b/plugins/modules/sslglobal_sslpolicy_binding.py
+index dc9d7c76..1e2ecbd8 100644
+--- a/plugins/modules/sslglobal_sslpolicy_binding.py
++++ b/plugins/modules/sslglobal_sslpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/systemglobal_auditnslogpolicy_binding.py b/plugins/modules/systemglobal_auditnslogpolicy_binding.py
+index 8378768b..2e3ccf2a 100644
+--- a/plugins/modules/systemglobal_auditnslogpolicy_binding.py
++++ b/plugins/modules/systemglobal_auditnslogpolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/systemglobal_auditsyslogpolicy_binding.py b/plugins/modules/systemglobal_auditsyslogpolicy_binding.py
+index 9bea7725..35d9a97a 100644
+--- a/plugins/modules/systemglobal_auditsyslogpolicy_binding.py
++++ b/plugins/modules/systemglobal_auditsyslogpolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/systemglobal_authenticationldappolicy_binding.py b/plugins/modules/systemglobal_authenticationldappolicy_binding.py
+index e3c6f1fb..580061c2 100644
+--- a/plugins/modules/systemglobal_authenticationldappolicy_binding.py
++++ b/plugins/modules/systemglobal_authenticationldappolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+@@ -157,6 +158,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample systemglobal_authenticationldappolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure systemglobal_authenticationldappolicy_binding
++      delegate_to: localhost
++      netscaler.adc.systemglobal_authenticationldappolicy_binding:
++        state: present
++        policyname: ldap_pol_ldap_mgmt
++        priority: '100'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/systemglobal_authenticationlocalpolicy_binding.py b/plugins/modules/systemglobal_authenticationlocalpolicy_binding.py
+index f5451240..0fe7b8d2 100644
+--- a/plugins/modules/systemglobal_authenticationlocalpolicy_binding.py
++++ b/plugins/modules/systemglobal_authenticationlocalpolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/systemglobal_authenticationpolicy_binding.py b/plugins/modules/systemglobal_authenticationpolicy_binding.py
+index 8d4308b1..14ec7bb2 100644
+--- a/plugins/modules/systemglobal_authenticationpolicy_binding.py
++++ b/plugins/modules/systemglobal_authenticationpolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/systemglobal_authenticationradiuspolicy_binding.py b/plugins/modules/systemglobal_authenticationradiuspolicy_binding.py
+index c0901dc7..92b92862 100644
+--- a/plugins/modules/systemglobal_authenticationradiuspolicy_binding.py
++++ b/plugins/modules/systemglobal_authenticationradiuspolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/systemglobal_authenticationtacacspolicy_binding.py b/plugins/modules/systemglobal_authenticationtacacspolicy_binding.py
+index f8c94779..976e2294 100644
+--- a/plugins/modules/systemglobal_authenticationtacacspolicy_binding.py
++++ b/plugins/modules/systemglobal_authenticationtacacspolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/tmglobal_tmtrafficpolicy_binding.py b/plugins/modules/tmglobal_tmtrafficpolicy_binding.py
+index beb0f0fc..940228ad 100644
+--- a/plugins/modules/tmglobal_tmtrafficpolicy_binding.py
++++ b/plugins/modules/tmglobal_tmtrafficpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/transformglobal_transformpolicy_binding.py b/plugins/modules/transformglobal_transformpolicy_binding.py
+index 4c531a6c..89169f0d 100644
+--- a/plugins/modules/transformglobal_transformpolicy_binding.py
++++ b/plugins/modules/transformglobal_transformpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/tunnelglobal_tunneltrafficpolicy_binding.py b/plugins/modules/tunnelglobal_tunneltrafficpolicy_binding.py
+index 7248f5d2..17e8c05a 100644
+--- a/plugins/modules/tunnelglobal_tunneltrafficpolicy_binding.py
++++ b/plugins/modules/tunnelglobal_tunneltrafficpolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/urlfilteringparameter.py b/plugins/modules/urlfilteringparameter.py
+index c4f2fdb6..2be4fd04 100644
+--- a/plugins/modules/urlfilteringparameter.py
++++ b/plugins/modules/urlfilteringparameter.py
+@@ -63,6 +63,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample urlfilteringparameter playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure urlfilteringparameter
++      delegate_to: localhost
++      netscaler.adc.urlfilteringparameter:
++        state: present
++        hoursbetweendbupdates: '24'
++        timeofdaytoupdatedb: 03:00
++        maxnumberofcloudthreads: '4'
++        cloudkeepalivetimeout: 120000
++        cloudserverconnecttimeout: 1000
++        clouddblookuptimeout: 2000
++        seeddbsizelevel: '1'
++        localdatabasethreads: '1'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/videooptimizationglobalpacing_videooptimizationpacingpolicy_binding.py b/plugins/modules/videooptimizationglobalpacing_videooptimizationpacingpolicy_binding.py
+index bbcf5666..f26ced56 100644
+--- a/plugins/modules/videooptimizationglobalpacing_videooptimizationpacingpolicy_binding.py
++++ b/plugins/modules/videooptimizationglobalpacing_videooptimizationpacingpolicy_binding.py
+@@ -47,6 +47,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/vlan_interface_binding.py b/plugins/modules/vlan_interface_binding.py
+index af1267c8..340acbce 100644
+--- a/plugins/modules/vlan_interface_binding.py
++++ b/plugins/modules/vlan_interface_binding.py
+@@ -65,6 +65,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vlan_interface_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vlan_interface_binding
++      delegate_to: localhost
++      netscaler.adc.vlan_interface_binding:
++        state: present
++        id: '815'
++        ifnum:
++          - 10/2
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vlan_nsip_binding.py b/plugins/modules/vlan_nsip_binding.py
+index b569090f..6dffd623 100644
+--- a/plugins/modules/vlan_nsip_binding.py
++++ b/plugins/modules/vlan_nsip_binding.py
+@@ -67,6 +67,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vlan_nsip_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vlan_nsip_binding
++      delegate_to: localhost
++      netscaler.adc.vlan_nsip_binding:
++        state: present
++        id: '815'
++        ipaddress: 172.27.118.107
++        netmask: 255.255.255.224
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vpnglobal_domain_binding.py b/plugins/modules/vpnglobal_domain_binding.py
+index ac630ede..48f86987 100644
+--- a/plugins/modules/vpnglobal_domain_binding.py
++++ b/plugins/modules/vpnglobal_domain_binding.py
+@@ -55,6 +55,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vpnglobal_domain_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vpnglobal_domain_binding
++      delegate_to: localhost
++      netscaler.adc.vpnglobal_domain_binding:
++        state: present
++        intranetdomain: '*.dll.corp'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vpnglobal_vpnclientlessaccesspolicy_binding.py b/plugins/modules/vpnglobal_vpnclientlessaccesspolicy_binding.py
+index 4b1dab68..10d9f665 100644
+--- a/plugins/modules/vpnglobal_vpnclientlessaccesspolicy_binding.py
++++ b/plugins/modules/vpnglobal_vpnclientlessaccesspolicy_binding.py
+@@ -130,6 +130,7 @@ options:
+       - VPN_GLOBAL
+       - RNAT_GLOBAL
+       - APPFW_GLOBAL
++      - TM_GLOBAL
+     description:
+       - '0'
+   gotopriorityexpression:
+diff --git a/plugins/modules/vpnparameter.py b/plugins/modules/vpnparameter.py
+index 2cbf99ce..bf4e63b3 100644
+--- a/plugins/modules/vpnparameter.py
++++ b/plugins/modules/vpnparameter.py
+@@ -269,6 +269,13 @@ options:
+         and then creating authorization policies to define the network resources users
+         can access. If you set the default authorization policy to C(DENY), you must
+         explicitly authorize access to any network resource, which improves security.
++  deviceposture:
++    type: str
++    choices:
++      - ENABLED
++      - DISABLED
++    description:
++      - Enable device posture
+   dnsvservername:
+     type: str
+     description:
+diff --git a/plugins/modules/vpnvserver.py b/plugins/modules/vpnvserver.py
+index 69fdbe1e..147ccfd4 100644
+--- a/plugins/modules/vpnvserver.py
++++ b/plugins/modules/vpnvserver.py
+@@ -120,6 +120,13 @@ options:
+       - 'OFF'
+     description:
+       - Indicates whether device certificate check as a part of EPA is on or off.
++  deviceposture:
++    type: str
++    choices:
++      - ENABLED
++      - DISABLED
++    description:
++      - Enable device posture
+   doublehop:
+     type: str
+     choices:
+diff --git a/plugins/modules/vpnvserver_authenticationradiuspolicy_binding.py b/plugins/modules/vpnvserver_authenticationradiuspolicy_binding.py
+index 2de57884..85fd9fe2 100644
+--- a/plugins/modules/vpnvserver_authenticationradiuspolicy_binding.py
++++ b/plugins/modules/vpnvserver_authenticationradiuspolicy_binding.py
+@@ -116,6 +116,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vpnvserver_authenticationradiuspolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vpnvserver_authenticationradiuspolicy_binding
++      delegate_to: localhost
++      netscaler.adc.vpnvserver_authenticationradiuspolicy_binding:
++        state: present
++        name: nsgw_voila_direct2dll_com
++        policy: auth_pol_radius_azure_mfa2_nonmobile
++        priority: '120'
++        secondary: true
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vpnvserver_authenticationsamlpolicy_binding.py b/plugins/modules/vpnvserver_authenticationsamlpolicy_binding.py
+index 3ef919a6..b39993c0 100644
+--- a/plugins/modules/vpnvserver_authenticationsamlpolicy_binding.py
++++ b/plugins/modules/vpnvserver_authenticationsamlpolicy_binding.py
+@@ -116,6 +116,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vpnvserver_authenticationsamlpolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vpnvserver_authenticationsamlpolicy_binding
++      delegate_to: localhost
++      netscaler.adc.vpnvserver_authenticationsamlpolicy_binding:
++        state: present
++        name: nsgw_wp_direct2dll_com
++        policy: saml_pol_aad_wp
++        priority: '90'
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vpnvserver_responderpolicy_binding.py b/plugins/modules/vpnvserver_responderpolicy_binding.py
+index 281b9ccf..c50fe247 100644
+--- a/plugins/modules/vpnvserver_responderpolicy_binding.py
++++ b/plugins/modules/vpnvserver_responderpolicy_binding.py
+@@ -90,6 +90,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vpnvserver_responderpolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vpnvserver_responderpolicy_binding
++      delegate_to: localhost
++      netscaler.adc.vpnvserver_responderpolicy_binding:
++        state: present
++        name: nsgw_wp_direct2dll_com
++        policy: res_pol_redir_wp_logoff
++        priority: '110'
++        gotopriorityexpression: END
++        bindpoint: REQUEST
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vpnvserver_rewritepolicy_binding.py b/plugins/modules/vpnvserver_rewritepolicy_binding.py
+index d170069a..416ae553 100644
+--- a/plugins/modules/vpnvserver_rewritepolicy_binding.py
++++ b/plugins/modules/vpnvserver_rewritepolicy_binding.py
+@@ -90,6 +90,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vpnvserver_rewritepolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vpnvserver_rewritepolicy_binding
++      delegate_to: localhost
++      netscaler.adc.vpnvserver_rewritepolicy_binding:
++        state: present
++        name: nsgw_wp_direct2dll_com
++        policy: rw_pol_insert_loginfooter
++        priority: '100'
++        gotopriorityexpression: END
++        bindpoint: RESPONSE
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vpnvserver_vpnintranetapplication_binding.py b/plugins/modules/vpnvserver_vpnintranetapplication_binding.py
+index 8d60c29c..f63729c1 100644
+--- a/plugins/modules/vpnvserver_vpnintranetapplication_binding.py
++++ b/plugins/modules/vpnvserver_vpnintranetapplication_binding.py
+@@ -53,6 +53,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vpnvserver_vpnintranetapplication_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vpnvserver_vpnintranetapplication_binding
++      delegate_to: localhost
++      netscaler.adc.vpnvserver_vpnintranetapplication_binding:
++        state: present
++        name: nsgw_wp_direct2dll_com
++        intranetapplication: WEB:HML.Selic.rtm
+ """
+ 
+ RETURN = r"""
+diff --git a/plugins/modules/vpnvserver_vpntrafficpolicy_binding.py b/plugins/modules/vpnvserver_vpntrafficpolicy_binding.py
+index e75a38eb..449ed270 100644
+--- a/plugins/modules/vpnvserver_vpntrafficpolicy_binding.py
++++ b/plugins/modules/vpnvserver_vpntrafficpolicy_binding.py
+@@ -116,6 +116,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
+ """
+ 
+ EXAMPLES = r"""
++---
++- name: Sample vpnvserver_vpntrafficpolicy_binding playbook
++  hosts: demo_netscalers
++  gather_facts: 'false'
++  tasks:
++    - name: Configure vpnvserver_vpntrafficpolicy_binding
++      delegate_to: localhost
++      netscaler.adc.vpnvserver_vpntrafficpolicy_binding:
++        state: present
++        name: nsgw_wp_direct2dll_com
++        policy: traffic_pol_vpn_sso_gw
++        priority: '64000'
+ """
+ 
+ RETURN = r"""

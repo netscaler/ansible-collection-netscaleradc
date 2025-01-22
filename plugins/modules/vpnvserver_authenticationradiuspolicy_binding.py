@@ -116,6 +116,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_authenticationradiuspolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure vpnvserver_authenticationradiuspolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_authenticationradiuspolicy_binding:
+        state: present
+        name: nsgw_voila_direct2dll_com
+        policy: auth_pol_radius_azure_mfa2_nonmobile
+        priority: '120'
+        secondary: true
 """
 
 RETURN = r"""

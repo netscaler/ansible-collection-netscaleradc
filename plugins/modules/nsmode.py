@@ -76,6 +76,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nsmode playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure nsmode
+      delegate_to: localhost
+      netscaler.adc.nsmode:
+        state: present
+        fr: 'true'
+        l3: 'true'
+        mbf: 'true'
+        usnip: 'true'
+        pmtud: 'true'
+        ulfd: 'true'
 """
 
 RETURN = r"""

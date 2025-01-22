@@ -252,6 +252,14 @@ options:
       - DISABLED
     description:
       - Log subscriber session event information
+  syslogcompliance:
+    type: str
+    choices:
+      - RFC5424
+    description:
+      - Setting this parameter ensures that all the Audit Logs generated for this
+        Syslog Action comply with an RFC. For example, set it to C(RFC5424) to ensure
+        RFC 5424 compliance
   tcp:
     type: str
     choices:
