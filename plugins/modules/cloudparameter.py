@@ -89,7 +89,7 @@ EXAMPLES = r"""
 ---
 - name: Sample cloudparameter playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure cloudparameter
       delegate_to: localhost

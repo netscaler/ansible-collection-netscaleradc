@@ -119,7 +119,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vpnvserver_vpntrafficpolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure vpnvserver_vpntrafficpolicy_binding
       delegate_to: localhost

@@ -105,7 +105,7 @@ EXAMPLES = r"""
 ---
 - name: Sample ipsecparameter playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure ipsecparameter
       delegate_to: localhost

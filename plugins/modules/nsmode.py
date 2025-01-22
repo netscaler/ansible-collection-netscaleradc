@@ -79,7 +79,7 @@ EXAMPLES = r"""
 ---
 - name: Sample nsmode playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure nsmode
       delegate_to: localhost

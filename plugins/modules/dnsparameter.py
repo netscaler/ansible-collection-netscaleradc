@@ -259,7 +259,7 @@ EXAMPLES = r"""
 ---
 - name: Sample dnsparameter playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure dnsparameter
       delegate_to: localhost

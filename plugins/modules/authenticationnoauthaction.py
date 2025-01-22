@@ -63,7 +63,7 @@ EXAMPLES = r"""
 ---
 - name: Sample authenticationnoauthaction playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure authenticationnoauthaction
       delegate_to: localhost

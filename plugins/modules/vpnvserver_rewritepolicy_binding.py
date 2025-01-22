@@ -93,7 +93,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vpnvserver_rewritepolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure vpnvserver_rewritepolicy_binding
       delegate_to: localhost
