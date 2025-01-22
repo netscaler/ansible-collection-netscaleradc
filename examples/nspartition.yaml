@@ -9,4 +9,3 @@
         state: present
         partitionname: p1
         vxlan: '1'
-```

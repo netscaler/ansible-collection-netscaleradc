@@ -9,4 +9,3 @@
         state: present
         certkey: callback.blackstone.com
         linkcertkeyname: blackstone_sub
-        
