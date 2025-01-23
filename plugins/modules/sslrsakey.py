@@ -101,8 +101,6 @@ EXAMPLES = r"""
         bits: '2048'
         exponent: '3'
         keyform: DER
-        nitro_operation: create
-        '#nitro_operation': create
 """
 
 RETURN = r"""

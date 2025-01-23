@@ -102,6 +102,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ipsecparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ipsecparameter
+      delegate_to: localhost
+      netscaler.adc.ipsecparameter:
+        state: present
+        lifetime: '28800'
 """
 
 RETURN = r"""

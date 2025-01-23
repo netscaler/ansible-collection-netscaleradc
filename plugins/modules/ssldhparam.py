@@ -69,8 +69,6 @@ EXAMPLES = r"""
         dhfile: dfile
         bits: '512'
         gen: '2'
-        nitro_operation: create
-        '#nitro_operation': create
 """
 
 RETURN = r"""

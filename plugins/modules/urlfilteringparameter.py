@@ -63,6 +63,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample urlfilteringparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure urlfilteringparameter
+      delegate_to: localhost
+      netscaler.adc.urlfilteringparameter:
+        state: present
+        hoursbetweendbupdates: '24'
+        timeofdaytoupdatedb: 03:00
+        maxnumberofcloudthreads: '4'
+        cloudkeepalivetimeout: 120000
+        cloudserverconnecttimeout: 1000
+        clouddblookuptimeout: 2000
+        seeddbsizelevel: '1'
+        localdatabasethreads: '1'
 """
 
 RETURN = r"""

@@ -167,8 +167,6 @@ EXAMPLES = r"""
         localityname: adsad
         commonname: asdsad
         emailaddress: adsad
-        nitro_operation: create
-        '#nitro_operation': create
 """
 
 RETURN = r"""

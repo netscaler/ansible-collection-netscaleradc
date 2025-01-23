@@ -130,6 +130,7 @@ options:
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+      - TM_GLOBAL
     description:
       - '0'
   gotopriorityexpression:
@@ -157,6 +158,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample systemglobal_authenticationldappolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemglobal_authenticationldappolicy_binding
+      delegate_to: localhost
+      netscaler.adc.systemglobal_authenticationldappolicy_binding:
+        state: present
+        policyname: ldap_pol_ldap_mgmt
+        priority: '100'
 """
 
 RETURN = r"""

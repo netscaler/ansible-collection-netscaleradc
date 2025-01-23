@@ -58,8 +58,6 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nsacls:
         state: present
-        nitro_operation: apply
-        '#nitro_operation': apply
 """
 
 RETURN = r"""

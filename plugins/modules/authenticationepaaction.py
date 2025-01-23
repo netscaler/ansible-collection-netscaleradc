@@ -53,6 +53,13 @@ options:
     description:
       - String specifying the path(s) and name(s) of the files to be deleted by the
         endpoint analysis (EPA) tool. Multiple files to be delimited by comma
+  deviceposture:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Parameter to enable/disable device posture service scan
   killprocess:
     type: str
     description:

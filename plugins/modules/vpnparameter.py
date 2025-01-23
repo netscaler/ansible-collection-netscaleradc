@@ -269,6 +269,13 @@ options:
         and then creating authorization policies to define the network resources users
         can access. If you set the default authorization policy to C(DENY), you must
         explicitly authorize access to any network resource, which improves security.
+  deviceposture:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable device posture
   dnsvservername:
     type: str
     description:

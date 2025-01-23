@@ -126,6 +126,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nstimeout playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nstimeout
+      delegate_to: localhost
+      netscaler.adc.nstimeout:
+        state: present
+        newconnidletimeout: '25'
 """
 
 RETURN = r"""

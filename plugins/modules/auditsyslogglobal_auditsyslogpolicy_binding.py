@@ -130,6 +130,7 @@ options:
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+      - TM_GLOBAL
     description:
       - '0'
   policyname:

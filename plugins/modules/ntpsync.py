@@ -42,6 +42,14 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample playbook
+  hosts: localhost
+  tasks:
+    - name: Enable ntpsync
+      delegate_to: localhost
+      netscaler.adc.ntpsync:
+        state: enabled
 """
 
 RETURN = r"""
