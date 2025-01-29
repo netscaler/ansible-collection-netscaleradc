@@ -441,7 +441,19 @@ class ModuleExecutor(object):
                     )
                 )
             else:
-                if msg is None:
+                self.module_result["changed"] = True
+                if self.resource_name.endswith("_binding"):
+                    # Generally bindings are not updated. They are removed and added again.
+                    log(
+                        "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
+                        % (self.resource_name, self.resource_id)
+                    )
+                    self.delete()
+                    ok, err = create_resource(
+                        self.client, self.resource_name, self.resource_module_params
+                    )
+
+                elif msg is None:
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
@@ -461,11 +473,11 @@ class ModuleExecutor(object):
                         self.resource_module_params.pop(key)
 
                     is_identical, msg1 = self.is_resource_identical()
-                    
+
                     if is_identical and msg1 is None:
                         self.module.warn(f"DEBUG: Resource not updated because - {msg}")
                         self.module_result["changed"] = False
-                        self.module.exit_json(**self.module_result) 
+                        self.module.exit_json(**self.module_result)
                     else:
                         self.module_result["changed"] = True
                         log(
