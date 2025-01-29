@@ -365,9 +365,9 @@ class ModuleExecutor(object):
                 "Cannot change value for the following non-updateable attributes %s"
                 % immutable_resource_module_params
             )
-            self.return_failure(msg)
+            return (False, msg)
 
-        return False if diff_list else True
+        return (False, None) if diff_list else (True, None)
 
     @trace
     def create_or_update(self):
@@ -431,7 +431,8 @@ class ModuleExecutor(object):
 
         else:
             # Update only if resource is not identical (idempotent)
-            if self.is_resource_identical():
+            is_identical, msg = self.is_resource_identical()
+            if is_identical:
                 log(
                     "INFO: Resource `%s:%s` exists and is identical. No change required."
                     % (
@@ -440,30 +441,45 @@ class ModuleExecutor(object):
                     )
                 )
             else:
-                self.module_result["changed"] = True
-                if self.resource_name.endswith("_binding"):
-                    # Generally bindings are not updated. They are removed and added again.
+                if msg is None:
+                    self.module_result["changed"] = True
                     log(
-                        "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
+                        "INFO: Resource %s:%s exists and is different. Will be UPDATED."
                         % (self.resource_name, self.resource_id)
-                    )
-                    self.delete()
-                    ok, err = create_resource(
-                        self.client, self.resource_name, self.resource_module_params
-                    )
-                else:
-                    log(
-                        "INFO: Resource %s:%s exists. Will be UPDATED."
-                        % (
-                            self.resource_name,
-                            self.resource_id,
-                        )
                     )
                     ok, err = update_resource(
                         self.client, self.resource_name, self.resource_module_params
                     )
-                if not ok:
-                    self.return_failure(err)
+                    if not ok:
+                        self.return_failure(err)
+                else:
+                    immutable_keys = [
+                        key for key in self.resource_module_params.keys()
+                        if key in NITRO_RESOURCE_MAP[self.resource_name]["immutable_keys"]
+                    ]
+                    for key in immutable_keys:
+                        self.resource_module_params.pop(key)
+
+                    is_identical, msg1 = self.is_resource_identical()
+                    
+                    if is_identical and msg1 is None:
+                        self.module.warn(f"DEBUG: Resource not updated because - {msg}")
+                        self.module_result["changed"] = False
+                        self.module.exit_json(**self.module_result) 
+                    else:
+                        self.module_result["changed"] = True
+                        log(
+                            "INFO: Resource %s:%s exists. Will be UPDATED after omitting the immutable keys."
+                            % (
+                                self.resource_name,
+                                self.resource_id,
+                            )
+                        )
+                        ok, err = update_resource(
+                            self.client, self.resource_name, self.resource_module_params
+                        )
+                        if not ok:
+                            self.return_failure(err)
 
     @trace
     def enable_or_disable(self, desired_state):
