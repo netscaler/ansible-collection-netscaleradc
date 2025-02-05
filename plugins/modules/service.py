@@ -146,7 +146,7 @@ options:
   delay:
     type: float
     description:
-      - Time, in seconds, allocated to the Citrix ADC for a graceful shutdown of the
+      - Time, in seconds, allocated to the NetScaler for a graceful shutdown of the
         service. During this period, new requests are sent to the service only for
         clients who already have persistent sessions on the appliance. Requests from
         new clients are load balanced among other available services. After the delay
@@ -353,6 +353,7 @@ options:
       - DOT
       - ADNS_DOT
       - HTTP_QUIC
+      - ADNS_DOH
     description:
       - Protocol in which data is exchanged with the service.
   sp:

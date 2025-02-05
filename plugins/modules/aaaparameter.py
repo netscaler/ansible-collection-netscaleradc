@@ -240,12 +240,17 @@ options:
       - DISABLED
       - AUTH
       - VPN
+      - PORTAL
+      - MANAGED
     description:
       - Entities for which WAF Protection need to be applied.
       - 'Available settings function as follows:'
+      - '* C(MANAGED) - Both C(AUTH) and C(VPN) Protecions are enabled, This is default
+        value for wafProtection'
       - '* C(AUTH) - Endpoints used for Authentication applicable for both AAATM,
         IDP, GATEWAY use cases.'
       - '* C(VPN) - Endpoints used for Gateway use cases.'
+      - '* C(PORTAL) - Endpoints related to web portal.'
       - '* C(DISABLED) - No Endpoint WAF protection.'
       - Currently supported only in default partition
     elements: str

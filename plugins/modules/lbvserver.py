@@ -202,6 +202,13 @@ options:
       - DISABLED
     description:
       - This argument is for enabling/disabling the dns64 on lbvserver
+  dnsoverhttps:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This option is used to enable/disable DNS over HTTPS (DoH) processing.
   dnsprofilename:
     type: str
     description:

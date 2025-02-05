@@ -166,6 +166,13 @@ options:
       - DISABLED
     description:
       - Choose whether to enable support for Direct HTTP/2.
+  http2extendedconnect:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Choose whether to enable HTTP/2 Extended CONNECT mechanism.
   http2headertablesize:
     type: float
     description:
