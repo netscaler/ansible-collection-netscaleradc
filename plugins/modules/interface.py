@@ -17,7 +17,6 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
-----
 module: interface
 short_description: Configuration for interface resource.
 description: Configuration for interface resource.
