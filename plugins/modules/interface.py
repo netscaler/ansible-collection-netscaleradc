@@ -17,7 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
----
+----
 module: interface
 short_description: Configuration for interface resource.
 description: Configuration for interface resource.
@@ -112,12 +112,12 @@ options:
     description:
       - In a High Availability (HA) configuration, monitor the interface for failure
         events. In an HA configuration, an interface that has HA MON enabled and is
-        not bound to any Failover interface Set (FIS), is a critical interface. Failure
+        not bound to any Failover Interface Set (FIS), is a critical interface. Failure
         or disabling of any critical interface triggers HA failover.
   id:
     type: str
     description:
-      - 'interface number, in C/U format, where C can take one of the following values:'
+      - 'Interface number, in C/U format, where C can take one of the following values:'
       - '* 0 - Indicates a management interface.'
       - '* 1 - Indicates a 1 Gbps port.'
       - '* 10 - Indicates a 10 Gbps port.'
@@ -207,7 +207,7 @@ options:
     description:
       - LRSET port priority, expressed as an integer ranging from 1 to 1024. The highest
         priority is 1. The Citrix ADC limits the number of interfaces in an LRSET
-        to 8. Within a LRSET the highest LR Priority interface is considered as the
+        to 8. Within a LRSET the highest LR Priority Interface is considered as the
         first candidate for the Active interface, if the interface is UP.
   mtu:
     type: float
@@ -221,14 +221,14 @@ options:
         Citrix ADC is 9216, however, some Virtualized / Cloud Platforms will have
         lesser Maximum Jumbo MTU Value (9000). In the case of Cluster, the Backplane
         interface requires an MTU value of 78 bytes more than the Max MTU configured
-        on any other Data-Plane interface. When the Data plane interfaces are all
+        on any other Data-Plane Interface. When the Data plane interfaces are all
         at default 1500 MTU, Cluster Back Plane will be automatically set to 1578
-        (1500 + 78) MTU. If a Backplane interface is reset to Data Plane interface,
+        (1500 + 78) MTU. If a Backplane interface is reset to Data Plane Interface,
         then the 1578 MTU will be automatically reset to the default MTU of 1500(or
         whatever lesser default value). If any data plane interface of a Cluster is
         configured with a Jumbo MTU ( > 1500), then all backplane interfaces require
         to be configured with a minimum MTU of 'Highest Data Plane MTU in the Cluster
-        + 78'. That makes the maximum Jumbo MTU for any Data-Plane interface in a
+        + 78'. That makes the maximum Jumbo MTU for any Data-Plane Interface in a
         Cluster System to be '9138 (9216 - 78)., where 9216 is the maximum Jumbo MTU.
         On certain Virtualized / Cloud Platforms, the maximum  possible MTU is restricted
         to a lesser value, Similar calculation can be applied, Maximum Data Plane
@@ -313,24 +313,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
----
-- name: Sample interface playbook
-  hosts: demo_netscalers
-  gather_facts: false
+- gather_facts: 'no'
+  hosts: localhost
+  name: ns.conf playbook
   tasks:
-    - name: Configure interface
-      delegate_to: localhost
-      netscaler.adc.interface:
-        state: present
-        hamonitor: 'OFF'
-        haheartbeat: 'OFF'
-        throughput: '0'
-        bandwidthhigh: '0'
-        bandwidthnormal: '0'
-        intftype: Loopback
-        ifnum:
-          - LO/1
-        interface_id: LO/1
+    - Configure interface
+    - localhost
+    - bandwidthhigh: '0'
+      bandwidthnormal: '0'
+      haheartbeat: 'OFF'
+      hamonitor: 'OFF'
+      ifnum:
+        - LO/1
+      interface_id: LO/1
+      intftype: Loopback
+      state: present
+      throughput: '0'
 """
 
 RETURN = r"""

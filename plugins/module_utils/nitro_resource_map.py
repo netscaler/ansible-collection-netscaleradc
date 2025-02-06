@@ -68008,7 +68008,7 @@ NITRO_RESOURCE_MAP = {
             "invoke",
             "invoke_labelname",
             "labelname",
-        ]
+        ],
         "password_keys": [],
         "primary_key": "labelname",
         "primary_key_composite": [],
