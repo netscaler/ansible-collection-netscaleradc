@@ -116,7 +116,7 @@ options:
   id:
     type: str
     description:
-      - 'Interface number, in C/U format, where C can take one of the following values:'
+      - Interface number, in C/U format, where C can take one of the following values:
       - '* 0 - Indicates a management interface.'
       - '* 1 - Indicates a 1 Gbps port.'
       - '* 10 - Indicates a 10 Gbps port.'
@@ -308,26 +308,9 @@ options:
       - Accept and send 802.1q VLAN tagged packets, based on Allowed Vlan List of
         this interface.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
-
 """
 
 EXAMPLES = r"""
-- gather_facts: 'no'
-  hosts: localhost
-  name: ns.conf playbook
-  tasks:
-    - Configure interface
-    - localhost
-    - bandwidthhigh: '0'
-      bandwidthnormal: '0'
-      haheartbeat: 'OFF'
-      hamonitor: 'OFF'
-      ifnum:
-        - LO/1
-      interface_id: LO/1
-      intftype: Loopback
-      state: present
-      throughput: '0'
 """
 
 RETURN = r"""
@@ -360,21 +343,16 @@ loglines:
   returned: always
   type: list
   sample: ['message 1', 'message 2']
-
 """
 
-
 import os
-
 from ..module_utils.module_executor import ModuleExecutor
 
 RESOURCE_NAME = os.path.basename(__file__).replace(".py", "")
 
-
 def main():
     executor = ModuleExecutor(RESOURCE_NAME)
     executor.main()
-
 
 if __name__ == "__main__":
     main()
