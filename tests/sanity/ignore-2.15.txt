@@ -940,4 +940,4 @@ plugins/modules/metricsprofile_servicegroup_binding.py validate-modules:missing-
 plugins/modules/metricsprofile_uservserver_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/metricsprofile_vpnvserver_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemnsbtracing.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/systemsignedexereport validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/systemsignedexereport.py validate-modules:missing-gplv3-license # We use MIT license

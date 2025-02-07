@@ -31,6 +31,8 @@ options:
       - present
       - absent
       - unset
+      - enabled
+      - disabled
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler

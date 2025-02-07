@@ -17,7 +17,6 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
-----
 module: videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding
 short_description: Binding Resource definition for describing association between
   videooptimizationdetectionpolicylabel and videooptimizationdetectionpolicy resources

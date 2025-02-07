@@ -346,13 +346,16 @@ loglines:
 """
 
 import os
+
 from ..module_utils.module_executor import ModuleExecutor
 
 RESOURCE_NAME = os.path.basename(__file__).replace(".py", "")
 
+
 def main():
     executor = ModuleExecutor(RESOURCE_NAME)
     executor.main()
+
 
 if __name__ == "__main__":
     main()
