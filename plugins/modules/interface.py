@@ -116,7 +116,8 @@ options:
   id:
     type: str
     description:
-      - Interface number, in C/U format, where C can take one of the following values:
+      - Interface number, in C/U format.
+      - C can take one of the following values:
       - '* 0 - Indicates a management interface.'
       - '* 1 - Indicates a 1 Gbps port.'
       - '* 10 - Indicates a 10 Gbps port.'
