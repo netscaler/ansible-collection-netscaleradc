@@ -61,7 +61,8 @@ options:
   licenseexpiryalerttime:
     type: float
     description:
-      - If ADC termed license is nearer to expiry then SNMP expiry alert will be raised
+      - If ADC license contract expiry date is nearer then GUI/SNMP license expiry
+        alert will be raised
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

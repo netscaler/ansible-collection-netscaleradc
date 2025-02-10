@@ -60,8 +60,6 @@ EXAMPLES = r"""
       netscaler.adc.vpnpcoipconnection:
         state: present
         username: u1
-        nitro_operation: kill
-        '#nitro_operation': kill
 """
 
 RETURN = r"""

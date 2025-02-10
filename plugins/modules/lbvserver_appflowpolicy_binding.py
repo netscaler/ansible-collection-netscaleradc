@@ -99,6 +99,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbvserver_appflowpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_appflowpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_appflowpolicy_binding:
+        state: present
+        name: lb_vs_storefront_https
+        policyname: af_policy_act_log_web_172.27.205.75
+        priority: '255'
 """
 
 RETURN = r"""

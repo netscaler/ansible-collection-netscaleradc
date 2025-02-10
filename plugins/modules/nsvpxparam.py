@@ -96,6 +96,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsvpxparam
+      delegate_to: localhost
+      netscaler.adc.nsvpxparam:
+        state: present
+        cpuyield: 'YES'
 """
 
 RETURN = r"""

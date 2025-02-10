@@ -65,6 +65,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vlan_interface_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vlan_interface_binding
+      delegate_to: localhost
+      netscaler.adc.vlan_interface_binding:
+        state: present
+        id: '815'
+        ifnum:
+          - 10/2
 """
 
 RETURN = r"""

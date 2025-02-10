@@ -51,6 +51,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nstcpbufparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nstcpbufparam
+      delegate_to: localhost
+      netscaler.adc.nstcpbufparam:
+        state: present
+        memlimit: 600
 """
 
 RETURN = r"""

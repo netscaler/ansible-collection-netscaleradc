@@ -120,6 +120,13 @@ options:
       - 'OFF'
     description:
       - Indicates whether device certificate check as a part of EPA is on or off.
+  deviceposture:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable device posture
   doublehop:
     type: str
     choices:

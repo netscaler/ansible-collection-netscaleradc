@@ -53,6 +53,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_vpnintranetapplication_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_vpnintranetapplication_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_vpnintranetapplication_binding:
+        state: present
+        name: nsgw_wp_direct2dll_com
+        intranetapplication: WEB:HML.Selic.rtm
 """
 
 RETURN = r"""

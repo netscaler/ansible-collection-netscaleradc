@@ -177,8 +177,6 @@ EXAMPLES = r"""
         state: present
         partitionname: p1
         vxlan: '1'
-        nitro_operation: unbind
-        '#nitro_operation': unbind
 """
 
 RETURN = r"""

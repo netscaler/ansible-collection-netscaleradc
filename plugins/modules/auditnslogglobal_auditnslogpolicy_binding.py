@@ -57,6 +57,7 @@ options:
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+      - TM_GLOBAL
     description:
       - '0'
   policyname:
@@ -72,6 +73,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditnslogglobal_auditnslogpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditnslogglobal_auditnslogpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.auditnslogglobal_auditnslogpolicy_binding:
+        state: present
+        policyname: SETNSLOGPARAMS_ADV_POL
+        priority: '2000000000'
 """
 
 RETURN = r"""

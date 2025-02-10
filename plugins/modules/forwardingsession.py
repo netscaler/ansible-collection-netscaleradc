@@ -112,8 +112,6 @@ EXAMPLES = r"""
       netscaler.adc.forwardingsession:
         state: present
         name: ia_forsess5
-        nitro_operation: rm
-        '#nitro_operation': rm
 """
 
 RETURN = r"""

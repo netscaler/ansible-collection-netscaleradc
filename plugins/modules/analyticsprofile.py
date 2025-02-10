@@ -141,6 +141,11 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log cookie header.
+  httpcustomheaders:
+    type: list
+    description:
+      - Specify the list of custom headers to be exported in web transaction records.
+    elements: str
   httpdomainname:
     type: str
     choices:
