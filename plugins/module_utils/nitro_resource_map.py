@@ -68258,7 +68258,8 @@ NITRO_RESOURCE_MAP = {
         },
         "singleton": False,
         "update_payload_keys": [],
-    },    "videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding": {
+    },
+    "videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
