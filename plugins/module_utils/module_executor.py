@@ -361,11 +361,7 @@ class ModuleExecutor(object):
         if not self.module_result["diff_list"]:
             del self.module_result["diff_list"]
         if immutable_resource_module_params != []:
-            msg = (
-                "Cannot change value for the following non-updateable attributes %s"
-                % immutable_resource_module_params
-            )
-            return (False, msg)
+            return (False, immutable_resource_module_params)
 
         return (False, None) if diff_list else (True, None)
 
@@ -430,8 +426,12 @@ class ModuleExecutor(object):
                 self.resource_module_params["sitename"] = sitename
 
         else:
-            # Update only if resource is not identical (idempotent)
-            is_identical, msg = self.is_resource_identical()
+            # Update process will go through 2 iterations of is_resource_identical
+            # 1. First iteration will check if the resource is identical. If not, it will give the list of non-updatable attributes that exists
+            # in the user playbook. If non-updatable attributes are present, it will remove them from the module_params and update the resource
+            # 2. Second iteration will check if the resource is identical. If not, it will update the resource after ignoring the
+            # non-updatable resources
+            is_identical, immutable_keys_list = self.is_resource_identical()
             if is_identical:
                 log(
                     "INFO: Resource `%s:%s` exists and is identical. No change required."
@@ -453,7 +453,7 @@ class ModuleExecutor(object):
                         self.client, self.resource_name, self.resource_module_params
                     )
 
-                elif msg is None:
+                elif immutable_keys_list is None:
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
@@ -465,28 +465,28 @@ class ModuleExecutor(object):
                     if not ok:
                         self.return_failure(err)
                 else:
-                    immutable_keys = [
-                        key for key in self.resource_module_params.keys()
-                        if key in NITRO_RESOURCE_MAP[self.resource_name]["immutable_keys"]
-                    ]
-                    for key in immutable_keys:
+                    for key in immutable_keys_list:
                         self.resource_module_params.pop(key)
 
-                    is_identical, msg1 = self.is_resource_identical()
+                    is_identical, _ = self.is_resource_identical()
 
-                    if is_identical and msg1 is None:
-                        self.module.warn(f"DEBUG: Resource not updated because - {msg}")
+                    if is_identical:
+                        msg = (
+                            f"Resource {self.resource_name}/{self.resource_id} not updated because user is trying to "
+                            f"update following non-updatable keys: {immutable_keys_list}"
+                        )
+                        self.module.warn(msg)
+                        log(msg)
                         self.module_result["changed"] = False
                         self.module.exit_json(**self.module_result)
                     else:
                         self.module_result["changed"] = True
-                        log(
-                            "INFO: Resource %s:%s exists. Will be UPDATED after omitting the immutable keys."
-                            % (
-                                self.resource_name,
-                                self.resource_id,
-                            )
+                        msg = (
+                            f"Resource {self.resource_name}/{self.resource_id} is updated after ignoring following "
+                            f"non-updatable keys: {immutable_keys_list}"
                         )
+                        self.module.warn(msg)
+                        log(msg)
                         ok, err = update_resource(
                             self.client, self.resource_name, self.resource_module_params
                         )
