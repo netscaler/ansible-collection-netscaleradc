@@ -468,8 +468,8 @@ class ModuleExecutor(object):
                     for key in immutable_keys_list:
                         self.resource_module_params.pop(key)
 
-                    is_identical, _ = self.is_resource_identical()
-
+                    is_identical, temp_immutable_list = self.is_resource_identical()
+                    #temp_immutable_list is a dummy as '_' is not allowed in lint.
                     if is_identical:
                         msg = (
                             f"Resource {self.resource_name}/{self.resource_id} not updated because user is trying to "
