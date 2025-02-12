@@ -72,6 +72,16 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
             id=resource_id,
             filter=get_args,
         )
+    elif resource_name == "server":
+        if "ipaddress" in get_args:
+            get_args.pop("ipaddress")
+        if "domain" in get_args:
+            get_args.pop("domain")
+        status_code, response_body = client.get(
+            resource=resource_name,
+            id=resource_id,
+            args=get_args,
+        )
     else:
         status_code, response_body = client.get(
             resource=resource_name,
