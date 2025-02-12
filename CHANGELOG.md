@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.7.1] - 2025-02-12
+
+### Added
+- Supported enable/disable for GSLB service operations([#452])
+
+### Fixed
+
+- server module idempotency issue in 2.7.0([#485])
+- Handling non-updatable attributes while updating a resource([#486])
+
 ## [2.7.0] - 2025-01-02
 
 ### Added
@@ -141,7 +151,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.1...HEAD
+[2.7.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.0...2.7.1
 [2.7.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.2...2.7.0
 [2.6.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.1...2.6.2
 [2.6.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.0...2.6.1
