@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: interface
 short_description: Configuration for interface resource.
 description: Configuration for interface resource.
@@ -116,14 +117,13 @@ options:
   id:
     type: str
     description:
-      - Interface number, in C/U format.
-      - C can take one of the following values:
+      - 'Interface number, in C/U format, where C can take one of the following values:'
       - '* 0 - Indicates a management interface.'
       - '* 1 - Indicates a 1 Gbps port.'
       - '* 10 - Indicates a 10 Gbps port.'
       - '* LA - Indicates a link aggregation port.'
       - '* LO - Indicates a loop back port.'
-      - U is a unique integer for representing an interface in a particular port group.
+      - 'U is a unique integer for representing an interface in a particular port group.'
   ifalias:
     type: str
     description:
@@ -295,11 +295,11 @@ options:
       - This argument is deprecated by tagall.
   trunkallowedvlan:
     type: list
+    elements: str
     description:
       - 'VLAN ID or range of VLAN IDs will be allowed on this trunk interface. In
         the command line interface, separate the range with a hyphen. For example:
         40-90.'
-    elements: str
   trunkmode:
     type: str
     choices:
@@ -309,9 +309,28 @@ options:
       - Accept and send 802.1q VLAN tagged packets, based on Allowed Vlan List of
         this interface.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
+
 """
 
 EXAMPLES = r"""
+---
+- name: Sample interface playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure interface
+      delegate_to: localhost
+      netscaler.adc.interface:
+        state: present
+        hamonitor: 'OFF'
+        haheartbeat: 'OFF'
+        throughput: '0'
+        bandwidthhigh: '0'
+        bandwidthnormal: '0'
+        intftype: Loopback
+        ifnum:
+          - LO/1
+        interface_id: LO/1
 """
 
 RETURN = r"""
@@ -344,7 +363,9 @@ loglines:
   returned: always
   type: list
   sample: ['message 1', 'message 2']
+
 """
+
 
 import os
 
