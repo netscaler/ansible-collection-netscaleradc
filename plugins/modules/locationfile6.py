@@ -46,15 +46,15 @@ options:
       - Name of the IPv6 location file, with or without absolute path. If the path
         is not included, the default path (/var/netscaler/locdb) is assumed. In a
         high availability setup, the static database must be stored in the same location
-        on both Citrix ADCs.
+        on both NetScalers.
   format:
     type: str
     choices:
       - netscaler6
       - geoip-country6
     description:
-      - Format of the IPv6 location file. Required for the Citrix ADC to identify
-        how to read the location file.
+      - Format of the IPv6 location file. Required for the NetScaler to identify how
+        to read the location file.
   src:
     type: str
     description:

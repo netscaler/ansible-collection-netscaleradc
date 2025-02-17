@@ -18,11 +18,11 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: extendedmemoryparam
-short_description: Configuration for Parameter for extended memory used by LSN and
-  Subscriber Store resource.
-description: Configuration for Parameter for extended memory used by LSN and Subscriber
-  Store resource.
+module: metricsprofile_uservserver_binding
+short_description: Binding Resource definition for describing association between
+  metricsprofile and uservserver resources
+description: Binding Resource definition for describing association between metricsprofile
+  and uservserver resources
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -31,39 +31,45 @@ options:
   state:
     choices:
       - present
-      - unset
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
-      - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
-  memlimit:
-    type: float
+  entityname:
+    type: str
     description:
-      - Amount of NetScaler memory to reserve for the memory used by LSN and Subscriber
-        Session Store feature, in multiples of 2MB.
-      - ''
-      - 'Note: If you later reduce the value of this parameter, the amount of active
-        memory is not reduced. Changing the configured memory limit can only increase
-        the amount of active memory.'
+      - Name of the entity bound to the metrics profile.
+  entitytype:
+    type: str
+    choices:
+      - lbvserver
+      - csvserver
+      - crvserver
+      - vpnvserver
+      - authvserver
+      - gslbvserver
+      - uservserver
+      - service
+      - servicegroup
+    description:
+      - Type of the entity bound to the metrics profile.
+  name:
+    type: str
+    description:
+      - Name for the metrics profile. Must begin with an ASCII alphabetic or underscore
+        (_) character, and must contain only ASCII alphanumeric, underscore, hash
+        (#), period (.), space, colon (:), at
+      - (@), equals (=), and hyphen (-) characters.!
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
----
-- name: Sample extendedmemoryparam playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Configure extendedmemoryparam
-      delegate_to: localhost
-      netscaler.adc.extendedmemoryparam:
-        state: present
-        memlimit: 4380
 """
 
 RETURN = r"""

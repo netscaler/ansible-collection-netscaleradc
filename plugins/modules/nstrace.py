@@ -206,7 +206,7 @@ options:
         corresponding client side traffic
       - start nstrace -size 0 -filter "CONNECTION.SVCNAME.EQ("service1")" -link ENABLED
       - ''
-      - Trace capturing all traffic through Citrix ADC interface 1/1
+      - Trace capturing all traffic through NetScaler interface 1/1
       - start nstrace -filter "CONNECTION.INTF.EQ("1/1")"
       - ''
       - Trace capturing all traffic specific through vlan 2

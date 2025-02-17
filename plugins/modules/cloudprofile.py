@@ -104,6 +104,7 @@ options:
       - DOT
       - ADNS_DOT
       - HTTP_QUIC
+      - ADNS_DOH
     description:
       - The type of bound service
   delay:
