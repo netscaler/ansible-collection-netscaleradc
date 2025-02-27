@@ -172,6 +172,10 @@ options:
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
+  nodeid:
+    type: float
+    description:
+      - Specifies the NodeId to steer the packet to the provided FP.
   priority:
     type: float
     description:

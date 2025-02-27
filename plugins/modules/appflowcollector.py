@@ -83,9 +83,8 @@ options:
     choices:
       - ipfix
       - logstream
-      - rest
     description:
-      - 'Type of collector: either C(logstream) or C(ipfix) or C(rest).'
+      - 'Type of collector: either C(logstream) or C(ipfix) or rest.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

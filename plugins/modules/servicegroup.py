@@ -363,6 +363,7 @@ options:
       - DOT
       - ADNS_DOT
       - HTTP_QUIC
+      - ADNS_DOH
     description:
       - Protocol used to exchange data with the service.
   sp:
@@ -485,8 +486,19 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.servicegroup:
         state: present
-        servicegroupname: LB_ia_svcgrp13916
-        servicetype: SSL
+        servicegroupname: lb_svcgr_xml_voila2
+        servicetype: HTTP
+        maxclient: '0'
+        maxreq: '0'
+        cip: DISABLED
+        usip: 'NO'
+        useproxyport: 'YES'
+        clttimeout: 180
+        svrtimeout: 360
+        cka: 'NO'
+        tcpb: 'NO'
+        cmp: 'NO'
+        comment: voila 2 xml service group
 """
 
 RETURN = r"""

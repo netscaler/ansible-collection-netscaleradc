@@ -163,6 +163,13 @@ options:
     description:
       - Continue forwarding the traffic to backup virtual server even after the primary
         server comes UP from the DOWN state.
+  dnsoverhttps:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This option is used to enable/disable DNS over HTTPS (DoH) processing.
   dnsprofilename:
     type: str
     description:

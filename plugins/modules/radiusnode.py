@@ -46,7 +46,7 @@ options:
     type: str
     description:
       - The key shared between the RADIUS server and clients.
-      - '      Required for Citrix ADC to communicate with the RADIUS nodes.'
+      - '      Required for NetScaler to communicate with the RADIUS nodes.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

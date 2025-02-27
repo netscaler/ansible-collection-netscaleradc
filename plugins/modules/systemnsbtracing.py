@@ -18,11 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: extendedmemoryparam
-short_description: Configuration for Parameter for extended memory used by LSN and
-  Subscriber Store resource.
-description: Configuration for Parameter for extended memory used by LSN and Subscriber
-  Store resource.
+module: systemnsbtracing
+short_description: Configuration for 0 resource.
+description: Configuration for 0 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -30,40 +28,24 @@ author:
 options:
   state:
     choices:
-      - present
-      - unset
+      - enabled
+      - disabled
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
-      - When C(present), the resource will be added/updated configured according to
-        the module's parameters.
-      - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(enabled), the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled), the resource will be disabled on the NetScaler ADC node.
     type: str
-  memlimit:
+  nodeid:
     type: float
     description:
-      - Amount of NetScaler memory to reserve for the memory used by LSN and Subscriber
-        Session Store feature, in multiples of 2MB.
-      - ''
-      - 'Note: If you later reduce the value of this parameter, the amount of active
-        memory is not reduced. Changing the configured memory limit can only increase
-        the amount of active memory.'
+      - Unique number that identifies the cluster node.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
----
-- name: Sample extendedmemoryparam playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Configure extendedmemoryparam
-      delegate_to: localhost
-      netscaler.adc.extendedmemoryparam:
-        state: present
-        memlimit: 4380
 """
 
 RETURN = r"""

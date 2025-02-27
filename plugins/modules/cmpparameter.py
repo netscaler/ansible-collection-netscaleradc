@@ -114,6 +114,24 @@ options:
     type: float
     description:
       - Minimum quantum of data to be filled before compression begins.
+  randomgzipfilename:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Control the addition of a random filename of random length in the GZIP header
+        to apply the Heal-the-BREACH mitigation for the BREACH attack.
+  randomgzipfilenamemaxlength:
+    type: float
+    description:
+      - Maximum length of the random filename to be added in the GZIP header to apply
+        the Heal-the-BREACH mitigation for the BREACH attack.
+  randomgzipfilenameminlength:
+    type: float
+    description:
+      - Minimum length of the random filename to be added in the GZIP header to apply
+        the Heal-the-BREACH mitigation for the BREACH attack.
   servercmp:
     type: str
     choices:
