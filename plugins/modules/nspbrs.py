@@ -28,7 +28,7 @@ author:
 options:
   state:
     choices:
-      - apply
+      - applied
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -47,8 +47,7 @@ EXAMPLES = r"""
     - name: Configure nspbrs
       delegate_to: localhost
       netscaler.adc.nspbrs:
-        state: present
-        action: apply
+        state: applied
 """
 
 RETURN = r"""

@@ -6,4 +6,4 @@
     - name: Configure nsacls
       delegate_to: localhost
       netscaler.adc.nsacls:
-        state: apply
+        state: applied

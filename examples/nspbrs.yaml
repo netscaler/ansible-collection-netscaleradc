@@ -6,4 +6,4 @@
     - name: Configure nspbrs
       delegate_to: localhost
       netscaler.adc.nspbrs:
-        state: apply
+        state: applied

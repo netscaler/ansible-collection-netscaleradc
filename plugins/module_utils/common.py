@@ -602,7 +602,7 @@ def get_valid_desired_states(resource_name):
     if "unset" in supported_operations:
         desired_states.add("unset")
     if "apply" in supported_operations:
-        desired_states.add("apply")
+        desired_states.add("applied")
     return desired_states
 
 

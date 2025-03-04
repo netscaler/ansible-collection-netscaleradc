@@ -28,7 +28,7 @@ author:
 options:
   state:
     choices:
-      - apply
+      - applied
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
