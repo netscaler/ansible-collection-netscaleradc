@@ -1,6 +1,6 @@
 ---
 - name: Sample nsacls playbook
-  hosts: localhost
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
     - name: Configure nsacls

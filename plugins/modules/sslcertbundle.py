@@ -30,6 +30,7 @@ options:
     choices:
       - absent
       - imported
+      - apply
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler

@@ -27,7 +27,8 @@ author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    choices: []
+    choices:
+      - apply
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
