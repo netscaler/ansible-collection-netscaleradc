@@ -601,6 +601,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("switched")
     if "unset" in supported_operations:
         desired_states.add("unset")
+    if "apply" in supported_operations:
+        desired_states.add("apply")
     return desired_states
 
 
