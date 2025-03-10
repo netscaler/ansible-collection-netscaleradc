@@ -33,6 +33,7 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(applied), the resources will be applied on the NetScaler ADC node
     type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
