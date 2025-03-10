@@ -45,6 +45,7 @@ options:
       - Greenbubble
       - X1
       - RfWebUI
+      - WStheme
     description:
       - '0'
   name:

@@ -4,13 +4,13 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 
 ---
 
-- Total number of resources: **931**
-- Total number of supported resources: **927**
+- Total number of resources: **940**
+- Total number of supported resources: **938**
 - Total number of supported resources with examples: **479**
-- Total number of unsupported resources: **4**
-- Percentage of supported resources: **99.57%**
-- Percentage of supported resources with examples: **51.45%**
-- Percentage of unsupported resources: **0.43%**
+- Total number of unsupported resources: **2**
+- Percentage of supported resources: **99.79%**
+- Percentage of supported resources with examples: **50.96%**
+- Percentage of unsupported resources: **0.21%**
 
 ---
 
@@ -485,7 +485,6 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [locationfile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/locationfile_module.html) | ✅ | ✅ |
 | [locationfile6](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/locationfile6_module.html) | ✅ | ❌ |
 | [locationparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/locationparameter_module.html) | ✅ | ✅ |
-| logout | ❌ | ❌ |
 | [lsnappsattributes](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lsnappsattributes_module.html) | ✅ | ❌ |
 | [lsnappsprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lsnappsprofile_module.html) | ✅ | ✅ |
 | [lsnappsprofile_lsnappsattributes_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lsnappsprofile_lsnappsattributes_binding_module.html) | ✅ | ❌ |
@@ -524,6 +523,15 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [mapdomain](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/mapdomain_module.html) | ✅ | ✅ |
 | [mapdomain_mapbmr_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/mapdomain_mapbmr_binding_module.html) | ✅ | ✅ |
 | [metricsprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_module.html) | ✅ | ❌ |
+| [metricsprofile_authenticationvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_authenticationvserver_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_crvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_crvserver_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_csvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_csvserver_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_gslbvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_gslbvserver_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_lbvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_lbvserver_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_service_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_service_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_servicegroup_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_servicegroup_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_uservserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_uservserver_binding_module.html) | ✅ | ❌ |
+| [metricsprofile_vpnvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_vpnvserver_binding_module.html) | ✅ | ❌ |
 | [nat64](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nat64_module.html) | ✅ | ✅ |
 | [nat64param](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nat64param_module.html) | ✅ | ❌ |
 | [nd6](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nd6_module.html) | ✅ | ✅ |
@@ -671,7 +679,6 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [route6](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/route6_module.html) | ✅ | ✅ |
 | [routerdynamicrouting](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/routerdynamicrouting_module.html) | ✅ | ❌ |
 | [rsskeytype](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/rsskeytype_module.html) | ✅ | ✅ |
-| save_config | ❌ | ❌ |
 | [server](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/server_module.html) | ✅ | ✅ |
 | [service](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/service_module.html) | ✅ | ✅ |
 | [service_lbmonitor_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/service_lbmonitor_binding_module.html) | ✅ | ✅ |
@@ -790,9 +797,11 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [systemhwerror](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemhwerror_module.html) | ✅ | ❌ |
 | [systemkek](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemkek_module.html) | ✅ | ❌ |
 | [systemlevelreporting](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemlevelreporting_module.html) | ✅ | ❌ |
+| [systemnsbtracing](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemnsbtracing_module.html) | ✅ | ❌ |
 | [systemparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemparameter_module.html) | ✅ | ✅ |
 | [systemrestorepoint](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemrestorepoint_module.html) | ✅ | ❌ |
 | [systemsession](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemsession_module.html) | ✅ | ❌ |
+| [systemsignedexereport](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemsignedexereport_module.html) | ✅ | ❌ |
 | [systemsshkey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemsshkey_module.html) | ✅ | ❌ |
 | [systemuser](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemuser_module.html) | ✅ | ✅ |
 | [systemuser_nspartition_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemuser_nspartition_binding_module.html) | ✅ | ❌ |
