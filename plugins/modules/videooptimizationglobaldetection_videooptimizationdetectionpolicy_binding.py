@@ -17,7 +17,6 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
----
 module: videooptimizationglobaldetection_videooptimizationdetectionpolicy_binding
 short_description: Binding Resource definition for describing association between
   videooptimizationglobaldetection and videooptimizationdetectionpolicy resources
@@ -26,7 +25,7 @@ description: Binding Resource definition for describing association between vide
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
-  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepallsy)
 options:
   state:
     choices:

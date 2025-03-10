@@ -38,13 +38,20 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
-  edtlossy:
+  dfpersistence:
     type: str
     choices:
       - ENABLED
       - DISABLED
     description:
-      - Enable/Disable EDT Lossy feature
+      - Enable/Disable DF Persistence
+  edtlosstolerant:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/Disable EDT Loss Tolerant feature
   edtpmtuddf:
     type: str
     choices:
