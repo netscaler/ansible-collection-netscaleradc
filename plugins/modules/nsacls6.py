@@ -27,11 +27,13 @@ author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    choices: []
+    choices:
+      - applied
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(applied), the resources will be applied on the NetScaler ADC node
     type: str
   type:
     type: str
