@@ -963,6 +963,7 @@ class ModuleExecutor(object):
                 "flushed",
                 "switched",
                 "unset",
+                "renamed"
             }:
                 state_action_map = {
                     "created": "create",
@@ -970,6 +971,7 @@ class ModuleExecutor(object):
                     "flushed": "flush",
                     "switched": "switch",
                     "unset": "unset",
+                    "renamed": "rename"
                 }
                 self.act_on_resource(
                     action=state_action_map[self.module.params["state"]]
