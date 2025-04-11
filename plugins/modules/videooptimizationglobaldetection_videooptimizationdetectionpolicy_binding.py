@@ -25,7 +25,7 @@ description: Binding Resource definition for describing association between vide
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
-  - Shiva Shankar Vaddepally (@shivashankar-vaddepallsy)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
