@@ -28516,7 +28516,15 @@ NITRO_RESOURCE_MAP = {
         ],
     },
     "gslbservicegroup_gslbservicegroupmember_binding": {
-        "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
+        "_supported_operations": [
+            "add",
+            "count",
+            "delete",
+            "get-all",
+            "get-byname",
+            "enable",
+            "disable",
+        ],
         "action_payload_keys": {
             "create": [],
             "force": [],
@@ -49692,7 +49700,15 @@ NITRO_RESOURCE_MAP = {
         "update_payload_keys": [],
     },
     "servicegroup_servicegroupmember_binding": {
-        "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
+        "_supported_operations": [
+            "add",
+            "count",
+            "delete",
+            "get-all",
+            "get-byname",
+            "enable",
+            "disable",
+        ],
         "action_payload_keys": {
             "create": [],
             "force": [],

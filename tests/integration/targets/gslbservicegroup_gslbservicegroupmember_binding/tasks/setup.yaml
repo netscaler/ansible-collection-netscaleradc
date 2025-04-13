@@ -1,0 +1,27 @@
+---
+- name: Create GSLB Site
+  delegate_to: localhost
+  netscaler.adc.gslbsite:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    sitename: test-gslbsite
+    sitepassword: test
+    siteipaddress: 10.10.10.10
+- name: Create GSLB Servicegroup
+  delegate_to: localhost
+  netscaler.adc.gslbservicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    servicegroupname: test-gslbservicegroup
+    servicetype: TCP
+    sitename: test-gslbsite
