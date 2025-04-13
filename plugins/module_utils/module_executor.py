@@ -371,6 +371,12 @@ class ModuleExecutor(object):
             existing=self.existing_resource, desired=self.resource_module_params
         )
         if not self.existing_resource and "add" in self.supported_operations:
+            # For bindings we can skip this step if state is enabled or disabled as it will be created
+            if (
+                self.resource_name.endswith("_binding") and
+                self.module.params["state"] in {"enabled", "disabled"}
+            ):
+                return
             self.module_result["changed"] = True
             log(
                 "INFO: Resource %s:%s does not exist. Will be CREATED."
@@ -449,6 +455,14 @@ class ModuleExecutor(object):
                         % (self.resource_name, self.resource_id)
                     )
                     self.delete()
+                    if (
+                        self.module.params["state"] == "present" and 
+                        any(x in self.supported_operations for x in ("enabled", "disabled"))
+                    ):
+                        # We want to keep the previous state of the binding
+                        self.resource_module_params["state"] = (
+                            self.existing_resource.get("state", "present")
+                        )
                     ok, err = create_resource(
                         self.client, self.resource_name, self.resource_module_params
                     )
@@ -500,14 +514,24 @@ class ModuleExecutor(object):
         )
         self.update_diff_list(custom_msg=not_implemented_msg)
         self.module_result["changed"] = True
-        if desired_state == "enabled":
-            ok, err = enable_resource(
-                self.client, self.resource_name, self.resource_module_params
+        if self.resource_name.endswith("_binding"):
+            # If its a binding we remove and add it again
+            self.delete()
+            self.resource_module_params["state"] = desired_state.upper()
+            ok, err = create_resource(
+                self.client,
+                self.resource_name,
+                self.resource_module_params,
             )
         else:
-            ok, err = disable_resource(
-                self.client, self.resource_name, self.resource_module_params
-            )
+            if desired_state == "enabled":
+                ok, err = enable_resource(
+                    self.client, self.resource_name, self.resource_module_params
+                )
+            else:
+                ok, err = disable_resource(
+                    self.client, self.resource_name, self.resource_module_params
+                )
         if not ok:
             self.return_failure(err)
 
