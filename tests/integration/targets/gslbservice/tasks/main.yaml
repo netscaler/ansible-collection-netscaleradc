@@ -85,7 +85,7 @@
     nitro_protocol: "{{ nitro_protocol }}"
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
-    name: test-gslb-service
+    servicename: test-gslb-service
     newname: test-gslb-service-renamed
 - name: Assert | GSLBSERVICE | RENAME | --check
   tags: test
