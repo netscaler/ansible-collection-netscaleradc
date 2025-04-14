@@ -621,6 +621,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("unset")
     if "rename" in supported_operations:
         desired_states.add("renamed")
+    if "apply" in supported_operations:
+        desired_states.add("applied")
     return desired_states
 
 

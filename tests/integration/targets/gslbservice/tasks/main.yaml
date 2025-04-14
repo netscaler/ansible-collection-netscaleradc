@@ -72,6 +72,68 @@
     that:
       - "result.failed==false"
       - "result.changed==false"
+- name: GSLBSERVICE | RENAME | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.gslbservice:
+    state: renamed
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    name: test-gslb-service
+    newname: test-gslb-service-renamed
+- name: Assert | GSLBSERVICE | RENAME | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: GSLBSERVICE | RENAME
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.gslbservice:
+    state: renamed
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    servicename: test-gslb-service
+    newname: test-gslb-service-renamed
+- name: Assert | GSLBSERVICE | RENAME
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: GSLBSERVICE | RENAME | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.gslbservice:
+    state: renamed
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    servicename: test-gslb-service
+    newname: test-gslb-service-renamed
+- name: Assert | GSLBSERVICE | RENAME | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
 - name: GSLBSERVICE | DELETE | --check
   delegate_to: localhost
   register: result
@@ -87,7 +149,7 @@
     state: absent
     ip: 10.10.10.10
     port: 65530
-    servicename: test-gslb-service
+    servicename: test-gslb-service-renamed
     servicetype: TCP
     sitename: test-gslbsite
 - name: Assert | GSLBSERVICE | DELETE | --check
@@ -111,7 +173,7 @@
     state: absent
     ip: 10.10.10.10
     port: 65530
-    servicename: test-gslb-service
+    servicename: test-gslb-service-renamed
     servicetype: TCP
     sitename: test-gslbsite
 - name: Assert | GSLBSERVICE | DELETE
@@ -134,7 +196,7 @@
     state: absent
     ip: 10.10.10.10
     port: 65530
-    servicename: test-gslb-service
+    servicename: test-gslb-service-renamed
     servicetype: TCP
     sitename: test-gslbsite
 - name: Assert | GSLBSERVICE | DELETE | idempotent
