@@ -603,6 +603,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("unset")
     if "Install" in supported_operations or "install" in supported_operations:
         desired_states.add("installed")
+    if "apply" in supported_operations:
+        desired_states.add("applied")
     return desired_states
 
 
