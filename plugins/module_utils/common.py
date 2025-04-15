@@ -190,29 +190,47 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
         ]
     except KeyError:
         resource_action_keys = []
-
-    # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
-    for key in resource_module_params.keys():
-        if not action:
-            if key in resource_add_keys:
-                post_data[key] = resource_module_params[key]
-            elif resource_name == "service" and key == "ipaddress":
-                post_data["ip"] = resource_module_params[key]
-            else:
-                log(
-                    "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
-                        key, resource_name
-                    )
-                )
+    if action == "rename":
+        oldnamekey = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+        if oldnamekey in resource_module_params:
+            post_data[oldnamekey] = resource_module_params[oldnamekey]
         else:
-            if key in resource_action_keys:
-                post_data[key] = resource_module_params[key]
-            else:
-                log(
-                    "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
-                        key, resource_name, action.upper()
+            msg = "ERROR: Key `{}` is required for the resource `{}` for RENAME operation".format(
+                oldnamekey, resource_name
+            )
+            log(msg)
+            return False, msg, None
+        if "newname" in resource_module_params:
+            post_data["newname"] = resource_module_params["newname"]
+        else:
+            msg = "ERROR: Key `newname` is required for the resource `{}` for RENAME operation".format(
+                resource_name
+            )
+            log(msg)
+            return False, msg, None
+    else:
+        # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
+        for key in resource_module_params.keys():
+            if not action:
+                if key in resource_add_keys:
+                    post_data[key] = resource_module_params[key]
+                elif resource_name == "service" and key == "ipaddress":
+                    post_data["ip"] = resource_module_params[key]
+                else:
+                    log(
+                        "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                            key, resource_name
+                        )
                     )
-                )
+            else:
+                if key in resource_action_keys:
+                    post_data[key] = resource_module_params[key]
+                else:
+                    log(
+                        "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
+                            key, resource_name, action.upper()
+                        )
+                    )
 
     return True, None, post_data
 
@@ -601,6 +619,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("switched")
     if "unset" in supported_operations:
         desired_states.add("unset")
+    if "rename" in supported_operations:
+        desired_states.add("renamed")
     if "apply" in supported_operations:
         desired_states.add("applied")
     return desired_states
