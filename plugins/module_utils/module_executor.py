@@ -963,7 +963,7 @@ class ModuleExecutor(object):
                 "flushed",
                 "switched",
                 "unset",
-                "renamed"
+                "renamed",
                 "applied",
             }:
                 state_action_map = {
