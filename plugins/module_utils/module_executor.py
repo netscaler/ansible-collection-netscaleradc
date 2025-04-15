@@ -79,6 +79,9 @@ class ModuleExecutor(object):
         )
         argument_spec.update(module_state_argument)
 
+        consider_non_updatable_arguments = dict(type="bool", default=True)
+        argument_spec.update(consider_non_updatable_arguments)
+
         self.module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
@@ -465,33 +468,46 @@ class ModuleExecutor(object):
                     if not ok:
                         self.return_failure(err)
                 else:
-                    for key in immutable_keys_list:
-                        self.resource_module_params.pop(key)
-
-                    is_identical, temp_immutable_list = self.is_resource_identical()
-                    # temp_immutable_list is a dummy as '_' is not allowed in lint.
-                    if is_identical:
-                        msg = (
-                            f"Resource {self.resource_name}/{self.resource_id} not updated because user is trying to "
-                            f"update following non-updatable keys: {immutable_keys_list}"
+                    consider_non_updatable_args = self.module.params.get('consider_non_updatable_arguments', False)
+                    if consider_non_updatable_args:
+                        log(
+                            "INFO: Resource %s:%s exists and is different. %s"
+                            % (self.resource_name, self.resource_id)
                         )
-                        self.module.warn(msg)
-                        log(msg)
-                        self.module_result["changed"] = False
-                        self.module.exit_json(**self.module_result)
-                    else:
-                        self.module_result["changed"] = True
-                        msg = (
-                            f"Resource {self.resource_name}/{self.resource_id} is updated after ignoring following "
-                            f"non-updatable keys: {immutable_keys_list}"
-                        )
-                        self.module.warn(msg)
-                        log(msg)
                         ok, err = update_resource(
                             self.client, self.resource_name, self.resource_module_params
                         )
                         if not ok:
                             self.return_failure(err)
+                    else:
+                        for key in immutable_keys_list:
+                            self.resource_module_params.pop(key)
+
+                        is_identical, temp_immutable_list = self.is_resource_identical()
+                        # temp_immutable_list is a dummy as '_' is not allowed in lint.
+                        
+                        if is_identical:
+                            msg = (
+                                f"Resource {self.resource_name}/{self.resource_id} not updated because user is trying to "
+                                f"update following non-updatable keys: {immutable_keys_list}"
+                            )
+                            self.module.warn(msg)
+                            log(msg)
+                            self.module_result["changed"] = False
+                            self.module.exit_json(**self.module_result)
+                        else:
+                            self.module_result["changed"] = True
+                            msg = (
+                                f"Resource {self.resource_name}/{self.resource_id} is updated after ignoring following "
+                                f"non-updatable keys: {immutable_keys_list}"
+                            )
+                            self.module.warn(msg)
+                            log(msg)
+                            ok, err = update_resource(
+                                self.client, self.resource_name, self.resource_module_params
+                            )
+                            if not ok:
+                                self.return_failure(err)
 
     @trace
     def enable_or_disable(self, desired_state):
