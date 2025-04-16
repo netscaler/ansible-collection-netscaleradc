@@ -79,7 +79,14 @@ class ModuleExecutor(object):
         )
         argument_spec.update(module_state_argument)
 
-        consider_non_updatable_arguments = dict(type="bool", default=True)
+        consider_non_updatable_arguments = dict(
+            consider_non_updatable=
+            dict(
+                type="bool",
+                choices = list(True, False),
+                default=True,
+            )
+        )
         argument_spec.update(consider_non_updatable_arguments)
 
         self.module = AnsibleModule(
@@ -471,7 +478,7 @@ class ModuleExecutor(object):
                     consider_non_updatable_args = self.module.params.get('consider_non_updatable_arguments', False)
                     if consider_non_updatable_args:
                         log(
-                            "INFO: Resource %s:%s exists and is different. %s"
+                            "INFO: Resource %s:%s exists and is different."
                             % (self.resource_name, self.resource_id)
                         )
                         ok, err = update_resource(
@@ -485,7 +492,7 @@ class ModuleExecutor(object):
 
                         is_identical, temp_immutable_list = self.is_resource_identical()
                         # temp_immutable_list is a dummy as '_' is not allowed in lint.
-                        
+
                         if is_identical:
                             msg = (
                                 f"Resource {self.resource_name}/{self.resource_id} not updated because user is trying to "
