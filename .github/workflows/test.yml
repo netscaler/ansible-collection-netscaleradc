@@ -111,12 +111,12 @@ jobs:
     strategy:
       matrix:
         ansible:
-          - stable-2.15
+          - stable-2.17
         python-version:
           - 3.11
         netscaler-version:
-          - 13.1-49.15
-          - 14.1-4.42
+          - 13.1-58.20
+          - 14.1-47.29
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
