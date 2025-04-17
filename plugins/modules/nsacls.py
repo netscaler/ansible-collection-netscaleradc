@@ -27,7 +27,8 @@ author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    choices: []
+    choices:
+      - applied
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -57,7 +58,7 @@ EXAMPLES = r"""
     - name: Configure nsacls
       delegate_to: localhost
       netscaler.adc.nsacls:
-        state: present
+        state: applied
 """
 
 RETURN = r"""
