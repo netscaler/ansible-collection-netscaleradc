@@ -80,10 +80,11 @@ class ModuleExecutor(object):
         argument_spec.update(module_state_argument)
 
         consider_non_updatable_arguments = dict(
-            consider_non_updatable=dict(
-                type="bool",
-                choices=list((True, False)),
+            consider_non_updatable_arguments=dict(
+                type='bool',
+                choices=[True, False],
                 default=True,
+                required=False,
             )
         )
         argument_spec.update(consider_non_updatable_arguments)
