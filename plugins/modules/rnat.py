@@ -31,6 +31,7 @@ options:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,6 +40,15 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
     type: str
   aclname:
     type: str
@@ -230,8 +240,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.rnat:
         state: present
-        name: RNAT_SF_Allow_USE1-A
-        aclname: ACL_SF_Allow_USE1-A
+        name: 1.2.2.0
+        connfailover: ENABLED
 """
 
 RETURN = r"""

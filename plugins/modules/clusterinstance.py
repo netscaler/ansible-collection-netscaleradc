@@ -44,6 +44,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   backplanebasedview:
     type: str
     choices:

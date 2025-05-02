@@ -27,12 +27,19 @@ author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    choices:
-      - applied
+    choices: []
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+    type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
     type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
@@ -47,7 +54,8 @@ EXAMPLES = r"""
     - name: Configure nspbrs
       delegate_to: localhost
       netscaler.adc.nspbrs:
-        state: applied
+        state: present
+        action: apply
 """
 
 RETURN = r"""

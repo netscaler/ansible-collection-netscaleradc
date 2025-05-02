@@ -38,6 +38,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   ecssubnet:
     type: str
     description:
@@ -92,10 +100,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.dnsaddrec:
         state: present
-        hostname: e.root-servers.net
+        hostname: fef.dmsua01.manage-dogfood.microsoft.com
         ipaddress:
-          - 192.203.230.10
-        ttl: 3600000
+          - 110.102.222.205
 """
 
 RETURN = r"""

@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   allowextendedmastersecret:
     type: str
     choices:
@@ -706,7 +714,37 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslprofile:
         state: present
-        name: ns_default_ssl_profile_internal_frontend_service
+        name: front_1
+        sslprofiletype: FrontEnd
+        dhcount: '0'
+        dh: ENABLED
+        dhfile: certs/dh/dh1024.pem
+        ersa: ENABLED
+        ersacount: '0'
+        sessreuse: ENABLED
+        sesstimeout: '120'
+        cipherredirect: ENABLED
+        cipherurl: https://www.abc.com
+        clientauth: ENABLED
+        clientcert: Mandatory
+        sslredirect: ENABLED
+        redirectportrewrite: ENABLED
+        ssl3: ENABLED
+        tls1: ENABLED
+        tls11: ENABLED
+        tls12: ENABLED
+        snienable: ENABLED
+        pushenctrigger: Always
+        sendclosenotify: 'YES'
+        insertionencoding: UTF-8
+        denysslreneg: ALL
+        quantumsize: '4096'
+        strictcachecks: 'YES'
+        encrypttriggerpktcount: '10'
+        pushflag: '1'
+        dropreqwithnohostheader: 'YES'
+        pushenctriggertimeout: '10'
+        ssltriggertimeout: '10'
 """
 
 RETURN = r"""

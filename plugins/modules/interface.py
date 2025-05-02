@@ -42,6 +42,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   autoneg:
     type: str
     choices:
@@ -123,7 +131,7 @@ options:
       - '* 10 - Indicates a 10 Gbps port.'
       - '* LA - Indicates a link aggregation port.'
       - '* LO - Indicates a loop back port.'
-      - 'U is a unique integer for representing an interface in a particular port group.'
+      - U is a unique integer for representing an interface in a particular port group.
   ifalias:
     type: str
     description:
@@ -295,11 +303,11 @@ options:
       - This argument is deprecated by tagall.
   trunkallowedvlan:
     type: list
-    elements: str
     description:
       - 'VLAN ID or range of VLAN IDs will be allowed on this trunk interface. In
         the command line interface, separate the range with a hyphen. For example:
         40-90.'
+    elements: str
   trunkmode:
     type: str
     choices:

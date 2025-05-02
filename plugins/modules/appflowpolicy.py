@@ -31,6 +31,7 @@ options:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,6 +40,15 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
     type: str
   action:
     type: str
@@ -126,9 +136,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.appflowpolicy:
         state: present
-        name: af_policy_act_log_10.189.64.10
+        name: af_policy_v1_10.102.233.21
         rule: 'true'
-        action: af_action_log_10.189.64.10_nop
+        action: af_action_v1_10.102.233.21
 """
 
 RETURN = r"""

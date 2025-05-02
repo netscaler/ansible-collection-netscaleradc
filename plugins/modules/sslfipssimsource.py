@@ -35,6 +35,14 @@ options:
         ADC node.
       - When C(enabled), the resource will be enabled on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   certfile:
     type: str
     description:

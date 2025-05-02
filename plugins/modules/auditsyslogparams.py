@@ -38,6 +38,14 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   acl:
     type: str
     choices:
@@ -215,11 +223,7 @@ EXAMPLES = r"""
       netscaler.adc.auditsyslogparams:
         state: present
         loglevel:
-          - EMERGENCY
-          - ALERT
-          - CRITICAL
-          - ERROR
-          - WARNING
+          - ALL
 """
 
 RETURN = r"""

@@ -31,8 +31,7 @@ options:
       - present
       - absent
       - unset
-      - enabled
-      - disabled
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -41,6 +40,15 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
     type: str
   appflowlog:
     type: str
@@ -382,17 +390,16 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbservice:
         state: present
-        servicename: GSLB_SVC_USE2_storefront.blackstone.com
-        ip: 10.76.126.10
-        servicetype: SSL
-        port: 443
-        publicip: 10.76.126.10
-        publicport: 443
-        maxclient: '0'
-        sitename: GSLB_Site_USE2
-        clttimeout: 180
-        svrtimeout: 360
-        downstateflush: ENABLED
+        servicename: sgw2
+        ip: 3.3.3.61
+        servicetype: ANY
+        port: 65535
+        sitename: site2
+        naptrreplacement: sgw2.
+        naptrorder: '20'
+        naptrservices: APP1:PortA
+        naptrdomainttl: 200
+        naptrpreference: '40'
 """
 
 RETURN = r"""

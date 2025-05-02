@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(created), the `create` operation will be applied on the resource.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   comment:
     type: str
     description:

@@ -35,6 +35,14 @@ options:
         ADC node.
       - When C(switched), the partition will be switched on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

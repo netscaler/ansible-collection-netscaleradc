@@ -40,6 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   bindpoint:
     type: str
     choices:
@@ -125,11 +133,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnsessionpolicy_binding:
         state: present
-        name: portal.bx.com
-        policy: External_receiver_session_pol
-        priority: '130'
-        gotopriorityexpression: NEXT
-        bindpoint: REQUEST
+        name: ns.pcoip.net
+        policy: pcoip_sess_policy
 """
 
 RETURN = r"""

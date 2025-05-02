@@ -40,6 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   intranetapplication:
     type: str
     description:
@@ -56,7 +64,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vpnvserver_vpnintranetapplication_binding playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure vpnvserver_vpnintranetapplication_binding
       delegate_to: localhost

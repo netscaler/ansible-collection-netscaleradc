@@ -31,6 +31,7 @@ options:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,6 +40,15 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
     type: str
   action:
     type: str
@@ -129,11 +139,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationpolicy:
         state: present
-        name: OKta_SAML_Internal_ZS_SubnetsMisc
-        rule: Sub_58220950_24 || Sub_941881310_25 || Sub_1242481410_24 || Sub_1281771250_24
-          || Sub_137831540_24 || Sub_154113230_24 || Sub_197982010_24 || Sub_211144190_24
-          || Sub_213521020_24
-        action: prod_okta
+        name: RADIUS_10.102.222.187
+        rule: 'true'
+        action: RADIUS_10.102.222.187
 """
 
 RETURN = r"""

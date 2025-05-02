@@ -38,6 +38,14 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   cipherredirect:
     type: str
     choices:
@@ -771,8 +779,29 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslvserver:
         state: present
-        vservername: backup_gslb_portal.bx.com
-        sslprofile: ns_default_ssl_profile_frontend
+        vservername: new_XM_LB_MDM_titan.dnpg-blr.com_10.100.48.233_443
+        cleartextport: 0
+        dh: DISABLED
+        dhcount: '0'
+        ersa: ENABLED
+        ersacount: '0'
+        sessreuse: ENABLED
+        sesstimeout: '15'
+        cipherredirect: DISABLED
+        sslv2redirect: DISABLED
+        clientauth: ENABLED
+        clientcert: Optional
+        sslredirect: ENABLED
+        redirectportrewrite: DISABLED
+        nonfipsciphers: DISABLED
+        ssl2: DISABLED
+        ssl3: ENABLED
+        tls1: ENABLED
+        tls11: ENABLED
+        tls12: ENABLED
+        snienable: DISABLED
+        pushenctrigger: Always
+        sendclosenotify: 'YES'
 """
 
 RETURN = r"""

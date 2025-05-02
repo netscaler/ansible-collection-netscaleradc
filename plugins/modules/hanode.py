@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   deadinterval:
     type: float
     description:
@@ -221,9 +229,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.hanode:
         state: present
-        ipaddress: 10.189.96.60
-        inc: ENABLED
-        hanode_id: '1'
+        hellointerval: 200
+        deadinterval: 3
+        failsafe: 'ON'
+        maxflips: '23'
+        maxfliptime: '23'
+        syncvlan: '60'
 """
 
 RETURN = r"""

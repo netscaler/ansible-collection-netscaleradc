@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   artifactresolutionserviceurl:
     type: str
     description:
@@ -459,14 +467,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationsamlaction:
         state: present
-        name: prod_okta
-        samlidpcertname: okta_cert
-        samlsigningcertname: portal.bx.com
-        samlredirecturl: https://login.bx.com/app/citrixnetscalergateway_saml/exk5wlx791ZWQVGXR4x7/sso/saml
-        samluserfield: NameID
-        samlissuername: http://www.okta.com/exk5wlx791ZWQVGXR4x7
-        relaystaterule: AAA.LOGIN.RELAYSTATE.CONTAINS_ANY("prod_patset")
-        logouturl: https://login.bx.com/login/signout
+        name: samlsp
+        logouturl: http://logouturl
+        logoutbinding: REDIRECT
 """
 
 RETURN = r"""

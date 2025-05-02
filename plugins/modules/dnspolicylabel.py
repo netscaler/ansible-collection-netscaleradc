@@ -30,6 +30,7 @@ options:
     choices:
       - present
       - absent
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,6 +38,15 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
     type: str
   labelname:
     type: str

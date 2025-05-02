@@ -44,6 +44,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   dnsprofilename:
     type: str
     description:
@@ -91,7 +99,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.dnsnameserver:
         state: present
-        dnsvservername: lb_dns_01
+        dnsvservername: LB_dnsv1
 """
 
 RETURN = r"""
