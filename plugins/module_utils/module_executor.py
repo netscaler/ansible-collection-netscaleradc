@@ -81,7 +81,7 @@ class ModuleExecutor(object):
 
         consider_non_updatable_arguments = dict(
             consider_non_updatable_arguments=dict(
-                type='str',
+                type="str",
                 choices=["yes", "no"],
                 default="no",
                 required=False,
