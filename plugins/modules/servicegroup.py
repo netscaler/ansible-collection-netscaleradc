@@ -44,6 +44,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   appflowlog:
     type: str
     choices:
@@ -486,19 +494,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.servicegroup:
         state: present
-        servicegroupname: lb_svcgr_xml_voila2
-        servicetype: HTTP
-        maxclient: '0'
-        maxreq: '0'
-        cip: DISABLED
-        usip: 'NO'
-        useproxyport: 'YES'
-        clttimeout: 180
-        svrtimeout: 360
-        cka: 'NO'
-        tcpb: 'NO'
-        cmp: 'NO'
-        comment: voila 2 xml service group
+        servicegroupname: LB_ia_svcgrp13916
+        servicetype: SSL
 """
 
 RETURN = r"""

@@ -36,6 +36,14 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   ownernode:
     type: float
     description:
@@ -62,7 +70,7 @@ EXAMPLES = r"""
       netscaler.adc.lacp:
         state: present
         syspriority: '32768'
-        mac: 12:31:4d:59:3f:9f
+        ownernode: '255'
 """
 
 RETURN = r"""

@@ -40,6 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   ciphergroupname:
     type: str
     description:
@@ -91,9 +99,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslcipher_sslciphersuite_binding:
         state: present
-        ciphergroupname: ssllabs-blackstone
-        ciphername: TLS1.2-DHE-RSA-AES256-GCM-SHA384
-        cipherpriority: '14'
+        ciphergroupname: test
+        ciphername: TLS1-ECDHE-RSA-AES128-SHA
+        cipherpriority: '2'
 """
 
 RETURN = r"""

@@ -40,6 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   gotopriorityexpression:
     type: str
     description:
@@ -75,10 +83,10 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationpolicylabel_authenticationpolicy_binding:
         state: present
-        labelname: LDAP_Userextraction_External
-        policyname: LDAP_userextraction_External_pol
-        priority: '100'
-        gotopriorityexpression: END
+        labelname: RadFact
+        policyname: RADIUS_10.102.222.187
+        priority: '1'
+        nextfactor: EPA_LABEL
 """
 
 RETURN = r"""

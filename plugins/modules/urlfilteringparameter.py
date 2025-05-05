@@ -38,6 +38,14 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   cloudhost:
     type: str
     description:
@@ -66,7 +74,7 @@ EXAMPLES = r"""
 ---
 - name: Sample urlfilteringparameter playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure urlfilteringparameter
       delegate_to: localhost

@@ -44,6 +44,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   apiprofile:
     type: str
     description:
@@ -1201,13 +1209,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.csvserver:
         state: present
-        name: ADNS_TCP_EXT
-        servicetype: DNS_TCP
-        ipv46: 10.189.1.7
-        port: 53
-        ipset: ipset_adns
+        name: ug_cs1
+        servicetype: SSL
+        ipv46: 200.200.200.5
+        port: 443
         clttimeout: 180
-        persistencetype: NONE
+        listenpolicy: NONE
 """
 
 RETURN = r"""

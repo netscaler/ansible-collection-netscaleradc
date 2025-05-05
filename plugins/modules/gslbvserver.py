@@ -44,6 +44,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   appflowlog:
     type: str
     choices:
@@ -537,8 +545,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbvserver:
         state: present
-        name: backup_gslb_portal.bx.com
-        servicetype: SSL
+        name: LB_ia_gslbv8
         backuplbmethod: ROUNDROBIN
         tolerance: '0'
         appflowlog: DISABLED

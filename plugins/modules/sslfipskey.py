@@ -39,6 +39,14 @@ options:
       - When C(created), the `create` operation will be applied on the resource.
       - When C(imported), the resource will be imported on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   curve:
     type: str
     choices:

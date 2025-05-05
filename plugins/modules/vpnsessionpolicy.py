@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   action:
     type: str
     description:
@@ -76,9 +84,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnsessionpolicy:
         state: present
-        name: External_receiver_session_pol
-        rule: HTTP.REQ.HEADER("User-Agent").CONTAINS("CitrixReceiver")
-        action: External_receiver_session_prof
+        name: pcoip_sess_policy
+        rule: ns_true
+        action: pcoip_sess_act1
 """
 
 RETURN = r"""

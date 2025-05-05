@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   bundle:
     type: str
     choices:
@@ -186,8 +194,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslcertkey:
         state: present
-        certkey: callback.blackstone.com
-        linkcertkeyname: blackstone_sub
+        certkey: samlssokp1
+        cert: ns-root.cert
+        inform: PEM
+        expirymonitor: ENABLED
+        notificationperiod: '30'
+        bundle: 'NO'
 """
 
 RETURN = r"""

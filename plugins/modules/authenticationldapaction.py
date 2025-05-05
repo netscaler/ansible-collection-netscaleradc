@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   alternateemailattr:
     type: str
     description:
@@ -370,23 +378,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationldapaction:
         state: present
-        name: ldap_userextraction_External_noauth
-        servername: awsdcs-amer.blackstone.com
-        serverport: 636
-        ldapbase: OU=New AD Structure,DC=Blackstone,DC=com
-        ldapbinddn: CN=GD-CITRIXADC-P-APP,OU=Service Accounts,OU=Elevated,OU=New AD
-          Structure,DC=Blackstone,DC=com
+        name: ldap24
+        serverip: 10.102.39.101
+        ldapbase: dc=dnpg-blr,dc=com
+        ldapbinddn: administrator@DNPG-BLR.com
         ldapbinddnpassword: REQ_PASSWORD
         ldaploginname: sAMAccountName
-        groupattrname: memberOf
-        subattributename: cn
-        sectype: SSL
-        authentication: DISABLED
-        passwdchange: ENABLED
-        nestedgroupextraction: 'ON'
-        groupnameidentifier: sAMAccountName
-        groupsearchattribute: sAMAccountName
-        defaultauthenticationgroup: External
 """
 
 RETURN = r"""

@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   clientsecuritymessage:
     type: str
     description:
@@ -84,8 +92,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.policyexpression:
         state: present
-        name: Sub_1471612160_23
-        value: CLIENT.IP.SRC.IN_SUBNET(147.161.216.0/23)
+        name: dummy_vserver4
+        value: sys.vserver("dummy").determine_services(port,",")
 """
 
 RETURN = r"""
