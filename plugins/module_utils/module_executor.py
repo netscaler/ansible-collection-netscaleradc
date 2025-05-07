@@ -963,6 +963,7 @@ class ModuleExecutor(object):
                 "flushed",
                 "switched",
                 "unset",
+                "renamed",
                 "applied",
             }:
                 state_action_map = {
@@ -971,6 +972,7 @@ class ModuleExecutor(object):
                     "flushed": "flush",
                     "switched": "switch",
                     "unset": "unset",
+                    "renamed": "rename",
                     "applied": "apply",
                 }
                 self.act_on_resource(
