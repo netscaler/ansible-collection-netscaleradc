@@ -44,6 +44,13 @@ from .logger import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 
+skippable_resource_list = [
+    # In some cases, although keys are listed as immutable in the nitro_resource_map, they can actually be updated.
+    # This list helps bypass the immutability check for these resources.
+    "sytemfile"
+]
+
+
 class ModuleExecutor(object):
     def __init__(self, resource_name, supports_check_mode=True):
         self.resource_name = resource_name
@@ -453,7 +460,7 @@ class ModuleExecutor(object):
                         self.client, self.resource_name, self.resource_module_params
                     )
 
-                elif immutable_keys_list is None:
+                elif immutable_keys_list is None or self.resource_name in skippable_resource_list:
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
