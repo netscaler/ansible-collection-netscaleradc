@@ -373,6 +373,14 @@ class ModuleExecutor(object):
         return (False, None) if diff_list else (True, None)
 
     @trace
+    def install(self):
+        ok, err = create_resource(
+            self.client, self.resource_name, self.resource_module_params
+        )
+        if not ok:
+            self.return_failure(err)
+
+    @trace
     def create_or_update(self):
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
@@ -963,6 +971,9 @@ class ModuleExecutor(object):
                 # Bindings
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
+
+            elif self.resource_name == "install" and self.module.params["state"] == "installed":
+                self.install()
 
             elif self.module.params["state"] in {
                 "created",
