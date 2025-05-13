@@ -11,6 +11,7 @@ NITRO_RESOURCE_MAP = {
     "aaacertparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45,6 +46,7 @@ NITRO_RESOURCE_MAP = {
     "aaaglobal_aaapreauthenticationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -79,6 +81,7 @@ NITRO_RESOURCE_MAP = {
     "aaaglobal_authenticationnegotiateaction_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -104,6 +107,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -339,6 +343,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_aaauser_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -368,6 +373,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -415,6 +421,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -462,6 +469,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_authorizationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -509,6 +517,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_intranetip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -549,6 +558,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_intranetip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -589,6 +599,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_tmsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -636,6 +647,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_vpnintranetapplication_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -673,6 +685,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_vpnsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -720,6 +733,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_vpntrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -767,6 +781,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_vpnurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -796,6 +811,7 @@ NITRO_RESOURCE_MAP = {
     "aaagroup_vpnurlpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -852,6 +868,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -921,6 +938,7 @@ NITRO_RESOURCE_MAP = {
     "aaaldapparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1025,6 +1043,7 @@ NITRO_RESOURCE_MAP = {
     "aaaotpparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1054,6 +1073,7 @@ NITRO_RESOURCE_MAP = {
     "aaaparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1244,6 +1264,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1292,6 +1313,7 @@ NITRO_RESOURCE_MAP = {
     "aaapreauthenticationparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1339,6 +1361,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1369,6 +1392,7 @@ NITRO_RESOURCE_MAP = {
     "aaaradiusparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1480,6 +1504,7 @@ NITRO_RESOURCE_MAP = {
     "aaasession": {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1521,6 +1546,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1551,6 +1577,7 @@ NITRO_RESOURCE_MAP = {
     "aaatacacsparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1619,6 +1646,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1837,6 +1865,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1884,6 +1913,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1931,6 +1961,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_authorizationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1978,6 +2009,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_intranetip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2018,6 +2050,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_intranetip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2058,6 +2091,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_tmsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2105,6 +2139,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_vpnintranetapplication_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2138,6 +2173,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_vpnsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2185,6 +2221,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_vpntrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2232,6 +2269,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_vpnurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2261,6 +2299,7 @@ NITRO_RESOURCE_MAP = {
     "aaauser_vpnurlpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2308,6 +2347,7 @@ NITRO_RESOURCE_MAP = {
     "admparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2340,6 +2380,7 @@ NITRO_RESOURCE_MAP = {
     "analyticsglobal_analyticsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2374,6 +2415,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2712,6 +2754,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2761,6 +2804,7 @@ NITRO_RESOURCE_MAP = {
     "apiprofile_apispec_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2796,6 +2840,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2836,6 +2881,7 @@ NITRO_RESOURCE_MAP = {
     "apispecfile": {
         "_supported_operations": ["Import", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["name", "overwrite", "src"],
@@ -2866,6 +2912,7 @@ NITRO_RESOURCE_MAP = {
     "appalgparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2903,6 +2950,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3034,6 +3082,7 @@ NITRO_RESOURCE_MAP = {
     "appflowaction_analyticsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3071,6 +3120,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3108,6 +3158,7 @@ NITRO_RESOURCE_MAP = {
     "appflowglobal_appflowpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3193,6 +3244,7 @@ NITRO_RESOURCE_MAP = {
     "appflowparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3540,6 +3592,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3596,6 +3649,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3646,6 +3700,7 @@ NITRO_RESOURCE_MAP = {
     "appflowpolicylabel_appflowpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3699,6 +3754,7 @@ NITRO_RESOURCE_MAP = {
     "appfwarchive": {
         "_supported_operations": ["Import", "delete", "export", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "src"],
@@ -3730,6 +3786,7 @@ NITRO_RESOURCE_MAP = {
     "appfwconfidfield": {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3765,6 +3822,7 @@ NITRO_RESOURCE_MAP = {
     "appfwcustomsettings": {
         "_supported_operations": ["export"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3801,6 +3859,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3833,6 +3892,7 @@ NITRO_RESOURCE_MAP = {
     "appfwglobal_appfwpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3907,6 +3967,7 @@ NITRO_RESOURCE_MAP = {
     "appfwglobal_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3970,6 +4031,7 @@ NITRO_RESOURCE_MAP = {
     "appfwglobal_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4033,6 +4095,7 @@ NITRO_RESOURCE_MAP = {
     "appfwgrpccontenttype": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4066,6 +4129,7 @@ NITRO_RESOURCE_MAP = {
     "appfwgrpcwebjsoncontenttype": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4099,6 +4163,7 @@ NITRO_RESOURCE_MAP = {
     "appfwgrpcwebtextcontenttype": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4132,6 +4197,7 @@ NITRO_RESOURCE_MAP = {
     "appfwhtmlerrorpage": {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -4163,6 +4229,7 @@ NITRO_RESOURCE_MAP = {
     "appfwjsoncontenttype": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4196,6 +4263,7 @@ NITRO_RESOURCE_MAP = {
     "appfwjsonerrorpage": {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -4227,6 +4295,7 @@ NITRO_RESOURCE_MAP = {
     "appfwlearningdata": {
         "_supported_operations": ["count", "delete", "export", "get", "reset"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4343,6 +4412,7 @@ NITRO_RESOURCE_MAP = {
     "appfwlearningsettings": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4471,6 +4541,7 @@ NITRO_RESOURCE_MAP = {
     "appfwmultipartformcontenttype": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4513,6 +4584,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4569,6 +4641,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4619,6 +4692,7 @@ NITRO_RESOURCE_MAP = {
     "appfwpolicylabel_appfwpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4681,6 +4755,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6301,6 +6376,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_appfwconfidfield_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6362,6 +6438,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_blockkeyword_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6443,6 +6520,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_bypasslist_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6525,6 +6603,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_cmdinjection_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6624,6 +6703,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_contenttype_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6675,6 +6755,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_cookieconsistency_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6733,6 +6814,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_creditcardnumber_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6787,6 +6869,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_crosssitescripting_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6886,6 +6969,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_csrftag_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6940,6 +7024,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_denylist_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7023,6 +7108,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_denyurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7074,6 +7160,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_excluderescontenttype_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7125,6 +7212,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_fakeaccount_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7204,6 +7292,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_fieldconsistency_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7265,6 +7354,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_fieldformat_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7335,6 +7425,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_fileuploadtype_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7421,6 +7512,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_grpcvalidation_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7483,6 +7575,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_jsonblockkeyword_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7564,6 +7657,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_jsoncmdurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7654,6 +7748,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_jsondosurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7765,6 +7860,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_jsonsqlurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7855,6 +7951,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_jsonxssurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7945,6 +8042,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_logexpression_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7999,6 +8097,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_restvalidation_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8057,6 +8156,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_safeobject_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8122,6 +8222,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_sqlinjection_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8221,6 +8322,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_starturl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8272,6 +8374,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_trustedlearningclients_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8323,6 +8426,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_xmlattachmenturl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8394,6 +8498,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_xmldosurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8621,6 +8726,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_xmlsqlinjection_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8686,6 +8792,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_xmlvalidationurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8774,6 +8881,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_xmlwsiurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8828,6 +8936,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprofile_xmlxss_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8893,6 +9002,7 @@ NITRO_RESOURCE_MAP = {
     "appfwprotofile": {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -8924,6 +9034,7 @@ NITRO_RESOURCE_MAP = {
     "appfwsettings": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9056,6 +9167,7 @@ NITRO_RESOURCE_MAP = {
     "appfwsignatures": {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [
@@ -9122,6 +9234,7 @@ NITRO_RESOURCE_MAP = {
     "appfwurlencodedformcontenttype": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9155,6 +9268,7 @@ NITRO_RESOURCE_MAP = {
     "appfwwsdl": {
         "_supported_operations": ["Import", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -9186,6 +9300,7 @@ NITRO_RESOURCE_MAP = {
     "appfwxmlcontenttype": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9219,6 +9334,7 @@ NITRO_RESOURCE_MAP = {
     "appfwxmlerrorpage": {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -9250,6 +9366,7 @@ NITRO_RESOURCE_MAP = {
     "appfwxmlschema": {
         "_supported_operations": ["Import", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -9281,6 +9398,7 @@ NITRO_RESOURCE_MAP = {
     "application": {
         "_supported_operations": ["Import", "delete", "export"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["appname", "apptemplatefilename", "deploymentfilename"],
@@ -9319,6 +9437,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9416,6 +9535,7 @@ NITRO_RESOURCE_MAP = {
     "appqoecustomresp": {
         "_supported_operations": ["Import", "change", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -9445,6 +9565,7 @@ NITRO_RESOURCE_MAP = {
     "appqoeparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9493,6 +9614,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9523,6 +9645,7 @@ NITRO_RESOURCE_MAP = {
     "arp": {
         "_supported_operations": ["add", "count", "delete", "get", "send"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9578,6 +9701,7 @@ NITRO_RESOURCE_MAP = {
     "arpparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9619,6 +9743,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9688,6 +9813,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9854,6 +9980,7 @@ NITRO_RESOURCE_MAP = {
     "auditnslogglobal_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9899,6 +10026,7 @@ NITRO_RESOURCE_MAP = {
     "auditnslogparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10044,6 +10172,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10082,6 +10211,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10314,6 +10444,7 @@ NITRO_RESOURCE_MAP = {
     "auditsyslogglobal_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10433,6 +10564,7 @@ NITRO_RESOURCE_MAP = {
     "auditsyslogparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10588,6 +10720,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10625,6 +10758,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10677,6 +10811,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10729,6 +10864,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10813,6 +10949,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10865,6 +11002,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10923,6 +11061,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10961,6 +11100,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11007,6 +11147,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11058,6 +11199,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11096,6 +11238,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11167,6 +11310,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11235,6 +11379,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11522,6 +11667,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11559,6 +11705,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11596,6 +11743,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11670,6 +11818,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11726,6 +11875,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11794,6 +11944,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11832,6 +11983,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11869,6 +12021,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12120,6 +12273,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12176,6 +12330,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12280,6 +12435,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12353,6 +12509,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12405,6 +12562,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationpolicylabel_authenticationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12456,6 +12614,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12508,6 +12667,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12667,6 +12827,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12705,6 +12866,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13012,6 +13174,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13068,6 +13231,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13571,6 +13735,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13609,6 +13774,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13648,6 +13814,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13686,6 +13853,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13735,6 +13903,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13885,6 +14054,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13926,6 +14096,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14375,6 +14546,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14438,6 +14610,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14501,6 +14674,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationcertpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14564,6 +14738,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationldappolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14627,6 +14802,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationlocalpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14690,6 +14866,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationloginschemapolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14753,6 +14930,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationnegotiatepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14816,6 +14994,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationoauthidppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14879,6 +15058,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14942,6 +15122,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationradiuspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15005,6 +15186,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationsamlidppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15068,6 +15250,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationsamlpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15131,6 +15314,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationsmartaccesspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15194,6 +15378,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationtacacspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15257,6 +15442,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_authenticationwebauthpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15320,6 +15506,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_cachepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15383,6 +15570,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_cspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15446,6 +15634,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_responderpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15509,6 +15698,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_rewritepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15572,6 +15762,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_tmsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15635,6 +15826,7 @@ NITRO_RESOURCE_MAP = {
     "authenticationvserver_vpnportaltheme_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15671,6 +15863,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15798,6 +15991,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15836,6 +16030,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15890,6 +16085,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15935,6 +16131,7 @@ NITRO_RESOURCE_MAP = {
     "authorizationpolicylabel_authorizationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15996,6 +16193,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16058,6 +16256,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16098,6 +16297,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16130,6 +16330,7 @@ NITRO_RESOURCE_MAP = {
     "azureapplication": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16177,6 +16378,7 @@ NITRO_RESOURCE_MAP = {
     "azurekeyvault": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16207,6 +16409,7 @@ NITRO_RESOURCE_MAP = {
     "botglobal_botpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16284,6 +16487,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16355,6 +16559,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16401,6 +16606,7 @@ NITRO_RESOURCE_MAP = {
     "botpolicylabel_botpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16462,6 +16668,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16824,6 +17031,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_blacklist_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16889,6 +17097,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_captcha_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16962,6 +17171,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_ipreputation_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17045,6 +17255,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_kmdetectionexpr_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17098,6 +17309,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_logexpression_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17151,6 +17363,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_ratelimit_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17519,6 +17732,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_tps_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17587,6 +17801,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_trapinsertionurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17637,6 +17852,7 @@ NITRO_RESOURCE_MAP = {
     "botprofile_whitelist_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17697,6 +17913,7 @@ NITRO_RESOURCE_MAP = {
     "botsettings": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17783,6 +18000,7 @@ NITRO_RESOURCE_MAP = {
     "botsignature": {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -17822,6 +18040,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17912,6 +18131,7 @@ NITRO_RESOURCE_MAP = {
     "bridgegroup_nsip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17943,6 +18163,7 @@ NITRO_RESOURCE_MAP = {
     "bridgegroup_nsip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17974,6 +18195,7 @@ NITRO_RESOURCE_MAP = {
     "bridgegroup_vlan_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18010,6 +18232,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18057,6 +18280,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18277,6 +18501,7 @@ NITRO_RESOURCE_MAP = {
     "cacheforwardproxy": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18306,6 +18531,7 @@ NITRO_RESOURCE_MAP = {
     "cacheglobal_cachepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18390,6 +18616,7 @@ NITRO_RESOURCE_MAP = {
     "cacheobject": {
         "_supported_operations": ["count", "expire", "flush", "get", "save"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18448,6 +18675,7 @@ NITRO_RESOURCE_MAP = {
     "cacheparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18522,6 +18750,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18610,6 +18839,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18669,6 +18899,7 @@ NITRO_RESOURCE_MAP = {
     "cachepolicylabel_cachepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18729,6 +18960,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18758,6 +18990,7 @@ NITRO_RESOURCE_MAP = {
     "callhome": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18842,6 +19075,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18976,6 +19210,7 @@ NITRO_RESOURCE_MAP = {
     "channel_interface_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19036,6 +19271,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19065,6 +19301,7 @@ NITRO_RESOURCE_MAP = {
     "cloudawsparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19091,6 +19328,7 @@ NITRO_RESOURCE_MAP = {
     "cloudcredential": {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19125,6 +19363,7 @@ NITRO_RESOURCE_MAP = {
     "cloudngsparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19178,6 +19417,7 @@ NITRO_RESOURCE_MAP = {
     "cloudparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19230,6 +19470,7 @@ NITRO_RESOURCE_MAP = {
     "cloudparaminternal": {
         "_supported_operations": ["count", "get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19258,6 +19499,7 @@ NITRO_RESOURCE_MAP = {
     "cloudprofile": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19441,6 +19683,7 @@ NITRO_RESOURCE_MAP = {
     "cloudservice": {
         "_supported_operations": ["check"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19467,6 +19710,7 @@ NITRO_RESOURCE_MAP = {
     "cloudtunnelparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19510,6 +19754,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19541,6 +19786,7 @@ NITRO_RESOURCE_MAP = {
     "cluster": {
         "_supported_operations": ["join"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19775,6 +20021,7 @@ NITRO_RESOURCE_MAP = {
     "clusterfiles": {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19830,6 +20077,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19959,6 +20207,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20222,6 +20471,7 @@ NITRO_RESOURCE_MAP = {
     "clusternode_routemonitor_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20259,6 +20509,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20478,6 +20729,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_authenticationvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20506,6 +20758,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_clusternode_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20534,6 +20787,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_crvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20562,6 +20816,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_csvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20590,6 +20845,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_gslbsite_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20618,6 +20874,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_gslbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20646,6 +20903,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_lbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20674,6 +20932,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_nslimitidentifier_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20702,6 +20961,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_service_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20730,6 +20990,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_streamidentifier_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20758,6 +21019,7 @@ NITRO_RESOURCE_MAP = {
     "clusternodegroup_vpnvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20786,6 +21048,7 @@ NITRO_RESOURCE_MAP = {
     "clusterpropstatus": {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20812,6 +21075,7 @@ NITRO_RESOURCE_MAP = {
     "clustersync": {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20847,6 +21111,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20892,6 +21157,7 @@ NITRO_RESOURCE_MAP = {
     "cmpglobal_cmppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20970,6 +21236,7 @@ NITRO_RESOURCE_MAP = {
     "cmpparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21065,6 +21332,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21119,6 +21387,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21169,6 +21438,7 @@ NITRO_RESOURCE_MAP = {
     "cmppolicylabel_cmppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21230,6 +21500,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21295,6 +21566,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21354,6 +21626,7 @@ NITRO_RESOURCE_MAP = {
     "contentinspectionglobal_contentinspectionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21427,6 +21700,7 @@ NITRO_RESOURCE_MAP = {
     "contentinspectionparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21462,6 +21736,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21533,6 +21808,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21580,6 +21856,7 @@ NITRO_RESOURCE_MAP = {
     "contentinspectionpolicylabel_contentinspectionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21641,6 +21918,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21703,6 +21981,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21746,6 +22025,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22263,6 +22543,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_analyticsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22291,6 +22572,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_appflowpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22354,6 +22636,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_appfwpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22417,6 +22700,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_appqoepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22480,6 +22764,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_cachepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22543,6 +22828,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_cmppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22606,6 +22892,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_crpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22669,6 +22956,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_cspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22732,6 +23020,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_feopolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22795,6 +23084,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_icapolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22858,6 +23148,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_lbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22886,6 +23177,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_policymap_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22949,6 +23241,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_responderpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23012,6 +23305,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_rewritepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23075,6 +23369,7 @@ NITRO_RESOURCE_MAP = {
     "crvserver_spilloverpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23147,6 +23442,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23192,6 +23488,7 @@ NITRO_RESOURCE_MAP = {
     "csparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23233,6 +23530,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23288,6 +23586,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23362,6 +23661,7 @@ NITRO_RESOURCE_MAP = {
     "cspolicylabel_cspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23425,6 +23725,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24266,6 +24567,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_analyticsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24294,6 +24596,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_appflowpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24363,6 +24666,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_appfwpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24432,6 +24736,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_appqoepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24501,6 +24806,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24570,6 +24876,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24639,6 +24946,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_authorizationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24708,6 +25016,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_botpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24777,6 +25086,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_cachepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24846,6 +25156,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_cmppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24915,6 +25226,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_contentinspectionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24984,6 +25296,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_cspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25053,6 +25366,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_domain_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25102,6 +25416,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_feopolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25171,6 +25486,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_gslbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25199,6 +25515,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_lbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25228,6 +25545,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_responderpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25297,6 +25615,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_rewritepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25366,6 +25685,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_spilloverpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25435,6 +25755,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_tmtrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25504,6 +25825,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_transformpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25573,6 +25895,7 @@ NITRO_RESOURCE_MAP = {
     "csvserver_vpnvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25609,6 +25932,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25675,6 +25999,7 @@ NITRO_RESOURCE_MAP = {
     "dbsmonitors": {
         "_supported_operations": ["restart"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25708,6 +26033,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25738,6 +26064,7 @@ NITRO_RESOURCE_MAP = {
     "dnsaaaarec": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25783,6 +26110,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25851,6 +26179,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25882,6 +26211,7 @@ NITRO_RESOURCE_MAP = {
     "dnsaddrec": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25919,6 +26249,7 @@ NITRO_RESOURCE_MAP = {
     "dnscaarec": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25959,6 +26290,7 @@ NITRO_RESOURCE_MAP = {
     "dnscnamerec": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25996,6 +26328,7 @@ NITRO_RESOURCE_MAP = {
     "dnsglobal_dnspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26075,6 +26408,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [
                 "algorithm",
                 "filenameprefix",
@@ -26191,6 +26525,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26238,6 +26573,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26274,6 +26610,7 @@ NITRO_RESOURCE_MAP = {
     "dnsnaptrrec": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26351,6 +26688,7 @@ NITRO_RESOURCE_MAP = {
     "dnsnsrec": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26388,6 +26726,7 @@ NITRO_RESOURCE_MAP = {
     "dnsparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26543,6 +26882,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26602,6 +26942,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26639,6 +26980,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26689,6 +27031,7 @@ NITRO_RESOURCE_MAP = {
     "dnspolicylabel_dnspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26746,6 +27089,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26868,6 +27212,7 @@ NITRO_RESOURCE_MAP = {
     "dnsproxyrecords": {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26920,6 +27265,7 @@ NITRO_RESOURCE_MAP = {
     "dnsptrrec": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26965,6 +27311,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27036,6 +27383,7 @@ NITRO_RESOURCE_MAP = {
     "dnssrvrec": {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27083,6 +27431,7 @@ NITRO_RESOURCE_MAP = {
     "dnssubnetcache": {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27113,6 +27462,7 @@ NITRO_RESOURCE_MAP = {
     "dnssuffix": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27139,6 +27489,7 @@ NITRO_RESOURCE_MAP = {
     "dnstxtrec": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27177,6 +27528,7 @@ NITRO_RESOURCE_MAP = {
     "dnsview": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27213,6 +27565,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27266,6 +27619,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27312,6 +27666,7 @@ NITRO_RESOURCE_MAP = {
     "extendedmemoryparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27346,6 +27701,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27466,6 +27822,7 @@ NITRO_RESOURCE_MAP = {
     "feoglobal_feopolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27524,6 +27881,7 @@ NITRO_RESOURCE_MAP = {
     "feoparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27573,6 +27931,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27603,6 +27962,7 @@ NITRO_RESOURCE_MAP = {
     "fis": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27664,6 +28024,7 @@ NITRO_RESOURCE_MAP = {
     "fis_channel_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27693,6 +28054,7 @@ NITRO_RESOURCE_MAP = {
     "fis_interface_binding": {
         "_supported_operations": ["add", "delete"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27729,6 +28091,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27794,6 +28157,7 @@ NITRO_RESOURCE_MAP = {
     "gslbconfig": {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27827,6 +28191,7 @@ NITRO_RESOURCE_MAP = {
     "gslbldnsentries": {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27853,6 +28218,7 @@ NITRO_RESOURCE_MAP = {
     "gslbldnsentry": {
         "_supported_operations": ["delete"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27879,6 +28245,7 @@ NITRO_RESOURCE_MAP = {
     "gslbparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27994,6 +28361,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28253,6 +28621,7 @@ NITRO_RESOURCE_MAP = {
     "gslbservice_dnsview_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28282,6 +28651,7 @@ NITRO_RESOURCE_MAP = {
     "gslbservice_lbmonitor_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28327,6 +28697,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28542,6 +28913,7 @@ NITRO_RESOURCE_MAP = {
     "gslbservicegroup_gslbservicegroupmember_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28600,6 +28972,7 @@ NITRO_RESOURCE_MAP = {
     "gslbservicegroup_lbmonitor_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28674,6 +29047,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28781,6 +29155,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29149,6 +29524,7 @@ NITRO_RESOURCE_MAP = {
     "gslbvserver_domain_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29203,6 +29579,7 @@ NITRO_RESOURCE_MAP = {
     "gslbvserver_gslbservice_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29234,6 +29611,7 @@ NITRO_RESOURCE_MAP = {
     "gslbvserver_gslbservicegroup_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29263,6 +29641,7 @@ NITRO_RESOURCE_MAP = {
     "gslbvserver_lbpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29313,6 +29692,7 @@ NITRO_RESOURCE_MAP = {
     "gslbvserver_spilloverpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29363,6 +29743,7 @@ NITRO_RESOURCE_MAP = {
     "hafailover": {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": ["force"],
             "import": [],
@@ -29389,6 +29770,7 @@ NITRO_RESOURCE_MAP = {
     "hafiles": {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29442,6 +29824,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29555,6 +29938,7 @@ NITRO_RESOURCE_MAP = {
     "hanode_routemonitor6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29584,6 +29968,7 @@ NITRO_RESOURCE_MAP = {
     "hanode_routemonitor_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29613,6 +29998,7 @@ NITRO_RESOURCE_MAP = {
     "hasync": {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": ["force", "save"],
             "import": [],
@@ -29650,6 +30036,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29805,6 +30192,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29836,6 +30224,7 @@ NITRO_RESOURCE_MAP = {
     "icaglobal_icapolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29894,6 +30283,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29952,6 +30342,7 @@ NITRO_RESOURCE_MAP = {
     "icaparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30038,6 +30429,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30079,6 +30471,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30172,6 +30565,7 @@ NITRO_RESOURCE_MAP = {
     "inatparam": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30224,6 +30618,7 @@ NITRO_RESOURCE_MAP = {
     "install": {
         "_supported_operations": ["Install"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30277,6 +30672,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30426,6 +30822,7 @@ NITRO_RESOURCE_MAP = {
     "interfacepair": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30455,6 +30852,7 @@ NITRO_RESOURCE_MAP = {
     "ip6tunnel": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30486,6 +30884,7 @@ NITRO_RESOURCE_MAP = {
     "ip6tunnelparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30546,6 +30945,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30600,6 +31000,7 @@ NITRO_RESOURCE_MAP = {
     "ipsecalgsession": {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30633,6 +31034,7 @@ NITRO_RESOURCE_MAP = {
     "ipsecparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30709,6 +31111,7 @@ NITRO_RESOURCE_MAP = {
     "ipsecprofile": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30800,6 +31203,7 @@ NITRO_RESOURCE_MAP = {
     "ipset": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30861,6 +31265,7 @@ NITRO_RESOURCE_MAP = {
     "ipset_nsip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30889,6 +31294,7 @@ NITRO_RESOURCE_MAP = {
     "ipset_nsip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30925,6 +31331,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31005,6 +31412,7 @@ NITRO_RESOURCE_MAP = {
     "iptunnelparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31074,6 +31482,7 @@ NITRO_RESOURCE_MAP = {
     "ipv6": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31139,6 +31548,7 @@ NITRO_RESOURCE_MAP = {
     "l2param": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31268,6 +31678,7 @@ NITRO_RESOURCE_MAP = {
     "l3param": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31401,6 +31812,7 @@ NITRO_RESOURCE_MAP = {
     "l4param": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31446,6 +31858,7 @@ NITRO_RESOURCE_MAP = {
     "lacp": {
         "_supported_operations": ["count", "get", "get-byname", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31484,6 +31897,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31520,6 +31934,7 @@ NITRO_RESOURCE_MAP = {
     "lbglobal_lbpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31628,6 +32043,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31735,6 +32151,7 @@ NITRO_RESOURCE_MAP = {
     "lbgroup_lbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31770,6 +32187,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31816,6 +32234,7 @@ NITRO_RESOURCE_MAP = {
     "lbmetrictable_metric_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31855,6 +32274,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32456,6 +32876,7 @@ NITRO_RESOURCE_MAP = {
     "lbmonitor_metric_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32491,6 +32912,7 @@ NITRO_RESOURCE_MAP = {
     "lbmonitor_sslcertkey_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32536,6 +32958,7 @@ NITRO_RESOURCE_MAP = {
     "lbparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32694,6 +33117,7 @@ NITRO_RESOURCE_MAP = {
     "lbpersistentsessions": {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32733,6 +33157,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32804,6 +33229,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32870,6 +33296,7 @@ NITRO_RESOURCE_MAP = {
     "lbpolicylabel_lbpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32931,6 +33358,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33045,6 +33473,7 @@ NITRO_RESOURCE_MAP = {
     "lbroute": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33076,6 +33505,7 @@ NITRO_RESOURCE_MAP = {
     "lbroute6": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33106,6 +33536,7 @@ NITRO_RESOURCE_MAP = {
     "lbsipparameters": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33171,6 +33602,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34238,6 +34670,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_analyticsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34267,6 +34700,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_appflowpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34330,6 +34764,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_appfwpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34393,6 +34828,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_appqoepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34456,6 +34892,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34519,6 +34956,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34582,6 +35020,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_authorizationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34645,6 +35084,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_botpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34708,6 +35148,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_cachepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34771,6 +35212,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_cmppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34834,6 +35276,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_contentinspectionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34897,6 +35340,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_dnspolicy64_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34960,6 +35404,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_feopolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35023,6 +35468,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_lbpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35086,6 +35532,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_responderpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35149,6 +35596,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_rewritepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35212,6 +35660,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_service_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35249,6 +35698,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_servicegroup_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35286,6 +35736,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_spilloverpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35349,6 +35800,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_tmtrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35412,6 +35864,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_transformpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35475,6 +35928,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_videooptimizationdetectionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35538,6 +35992,7 @@ NITRO_RESOURCE_MAP = {
     "lbvserver_videooptimizationpacingpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35609,6 +36064,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35657,6 +36113,7 @@ NITRO_RESOURCE_MAP = {
     "lbwlm_lbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35685,6 +36142,7 @@ NITRO_RESOURCE_MAP = {
     "linkset": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35745,6 +36203,7 @@ NITRO_RESOURCE_MAP = {
     "linkset_channel_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35773,6 +36232,7 @@ NITRO_RESOURCE_MAP = {
     "linkset_interface_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35801,6 +36261,7 @@ NITRO_RESOURCE_MAP = {
     "lldpneighbors": {
         "_supported_operations": ["clear", "count", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35830,6 +36291,7 @@ NITRO_RESOURCE_MAP = {
     "lldpparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35864,6 +36326,7 @@ NITRO_RESOURCE_MAP = {
     "location": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35908,6 +36371,7 @@ NITRO_RESOURCE_MAP = {
     "locationdata": {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35934,6 +36398,7 @@ NITRO_RESOURCE_MAP = {
     "locationfile": {
         "_supported_operations": ["Import", "add", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["locationfile", "src"],
@@ -35980,6 +36445,7 @@ NITRO_RESOURCE_MAP = {
     "locationfile6": {
         "_supported_operations": ["Import", "add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["locationfile", "src"],
@@ -36014,6 +36480,7 @@ NITRO_RESOURCE_MAP = {
     "locationparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36118,6 +36585,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36161,6 +36629,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36288,6 +36757,7 @@ NITRO_RESOURCE_MAP = {
     "lsnappsprofile_lsnappsattributes_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36316,6 +36786,7 @@ NITRO_RESOURCE_MAP = {
     "lsnappsprofile_port_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36344,6 +36815,7 @@ NITRO_RESOURCE_MAP = {
     "lsnclient": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36441,6 +36913,7 @@ NITRO_RESOURCE_MAP = {
     "lsnclient_network6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36472,6 +36945,7 @@ NITRO_RESOURCE_MAP = {
     "lsnclient_network_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36502,6 +36976,7 @@ NITRO_RESOURCE_MAP = {
     "lsnclient_nsacl6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36531,6 +37006,7 @@ NITRO_RESOURCE_MAP = {
     "lsnclient_nsacl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36568,6 +37044,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36840,6 +37317,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_ipsecalgprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36868,6 +37346,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_lsnappsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36896,6 +37375,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_lsnhttphdrlogprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36924,6 +37404,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_lsnlogprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36952,6 +37433,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_lsnpool_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36980,6 +37462,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_lsnrtspalgprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37008,6 +37491,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_lsnsipalgprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37036,6 +37520,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_lsntransportprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37064,6 +37549,7 @@ NITRO_RESOURCE_MAP = {
     "lsngroup_pcpserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37100,6 +37586,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37166,6 +37653,7 @@ NITRO_RESOURCE_MAP = {
     "lsnip6profile": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37205,6 +37693,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37275,6 +37764,7 @@ NITRO_RESOURCE_MAP = {
     "lsnparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37321,6 +37811,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37383,6 +37874,7 @@ NITRO_RESOURCE_MAP = {
     "lsnpool_lsnip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37420,6 +37912,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37470,6 +37963,7 @@ NITRO_RESOURCE_MAP = {
     "lsnrtspalgsession": {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37499,6 +37993,7 @@ NITRO_RESOURCE_MAP = {
     "lsnsession": {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37547,6 +38042,7 @@ NITRO_RESOURCE_MAP = {
     "lsnsipalgcall": {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37584,6 +38080,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37694,6 +38191,7 @@ NITRO_RESOURCE_MAP = {
     "lsnstatic": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37770,6 +38268,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37862,6 +38361,7 @@ NITRO_RESOURCE_MAP = {
     "mapbmr": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37922,6 +38422,7 @@ NITRO_RESOURCE_MAP = {
     "mapbmr_bmrv4network_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37951,6 +38452,7 @@ NITRO_RESOURCE_MAP = {
     "mapdmr": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37980,6 +38482,7 @@ NITRO_RESOURCE_MAP = {
     "mapdomain": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38025,6 +38528,7 @@ NITRO_RESOURCE_MAP = {
     "mapdomain_mapbmr_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38061,6 +38565,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38289,6 +38794,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_authenticationvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38332,6 +38838,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_crvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38375,6 +38882,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_csvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38418,6 +38926,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_gslbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38461,6 +38970,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_lbvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38504,6 +39014,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_service_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38547,6 +39058,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_servicegroup_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38590,6 +39102,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_uservserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38633,6 +39146,7 @@ NITRO_RESOURCE_MAP = {
     "metricsprofile_vpnvserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38684,6 +39198,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38714,6 +39229,7 @@ NITRO_RESOURCE_MAP = {
     "nat64param": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38770,6 +39286,7 @@ NITRO_RESOURCE_MAP = {
     "nd6": {
         "_supported_operations": ["add", "clear", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38821,6 +39338,7 @@ NITRO_RESOURCE_MAP = {
     "nd6ravariables": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38928,6 +39446,7 @@ NITRO_RESOURCE_MAP = {
     "nd6ravariables_onlinkipv6prefix_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38964,6 +39483,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39062,6 +39582,7 @@ NITRO_RESOURCE_MAP = {
     "netbridge_iptunnel_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39090,6 +39611,7 @@ NITRO_RESOURCE_MAP = {
     "netbridge_nsip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39119,6 +39641,7 @@ NITRO_RESOURCE_MAP = {
     "netbridge_nsip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39148,6 +39671,7 @@ NITRO_RESOURCE_MAP = {
     "netbridge_vlan_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39184,6 +39708,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39300,6 +39825,7 @@ NITRO_RESOURCE_MAP = {
     "netprofile_natrule_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39330,6 +39856,7 @@ NITRO_RESOURCE_MAP = {
     "netprofile_srcportset_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39369,6 +39896,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39717,6 +40245,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40047,6 +40576,7 @@ NITRO_RESOURCE_MAP = {
     "nsacls": {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
+            "apply": ["type"],
             "create": [],
             "force": [],
             "import": [],
@@ -40075,6 +40605,7 @@ NITRO_RESOURCE_MAP = {
     "nsacls6": {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
+            "apply": ["type"],
             "create": [],
             "force": [],
             "import": [],
@@ -40103,6 +40634,7 @@ NITRO_RESOURCE_MAP = {
     "nsappflowcollector": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40133,6 +40665,7 @@ NITRO_RESOURCE_MAP = {
     "nsappflowparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40217,6 +40750,7 @@ NITRO_RESOURCE_MAP = {
     "nsaptlicense": {
         "_supported_operations": ["change", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40260,6 +40794,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40314,6 +40849,7 @@ NITRO_RESOURCE_MAP = {
     "nscapacity": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40396,6 +40932,7 @@ NITRO_RESOURCE_MAP = {
     "nscentralmanagementserver": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40455,6 +40992,7 @@ NITRO_RESOURCE_MAP = {
     "nschannelparam": {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40495,6 +41033,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40566,6 +41105,7 @@ NITRO_RESOURCE_MAP = {
     "nsconfigview": {
         "_supported_operations": ["Switch", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40592,6 +41132,7 @@ NITRO_RESOURCE_MAP = {
     "nsconsoleloginprompt": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40618,6 +41159,7 @@ NITRO_RESOURCE_MAP = {
     "nscqaparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40705,6 +41247,7 @@ NITRO_RESOURCE_MAP = {
     "nsdhcpip": {
         "_supported_operations": ["release"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40731,6 +41274,7 @@ NITRO_RESOURCE_MAP = {
     "nsdhcpparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40760,6 +41304,7 @@ NITRO_RESOURCE_MAP = {
     "nsdiameter": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40808,6 +41353,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40880,6 +41426,7 @@ NITRO_RESOURCE_MAP = {
     "nsencryptionparams": {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40951,6 +41498,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -40996,6 +41544,7 @@ NITRO_RESOURCE_MAP = {
     "nsfeature": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41106,6 +41655,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41150,6 +41700,7 @@ NITRO_RESOURCE_MAP = {
     "nshostname": {
         "_supported_operations": ["count", "get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41179,6 +41730,7 @@ NITRO_RESOURCE_MAP = {
     "nshttpparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41266,6 +41818,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41652,6 +42205,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41765,6 +42319,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42002,6 +42557,7 @@ NITRO_RESOURCE_MAP = {
     "nsip6": {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42232,6 +42788,7 @@ NITRO_RESOURCE_MAP = {
     "nslicenseparameters": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42276,6 +42833,7 @@ NITRO_RESOURCE_MAP = {
     "nslicenseproxyserver": {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42306,6 +42864,7 @@ NITRO_RESOURCE_MAP = {
     "nslicenseserver": {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42363,6 +42922,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42441,6 +43001,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42470,6 +43031,7 @@ NITRO_RESOURCE_MAP = {
     "nslimitsessions": {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42499,6 +43061,7 @@ NITRO_RESOURCE_MAP = {
     "nsmgmtparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42540,6 +43103,7 @@ NITRO_RESOURCE_MAP = {
     "nsmigration": {
         "_supported_operations": ["count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42568,6 +43132,7 @@ NITRO_RESOURCE_MAP = {
     "nsmode": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42629,6 +43194,7 @@ NITRO_RESOURCE_MAP = {
     "nsnextgenapi": {
         "_supported_operations": ["clear", "disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42655,6 +43221,7 @@ NITRO_RESOURCE_MAP = {
     "nsparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42805,6 +43372,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42913,6 +43481,7 @@ NITRO_RESOURCE_MAP = {
     "nspartition_bridgegroup_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42941,6 +43510,7 @@ NITRO_RESOURCE_MAP = {
     "nspartition_vlan_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42969,6 +43539,7 @@ NITRO_RESOURCE_MAP = {
     "nspartition_vxlan_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43007,6 +43578,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43315,6 +43887,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43611,6 +44184,7 @@ NITRO_RESOURCE_MAP = {
     "nspbrs": {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43637,6 +44211,7 @@ NITRO_RESOURCE_MAP = {
     "nsratecontrol": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43678,6 +44253,7 @@ NITRO_RESOURCE_MAP = {
     "nsrpcnode": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43723,6 +44299,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43752,6 +44329,7 @@ NITRO_RESOURCE_MAP = {
     "nsservicepath": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43796,6 +44374,7 @@ NITRO_RESOURCE_MAP = {
     "nsservicepath_nsservicefunction_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43833,6 +44412,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43892,6 +44472,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43943,6 +44524,7 @@ NITRO_RESOURCE_MAP = {
     "nssourceroutecachetable": {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43969,6 +44551,7 @@ NITRO_RESOURCE_MAP = {
     "nsspparams": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44002,6 +44585,7 @@ NITRO_RESOURCE_MAP = {
     "nsstats": {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44034,6 +44618,7 @@ NITRO_RESOURCE_MAP = {
     "nssurgeq": {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44064,6 +44649,7 @@ NITRO_RESOURCE_MAP = {
     "nstcpbufparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44093,6 +44679,7 @@ NITRO_RESOURCE_MAP = {
     "nstcpparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44359,6 +44946,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44753,6 +45341,7 @@ NITRO_RESOURCE_MAP = {
     "nstestlicense": {
         "_supported_operations": ["apply", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44779,6 +45368,7 @@ NITRO_RESOURCE_MAP = {
     "nstimeout": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44861,6 +45451,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44909,6 +45500,7 @@ NITRO_RESOURCE_MAP = {
     "nstimer_autoscalepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44958,6 +45550,7 @@ NITRO_RESOURCE_MAP = {
     "nstrace": {
         "_supported_operations": ["get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45072,6 +45665,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45158,6 +45752,7 @@ NITRO_RESOURCE_MAP = {
     "nstrafficdomain_bridgegroup_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45186,6 +45781,7 @@ NITRO_RESOURCE_MAP = {
     "nstrafficdomain_vlan_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45214,6 +45810,7 @@ NITRO_RESOURCE_MAP = {
     "nstrafficdomain_vxlan_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45250,6 +45847,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45323,6 +45921,7 @@ NITRO_RESOURCE_MAP = {
     "nsvpxparam": {
         "_supported_operations": ["count", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45366,6 +45965,7 @@ NITRO_RESOURCE_MAP = {
     "nsweblogparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45404,6 +46004,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45434,6 +46035,7 @@ NITRO_RESOURCE_MAP = {
     "ntpparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45474,6 +46076,7 @@ NITRO_RESOURCE_MAP = {
     "ntpserver": {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45535,6 +46138,7 @@ NITRO_RESOURCE_MAP = {
     "ntpsync": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45569,6 +46173,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45647,6 +46252,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45725,6 +46331,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45756,6 +46363,7 @@ NITRO_RESOURCE_MAP = {
     "ping": {
         "_supported_operations": ["Ping"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45794,6 +46402,7 @@ NITRO_RESOURCE_MAP = {
     "ping6": {
         "_supported_operations": ["Ping6"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45843,6 +46452,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45896,6 +46506,7 @@ NITRO_RESOURCE_MAP = {
     "policydataset_value_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45935,6 +46546,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45979,6 +46591,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46075,6 +46688,7 @@ NITRO_RESOURCE_MAP = {
     "policymap": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46107,6 +46721,7 @@ NITRO_RESOURCE_MAP = {
     "policyparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46141,6 +46756,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46189,6 +46805,7 @@ NITRO_RESOURCE_MAP = {
     "policypatset_pattern_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46308,6 +46925,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["charset", "delimiter", "name", "overwrite", "src"],
@@ -46350,6 +46968,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46395,6 +47014,7 @@ NITRO_RESOURCE_MAP = {
     "policystringmap_pattern_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46425,6 +47045,7 @@ NITRO_RESOURCE_MAP = {
     "policytracing": {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46475,6 +47096,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [
@@ -46525,6 +47147,7 @@ NITRO_RESOURCE_MAP = {
     "protocolhttpband": {
         "_supported_operations": ["clear", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46560,6 +47183,7 @@ NITRO_RESOURCE_MAP = {
     "ptp": {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46594,6 +47218,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46628,6 +47253,7 @@ NITRO_RESOURCE_MAP = {
     "quicparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46664,6 +47290,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46785,6 +47412,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46822,6 +47450,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46988,6 +47617,7 @@ NITRO_RESOURCE_MAP = {
     "rdpconnections": {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47025,6 +47655,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47061,6 +47692,7 @@ NITRO_RESOURCE_MAP = {
     "reboot": {
         "_supported_operations": ["Reboot"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47087,6 +47719,7 @@ NITRO_RESOURCE_MAP = {
     "reporting": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47113,6 +47746,7 @@ NITRO_RESOURCE_MAP = {
     "reportingconfig": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47211,6 +47845,7 @@ NITRO_RESOURCE_MAP = {
     "reputationsettings": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47256,6 +47891,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47333,6 +47969,7 @@ NITRO_RESOURCE_MAP = {
     "responderglobal_responderpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47432,6 +48069,7 @@ NITRO_RESOURCE_MAP = {
     "responderhtmlpage": {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["cacertfile", "comment", "name", "overwrite", "src"],
@@ -47464,6 +48102,7 @@ NITRO_RESOURCE_MAP = {
     "responderparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47502,6 +48141,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47576,6 +48216,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47642,6 +48283,7 @@ NITRO_RESOURCE_MAP = {
     "responderpolicylabel_responderpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47704,6 +48346,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47788,6 +48431,7 @@ NITRO_RESOURCE_MAP = {
     "rewriteglobal_rewritepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47893,6 +48537,7 @@ NITRO_RESOURCE_MAP = {
     "rewriteparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47931,6 +48576,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48002,6 +48648,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48076,6 +48723,7 @@ NITRO_RESOURCE_MAP = {
     "rewritepolicylabel_rewritepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48139,6 +48787,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48300,6 +48949,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48367,6 +49017,7 @@ NITRO_RESOURCE_MAP = {
     "rnat6_nsip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48396,6 +49047,7 @@ NITRO_RESOURCE_MAP = {
     "rnat_nsip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48424,6 +49076,7 @@ NITRO_RESOURCE_MAP = {
     "rnat_retainsourceportset_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48452,6 +49105,7 @@ NITRO_RESOURCE_MAP = {
     "rnatglobal_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48481,6 +49135,7 @@ NITRO_RESOURCE_MAP = {
     "rnatparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48518,6 +49173,7 @@ NITRO_RESOURCE_MAP = {
     "rnatsession": {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48557,6 +49213,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48667,6 +49324,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48771,6 +49429,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": ["commandstring"],
             "create": [],
             "force": [],
             "import": [],
@@ -48800,6 +49459,7 @@ NITRO_RESOURCE_MAP = {
     "rsskeytype": {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48861,6 +49521,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48937,6 +49598,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49275,6 +49937,7 @@ NITRO_RESOURCE_MAP = {
     "service_lbmonitor_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49321,6 +49984,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49662,6 +50326,7 @@ NITRO_RESOURCE_MAP = {
     "servicegroup_lbmonitor_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49727,6 +50392,7 @@ NITRO_RESOURCE_MAP = {
     "servicegroup_servicegroupmember_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49789,6 +50455,7 @@ NITRO_RESOURCE_MAP = {
     "shutdown": {
         "_supported_operations": ["Shutdown"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49815,6 +50482,7 @@ NITRO_RESOURCE_MAP = {
     "smppparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49873,6 +50541,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49910,6 +50579,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50132,6 +50802,7 @@ NITRO_RESOURCE_MAP = {
     "snmpcommunity": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50165,6 +50836,7 @@ NITRO_RESOURCE_MAP = {
     "snmpengineid": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50194,6 +50866,7 @@ NITRO_RESOURCE_MAP = {
     "snmpgroup": {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50228,6 +50901,7 @@ NITRO_RESOURCE_MAP = {
     "snmpmanager": {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50258,6 +50932,7 @@ NITRO_RESOURCE_MAP = {
     "snmpmib": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50290,6 +50965,7 @@ NITRO_RESOURCE_MAP = {
     "snmpoption": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50363,6 +51039,7 @@ NITRO_RESOURCE_MAP = {
     "snmptrap": {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50457,6 +51134,7 @@ NITRO_RESOURCE_MAP = {
     "snmptrap_snmpuser_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50519,6 +51197,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50574,6 +51253,7 @@ NITRO_RESOURCE_MAP = {
     "snmpview": {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50615,6 +51295,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50654,6 +51335,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50686,6 +51368,7 @@ NITRO_RESOURCE_MAP = {
     "sslaction": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50855,6 +51538,7 @@ NITRO_RESOURCE_MAP = {
     "sslcacertbundle": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50884,6 +51568,7 @@ NITRO_RESOURCE_MAP = {
     "sslcacertgroup": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50928,6 +51613,7 @@ NITRO_RESOURCE_MAP = {
     "sslcacertgroup_sslcertkey_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50966,6 +51652,7 @@ NITRO_RESOURCE_MAP = {
     "sslcert": {
         "_supported_operations": ["create"],
         "action_payload_keys": {
+            "apply": [],
             "create": [
                 "cacert",
                 "cacertform",
@@ -51049,6 +51736,7 @@ NITRO_RESOURCE_MAP = {
             "get",
         ],
         "action_payload_keys": {
+            "apply": ["name"],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -51078,6 +51766,7 @@ NITRO_RESOURCE_MAP = {
     "sslcertfile": {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -51107,6 +51796,7 @@ NITRO_RESOURCE_MAP = {
     "sslcertificatechain": {
         "_supported_operations": ["add", "count", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51145,6 +51835,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51248,6 +51939,7 @@ NITRO_RESOURCE_MAP = {
     "sslcertkey_sslocspresponder_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51285,6 +51977,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51315,6 +52008,7 @@ NITRO_RESOURCE_MAP = {
     "sslcertreq": {
         "_supported_operations": ["create"],
         "action_payload_keys": {
+            "apply": [],
             "create": [
                 "challengepassword",
                 "commonname",
@@ -51387,6 +52081,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51435,6 +52130,7 @@ NITRO_RESOURCE_MAP = {
     "sslcipher_sslciphersuite_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51486,6 +52182,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [
                 "cacertfile",
                 "cakeyfile",
@@ -51600,6 +52297,7 @@ NITRO_RESOURCE_MAP = {
     "sslcrlfile": {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -51629,6 +52327,7 @@ NITRO_RESOURCE_MAP = {
     "ssldefaultprofile": {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51655,6 +52354,7 @@ NITRO_RESOURCE_MAP = {
     "ssldhfile": {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -51684,6 +52384,7 @@ NITRO_RESOURCE_MAP = {
     "ssldhparam": {
         "_supported_operations": ["create"],
         "action_payload_keys": {
+            "apply": [],
             "create": ["bits", "dhfile", "gen"],
             "force": [],
             "import": [],
@@ -51722,6 +52423,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51804,6 +52506,7 @@ NITRO_RESOURCE_MAP = {
     "sslecdsakey": {
         "_supported_operations": ["create"],
         "action_payload_keys": {
+            "apply": [],
             "create": [
                 "aes256",
                 "curve",
@@ -51848,6 +52551,7 @@ NITRO_RESOURCE_MAP = {
     "sslfips": {
         "_supported_operations": ["change", "get", "reset", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51895,6 +52599,7 @@ NITRO_RESOURCE_MAP = {
             "get-byname",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": ["curve", "exponent", "fipskeyname", "keytype", "modulus"],
             "force": [],
             "import": ["exponent", "fipskeyname", "inform", "iv", "key", "wrapkeyname"],
@@ -51935,6 +52640,7 @@ NITRO_RESOURCE_MAP = {
     "sslfipssimsource": {
         "_supported_operations": ["enable", "init"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51965,6 +52671,7 @@ NITRO_RESOURCE_MAP = {
     "sslfipssimtarget": {
         "_supported_operations": ["enable", "init"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51996,6 +52703,7 @@ NITRO_RESOURCE_MAP = {
     "sslglobal_sslpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52073,6 +52781,7 @@ NITRO_RESOURCE_MAP = {
     "sslhsmkey": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52124,6 +52833,7 @@ NITRO_RESOURCE_MAP = {
     "sslkeyfile": {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["name", "password", "src"],
@@ -52162,6 +52872,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52236,6 +52947,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52333,6 +53045,7 @@ NITRO_RESOURCE_MAP = {
     "sslparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52521,6 +53234,7 @@ NITRO_RESOURCE_MAP = {
     "sslpkcs12": {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52559,6 +53273,7 @@ NITRO_RESOURCE_MAP = {
     "sslpkcs8": {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52598,6 +53313,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52647,6 +53363,7 @@ NITRO_RESOURCE_MAP = {
     "sslpolicylabel": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52696,6 +53413,7 @@ NITRO_RESOURCE_MAP = {
     "sslpolicylabel_sslpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52757,6 +53475,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53278,6 +53997,7 @@ NITRO_RESOURCE_MAP = {
     "sslprofile_ecccurve_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53311,6 +54031,7 @@ NITRO_RESOURCE_MAP = {
     "sslprofile_sslcertkey_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53340,6 +54061,7 @@ NITRO_RESOURCE_MAP = {
     "sslprofile_sslcipher_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53371,6 +54093,7 @@ NITRO_RESOURCE_MAP = {
     "sslprofile_sslciphersuite_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53401,6 +54124,7 @@ NITRO_RESOURCE_MAP = {
     "sslrsakey": {
         "_supported_operations": ["create"],
         "action_payload_keys": {
+            "apply": [],
             "create": [
                 "aes256",
                 "bits",
@@ -53447,6 +54171,7 @@ NITRO_RESOURCE_MAP = {
     "sslservice": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53857,6 +54582,7 @@ NITRO_RESOURCE_MAP = {
     "sslservice_ecccurve_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53889,6 +54615,7 @@ NITRO_RESOURCE_MAP = {
     "sslservice_sslcacertbundle_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53918,6 +54645,7 @@ NITRO_RESOURCE_MAP = {
     "sslservice_sslcertkey_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53975,6 +54703,7 @@ NITRO_RESOURCE_MAP = {
     "sslservice_sslcipher_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54006,6 +54735,7 @@ NITRO_RESOURCE_MAP = {
     "sslservice_sslciphersuite_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54036,6 +54766,7 @@ NITRO_RESOURCE_MAP = {
     "sslservice_sslpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54089,6 +54820,7 @@ NITRO_RESOURCE_MAP = {
     "sslservicegroup": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54293,6 +55025,7 @@ NITRO_RESOURCE_MAP = {
     "sslservicegroup_ecccurve_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54325,6 +55058,7 @@ NITRO_RESOURCE_MAP = {
     "sslservicegroup_sslcacertbundle_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54353,6 +55087,7 @@ NITRO_RESOURCE_MAP = {
     "sslservicegroup_sslcertkey_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54407,6 +55142,7 @@ NITRO_RESOURCE_MAP = {
     "sslservicegroup_sslcipher_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54437,6 +55173,7 @@ NITRO_RESOURCE_MAP = {
     "sslservicegroup_sslciphersuite_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54466,6 +55203,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver": {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54977,6 +55715,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver_ecccurve_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55009,6 +55748,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver_sslcacertbundle_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55038,6 +55778,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver_sslcertkey_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55095,6 +55836,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver_sslcertkeybundle_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55124,6 +55866,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver_sslcipher_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55154,6 +55897,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver_sslciphersuite_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55183,6 +55927,7 @@ NITRO_RESOURCE_MAP = {
     "sslvserver_sslpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55243,6 +55988,7 @@ NITRO_RESOURCE_MAP = {
     "sslwrapkey": {
         "_supported_operations": ["count", "create", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": ["password", "salt", "wrapkeyname"],
             "force": [],
             "import": [],
@@ -55281,6 +56027,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55418,6 +56165,7 @@ NITRO_RESOURCE_MAP = {
     "streamidentifier_analyticsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55453,6 +56201,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55482,6 +56231,7 @@ NITRO_RESOURCE_MAP = {
     "streamsession": {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55508,6 +56258,7 @@ NITRO_RESOURCE_MAP = {
     "subscribergxinterface": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55595,6 +56346,7 @@ NITRO_RESOURCE_MAP = {
     "subscriberparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55645,6 +56397,7 @@ NITRO_RESOURCE_MAP = {
     "subscriberprofile": {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55696,6 +56449,7 @@ NITRO_RESOURCE_MAP = {
     "subscriberradiusinterface": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55729,6 +56483,7 @@ NITRO_RESOURCE_MAP = {
     "subscribersessions": {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55759,6 +56514,7 @@ NITRO_RESOURCE_MAP = {
     "systemadmuserinfo": {
         "_supported_operations": ["update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55785,6 +56541,7 @@ NITRO_RESOURCE_MAP = {
     "systemautorestorefeature": {
         "_supported_operations": ["disable", "enable"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55819,6 +56576,7 @@ NITRO_RESOURCE_MAP = {
             "restore",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [
                 "comment",
                 "filename",
@@ -55865,6 +56623,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55895,6 +56654,7 @@ NITRO_RESOURCE_MAP = {
     "systemcollectionparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55925,6 +56685,7 @@ NITRO_RESOURCE_MAP = {
     "systemcpuparam": {
         "_supported_operations": ["count", "get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55957,6 +56718,7 @@ NITRO_RESOURCE_MAP = {
     "systementitydata": {
         "_supported_operations": ["delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56016,6 +56778,7 @@ NITRO_RESOURCE_MAP = {
     "systemextramgmtcpu": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56042,6 +56805,7 @@ NITRO_RESOURCE_MAP = {
     "systemfile": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56073,6 +56837,7 @@ NITRO_RESOURCE_MAP = {
     "systemglobal_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56204,6 +56969,7 @@ NITRO_RESOURCE_MAP = {
     "systemglobal_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56335,6 +57101,7 @@ NITRO_RESOURCE_MAP = {
     "systemglobal_authenticationldappolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56466,6 +57233,7 @@ NITRO_RESOURCE_MAP = {
     "systemglobal_authenticationlocalpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56597,6 +57365,7 @@ NITRO_RESOURCE_MAP = {
     "systemglobal_authenticationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56728,6 +57497,7 @@ NITRO_RESOURCE_MAP = {
     "systemglobal_authenticationradiuspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56859,6 +57629,7 @@ NITRO_RESOURCE_MAP = {
     "systemglobal_authenticationtacacspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56998,6 +57769,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57101,6 +57873,7 @@ NITRO_RESOURCE_MAP = {
     "systemgroup_nspartition_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57129,6 +57902,7 @@ NITRO_RESOURCE_MAP = {
     "systemgroup_systemcmdpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57158,6 +57932,7 @@ NITRO_RESOURCE_MAP = {
     "systemgroup_systemuser_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57186,6 +57961,7 @@ NITRO_RESOURCE_MAP = {
     "systemhwerror": {
         "_supported_operations": ["check"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57212,6 +57988,7 @@ NITRO_RESOURCE_MAP = {
     "systemkek": {
         "_supported_operations": ["change"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57240,6 +58017,7 @@ NITRO_RESOURCE_MAP = {
     "systemlevelreporting": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57266,6 +58044,7 @@ NITRO_RESOURCE_MAP = {
     "systemnsbtracing": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57292,6 +58071,7 @@ NITRO_RESOURCE_MAP = {
     "systemparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57445,6 +58225,7 @@ NITRO_RESOURCE_MAP = {
     "systemrestorepoint": {
         "_supported_operations": ["count", "create", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": ["filename"],
             "force": [],
             "import": [],
@@ -57471,6 +58252,7 @@ NITRO_RESOURCE_MAP = {
     "systemsession": {
         "_supported_operations": ["count", "get", "get-byname", "kill"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57500,6 +58282,7 @@ NITRO_RESOURCE_MAP = {
     "systemsignedexereport": {
         "_supported_operations": ["disable", "enable"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57526,6 +58309,7 @@ NITRO_RESOURCE_MAP = {
     "systemsshkey": {
         "_supported_operations": ["Import", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": ["name", "src", "sshkeytype"],
@@ -57568,6 +58352,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57677,6 +58462,7 @@ NITRO_RESOURCE_MAP = {
     "systemuser_nspartition_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57705,6 +58491,7 @@ NITRO_RESOURCE_MAP = {
     "systemuser_systemcmdpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57742,6 +58529,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57812,6 +58600,7 @@ NITRO_RESOURCE_MAP = {
     "tmglobal_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57841,6 +58630,7 @@ NITRO_RESOURCE_MAP = {
     "tmglobal_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57870,6 +58660,7 @@ NITRO_RESOURCE_MAP = {
     "tmglobal_tmsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57979,6 +58770,7 @@ NITRO_RESOURCE_MAP = {
     "tmglobal_tmtrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58037,6 +58829,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58475,6 +59268,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58565,6 +59359,7 @@ NITRO_RESOURCE_MAP = {
     "tmsessionparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58648,6 +59443,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58686,6 +59482,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58778,6 +59575,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58808,6 +59606,7 @@ NITRO_RESOURCE_MAP = {
     "traceroute": {
         "_supported_operations": ["Traceroute"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58850,6 +59649,7 @@ NITRO_RESOURCE_MAP = {
     "traceroute6": {
         "_supported_operations": ["Traceroute6"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58897,6 +59697,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58953,6 +59754,7 @@ NITRO_RESOURCE_MAP = {
     "transformglobal_transformpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59035,6 +59837,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59091,6 +59894,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59141,6 +59945,7 @@ NITRO_RESOURCE_MAP = {
     "transformpolicylabel_transformpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59202,6 +60007,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59237,6 +60043,7 @@ NITRO_RESOURCE_MAP = {
     "tunnelglobal_tunneltrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59381,6 +60188,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59414,6 +60222,7 @@ NITRO_RESOURCE_MAP = {
     "ulfdserver": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59440,6 +60249,7 @@ NITRO_RESOURCE_MAP = {
     "urlfilteringcategorization": {
         "_supported_operations": ["add", "clear", "count", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59466,6 +60276,7 @@ NITRO_RESOURCE_MAP = {
     "urlfilteringparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59518,6 +60329,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59559,6 +60371,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59611,6 +60424,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59661,6 +60475,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59734,6 +60549,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59787,6 +60603,7 @@ NITRO_RESOURCE_MAP = {
     "videooptimizationglobalpacing_videooptimizationpacingpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59869,6 +60686,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59909,6 +60727,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59982,6 +60801,7 @@ NITRO_RESOURCE_MAP = {
             "rename",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60035,6 +60855,7 @@ NITRO_RESOURCE_MAP = {
     "videooptimizationparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60072,6 +60893,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60224,6 +61046,7 @@ NITRO_RESOURCE_MAP = {
     "vlan_channel_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60254,6 +61077,7 @@ NITRO_RESOURCE_MAP = {
     "vlan_interface_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60284,6 +61108,7 @@ NITRO_RESOURCE_MAP = {
     "vlan_linkset_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60314,6 +61139,7 @@ NITRO_RESOURCE_MAP = {
     "vlan_nsip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60345,6 +61171,7 @@ NITRO_RESOURCE_MAP = {
     "vlan_nsip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60384,6 +61211,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60449,6 +61277,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60487,6 +61316,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60556,6 +61386,7 @@ NITRO_RESOURCE_MAP = {
     "vpnepaprofile": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60586,6 +61417,7 @@ NITRO_RESOURCE_MAP = {
     "vpneula": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60620,6 +61452,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60690,6 +61523,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_appcontroller_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60718,6 +61552,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_appfwpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60761,6 +61596,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60804,6 +61640,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60847,6 +61684,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationcertpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60890,6 +61728,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationldappolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60933,6 +61772,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationlocalpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60976,6 +61816,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationnegotiatepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61019,6 +61860,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61062,6 +61904,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationradiuspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61105,6 +61948,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationsamlpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61148,6 +61992,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_authenticationtacacspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61191,6 +62036,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_domain_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61219,6 +62065,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_intranetip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61248,6 +62095,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_intranetip_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61277,6 +62125,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_secureprivateaccessurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61305,6 +62154,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_sharefileserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61333,6 +62183,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_sslcertkey_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61387,6 +62238,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_staserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61420,6 +62272,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpnclientlessaccesspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61564,6 +62417,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpneula_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61592,6 +62446,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpnintranetapplication_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61620,6 +62475,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpnnexthopserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61648,6 +62504,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpnportaltheme_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61676,6 +62533,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpnsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61799,6 +62657,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpntrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61842,6 +62701,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpnurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61870,6 +62730,7 @@ NITRO_RESOURCE_MAP = {
     "vpnglobal_vpnurlpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61919,6 +62780,7 @@ NITRO_RESOURCE_MAP = {
     "vpnicaconnection": {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61950,6 +62812,7 @@ NITRO_RESOURCE_MAP = {
     "vpnintranetapplication": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62023,6 +62886,7 @@ NITRO_RESOURCE_MAP = {
     "vpnnexthopserver": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62074,6 +62938,7 @@ NITRO_RESOURCE_MAP = {
     "vpnparameter": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62537,6 +63402,7 @@ NITRO_RESOURCE_MAP = {
     "vpnpcoipconnection": {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62575,6 +63441,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62628,6 +63495,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62658,6 +63526,7 @@ NITRO_RESOURCE_MAP = {
     "vpnportaltheme": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62699,6 +63568,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63141,6 +64011,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63618,6 +64489,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63656,6 +64528,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63738,6 +64611,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63776,6 +64650,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63869,6 +64744,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63959,6 +64835,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64004,6 +64881,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64982,6 +65860,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_aaapreauthenticationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65042,6 +65921,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_analyticsprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65070,6 +65950,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_appcontroller_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65098,6 +65979,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_appflowpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65158,6 +66040,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_appfwpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65218,6 +66101,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_auditnslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65278,6 +66162,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_auditsyslogpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65338,6 +66223,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationcertpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65398,6 +66284,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationdfapolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65458,6 +66345,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationldappolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65518,6 +66406,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationlocalpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65578,6 +66467,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationloginschemapolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65638,6 +66528,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationnegotiatepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65698,6 +66589,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationoauthidppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65758,6 +66650,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65818,6 +66711,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationradiuspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65878,6 +66772,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationsamlidppolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65938,6 +66833,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationsamlpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65998,6 +66894,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationtacacspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66058,6 +66955,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_authenticationwebauthpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66118,6 +67016,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_cachepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66178,6 +67077,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_cspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66238,6 +67138,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_feopolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66298,6 +67199,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_icapolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66358,6 +67260,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_intranetip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66387,6 +67290,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_intranetip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66416,6 +67320,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_responderpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66476,6 +67381,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_rewritepolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66536,6 +67442,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_secureprivateaccessurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66564,6 +67471,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_sharefileserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66592,6 +67500,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_staserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66625,6 +67534,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnclientlessaccesspolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66685,6 +67595,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnepaprofile_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66714,6 +67625,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpneula_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66742,6 +67654,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnintranetapplication_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66770,6 +67683,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnnexthopserver_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66798,6 +67712,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnportaltheme_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66826,6 +67741,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnsessionpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66886,6 +67802,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpntrafficpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66946,6 +67863,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnurl_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66974,6 +67892,7 @@ NITRO_RESOURCE_MAP = {
     "vpnvserver_vpnurlpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67042,6 +67961,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67228,6 +68148,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67355,6 +68276,7 @@ NITRO_RESOURCE_MAP = {
     "vrid6_channel_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67383,6 +68305,7 @@ NITRO_RESOURCE_MAP = {
     "vrid6_interface_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67411,6 +68334,7 @@ NITRO_RESOURCE_MAP = {
     "vrid6_trackinterface_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67439,6 +68363,7 @@ NITRO_RESOURCE_MAP = {
     "vrid_channel_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67467,6 +68392,7 @@ NITRO_RESOURCE_MAP = {
     "vrid_interface_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67495,6 +68421,7 @@ NITRO_RESOURCE_MAP = {
     "vrid_trackinterface_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67523,6 +68450,7 @@ NITRO_RESOURCE_MAP = {
     "vridparam": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67557,6 +68485,7 @@ NITRO_RESOURCE_MAP = {
     "vserver": {
         "_supported_operations": ["delete", "disable", "enable", "update"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67616,6 +68545,7 @@ NITRO_RESOURCE_MAP = {
             "update",
         ],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67759,6 +68689,7 @@ NITRO_RESOURCE_MAP = {
     "vxlan_nsip6_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67788,6 +68719,7 @@ NITRO_RESOURCE_MAP = {
     "vxlan_nsip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67817,6 +68749,7 @@ NITRO_RESOURCE_MAP = {
     "vxlan_srcip_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67845,6 +68778,7 @@ NITRO_RESOURCE_MAP = {
     "vxlanvlanmap": {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68064,6 +68998,7 @@ NITRO_RESOURCE_MAP = {
     "vxlanvlanmap_vxlan_binding": {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
+            "apply": [],
             "create": [],
             "force": [],
             "import": [],
