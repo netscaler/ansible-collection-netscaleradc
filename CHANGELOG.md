@@ -7,9 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.9.0] - 2025-05-13
+
+### Added
+
+- Supported operation `apply`
+- Supported operation `rename`
+- Supported operation `install`([#487])
+
+### Fixed
+
+- Allowing system file to update contents([#496])
+
 ## [2.8.0] - 2025-02-18
 
 ### Added
+
 - Supported enable/disable for GSLB service operations([#452])
 
 ### Fixed
@@ -150,8 +163,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial Release
-
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.8.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.0...HEAD
+[2.9.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.8.0...2.9.0
 [2.8.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.0...2.8.0
 [2.7.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.2...2.7.0
 [2.6.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.1...2.6.2
