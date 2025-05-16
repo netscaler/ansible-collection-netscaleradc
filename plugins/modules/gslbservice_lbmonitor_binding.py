@@ -40,6 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   monitor_name:
     type: str
     description:
@@ -75,8 +83,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbservice_lbmonitor_binding:
         state: present
-        servicename: GSLB_SVC_USE1_storefront.blackstone.com
-        monitor_name: tcp
+        servicename: gslbService1
+        monitor_name: http
+        weight: '34'
 """
 
 RETURN = r"""

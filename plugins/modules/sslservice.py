@@ -38,6 +38,14 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   cipherredirect:
     type: str
     choices:
@@ -619,8 +627,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslservice:
         state: present
-        servicename: nsrpcs-127.0.0.1-3008
-        sslprofile: ns_default_ssl_profile_frontend
+        servicename: local-150
+        tls11: DISABLED
+        tls12: DISABLED
 """
 
 RETURN = r"""

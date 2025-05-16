@@ -40,6 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   builtin:
     type: list
     choices:
@@ -76,7 +84,7 @@ EXAMPLES = r"""
 ---
 - name: Sample auditnslogglobal_auditnslogpolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure auditnslogglobal_auditnslogpolicy_binding
       delegate_to: localhost

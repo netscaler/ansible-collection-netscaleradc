@@ -38,6 +38,14 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   aaausername:
     type: str
     choices:
@@ -405,15 +413,12 @@ EXAMPLES = r"""
         state: present
         templaterefresh: 3600
         httpurl: ENABLED
+        httpcookie: ENABLED
+        httpreferer: ENABLED
         httpmethod: ENABLED
         httphost: ENABLED
         httpuseragent: ENABLED
         httpcontenttype: ENABLED
-        cacheinsight: ENABLED
-        httpquerywithurl: ENABLED
-        metrics: ENABLED
-        events: ENABLED
-        observationpointid: '843103498'
 """
 
 RETURN = r"""

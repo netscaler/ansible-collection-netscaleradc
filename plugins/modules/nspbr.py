@@ -44,6 +44,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   interface:
     type: str
     description:
@@ -405,18 +413,17 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nspbr:
         state: present
-        name: mgmt_pbr
+        name: ia_pbr9
         action: ALLOW
-        srcip: true
-        srcipop: '='
-        srcipval: 10.189.64.50
-        destip: true
-        destipop: '!='
-        destipval: 10.189.64.1-10.189.64.254
         nexthop: true
-        nexthopval: 10.189.64.1
-        priority: '10'
-        kernelstate: SFAPPLIED61
+        nexthopval: 4.4.4.242
+        srcmac: 00:aa:10:12:13:ef
+        protocol: ICMP
+        vlan: '23'
+        Interface: 1/1
+        priority: '23'
+        msr: ENABLED
+        monitor: ia_mon1
 """
 
 RETURN = r"""

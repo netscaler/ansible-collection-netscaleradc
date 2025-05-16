@@ -40,6 +40,14 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   aliasname:
     type: str
     description:
@@ -223,7 +231,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vlan:
         state: present
-        vlanid: '10'
+        vlanid: '26'
 """
 
 RETURN = r"""

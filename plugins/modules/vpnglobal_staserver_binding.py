@@ -40,6 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   gotopriorityexpression:
     type: str
     description:
@@ -71,7 +79,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnglobal_staserver_binding:
         state: present
-        staserver: https://use1bxctxcca03.blackstone.com
+        staserver: https://10.102.39.145
 """
 
 RETURN = r"""

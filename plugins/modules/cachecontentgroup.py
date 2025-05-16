@@ -42,6 +42,14 @@ options:
       - When C(flushed), the resource will be flushed on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   absexpiry:
     type: list
     description:
@@ -339,8 +347,29 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.cachecontentgroup:
         state: present
-        name: NSFEO
-        maxressize: 1994752
+        name: n_XM_WO_DEVICEID_10.100.39.132
+        relexpiry: 60
+        polleverytime: 'NO'
+        ignorereloadreq: 'YES'
+        removecookies: 'YES'
+        prefetch: 'YES'
+        flashcache: 'NO'
+        expireatlastbyte: 'NO'
+        insertvia: 'YES'
+        insertage: 'YES'
+        insertetag: 'YES'
+        quickabortsize: 4194303
+        minressize: 0
+        maxressize: 80
+        memlimit: 65536
+        ignorereqcachinghdrs: 'YES'
+        minhits: 0
+        alwaysevalpolicies: 'NO'
+        persistha: 'NO'
+        pinned: 'NO'
+        lazydnsresolve: 'YES'
+        hitselector: n_XM_URL_10.100.39.132
+        type: HTTP
 """
 
 RETURN = r"""

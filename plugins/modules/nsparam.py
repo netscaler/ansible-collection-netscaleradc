@@ -38,6 +38,14 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   advancedanalyticsstats:
     type: str
     choices:
@@ -238,7 +246,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nsparam:
         state: present
-        cookieversion: '1'
+        proxyprotocol: DISABLED
 """
 
 RETURN = r"""

@@ -42,6 +42,14 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   logging:
     type: str
     choices:
@@ -271,8 +279,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.snmpalarm:
         state: present
-        trapname: SYSLOG-CONNECTION-DROPPED
-        time: 0
+        trapname: VSERVER-SPILLOVER
 """
 
 RETURN = r"""

@@ -46,6 +46,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
       - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   accessrestrictedpageredirect:
     type: str
     choices:
@@ -1426,12 +1434,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnvserver:
         state: present
-        name: CitrixAccessCallback
-        servicetype: SSL
-        ipv46: 10.189.130.19
-        port: 443
-        downstateflush: DISABLED
-        listenpolicy: NONE
+        name: test
+        logoutonsmartcardremoval: 'OFF'
 """
 
 RETURN = r"""

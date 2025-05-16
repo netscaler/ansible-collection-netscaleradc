@@ -42,6 +42,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
       - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   ipaddress:
     type: str
     description:
@@ -101,10 +109,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.appflowcollector:
         state: present
-        name: af_collector_logstream_10.189.64.10
-        ipaddress: 10.189.64.10
-        port: 5557
-        transport: logstream
+        name: af_collector_10.102.233.21
+        ipaddress: 10.102.233.21
 """
 
 RETURN = r"""

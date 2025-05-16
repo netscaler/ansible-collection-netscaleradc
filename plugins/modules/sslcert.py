@@ -35,6 +35,14 @@ options:
         ADC node.
       - When C(created), the `create` operation will be applied on the resource.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   cacert:
     type: str
     description:

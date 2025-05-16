@@ -46,6 +46,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
       - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
+  consider_non_updatable_arguments:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - Whether to consider non-updatable arguments in the resource.
+    type: str
   adfsproxyprofile:
     type: str
     description:
@@ -1570,12 +1578,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.lbvserver:
         state: present
-        name: lb_dns_01
-        servicetype: DNS
-        ipv46: 169.254.100.2
-        port: 53
-        persistencetype: NONE
-        clttimeout: 120
+        name: lb4
+        servicetype: SSL
 """
 
 RETURN = r"""
