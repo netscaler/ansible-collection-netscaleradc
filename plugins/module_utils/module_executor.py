@@ -44,6 +44,13 @@ from .logger import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 
+skippable_resource_list = [
+    # In some cases, although keys are listed as immutable in the nitro_resource_map, they can actually be updated.
+    # This list helps bypass the immutability check for these resources.
+    "sytemfile"
+]
+
+
 class ModuleExecutor(object):
     def __init__(self, resource_name, supports_check_mode=True):
         self.resource_name = resource_name
@@ -366,6 +373,14 @@ class ModuleExecutor(object):
         return (False, None) if diff_list else (True, None)
 
     @trace
+    def install(self):
+        ok, err = create_resource(
+            self.client, self.resource_name, self.resource_module_params
+        )
+        if not ok:
+            self.return_failure(err)
+
+    @trace
     def create_or_update(self):
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
@@ -467,7 +482,7 @@ class ModuleExecutor(object):
                         self.client, self.resource_name, self.resource_module_params
                     )
 
-                elif immutable_keys_list is None:
+                elif immutable_keys_list is None or self.resource_name in skippable_resource_list:
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
@@ -981,12 +996,16 @@ class ModuleExecutor(object):
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
+            elif self.resource_name == "install" and self.module.params["state"] == "installed":
+                self.install()
+
             elif self.module.params["state"] in {
                 "created",
                 "imported",
                 "flushed",
                 "switched",
                 "unset",
+                "renamed",
                 "applied",
             }:
                 state_action_map = {
@@ -995,6 +1014,7 @@ class ModuleExecutor(object):
                     "flushed": "flush",
                     "switched": "switch",
                     "unset": "unset",
+                    "renamed": "rename",
                     "applied": "apply",
                 }
                 self.act_on_resource(
