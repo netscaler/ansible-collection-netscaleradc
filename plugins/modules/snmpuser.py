@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -44,7 +44,7 @@ options:
     type: str
     description:
       - Plain-text pass phrase to be used by the authentication algorithm specified
-        by the authType (Authentication Type) parameter. Can consist of 1 to 31 characters
+        by the authType (Authentication Type) parameter. Can consist of 8 to 63 characters
         that include uppercase and lowercase letters, numbers, and the hyphen (-),
         period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore
         (_) characters.
@@ -83,7 +83,7 @@ options:
     type: str
     description:
       - Encryption key to be used by the encryption algorithm specified by the privType
-        (Encryption Type) parameter. Can consist of 1 to 31 characters that include
+        (Encryption Type) parameter. Can consist of 8 to 63 characters that include
         uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound
         (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.
       - ''

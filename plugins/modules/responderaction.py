@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -98,7 +98,7 @@ options:
         phrase may be a string literal with quotes or a PI expression. For example:
         "Invalid URL: " + HTTP.REQ.URL'
   responsestatuscode:
-    type: float
+    type: int
     description:
       - HTTP response status code, for example 200, 302, 404, etc. The default value
         for the redirect action type is 302 and for respondwithhtmlpage is 200

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -56,7 +56,7 @@ options:
       - By default , arp is enabled on LSN IP address but, you can disable it using
         command - "set ns ip"
   ownernode:
-    type: float
+    type: int
     description:
       - ID(s) of cluster node(s) on which command is to be executed
   poolname:

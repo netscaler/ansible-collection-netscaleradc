@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -51,7 +51,7 @@ options:
       - Hostname of the authentication vserver to which user must be redirected for
         authentication.
   authenticationlevel:
-    type: float
+    type: int
     description:
       - Authentication weight or level of the vserver to which this will bound. This
         is used to order TM vservers based on the protection required. A session that
@@ -83,8 +83,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationauthnprofile:
         state: present
-        name: citrixgw_auth_profile
-        authnvsname: Citrix_AAA_vServer
+        name: authProf
+        authnvsname: authVserver
 """
 
 RETURN = r"""

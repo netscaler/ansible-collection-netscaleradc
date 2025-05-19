@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -72,7 +72,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.snmpcommunity:
         state: present
-        communityname: HP5U7#mmTW2&Yi48
+        communityname: ia_snmpcom1
         permissions: ALL
 """
 

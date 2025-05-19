@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   datasessionidletimeout:
-    type: float
+    type: int
     description:
       - Idle timeout for the data channel sessions in seconds.
   opencontactpinhole:
@@ -80,7 +80,7 @@ options:
     description:
       - ENABLE/DISABLE ViaPinhole creation.
   registrationtimeout:
-    type: float
+    type: int
     description:
       - SIP registration timeout in seconds.
   rport:
@@ -99,7 +99,7 @@ options:
     description:
       - Destination port range for SIP_UDP and SIP_TCP.
   sipsessiontimeout:
-    type: float
+    type: int
     description:
       - SIP control channel session timeout in seconds.
   sipsrcportrange:

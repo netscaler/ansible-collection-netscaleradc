@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -50,7 +50,7 @@ options:
       - The vlan id or the range of vlan ids in the on-premise network.
     elements: str
   vxlan:
-    type: float
+    type: int
     description:
       - The VXLAN assigned to the vlan inside the cloud.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

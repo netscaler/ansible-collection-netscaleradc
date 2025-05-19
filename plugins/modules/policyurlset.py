@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -58,12 +58,12 @@ options:
     description:
       - when set, display shows all imported urlsets.
   interval:
-    type: float
+    type: int
     description:
       - The interval, in seconds, rounded down to the nearest 15 minutes, at which
         the update of urlset occurs.
   matchedid:
-    type: float
+    type: int
     description:
       - An ID that would be sent to AppFlow to indicate which URLSet was the last
         one that matched the requested URL.

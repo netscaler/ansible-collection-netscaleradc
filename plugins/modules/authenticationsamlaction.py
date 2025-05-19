@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -142,7 +142,7 @@ options:
         and stored as attribute9. Maximum length of the extracted attribute is 239
         bytes.
   attributeconsumingserviceindex:
-    type: float
+    type: int
     description:
       - Index/ID of the attribute specification at Identity Provider (IdP). IdP will
         locate attributes requested by SP using this index and send those attributes
@@ -308,7 +308,7 @@ options:
       - SingleLogout URL on IdP to which logoutRequest will be sent on Citrix ADC
         session cleanup.
   metadatarefreshinterval:
-    type: float
+    type: int
     description:
       - Interval in minutes for fetching metadata from specified metadata URL
   metadataurl:
@@ -359,7 +359,7 @@ options:
       - This element specifies the authentication context requirements of authentication
         statements returned in the response.
   samlacsindex:
-    type: float
+    type: int
     description:
       - Index/ID of the metadata entry corresponding to this configuration.
   samlbinding:
@@ -425,7 +425,7 @@ options:
     description:
       - Algorithm to be used to sign/verify SAML transactions
   skewtime:
-    type: float
+    type: int
     description:
       - This option specifies the allowed clock skew in number of minutes that Citrix
         ADC ServiceProvider allows on an incoming assertion. For example, if skewTime
@@ -459,14 +459,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationsamlaction:
         state: present
-        name: prod_okta
-        samlidpcertname: okta_cert
-        samlsigningcertname: portal.bx.com
-        samlredirecturl: https://login.bx.com/app/citrixnetscalergateway_saml/exk5wlx791ZWQVGXR4x7/sso/saml
-        samluserfield: NameID
-        samlissuername: http://www.okta.com/exk5wlx791ZWQVGXR4x7
-        relaystaterule: AAA.LOGIN.RELAYSTATE.CONTAINS_ANY("prod_patset")
-        logouturl: https://login.bx.com/login/signout
+        name: samlsp
+        logouturl: http://logouturl
+        logoutbinding: REDIRECT
 """
 
 RETURN = r"""

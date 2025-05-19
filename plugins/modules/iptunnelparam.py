@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -47,7 +47,7 @@ options:
       - Drop any IP packet that requires fragmentation before it is sent through the
         tunnel.
   dropfragcputhreshold:
-    type: float
+    type: int
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation to use the IP tunnel. Applies only if dropFragparameter

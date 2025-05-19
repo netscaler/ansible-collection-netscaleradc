@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -77,7 +77,7 @@ options:
     description:
       - The name of the policy, if any, bound to the authentication vserver.
   priority:
-    type: float
+    type: int
     description:
       - The priority, if any, of the vpn vserver policy.
   secondary:
@@ -99,11 +99,10 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationvserver_authenticationpolicy_binding:
         state: present
-        name: Citrix_AAA_vServer
-        policy: OKta_SAML_External
-        priority: '500'
-        nextfactor: LDAP_Userextraction_External
-        gotopriorityexpression: NEXT
+        name: authVserver
+        policy: EPA_POL1
+        priority: '1'
+        nextfactor: RadFact
 """
 
 RETURN = r"""

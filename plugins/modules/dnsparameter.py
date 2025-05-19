@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -89,7 +89,7 @@ options:
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
   dns64timeout:
-    type: float
+    type: int
     description:
       - While doing DNS64 resolution, this parameter specifies the time to wait before
         sending an A query if no response is received from backend DNS server for
@@ -118,7 +118,7 @@ options:
         Redirection for name resolution) do not support the DNSSEC OK (DO) bit in
         the EDNS0 OPT header.'
   ecsmaxsubnets:
-    type: float
+    type: int
     description:
       - Maximum number of subnets that can be cached corresponding to a single domain.
         Subnet caching will occur for responses with EDNS Client Subnet (ECS) option.
@@ -126,17 +126,17 @@ options:
         of zero indicates that the number of subnets cached is limited only by existing
         memory constraints. The default value is zero.
   maxcachesize:
-    type: float
+    type: int
     description:
       - Maximum memory, in megabytes, that can be used for dns caching per Packet
         Engine.
   maxnegativecachesize:
-    type: float
+    type: int
     description:
       - Maximum memory, in megabytes, that can be used for caching of negative DNS
         responses per packet engine.
   maxnegcachettl:
-    type: float
+    type: int
     description:
       - Maximum time to live (TTL) for all negative records ( NXDONAIN and NODATA
         ) cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations.
@@ -146,14 +146,14 @@ options:
         to those records that are cached after the modification. The TTL values of
         existing records are not changed.
   maxpipeline:
-    type: float
+    type: int
     description:
       - Maximum number of concurrent DNS requests to allow on a single client connection,
         which is identified by the <clientip:port>-<vserver ip:port> tuple. A value
         of 0 (zero) applies no limit to the number of concurrent DNS requests allowed
         on a single client connection.
   maxttl:
-    type: float
+    type: int
     description:
       - Maximum time to live (TTL) for all records cached in the DNS cache by DNS
         proxy, end resolver, and forwarder configurations. If the TTL of a record
@@ -162,7 +162,7 @@ options:
         this setting, the new value is applied only to those records that are cached
         after the modification. The TTL values of existing records are not changed.
   maxudppacketsize:
-    type: float
+    type: int
     description:
       - Maximum UDP packet size that can be handled by Citrix ADC. This is the value
         advertised by Citrix ADC when responding as an authoritative server and it
@@ -171,7 +171,7 @@ options:
         a request contains a size greater than this value in the OPT record, it will
         be replaced.
   minttl:
-    type: float
+    type: int
     description:
       - Minimum permissible time to live (TTL) for all records cached in the DNS cache
         by DNS proxy, end resolver, and forwarder configurations. If the TTL of a
@@ -190,7 +190,7 @@ options:
         lookup fails, the second-priority lookup is attempted. Used only by the SSL
         VPN feature.
   nxdomainratelimitthreshold:
-    type: float
+    type: int
     description:
       - Rate limit threshold for Non-Existant domain (NXDOMAIN) responses generated
         from Citrix ADC. Once the threshold is breached , DNS queries leading to NXDOMAIN
@@ -231,8 +231,21 @@ options:
       - '* C(AAAAThenAQuery). Send a query for an AAAA record, and then send a query
         for an A record if the query for the AAAA record results in a NODATA response
         from the name server.'
+  resolvermaxactiveresolutions:
+    type: int
+    description:
+      - Maximum number of active concurrent DNS resolutions per Packet Engine
+  resolvermaxtcpconnections:
+    type: int
+    description:
+      - Maximum DNS-TCP connections opened for recursive resolution per Packet Engine
+  resolvermaxtcptimeout:
+    type: int
+    description:
+      - Maximum wait time in seconds for the response on DNS-TCP connection for recursive
+        resolution per Packet Engine
   retries:
-    type: float
+    type: int
     description:
       - Maximum number of retry attempts when no response is received for a query
         sent to a name server. Applies to end resolver and forwarder configurations.
@@ -259,7 +272,7 @@ EXAMPLES = r"""
 ---
 - name: Sample dnsparameter playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure dnsparameter
       delegate_to: localhost

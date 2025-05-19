@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -46,7 +46,7 @@ options:
         : (colon) # and space ( ). Note: In a cluster setup, the FIS name on each
         node must be unique.'
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are creating the FIS. Can be configured
         only through the cluster IP address.

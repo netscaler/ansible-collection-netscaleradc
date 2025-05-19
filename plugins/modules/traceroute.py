@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -34,7 +34,7 @@ options:
         ADC node.
     type: str
   M:
-    type: float
+    type: int
     description:
       - Minimum TTL value used in outgoing probe packets.
   P:
@@ -47,7 +47,7 @@ options:
     description:
       - Print a summary of how many probes were not answered for each hop.
   T:
-    type: float
+    type: int
     description:
       - Traffic Domain Id
   host:

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -114,7 +114,6 @@ options:
       - WARNING
       - NOTICE
       - INFORMATIONAL
-      - DEBUG
       - NONE
     description:
       - Types of information to be logged.
@@ -127,7 +126,6 @@ options:
       - '* C(WARNING) - Events that require action in the near future.'
       - '* C(NOTICE) - Events that the administrator should know about.'
       - '* C(INFORMATIONAL) - All but low-level events.'
-      - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
     elements: str
   lsn:
@@ -137,6 +135,13 @@ options:
       - DISABLED
     description:
       - Log the LSN messages
+  protocolviolations:
+    type: str
+    choices:
+      - ALL
+      - NONE
+    description:
+      - Log protocol violations
   serverip:
     type: str
     description:
@@ -215,11 +220,7 @@ EXAMPLES = r"""
       netscaler.adc.auditsyslogparams:
         state: present
         loglevel:
-          - EMERGENCY
-          - ALERT
-          - CRITICAL
-          - ERROR
-          - WARNING
+          - ALL
 """
 
 RETURN = r"""

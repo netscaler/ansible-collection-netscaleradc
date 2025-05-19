@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -53,7 +53,7 @@ options:
     description:
       - name of the HTML page object to use as the response
   delay:
-    type: float
+    type: int
     description:
       - Delay threshold, in microseconds, for requests that match the policy's rule.
         If the delay statistics gathered for the matching request exceed the specified
@@ -73,7 +73,7 @@ options:
       - Optional expression to add second level check to trigger DoS actions. Specifically
         used for Analytics based DoS response generation
   maxconn:
-    type: float
+    type: int
     description:
       - Maximum number of concurrent connections that can be open for requests that
         matches with rule.
@@ -85,11 +85,11 @@ options:
         (-), period (.) hash (#), space ( ), at (@), equals (=), and colon (:) characters.
         This is a mandatory argument
   numretries:
-    type: float
+    type: int
     description:
       - Retry count
   polqdepth:
-    type: float
+    type: int
     description:
       - Policy queue depth threshold value. When the policy queue size (number of
         requests queued for the policy binding this action is attached to) increases
@@ -109,7 +109,7 @@ options:
         priority is not configured then Lowest priority will be used to queue the
         request.
   priqdepth:
-    type: float
+    type: int
     description:
       - Queue depth threshold value per priorirty level. If the queue size (number
         of requests in the queue of that particular priorirty) on the virtual server
@@ -135,7 +135,7 @@ options:
     description:
       - Retry on TCP Reset
   retryontimeout:
-    type: float
+    type: int
     description:
       - Retry on request Timeout(in millisec) upon sending request to backend servers
   tcpprofile:

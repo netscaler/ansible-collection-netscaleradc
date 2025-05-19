@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -50,7 +50,7 @@ options:
     description:
       - Authentication token to be set by the agent.
   appnamerefresh:
-    type: float
+    type: int
     description:
       - Interval, in seconds, at which to send Appnames to the configured collectors.
         Appname refers to the name of an entity (virtual server, service, or service
@@ -103,7 +103,7 @@ options:
     description:
       - Enable generation of the distributed tracing templates in the Appflow records
   disttracingsamplingrate:
-    type: float
+    type: int
     description:
       - Sampling rate for Distributed Tracing
   emailaddress:
@@ -121,7 +121,7 @@ options:
     description:
       - Enable Events to be sent to the Telemetry Agent
   flowrecordinterval:
-    type: float
+    type: int
     description:
       - Interval, in seconds, at which to send flow records to the configured collectors.
   gxsessionreporting:
@@ -283,7 +283,7 @@ options:
     description:
       - Enable Citrix ADC Stats to be sent to the Telemetry Agent
   observationdomainid:
-    type: float
+    type: int
     description:
       - 'An observation domain groups a set of Citrix ADCs based on deployment: cluster,
         HA etc. A unique Observation Domain ID is required to be assigned to each
@@ -293,13 +293,13 @@ options:
     description:
       - Name of the Observation Domain defined by the observation domain ID.
   observationpointid:
-    type: float
+    type: int
     description:
       - An observation point ID is identifier for the NetScaler from which appflow
         records are being exported. By default, the NetScaler IP is the observation
         point ID.
   securityinsightrecordinterval:
-    type: float
+    type: int
     description:
       - Interval, in seconds, at which to send security insight flow records to the
         configured collectors.
@@ -341,12 +341,12 @@ options:
     description:
       - Algorithm(C(MD5) or C(SHA256)) to be used for obfuscating MSISDN
   tcpattackcounterinterval:
-    type: float
+    type: int
     description:
       - Interval, in seconds, at which to send tcp attack counters to the configured
         collectors. If 0 is configured, the record is not sent.
   templaterefresh:
-    type: float
+    type: int
     description:
       - Refresh interval, in seconds, at which to export the template data. Because
         data transmission is in UDP, the templates must be resent at regular intervals.
@@ -359,7 +359,7 @@ options:
       - To use the Citrix ADC IP to send Time series data such as metrics and events,
         instead of the SNIP
   udppmtu:
-    type: float
+    type: int
     description:
       - MTU, in bytes, for IPFIX UDP packets.
   urlcategory:
@@ -370,7 +370,7 @@ options:
     description:
       - Include the URL category record.
   usagerecordinterval:
-    type: float
+    type: int
     description:
       - On enabling this option, the NGS will send bandwidth usage record to configured
         collectors.
@@ -405,15 +405,12 @@ EXAMPLES = r"""
         state: present
         templaterefresh: 3600
         httpurl: ENABLED
+        httpcookie: ENABLED
+        httpreferer: ENABLED
         httpmethod: ENABLED
         httphost: ENABLED
         httpuseragent: ENABLED
         httpcontenttype: ENABLED
-        cacheinsight: ENABLED
-        httpquerywithurl: ENABLED
-        metrics: ENABLED
-        events: ENABLED
-        observationpointid: '843103498'
 """
 
 RETURN = r"""

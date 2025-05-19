@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -59,7 +59,7 @@ options:
       - Type of hashing algorithm
     elements: str
   ikeretryinterval:
-    type: float
+    type: int
     description:
       - IKE retry interval for bringing up the connection
   ikeversion:
@@ -70,12 +70,12 @@ options:
     description:
       - IKE Protocol Version
   lifetime:
-    type: float
+    type: int
     description:
       - Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE
         SA/8)
   livenesscheckinterval:
-    type: float
+    type: int
     description:
       - Number of seconds after which a notify payload is sent to check the liveliness
         of the peer. Additional retries are done as per retransmit interval setting.
@@ -88,11 +88,11 @@ options:
     description:
       - Enable/Disable PFS.
   replaywindowsize:
-    type: float
+    type: int
     description:
       - IPSec Replay window size for the data traffic
   retransmissiontime:
-    type: float
+    type: int
     description:
       - The interval in seconds to retry sending the IKE messages to peer, three consecutive
         attempts are done with doubled interval after every failure,
@@ -105,7 +105,7 @@ EXAMPLES = r"""
 ---
 - name: Sample ipsecparameter playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure ipsecparameter
       delegate_to: localhost

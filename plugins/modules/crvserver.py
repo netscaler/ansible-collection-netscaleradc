@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -100,7 +100,7 @@ options:
       - Name of the default cache virtual server to which to redirect requests (the
         default target of the cache redirection virtual server).
   clttimeout:
-    type: float
+    type: int
     description:
       - Time-out value, in seconds, after which to terminate an idle client connection.
   comment:
@@ -205,7 +205,7 @@ options:
       - String specifying the listen policy for the cache redirection virtual server.
         Can be either an in-line expression or the name of a named expression.
   listenpriority:
-    type: float
+    type: int
     description:
       - Priority of the listen policy specified by the Listen Policy parameter. The
         lower the number, higher the priority.
@@ -304,7 +304,7 @@ options:
     description:
       - HTTP code to return in SUCCESS case.
   range:
-    type: float
+    type: int
     description:
       - Number of consecutive IP addresses, starting with the address specified by
         the IPAddress parameter, to include in a range of addresses assigned to this
@@ -366,11 +366,11 @@ options:
     description:
       - Protocol (type of service) handled by the virtual server.
   sopersistencetimeout:
-    type: float
+    type: int
     description:
       - Time-out, in minutes, for spillover persistence.
   sothreshold:
-    type: float
+    type: int
     description:
       - For CONNECTION (or) DYNAMICCONNECTION spillover, the number of connections
         above which the virtual server enters spillover mode. For BANDWIDTH spillover,
@@ -395,7 +395,7 @@ options:
       - Name of the profile containing TCP configuration information for the cache
         redirection virtual server.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part

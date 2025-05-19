@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -100,7 +100,7 @@ options:
       - '* C(SRVR_CERT) - SSL server certificate used on SSL servers for end-to-end
         encryption.'
   days:
-    type: float
+    type: int
     description:
       - Number of days for which the certificate will be valid, beginning with the
         time and day (system time) of creation.

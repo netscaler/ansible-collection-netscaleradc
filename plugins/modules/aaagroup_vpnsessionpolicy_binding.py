@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -54,7 +54,7 @@ options:
     description:
       - The policy name.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the policy. A lower number indicates a
         higher priority. Policies are evaluated in the order of their priority numbers.
@@ -83,10 +83,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.aaagroup_vpnsessionpolicy_binding:
         state: present
-        groupname: External
-        policy: External_receiver_session_pol
-        priority: '110'
-        gotopriorityexpression: NEXT
+        groupname: group1
+        policy: vpn_sespol2
+        priority: '15'
 """
 
 RETURN = r"""

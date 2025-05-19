@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -60,7 +60,7 @@ options:
       - will not show internal field types added as part of FieldFormat learn rules
         deployment
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the field type. A lower number
         specifies a higher priority. Field types are checked in the order of their

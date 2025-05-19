@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -54,7 +54,7 @@ options:
     description:
       - Ignore TOS.
   nat64v6mtu:
-    type: float
+    type: int
     description:
       - MTU setting for the IPv6 side. If the incoming IPv4 packet greater than this,
         either fragment or send icmp need fragmentation error.
@@ -66,7 +66,7 @@ options:
     description:
       - Calculate checksum for UDP packets with zero checksum
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part

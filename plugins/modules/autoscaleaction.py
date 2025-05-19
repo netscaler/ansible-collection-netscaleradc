@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -53,7 +53,7 @@ options:
     description:
       - AutoScale profile name.
   quiettime:
-    type: float
+    type: int
     description:
       - Time in seconds no other policy is evaluated or action is taken
   type:
@@ -64,7 +64,7 @@ options:
     description:
       - The type of action.
   vmdestroygraceperiod:
-    type: float
+    type: int
     description:
       - Time in minutes a VM is kept in inactive state before destroying
   vserver:

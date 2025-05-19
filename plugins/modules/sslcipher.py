@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -56,7 +56,7 @@ options:
     description:
       - Cipher name.
   cipherpriority:
-    type: float
+    type: int
     description:
       - This indicates priority assigned to the particular cipher
   ciphgrpalias:
@@ -110,7 +110,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslcipher:
         state: present
-        ciphergroupname: ssllabs-blackstone
+        ciphergroupname: DEFAULT_BACKEND
 """
 
 RETURN = r"""

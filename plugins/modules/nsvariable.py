@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -44,15 +44,8 @@ options:
     type: str
     description:
       - Comments associated with this variable.
-  detail:
-    type: str
-    choices:
-      - brief
-      - all
-    description:
-      - Show runtime content for the global map variable.
   expires:
-    type: float
+    type: int
     description:
       - Value expiration in seconds. If the value is not referenced within the expiration
         period it will be deleted. 0 (the default) means no expiration.
@@ -112,10 +105,6 @@ options:
       - '   It cannot be an expression reserved word (e.g. SYS or HTTP).'
       - '   It cannot be used for an existing expression object (HTTP callout, patset,
         dataset, stringmap, or named expression).'
-  nodeid:
-    type: float
-    description:
-      - Unique number that identifies the cluster node.
   scope:
     type: str
     choices:

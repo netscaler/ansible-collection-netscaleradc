@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -76,7 +76,7 @@ options:
         and then needs to bind the URL again with new values. Maximum 30 bindings
         can be configured per profile.
   graceperiod:
-    type: float
+    type: int
     description:
       - Time (in seconds) duration for which no new captcha challenge is sent after
         current captcha challenge has been answered successfully.
@@ -85,7 +85,7 @@ options:
     description:
       - Message to be logged for this binding.
   muteperiod:
-    type: float
+    type: int
     description:
       - Time (in seconds) duration for which client which failed captcha need to wait
         until allowed to try again. The requests from this client are silently dropped
@@ -102,17 +102,17 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   requestsizelimit:
-    type: float
+    type: int
     description:
       - Length of body request (in Bytes) up to (equal or less than) which captcha
         challenge will be provided to client. Above this length threshold the request
         will be dropped. This is to avoid DOS and DDOS attacks.
   retryattempts:
-    type: float
+    type: int
     description:
       - Number of times client can retry solving the captcha.
   waittime:
-    type: float
+    type: int
     description:
       - Wait time in seconds for which ADC needs to wait for the Captcha response.
         This is to avoid DOS attacks.

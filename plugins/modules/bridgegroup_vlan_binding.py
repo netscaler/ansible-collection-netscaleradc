@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -41,11 +41,11 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: float
+    type: int
     description:
       - The integer that uniquely identifies the bridge group.
   vlan:
-    type: float
+    type: int
     description:
       - Names of all member VLANs.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

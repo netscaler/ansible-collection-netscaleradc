@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -47,7 +47,7 @@ options:
         expression can contain a literal string or an expression that derives the
         value (for example, client.ip.src). Mutually exclusive with -fullReqExpr.
   cacheforsecs:
-    type: float
+    type: int
     description:
       - Duration, in seconds, for which the callout response is cached. The cached
         responses are stored in an integrated caching content group named "calloutContentGroup".

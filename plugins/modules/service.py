@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -121,7 +121,7 @@ options:
       - Port to which clear text data must be sent after the appliance decrypts incoming
         SSL traffic. Applicable to transparent SSL services.
   clttimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which to terminate an idle client connection.
   cmp:
@@ -146,7 +146,7 @@ options:
       - Unique identifier for the service. Used when the persistency type for the
         virtual server is set to Custom Server ID.
   delay:
-    type: float
+    type: int
     description:
       - Time, in seconds, allocated to the NetScaler for a graceful shutdown of the
         service. During this period, new requests are sent to the service only for
@@ -178,7 +178,7 @@ options:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
   hashid:
-    type: float
+    type: int
     description:
       - A numerical identifier that can be used by hash based load balancing methods.
         Must be unique for each service.
@@ -206,15 +206,15 @@ options:
     description:
       - The new IP address of the service.
   maxbandwidth:
-    type: float
+    type: int
     description:
       - Maximum bandwidth, in Kbps, allocated to the service.
   maxclient:
-    type: float
+    type: int
     description:
       - Maximum number of simultaneous open connections to the service.
   maxreq:
-    type: float
+    type: int
     description:
       - Maximum number of requests that can be sent on a persistent connection to
         the service.
@@ -232,7 +232,7 @@ options:
     description:
       - Name of the monitor bound to the specified service.
   monthreshold:
-    type: float
+    type: int
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
@@ -293,7 +293,7 @@ options:
     description:
       - Enable RTSP session ID mapping for the service.
   serverid:
-    type: float
+    type: int
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
@@ -356,6 +356,7 @@ options:
       - ADNS_DOT
       - HTTP_QUIC
       - ADNS_DOH
+      - KAFKA_BROKER
     description:
       - Protocol in which data is exchanged with the service.
   sp:
@@ -366,7 +367,7 @@ options:
     description:
       - Enable surge protection for the service.
   svrtimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which to terminate an idle server connection.
   tcpb:
@@ -381,7 +382,7 @@ options:
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -410,7 +411,7 @@ options:
         modes > Configure Modes dialog box). However, you can override this setting
         after you create the service.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the monitor-service binding. When a monitor is UP, the
         weight assigned to its binding with the service determines how much the monitor
@@ -505,8 +506,10 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.service:
         state: present
-        name: nshttpd-vpn-127.0.0.1-81
-        cip: ENABLED
+        name: s133
+        ip: 10.106.38.140
+        servicetype: HTTP
+        port: 8080
 """
 
 RETURN = r"""

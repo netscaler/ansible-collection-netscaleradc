@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -159,7 +159,7 @@ options:
     description:
       - This option starts/stops the turn service on the vserver
   failedlogintimeout:
-    type: float
+    type: int
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
@@ -240,7 +240,7 @@ options:
         Can be either a named expression or an expression. The Citrix Gateway virtual
         server processes only the traffic for which the expression evaluates to true.
   listenpriority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
@@ -269,13 +269,13 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Mac
   maxaaausers:
-    type: float
+    type: int
     description:
       - Maximum number of concurrent user sessions allowed on this virtual server.
         The actual number of users allowed to log on to this virtual server depends
         on the total number of user licenses.
   maxloginattempts:
-    type: float
+    type: int
     description:
       - Maximum number of logon attempts
   name:
@@ -317,7 +317,7 @@ options:
     description:
       - Name of the QUIC profile to assign to this virtual server.
   range:
-    type: float
+    type: int
     description:
       - Range of Citrix Gateway virtual server IP addresses. The consecutively numbered
         range of IP addresses begins with the address specified by the IP Address
@@ -1426,12 +1426,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnvserver:
         state: present
-        name: CitrixAccessCallback
-        servicetype: SSL
-        ipv46: 10.189.130.19
-        port: 443
-        downstateflush: DISABLED
-        listenpolicy: NONE
+        name: test
+        logoutonsmartcardremoval: 'OFF'
 """
 
 RETURN = r"""

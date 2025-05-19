@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -45,11 +45,11 @@ options:
     description:
       - Remove all configured VMAC6 addresses from the Citrix ADC.
   id:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies a VMAC6 address.
   ownernode:
-    type: float
+    type: int
     description:
       - In a cluster setup, assign a cluster node as the owner of this VMAC address
         for IP based VRRP configuration. If no owner is configured, ow ner node is
@@ -67,13 +67,13 @@ options:
         master, the backup VIP address remains master until the original master VIP''s
         priority becomes higher than that of the current master.'
   preemptiondelaytimer:
-    type: float
+    type: int
     description:
       - Preemption delay time in seconds, in an active-active configuration. If any
         high priority node will come in network, it will wait for these many seconds
         before becoming master.
   priority:
-    type: float
+    type: int
     description:
       - Base priority (BP), in an active-active mode configuration, which ordinarily
         determines the master VIP address.
@@ -86,7 +86,7 @@ options:
       - In an active-active mode configuration, enable the backup VIP address to process
         any traffic instead of dropping it.
   trackifnumpriority:
-    type: float
+    type: int
     description:
       - Priority by which the Effective priority will be reduced if any of the tracked
         interfaces goes down in an active-active configuration.

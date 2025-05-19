@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -46,7 +46,7 @@ options:
     description:
       - Drop any packet that requires fragmentation.
   dropfragcputhreshold:
-    type: float
+    type: int
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation. Applies only if dropFragparameter is set to NO.
@@ -87,7 +87,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.ip6tunnelparam:
         state: present
-        srcip: '::'
+        srciproundrobin: 'YES'
 """
 
 RETURN = r"""

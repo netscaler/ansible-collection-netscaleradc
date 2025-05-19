@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -84,7 +84,7 @@ options:
         or the value set by the set ns config command is used as client's IP header
         name.
   clttimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which to terminate an idle client connection.
   comment:
@@ -92,7 +92,7 @@ options:
     description:
       - Any information about the GSLB service group.
   delay:
-    type: float
+    type: int
     description:
       - The time allowed (in seconds) for a graceful shutdown. During this period,
         new connections or requests will continue to be sent to this service for clients
@@ -111,7 +111,7 @@ options:
         service group whose state transitions from UP to DOWN. Do not enable this
         option for applications that must complete their transactions.
   dup_weight:
-    type: float
+    type: int
     description:
       - weight of the monitor that is bound to GSLB servicegroup.
   graceful:
@@ -123,7 +123,7 @@ options:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
   hashid:
-    type: float
+    type: int
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
@@ -147,12 +147,12 @@ options:
         the details displayed when a service group name is provided, except that bound
         monitors are not displayed.
   maxbandwidth:
-    type: float
+    type: int
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the GSLB service
         group.
   maxclient:
-    type: float
+    type: int
     description:
       - Maximum number of simultaneous open connections for the GSLB service group.
   monitor_name_svc:
@@ -161,7 +161,7 @@ options:
       - Name of the monitor bound to the GSLB service group. Used to assign a weight
         to the monitor.
   monthreshold:
-    type: float
+    type: int
     description:
       - Minimum sum of weights of the monitors that are bound to this GSLB service.
         Used to determine whether to mark a GSLB service as UP or DOWN.
@@ -170,7 +170,7 @@ options:
     description:
       - New name for the GSLB service group.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the gslb servicegroup member
   port:
@@ -245,11 +245,11 @@ options:
         is unset. When implementing HTTP redirect site persistence, the Citrix ADC
         redirects GSLB requests to GSLB services by using their site domains.
   svrtimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which to terminate an idle server connection.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

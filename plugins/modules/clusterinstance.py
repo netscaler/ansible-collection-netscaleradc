@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -52,7 +52,7 @@ options:
     description:
       - View based on heartbeat only on bkplane interface
   clid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster.
   clusterproxyarp:
@@ -64,7 +64,7 @@ options:
       - This field controls the proxy arp feature in cluster. By default the flag
         is enabled.
   deadinterval:
-    type: float
+    type: int
     description:
       - Amount of time, in seconds, after which nodes that do not respond to the heartbeats
         are assumed to be down.If the value is less than 3 sec, set the helloInterval
@@ -77,7 +77,7 @@ options:
     description:
       - flag to add ext l2 header during steering. By default the flag is disabled.
   hellointerval:
-    type: float
+    type: int
     description:
       - Interval, in milliseconds, at which heartbeats are sent to each cluster node
         to check the health status.Set the value to 200 msec, if the deadInterval

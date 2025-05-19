@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -104,7 +104,7 @@ options:
         the net profile, to communicate to servers for all sessions initiated from
         a particular client to the virtual server.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -173,9 +173,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.netprofile:
         state: present
-        name: tets_netprofile_dns
-        srcip: 10.189.130.20
-        mbf: ENABLED
+        name: net_test_profile2
 """
 
 RETURN = r"""

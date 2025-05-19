@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -79,6 +79,7 @@ options:
       - '*C(SESSION) - Rate-limiting based on the configured cookie name.'
       - '*C(URL) - Rate-limiting based on the configured C(URL).'
       - '*C(GEOLOCATION) - Rate-limiting based on the configured country name.'
+      - '*C(JA3_FINGERPRINT) - Rate-limiting based on client SSL JA3 fingerprint.'
   bot_rate_limit_url:
     type: str
     description:
@@ -378,12 +379,12 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   rate:
-    type: float
+    type: int
     description:
       - Maximum number of requests that are allowed in this session in the given period
         time.
   timeslice:
-    type: float
+    type: int
     description:
       - Time interval during which requests are tracked to check if they cross the
         given rate.

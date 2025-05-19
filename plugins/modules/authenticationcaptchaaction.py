@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -55,6 +55,10 @@ options:
       - 'The following requirement applies only to the NetScaler CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
+  scorethreshold:
+    type: int
+    description:
+      - This is the score threshold value for recaptcha v3.
   secretkey:
     type: str
     description:

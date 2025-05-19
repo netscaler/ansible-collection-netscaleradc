@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -100,7 +100,7 @@ options:
         to the outer IP packet (Transport packet). But the user can configure a new
         ToS field using this option.
   vlan:
-    type: float
+    type: int
     description:
       - The vlan for mulicast packets
   vlantagging:
@@ -111,7 +111,7 @@ options:
     description:
       - Option to select Vlan Tagging.
   vnid:
-    type: float
+    type: int
     description:
       - Virtual network identifier (VNID) is the value that identifies a specific
         virtual network in the data plane.

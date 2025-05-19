@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -86,7 +86,7 @@ options:
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my name" or 'my name').
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which we are setting the mib. This is a mandatory
         argument to set snmp mib on CLIP.

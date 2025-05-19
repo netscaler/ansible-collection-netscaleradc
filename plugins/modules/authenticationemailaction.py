@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -78,7 +78,7 @@ options:
         such as http(s):// or smtp(s):// for http and smtp protocols respectively.
         For SMTP, the port number is mandatory like smtps://smtp.example.com:25.
   timeout:
-    type: float
+    type: int
     description:
       - Time after which the code expires.
   type:

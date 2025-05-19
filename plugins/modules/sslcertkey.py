@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -129,7 +129,7 @@ options:
     description:
       - Override the check for matching domain names during a certificate update operation.
   notificationperiod:
-    type: float
+    type: int
     description:
       - Time, in number of days, before certificate expiration, at which to generate
         an alert that the certificate is about to expire.
@@ -186,8 +186,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslcertkey:
         state: present
-        certkey: callback.blackstone.com
-        linkcertkeyname: blackstone_sub
+        certkey: samlssokp1
+        cert: ns-root.cert
+        inform: PEM
+        expirymonitor: ENABLED
+        notificationperiod: '30'
+        bundle: 'NO'
 """
 
 RETURN = r"""

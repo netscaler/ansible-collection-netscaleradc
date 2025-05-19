@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -85,7 +85,7 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
@@ -110,6 +110,14 @@ options:
       - State of SSLv3 protocol support for the SSL service group.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
+  sslclientlogs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This parameter is used to enable or disable the logging of additional information,
+        such as the Session ID and SNI names, from SSL handshakes to the audit logs.
   sslprofile:
     type: str
     description:

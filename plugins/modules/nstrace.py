@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -67,7 +67,7 @@ options:
     description:
       - Name of the trace file.
   filesize:
-    type: float
+    type: int
     description:
       - File size, in MB, treshold for rollover. If free disk space is less than 2GB
         at the time of rollover, trace will stop
@@ -269,11 +269,11 @@ options:
       - '      Default mode: C(NEW_RX) C(TXB)'
     elements: str
   nf:
-    type: float
+    type: int
     description:
       - Number of files to be generated in cycle.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   nodes:
@@ -289,7 +289,7 @@ options:
     description:
       - Use separate trace files for each interface. Works only with cap format.
   size:
-    type: float
+    type: int
     description:
       - Size of the captured data. Set 0 for full packet trace.
   skiplocalssh:
@@ -307,11 +307,11 @@ options:
     description:
       - skip RPC packets
   time:
-    type: float
+    type: int
     description:
       - Time per file (sec).
   tracebuffers:
-    type: float
+    type: int
     description:
       - Number of 16KB trace buffers
   traceformat:

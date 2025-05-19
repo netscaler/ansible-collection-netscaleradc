@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -84,8 +84,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.policyexpression:
         state: present
-        name: Sub_1471612160_23
-        value: CLIENT.IP.SRC.IN_SUBNET(147.161.216.0/23)
+        name: dummy_vserver4
+        value: sys.vserver("dummy").determine_services(port,",")
 """
 
 RETURN = r"""

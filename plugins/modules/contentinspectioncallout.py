@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -92,7 +92,7 @@ options:
         server IP address and port parameters. The service type must be TCP or SSL_TCP.
         If there are vservers and services with the same name, then vserver is selected.
   serverport:
-    type: float
+    type: int
     description:
       - Port of the Content Inspection server.
   type:

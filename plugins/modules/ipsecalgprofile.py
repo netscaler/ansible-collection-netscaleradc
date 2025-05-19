@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -50,15 +50,15 @@ options:
         After a failover, established UDP connections and ESP packet flows are kept
         active and resumed on the secondary appliance. Recomended setting is C(ENABLED).
   espgatetimeout:
-    type: float
+    type: int
     description:
       - Timeout ESP in seconds as no ESP packets are seen after IKE negotiation
   espsessiontimeout:
-    type: float
+    type: int
     description:
       - ESP session timeout in minutes.
   ikesessiontimeout:
-    type: float
+    type: int
     description:
       - IKE session timeout in minutes
   name:

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -108,7 +108,7 @@ options:
       - '                       Valid only if the primary method is based on static
         proximity.'
   backuppersistencetimeout:
-    type: float
+    type: int
     description:
       - Time period for which backup persistence is in effect.
   backupvserver:
@@ -135,7 +135,7 @@ options:
         virtual server that has an IP address and port combination of *:80, so such
         a cache redirection virtual server must be configured on the appliance.
   clttimeout:
-    type: float
+    type: int
     description:
       - Idle time, in seconds, after which a client connection is terminated.
   comment:
@@ -166,14 +166,14 @@ options:
         It specifies the name of cookie with a maximum of 32 characters. If not specified,
         cookie name is internally generated.
   datalength:
-    type: float
+    type: int
     description:
       - Length of the token to be extracted from the data segment of an incoming packet,
         for use in the token method of load balancing. The length of the token, specified
         in bytes, must not be greater than 24 KB. Applicable to virtual servers of
         type TCP.
   dataoffset:
-    type: float
+    type: int
     description:
       - Offset to be considered when extracting a token from the TCP payload. Applicable
         to virtual servers, of type TCP, using the token method of load balancing.
@@ -227,12 +227,12 @@ options:
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
   hashlength:
-    type: float
+    type: int
     description:
       - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH
         load balancing methods.
   healththreshold:
-    type: float
+    type: int
     description:
       - Threshold in percent of active services below which vserver state is made
         down. If this threshold is 0, vserver state will be up even if one bound service
@@ -410,7 +410,7 @@ options:
         of a named expression. In the above example, the virtual server accepts all
         requests whose destination IP address is in the 192.0.2.0/24 subnet.
   listenpriority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
@@ -449,11 +449,11 @@ options:
       - This option is used to retain vlan information of incoming packet when macmode
         is enabled
   maxautoscalemembers:
-    type: float
+    type: int
     description:
       - Maximum number of members expected to be present when vserver is used in Autoscale.
   minautoscalemembers:
-    type: float
+    type: int
     description:
       - Minimum number of members expected to be present when vserver is used in Autoscale.
   mssqlserverversion:
@@ -474,15 +474,15 @@ options:
         the client-side and server-side connections by ensuring that all communication
         conforms to the server's version.
   mysqlcharacterset:
-    type: float
+    type: int
     description:
       - Character set that the virtual server advertises to clients.
   mysqlprotocolversion:
-    type: float
+    type: int
     description:
       - MySQL protocol version that the virtual server advertises to clients.
   mysqlservercapabilities:
-    type: float
+    type: int
     description:
       - Server capabilities that the virtual server advertises to clients.
   mysqlserverversion:
@@ -515,7 +515,7 @@ options:
     description:
       - New name for the virtual server.
   newservicerequest:
-    type: float
+    type: int
     description:
       - Number of requests, or percentage of the load on existing services, by which
         to increase the load on a new service at each interval in slow-start mode.
@@ -525,7 +525,7 @@ options:
         by the LB method. Subsequently, any new services added will use the global
         RR factor.
   newservicerequestincrementinterval:
-    type: float
+    type: int
     description:
       - Interval, in seconds, between successive increments in the load on a new service
         or a service whose state has just changed from DOWN to UP. A value of 0 (zero)
@@ -545,11 +545,11 @@ options:
     description:
       - Oracle server version
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   orderthreshold:
-    type: float
+    type: int
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
@@ -692,7 +692,7 @@ options:
     description:
       - Name of QUIC profile which will be attached to the VServer.
   range:
-    type: float
+    type: int
     description:
       - 'Number of IP addresses that the appliance must generate and assign to the
         virtual server. The virtual server then functions as a network virtual server,
@@ -848,6 +848,7 @@ options:
       - HTTP_QUIC
       - DOT
       - SSL_PROXY
+      - KAFKA_PRODUCER
     description:
       - Protocol used by the service (also called the service type).
   sessionless:
@@ -913,11 +914,11 @@ options:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup virtual servers.
   sopersistencetimeout:
-    type: float
+    type: int
     description:
       - Timeout for spillover persistence, in minutes.
   sothreshold:
-    type: float
+    type: int
     description:
       - Threshold at which spillover occurs. Specify an integer for the CONNECTION
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
@@ -934,13 +935,13 @@ options:
     description:
       - Name of the TCP profile whose settings are to be applied to the virtual server.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   timeout:
-    type: float
+    type: int
     description:
       - Time period for which a persistence session is in effect.
   toggleorder:
@@ -951,7 +952,7 @@ options:
     description:
       - Configure this option to toggle order preference
   tosid:
-    type: float
+    type: int
     description:
       - TOS ID of the virtual server. Applicable only when the load balancing redirection
         mode is set to TOS.
@@ -964,13 +965,13 @@ options:
       - When value is C(ENABLED), Trofs persistence is honored. When value is C(DISABLED),
         Trofs persistence is not honored.
   v6netmasklen:
-    type: float
+    type: int
     description:
       - Number of bits to consider in an IPv6 destination or source IP address, for
         creating the hash that is required by the DESTINATIONIPHASH and SOURCEIPHASH
         load balancing methods.
   v6persistmasklen:
-    type: float
+    type: int
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
   vipheader:
@@ -978,7 +979,7 @@ options:
     description:
       - Name for the inserted header. The default name is vip-header.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the specified service.
   lbvserver_analyticsprofile_binding:
@@ -1570,12 +1571,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.lbvserver:
         state: present
-        name: lb_dns_01
-        servicetype: DNS
-        ipv46: 169.254.100.2
-        port: 53
-        persistencetype: NONE
-        clttimeout: 120
+        name: lb4
+        servicetype: SSL
 """
 
 RETURN = r"""

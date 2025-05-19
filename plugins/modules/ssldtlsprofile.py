@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -48,30 +48,30 @@ options:
     description:
       - Send a Hello Verify request to validate the client.
   initialretrytimeout:
-    type: float
+    type: int
     description:
       - Initial time out value to retransmit the last flight sent from the NetScaler.
   maxbadmacignorecount:
-    type: float
+    type: int
     description:
       - Maximum number of bad MAC errors to ignore for a connection prior disconnect.
         Disabling parameter terminateSession terminates session immediately when bad
         MAC is detected in the connection.
   maxholdqlen:
-    type: float
+    type: int
     description:
       - Maximum number of datagrams that can be queued at DTLS layer for processing
   maxpacketsize:
-    type: float
+    type: int
     description:
       - Maximum number of packets to reassemble. This value helps protect against
         a fragmented packet attack.
   maxrecordsize:
-    type: float
+    type: int
     description:
       - Maximum size of records that can be sent if PMTU is disabled.
   maxretrytime:
-    type: float
+    type: int
     description:
       - Wait for the specified time, in seconds, before resending the request.
   name:

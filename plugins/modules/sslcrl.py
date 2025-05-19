@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -93,7 +93,7 @@ options:
     description:
       - Path to the CRL file. /var/netscaler/ssl/ is the default path.
   day:
-    type: float
+    type: int
     description:
       - Day on which to refresh the CRL, or, if the Interval parameter is not set,
         the number of days after which to refresh the CRL. If Interval is set to MONTHLY,

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -118,17 +118,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsfeature playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsfeature
+    - name: Configure nsfeature
       delegate_to: localhost
       netscaler.adc.nsfeature:
-        state: enabled
-        feature:
-          - CS
-          - LB
+        state: present
+        wl: 'true'
+        sp: 'true'
+        lb: 'true'
+        ssl: 'true'
+        sslvpn: 'true'
+        aaa: 'true'
+        rewrite: 'true'
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -63,7 +63,7 @@ options:
     description:
       - The URL at which to upload the metrics data on the endpoint
   metricsexportfrequency:
-    type: float
+    type: int
     description:
       - This option is for configuring the metrics export frequency in seconds, frequency
         value must be in [30,300] seconds range

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -69,9 +69,10 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
   daystoexpire:
-    type: float
+    type: int
     description:
-      - nsroot password expire days
+      - Password expiry days for all the system users. The daystoexpire value ranges
+        from 30 to 255.
   doppler:
     type: str
     choices:
@@ -117,19 +118,19 @@ options:
         authentication servers are unavailable. This parameter is not applicable to
         SSH Key-based authentication
   maxsessionperuser:
-    type: float
+    type: int
     description:
       - Maximum number of client connection allowed per user.The maxsessionperuser
         value ranges from 1 to 40
   minpasswordlen:
-    type: float
+    type: int
     description:
       - Minimum length of system user password. When strong password is enabled default
         minimum length is 8. User entered value can be greater than or equal to 8.
         Default mininum value is 1 when strong password is disabled. Maximum value
         is 127 in both cases.
   natpcbforceflushlimit:
-    type: float
+    type: int
     description:
       - Flush the system if the number of Network Address Translation Protocol Control
         Blocks (NATPCBs) exceeds this value.
@@ -141,6 +142,25 @@ options:
     description:
       - Send a reset signal to client and server connections when their NATPCBs time
         out. Avoids the buildup of idle TCP connections on both the sides.
+  passwordhistorycontrol:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enables or disable password expiry feature for system users.
+      - If the feature is C(ENABLED), by default the last 6 passwords of users will
+        be maintained and will not be allowed to reuse same.
+      - When the feature is enabled the daystoexpire, warnpriorndays and pwdhistoryCount
+        will be set with default values. The values can only be set in system
+      - for system parameter. It cannot be unset. It is possible to set and unset
+        the values for daytoexpire and warnpriorndays in system groups.
+      - 'Default values if feature is C(ENABLED):'
+      - 'daystoexpire: 30'
+      - 'warnpriorndays: 5'
+      - 'pwdhistoryCount: 6'
+      - If the feature is C(DISABLED) the values cannot be set or unset in system
+        parameter and system groups
   promptstring:
     type: str
     description:
@@ -156,6 +176,11 @@ options:
       - ''
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
+  pwdhistorycount:
+    type: int
+    description:
+      - Number of passwords to be maintained as history for system users. The pwdhistorycount
+        value ranges from 1 to 10.
   rbaonresponse:
     type: str
     choices:
@@ -208,21 +233,34 @@ options:
         So no Strong Password checks will be performed on these ObjectType commands
         for C(enablelocal) case.'
   timeout:
-    type: float
+    type: int
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         is enabled, Timeout can have values in the range [300-86400] seconds.
       - If Restrictedtimeout argument is disabled, Timeout can have values in the
         range [0, 10-100000000] seconds. Default value is 900 seconds.
   totalauthtimeout:
-    type: float
+    type: int
     description:
       - Total time a request can take for authentication/authorization
+  wafprotection:
+    type: list
+    choices:
+      - DEFAULT
+      - DISABLED
+      - GUI
+    description:
+      - 'Configure WAF protection for endpoints used by NetScaler management interfaces.
+        The available options are:'
+      - '* C(DEFAULT) - NetScaler decides which endpoints have WAF protection enabled.'
+      - '* C(GUI) - Endpoints used by the Management C(GUI) Interface are WAF protected.'
+      - '* C(DISABLED) - WAF protection is disabled.'
+    elements: str
   warnpriorndays:
-    type: float
+    type: int
     description:
       - Number of days before which password expiration warning would be thrown with
-        respect to datstoexpire
+        respect to daystoexpire. The warnpriorndays value ranges from 5 to 40.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

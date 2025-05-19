@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -39,12 +39,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   deadinterval:
-    type: float
+    type: int
     description:
       - Number of seconds after which a peer node in active-active mode is marked
         down if vrrp advertisements are not received from the peer node.
   hellointerval:
-    type: float
+    type: int
     description:
       - Interval, in milliseconds, between vrrp advertisement messages sent to the
         peer node in active-active mode.

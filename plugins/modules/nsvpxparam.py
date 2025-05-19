@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -87,7 +87,7 @@ options:
     description:
       - This argument is deprecated.
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are setting the cpuyield and/or KVMVirtioMultiqueue.
         It can be configured only through the cluster IP address.

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -112,7 +112,7 @@ options:
         to opt-out of the transaction early instead of receiving the remainder of
         the request message.
   previewlength:
-    type: float
+    type: int
     description:
       - Value of Preview Header field. Citrix ADC uses the minimum of this set value
         and the preview size received on OPTIONS response.
@@ -123,7 +123,7 @@ options:
         be in arg=value format. For more than one parameters, add & separated values.
         e.g.: arg1=val1&arg2=val2.'
   reqtimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, within which the remote server should respond to the ICAP-request.
         If the Netscaler does not receive full response with this time, the specified

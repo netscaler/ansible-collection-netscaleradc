@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -93,6 +93,16 @@ options:
       - DISABLED
     description:
       - Respond to ICMP requests for this IP address.
+  icmpresponse:
+    type: str
+    choices:
+      - NONE
+      - ONE_VSERVER
+      - ALL_VSERVERS
+      - VSVR_CNTRLD
+    description:
+      - Respond to ICMPv6 requests for a Virtual IP (VIP) address on the basis of
+        the states of the virtual servers associated with that VIP
   ip6hostrtgw:
     type: str
     description:
@@ -134,7 +144,7 @@ options:
     description:
       - Respond to Neighbor Discovery (ND) requests for this IP address.
   ndowner:
-    type: float
+    type: int
     description:
       - NdOwner in Cluster for VIPS and Striped SNIPS
   networkroute:
@@ -154,7 +164,7 @@ options:
       - Type of LSAs to be used by the IPv6 OSPF protocol, running on the Citrix ADC,
         for advertising the route for the VIP6 address.
   ospfarea:
-    type: float
+    type: int
     description:
       - ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for
         the VIP6 address by the IPv6 OSPF protocol running on the Citrix ADC. When
@@ -168,7 +178,7 @@ options:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are adding the IP address. Must be used
         if you want the IP address to be active only on the specific node. Can be
@@ -206,11 +216,11 @@ options:
     description:
       - Allow secure Shell (SSH) access to this IP address.
   tag:
-    type: float
+    type: int
     description:
       - Tag value for the network/host route associated with this IP.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -236,11 +246,11 @@ options:
       - Type of IP address to be created on the Citrix ADC. Cannot be changed after
         the IP address is created.
   vlan:
-    type: float
+    type: int
     description:
       - The VLAN number.
   vrid6:
-    type: float
+    type: int
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
@@ -298,13 +308,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nsip6:
         state: present
-        ipv6address: fe80::1031:4dff:fe59:3f9f/64
-        scope: link-local
-        type: NSIP
-        vlan: '1'
-        vserver: DISABLED
-        mgmtaccess: ENABLED
-        dynamicrouting: ENABLED
+        ipv6address: 9901::211
+        vrid6: '13'
 """
 
 RETURN = r"""

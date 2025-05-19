@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -38,6 +38,13 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  customtrap:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - By default, Customtrap will be disabled, set to enabled when using the feature.
   partitionnameintrap:
     type: str
     choices:

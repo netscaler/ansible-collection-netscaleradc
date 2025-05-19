@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -41,12 +41,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   batchingdelay:
-    type: float
+    type: int
     description:
       - Maximum time, in milliseconds, to wait to accumulate OCSP requests to batch.  Does
         not apply if the Batching Depth is 1.
   batchingdepth:
-    type: float
+    type: int
     description:
       - Number of client certificates to batch together into one OCSP request. Batching
         avoids overloading the OCSP responder. A value of 1 signifies that each request
@@ -61,7 +61,7 @@ options:
       - Enable caching of responses. Caching of responses received from the OCSP responder
         enables faster responses to the clients and reduces the load on the OCSP responder.
   cachetimeout:
-    type: float
+    type: int
     description:
       - Timeout for caching the OCSP response. After the timeout, the Citrix ADC sends
         a fresh request to the OCSP responder for the certificate status. If a timeout
@@ -93,13 +93,13 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder" or 'my responder').
   ocspurlresolvetimeout:
-    type: float
+    type: int
     description:
       - Time, in milliseconds, to wait for an OCSP URL Resolution. When this time
         elapses, an error message appears or the transaction is forwarded, depending
         on the settings on the virtual server.
   producedattimeskew:
-    type: float
+    type: int
     description:
       - Time, in seconds, for which the Citrix ADC waits before considering the response
         as invalid. The response is considered invalid if the Produced At time stamp
@@ -110,7 +110,7 @@ options:
     description:
       - '0'
   resptimeout:
-    type: float
+    type: int
     description:
       - Time, in milliseconds, to wait for an OCSP response. When this time elapses,
         an error message appears or the transaction is forwarded, depending on the

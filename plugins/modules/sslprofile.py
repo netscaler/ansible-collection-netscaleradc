@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -82,7 +82,7 @@ options:
     description:
       - The cipher group/alias/individual cipher configuration
   cipherpriority:
-    type: float
+    type: int
     description:
       - cipher priority
   cipherredirect:
@@ -134,6 +134,15 @@ options:
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server.
+  defaultsni:
+    type: str
+    description:
+      - Default domain name supported by the SSL virtual server. The parameter is
+        effective, when zero touch certificate management is active for the SSL virtual
+        server i.e. no manual SNI cert or default server cert is bound to the v-server.
+        For SSL transactions, when SNI is not presented by the client, server-certificate
+        corresponding to the default SNI, if available in the cert-store, is selected
+        else connection is terminated.
   denysslreneg:
     type: str
     choices:
@@ -162,7 +171,7 @@ options:
       - State of Diffie-Hellman (DH) key exchange.
       - This parameter is not applicable when configuring a backend profile.
   dhcount:
-    type: float
+    type: int
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
@@ -209,8 +218,15 @@ options:
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
+  encryptedclienthello:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - State of TLS 1.3 Encrypted Client Hello Support
   encrypttriggerpktcount:
-    type: float
+    type: int
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
@@ -231,7 +247,7 @@ options:
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend profile.
   ersacount:
-    type: float
+    type: int
     description:
       - The  refresh  count  for the re-generation of RSA public-key and private-key
         pair.
@@ -260,12 +276,12 @@ options:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
   maxage:
-    type: float
+    type: int
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
         during which the client must send only HTTPS requests to the server
   maxrenegrate:
-    type: float
+    type: int
     description:
       - Maximum number of renegotiation requests allowed, in one second, to each SSL
         entity to which this profile is bound. When set to 0, an unlimited number
@@ -300,7 +316,7 @@ options:
     description:
       - Flag indicates the consent of the site owner to have their domain preloaded.
   prevsessionkeylifetime:
-    type: float
+    type: int
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
@@ -322,13 +338,13 @@ options:
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
   pushenctriggertimeout:
-    type: float
+    type: int
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
   pushflag:
-    type: float
+    type: int
     description:
       - 'Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag
         is set to a value other than 0, the buffered records are forwarded on the
@@ -371,7 +387,7 @@ options:
     description:
       - State of server authentication support for the SSL Backend profile.
   sessionkeylifetime:
-    type: float
+    type: int
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
@@ -394,7 +410,7 @@ options:
     description:
       - This option enables the use of session tickets, as per the RFC 5077
   sessionticketlifetime:
-    type: float
+    type: int
     description:
       - This option sets the life time of session tickets issued by NS in secs
   sessreuse:
@@ -407,7 +423,7 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: float
+    type: int
     description:
       - The Session timeout value in seconds.
   skipclientcertpolicycheck:
@@ -463,8 +479,16 @@ options:
       - State of SSLv3 protocol support for the SSL profile.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
+  sslclientlogs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - When enabled, NetScaler will log the session ID and SNI name during SSL handshakes
+        on both the external and internal interfaces.
   sslimaxsessperserver:
-    type: float
+    type: int
     description:
       - Maximum ssl session to be cached per dynamic origin server. A unique ssl session
         is created for each SNI received from the client on ClientHello and the matching
@@ -522,7 +546,7 @@ options:
         from http:// to https:// and the SSL session does not break.
       - This parameter is not applicable when configuring a backend profile.
   ssltriggertimeout:
-    type: float
+    type: int
     description:
       - Time, in milliseconds, after which encryption is triggered for transactions
         that are not tracked on the Citrix ADC because their length is not known.
@@ -573,7 +597,7 @@ options:
     description:
       - State of TLSv1.3 protocol support for the SSL profile.
   tls13sessionticketsperauthcontext:
-    type: float
+    type: int
     description:
       - Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated,
         ticket-based resumption is enabled, and either (1) a handshake completes or
@@ -692,6 +716,31 @@ options:
         elements: dict
         description: List of binding members
         default: []
+  sslprofile_sslechconfig_binding:
+    type: dict
+    description: Bindings for sslprofile_sslechconfig_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
@@ -706,7 +755,37 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslprofile:
         state: present
-        name: ns_default_ssl_profile_internal_frontend_service
+        name: front_1
+        sslprofiletype: FrontEnd
+        dhcount: '0'
+        dh: ENABLED
+        dhfile: certs/dh/dh1024.pem
+        ersa: ENABLED
+        ersacount: '0'
+        sessreuse: ENABLED
+        sesstimeout: '120'
+        cipherredirect: ENABLED
+        cipherurl: https://www.abc.com
+        clientauth: ENABLED
+        clientcert: Mandatory
+        sslredirect: ENABLED
+        redirectportrewrite: ENABLED
+        ssl3: ENABLED
+        tls1: ENABLED
+        tls11: ENABLED
+        tls12: ENABLED
+        snienable: ENABLED
+        pushenctrigger: Always
+        sendclosenotify: 'YES'
+        insertionencoding: UTF-8
+        denysslreneg: ALL
+        quantumsize: '4096'
+        strictcachecks: 'YES'
+        encrypttriggerpktcount: '10'
+        pushflag: '1'
+        dropreqwithnohostheader: 'YES'
+        pushenctriggertimeout: '10'
+        ssltriggertimeout: '10'
 """
 
 RETURN = r"""

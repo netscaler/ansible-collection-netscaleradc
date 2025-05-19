@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -103,7 +103,7 @@ options:
     description:
       - URL endpoint on relying party to which the OAuth token is to be sent.
   refreshinterval:
-    type: float
+    type: int
     description:
       - Interval at which Relying Party metadata is refreshed.
   relyingpartymetadataurl:
@@ -132,7 +132,7 @@ options:
       - Name of the service in cloud used to sign the data. This is applicable only
         if signature if offloaded to cloud.
   skewtime:
-    type: float
+    type: int
     description:
       - This option specifies the duration for which the token sent by Citrix ADC
         IdP is valid. For example, if skewTime is 10, then token would be valid from

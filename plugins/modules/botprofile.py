@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -128,7 +128,7 @@ options:
       - Enabling bot device fingerprint protection for mobile clients
     elements: str
   dfprequestlimit:
-    type: float
+    type: int
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
@@ -151,7 +151,7 @@ options:
     description:
       - Enable keyboard-mouse based bot detection.
   kmeventspostbodylimit:
-    type: float
+    type: int
     description:
       - Size of the KM data send by the browser, needs to be processed on ADC
   kmjavascriptname:
@@ -189,7 +189,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessiontimeout:
-    type: float
+    type: int
     description:
       - Timeout, in seconds, after which a user session is terminated.
   signature:

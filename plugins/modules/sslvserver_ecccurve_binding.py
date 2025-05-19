@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -49,6 +49,7 @@ options:
       - P_384
       - P_521
       - X_25519
+      - X25519_MLKEM768
     description:
       - Named ECC curve bound to vserver/service.
   vservername:

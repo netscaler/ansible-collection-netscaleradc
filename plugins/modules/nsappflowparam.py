@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -88,11 +88,11 @@ options:
     description:
       - Enable AppFlow HTTP user-agent logging.
   templaterefresh:
-    type: float
+    type: int
     description:
       - IPFIX template refresh interval (in seconds).
   udppmtu:
-    type: float
+    type: int
     description:
       - MTU to be used for IPFIX UDP packets.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

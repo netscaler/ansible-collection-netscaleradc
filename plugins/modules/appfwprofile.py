@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -117,28 +117,28 @@ options:
         appfw profile -bufferOverflowAction C(none)".'
     elements: str
   bufferoverflowmaxcookielength:
-    type: float
+    type: int
     description:
       - Maximum length, in characters, for cookies sent to your protected web sites.
         Requests with longer cookies are blocked.
   bufferoverflowmaxheaderlength:
-    type: float
+    type: int
     description:
       - Maximum length, in characters, for HTTP headers in requests sent to your protected
         web sites. Requests with longer headers are blocked.
   bufferoverflowmaxquerylength:
-    type: float
+    type: int
     description:
       - Maximum length, in bytes, for query string sent to your protected web sites.
         Requests with longer query strings are blocked.
   bufferoverflowmaxtotalheaderlength:
-    type: float
+    type: int
     description:
       - Maximum length, in bytes, for the total HTTP header length in requests sent
         to your protected web sites. The minimum value of this and maxHeaderLen in
         httpProfile will be used. Requests with longer length are blocked.
   bufferoverflowmaxurllength:
-    type: float
+    type: int
     description:
       - Maximum length, in characters, for URLs on your protected web sites. Requests
         with longer URLs are blocked.
@@ -358,7 +358,7 @@ options:
         appfw profile -creditCardAction C(none)".'
     elements: str
   creditcardmaxallowed:
-    type: float
+    type: int
     description:
       - This parameter value is used by the block action. It represents the maximum
         number of credit card numbers that can appear on a web page served by your
@@ -455,16 +455,16 @@ options:
       - '* utf-8 (Unicode)'
       - '* euc-kr (Korean)'
   defaultfieldformatmaxlength:
-    type: float
+    type: int
     description:
       - Maximum length, in characters, for data entered into a field that is assigned
         the default field type.
   defaultfieldformatmaxoccurrences:
-    type: float
+    type: int
     description:
       - Maxiumum allowed occurrences of the form field name in a request.
   defaultfieldformatminlength:
-    type: float
+    type: int
     description:
       - Minimum length, in characters, for data entered into a field that is assigned
         the default field type.
@@ -637,11 +637,11 @@ options:
     description:
       - Check if formfield limit scan is C(ON) or C(OFF).
   fieldscanlimit:
-    type: float
+    type: int
     description:
       - Field scan limit value for HTML
   fileuploadmaxnum:
-    type: float
+    type: int
     description:
       - Maximum allowed number of file uploads per form-submission request. The maximum
         setting (65535) allows an unlimited number of uploads.
@@ -693,7 +693,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks \(for example, "my HTML error object" or 'my HTML error object'\).
   htmlerrorstatuscode:
-    type: float
+    type: int
     description:
       - Response status code associated with HTML error page. Non-empty HTML error
         object must be imported to the application firewall profile for the status
@@ -865,7 +865,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks \(for example, "my JSON error object" or 'my JSON error object'\).
   jsonerrorstatuscode:
-    type: float
+    type: int
     description:
       - Response status code associated with JSON error page. Non-empty JSON error
         object must be imported to the application firewall profile for the status
@@ -882,7 +882,7 @@ options:
     description:
       - Check if JSON field limit scan is C(ON) or C(OFF).
   jsonfieldscanlimit:
-    type: float
+    type: int
     description:
       - Field scan limit value for JSON
   jsonmessagescan:
@@ -893,7 +893,7 @@ options:
     description:
       - Check if JSON message limit scan is C(ON) or C(OFF)
   jsonmessagescanlimit:
-    type: float
+    type: int
     description:
       - Message scan limit value for JSON
   jsonsqlinjectionaction:
@@ -975,7 +975,7 @@ options:
     description:
       - Check if HTML message limit scan is C(ON) or C(OFF)
   messagescanlimit:
-    type: float
+    type: int
     description:
       - Message scan limit value for HTML
   messagescanlimitcontenttypes:
@@ -1048,7 +1048,7 @@ options:
       - Configure whether the application firewall should use percentage recursive
         decoding
   postbodylimit:
-    type: float
+    type: int
     description:
       - Maximum allowed HTTP post body size, in bytes. Maximum supported value is
         10GB. Citrix recommends enabling streaming option for large values of post
@@ -1070,7 +1070,7 @@ options:
         C(block)" followed by the other actions to be enabled.'
     elements: str
   postbodylimitsignature:
-    type: float
+    type: int
     description:
       - Maximum allowed HTTP post body size for signature inspection for location
         HTTP_POST_BODY in the signatures, in bytes. Note that the changes in value
@@ -1439,7 +1439,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks \(for example, "my XML error object" or 'my XML error object'\).
   xmlerrorstatuscode:
-    type: float
+    type: int
     description:
       - Response status code associated with XML error page. Non-empty XML error object
         must be imported to the application firewall profile for the status code.

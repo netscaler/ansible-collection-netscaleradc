@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -50,7 +50,7 @@ options:
     description:
       - Name of the virtual server on which to perform the binding operation.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   servicename:
@@ -58,7 +58,7 @@ options:
     description:
       - Name of the GSLB service for which to change the weight.
   weight:
-    type: float
+    type: int
     description:
       - Weight for the service.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -75,8 +75,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbvserver_gslbservice_binding:
         state: present
-        name: backup_gslb_portal.bx.com
-        servicename: GSLB_SVC_USE2_portal.bx.com
+        name: gslbVserver1
+        servicename: gslbService1
+        weight: '23'
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -76,7 +76,7 @@ options:
     description:
       - Name of the application firewall policy to bind to the policy label.
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the policy. A lower number specifies
         a higher priority. Must be unique within a group of policies that are bound

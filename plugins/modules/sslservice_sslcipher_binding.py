@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -45,7 +45,7 @@ options:
     description:
       - The cipher group/alias/individual cipher configuration.
   cipherdefaulton:
-    type: float
+    type: int
     description:
       - Flag indicating whether the bound cipher was the DEFAULT cipher, bound at
         boot time, or any other cipher from the CLI

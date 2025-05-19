@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -63,7 +63,7 @@ options:
     description:
       - Apply Adaptive TCP optimizations
   buffersize:
-    type: float
+    type: int
     description:
       - TCP buffering size, in bytes.
   burstratecontrol:
@@ -83,11 +83,11 @@ options:
     description:
       - Client IP in TCP options
   clientiptcpoptionnumber:
-    type: float
+    type: int
     description:
       - ClientIP TCP Option number
   delayedack:
-    type: float
+    type: int
     description:
       - Timeout for TCP delayed ACK, in milliseconds.
   dropestconnontimeout:
@@ -112,7 +112,7 @@ options:
     description:
       - Enable or disable DSACK.
   dupackthresh:
-    type: float
+    type: int
     description:
       - TCP dupack threshold.
   dynamicreceivebuffering:
@@ -173,7 +173,7 @@ options:
     description:
       - Enable or disable CUBIC Hystart
   initialcwnd:
-    type: float
+    type: int
     description:
       - Initial maximum upper limit on the number of TCP packets that can be outstanding
         on the TCP link to the server.
@@ -185,17 +185,17 @@ options:
     description:
       - Send periodic TCP keep-alive (KA) probes to check if peer is still up.
   kaconnidletime:
-    type: float
+    type: int
     description:
       - Duration, in seconds, for the connection to be idle, before sending a keep-alive
         (KA) probe.
   kamaxprobes:
-    type: float
+    type: int
     description:
       - Number of keep-alive (KA) probes to be sent when not acknowledged, before
         assuming the peer to be down.
   kaprobeinterval:
-    type: float
+    type: int
     description:
       - Time interval, in seconds, before the next keep-alive (KA) probe, if the peer
         does not respond.
@@ -207,19 +207,19 @@ options:
     description:
       - Update last activity for the connection after receiving keep-alive (KA) probes.
   maxburst:
-    type: float
+    type: int
     description:
       - Maximum number of TCP segments allowed in a burst.
   maxcwnd:
-    type: float
+    type: int
     description:
       - TCP Maximum Congestion Window.
   maxpktpermss:
-    type: float
+    type: int
     description:
       - Maximum number of TCP packets allowed per maximum segment size (MSS).
   minrto:
-    type: float
+    type: int
     description:
       - Minimum retransmission timeout, in milliseconds, specified in 10-millisecond
         increments (value must yield a whole number if divided by  10).
@@ -255,12 +255,12 @@ options:
       - Enable or disable Multipath TCP fastopen. When enabled, DSS data packets are
         accepted before receiving the third ack of SYN handshake.
   mptcpsessiontimeout:
-    type: float
+    type: int
     description:
       - MPTCP session timeout in seconds. If this value is not set, idle MPTCP sessions
         are flushed after vserver's client idle timeout.
   mss:
-    type: float
+    type: int
     description:
       - Maximum number of octets to allow in a TCP data segment.
   nagle:
@@ -282,16 +282,16 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks \(for example, "my tcp profile" or ''my tcp profile''\).'
   oooqsize:
-    type: float
+    type: int
     description:
       - Maximum size of out-of-order packets queue. A value of 0 means no limit.
   pktperretx:
-    type: float
+    type: int
     description:
       - Maximum limit on the number of packets that should be retransmitted on receiving
         a partial ACK.
   rateqmax:
-    type: float
+    type: int
     description:
       - Maximum connection queue size in bytes, when BurstRateControl is used
   rfc5961compliance:
@@ -326,7 +326,7 @@ options:
     description:
       - Enable or disable Selective ACKnowledgement (SACK).
   sendbuffsize:
-    type: float
+    type: int
     description:
       - TCP Send Buffer Size
   sendclientportintcpoption:
@@ -338,12 +338,12 @@ options:
       - Send Client Port number along with Client IP in TCP-Options. ClientIpTcpOption
         must be C(ENABLED)
   slowstartincr:
-    type: float
+    type: int
     description:
       - Multiplier that determines the rate at which slow start increases the size
         of the TCP transmission window after each acknowledgement of successful transmission.
   slowstartthreshold:
-    type: float
+    type: int
     description:
       - TCP Slow Start Threhsold Value.
   spoofsyndrop:
@@ -379,7 +379,7 @@ options:
       - Enable or disable TCP Fastopen. When enabled, NS can receive or send Data
         in SYN or SYN-ACK packets.
   tcpfastopencookiesize:
-    type: float
+    type: int
     description:
       - TCP FastOpen Cookie size. This accepts only even numbers. Odd number is trimmed
         down to nearest even number.
@@ -391,7 +391,7 @@ options:
     description:
       - TCP Optimization modes C(TRANSPARENT) / C(ENDPOINT).
   tcprate:
-    type: float
+    type: int
     description:
       - TCP connection payload send rate in Kb/s
   tcpsegoffload:
@@ -417,7 +417,7 @@ options:
     description:
       - Enable or disable window scaling.
   wsval:
-    type: float
+    type: int
     description:
       - Factor used to calculate the new window size.
       - This argument is needed only when window scaling is enabled.

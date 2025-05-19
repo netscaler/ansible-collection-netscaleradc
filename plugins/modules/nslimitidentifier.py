@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -59,7 +59,7 @@ options:
         quota anytime within the timeslice.'
       - This argument is needed only when the mode is set to REQUEST_RATE.
   maxbandwidth:
-    type: float
+    type: int
     description:
       - Maximum bandwidth permitted, in kbps.
   mode:
@@ -102,20 +102,20 @@ options:
         (depending on whether the limit identifier is bound to a virtual server or
         globally) without any filtering.
   threshold:
-    type: float
+    type: int
     description:
       - Maximum number of requests that are allowed in the given timeslice when requests
         (mode is set as REQUEST_RATE) are tracked per timeslice.
       - When connections (mode is set as CONNECTION) are tracked, it is the total
         number of connections that would be let through.
   timeslice:
-    type: float
+    type: int
     description:
       - Time interval, in milliseconds, specified in multiples of 10, during which
         requests are tracked to check if they cross the threshold. This argument is
         needed only when the mode is set to REQUEST_RATE.
   trapsintimeslice:
-    type: float
+    type: int
     description:
       - Number of traps to be sent in the timeslice configured. A value of 0 indicates
         that traps are disabled.

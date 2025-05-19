@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   maxportrealloctmq:
-    type: float
+    type: int
     description:
       - Maximum number of ports for which the port reallocation timeout applies for
         each NAT IP address. In other words, the maximum deallocated-port queue size
@@ -114,7 +114,7 @@ options:
       - For Deterministic NAT, this parameter is enabled by default, and you cannot
         disable it.
   portrealloctimeout:
-    type: float
+    type: int
     description:
       - 'The waiting time, in seconds, between deallocating LSN NAT ports (when an
         LSN mapping is removed) and reallocating them for a new LSN session. This

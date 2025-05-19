@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -59,7 +59,7 @@ options:
     description:
       - Respond to ARP requests for this IP address.
   arpowner:
-    type: float
+    type: int
     description:
       - The arp owner in a Cluster for this IP address. It can vary from 0 to 31.
   arpresponse:
@@ -208,7 +208,7 @@ options:
     description:
       - Use this option to enable or disable OSPF on this IP address for the entity.
   ospfarea:
-    type: float
+    type: int
     description:
       - ID of the area in which the type1 link-state advertisements (LSAs) are to
         be advertised for this virtual IP (VIP)  address by the OSPF protocol running
@@ -231,7 +231,7 @@ options:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
   ownernode:
-    type: float
+    type: int
     description:
       - The owner node in a Cluster for this IP address. Owner node can vary from
         0 to 31. If ownernode is not specified then the IP is treated as Striped IP.
@@ -266,11 +266,11 @@ options:
     description:
       - Allow secure shell (SSH) access to this IP address.
   tag:
-    type: float
+    type: int
     description:
       - Tag value for the network/host route associated with this IP.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -312,7 +312,7 @@ options:
         All cluster configurations must be performed by accessing the cluster through
         this IP address.'
   vrid:
-    type: float
+    type: int
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
@@ -370,15 +370,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nsip:
         state: present
-        ipaddress: 10.189.130.5
-        netmask: 255.255.255.255
-        type: GSLBsiteIP
-        vserver: DISABLED
-        telnet: DISABLED
-        ftp: DISABLED
-        gui: DISABLED
-        snmp: DISABLED
-        mgmtaccess: ENABLED
+        ipaddress: 41.4.4.5
+        netmask: 255.255.255.0
 """
 
 RETURN = r"""

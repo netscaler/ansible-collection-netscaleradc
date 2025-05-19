@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -128,13 +128,22 @@ options:
     description:
       - Insert ECS Option on DNS query
   maxcacheableecsprefixlength:
-    type: float
+    type: int
     description:
       - The maximum ecs prefix length that will be cached
   maxcacheableecsprefixlength6:
-    type: float
+    type: int
     description:
       - The maximum ecs prefix length that will be cached for IPv6 subnets
+  recursiveresolution:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - DNS recursive resolution; if enabled, will do recursive resolution for DNS
+        query when the profile is associated with ADNS service, CS Vserver and DNS
+        action
   replaceecs:
     type: str
     choices:

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -45,7 +45,7 @@ options:
     description:
       - The IP address of the WLM.
   katimeout:
-    type: float
+    type: int
     description:
       - The idle time period after which Citrix ADC would probe the WLM. The value
         ranges from 1 to 1440 minutes.

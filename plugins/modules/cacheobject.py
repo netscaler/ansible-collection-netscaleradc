@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -57,7 +57,7 @@ options:
     description:
       - HTTP request method that caused the object to be stored.
   httpstatus:
-    type: float
+    type: int
     description:
       - HTTP status of the object.
   ignoremarkerobjects:
@@ -78,11 +78,11 @@ options:
       - Include responses that have not yet reached a minimum number of hits before
         being cached.
   locator:
-    type: float
+    type: int
     description:
       - ID of the cached object.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   port:

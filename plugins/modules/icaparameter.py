@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -60,7 +60,7 @@ options:
     description:
       - Enable/Disable DF enforcement for EDT PMTUD Control Blocks
   edtpmtuddftimeout:
-    type: float
+    type: int
     description:
       - DF enforcement timeout for EDTPMTUDDF
   edtpmtudrediscovery:
@@ -86,7 +86,7 @@ options:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
   l7latencyfrequency:
-    type: float
+    type: int
     description:
       - Specify the time interval/period for which L7 Client Latency value is to be
         calculated. By default, L7 Client Latency is calculated for every packet.

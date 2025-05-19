@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -55,7 +55,7 @@ options:
         independently. Otherwise, when L2 mode is ON, learned MAC entries on a PE
         will be broadcasted to all other PEs.
   bridgeagetimeout:
-    type: float
+    type: int
     description:
       - Time-out value for the bridge table entries, in seconds. The new value applies
         only to the entries that are dynamically learned after the new value is set.
@@ -84,7 +84,7 @@ options:
       - Allows MAC mode vserver to pick and forward the packets even if it is destined
         to Citrix ADC owned VIP.
   maxbridgecollision:
-    type: float
+    type: int
     description:
       - Maximum bridge collision for loop detection
   mbfinstlearning:
@@ -95,7 +95,7 @@ options:
     description:
       - Enable instant learning of MAC changes in MBF mode.
   mbfpeermacupdate:
-    type: float
+    type: int
     description:
       - When mbf_instant_learning is enabled, learn any changes in peer's MAC after
         this time interval, which is in 10ms ticks.

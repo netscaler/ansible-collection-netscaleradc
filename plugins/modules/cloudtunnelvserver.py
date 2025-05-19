@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -45,7 +45,7 @@ options:
         be either a named expression or an expression. The Cloud Tunnel virtual server
         processes only the traffic for which the expression evaluates to true.
   listenpriority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one

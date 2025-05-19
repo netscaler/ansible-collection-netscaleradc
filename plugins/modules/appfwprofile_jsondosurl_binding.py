@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -86,7 +86,7 @@ options:
       - '* Maximum string length. Positive integer representing the maximum length
         of string in JSON.'
   jsonmaxarraylength:
-    type: float
+    type: int
     description:
       - Maximum array length in the any of JSON object. This check protects against
         arrays having large lengths.
@@ -98,7 +98,7 @@ options:
     description:
       - State if JSON Max array value count check is C(ON) or C(OFF).
   jsonmaxcontainerdepth:
-    type: float
+    type: int
     description:
       - Maximum allowed nesting depth  of JSON document. JSON allows one to nest the
         containers (object and array) in any order to any depth. This check protects
@@ -111,7 +111,7 @@ options:
     description:
       - State if JSON Max depth check is C(ON) or C(OFF).
   jsonmaxdocumentlength:
-    type: float
+    type: int
     description:
       - Maximum document length of JSON document, in bytes.
   jsonmaxdocumentlengthcheck:
@@ -122,7 +122,7 @@ options:
     description:
       - State if JSON Max document length check is C(ON) or C(OFF).
   jsonmaxobjectkeycount:
-    type: float
+    type: int
     description:
       - Maximum key count in the any of JSON object. This check protects against objects
         that have large number of keys.
@@ -134,7 +134,7 @@ options:
     description:
       - State if JSON Max object key count check is C(ON) or C(OFF).
   jsonmaxobjectkeylength:
-    type: float
+    type: int
     description:
       - Maximum key length in the any of JSON object. This check protects against
         objects that have large keys.
@@ -146,7 +146,7 @@ options:
     description:
       - State if JSON Max object key length check is C(ON) or C(OFF).
   jsonmaxstringlength:
-    type: float
+    type: int
     description:
       - Maximum string length in the JSON. This check protects against strings that
         have large length.

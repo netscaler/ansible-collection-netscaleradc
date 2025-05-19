@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -173,10 +173,10 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbsite:
         state: present
-        sitename: GSLB_Site_USE2
-        siteipaddress: 10.76.126.5
-        publicip: 10.76.126.5
-        triggermonitor: MEPDOWN_SVCDOWN
+        sitename: d1
+        backupparentlist:
+          - d2
+          - d3
 """
 
 RETURN = r"""

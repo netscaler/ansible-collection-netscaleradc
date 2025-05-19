@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -65,7 +65,7 @@ options:
         \ in double or single quotation marks (for example, \"my push service\" or\
         \ 'my push service')."
   refreshinterval:
-    type: float
+    type: int
     description:
       - Interval at which certificates or idtoken is refreshed.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

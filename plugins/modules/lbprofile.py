@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -92,7 +92,7 @@ options:
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
   lbhashfingers:
-    type: float
+    type: int
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers

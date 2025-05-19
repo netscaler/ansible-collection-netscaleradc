@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -81,7 +81,7 @@ options:
         matching source port number, and CALL-ID based persistence is implemented
         for the responses received by the virtual server.
   sip503ratethreshold:
-    type: float
+    type: int
     description:
       - Maximum number of 503 Service Unavailable responses to generate, once every
         10 milliseconds, when a SIP virtual server becomes unavailable.

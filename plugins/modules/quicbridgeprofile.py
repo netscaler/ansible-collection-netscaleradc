@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -54,7 +54,7 @@ options:
     description:
       - Routing algorithm to generate routable connection IDs.
   serveridlength:
-    type: float
+    type: int
     description:
       - Length of serverid to encode/decode server information
 extends_documentation_fragment: netscaler.adc.netscaler_adc

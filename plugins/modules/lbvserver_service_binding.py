@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -51,7 +51,7 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   servicegroupname:
@@ -63,7 +63,7 @@ options:
     description:
       - Service to bind to the virtual server.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the specified service.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -80,8 +80,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.lbvserver_service_binding:
         state: present
-        name: lb_dns_01
-        servicename: dns_svc_03
+        name: lb_ram
+        servicename: s133
 """
 
 RETURN = r"""

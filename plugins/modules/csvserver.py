@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -92,7 +92,7 @@ options:
     description:
       - '0'
   backuppersistencetimeout:
-    type: float
+    type: int
     description:
       - Time period for which backup persistence is in effect.
   backupvserver:
@@ -127,7 +127,7 @@ options:
         and can have different targets (set by content switching policies). With the
         C(OFF) setting, /a/1.html and /A/1.HTML are switched to the same target.
   clttimeout:
-    type: float
+    type: int
     description:
       - 'Idle time, in seconds, after which the client connection is terminated. The
         default values are:'
@@ -150,7 +150,7 @@ options:
         It specifies the name of cookie with a maximum of 32 characters. If not specified,
         cookie name is internally generated.
   cookietimeout:
-    type: float
+    type: int
     description:
       - '0'
   dbprofilename:
@@ -292,7 +292,7 @@ options:
       - String specifying the listen policy for the content switching virtual server.
         Can be either the name of an existing expression or an in-line expression.
   listenpriority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
@@ -312,15 +312,15 @@ options:
     description:
       - The version of the MSSQL server
   mysqlcharacterset:
-    type: float
+    type: int
     description:
       - The character set returned by the mysql vserver.
   mysqlprotocolversion:
-    type: float
+    type: int
     description:
       - The protocol version returned by the mysql vserver.
   mysqlservercapabilities:
-    type: float
+    type: int
     description:
       - The server capabilities returned by the mysql vserver.
   mysqlserverversion:
@@ -368,7 +368,7 @@ options:
       - Backup persistence type for the virtual server. Becomes operational if the
         primary persistence mechanism fails.
   persistenceid:
-    type: float
+    type: int
     description:
       - '0'
   persistencetype:
@@ -457,7 +457,7 @@ options:
     description:
       - Name of QUIC profile which will be attached to the Content Switching VServer.
   range:
-    type: float
+    type: int
     description:
       - Number of consecutive IP addresses, starting with the address specified by
         the IP Address parameter, to include in a range of addresses assigned to this
@@ -539,7 +539,7 @@ options:
     description:
       - Protocol used by the virtual server.
   sitedomainttl:
-    type: float
+    type: int
     description:
       - '0'
   sobackupaction:
@@ -572,11 +572,11 @@ options:
     description:
       - Maintain source-IP based persistence on primary and backup virtual servers.
   sopersistencetimeout:
-    type: float
+    type: int
     description:
       - Time-out value, in minutes, for spillover persistence.
   sothreshold:
-    type: float
+    type: int
     description:
       - Depending on the spillover method, the maximum number of connections or the
         maximum total bandwidth (Kbps) that a virtual server can handle before spillover
@@ -617,21 +617,21 @@ options:
       - Name of the TCP profile containing TCP configuration settings for the virtual
         server.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   timeout:
-    type: float
+    type: int
     description:
       - Time period for which a persistence session is in effect.
   ttl:
-    type: float
+    type: int
     description:
       - '0'
   v6persistmasklen:
-    type: float
+    type: int
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
   vipheader:
@@ -1203,13 +1203,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.csvserver:
         state: present
-        name: ADNS_TCP_EXT
-        servicetype: DNS_TCP
-        ipv46: 10.189.1.7
-        port: 53
-        ipset: ipset_adns
+        name: ug_cs1
+        servicetype: SSL
+        ipv46: 200.200.200.5
+        port: 443
         clttimeout: 180
-        persistencetype: NONE
+        listenpolicy: NONE
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   l7latencymaxnotifycount:
-    type: float
+    type: int
     description:
       - L7 Latency Max notify Count. This is the upper limit on the number of notifications
         sent to the Insight Center within an interval where the Latency is above the
@@ -54,18 +54,18 @@ options:
     description:
       - Enable/Disable L7 Latency monitoring for L7 latency notifications
   l7latencynotifyinterval:
-    type: float
+    type: int
     description:
       - L7 Latency Notify Interval. This is the interval at which the Citrix ADC sends
         out notifications to the Insight Center after the wait time has passed.
   l7latencythresholdfactor:
-    type: float
+    type: int
     description:
       - L7 Latency threshold factor. This is the factor by which the active latency
         should be greater than the minimum observed value to determine that the latency
         is high and may need to be reported
   l7latencywaittime:
-    type: float
+    type: int
     description:
       - L7 Latency Wait time. This is the time for which the Citrix ADC waits after
         the threshold is exceeded before it sends out a Notification to the Insight

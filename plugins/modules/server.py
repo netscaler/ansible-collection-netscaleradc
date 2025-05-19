@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -55,7 +55,7 @@ options:
     description:
       - Any information about the server.
   delay:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
@@ -122,7 +122,7 @@ options:
         C(A) being the default querytype. The type of DNS resolution done on the domains
         in C(SRV) records is inherited from ipv6 argument.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -149,8 +149,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.server:
         state: present
-        name: 10.79.42.253
-        ipaddress: 10.79.42.253
+        name: STA_SERVER
+        domain: sta.devalab.com
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -90,7 +90,7 @@ options:
         to avoid the pop-up for replacement of existing rdp file during each rdp connection
         launch, hence providing better end-user experience.
   rdpcookievalidity:
-    type: float
+    type: int
     description:
       - RDP cookie validity period. RDP cookie validity time is applicable for new
         connection and also for any re-connection that might happen, mostly due to

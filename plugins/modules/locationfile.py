@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -84,7 +84,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.locationfile:
         state: present
-        locationfile: /var/netscaler/locdb/Citrix_Netscaler_InBuilt_GeoIP_DB_IPv4
+        locationfile: /var/netscaler/inbuilt_db/Citrix_Netscaler_InBuilt_GeoIP_DB.csv
 """
 
 RETURN = r"""

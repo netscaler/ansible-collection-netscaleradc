@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -49,7 +49,7 @@ options:
     description:
       - '0'
   cookietimeout:
-    type: float
+    type: int
     description:
       - '0'
   domainname:
@@ -63,11 +63,11 @@ options:
       - Name of the content switching virtual server to which the content switching
         policy applies.
   sitedomainttl:
-    type: float
+    type: int
     description:
       - '0'
   ttl:
-    type: float
+    type: int
     description:
       - '0'
 extends_documentation_fragment: netscaler.adc.netscaler_adc

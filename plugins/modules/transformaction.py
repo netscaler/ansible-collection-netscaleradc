@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -67,7 +67,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my transform action or my transform action).
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the action within the profile.
         A lower number specifies a higher priority. Must be unique within the list

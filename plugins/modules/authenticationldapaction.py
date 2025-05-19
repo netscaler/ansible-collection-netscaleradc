@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -132,7 +132,7 @@ options:
         or where other (non-LDAP) authentication methods are in use and either bound
         to a primary list or flagged as secondary.
   authtimeout:
-    type: float
+    type: int
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
   cloudattributes:
@@ -225,11 +225,11 @@ options:
       - The Citrix ADC uses the LDAP login name to query external LDAP servers or
         Active Directories.
   maxldapreferrals:
-    type: float
+    type: int
     description:
       - Specifies the maximum number of nested referrals to follow.
   maxnestinglevel:
-    type: float
+    type: int
     description:
       - If nested group extraction is ON, specifies the number of levels up to which
         group extraction is performed.
@@ -370,23 +370,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationldapaction:
         state: present
-        name: ldap_userextraction_External_noauth
-        servername: awsdcs-amer.blackstone.com
-        serverport: 636
-        ldapbase: OU=New AD Structure,DC=Blackstone,DC=com
-        ldapbinddn: CN=GD-CITRIXADC-P-APP,OU=Service Accounts,OU=Elevated,OU=New AD
-          Structure,DC=Blackstone,DC=com
+        name: ldap24
+        serverip: 10.102.39.101
+        ldapbase: dc=dnpg-blr,dc=com
+        ldapbinddn: administrator@DNPG-BLR.com
         ldapbinddnpassword: REQ_PASSWORD
         ldaploginname: sAMAccountName
-        groupattrname: memberOf
-        subattributename: cn
-        sectype: SSL
-        authentication: DISABLED
-        passwdchange: ENABLED
-        nestedgroupextraction: 'ON'
-        groupnameidentifier: sAMAccountName
-        groupsearchattribute: sAMAccountName
-        defaultauthenticationgroup: External
 """
 
 RETURN = r"""

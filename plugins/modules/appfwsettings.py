@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -97,13 +97,13 @@ options:
     description:
       - Enable Geo-Location Logging in CEF format logs.
   importsizelimit:
-    type: float
+    type: int
     description:
       - Maximum cumulative size in bytes of all objects imported to Netscaler. The
         user is not allowed to import an object if the operation exceeds the currently
         configured limit.
   learnratelimit:
-    type: float
+    type: int
     description:
       - Maximum number of connections per second that the application firewall learning
         engine examines to generate new relaxations for learning-enabled security
@@ -156,7 +156,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessionlifetime:
-    type: float
+    type: int
     description:
       - Maximum amount of time (in seconds) that the application firewall allows a
         user session to remain active, regardless of user activity. After this time,
@@ -164,13 +164,13 @@ options:
         site, the user must establish a new session by opening a designated start
         URL. A value of 0 represents infinite time.
   sessionlimit:
-    type: float
+    type: int
     description:
       - Maximum number of sessions that the application firewall allows to be active,
         regardless of user activity. After the max_limit reaches, No more user session
         will be created .
   sessiontimeout:
-    type: float
+    type: int
     description:
       - Timeout, in seconds, after which a user session is terminated. Before continuing
         to use the protected web site, the user must establish a new session by opening
@@ -215,7 +215,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.appfwsettings:
         state: present
-        sessiontimeout: '180'
+        sessionlimit: '87'
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -47,7 +47,7 @@ options:
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
   vxlan:
-    type: float
+    type: int
     description:
       - Identifier of the vxlan that is assigned to this partition.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

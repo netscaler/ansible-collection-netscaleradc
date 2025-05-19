@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -40,7 +40,7 @@ options:
     description:
       - Call ID for the SIP call.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

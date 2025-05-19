@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -39,100 +39,100 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   contenttypeautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   contenttypeminthreshold:
-    type: float
+    type: int
     description:
       - Minimum threshold to learn Content Type information.
   contenttypepercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum threshold in percent to learn Content Type information.
   cookieconsistencyautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   cookieconsistencyminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn cookies.
   cookieconsistencypercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         cookie pattern for the learning engine to learn that cookie.
   creditcardnumberminthreshold:
-    type: float
+    type: int
     description:
       - Minimum threshold to learn Credit Card information.
   creditcardnumberpercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum threshold in percent to learn Credit Card information.
   crosssitescriptingautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   crosssitescriptingminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn HTML cross-site scripting patterns.
   crosssitescriptingpercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         cross-site scripting pattern for the learning engine to learn that cross-site
         scripting pattern.
   csrftagautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   csrftagminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn cross-site request forgery (CSRF) tags.
   csrftagpercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         CSRF tag for the learning engine to learn that CSRF tag.
   fieldconsistencyautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   fieldconsistencyminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn field consistency information.
   fieldconsistencypercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         field consistency pattern for the learning engine to learn that field consistency
         pattern.
   fieldformatautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   fieldformatminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn field formats.
   fieldformatpercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         web form field pattern for the learning engine to recommend a field format
@@ -142,54 +142,54 @@ options:
     description:
       - Name of the profile.
   sqlinjectionautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   sqlinjectionminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn HTML SQL injection patterns.
   sqlinjectionpercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         HTML SQL injection pattern for the learning engine to learn that HTML SQL
         injection pattern.
   starturlautodeploygraceperiod:
-    type: float
+    type: int
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
   starturlminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn start URLs.
   starturlpercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         start URL pattern for the learning engine to learn that start URL.
   xmlattachmentminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn XML attachment patterns.
   xmlattachmentpercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         XML attachment pattern for the learning engine to learn that XML attachment
         pattern.
   xmlwsiminthreshold:
-    type: float
+    type: int
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn web services interoperability (WSI) information.
   xmlwsipercentthreshold:
-    type: float
+    type: int
     description:
       - Minimum percentage of application firewall sessions that must contain a particular
         pattern for the learning engine to learn a web services interoperability (WSI)

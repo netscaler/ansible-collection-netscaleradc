@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -96,7 +96,7 @@ options:
     description:
       - State of Diffie-Hellman (DH) key exchange.
   dhcount:
-    type: float
+    type: int
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
@@ -165,7 +165,7 @@ options:
         cipher is bound to an SSL or TCP-based SSL virtual server or service. The
         eRSA key is deleted when the appliance restarts.
   ersacount:
-    type: float
+    type: int
     description:
       - Refresh count for regeneration of the RSA public-key and private-key pair.
         Zero (0) specifies infinite usage (no refresh).
@@ -186,7 +186,7 @@ options:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
   maxage:
-    type: float
+    type: int
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
         during which the client must send only HTTPS requests to the server
@@ -254,7 +254,7 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
@@ -286,6 +286,14 @@ options:
       - State of SSLv3 protocol support for the SSL Virtual Server.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
+  sslclientlogs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This parameter is used to enable or disable the logging of additional information,
+        such as the Session ID and SNI names, from SSL handshakes to the audit logs.
   sslprofile:
     type: str
     description:
@@ -359,7 +367,7 @@ options:
     description:
       - State of TLSv1.3 protocol support for the SSL Virtual Server.
   tls13sessionticketsperauthcontext:
-    type: float
+    type: int
     description:
       - Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated,
         ticket-based resumption is enabled, and either (1) a handshake completes or
@@ -771,8 +779,29 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslvserver:
         state: present
-        vservername: backup_gslb_portal.bx.com
-        sslprofile: ns_default_ssl_profile_frontend
+        vservername: new_XM_LB_MDM_titan.dnpg-blr.com_10.100.48.233_443
+        cleartextport: 0
+        dh: DISABLED
+        dhcount: '0'
+        ersa: ENABLED
+        ersacount: '0'
+        sessreuse: ENABLED
+        sesstimeout: '15'
+        cipherredirect: DISABLED
+        sslv2redirect: DISABLED
+        clientauth: ENABLED
+        clientcert: Optional
+        sslredirect: ENABLED
+        redirectportrewrite: DISABLED
+        nonfipsciphers: DISABLED
+        ssl2: DISABLED
+        ssl3: ENABLED
+        tls1: ENABLED
+        tls11: ENABLED
+        tls12: ENABLED
+        snienable: DISABLED
+        pushenctrigger: Always
+        sendclosenotify: 'YES'
 """
 
 RETURN = r"""

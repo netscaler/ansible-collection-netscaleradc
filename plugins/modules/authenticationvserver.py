@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -75,7 +75,7 @@ options:
     description:
       - Any comments associated with this virtual server.
   failedlogintimeout:
-    type: float
+    type: int
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
@@ -85,7 +85,7 @@ options:
       - IP address of the authentication virtual server, if a single IP address is
         assigned to the virtual server.
   maxloginattempts:
-    type: float
+    type: int
     description:
       - Maximum Number of login Attempts
   name:
@@ -119,7 +119,7 @@ options:
     description:
       - TCP port on which the virtual server accepts connections.
   range:
-    type: float
+    type: int
     description:
       - If you are creating a series of virtual servers with a range of IP addresses
         assigned to them, the length of the range.
@@ -143,7 +143,7 @@ options:
     description:
       - Protocol type of the authentication virtual server. Always C(SSL).
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -699,7 +699,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationvserver:
         state: present
-        name: Citrix_AAA_vServer
+        name: authVserver
         servicetype: SSL
         ipv46: 0.0.0.0
 """

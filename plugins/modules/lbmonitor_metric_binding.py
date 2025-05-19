@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -46,11 +46,11 @@ options:
       - Metric name in the metric table, whose setting is changed. A value zero disables
         the metric and it will not be used for load calculation
   metricthreshold:
-    type: float
+    type: int
     description:
       - Threshold to be used for that metric.
   metricweight:
-    type: float
+    type: int
     description:
       - The weight for the specified service metric with respect to others.
   monitorname:

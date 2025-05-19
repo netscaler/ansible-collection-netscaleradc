@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -47,7 +47,7 @@ options:
     description:
       - Subnet for which the cached PTR record need to be removed.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   reversedomain:
@@ -57,7 +57,7 @@ options:
         to create the PTR record. Use the "in-addr.arpa." suffix for IPv4 addresses
         and the "ip6.arpa." suffix for IPv6 addresses.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

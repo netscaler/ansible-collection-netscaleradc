@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -59,13 +59,13 @@ options:
         addressed to this prefix have to be routed to the Citrix ADC to ensure that
         the IPv6-IPv4 translation is done by the appliance.
   ndbasereachtime:
-    type: float
+    type: int
     description:
       - Base reachable time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, that the Citrix ADC assumes an adjacent device is reachable
         after receiving a reachability confirmation.
   ndretransmissiontime:
-    type: float
+    type: int
     description:
       - Retransmission time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, between retransmitted Neighbor Solicitation (NS) messages, to
@@ -86,7 +86,7 @@ options:
     description:
       - Enable the Citrix ADC to do Router Redirection.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part

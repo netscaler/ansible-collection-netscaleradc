@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -130,7 +130,7 @@ options:
       - '* C(OFF) - Only critical C(events) are logged into the Windows Application
         Log.'
   clientidletimeout:
-    type: float
+    type: int
     description:
       - Time, in minutes, after which to time out the user session if Citrix Gateway
         does not detect mouse or keyboard activity.
@@ -274,13 +274,13 @@ options:
         C(none), or any combination of the client-side items.
     elements: str
   forcedtimeout:
-    type: float
+    type: int
     description:
       - Force a disconnection from the Citrix Gateway Plug-in with Citrix Gateway
         after a specified number of minutes. If the session closes, the user must
         log on again.
   forcedtimeoutwarning:
-    type: float
+    type: int
     description:
       - Number of minutes to warn a user before the user session is disconnected.
   fqdnspoofedip:
@@ -473,7 +473,7 @@ options:
         and Android mobile devices with Citrix Receiver. Users do not need to establish
         a full VPN tunnel to access resources in the secure network.
   sesstimeout:
-    type: float
+    type: int
     description:
       - Number of minutes after which the session times out.
   sfgatewayauthtype:
@@ -678,16 +678,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnsessionaction:
         state: present
-        name: External_receiver_session_prof
-        sesstimeout: 20
-        transparentinterception: 'OFF'
-        defaultauthorizationaction: ALLOW
-        clientidletimeout: 20
-        sso: 'ON'
-        ssocredential: SECONDARY
-        icaproxy: 'ON'
-        wihome: https://10.189.130.10/Citrix/ProdExternal
-        clientlessvpnmode: 'ON'
+        name: s1
+        pcoipprofilename: p1
 """
 
 RETURN = r"""

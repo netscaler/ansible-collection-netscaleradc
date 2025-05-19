@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -41,13 +41,13 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bandwidthhigh:
-    type: float
+    type: int
     description:
       - High threshold value for the bandwidth usage of the LA channel, in Mbps. The
         Citrix ADC generates an SNMP trap message when the bandwidth usage of the
         LA channel is greater than or equal to the specified high threshold value.
   bandwidthnormal:
-    type: float
+    type: int
     description:
       - Normal threshold value for the bandwidth usage of the LA channel, in Mbps.
         When the bandwidth usage of the LA channel returns to less than or equal to
@@ -135,7 +135,7 @@ options:
     description:
       - Link Redundancy for Cluster LAG.
   lrminthroughput:
-    type: float
+    type: int
     description:
       - Specifies the minimum throughput threshold (in Mbps) to be met by the active
         subchannel. Setting this parameter automatically divides an LACP channel into
@@ -159,7 +159,7 @@ options:
     description:
       - The initital mode for the LA channel.
   mtu:
-    type: float
+    type: int
     description:
       - The Maximum Transmission Unit (MTU) is the largest packet size, measured in
         bytes excluding 14 bytes ethernet header and 4 bytes CRC, that can be transmitted
@@ -209,7 +209,7 @@ options:
         setting applies tags for all VLANs that are bound to this channel. C(OFF)
         applies the tag for all VLANs other than the native VLAN.
   throughput:
-    type: float
+    type: int
     description:
       - Low threshold value for the throughput of the LA channel, in Mbps. In an high
         availability (HA) configuration, failover is triggered when the LA channel

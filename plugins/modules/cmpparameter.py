@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -48,7 +48,7 @@ options:
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
   cmpbypasspct:
-    type: float
+    type: int
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
         0 - 100'
@@ -89,19 +89,19 @@ options:
     description:
       - Heuristic basefile expiry.
   heurexpiryhistwt:
-    type: float
+    type: int
     description:
       - For heuristic basefile expiry, weightage to be given to historical delta compression
         ratio, specified as percentage.  For example, to give 25% weightage to historical
         ratio (and therefore 75% weightage to the ratio for current delta compression
         transaction), specify 25.
   heurexpirythres:
-    type: float
+    type: int
     description:
       - Threshold compression ratio for heuristic basefile expiry, multiplied by 100.
         For example, to set the threshold ratio to 1.25, specify 125.
   minressize:
-    type: float
+    type: int
     description:
       - Smallest response size, in bytes, to be compressed.
   policytype:
@@ -111,7 +111,7 @@ options:
     description:
       - Type of the policy. The only possible value is C(ADVANCED)
   quantumsize:
-    type: float
+    type: int
     description:
       - Minimum quantum of data to be filled before compression begins.
   randomgzipfilename:
@@ -123,12 +123,12 @@ options:
       - Control the addition of a random filename of random length in the GZIP header
         to apply the Heal-the-BREACH mitigation for the BREACH attack.
   randomgzipfilenamemaxlength:
-    type: float
+    type: int
     description:
       - Maximum length of the random filename to be added in the GZIP header to apply
         the Heal-the-BREACH mitigation for the BREACH attack.
   randomgzipfilenameminlength:
-    type: float
+    type: int
     description:
       - Minimum length of the random filename to be added in the GZIP header to apply
         the Heal-the-BREACH mitigation for the BREACH attack.
@@ -159,7 +159,14 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.cmpparameter:
         state: present
-        externalcache: 'YES'
+        cmplevel: bestspeed
+        quantumsize: '7899'
+        servercmp: 'OFF'
+        minressize: '2'
+        cmpbypasspct: '80'
+        cmponpush: ENABLED
+        policytype: ADVANCED
+        addvaryheader: ENABLED
 """
 
 RETURN = r"""

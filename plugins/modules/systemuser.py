@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -67,7 +67,7 @@ options:
     description:
       - Users logging privilege
   maxsession:
-    type: float
+    type: int
     description:
       - Maximum number of client connection allowed per user
   password:
@@ -90,7 +90,7 @@ options:
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
   timeout:
-    type: float
+    type: int
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         of system parameter is enabled, Timeout can have values in the range [300-86400]
@@ -171,10 +171,10 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.systemuser:
         state: present
-        username: GD-CTRLUPADC-P-APP
-        password: REQ_PASSWORD
-        externalauth: DISABLED
-        timeout: 900
+        username: guest
+        password: guest
+        promptstring: guest
+        timeout: 300
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -53,7 +53,7 @@ options:
       - '3. C(ccrUpdate): Do not C(delete) the session and instead send a CCR-U to
         PCRF requesting for an updated session. !'
   idlettl:
-    type: float
+    type: int
     description:
       - 'q!Idle Timeout, in seconds, after which Citrix ADC will take an idleAction
         on a subscriber session (refer to ''idleAction'' arguement in ''set subscriber

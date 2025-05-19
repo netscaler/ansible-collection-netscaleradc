@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -48,7 +48,7 @@ options:
     description:
       - Enable dynamic routing for this bridgegroup.
   id:
-    type: float
+    type: int
     description:
       - An integer that uniquely identifies the bridge group.
   ipv6dynamicrouting:

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -149,7 +149,7 @@ options:
     description:
       - Parameter to enable/disable EPA v2 functionality
   failedlogintimeout:
-    type: float
+    type: int
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
@@ -177,20 +177,20 @@ options:
     description:
       - Parameter to encrypt login information for nFactor flow
   maxaaausers:
-    type: float
+    type: int
     description:
       - Maximum number of concurrent users allowed to log on to VPN simultaneously.
   maxkbquestions:
-    type: float
+    type: int
     description:
       - This will set maximum number of Questions to be asked for KB Validation. Default
         value is 2, Max Value is 6
   maxloginattempts:
-    type: float
+    type: int
     description:
       - Maximum Number of login Attempts
   maxsamldeflatesize:
-    type: float
+    type: int
     description:
       - This will set the maximum deflate size in case of SAML Redirect binding.
   persistentloginattempts:
@@ -201,7 +201,7 @@ options:
     description:
       - Persistent storage of unsuccessful user login attempts
   pwdexpirynotificationdays:
-    type: float
+    type: int
     description:
       - This will set the threshold time in days for password expiry notification.
         Default value is 0, which means no notification is sent
@@ -230,7 +230,7 @@ options:
       - '* If authentication vserver is frontend, then record is sent using Authentication
         vserver name.'
   tokenintrospectioninterval:
-    type: float
+    type: int
     description:
       - Frequency at which a token must be verified at the Authorization Server (AS)
         despite being found in cache.
@@ -241,11 +241,11 @@ options:
       - AUTH
       - VPN
       - PORTAL
-      - MANAGED
+      - DEFAULT
     description:
       - Entities for which WAF Protection need to be applied.
       - 'Available settings function as follows:'
-      - '* C(MANAGED) - Both C(AUTH) and C(VPN) Protecions are enabled, This is default
+      - '* C(DEFAULT) - Both C(AUTH) and C(VPN) Protections are enabled. This is default
         value for wafProtection'
       - '* C(AUTH) - Endpoints used for Authentication applicable for both AAATM,
         IDP, GATEWAY use cases.'
@@ -268,9 +268,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.aaaparameter:
         state: present
-        maxaaausers: '4294967295'
-        aaasessionloglevel: DEBUG
-        aaadloglevel: ALERT
+        maxaaausers: '5'
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -63,7 +63,7 @@ options:
       - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie
         in the HTTP response.
   cookietimeout:
-    type: float
+    type: int
     description:
       - Timeout, in minutes, for the GSLB site cookie.
   domainname:
@@ -76,17 +76,17 @@ options:
     description:
       - Name of the virtual server on which to perform the binding operation.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   sitedomainttl:
-    type: float
+    type: int
     description:
       - TTL, in seconds, for all internally created site domains (created when a site
         prefix is configured on a GSLB service) that are associated with this virtual
         server.
   ttl:
-    type: float
+    type: int
     description:
       - Time to live (TTL) for the domain.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -103,8 +103,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbvserver_domain_binding:
         state: present
-        name: GSLB_VSRV_storefront.blackstone.com
-        domainname: storefront.gslb.blackstone.com
+        name: LB_ia_gslbv3
+        domainname: www.abc.com
         ttl: 5
 """
 

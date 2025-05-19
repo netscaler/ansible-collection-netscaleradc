@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -117,8 +117,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationpolicylabel:
         state: present
-        labelname: LDAP_Userextraction_External
-        loginschema: LSCHEMA_INT
+        labelname: RadFact
+        loginschema: single_auth
 """
 
 RETURN = r"""

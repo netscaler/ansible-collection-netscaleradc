@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -53,15 +53,15 @@ options:
     description:
       - Subnet for which the cached SRV record need to be removed.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   port:
-    type: float
+    type: int
     description:
       - Port on which the target host listens for client requests.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the target host. The lower the number,
         the higher the priority. If multiple target hosts have the same priority,
@@ -71,7 +71,7 @@ options:
     description:
       - Target host for the specified service.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -93,7 +93,7 @@ options:
       - '* C(PROXY) - Display all proxy address records.'
       - '* C(ALL) - Display all address records.'
   weight:
-    type: float
+    type: int
     description:
       - Weight for the target host. Aids host selection when two or more hosts have
         the same priority. A larger number indicates greater weight.

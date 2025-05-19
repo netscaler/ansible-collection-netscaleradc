@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -89,12 +89,12 @@ options:
       - 'Note: If persistent cookie is enabled, make sure you set the persistent cookie
         validity.'
   persistentcookievalidity:
-    type: float
+    type: int
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
         valid. Can be set only if the persistent cookie setting is enabled.
   sesstimeout:
-    type: float
+    type: int
     description:
       - Session timeout, in minutes. If there is no traffic during the timeout period,
         the user is disconnected and must reauthenticate to access intranet resources.

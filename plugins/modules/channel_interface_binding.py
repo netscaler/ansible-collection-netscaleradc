@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -65,7 +65,7 @@ options:
       - Use spaces to separate multiple entries.
     elements: str
   svmcmd:
-    type: float
+    type: int
     description:
       - New attribute added to identify the source of cmd, when SVM fires the nitro
         cmd, it will set the value of SVMCMD to be 1.

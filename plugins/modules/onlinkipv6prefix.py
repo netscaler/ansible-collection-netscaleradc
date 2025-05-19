@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -75,11 +75,11 @@ options:
     description:
       - RA Prefix onlink flag.
   prefixpreferredlifetime:
-    type: float
+    type: int
     description:
       - Preferred life time of the prefix, in seconds.
   prefixvalidelifetime:
-    type: float
+    type: int
     description:
       - Valide life time of the prefix, in seconds.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -101,10 +101,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.appflowcollector:
         state: present
-        name: af_collector_logstream_10.189.64.10
-        ipaddress: 10.189.64.10
-        port: 5557
-        transport: logstream
+        name: af_collector_10.102.233.21
+        ipaddress: 10.102.233.21
 """
 
 RETURN = r"""

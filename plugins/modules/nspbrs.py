@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -33,6 +33,7 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(applied), the resources will be applied on the NetScaler ADC node
     type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
@@ -47,7 +48,8 @@ EXAMPLES = r"""
     - name: Configure nspbrs
       delegate_to: localhost
       netscaler.adc.nspbrs:
-        state: applied
+        state: present
+        action: apply
 """
 
 RETURN = r"""

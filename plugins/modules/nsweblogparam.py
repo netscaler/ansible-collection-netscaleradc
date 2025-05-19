@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   buffersizemb:
-    type: float
+    type: int
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.

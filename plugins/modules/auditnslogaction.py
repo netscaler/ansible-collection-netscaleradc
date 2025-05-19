@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -152,6 +152,13 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my nslog action" or 'my nslog action').
+  protocolviolations:
+    type: str
+    choices:
+      - ALL
+      - NONE
+    description:
+      - Log protocol violations
   serverdomainname:
     type: str
     description:
@@ -195,6 +202,13 @@ options:
       - 'Available settings function as follows:'
       - '* C(GMT_TIME). Coordinated Universal Time.'
       - '* C(LOCAL_TIME). The server''s timezone setting.'
+  trafficplane:
+    type: str
+    choices:
+      - DEFAULT
+      - DATA
+    description:
+      - Traffic Plane to which the logs will be sent.
   urlfiltering:
     type: str
     choices:

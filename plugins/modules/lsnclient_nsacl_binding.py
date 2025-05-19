@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -57,7 +57,7 @@ options:
         more spaces, enclose the name in double or single quotation marks (for example,
         "lsn client1" or ''lsn client1'').'
   td:
-    type: float
+    type: int
     description:
       - 'ID of the traffic domain on which this subscriber or the subscriber network
         (as specified by the network parameter) belongs. '
