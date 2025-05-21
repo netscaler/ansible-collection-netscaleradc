@@ -471,7 +471,7 @@ class ModuleExecutor(object):
                     )
                     self.delete()
                     if (
-                        self.module.params["state"] == "present" and 
+                        self.module.params["state"] == "present" and
                         any(x in self.supported_operations for x in ("enabled", "disabled"))
                     ):
                         # We want to keep the previous state of the binding
