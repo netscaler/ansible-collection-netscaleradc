@@ -123,7 +123,7 @@ options:
       - '* 10 - Indicates a 10 Gbps port.'
       - '* LA - Indicates a link aggregation port.'
       - '* LO - Indicates a loop back port.'
-      - U is a unique integer for representing an interface in a particular port group.
+      - 'U is a unique integer for representing an interface in a particular port group.'
   ifalias:
     type: str
     description:
