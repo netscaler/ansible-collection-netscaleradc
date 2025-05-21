@@ -47,7 +47,7 @@ from .nitro_resource_map import NITRO_RESOURCE_MAP
 skippable_resource_list = [
     # In some cases, although keys are listed as immutable in the nitro_resource_map, they can actually be updated.
     # This list helps bypass the immutability check for these resources.
-    "sytemfile"
+    "systemfile"
 ]
 
 
@@ -467,7 +467,6 @@ class ModuleExecutor(object):
                     ok, err = create_resource(
                         self.client, self.resource_name, self.resource_module_params
                     )
-
                 elif immutable_keys_list is None or self.resource_name in skippable_resource_list:
                     self.module_result["changed"] = True
                     log(
