@@ -382,16 +382,23 @@ class ModuleExecutor(object):
 
     @trace
     def create_or_update(self):
+        desired_state = self.module.params["state"]
+        if (
+            desired_state == "present" and
+            self.resource_name.endswith("_binding") and
+            "state" in self.resource_module_params
+        ):
+            self.resource_module_params.pop("state")
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
         if not self.existing_resource and "add" in self.supported_operations:
-            # For bindings we can skip this step if state is enabled or disabled as it will be created
             if (
                 self.resource_name.endswith("_binding") and
-                self.module.params["state"] in {"enabled", "disabled"}
+                desired_state in {"enabled", "disabled"}
             ):
-                return
+                self.resource_module_params["state"] = desired_state.upper()
+
             self.module_result["changed"] = True
             log(
                 "INFO: Resource %s:%s does not exist. Will be CREATED."
@@ -476,7 +483,7 @@ class ModuleExecutor(object):
                     ):
                         # We want to keep the previous state of the binding
                         self.resource_module_params["state"] = (
-                            self.existing_resource.get("state", "present")
+                            self.existing_resource.get("state", "ENABLED").upper()
                         )
                     ok, err = create_resource(
                         self.client, self.resource_name, self.resource_module_params
@@ -509,6 +516,22 @@ class ModuleExecutor(object):
                         self.module_result["changed"] = False
                         self.module.exit_json(**self.module_result)
                     else:
+                        if (
+                            self.resource_name.endswith("_binding") and
+                            self.module.params["state"] in {"enabled", "disabled"}
+                        ):
+                            existing_state = self.existing_resource.get("state", "").upper()
+                            if existing_state != desired_state:
+                                # Create the resource in desired state
+                                self.module_result["changed"] = True
+                                self.delete()
+                                self.resource_module_params["state"] = desired_state
+                                ok, err = create_resource(
+                                    self.client, self.resource_name, self.resource_module_params
+                                )
+                                if not ok:
+                                    self.return_failure(err)
+                            return
                         self.module_result["changed"] = True
                         msg = (
                             f"Resource {self.resource_name}/{self.resource_id} is updated after ignoring following "
@@ -529,16 +552,7 @@ class ModuleExecutor(object):
         )
         self.update_diff_list(custom_msg=not_implemented_msg)
         self.module_result["changed"] = True
-        if self.resource_name.endswith("_binding"):
-            # If its a binding we remove and add it again
-            self.delete()
-            self.resource_module_params["state"] = desired_state.upper()
-            ok, err = create_resource(
-                self.client,
-                self.resource_name,
-                self.resource_module_params,
-            )
-        else:
+        if not self.resource_name.endswith("_binding"):
             if desired_state == "enabled":
                 ok, err = enable_resource(
                     self.client, self.resource_name, self.resource_module_params
@@ -547,8 +561,8 @@ class ModuleExecutor(object):
                 ok, err = disable_resource(
                     self.client, self.resource_name, self.resource_module_params
                 )
-        if not ok:
-            self.return_failure(err)
+            if not ok:
+                self.return_failure(err)
 
     @trace
     def delete(self):

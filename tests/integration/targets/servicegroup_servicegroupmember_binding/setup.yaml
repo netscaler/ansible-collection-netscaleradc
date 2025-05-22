@@ -1,6 +1,4 @@
 ---
-- name: Create SLB Site
-  delegate_to: localhost
 - name: Create SLB Servicegroup
   delegate_to: localhost
   netscaler.adc.servicegroup:

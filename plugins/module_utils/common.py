@@ -212,7 +212,7 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
         # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
         for key in resource_module_params.keys():
             if not action:
-                if key in resource_add_keys or key == "state":
+                if key in resource_add_keys:
                     post_data[key] = resource_module_params[key]
                 elif resource_name == "service" and key == "ipaddress":
                     post_data["ip"] = resource_module_params[key]
