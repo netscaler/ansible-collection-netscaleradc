@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   cipherpriority:
-    type: float
+    type: int
     description:
       - Priority of the cipher binding
   name:

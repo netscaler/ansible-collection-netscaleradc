@@ -144,7 +144,7 @@ options:
         set for the ACL rule is ALLOW and these packets match the other conditions
         in the ACL rule.
   icmpcode:
-    type: float
+    type: int
     description:
       - Code of a particular ICMP message type to match against the ICMP code of an
         incoming ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE
@@ -152,7 +152,7 @@ options:
       - ''
       - If you set this parameter, you must set the ICMP Type parameter.
   icmptype:
-    type: float
+    type: int
     description:
       - ICMP Message type to match against the message type of an incoming ICMP packet.
         For example, to block DESTINATION UNREACHABLE messages, you must specify 3
@@ -175,11 +175,11 @@ options:
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
   nodeid:
-    type: float
+    type: int
     description:
       - Specifies the NodeId to steer the packet to the provided FP.
   priority:
-    type: float
+    type: int
     description:
       - Priority for the extended ACL rule that determines the order in which it is
         evaluated relative to the other extended ACL rules. If you do not specify
@@ -327,11 +327,11 @@ options:
     description:
       - Protocol to match against the protocol of an incoming IPv4 packet.
   protocolnumber:
-    type: float
+    type: int
     description:
       - Protocol to match against the protocol of an incoming IPv4 packet.
   ratelimit:
-    type: float
+    type: int
     description:
       - Maximum number of log messages to be generated per second. If you set this
         parameter, you must enable the Log State parameter.
@@ -404,13 +404,13 @@ options:
       - If stateful option is enabled, transparent sessions are created for the traffic
         hitting this ACL and not hitting any other features like LB, INAT etc.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   ttl:
-    type: float
+    type: int
     description:
       - Number of seconds, in multiples of four, after which the extended ACL rule
         expires. If you do not want the extended ACL rule to expire, do not specify
@@ -427,13 +427,13 @@ options:
       - '* C(DFD) - cluster specific acls,specifies hashmethod for steering of the
         packet in cluster .'
   vlan:
-    type: float
+    type: int
     description:
       - ID of the VLAN. The Citrix ADC applies the ACL rule only to the incoming packets
         of the specified VLAN. If you do not specify a VLAN ID, the appliance applies
         the ACL rule to the incoming packets on all VLANs.
   vxlan:
-    type: float
+    type: int
     description:
       - ID of the VXLAN. The Citrix ADC applies the ACL rule only to the incoming
         packets of the specified VXLAN. If you do not specify a VXLAN ID, the appliance
@@ -452,16 +452,13 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nsacl:
         state: present
-        aclname: ACL_SF_Allow_USE1-B
+        aclname: acl1
         aclaction: ALLOW
         srcip: true
-        srcipop: '='
-        srcipval: 10.189.96.60
+        srcipval: 222.222.80.55
         destip: true
-        destipop: '='
-        destipdataset: SF_LBVIP
-        priority: '15'
-        kernelstate: SFAPPLIED61
+        destipval: 209.1.2.12
+        protocol: TCP
 """
 
 RETURN = r"""

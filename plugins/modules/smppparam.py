@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addrnpi:
-    type: float
+    type: int
     description:
       - Numbering Plan Indicator, such as landline, data, or WAP client, used in the
         ESME address sent in the bind request.
@@ -48,7 +48,7 @@ options:
     description:
       - Set of SME addresses, sent in the bind request, serviced by the ESME.
   addrton:
-    type: float
+    type: int
     description:
       - Type of Number, such as an international number or a national number, used
         in the ESME address sent in the bind request.
@@ -74,7 +74,7 @@ options:
       - Queue SMPP messages if a client that is capable of receiving the destination
         address messages is not available.
   msgqueuesize:
-    type: float
+    type: int
     description:
       - Maximum number of SMPP messages that can be queued. After the limit is reached,
         the Citrix ADC sends a deliver_sm_resp PDU, with an appropriate error message,

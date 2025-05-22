@@ -87,6 +87,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile_xmlwsiurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_xmlwsiurl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_xmlwsiurl_binding:
+        state: present
+        name: webgoat_prof
+        xmlwsiurl: .*
+        xmlwsichecks: BP1201, R1000, R1001, R1003, R1004, R1005, R1006, R1007, R1011,
+          R1012, R1013, R1014, R1015, R1031, R1032, R1033, R1109, R1111, R1126, R1132,
+          R1140, R1141, R2113, R2211, R2714, R2729, R2735, R2738, R2740, R2744
 """
 
 RETURN = r"""

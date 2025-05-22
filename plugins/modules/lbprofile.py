@@ -92,7 +92,7 @@ options:
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
   lbhashfingers:
-    type: float
+    type: int
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers

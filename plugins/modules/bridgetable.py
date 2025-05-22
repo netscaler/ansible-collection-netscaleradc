@@ -41,14 +41,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bridgeage:
-    type: float
+    type: int
     description:
       - Time-out value for the bridge table entries, in seconds. The new value applies
         only to the entries that are dynamically learned after the new value is set.
         Previously existing bridge table entries expire after the previously configured
         time-out value.
   devicevlan:
-    type: float
+    type: int
     description:
       - The vlan on which to send multicast packets when the VXLAN tunnel endpoint
         is a muticast group address.
@@ -61,15 +61,15 @@ options:
     description:
       - The MAC address of the target.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   vlan:
-    type: float
+    type: int
     description:
       - VLAN  whose entries are to be removed.
   vni:
-    type: float
+    type: int
     description:
       - The VXLAN VNI Network Identifier (or VXLAN Segment ID) to use to connect to
         the remote VXLAN tunnel endpoint.  If omitted the value specified as vxlan
@@ -80,7 +80,7 @@ options:
       - The IP address of the destination VXLAN tunnel endpoint where the Ethernet
         MAC ADDRESS resides.
   vxlan:
-    type: float
+    type: int
     description:
       - The VXLAN to which this address is associated.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

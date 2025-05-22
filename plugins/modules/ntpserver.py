@@ -49,19 +49,19 @@ options:
         communication with the server, you must set either the value of this parameter
         or the key parameter.
   key:
-    type: float
+    type: int
     description:
       - Key to use for encrypting authentication fields. All packets sent to and received
         from the server must include authentication fields encrypted by using this
         key. To require authentication for communication with the server, you must
         set either the value of this parameter or the autokey parameter.
   maxpoll:
-    type: float
+    type: int
     description:
       - Maximum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.
   minpoll:
-    type: float
+    type: int
     description:
       - Minimum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.

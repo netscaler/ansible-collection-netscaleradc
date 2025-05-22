@@ -91,7 +91,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.dnsnameserver:
         state: present
-        dnsvservername: lb_dns_01
+        dnsvservername: LB_dnsv1
 """
 
 RETURN = r"""

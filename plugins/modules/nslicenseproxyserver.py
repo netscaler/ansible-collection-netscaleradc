@@ -39,7 +39,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   port:
-    type: float
+    type: int
     description:
       - License proxy server port.
   serverip:

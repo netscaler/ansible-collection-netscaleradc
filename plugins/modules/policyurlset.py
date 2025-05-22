@@ -58,12 +58,12 @@ options:
     description:
       - when set, display shows all imported urlsets.
   interval:
-    type: float
+    type: int
     description:
       - The interval, in seconds, rounded down to the nearest 15 minutes, at which
         the update of urlset occurs.
   matchedid:
-    type: float
+    type: int
     description:
       - An ID that would be sent to AppFlow to indicate which URLSet was the last
         one that matched the requested URL.

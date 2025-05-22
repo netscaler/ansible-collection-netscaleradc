@@ -50,7 +50,7 @@ options:
     description:
       - Subnet mask for the intranet IP range.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   sessionkey:
