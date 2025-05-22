@@ -47,7 +47,7 @@ options:
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
   vxlan:
-    type: float
+    type: int
     description:
       - Identifier of the vxlan that is assigned to this partition.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

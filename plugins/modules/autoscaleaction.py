@@ -53,7 +53,7 @@ options:
     description:
       - AutoScale profile name.
   quiettime:
-    type: float
+    type: int
     description:
       - Time in seconds no other policy is evaluated or action is taken
   type:
@@ -64,7 +64,7 @@ options:
     description:
       - The type of action.
   vmdestroygraceperiod:
-    type: float
+    type: int
     description:
       - Time in minutes a VM is kept in inactive state before destroying
   vserver:

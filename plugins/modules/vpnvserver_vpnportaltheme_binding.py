@@ -62,8 +62,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnportaltheme_binding:
         state: present
-        name: portal.bx.com
-        portaltheme: BX_Brand
+        name: ns.pcoip.net
+        portaltheme: RfWebUI
 """
 
 RETURN = r"""

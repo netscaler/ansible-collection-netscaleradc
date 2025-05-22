@@ -41,11 +41,11 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: float
+    type: int
     description:
       - The integer that uniquely identifies the bridge group.
   vlan:
-    type: float
+    type: int
     description:
       - Names of all member VLANs.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

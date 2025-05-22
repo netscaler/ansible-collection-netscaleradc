@@ -77,7 +77,7 @@ options:
         method fails or cannot be used. Valid only if the primary method is based
         on either round-trip time (C(RTT)) or static proximity.
   backupsessiontimeout:
-    type: float
+    type: int
     description:
       - A non zero value enables the feature whose minimum value is 2 minutes. The
         feature can be disabled by setting the value to zero. The created session
@@ -114,7 +114,7 @@ options:
       - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie
         in the HTTP response.
   cookietimeout:
-    type: float
+    type: int
     description:
       - Timeout, in minutes, for the GSLB site cookie.
   disableprimaryondown:
@@ -225,16 +225,16 @@ options:
     description:
       - New name for the GSLB virtual server.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   orderthreshold:
-    type: float
+    type: int
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
   persistenceid:
-    type: float
+    type: int
     description:
       - The persistence ID for the GSLB virtual server. The ID is a positive integer
         that enables GSLB sites to identify the GSLB virtual server, and is required
@@ -300,7 +300,7 @@ options:
     description:
       - Protocol used by services bound to the virtual server.
   sitedomainttl:
-    type: float
+    type: int
     description:
       - TTL, in seconds, for all internally created site domains (created when a site
         prefix is configured on a GSLB service) that are associated with this virtual
@@ -349,18 +349,18 @@ options:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup GSLB virtual servers.
   sopersistencetimeout:
-    type: float
+    type: int
     description:
       - Timeout for spillover persistence, in minutes.
   sothreshold:
-    type: float
+    type: int
     description:
       - Threshold at which spillover occurs. Specify an integer for the CONNECTION
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
         method (do not enter the units), or a percentage for the HEALTH method (do
         not enter the percentage symbol).
   timeout:
-    type: float
+    type: int
     description:
       - Idle time, in minutes, after which a persistence entry is cleared.
   toggleorder:
@@ -371,7 +371,7 @@ options:
     description:
       - Configure this option to toggle order preference
   tolerance:
-    type: float
+    type: int
     description:
       - Tolerance in milliseconds. Tolerance value is used in deciding which sites
         in a GSLB configuration must be considered for implementing the RTT load balancing
@@ -383,21 +383,21 @@ options:
         considered might change. For example, a site that is considered for requests
         coming from LDNS1 might not be considered for requests coming from LDNS2.
   ttl:
-    type: float
+    type: int
     description:
       - Time to live (TTL) for the domain.
   v6netmasklen:
-    type: float
+    type: int
     description:
       - Number of bits to consider, in an IPv6 source IP address, for creating the
         hash that is required by the SOURCEIPHASH load balancing method.
   v6persistmasklen:
-    type: float
+    type: int
     description:
       - Number of bits to consider in an IPv6 source IP address when creating source
         IP address based persistence sessions.
   weight:
-    type: float
+    type: int
     description:
       - Weight for the service.
   gslbvserver_domain_binding:
@@ -539,8 +539,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbvserver:
         state: present
-        name: backup_gslb_portal.bx.com
-        servicetype: SSL
+        name: LB_ia_gslbv8
         backuplbmethod: ROUNDROBIN
         tolerance: '0'
         appflowlog: DISABLED

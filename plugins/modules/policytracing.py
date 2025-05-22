@@ -52,7 +52,7 @@ options:
     description:
       - 'Policy tracing filter expression. For example: http.req.url.startswith("/this").'
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   protocoltype:

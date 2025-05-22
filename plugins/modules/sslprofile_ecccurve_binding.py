@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   cipherpriority:
-    type: float
+    type: int
     description:
       - Priority of the cipher binding
   ecccurvename:
@@ -53,6 +53,7 @@ options:
       - P_384
       - P_521
       - X_25519
+      - X25519_MLKEM768
     description:
       - Named ECC curve bound to vserver/service.
   name:

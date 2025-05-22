@@ -160,7 +160,7 @@ options:
       - The owner node group in a Cluster for this pbr rule. If ownernode is not specified
         then the pbr rule is treated as Striped pbr rule.
   priority:
-    type: float
+    type: int
     description:
       - Priority of the PBR, which determines the order in which it is evaluated relative
         to the other PBRs. If you do not specify priorities while creating PBRs, the
@@ -308,7 +308,7 @@ options:
       - Protocol, identified by protocol name, to match against the protocol of an
         outgoing IPv4 packet.
   protocolnumber:
-    type: float
+    type: int
     description:
       - Protocol, identified by protocol number, to match against the protocol of
         an outgoing IPv4 packet.
@@ -368,20 +368,29 @@ options:
         with a hyphen. For example: 40-90.'
       - ''
       - 'Note: The destination port can be specified only for TCP and UDP protocols.'
+  targettd:
+    type: bool
+    description:
+      - Integer value that uniquely identifies the traffic domain to which you want
+        to send packet to.
+  targettdval:
+    type: int
+    description:
+      - Integer value that uniquely identifies the traffic domain to send packet to.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   vlan:
-    type: float
+    type: int
     description:
       - ID of the VLAN. The Citrix ADC compares the PBR only to the outgoing packets
         on the specified VLAN. If you do not specify any interface ID, the appliance
         compares the PBR to the outgoing packets on all VLANs.
   vxlan:
-    type: float
+    type: int
     description:
       - ID of the VXLAN. The Citrix ADC compares the PBR only to the outgoing packets
         on the specified VXLAN. If you do not specify any interface ID, the appliance
@@ -405,18 +414,17 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nspbr:
         state: present
-        name: mgmt_pbr
+        name: ia_pbr9
         action: ALLOW
-        srcip: true
-        srcipop: '='
-        srcipval: 10.189.64.50
-        destip: true
-        destipop: '!='
-        destipval: 10.189.64.1-10.189.64.254
         nexthop: true
-        nexthopval: 10.189.64.1
-        priority: '10'
-        kernelstate: SFAPPLIED61
+        nexthopval: 4.4.4.242
+        srcmac: 00:aa:10:12:13:ef
+        protocol: ICMP
+        vlan: '23'
+        Interface: 1/1
+        priority: '23'
+        msr: ENABLED
+        monitor: ia_mon1
 """
 
 RETURN = r"""

@@ -58,7 +58,7 @@ options:
     description:
       - Name of the authentication policy to bind to the policy label.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -75,10 +75,10 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationpolicylabel_authenticationpolicy_binding:
         state: present
-        labelname: LDAP_Userextraction_External
-        policyname: LDAP_userextraction_External_pol
-        priority: '100'
-        gotopriorityexpression: END
+        labelname: RadFact
+        policyname: RADIUS_10.102.222.187
+        priority: '1'
+        nextfactor: EPA_LABEL
 """
 
 RETURN = r"""

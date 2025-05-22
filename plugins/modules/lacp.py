@@ -37,12 +37,12 @@ options:
         the module's parameters.
     type: str
   ownernode:
-    type: float
+    type: int
     description:
       - The owner node in a cluster for which we want to set the lacp priority. Owner
         node can vary from 0 to 31. Ownernode value of 254 is used for Cluster.
   syspriority:
-    type: float
+    type: int
     description:
       - Priority number that determines which peer device of an LACP LA channel can
         have control over the LA channel. This parameter is globally applied to all
@@ -62,7 +62,7 @@ EXAMPLES = r"""
       netscaler.adc.lacp:
         state: present
         syspriority: '32768'
-        mac: 12:31:4d:59:3f:9f
+        ownernode: '255'
 """
 
 RETURN = r"""

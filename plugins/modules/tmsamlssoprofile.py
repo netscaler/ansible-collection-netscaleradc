@@ -466,7 +466,7 @@ options:
     description:
       - Algorithm to be used to sign/verify SAML transactions
   skewtime:
-    type: float
+    type: int
     description:
       - This option specifies the number of minutes on either side of current time
         that the assertion would be valid. For example, if skewTime is 10, then assertion

@@ -39,7 +39,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   azurepollperiod:
-    type: float
+    type: int
     description:
       - Azure polling period (in seconds)
   azuretagname:
@@ -105,10 +105,11 @@ options:
       - ADNS_DOT
       - HTTP_QUIC
       - ADNS_DOH
+      - KAFKA_BROKER
     description:
       - The type of bound service
   delay:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
@@ -188,6 +189,7 @@ options:
       - HTTP_QUIC
       - DOT
       - SSL_PROXY
+      - KAFKA_PRODUCER
     description:
       - Protocol used by the service (also called the service type).
   type:

@@ -46,7 +46,7 @@ options:
     description:
       - Drop any packet that requires fragmentation.
   dropfragcputhreshold:
-    type: float
+    type: int
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation. Applies only if dropFragparameter is set to NO.
@@ -87,7 +87,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.ip6tunnelparam:
         state: present
-        srcip: '::'
+        srciproundrobin: 'YES'
 """
 
 RETURN = r"""

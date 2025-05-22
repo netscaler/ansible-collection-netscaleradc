@@ -93,7 +93,7 @@ options:
     description:
       - Path to the CRL file. /var/netscaler/ssl/ is the default path.
   day:
-    type: float
+    type: int
     description:
       - Day on which to refresh the CRL, or, if the Interval parameter is not set,
         the number of days after which to refresh the CRL. If Interval is set to MONTHLY,

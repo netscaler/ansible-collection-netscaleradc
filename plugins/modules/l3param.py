@@ -40,6 +40,9 @@ options:
     type: str
   acllogtime:
     type: str
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Parameter to tune acl logging time
   allowclasseipv4:
@@ -86,7 +89,7 @@ options:
     description:
       - Enable forwarding of ICMP fragments.
   icmpgenratethreshold:
-    type: float
+    type: int
     description:
       - NS generated ICMP pkts per 10ms rate threshold
   implicitaclallow:

@@ -53,7 +53,7 @@ options:
     description:
       - IPv4 or IPv6 address of RDP listener. This terminates client RDP connections.
   rdpport:
-    type: float
+    type: int
     description:
       - TCP port on which the RDP connection is established.
   rdpredirection:

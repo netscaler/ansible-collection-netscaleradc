@@ -54,7 +54,7 @@ options:
     description:
       - Routing algorithm to generate routable connection IDs.
   serveridlength:
-    type: float
+    type: int
     description:
       - Length of serverid to encode/decode server information
 extends_documentation_fragment: netscaler.adc.netscaler_adc

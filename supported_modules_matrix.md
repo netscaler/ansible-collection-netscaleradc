@@ -6,10 +6,10 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 
 - Total number of resources: **940**
 - Total number of supported resources: **938**
-- Total number of supported resources with examples: **479**
+- Total number of supported resources with examples: **494**
 - Total number of unsupported resources: **2**
 - Percentage of supported resources: **99.79%**
-- Percentage of supported resources with examples: **50.96%**
+- Percentage of supported resources with examples: **52.55%**
 - Percentage of unsupported resources: **0.21%**
 
 ---
@@ -103,8 +103,8 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [appfwprofile_crosssitescripting_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_crosssitescripting_binding_module.html) | ✅ | ✅ |
 | [appfwprofile_csrftag_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_csrftag_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_denylist_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_denylist_binding_module.html) | ✅ | ❌ |
-| [appfwprofile_denyurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_denyurl_binding_module.html) | ✅ | ❌ |
-| [appfwprofile_excluderescontenttype_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_excluderescontenttype_binding_module.html) | ✅ | ❌ |
+| [appfwprofile_denyurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_denyurl_binding_module.html) | ✅ | ✅ |
+| [appfwprofile_excluderescontenttype_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_excluderescontenttype_binding_module.html) | ✅ | ✅ |
 | [appfwprofile_fakeaccount_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_fakeaccount_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_fieldconsistency_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_fieldconsistency_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_fieldformat_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_fieldformat_binding_module.html) | ✅ | ✅ |
@@ -112,7 +112,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [appfwprofile_grpcvalidation_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_grpcvalidation_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_jsonblockkeyword_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_jsonblockkeyword_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_jsoncmdurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_jsoncmdurl_binding_module.html) | ✅ | ❌ |
-| [appfwprofile_jsondosurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_jsondosurl_binding_module.html) | ✅ | ❌ |
+| [appfwprofile_jsondosurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_jsondosurl_binding_module.html) | ✅ | ✅ |
 | [appfwprofile_jsonsqlurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_jsonsqlurl_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_jsonxssurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_jsonxssurl_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_logexpression_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_logexpression_binding_module.html) | ✅ | ✅ |
@@ -121,11 +121,11 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [appfwprofile_sqlinjection_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_sqlinjection_binding_module.html) | ✅ | ✅ |
 | [appfwprofile_starturl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_starturl_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_trustedlearningclients_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_trustedlearningclients_binding_module.html) | ✅ | ❌ |
-| [appfwprofile_xmlattachmenturl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmlattachmenturl_binding_module.html) | ✅ | ❌ |
-| [appfwprofile_xmldosurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmldosurl_binding_module.html) | ✅ | ❌ |
+| [appfwprofile_xmlattachmenturl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmlattachmenturl_binding_module.html) | ✅ | ✅ |
+| [appfwprofile_xmldosurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmldosurl_binding_module.html) | ✅ | ✅ |
 | [appfwprofile_xmlsqlinjection_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmlsqlinjection_binding_module.html) | ✅ | ❌ |
 | [appfwprofile_xmlvalidationurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmlvalidationurl_binding_module.html) | ✅ | ✅ |
-| [appfwprofile_xmlwsiurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmlwsiurl_binding_module.html) | ✅ | ❌ |
+| [appfwprofile_xmlwsiurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmlwsiurl_binding_module.html) | ✅ | ✅ |
 | [appfwprofile_xmlxss_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprofile_xmlxss_binding_module.html) | ✅ | ❌ |
 | [appfwprotofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwprotofile_module.html) | ✅ | ❌ |
 | [appfwsettings](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appfwsettings_module.html) | ✅ | ✅ |
@@ -221,19 +221,19 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [azureapplication](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/azureapplication_module.html) | ✅ | ❌ |
 | [azurekeyvault](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/azurekeyvault_module.html) | ✅ | ❌ |
 | [botglobal_botpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botglobal_botpolicy_binding_module.html) | ✅ | ❌ |
-| [botpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botpolicy_module.html) | ✅ | ❌ |
+| [botpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botpolicy_module.html) | ✅ | ✅ |
 | [botpolicylabel](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botpolicylabel_module.html) | ✅ | ❌ |
 | [botpolicylabel_botpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botpolicylabel_botpolicy_binding_module.html) | ✅ | ❌ |
-| [botprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_module.html) | ✅ | ❌ |
-| [botprofile_blacklist_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_blacklist_binding_module.html) | ✅ | ❌ |
+| [botprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_module.html) | ✅ | ✅ |
+| [botprofile_blacklist_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_blacklist_binding_module.html) | ✅ | ✅ |
 | [botprofile_captcha_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_captcha_binding_module.html) | ✅ | ❌ |
-| [botprofile_ipreputation_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_ipreputation_binding_module.html) | ✅ | ❌ |
+| [botprofile_ipreputation_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_ipreputation_binding_module.html) | ✅ | ✅ |
 | [botprofile_kmdetectionexpr_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_kmdetectionexpr_binding_module.html) | ✅ | ❌ |
 | [botprofile_logexpression_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_logexpression_binding_module.html) | ✅ | ❌ |
-| [botprofile_ratelimit_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_ratelimit_binding_module.html) | ✅ | ❌ |
+| [botprofile_ratelimit_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_ratelimit_binding_module.html) | ✅ | ✅ |
 | [botprofile_tps_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_tps_binding_module.html) | ✅ | ❌ |
 | [botprofile_trapinsertionurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_trapinsertionurl_binding_module.html) | ✅ | ❌ |
-| [botprofile_whitelist_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_whitelist_binding_module.html) | ✅ | ❌ |
+| [botprofile_whitelist_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botprofile_whitelist_binding_module.html) | ✅ | ✅ |
 | [botsettings](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botsettings_module.html) | ✅ | ✅ |
 | [botsignature](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/botsignature_module.html) | ✅ | ❌ |
 | [bridgegroup](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/bridgegroup_module.html) | ✅ | ✅ |
@@ -452,12 +452,12 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [lbvserver](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_module.html) | ✅ | ✅ |
 | [lbvserver_analyticsprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_analyticsprofile_binding_module.html) | ✅ | ❌ |
 | [lbvserver_appflowpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_appflowpolicy_binding_module.html) | ✅ | ✅ |
-| [lbvserver_appfwpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_appfwpolicy_binding_module.html) | ✅ | ❌ |
+| [lbvserver_appfwpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_appfwpolicy_binding_module.html) | ✅ | ✅ |
 | [lbvserver_appqoepolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_appqoepolicy_binding_module.html) | ✅ | ✅ |
 | [lbvserver_auditnslogpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_auditnslogpolicy_binding_module.html) | ✅ | ❌ |
 | [lbvserver_auditsyslogpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_auditsyslogpolicy_binding_module.html) | ✅ | ❌ |
 | [lbvserver_authorizationpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_authorizationpolicy_binding_module.html) | ✅ | ❌ |
-| [lbvserver_botpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_botpolicy_binding_module.html) | ✅ | ❌ |
+| [lbvserver_botpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_botpolicy_binding_module.html) | ✅ | ✅ |
 | [lbvserver_cachepolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_cachepolicy_binding_module.html) | ✅ | ✅ |
 | [lbvserver_cmppolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_cmppolicy_binding_module.html) | ✅ | ✅ |
 | [lbvserver_contentinspectionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/lbvserver_contentinspectionpolicy_binding_module.html) | ✅ | ❌ |
@@ -903,7 +903,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [vpnvserver](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_module.html) | ✅ | ✅ |
 | [vpnvserver_aaapreauthenticationpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_aaapreauthenticationpolicy_binding_module.html) | ✅ | ✅ |
 | [vpnvserver_analyticsprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_analyticsprofile_binding_module.html) | ✅ | ❌ |
-| [vpnvserver_appcontroller_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_appcontroller_binding_module.html) | ✅ | ❌ |
+| [vpnvserver_appcontroller_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_appcontroller_binding_module.html) | ✅ | ✅ |
 | [vpnvserver_appflowpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_appflowpolicy_binding_module.html) | ✅ | ✅ |
 | [vpnvserver_appfwpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_appfwpolicy_binding_module.html) | ✅ | ❌ |
 | [vpnvserver_auditnslogpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_auditnslogpolicy_binding_module.html) | ✅ | ❌ |

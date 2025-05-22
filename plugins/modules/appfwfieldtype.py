@@ -60,7 +60,7 @@ options:
       - will not show internal field types added as part of FieldFormat learn rules
         deployment
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the field type. A lower number
         specifies a higher priority. Field types are checked in the order of their

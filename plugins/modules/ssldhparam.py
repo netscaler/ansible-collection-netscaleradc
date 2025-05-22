@@ -36,7 +36,7 @@ options:
       - When C(created), the `create` operation will be applied on the resource.
     type: str
   bits:
-    type: float
+    type: int
     description:
       - Size, in bits, of the DH key being generated.
   dhfile:

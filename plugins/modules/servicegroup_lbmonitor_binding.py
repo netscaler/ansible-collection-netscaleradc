@@ -46,12 +46,12 @@ options:
       - Unique service identifier. Used when the persistency type for the virtual
         server is set to Custom Server ID.
   dbsttl:
-    type: float
+    type: int
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
   hashid:
-    type: float
+    type: int
     description:
       - Unique numerical identifier used by hash based load balancing methods to identify
         a service.
@@ -72,7 +72,7 @@ options:
       - Specify the nameserver to which the query for bound domain needs to be sent.
         If not specified, use the global nameserver
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the servicegroup member
   passive:
@@ -81,7 +81,7 @@ options:
       - Indicates if load monitor is passive. A passive load monitor does not remove
         service from LB decision when threshold is breached.
   serverid:
-    type: float
+    type: int
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
@@ -90,7 +90,7 @@ options:
     description:
       - Name of the service group.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

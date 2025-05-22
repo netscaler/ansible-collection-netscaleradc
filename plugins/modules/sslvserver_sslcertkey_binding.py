@@ -91,8 +91,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslvserver_sslcertkey_binding:
         state: present
-        vservername: CitrixAccessCallback
-        certkeyname: callback.blackstone.com
+        vservername: dh
+        certkeyname: rtca1
 """
 
 RETURN = r"""

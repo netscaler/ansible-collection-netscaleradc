@@ -76,9 +76,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationldappolicy:
         state: present
-        name: LDAP_Basic_Policy
+        name: ldap24
         rule: ns_true
-        reqaction: ldap_mgmt_act
+        reqaction: ldap24
 """
 
 RETURN = r"""

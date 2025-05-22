@@ -78,7 +78,7 @@ options:
     description:
       - Name of the policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the policy.
   type:

@@ -84,8 +84,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.policyexpression:
         state: present
-        name: Sub_1471612160_23
-        value: CLIENT.IP.SRC.IN_SUBNET(147.161.216.0/23)
+        name: dummy_vserver4
+        value: sys.vserver("dummy").determine_services(port,",")
 """
 
 RETURN = r"""

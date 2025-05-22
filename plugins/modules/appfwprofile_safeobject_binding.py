@@ -76,7 +76,7 @@ options:
     description:
       - Is the rule auto deployed by dynamic profile ?
   maxmatchlength:
-    type: float
+    type: int
     description:
       - Maximum match length for a Safe Object expression.
   name:

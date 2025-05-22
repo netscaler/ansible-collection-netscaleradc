@@ -76,7 +76,7 @@ options:
     description:
       - Name of the application firewall policy to bind to the policy label.
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the policy. A lower number specifies
         a higher priority. Must be unique within a group of policies that are bound

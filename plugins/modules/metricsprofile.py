@@ -63,7 +63,7 @@ options:
     description:
       - The URL at which to upload the metrics data on the endpoint
   metricsexportfrequency:
-    type: float
+    type: int
     description:
       - This option is for configuring the metrics export frequency in seconds, frequency
         value must be in [30,300] seconds range

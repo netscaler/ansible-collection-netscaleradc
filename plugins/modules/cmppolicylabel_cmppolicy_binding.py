@@ -72,7 +72,7 @@ options:
     description:
       - The compression policy name.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

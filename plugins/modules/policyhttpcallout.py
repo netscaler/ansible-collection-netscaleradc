@@ -47,7 +47,7 @@ options:
         expression can contain a literal string or an expression that derives the
         value (for example, client.ip.src). Mutually exclusive with -fullReqExpr.
   cacheforsecs:
-    type: float
+    type: int
     description:
       - Duration, in seconds, for which the callout response is cached. The cached
         responses are stored in an integrated caching content group named "calloutContentGroup".

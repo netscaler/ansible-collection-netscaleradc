@@ -92,7 +92,7 @@ options:
         server IP address and port parameters. The service type must be TCP or SSL_TCP.
         If there are vservers and services with the same name, then vserver is selected.
   serverport:
-    type: float
+    type: int
     description:
       - Port of the Content Inspection server.
   type:

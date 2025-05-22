@@ -55,12 +55,12 @@ options:
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
   authservretry:
-    type: float
+    type: int
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
         server.
   authtimeout:
-    type: float
+    type: int
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
   callingstationid:
@@ -77,14 +77,22 @@ options:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   ipattributetype:
-    type: float
+    type: int
     description:
       - Remote IP address attribute type in a RADIUS response.
   ipvendorid:
-    type: float
+    type: int
     description:
       - Vendor ID of the intranet IP attribute in the RADIUS response.
       - 'NOTE: A value of 0 indicates that the attribute is not vendor encoded.'
+  messageauthenticator:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Control whether the Message-Authenticator attribute is included in a RADIUS
+        Access-Request packet.
   name:
     type: str
     description:
@@ -104,16 +112,16 @@ options:
       - Encoding type for passwords in RADIUS packets that the Citrix ADC sends to
         the RADIUS server.
   pwdattributetype:
-    type: float
+    type: int
     description:
       - Vendor-specific password attribute type in a RADIUS response.
   pwdvendorid:
-    type: float
+    type: int
     description:
       - Vendor ID of the attribute, in the RADIUS response, used to extract the user
         password.
   radattributetype:
-    type: float
+    type: int
     description:
       - RADIUS attribute type, used for RADIUS group extraction.
   radgroupseparator:
@@ -148,7 +156,7 @@ options:
         as the  Network Access Server IP (NASIP) address.
       - The RADIUS protocol defines the meaning and use of the NASIP address.
   radvendorid:
-    type: float
+    type: int
     description:
       - RADIUS vendor ID attribute, used for RADIUS group extraction.
   serverip:

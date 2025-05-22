@@ -188,9 +188,10 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.appflowaction:
         state: present
-        name: af_action_log_10.189.64.10_nop
+        name: af_action_v1_10.102.233.21
         collectors:
-          - af_collector_logstream_10.189.64.10
+          - af_collector_10.102.233.21
+        clientsidemeasurements: ENABLED
 """
 
 RETURN = r"""

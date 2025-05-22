@@ -100,7 +100,7 @@ options:
         to the outer IP packet (Transport packet). But the user can configure a new
         ToS field using this option.
   vlan:
-    type: float
+    type: int
     description:
       - The vlan for mulicast packets
   vlantagging:
@@ -111,7 +111,7 @@ options:
     description:
       - Option to select Vlan Tagging.
   vnid:
-    type: float
+    type: int
     description:
       - Virtual network identifier (VNID) is the value that identifies a specific
         virtual network in the data plane.

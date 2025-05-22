@@ -42,20 +42,20 @@ options:
     description:
       - Source IP address to be used in the outgoing query packets.
   T:
-    type: float
+    type: int
     description:
       - Traffic Domain Id
   V:
-    type: float
+    type: int
     description:
       - VLAN ID for link local address.
   b:
-    type: float
+    type: int
     description:
       - Set socket buffer size. If used, should be used with roughly +100 then the
         datalen (-s option). The default value is 8192.
   c:
-    type: float
+    type: int
     description:
       - Number of packets to send. The default value is infinite. For Nitro API, defalut
         value is taken as 5.
@@ -64,7 +64,7 @@ options:
     description:
       - Address of host to ping.
   i:
-    type: float
+    type: int
     description:
       - Waiting time, in seconds. The default value is 1 second.
   m:
@@ -87,11 +87,11 @@ options:
       - Quiet output. Only summary is printed. For Nitro API, this flag is set by
         default
   s:
-    type: float
+    type: int
     description:
       - Data size, in bytes. The default value is 32.
   t:
-    type: float
+    type: int
     description:
       - Timeout in seconds before ping6 exits
 extends_documentation_fragment: netscaler.adc.netscaler_adc

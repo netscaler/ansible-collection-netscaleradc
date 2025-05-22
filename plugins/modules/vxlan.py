@@ -48,7 +48,7 @@ options:
     description:
       - Enable dynamic routing on this VXLAN.
   id:
-    type: float
+    type: int
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
@@ -90,7 +90,7 @@ options:
     description:
       - C(VXLAN) encapsulation type. C(VXLAN), C(VXLANGPE)
   vlan:
-    type: float
+    type: int
     description:
       - ID of VLANs whose traffic is allowed over this VXLAN. If you do not specify
         any VLAN IDs, the Citrix ADC allows traffic of all VLANs that are not part

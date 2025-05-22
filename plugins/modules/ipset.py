@@ -47,7 +47,7 @@ options:
         Cannot be changed after the IP set is created. Choose a name that helps identify
         the IP set.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -116,7 +116,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.ipset:
         state: present
-        name: ipset_adns
+        name: ip2
 """
 
 RETURN = r"""

@@ -47,13 +47,13 @@ options:
       - Apply NTP authentication, which enables the NTP client (Citrix ADC) to verify
         that the server is in fact known and trusted.
   autokeylogsec:
-    type: float
+    type: int
     description:
       - Autokey protocol requires the keys to be refreshed periodically. This parameter
         specifies the interval between regenerations of new session keys. In seconds,
         expressed as a power of 2.
   revokelogsec:
-    type: float
+    type: int
     description:
       - Interval between re-randomizations of the autokey seeds to prevent brute-force
         attacks on the autokey algorithms.

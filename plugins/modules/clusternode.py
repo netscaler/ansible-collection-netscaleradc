@@ -54,7 +54,7 @@ options:
     description:
       - Option to remove nodegroup config
   delay:
-    type: float
+    type: int
     description:
       - Applicable for Passive node and node becomes passive after this timeout (in
         minutes)
@@ -72,11 +72,11 @@ options:
     description:
       - The default node group in a Cluster system.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   priority:
-    type: float
+    type: int
     description:
       - Preference for selecting a node as the configuration coordinator. The node
         with the lowest priority value is selected as the configuration coordinator.

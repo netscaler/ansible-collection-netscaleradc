@@ -60,7 +60,7 @@ options:
     description:
       - Name of the ICA policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
   type:

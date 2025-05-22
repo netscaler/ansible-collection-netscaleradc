@@ -97,7 +97,7 @@ options:
     description:
       - The name of the policy, if any, bound to the VPN virtual server.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the policy's priority. The lower the number, the higher
         the priority. Policies are evaluated in the order of their priority numbers.
@@ -119,7 +119,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vpnvserver_authenticationradiuspolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure vpnvserver_authenticationradiuspolicy_binding
       delegate_to: localhost

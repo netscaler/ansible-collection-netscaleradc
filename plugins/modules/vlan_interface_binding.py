@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: float
+    type: int
     description:
       - Specifies the virtual LAN ID.
   ifnum:
@@ -68,7 +68,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vlan_interface_binding playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure vlan_interface_binding
       delegate_to: localhost

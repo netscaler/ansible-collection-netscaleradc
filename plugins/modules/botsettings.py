@@ -55,7 +55,7 @@ options:
         is " ", which sends unmatched connections back to the Citrix ADC without attempting
         to filter them further.
   dfprequestlimit:
-    type: float
+    type: int
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
@@ -96,7 +96,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessiontimeout:
-    type: float
+    type: int
     description:
       - Timeout, in seconds, after which a user session is terminated.
   signatureautoupdate:
@@ -119,11 +119,11 @@ options:
       - Enable/disable trap URL auto generation. When enabled, trap URL is updated
         within the configured interval.
   trapurlinterval:
-    type: float
+    type: int
     description:
       - Time in seconds after which trap URL is updated.
   trapurllength:
-    type: float
+    type: int
     description:
       - Length of the auto-generated trap URL.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

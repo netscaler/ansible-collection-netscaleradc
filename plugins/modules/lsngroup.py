@@ -189,7 +189,7 @@ options:
         subscriber''s connections) from the subscriber''s allocated port block, the
         ADC allocates a new random port block for the subscriber.'
   portblocksize:
-    type: float
+    type: int
     description:
       - Size of the NAT port block to be allocated for each subscriber.
       - ''
@@ -258,7 +258,7 @@ options:
     description:
       - Enable the SIP ALG.
   snmptraplimit:
-    type: float
+    type: int
     description:
       - Maximum number of SNMP Trap messages that can be generated for the LSN group
         in one minute.

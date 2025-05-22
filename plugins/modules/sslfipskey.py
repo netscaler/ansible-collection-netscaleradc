@@ -96,7 +96,7 @@ options:
     description:
       - Only C(RSA) key and C(ECDSA) Key are supported.
   modulus:
-    type: float
+    type: int
     description:
       - Modulus, in multiples of 64, of the FIPS key to be created.
   wrapkeyname:

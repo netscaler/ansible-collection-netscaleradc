@@ -60,7 +60,7 @@ options:
     description:
       - Use streaming authorization on the TACACS+ server.
   authtimeout:
-    type: float
+    type: int
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         TACACS+ server.

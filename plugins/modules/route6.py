@@ -48,7 +48,7 @@ options:
     description:
       - Advertise this route.
   cost:
-    type: float
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route. The lower the cost, the higher the preference.
@@ -57,7 +57,7 @@ options:
     description:
       - To get a detailed view.
   distance:
-    type: float
+    type: int
     description:
       - Administrative distance of this route from the appliance.
   gateway:
@@ -65,6 +65,10 @@ options:
     description:
       - The gateway for this route. The value for this parameter is either an IPv6
         address or null.
+  mgmt:
+    type: bool
+    description:
+      - Route in management plane.
   monitor:
     type: str
     description:
@@ -102,23 +106,23 @@ options:
     description:
       - Type of IPv6 routes to remove from the routing table of the Citrix ADC.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   vlan:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies a VLAN through which the Citrix ADC
         forwards the packets for this route.
   vxlan:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies a VXLAN through which the Citrix ADC
         forwards the packets for this route.
   weight:
-    type: float
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the

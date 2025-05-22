@@ -61,7 +61,7 @@ options:
       - Indicates if load monitor is passive. A passive load monitor does not remove
         service from LB decision when threshold is breached.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the monitor-service binding. When a monitor is UP, the
         weight assigned to its binding with the service determines how much the monitor
@@ -81,8 +81,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.service_lbmonitor_binding:
         state: present
-        name: use1_sf1_ssl_svc
-        monitor_name: Storefront
+        name: svc222
+        monitor_name: https
 """
 
 RETURN = r"""

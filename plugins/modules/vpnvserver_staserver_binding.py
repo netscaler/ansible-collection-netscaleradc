@@ -69,8 +69,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnvserver_staserver_binding:
         state: present
-        name: portal.bx.com
-        staserver: https://use1bxctxccp01.blackstone.com
+        name: wionnsvs
+        staserver: http://10.102.103.106
 """
 
 RETURN = r"""

@@ -39,13 +39,13 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   httpdmaxclients:
-    type: float
+    type: int
     description:
       - This enables setting the HTTPD Max Clients value in the httpd.conf file. You
         can configure either Max Clients or Max Request Workers. The allowable range
         is from a minimum of 1 to a maximum of 255
   httpdmaxreqworkers:
-    type: float
+    type: int
     description:
       - This enables setting the HTTPD Max Request Workers value in the httpd.conf
         file. You can configure either Max Clients or Max Request Workers. The allowable

@@ -51,7 +51,7 @@ options:
         Please note that this applies only to loginSchemas that are used with user-defined
         factors, and not the vserver factor.
   authenticationstrength:
-    type: float
+    type: int
     description:
       - Weight of the current authentication
   name:
@@ -73,7 +73,7 @@ options:
       - Expression for password extraction during login. This can be any relevant
         advanced policy expression.
   passwordcredentialindex:
-    type: float
+    type: int
     description:
       - The index at which user entered password should be stored in session.
   ssocredentials:
@@ -85,7 +85,7 @@ options:
       - This option indicates whether current factor credentials are the default SSO
         (SingleSignOn) credentials.
   usercredentialindex:
-    type: float
+    type: int
     description:
       - The index at which user entered username should be stored in session.
   userexpression:

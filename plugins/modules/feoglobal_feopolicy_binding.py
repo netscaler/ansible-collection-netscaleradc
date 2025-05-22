@@ -60,7 +60,7 @@ options:
     description:
       - The name of the globally bound front end optimization policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority assigned to the policy binding.
   type:

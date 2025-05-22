@@ -71,7 +71,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnglobal_staserver_binding:
         state: present
-        staserver: https://use1bxctxcca03.blackstone.com
+        staserver: https://10.102.39.145
 """
 
 RETURN = r"""

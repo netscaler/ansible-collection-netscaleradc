@@ -62,8 +62,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationvserver_vpnportaltheme_binding:
         state: present
-        name: Citrix_AAA_vServer
-        portaltheme: BX_Brand
+        name: auth1
+        portaltheme: X1
 """
 
 RETURN = r"""

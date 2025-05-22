@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   deadinterval:
-    type: float
+    type: int
     description:
       - Number of seconds after which a peer node is marked DOWN if heartbeat messages
         are not received from the peer node.
@@ -106,12 +106,12 @@ options:
         synchronization requires that this setting be enabled (the default) on the
         current secondary node. Synchronization uses TCP port 3010.
   hellointerval:
-    type: float
+    type: int
     description:
       - Interval, in milliseconds, between heartbeat messages sent to the peer node.
         The heartbeat messages are UDP packets sent to port 3003 of the peer node.
   id:
-    type: float
+    type: int
     description:
       - Number that uniquely identifies the node. For self node, it will always be
         0. Peer node values can range from 1-64.
@@ -133,11 +133,11 @@ options:
       - The NSIP or NSIP6 address of the node to be added for an HA configuration.
         This setting is neither propagated nor synchronized.
   maxflips:
-    type: float
+    type: int
     description:
       - Max number of flips allowed before becoming sticky primary
   maxfliptime:
-    type: float
+    type: int
     description:
       - Interval after which flipping of node states can again start
   rpcnodepassword:
@@ -152,7 +152,7 @@ options:
     description:
       - strict mode flag for sync status
   syncvlan:
-    type: float
+    type: int
     description:
       - Vlan on which HA related communication is sent. This include sync, propagation
         , connection mirroring , LB persistency config sync, persistent session sync
@@ -221,9 +221,12 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.hanode:
         state: present
-        ipaddress: 10.189.96.60
-        inc: ENABLED
-        hanode_id: '1'
+        hellointerval: 200
+        deadinterval: 3
+        failsafe: 'ON'
+        maxflips: '23'
+        maxfliptime: '23'
+        syncvlan: '60'
 """
 
 RETURN = r"""

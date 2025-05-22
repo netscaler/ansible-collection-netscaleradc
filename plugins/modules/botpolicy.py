@@ -117,6 +117,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botpolicy
+      delegate_to: localhost
+      netscaler.adc.botpolicy:
+        state: present
+        name: Bot_management_pol
+        rule: HTTP.REQ.HEADER("Demo").CONTAINS("mycitrixdemo.net")
+        profilename: Bot_management_prof
 """
 
 RETURN = r"""

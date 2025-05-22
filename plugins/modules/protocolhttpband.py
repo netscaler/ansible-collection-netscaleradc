@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   reqbandsize:

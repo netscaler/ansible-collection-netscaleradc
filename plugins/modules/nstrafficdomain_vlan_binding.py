@@ -41,11 +41,11 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies a traffic domain.
   vlan:
-    type: float
+    type: int
     description:
       - ID of the VLAN to bind to this traffic domain. More than one VLAN can be bound
         to a traffic domain, but the same VLAN cannot be a part of multiple traffic

@@ -50,7 +50,7 @@ options:
     description:
       - Name of the virtual server.
   numaddr:
-    type: float
+    type: int
     description:
       - The number of ipv6 addresses
 extends_documentation_fragment: netscaler.adc.netscaler_adc

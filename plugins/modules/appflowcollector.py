@@ -101,10 +101,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.appflowcollector:
         state: present
-        name: af_collector_logstream_10.189.64.10
-        ipaddress: 10.189.64.10
-        port: 5557
-        transport: logstream
+        name: af_collector_10.102.233.21
+        ipaddress: 10.102.233.21
 """
 
 RETURN = r"""

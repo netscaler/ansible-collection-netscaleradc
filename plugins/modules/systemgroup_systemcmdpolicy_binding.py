@@ -49,7 +49,7 @@ options:
     description:
       - The name of command policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the command policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -66,9 +66,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.systemgroup_systemcmdpolicy_binding:
         state: present
-        groupname: Network - CitrixADC - P - ReadOnly
-        policyname: read-only
-        priority: '100'
+        groupname: network
+        policyname: network
+        priority: '0'
 """
 
 RETURN = r"""

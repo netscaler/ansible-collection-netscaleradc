@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding
 short_description: Binding Resource definition for describing association between
   videooptimizationdetectionpolicylabel and videooptimizationdetectionpolicy resources
@@ -73,7 +74,7 @@ options:
     description:
       - Name of the videooptimization policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

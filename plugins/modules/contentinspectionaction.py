@@ -76,7 +76,7 @@ options:
     description:
       - Name of the LB vserver or service
   serverport:
-    type: float
+    type: int
     description:
       - Port of remoteService
   type:

@@ -51,7 +51,7 @@ options:
       - Logging status of the alarm. When logging is enabled, the Citrix ADC logs
         every trap message that is generated for this alarm.
   normalvalue:
-    type: float
+    type: int
     description:
       - Value for the normal threshold. A trap message is generated if the value of
         the respective attribute falls to or below this value after exceeding the
@@ -73,22 +73,23 @@ options:
         level lower than the specified level (in the trap listener entry) are not
         sent.
   thresholdvalue:
-    type: float
+    type: int
     description:
       - Value for the high threshold. The Citrix ADC generates an SNMP trap message
         when the value of the attribute associated with the alarm is greater than
         or equal to the specified high threshold value.
   time:
-    type: float
+    type: int
     description:
       - 'Interval, in seconds, at which the Citrix ADC generates SNMP trap messages
         when the conditions specified in the SNMP alarm are met.Can be specified for
-        the following alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS,HA-BAD-SECONDARY-STATE,
-        CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM, CLUSTER-VERSION-MISMATCH, CLUSTER-BKHB-FAILED,
-        PORT-ALLOC-FAILED, COMPACT-FLASH-ERRORS, HARD-DISK-DRIVE-ERRORS and APPFW
-        traps. Default trap time intervals: SYNFLOOD and APPFW traps = 1sec, PORT-ALLOC-FAILED
-        = 3600sec(1 hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), SYSLOG-CONNECTION-DROPPED
-        = 3600sec(1 hour), Other Traps = 86400sec(1 day)'
+        the following alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-DISK-ENCRYPTION-MISMATCH,
+        HA-SYNC-FAILURE, HA-NO-HEARTBEATS,HA-BAD-SECONDARY-STATE, CLUSTER-NODE-HEALTH,
+        CLUSTER-NODE-QUORUM, CLUSTER-VERSION-MISMATCH, CLUSTER-BKHB-FAILED, PORT-ALLOC-FAILED,
+        COMPACT-FLASH-ERRORS, HARD-DISK-DRIVE-ERRORS and APPFW traps. Default trap
+        time intervals: SYNFLOOD and APPFW traps = 1sec, PORT-ALLOC-FAILED = 3600sec(1
+        hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), SYSLOG-CONNECTION-DROPPED = 3600sec(1
+        hour), Other Traps = 86400sec(1 day)'
   trapname:
     type: str
     choices:
@@ -123,6 +124,7 @@ options:
       - INTERFACE-THROUGHPUT-LOW
       - MON_PROBE_FAILED
       - HA-VERSION-MISMATCH
+      - HA-DISK-ENCRYPTION-MISMATCH
       - HA-SYNC-FAILURE
       - HA-NO-HEARTBEATS
       - HA-BAD-SECONDARY-STATE
@@ -247,7 +249,7 @@ options:
       - KEK_UPDATE_FAILURE
       - ADC-ANOMALY
       - SYSLOG-CONNECTION-DROPPED
-      - NSROOT_PASSWORD_EXPIRY_WARNING
+      - SYSTEM_USER_PASSWORD_EXPIRY_WARNING
       - DNSSEC-KEY-AUTOMGMT-STATUS-FAILURE
       - DNSSEC-KEY-AUTOMGMT-STATUS-SUCCESS
       - CLOUD-REST-API-FAILURE
@@ -271,8 +273,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.snmpalarm:
         state: present
-        trapname: SYSLOG-CONNECTION-DROPPED
-        time: 0
+        trapname: VSERVER-SPILLOVER
 """
 
 RETURN = r"""

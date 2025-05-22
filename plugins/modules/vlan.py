@@ -57,7 +57,7 @@ options:
     description:
       - Enable dynamic routing on this VLAN.
   id:
-    type: float
+    type: int
     description:
       - A positive integer that uniquely identifies a VLAN.
   ipv6dynamicrouting:
@@ -70,7 +70,7 @@ options:
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
   mtu:
-    type: float
+    type: int
     description:
       - Specifies the maximum transmission unit (MTU), in bytes. The MTU is the largest
         packet size, excluding 14 bytes of ethernet header and 4 bytes of crc, that
@@ -223,7 +223,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vlan:
         state: present
-        vlanid: '10'
+        vlanid: '26'
 """
 
 RETURN = r"""

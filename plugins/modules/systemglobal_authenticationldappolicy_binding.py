@@ -150,7 +150,7 @@ options:
     description:
       - The name of the  command policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the command policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -161,7 +161,7 @@ EXAMPLES = r"""
 ---
 - name: Sample systemglobal_authenticationldappolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure systemglobal_authenticationldappolicy_binding
       delegate_to: localhost

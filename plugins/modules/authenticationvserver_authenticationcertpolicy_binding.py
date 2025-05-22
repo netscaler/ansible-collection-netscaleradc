@@ -104,7 +104,7 @@ options:
     description:
       - The name of the policy, if any, bound to the authentication vserver.
   priority:
-    type: float
+    type: int
     description:
       - The priority, if any, of the vpn vserver policy.
   secondary:

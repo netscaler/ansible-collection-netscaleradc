@@ -39,7 +39,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   ingressvlan:
-    type: float
+    type: int
     description:
       - VLAN ID on which the traffic from service function reaches Citrix ADC.
   servicefunctionname:

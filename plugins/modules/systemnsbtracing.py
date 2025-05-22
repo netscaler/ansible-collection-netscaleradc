@@ -38,7 +38,7 @@ options:
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
     type: str
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

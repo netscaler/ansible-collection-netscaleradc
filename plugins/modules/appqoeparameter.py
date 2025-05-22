@@ -39,20 +39,20 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   avgwaitingclient:
-    type: float
+    type: int
     description:
       - average number of client connections, that can sit in service waiting queue
   dosattackthresh:
-    type: float
+    type: int
     description:
       - average number of client connection that can queue up on vserver level without
         triggering DoS mitigation module
   maxaltrespbandwidth:
-    type: float
+    type: int
     description:
       - maximum bandwidth which will determine whether to send alternate content response
   sessionlife:
-    type: float
+    type: int
     description:
       - Time, in seconds, between the first time and the next time the AppQoE alternative
         content window is displayed. The alternative content window is displayed only

@@ -45,7 +45,7 @@ options:
     description:
       - The cipher group/alias/individual cipher configuration
   cipherpriority:
-    type: float
+    type: int
     description:
       - cipher priority
   description:

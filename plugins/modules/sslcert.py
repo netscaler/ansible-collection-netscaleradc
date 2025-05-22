@@ -100,7 +100,7 @@ options:
       - '* C(SRVR_CERT) - SSL server certificate used on SSL servers for end-to-end
         encryption.'
   days:
-    type: float
+    type: int
     description:
       - Number of days for which the certificate will be valid, beginning with the
         time and day (system time) of creation.

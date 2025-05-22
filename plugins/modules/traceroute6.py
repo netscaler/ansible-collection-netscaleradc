@@ -38,7 +38,7 @@ options:
     description:
       - Use ICMP ECHO for probes.
   T:
-    type: float
+    type: int
     description:
       - Traffic Domain Id
   host:

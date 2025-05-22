@@ -132,7 +132,7 @@ options:
       - Specifies the type of hashmethod to be applied, to steer the packet to the
         FP of the packet.
   dfdprefix:
-    type: float
+    type: int
     description:
       - hashprefix to be applied to SIP/DIP to generate rsshash FP.eg 128 => hash
         calculated on the complete IP
@@ -143,7 +143,7 @@ options:
         set for the ACL6 rule is ALLOW and these packets match the other conditions
         in the ACL6 rule.
   icmpcode:
-    type: float
+    type: int
     description:
       - Code of a particular ICMP message type to match against the ICMP code of an
         incoming IPv6 ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE
@@ -151,7 +151,7 @@ options:
       - ''
       - If you set this parameter, you must set the ICMP Type parameter.
   icmptype:
-    type: float
+    type: int
     description:
       - ICMP Message type to match against the message type of an incoming IPv6 ICMP
         packet. For example, to block DESTINATION UNREACHABLE messages, you must specify
@@ -174,11 +174,11 @@ options:
         \(\#\), period \(.\), space, colon \(:\), at \(@\), equals \(=\), and hyphen
         \(-\) characters.
   nodeid:
-    type: float
+    type: int
     description:
       - Specifies the NodeId to steer the packet to the provided FP.
   priority:
-    type: float
+    type: int
     description:
       - Priority for the ACL6 rule, which determines the order in which it is evaluated
         relative to the other ACL6 rules. If you do not specify priorities while creating
@@ -326,12 +326,12 @@ options:
       - Protocol, identified by protocol name, to match against the protocol of an
         incoming C(IPv6) packet.
   protocolnumber:
-    type: float
+    type: int
     description:
       - Protocol, identified by protocol number, to match against the protocol of
         an incoming IPv6 packet.
   ratelimit:
-    type: float
+    type: int
     description:
       - Maximum number of log messages to be generated per second. If you set this
         parameter, you must enable the Log State parameter.
@@ -394,13 +394,13 @@ options:
       - If stateful option is enabled, transparent sessions are created for the traffic
         hitting this ACL6 and not hitting any other features like LB, INAT etc.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   ttl:
-    type: float
+    type: int
     description:
       - Time to expire this ACL6 (in seconds).
   type:
@@ -415,13 +415,13 @@ options:
       - '* C(DFD) - cluster specific acls,specifies hashmethod for steering of the
         packet in cluster .'
   vlan:
-    type: float
+    type: int
     description:
       - ID of the VLAN. The Citrix ADC applies the ACL6 rule only to the incoming
         packets on the specified VLAN. If you do not specify a VLAN ID, the appliance
         applies the ACL6 rule to the incoming packets on all VLANs.
   vxlan:
-    type: float
+    type: int
     description:
       - ID of the VXLAN. The Citrix ADC applies the ACL6 rule only to the incoming
         packets on the specified VXLAN. If you do not specify a VXLAN ID, the appliance

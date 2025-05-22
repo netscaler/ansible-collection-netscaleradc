@@ -60,7 +60,7 @@ options:
         is applied for the LSN session. Separate a range of ports with a hyphen. For
         example, 40-90.
   sessiontimeout:
-    type: float
+    type: int
     description:
       - Timeout, in seconds, for an idle LSN session. If an LSN session is idle for
         a time that exceeds this value, the Citrix ADC removes the session.This timeout

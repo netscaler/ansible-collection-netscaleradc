@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   bridgegroup:
-    type: float
+    type: int
     description:
       - Identifier of the bridge group that is assigned to this partition.
   partitionname:

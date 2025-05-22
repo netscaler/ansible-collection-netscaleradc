@@ -38,11 +38,11 @@ options:
     description:
       - Subscriber IP Address.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   vlan:
-    type: float
+    type: int
     description:
       - The vlan number on which the subscriber is located.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

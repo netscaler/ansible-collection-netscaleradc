@@ -45,7 +45,7 @@ options:
     description:
       - Onlink prefixes for RA messages.
   vlan:
-    type: float
+    type: int
     description:
       - The VLAN number.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

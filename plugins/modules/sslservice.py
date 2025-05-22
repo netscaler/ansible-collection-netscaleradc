@@ -93,7 +93,7 @@ options:
       - State of Diffie-Hellman (DH) key exchange. This parameter is not applicable
         when configuring a backend service.
   dhcount:
-    type: float
+    type: int
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
@@ -149,7 +149,7 @@ options:
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend service.
   ersacount:
-    type: float
+    type: int
     description:
       - Refresh count for regeneration of RSA public-key and private-key pair. Zero
         (0) specifies infinite usage (no refresh).
@@ -222,7 +222,7 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
@@ -255,6 +255,14 @@ options:
       - State of SSLv3 protocol support for the SSL service.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
+  sslclientlogs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This parameter is used to enable or disable the logging of additional information,
+        such as the Session ID and SNI name, from SSL handshakes to the audit logs.
   sslprofile:
     type: str
     description:
@@ -619,8 +627,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslservice:
         state: present
-        servicename: nsrpcs-127.0.0.1-3008
-        sslprofile: ns_default_ssl_profile_frontend
+        servicename: local-150
+        tls11: DISABLED
+        tls12: DISABLED
 """
 
 RETURN = r"""

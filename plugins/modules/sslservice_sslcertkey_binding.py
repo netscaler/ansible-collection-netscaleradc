@@ -96,8 +96,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslservice_sslcertkey_binding:
         state: present
-        servicename: nsrpcs-127.0.0.1-3008
-        certkeyname: ns-server-certificate
+        servicename: ssl_svc4
+        certkeyname: ssl_cert_ca18
 """
 
 RETURN = r"""

@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   timeout:
-    type: float
+    type: int
     description:
       - Maximum time in milliseconds to allow for processing expressions and policies
         without interruption. If the timeout is reached then the evaluation causes

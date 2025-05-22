@@ -43,7 +43,7 @@ options:
     description:
       - Password with which user logs on.
   proxyport:
-    type: float
+    type: int
     description:
       - Proxy server port.
   proxyserver:

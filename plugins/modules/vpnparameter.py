@@ -75,7 +75,7 @@ options:
       - Name of the AlwaysON profile. The builtin profile named none can be used to
         explicitly disable AlwaysON.
   apptokentimeout:
-    type: float
+    type: int
     description:
       - The timeout value in seconds for tokens to access XenMobile applications
   authorizationgroup:
@@ -95,6 +95,13 @@ options:
       - DISABLED
     description:
       - enables backend server certificate validation
+  backenddtls12:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enables DTLS 1.2 for backend server handshakes
   backendserversni:
     type: str
     choices:
@@ -156,7 +163,7 @@ options:
       - '* C(OFF) - Only critical C(events) are logged into the Windows Application
         Log.'
   clientidletimeout:
-    type: float
+    type: int
     description:
       - Time, in minutes, after which to time out the user session if Citrix Gateway
         does not detect mouse or keyboard activity.
@@ -320,13 +327,13 @@ options:
         C(none), or any combination of the client-side items.
     elements: str
   forcedtimeout:
-    type: float
+    type: int
     description:
       - Force a disconnection from the Citrix Gateway Plug-in with Citrix Gateway
         after a specified number of minutes. If the session closes, the user must
         log on again.
   forcedtimeoutwarning:
-    type: float
+    type: int
     description:
       - Number of minutes to warn a user before the user session is disconnected.
   fqdnspoofedip:
@@ -462,13 +469,13 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Mac
   maxiipperuser:
-    type: float
+    type: int
     description:
       - Maximum number of Intranet IP that can be assigned to a user from AAA group,
         VPN vserver or VPN global pool. This setting is not applicable for AAA user
         level Intranet IP configuration
   mdxtokentimeout:
-    type: float
+    type: int
     description:
       - Validity of MDX Token in minutes. This token is used for mdx services to access
         backend and valid  HEAD and GET request.
@@ -555,7 +562,7 @@ options:
     description:
       - Enables or disables the secure private access configuration.
   sesstimeout:
-    type: float
+    type: int
     description:
       - Number of minutes after which the session times out.
   smartgroup:
@@ -755,10 +762,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnparameter:
         state: present
-        forcecleanup:
-          - none
-        clientconfiguration:
-          - all
+        autoproxyurl: http://test.local/proxy.pac
 """
 
 RETURN = r"""

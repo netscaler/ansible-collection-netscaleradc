@@ -33,6 +33,7 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(applied), the resources will be applied on the NetScaler ADC node
     type: str
   type:
     type: str
@@ -58,7 +59,7 @@ EXAMPLES = r"""
     - name: Configure nsacls
       delegate_to: localhost
       netscaler.adc.nsacls:
-        state: applied
+        state: present
 """
 
 RETURN = r"""

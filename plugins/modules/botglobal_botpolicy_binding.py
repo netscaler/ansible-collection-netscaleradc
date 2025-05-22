@@ -80,7 +80,7 @@ options:
     description:
       - Name of the bot policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
   type:

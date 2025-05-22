@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   harqretxdelay:
-    type: float
+    type: int
     description:
       - HARQ retransmission delay (in ms).
   lr1coeflist:
@@ -61,15 +61,15 @@ options:
       - Probability threshold values for LR model to differentiate between NET2 and
         NET3.
   minrttnet1:
-    type: float
+    type: int
     description:
       - MIN RTT (in ms) for the first network.
   minrttnet2:
-    type: float
+    type: int
     description:
       - MIN RTT (in ms) for the second network.
   minrttnet3:
-    type: float
+    type: int
     description:
       - MIN RTT (in ms) for the third network.
   net1cclscale:

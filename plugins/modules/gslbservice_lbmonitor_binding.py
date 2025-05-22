@@ -56,7 +56,7 @@ options:
     description:
       - Name of the GSLB service.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the monitor-service binding. A larger number specifies
         a greater weight. Contributes to the monitoring threshold, which determines
@@ -75,8 +75,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbservice_lbmonitor_binding:
         state: present
-        servicename: GSLB_SVC_USE1_storefront.blackstone.com
-        monitor_name: tcp
+        servicename: gslbService1
+        monitor_name: http
+        weight: '34'
 """
 
 RETURN = r"""

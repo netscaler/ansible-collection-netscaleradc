@@ -119,7 +119,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.policydataset:
         state: present
-        name: SF_LBVIP
+        name: ia_poldataset1
         type: ipv4
 """
 

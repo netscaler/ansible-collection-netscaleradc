@@ -82,7 +82,7 @@ options:
     description:
       - Policies bound to this vserver.
   priority:
-    type: float
+    type: int
     description:
       - Priority for the policy.
   targetlbvserver:

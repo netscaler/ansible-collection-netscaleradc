@@ -55,7 +55,7 @@ options:
       - Display only the group members who are currently logged in. If there are large
         number of sessions, this command may provide partial details.
   weight:
-    type: float
+    type: int
     description:
       - Weight of this group with respect to other configured aaa groups (lower the
         number higher the weight)
@@ -373,7 +373,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.aaagroup:
         state: present
-        groupname: External
+        groupname: clt_scrgrp1
 """
 
 RETURN = r"""

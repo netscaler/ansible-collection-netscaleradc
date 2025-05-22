@@ -54,7 +54,7 @@ options:
     description:
       - The policy name.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the policy. A lower number indicates a
         higher priority. Policies are evaluated in the order of their priority numbers.

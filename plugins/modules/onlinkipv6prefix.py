@@ -75,11 +75,11 @@ options:
     description:
       - RA Prefix onlink flag.
   prefixpreferredlifetime:
-    type: float
+    type: int
     description:
       - Preferred life time of the prefix, in seconds.
   prefixvalidelifetime:
-    type: float
+    type: int
     description:
       - Valide life time of the prefix, in seconds.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

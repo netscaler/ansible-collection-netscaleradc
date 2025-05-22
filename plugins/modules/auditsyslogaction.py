@@ -98,6 +98,17 @@ options:
     description:
       - Time, in seconds, for which the Citrix ADC waits before sending another DNS
         query to resolve the host name of the syslog server if the last query failed.
+  httpauthtoken:
+    type: str
+    description:
+      - Token for authenticating with the endpoint. If the endpoint requires the Authorization
+        header in a particular format, specify the complete format as the value to
+        this parameter. For eg., in case of splunk, the Authorization header is required
+        to be of the form - Splunk <auth-token>.
+  httpendpointurl:
+    type: str
+    description:
+      - The URL at which to upload the logs messages on the endpoint
   lbvservername:
     type: str
     description:
@@ -166,13 +177,13 @@ options:
       - 'Available values function as follows:'
       - '* C(ALL) - All categories (C(SHELL), C(NSMGMT) and C(ACCESS)).'
       - '* C(SHELL) -  bash.log, and sh.log.'
-      - '* C(ACCESS) - auth.log, nsvpn.log, vpndebug.log, httpaccess.log, httperror.log,
-        httpaccess-vpn.log and httperror-vpn.log.'
+      - '* C(ACCESS) - auth.log, nsvpn.log, httpaccess.log, httperror.log, httpaccess-vpn.log
+        and httperror-vpn.log.'
       - '* C(NSMGMT) - notice.log and ns.log.'
       - '* C(NONE) - No logs.'
     elements: str
   maxlogdatasizetohold:
-    type: float
+    type: int
     description:
       - Max size of log data that can be held in NSB chain of server info.
   mgmtloglevel:
@@ -219,6 +230,13 @@ options:
       - Name of the network profile.
       - The SNIP configured in the network profile will be used as source IP while
         sending log messages.
+  protocolviolations:
+    type: str
+    choices:
+      - ALL
+      - NONE
+    description:
+      - Log protocol violations
   serverdomainname:
     type: str
     description:
@@ -282,11 +300,19 @@ options:
       - 'Supported settings are:'
       - '* C(GMT_TIME). Coordinated Universal time.'
       - '* C(LOCAL_TIME). Use the server''s timezone setting.'
+  trafficplane:
+    type: str
+    choices:
+      - DEFAULT
+      - DATA
+    description:
+      - Traffic Plane to which the logs will be sent.
   transport:
     type: str
     choices:
       - TCP
       - UDP
+      - HTTP
     description:
       - Transport type used to send auditlogs to syslog server. Default type is C(UDP).
   urlfiltering:

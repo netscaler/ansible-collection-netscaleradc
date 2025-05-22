@@ -419,7 +419,7 @@ options:
     description:
       - This element specifies the transport mechanism of saml logout messages.
   metadatarefreshinterval:
-    type: float
+    type: int
     description:
       - Interval in minute for fetching metadata from specified metadata URL
   metadataurl:
@@ -533,7 +533,7 @@ options:
     description:
       - Name of the service in cloud used to sign the data
   skewtime:
-    type: float
+    type: int
     description:
       - This option specifies the number of minutes on either side of current time
         that the assertion would be valid. For example, if skewTime is 10, then assertion

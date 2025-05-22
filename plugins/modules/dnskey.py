@@ -65,7 +65,7 @@ options:
       - '* Key name can be truncated if current name length is more than 58 bytes
         to accomodate the suffix.'
   expires:
-    type: float
+    type: int
     description:
       - Time period for which to consider the key valid, after the key is used to
         sign a zone.
@@ -82,7 +82,7 @@ options:
     description:
       - Name of the public-private key pair to publish in the zone.
   keysize:
-    type: float
+    type: int
     description:
       - Size of the key, in bits.
   keytype:
@@ -95,7 +95,7 @@ options:
     description:
       - Type of key to create.
   notificationperiod:
-    type: float
+    type: int
     description:
       - 'Time at which to generate notification of key expiration, specified as number
         of days, hours, or minutes before expiry. Must be less than the expiry period.
@@ -137,7 +137,7 @@ options:
         HTTPS server that requires client certificate authentication for access. This
         is a mandatory argument'
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the DNSKEY resource record created in
         the zone. TTL is the time for which the record must be cached by the DNS proxies.

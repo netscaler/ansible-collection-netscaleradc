@@ -34,7 +34,7 @@ options:
         ADC node.
     type: str
   M:
-    type: float
+    type: int
     description:
       - Minimum TTL value used in outgoing probe packets.
   P:
@@ -47,7 +47,7 @@ options:
     description:
       - Print a summary of how many probes were not answered for each hop.
   T:
-    type: float
+    type: int
     description:
       - Traffic Domain Id
   host:

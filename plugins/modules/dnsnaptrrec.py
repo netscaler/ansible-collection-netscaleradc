@@ -51,22 +51,22 @@ options:
     description:
       - flags for this NAPTR.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   order:
-    type: float
+    type: int
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
   preference:
-    type: float
+    type: int
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
   recordid:
-    type: float
+    type: int
     description:
       - Unique, internally generated record ID. View the details of the naptr record
         to obtain its record ID. Records can be removed by either specifying the domain
@@ -87,7 +87,7 @@ options:
     description:
       - Service Parameters applicable to this delegation path.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

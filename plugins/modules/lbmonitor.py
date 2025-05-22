@@ -133,7 +133,7 @@ options:
         port is the port number that is included in the HTTP request sent to the dispatcher.
         Does not apply to monitors of type PING.
   deviation:
-    type: float
+    type: int
     description:
       - Time value added to the learned average response time in dynamic response
         time monitoring (DRTM). When a deviation is specified, the appliance learns
@@ -187,7 +187,7 @@ options:
     description:
       - Filter criteria for the LDAP query. Optional.
   firmwarerevision:
-    type: float
+    type: int
     description:
       - Firmware-Revision value for the Capabilities-Exchange-Request (CER) message
         to use for monitoring Diameter servers.
@@ -287,7 +287,7 @@ options:
         not enabled, the appliance does not learn the response times of the bound
         services. Also used for LRTM load balancing.
   maxforwards:
-    type: float
+    type: int
     description:
       - Maximum number of hops that the SIP request used for monitoring can traverse
         to reach the server. Applicable only to monitors of type SIP-UDP.
@@ -301,11 +301,11 @@ options:
     description:
       - Metric table to which to bind metrics.
   metricthreshold:
-    type: float
+    type: int
     description:
       - Threshold to be used for that metric.
   metricweight:
-    type: float
+    type: int
     description:
       - The weight for the specified service metric with respect to others.
   monitorname:
@@ -322,7 +322,7 @@ options:
     description:
       - Client id to be used in Connect command
   mqttversion:
-    type: float
+    type: int
     description:
       - Version of MQTT protocol used in connect message, default is version 3.1.1
         [4]
@@ -391,7 +391,7 @@ options:
       - Account Session ID to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
   radaccounttype:
-    type: float
+    type: int
     description:
       - Account Type to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
@@ -449,7 +449,7 @@ options:
         probe failure is indicated by an ICMP port unreachable error received from
         the service.'
   resptimeoutthresh:
-    type: float
+    type: int
     description:
       - Response time threshold, specified as a percentage of the Response Time-out
         parameter. If the response to a monitor probe has not arrived when the threshold
@@ -615,7 +615,7 @@ options:
       - Probe the service by encoding the destination IP address in the IP TOS (6)
         bits.
   tosid:
-    type: float
+    type: int
     description:
       - The TOS ID of the specified destination IP. Applicable only when the TOS parameter
         is set.
@@ -631,7 +631,7 @@ options:
         must be specified. The probe is sent to the specified IP address by using
         the MAC address of the transparent device.
   trofscode:
-    type: float
+    type: int
     description:
       - Code expected when the server is under maintenance
   trofsstring:
@@ -693,6 +693,7 @@ options:
       - HTTP2
       - DTLS
       - QUIC
+      - KAFKA-AUTODISCOVER
     description:
       - Type of monitor that you want to create.
   units1:
@@ -744,7 +745,7 @@ options:
       - Validate the credentials of the Xen Desktop DDC server user. Applicable to
         monitors of type CITRIX-XD-DDC.
   vendorid:
-    type: float
+    type: int
     description:
       - Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use
         for monitoring Diameter servers.
@@ -767,7 +768,7 @@ options:
         obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.
     elements: int
   vendorspecificvendorid:
-    type: float
+    type: int
     description:
       - Vendor-Id to use in the Vendor-Specific-Application-Id grouped attribute-value
         pair (AVP) in the monitoring CER message. To specify Auth-Application-Id or
@@ -838,15 +839,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.lbmonitor:
         state: present
-        monitorname: Storefront
-        type: STOREFRONT
-        scriptname: nssf.pl
-        dispatcherip: 127.0.0.1
-        dispatcherport: 3013
-        lrtm: DISABLED
-        secure: 'YES'
-        storename: Store
-        storefrontcheckbackendservices: 'YES'
+        monitorname: sta
+        type: CITRIX-STA-SERVICE
+        retries: 1
 """
 
 RETURN = r"""

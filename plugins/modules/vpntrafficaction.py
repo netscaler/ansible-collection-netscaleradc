@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   apptimeout:
-    type: float
+    type: int
     description:
       - Maximum amount of time, in minutes, a user can stay logged on to the web application.
   formssoaction:

@@ -105,7 +105,7 @@ options:
       - Enables the Citrix ADC to use the same NAT IP address for all RNAT sessions
         initiated from a particular server.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -232,8 +232,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.rnat:
         state: present
-        name: RNAT_SF_Allow_USE1-A
-        aclname: ACL_SF_Allow_USE1-A
+        name: 1.2.2.0
+        connfailover: ENABLED
 """
 
 RETURN = r"""

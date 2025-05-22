@@ -82,11 +82,11 @@ options:
     description:
       - Port range for cache redirection services.
   exclusivequotamaxclient:
-    type: float
+    type: int
     description:
       - Percentage of maxClient threshold to be divided equally among PEs.
   exclusivequotaspillover:
-    type: float
+    type: int
     description:
       - Percentage of spillover threshold to be divided equally among PEs.
   ftpportrange:
@@ -94,7 +94,7 @@ options:
     description:
       - Minimum and maximum port (port range) that FTP services are allowed to use.
   grantquotamaxclient:
-    type: float
+    type: int
     description:
       - Percentage of shared pool value granted to PE once PE exhausts the local exclusive
         quota. Where shared pool is the remaining maxclient quota after distribution
@@ -106,7 +106,7 @@ options:
         exhausting its local exclusive quota PE borrows from shared pool in chunks
         of 4 i.e. 20 percent of 20.'
   grantquotaspillover:
-    type: float
+    type: int
     description:
       - Percentage of shared pool value granted to PE once PE exhausts the local exclusive
         quota. Where shared pool is the remaining spillover quota after distribution
@@ -141,18 +141,18 @@ options:
         disabling internal user login, you must have key-based authentication set
         up on the appliance. The file name for the key pair must be "ns_comm_key".
   ipttl:
-    type: float
+    type: int
     description:
       - Set the IP Time to Live (TTL) and Hop Limit value for all outgoing packets
         from Citrix ADC.
   maxconn:
-    type: float
+    type: int
     description:
       - Maximum number of connections that will be made from the appliance to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
   maxreq:
-    type: float
+    type: int
     description:
       - Maximum number of requests that the system can pass on a particular connection
         between the appliance and a server attached to it. Setting this value to 0
@@ -167,13 +167,13 @@ options:
     description:
       - This allows the configuration of management HTTPS port.
   pmtumin:
-    type: float
+    type: int
     description:
       - Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation
         needed message. If the ICMP message contains a value less than this value,
         then this value is used instead.
   pmtutimeout:
-    type: float
+    type: int
     description:
       - Interval, in minutes, for flushing the PMTU entries.
   proxyprotocol:
@@ -199,7 +199,7 @@ options:
         configured ports.'
     elements: int
   servicepathingressvlan:
-    type: float
+    type: int
     description:
       - VLAN on which the subscriber traffic arrives on the appliance.
   tcpcip:
@@ -238,7 +238,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nsparam:
         state: present
-        cookieversion: '1'
+        proxyprotocol: DISABLED
 """
 
 RETURN = r"""

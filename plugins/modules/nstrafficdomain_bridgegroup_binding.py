@@ -41,13 +41,13 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   bridgegroup:
-    type: float
+    type: int
     description:
       - ID of the configured bridge to bind to this traffic domain. More than one
         bridge group can be bound to a traffic domain, but the same bridge group cannot
         be a part of multiple traffic domains.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies a traffic domain.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

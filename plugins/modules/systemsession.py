@@ -38,7 +38,7 @@ options:
     description:
       - Terminate all the system sessions except the current session.
   sid:
-    type: float
+    type: int
     description:
       - ID of the system session about which to display information.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

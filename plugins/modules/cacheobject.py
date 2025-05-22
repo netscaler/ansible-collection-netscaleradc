@@ -57,7 +57,7 @@ options:
     description:
       - HTTP request method that caused the object to be stored.
   httpstatus:
-    type: float
+    type: int
     description:
       - HTTP status of the object.
   ignoremarkerobjects:
@@ -78,11 +78,11 @@ options:
       - Include responses that have not yet reached a minimum number of hits before
         being cached.
   locator:
-    type: float
+    type: int
     description:
       - ID of the cached object.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   port:

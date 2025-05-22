@@ -111,8 +111,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.dnszone:
         state: present
-        zonename: gslb.blackstone.com
-        proxymode: 'NO'
+        zonename: com
 """
 
 RETURN = r"""

@@ -51,6 +51,11 @@ options:
         a group is set to C(API), then all users under this group will not allowed
         to access NS through C(CLI). GUI interface will come under C(API) interface
     elements: str
+  daystoexpire:
+    type: int
+    description:
+      - Password days to expire for system groups. The daystoexpire value ranges from
+        30 to 255.
   groupname:
     type: str
     description:
@@ -77,13 +82,18 @@ options:
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
   timeout:
-    type: float
+    type: int
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         of system parameter is enabled, Timeout can have values in the range [300-86400]
         seconds.If Restrictedtimeout argument of system parameter is disabled, Timeout
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
+  warnpriorndays:
+    type: int
+    description:
+      - Number of days before which password expiration warning would be thrown with
+        respect to daystoexpire. The warnpriorndays value ranges from 5 to 40.
   systemgroup_nspartition_binding:
     type: dict
     description: Bindings for systemgroup_nspartition_binding resource
@@ -173,9 +183,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.systemgroup:
         state: present
-        groupname: Network - CitrixADC - P - ReadOnly
-        allowedmanagementinterface:
-          - API
+        groupname: network
+        promptstring: network-%u
+        timeout: 1800
 """
 
 RETURN = r"""

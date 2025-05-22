@@ -103,7 +103,7 @@ options:
     description:
       - The name of the globally bound HTTP compression policy.
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the policy. The lower the number,
         the higher the priority. By default, polices within a label are evaluated

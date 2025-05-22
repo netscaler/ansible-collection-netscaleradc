@@ -51,7 +51,7 @@ options:
     description:
       - The intranet ip address or range.
   numaddr:
-    type: float
+    type: int
     description:
       - The intranet ip address or range's netmask.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

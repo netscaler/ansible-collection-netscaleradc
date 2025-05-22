@@ -97,6 +97,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botprofile_whitelist_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botprofile_whitelist_binding
+      delegate_to: localhost
+      netscaler.adc.botprofile_whitelist_binding:
+        state: present
+        name: Bot_management_prof
+        bot_whitelist: true
+        bot_whitelist_type: EXPRESSION
+        bot_whitelist_value: HTTP.REQ.URL.CONTAINS("allow.html")
+        log: 'ON'
+        bot_whitelist_enabled: 'ON'
+        logmessage: Demo White List
 """
 
 RETURN = r"""

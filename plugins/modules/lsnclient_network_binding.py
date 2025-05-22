@@ -60,7 +60,7 @@ options:
       - IPv4 address(es) of the LSN subscriber(s) or subscriber network(s) on whose
         traffic you want the Citrix ADC to perform Large Scale NAT.
   td:
-    type: float
+    type: int
     description:
       - 'ID of the traffic domain on which this subscriber or the subscriber network
         (as specified by the network parameter) belongs. '

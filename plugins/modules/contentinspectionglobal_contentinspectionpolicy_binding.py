@@ -84,7 +84,7 @@ options:
     description:
       - Name of the contentInspection policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
   type:

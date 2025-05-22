@@ -46,7 +46,7 @@ options:
       - Egress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of type INLINEINSPECTION or MIRROR.
   egressvlan:
-    type: float
+    type: int
     description:
       - Egress Vlan for CI
   ingressinterface:
@@ -55,7 +55,7 @@ options:
       - Ingress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of IPS type.
   ingressvlan:
-    type: float
+    type: int
     description:
       - Ingress Vlan for CI
   iptunnel:

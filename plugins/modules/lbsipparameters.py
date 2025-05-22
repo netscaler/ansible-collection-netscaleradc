@@ -81,7 +81,7 @@ options:
         matching source port number, and CALL-ID based persistence is implemented
         for the responses received by the virtual server.
   sip503ratethreshold:
-    type: float
+    type: int
     description:
       - Maximum number of 503 Service Unavailable responses to generate, once every
         10 milliseconds, when a SIP virtual server becomes unavailable.

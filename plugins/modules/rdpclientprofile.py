@@ -90,7 +90,7 @@ options:
         to avoid the pop-up for replacement of existing rdp file during each rdp connection
         launch, hence providing better end-user experience.
   rdpcookievalidity:
-    type: float
+    type: int
     description:
       - RDP cookie validity period. RDP cookie validity time is applicable for new
         connection and also for any re-connection that might happen, mostly due to

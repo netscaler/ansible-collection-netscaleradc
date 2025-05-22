@@ -46,7 +46,7 @@ options:
     description:
       - enable/disable arp spoofing validation
   timeout:
-    type: float
+    type: int
     description:
       - Time-out value (aging time) for the dynamically learned ARP entries, in seconds.
         The new value applies only to ARP entries that are dynamically learned after

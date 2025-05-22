@@ -45,7 +45,7 @@ options:
     description:
       - The cipher group/alias/individual cipher configuration.
   cipherdefaulton:
-    type: float
+    type: int
     description:
       - Flag indicating whether the bound cipher was the DEFAULT cipher, bound at
         boot time, or any other cipher from the CLI

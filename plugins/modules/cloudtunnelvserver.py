@@ -45,7 +45,7 @@ options:
         be either a named expression or an expression. The Cloud Tunnel virtual server
         processes only the traffic for which the expression evaluates to true.
   listenpriority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one

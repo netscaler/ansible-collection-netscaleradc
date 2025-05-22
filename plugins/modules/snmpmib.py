@@ -86,7 +86,7 @@ options:
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my name" or 'my name').
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which we are setting the mib. This is a mandatory
         argument to set snmp mib on CLIP.

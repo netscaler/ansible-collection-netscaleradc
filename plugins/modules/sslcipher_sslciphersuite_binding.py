@@ -65,7 +65,7 @@ options:
       - "\tC(ORD) - Overrides the current configured cipher-suite for the virtual\
         \ server with the given cipher-suite."
   cipherpriority:
-    type: float
+    type: int
     description:
       - This indicates priority assigned to the particular cipher
   ciphgrpals:
@@ -91,9 +91,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslcipher_sslciphersuite_binding:
         state: present
-        ciphergroupname: ssllabs-blackstone
-        ciphername: TLS1.2-DHE-RSA-AES256-GCM-SHA384
-        cipherpriority: '14'
+        ciphergroupname: test
+        ciphername: TLS1-ECDHE-RSA-AES128-SHA
+        cipherpriority: '2'
 """
 
 RETURN = r"""

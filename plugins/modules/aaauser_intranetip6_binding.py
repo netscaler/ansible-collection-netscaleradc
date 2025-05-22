@@ -75,7 +75,7 @@ options:
     description:
       - The Intranet IP6 bound to the user
   numaddr:
-    type: float
+    type: int
     description:
       - Numbers of ipv6 address bound starting with intranetip6
   username:

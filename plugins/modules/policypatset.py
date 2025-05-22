@@ -111,7 +111,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.policypatset:
         state: present
-        name: prod_patset
+        name: ST_WB_CKIES10_102_48_231
 """
 
 RETURN = r"""

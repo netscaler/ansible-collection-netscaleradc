@@ -65,7 +65,7 @@ options:
         \ in double or single quotation marks (for example, \"my push service\" or\
         \ 'my push service')."
   refreshinterval:
-    type: float
+    type: int
     description:
       - Interval at which certificates or idtoken is refreshed.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

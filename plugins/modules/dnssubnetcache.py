@@ -44,7 +44,7 @@ options:
     description:
       - ECS Subnet.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

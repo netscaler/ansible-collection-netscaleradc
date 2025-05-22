@@ -113,7 +113,7 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
   order:
-    type: float
+    type: int
     description:
       - Integer specifying the order of the service. A larger number specifies a lower
         order. Defines the order of the service relative to the other services in
@@ -124,7 +124,7 @@ options:
     description:
       - Name of the policy bound to the LB vserver.
   priority:
-    type: float
+    type: int
     description:
       - Priority.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
