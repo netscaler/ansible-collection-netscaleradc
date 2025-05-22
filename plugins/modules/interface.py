@@ -54,13 +54,13 @@ options:
         of only those parameters (speed or duplex mode) for which the value is set
         as AUTO.
   bandwidthhigh:
-    type: float
+    type: int
     description:
       - High threshold value for the bandwidth usage of the interface, in Mbps. The
         Citrix ADC generates an SNMP trap message when the bandwidth usage of the
         interface is greater than or equal to the specified high threshold value.
   bandwidthnormal:
-    type: float
+    type: int
     description:
       - Normal threshold value for the bandwidth usage of the interface, in Mbps.
         When the bandwidth usage of the interface becomes less than or equal to the
@@ -123,14 +123,14 @@ options:
       - '* 10 - Indicates a 10 Gbps port.'
       - '* LA - Indicates a link aggregation port.'
       - '* LO - Indicates a loop back port.'
-      - 'U is a unique integer for representing an interface in a particular port group.'
+      - U is a unique integer for representing an interface in a particular port group.
   ifalias:
     type: str
     description:
       - Alias name for the interface. Used only to enhance readability. To perform
         any operations, you have to specify the interface ID.
   lacpkey:
-    type: float
+    type: int
     description:
       - Integer identifying the LACP LA channel to which the interface is to be bound.
       - For an LA channel of the Citrix ADC, this digit specifies the variable x of
@@ -160,7 +160,7 @@ options:
       - '* Disabled - Unbinds the interface from the LA channel. If this is the only
         interface in the LA channel, the LA channel is removed.'
   lacppriority:
-    type: float
+    type: int
     description:
       - LACP port priority, expressed as an integer. The lower the number, the higher
         the priority. The Citrix ADC limits the number of interfaces in an LA channel
@@ -203,14 +203,14 @@ options:
         LLDP mode of an interface depends on the LLDP mode configured at the global
         and the interface levels.
   lrsetpriority:
-    type: float
+    type: int
     description:
       - LRSET port priority, expressed as an integer ranging from 1 to 1024. The highest
         priority is 1. The Citrix ADC limits the number of interfaces in an LRSET
         to 8. Within a LRSET the highest LR Priority Interface is considered as the
         first candidate for the Active interface, if the interface is UP.
   mtu:
-    type: float
+    type: int
     description:
       - The Maximum Transmission Unit (MTU) is the largest packet size, measured in
         bytes excluding 14 bytes ethernet header and 4 bytes CRC, that can be transmitted
@@ -234,7 +234,7 @@ options:
         to a lesser value, Similar calculation can be applied, Maximum Data Plane
         MTU in Cluster = (Maximum possible MTU - 78).
   ringsize:
-    type: float
+    type: int
     description:
       - The receive ringsize of the interface. A higher number provides more number
         of buffers in handling incoming traffic.
@@ -281,7 +281,7 @@ options:
         setting applies the tag for this interface's native VLAN. C(OFF) applies the
         tag for all VLANs other than the native VLAN.
   throughput:
-    type: float
+    type: int
     description:
       - Low threshold value for the throughput of the interface, in Mbps. In an HA
         configuration, failover is triggered if the interface has HA MON enabled and

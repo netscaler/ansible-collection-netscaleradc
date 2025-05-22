@@ -393,6 +393,25 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botprofile_ratelimit_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botprofile_ratelimit_binding
+      delegate_to: localhost
+      netscaler.adc.botprofile_ratelimit_binding:
+        state: present
+        name: Bot_management_prof
+        bot_ratelimit: true
+        bot_rate_limit_type: SOURCE_IP
+        rate: '5'
+        timeslice: '20000'
+        bot_rate_limit_action:
+          - LOG
+          - DROP
+        bot_rate_limit_enabled: 'ON'
+        logmessage: Demo Rate Limit
 """
 
 RETURN = r"""

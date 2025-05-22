@@ -93,17 +93,17 @@ EXAMPLES = r"""
 ---
 - name: Sample vpnvserver_rewritepolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure vpnvserver_rewritepolicy_binding
       delegate_to: localhost
       netscaler.adc.vpnvserver_rewritepolicy_binding:
         state: present
-        name: nsgw_wp_direct2dll_com
-        policy: rw_pol_insert_loginfooter
-        priority: '100'
-        gotopriorityexpression: END
-        bindpoint: RESPONSE
+        name: Storefront_Gateway
+        policy: Add_X-GW-SessionIdPol
+        priority: '220'
+        gotopriorityexpression: NEXT
+        bindpoint: REQUEST
 """
 
 RETURN = r"""

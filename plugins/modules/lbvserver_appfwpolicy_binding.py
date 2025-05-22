@@ -99,6 +99,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lbvserver_appfwpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_appfwpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_appfwpolicy_binding:
+        state: present
+        name: badstore_http_lb
+        policyname: badstore_pol
+        priority: '100'
+        gotopriorityexpression: END
+        bindpoint: REQUEST
 """
 
 RETURN = r"""

@@ -361,13 +361,13 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.analyticsprofile:
         state: present
-        name: telemetry_metrics_profile
+        name: splunk_mgmtlog_prof
+        collectors: splunk_http_8088
         type: timeseries
-        outputmode: prometheus
-        metrics: ENABLED
-        servemode: Pull
-        schemafile: ./telemetry_collect_ns_metrics_schema.json
-        metricsexportfrequency: '300'
+        analyticsendpointmetadata: '{"source":"netscaler","sourcetype":"mgmtlog","index":"ns-mgmt-logs"}'
+        analyticsauthtoken: REQ_PASSWORD
+        analyticsendpointurl: /services/collector/event
+        analyticsendpointcontenttype: application/json
 """
 
 RETURN = r"""

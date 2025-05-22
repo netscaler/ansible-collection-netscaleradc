@@ -107,6 +107,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile_xmlattachmenturl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_xmlattachmenturl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_xmlattachmenturl_binding:
+        state: present
+        name: webgoat_prof
+        xmlattachmenturl: .*
 """
 
 RETURN = r"""

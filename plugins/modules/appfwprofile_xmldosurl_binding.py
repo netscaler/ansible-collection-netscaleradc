@@ -299,6 +299,35 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile_xmldosurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_xmldosurl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_xmldosurl_binding:
+        state: present
+        name: webgoat_prof
+        xmldosurl: .*
+        xmlmaxelementdepthcheck: 'ON'
+        xmlmaxelementnamelengthcheck: 'ON'
+        xmlmaxelementscheck: 'ON'
+        xmlmaxelementchildrencheck: 'ON'
+        xmlmaxattributescheck: 'ON'
+        xmlmaxattributenamelengthcheck: 'ON'
+        xmlmaxattributevaluelengthcheck: 'ON'
+        xmlmaxchardatalengthcheck: 'ON'
+        xmlmaxfilesizecheck: 'ON'
+        xmlminfilesizecheck: 'ON'
+        xmlblockpi: 'ON'
+        xmlblockdtd: 'ON'
+        xmlblockexternalentities: 'ON'
+        xmlmaxentityexpansionscheck: 'ON'
+        xmlmaxentityexpansiondepthcheck: 'ON'
+        xmlmaxnamespacescheck: 'ON'
+        xmlmaxnamespaceurilengthcheck: 'ON'
+        xmlsoaparraycheck: 'ON'
 """
 
 RETURN = r"""

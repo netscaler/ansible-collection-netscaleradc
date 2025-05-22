@@ -63,13 +63,14 @@ EXAMPLES = r"""
 ---
 - name: Sample authenticationnoauthaction playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure authenticationnoauthaction
       delegate_to: localhost
       netscaler.adc.authenticationnoauthaction:
         state: present
-        name: NO_AUTHN
+        name: NoAuth_EPA
+        defaultauthenticationgroup: PassedEPAScan
 """
 
 RETURN = r"""
