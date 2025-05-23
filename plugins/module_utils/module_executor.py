@@ -47,7 +47,7 @@ from .nitro_resource_map import NITRO_RESOURCE_MAP
 skippable_resource_list = [
     # In some cases, although keys are listed as immutable in the nitro_resource_map, they can actually be updated.
     # This list helps bypass the immutability check for these resources.
-    "sytemfile"
+    "systemfile"
 ]
 
 
