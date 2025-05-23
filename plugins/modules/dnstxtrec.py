@@ -56,16 +56,16 @@ options:
     description:
       - Subnet for which the cached TXT record need to be removed.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   recordid:
-    type: float
+    type: int
     description:
       - Unique, internally generated record ID. View the details of the TXT record
         to obtain its record ID. Mutually exclusive with the string parameter.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

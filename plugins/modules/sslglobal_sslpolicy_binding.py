@@ -106,7 +106,7 @@ options:
     description:
       - The name for the SSL policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the policy binding.
   type:

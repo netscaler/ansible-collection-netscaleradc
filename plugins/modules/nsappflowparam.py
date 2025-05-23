@@ -88,11 +88,11 @@ options:
     description:
       - Enable AppFlow HTTP user-agent logging.
   templaterefresh:
-    type: float
+    type: int
     description:
       - IPFIX template refresh interval (in seconds).
   udppmtu:
-    type: float
+    type: int
     description:
       - MTU to be used for IPFIX UDP packets.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

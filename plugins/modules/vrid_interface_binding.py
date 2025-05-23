@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: float
+    type: int
     description:
       - Integer that uniquely identifies the VMAC address. The generic VMAC address
         is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with

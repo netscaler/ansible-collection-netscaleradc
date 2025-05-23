@@ -56,7 +56,7 @@ options:
     description:
       - name of PCoIP profile
   sessionidletimeout:
-    type: float
+    type: int
     description:
       - PCOIP Idle Session timeout
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -56,7 +56,7 @@ options:
     description:
       - OCSP responders bound to this certkey
   priority:
-    type: float
+    type: int
     description:
       - ocsp priority
 extends_documentation_fragment: netscaler.adc.netscaler_adc

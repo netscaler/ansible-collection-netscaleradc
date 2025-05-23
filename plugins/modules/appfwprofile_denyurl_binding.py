@@ -83,6 +83,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile_denyurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_denyurl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_denyurl_binding:
+        state: present
+        name: webgoat_prof
+        denyurl: ^[^?]+[/]wsdl([?][^#]*)?([#].*)?$
+        comment: 'WSDL scanning attack: /wsdl'
+        resourceid: 4a61beb80f02796f4ffb9cc4523ed5a27bb26ef7f63d5b3077763230893c5967
 """
 
 RETURN = r"""

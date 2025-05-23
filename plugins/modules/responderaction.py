@@ -98,7 +98,7 @@ options:
         phrase may be a string literal with quotes or a PI expression. For example:
         "Invalid URL: " + HTTP.REQ.URL'
   responsestatuscode:
-    type: float
+    type: int
     description:
       - HTTP response status code, for example 200, 302, 404, etc. The default value
         for the redirect action type is 302 and for respondwithhtmlpage is 200

@@ -69,7 +69,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationnoauthaction:
         state: present
-        name: NO_AUTHN
+        name: NoAuth_EPA
+        defaultauthenticationgroup: PassedEPAScan
 """
 
 RETURN = r"""

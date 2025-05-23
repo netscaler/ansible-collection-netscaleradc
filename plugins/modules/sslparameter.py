@@ -39,13 +39,13 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   crlmemorysizemb:
-    type: float
+    type: int
     description:
       - Maximum memory size to use for certificate revocation lists (CRLs). This parameter
         reserves memory for a CRL but sets a limit to the maximum memory that the
         CRLs loaded on the appliance can consume.
   cryptodevdisablelimit:
-    type: float
+    type: int
     description:
       - Limit to the number of disabled SSL chips after which the ADC restarts. A
         value of zero implies that the ADC does not automatically restart.
@@ -86,7 +86,7 @@ options:
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
   encrypttriggerpktcount:
-    type: float
+    type: int
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
@@ -150,25 +150,25 @@ options:
       - '      (3) Do not verify the Basic Constraint CA true flag'
       - '          for non-leaf certificates.'
   ocspcachesize:
-    type: float
+    type: int
     description:
       - Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10%
         of the packet engine memory can be assigned. Because the maximum allowed packet
         engine memory is 4GB, the maximum value that can be assigned to the OCSP cache
         is approximately 410 MB.
   operationqueuelimit:
-    type: float
+    type: int
     description:
       - Limit in percentage of capacity of the crypto operations queue beyond which
         new SSL connections are not accepted until the queue is reduced.
   pushenctriggertimeout:
-    type: float
+    type: int
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
   pushflag:
-    type: float
+    type: int
     description:
       - 'Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag
         is set to a value other than 0, the buffered records are forwarded on the
@@ -250,7 +250,7 @@ options:
       - C(NO)     - No validation is performed on the HTTP 'Host'
       - '         header value.'
   softwarecryptothreshold:
-    type: float
+    type: int
     description:
       - Citrix ADC CPU utilization threshold (in percentage) beyond which crypto operations
         are not done in software.
@@ -265,14 +265,14 @@ options:
         to make the subsequent interception or bypass decision. When enabled, NS does
         the lookup of this cached data to do early bypass.
   sslimaxerrorcachemem:
-    type: float
+    type: int
     description:
       - Specify the maximum memory that can be used for caching the learned data.
         This memory is used as a LRU cache so that the old entries gets replaced with
         new entry once the set memory limit is fully utilised. A value of 0 decides
         the limit automatically.
   ssltriggertimeout:
-    type: float
+    type: int
     description:
       - Time, in milliseconds, after which encryption is triggered for transactions
         that are not tracked on the Citrix ADC because their length is not known.
@@ -308,6 +308,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslparameter:
         state: present
+        force: true
         defaultprofile: ENABLED
 """
 

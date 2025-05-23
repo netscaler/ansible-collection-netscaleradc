@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: float
+    type: int
     description:
       - The integer that uniquely identifies the bridge group.
   ipaddress:
@@ -57,7 +57,7 @@ options:
     description:
       - The owner node group in a Cluster for this vlan.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part

@@ -43,7 +43,7 @@ options:
     description:
       - Destination IP address for the LSN mapping entry.
   dsttd:
-    type: float
+    type: int
     description:
       - ID of the traffic domain through which the destination IP address for this
         LSN mapping entry is reachable from the Citrix ADC.
@@ -93,7 +93,7 @@ options:
       - Port of the LSN subscriber for the LSN mapping entry. * represents all ports
         being used. Used in case of static wildcard
   td:
-    type: float
+    type: int
     description:
       - 'ID of the traffic domain to which the subscriber belongs. '
       - ''

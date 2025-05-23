@@ -148,7 +148,7 @@ options:
     description:
       - The name of the  command policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the command policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -165,9 +165,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.systemglobal_authenticationpolicy_binding:
         state: present
-        policyname: ldap_mgmt_pol
-        priority: '100'
-        gotopriorityexpression: NEXT
+        policyname: acsPolicy
+        priority: '1'
 """
 
 RETURN = r"""
