@@ -50,7 +50,7 @@ options:
     description:
       - The name of the FIS to which you want to bind interfaces.
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are creating the FIS. Can be configured
         only through the cluster IP address.

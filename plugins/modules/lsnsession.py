@@ -68,11 +68,11 @@ options:
     description:
       - IPv6 address of the LSN subscriber or B4 device.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   td:
-    type: float
+    type: int
     description:
       - Traffic domain ID of the LSN client entity.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

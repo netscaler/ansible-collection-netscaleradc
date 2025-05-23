@@ -45,7 +45,7 @@ options:
     description:
       - The IP address of the WLM.
   katimeout:
-    type: float
+    type: int
     description:
       - The idle time period after which Citrix ADC would probe the WLM. The value
         ranges from 1 to 1440 minutes.

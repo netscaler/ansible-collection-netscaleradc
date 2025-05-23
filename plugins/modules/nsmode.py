@@ -85,12 +85,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nsmode:
         state: present
-        fr: 'true'
-        l3: 'true'
-        mbf: 'true'
         usnip: 'true'
-        pmtud: 'true'
-        ulfd: 'true'
 """
 
 RETURN = r"""

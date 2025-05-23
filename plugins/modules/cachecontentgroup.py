@@ -92,7 +92,7 @@ options:
       - Perform flash cache. Mutually exclusive with Poll Every Time (PET) on the
         same content group.
   heurexpiryparam:
-    type: float
+    type: int
     description:
       - Heuristic expiry time, in percent of the duration, since the object was last
         modified.
@@ -194,11 +194,11 @@ options:
     description:
       - Evaluate for parameters in the cookie header also.
   maxressize:
-    type: float
+    type: int
     description:
       - Maximum size of a response that can be cached in this content group.
   memlimit:
-    type: float
+    type: int
     description:
       - Maximum amount of memory that the cache can use. The effective limit is based
         on the available memory of the Citrix ADC.
@@ -207,7 +207,7 @@ options:
     description:
       - Number of hits that qualifies a response for storage in this content group.
   minressize:
-    type: float
+    type: int
     description:
       - Minimum size of a response that can be cached in this content group.
       - ' Default minimum response size is 0.'
@@ -249,17 +249,17 @@ options:
     description:
       - Attempt to refresh objects that are about to go stale.
   prefetchmaxpending:
-    type: float
+    type: int
     description:
       - Maximum number of outstanding prefetches that can be queued for the content
         group.
   prefetchperiod:
-    type: float
+    type: int
     description:
       - Time period, in seconds before an object's calculated expiry time, during
         which to attempt prefetch.
   prefetchperiodmillisec:
-    type: float
+    type: int
     description:
       - Time period, in milliseconds before an object's calculated expiry time, during
         which to attempt prefetch.
@@ -270,19 +270,19 @@ options:
         parameterized invalidation. If this parameter is not set, all objects are
         flushed from the group.
   quickabortsize:
-    type: float
+    type: int
     description:
       - If the size of an object that is being downloaded is less than or equal to
         the quick abort value, and a client aborts during the download, the cache
         stops downloading the response. If the object is larger than the quick abort
         size, the cache continues to download the response.
   relexpiry:
-    type: float
+    type: int
     description:
       - Relative expiry time, in seconds, after which to expire an object cached in
         this content group.
   relexpirymillisec:
-    type: float
+    type: int
     description:
       - Relative expiry time, in milliseconds, after which to expire an object cached
         in this content group.
@@ -314,13 +314,13 @@ options:
     description:
       - The type of the content group.
   weaknegrelexpiry:
-    type: float
+    type: int
     description:
       - 'Relative expiry time, in seconds, for expiring negative responses. This value
         is used only if the expiry time cannot be determined from any other source.
         It is applicable only to the following status codes: 307, 403, 404, and 410.'
   weakposrelexpiry:
-    type: float
+    type: int
     description:
       - Relative expiry time, in seconds, for expiring positive responses with response
         codes between 200 and 399. Cannot be used in combination with other Expiry
@@ -339,8 +339,29 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.cachecontentgroup:
         state: present
-        name: NSFEO
-        maxressize: 1994752
+        name: n_XM_WO_DEVICEID_10.100.39.132
+        relexpiry: 60
+        polleverytime: 'NO'
+        ignorereloadreq: 'YES'
+        removecookies: 'YES'
+        prefetch: 'YES'
+        flashcache: 'NO'
+        expireatlastbyte: 'NO'
+        insertvia: 'YES'
+        insertage: 'YES'
+        insertetag: 'YES'
+        quickabortsize: 4194303
+        minressize: 0
+        maxressize: 80
+        memlimit: 65536
+        ignorereqcachinghdrs: 'YES'
+        minhits: 0
+        alwaysevalpolicies: 'NO'
+        persistha: 'NO'
+        pinned: 'NO'
+        lazydnsresolve: 'YES'
+        hitselector: n_XM_URL_10.100.39.132
+        type: HTTP
 """
 
 RETURN = r"""

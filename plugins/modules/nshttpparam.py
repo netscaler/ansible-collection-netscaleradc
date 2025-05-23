@@ -96,7 +96,7 @@ options:
     description:
       - Mark HTTP/0.9 requests as invalid.
   maxreusepool:
-    type: float
+    type: int
     description:
       - Maximum limit on the number of connections, from the Citrix ADC to a particular
         server that are kept in the reuse pool. This setting is helpful for optimal
@@ -121,7 +121,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nshttpparam:
         state: present
-        dropinvalreqs: 'ON'
+        ignoreconnectcodingscheme: DISABLED
 """
 
 RETURN = r"""

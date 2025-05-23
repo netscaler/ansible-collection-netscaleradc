@@ -53,6 +53,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver_appcontroller_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_appcontroller_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_appcontroller_binding:
+        state: present
+        name: Storefront_Gateway
+        appcontroller: https://xd1.citrix.lab
 """
 
 RETURN = r"""

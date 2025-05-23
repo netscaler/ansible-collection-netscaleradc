@@ -78,7 +78,7 @@ options:
         such as http(s):// or smtp(s):// for http and smtp protocols respectively.
         For SMTP, the port number is mandatory like smtps://smtp.example.com:25.
   timeout:
-    type: float
+    type: int
     description:
       - Time after which the code expires.
   type:

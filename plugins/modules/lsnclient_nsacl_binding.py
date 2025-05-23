@@ -57,7 +57,7 @@ options:
         more spaces, enclose the name in double or single quotation marks (for example,
         "lsn client1" or ''lsn client1'').'
   td:
-    type: float
+    type: int
     description:
       - 'ID of the traffic domain on which this subscriber or the subscriber network
         (as specified by the network parameter) belongs. '

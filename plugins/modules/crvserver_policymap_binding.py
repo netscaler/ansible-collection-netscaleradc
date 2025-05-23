@@ -109,7 +109,7 @@ options:
     description:
       - Policies bound to this vserver.
   priority:
-    type: float
+    type: int
     description:
       - 'An unsigned integer that determines the priority of the policy relative to
         other policies bound to this cache redirection virtual server. The lower the

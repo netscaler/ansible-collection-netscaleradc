@@ -32,8 +32,6 @@ options:
     choices:
       - present
       - absent
-      - enabled
-      - disabled
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -41,8 +39,6 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
-      - When C(enabled), the resource will be updated and enabled on the NetScaler ADC node.
-      - When C(disabled), the resource will be updated and disabled on the NetScaler ADC node.
     type: str
   customserverid:
     type: str
@@ -50,12 +46,12 @@ options:
       - The identifier for this IP:Port pair. Used when the persistency type is set
         to Custom Server ID.
   dbsttl:
-    type: float
+    type: int
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
   hashid:
-    type: float
+    type: int
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
@@ -69,7 +65,7 @@ options:
       - Specify the nameserver to which the query for bound domain needs to be sent.
         If not specified, use the global nameserver
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the servicegroup member
   port:
@@ -77,7 +73,7 @@ options:
     description:
       - Server port number.
   serverid:
-    type: float
+    type: int
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
@@ -90,7 +86,7 @@ options:
     description:
       - Name of the service group.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

@@ -40,7 +40,7 @@ options:
     description:
       - Encrypt the generated RSA key by using the AES algorithm.
   bits:
-    type: float
+    type: int
     description:
       - Size, in bits, of the RSA key.
   des:

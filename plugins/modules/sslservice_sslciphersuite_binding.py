@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   cipherdefaulton:
-    type: float
+    type: int
     description:
       - Flag indicating whether the bound cipher was the DEFAULT cipher, bound at
         boot time, or any other cipher from the CLI

@@ -55,6 +55,10 @@ options:
       - 'The following requirement applies only to the NetScaler CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
+  scorethreshold:
+    type: int
+    description:
+      - This is the score threshold value for recaptcha v3.
   secretkey:
     type: str
     description:

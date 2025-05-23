@@ -43,7 +43,7 @@ options:
       - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
   backuppersistencetimeout:
-    type: float
+    type: int
     description:
       - Time period, in minutes, for which backup persistence is in effect.
   cookiedomain:
@@ -110,7 +110,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   timeout:
-    type: float
+    type: int
     description:
       - Time period for which a persistence session is in effect.
   usevserverpersistency:
@@ -124,7 +124,7 @@ options:
         with other members persistence rules. When this setting is enabled persistence
         sessions created by any of the members can be shared by other member vservers.
   v6persistmasklen:
-    type: float
+    type: int
     description:
       - Persistence mask to apply to source IPv6 addresses when creating source IP
         based persistence sessions.

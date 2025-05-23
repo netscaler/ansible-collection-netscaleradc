@@ -66,7 +66,7 @@ EXAMPLES = r"""
 ---
 - name: Sample urlfilteringparameter playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure urlfilteringparameter
       delegate_to: localhost

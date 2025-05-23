@@ -65,7 +65,7 @@ options:
     description:
       - Name of the audit nslog policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -76,7 +76,7 @@ EXAMPLES = r"""
 ---
 - name: Sample auditnslogglobal_auditnslogpolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: false
+  gather_facts: 'false'
   tasks:
     - name: Configure auditnslogglobal_auditnslogpolicy_binding
       delegate_to: localhost

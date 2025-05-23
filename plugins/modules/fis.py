@@ -46,7 +46,7 @@ options:
         : (colon) # and space ( ). Note: In a cluster setup, the FIS name on each
         node must be unique.'
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are creating the FIS. Can be configured
         only through the cluster IP address.

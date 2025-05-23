@@ -79,6 +79,7 @@ options:
       - '*C(SESSION) - Rate-limiting based on the configured cookie name.'
       - '*C(URL) - Rate-limiting based on the configured C(URL).'
       - '*C(GEOLOCATION) - Rate-limiting based on the configured country name.'
+      - '*C(JA3_FINGERPRINT) - Rate-limiting based on client SSL JA3 fingerprint.'
   bot_rate_limit_url:
     type: str
     description:
@@ -378,12 +379,12 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   rate:
-    type: float
+    type: int
     description:
       - Maximum number of requests that are allowed in this session in the given period
         time.
   timeslice:
-    type: float
+    type: int
     description:
       - Time interval during which requests are tracked to check if they cross the
         given rate.
@@ -392,6 +393,25 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botprofile_ratelimit_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botprofile_ratelimit_binding
+      delegate_to: localhost
+      netscaler.adc.botprofile_ratelimit_binding:
+        state: present
+        name: Bot_management_prof
+        bot_ratelimit: true
+        bot_rate_limit_type: SOURCE_IP
+        rate: '5'
+        timeslice: '20000'
+        bot_rate_limit_action:
+          - LOG
+          - DROP
+        bot_rate_limit_enabled: 'ON'
+        logmessage: Demo Rate Limit
 """
 
 RETURN = r"""

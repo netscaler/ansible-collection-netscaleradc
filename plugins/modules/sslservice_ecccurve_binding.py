@@ -49,6 +49,7 @@ options:
       - P_384
       - P_521
       - X_25519
+      - X25519_MLKEM768
     description:
       - Named ECC curve bound to service/vserver.
   servicename:
