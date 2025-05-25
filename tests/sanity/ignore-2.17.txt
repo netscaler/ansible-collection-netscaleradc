@@ -766,8 +766,6 @@ plugins/modules/transformprofile.py validate-modules:missing-gplv3-license # We 
 plugins/modules/tunnelglobal_tunneltrafficpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/tunneltrafficpolicy.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/ulfdserver.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/urlfilteringcategorization.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/urlfilteringparameter.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/userprotocol.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/uservserver.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/videooptimizationdetectionaction.py validate-modules:missing-gplv3-license # We use MIT license

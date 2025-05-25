@@ -846,8 +846,6 @@ action_groups:
     - tunnelglobal_tunneltrafficpolicy_binding
     - tunneltrafficpolicy
     - ulfdserver
-    - urlfilteringcategorization
-    - urlfilteringparameter
     - userprotocol
     - uservserver
     - videooptimizationdetectionaction
