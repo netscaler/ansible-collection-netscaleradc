@@ -28439,6 +28439,8 @@ NITRO_RESOURCE_MAP = {
             "add",
             "count",
             "delete",
+            "disable",
+            "enable",
             "get",
             "get-byname",
             "rename",

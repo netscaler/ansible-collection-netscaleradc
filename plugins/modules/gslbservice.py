@@ -30,6 +30,8 @@ options:
     choices:
       - present
       - absent
+      - enabled
+      - disabled
       - unset
       - renamed
     default: present
@@ -39,6 +41,8 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled), the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
       - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
