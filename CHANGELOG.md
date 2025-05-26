@@ -11,8 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Add enable and disable state to service group member bindings
-- Corrected datatype issues in OpenAPI spec to resolve idempotency errors 
+- Supported enable and disable states to service group member bindings
+- Corrected datatype issues to resolve idempotency errors 
 - Refactored README to align to Red Hat guidelines
 
 ## [2.9.0] - 2025-05-13
