@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.9.1] - 2025-05-26
+
+### Fixed
+
+- Add enable and disable state to service group member bindings
+- Corrected datatype issues in OpenAPI spec to resolve idempotency errors 
+- Refactored README to align to Red Hat guidelines
+
 ## [2.9.0] - 2025-05-13
 
 ### Added
@@ -163,7 +171,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial Release
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.1...HEAD
+[2.9.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.0...2.9.1
 [2.9.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.8.0...2.9.0
 [2.8.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.0...2.8.0
 [2.7.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.2...2.7.0
