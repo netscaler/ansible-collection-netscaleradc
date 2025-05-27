@@ -41,7 +41,7 @@ options:
     description:
       - Host name for the Citrix ADC.
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are setting the hostname. Can be configured
         only through the cluster IP address.
@@ -59,7 +59,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.nshostname:
         state: present
-        hostname: ns
+        hostname: ns1_172.191.127.50
 """
 
 RETURN = r"""

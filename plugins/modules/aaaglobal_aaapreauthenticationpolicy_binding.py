@@ -55,7 +55,7 @@ options:
     description:
       - Name of the policy to be unbound.
   priority:
-    type: float
+    type: int
     description:
       - Priority of the bound policy
 extends_documentation_fragment: netscaler.adc.netscaler_adc

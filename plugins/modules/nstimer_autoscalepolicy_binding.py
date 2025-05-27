@@ -54,11 +54,11 @@ options:
     description:
       - The timer policy associated with the timer.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the timer policy.
   samplesize:
-    type: float
+    type: int
     description:
       - Denotes the sample size. Sample size value of 'x' means that previous '(x
         - 1)' policy's rule evaluation results and the current evaluation result are
@@ -66,7 +66,7 @@ options:
         is a state of previous 9 policy evaluation results and also the current policy
         evaluation result.
   threshold:
-    type: float
+    type: int
     description:
       - Denotes the threshold. If the rule of the policy in the binding relation evaluates
         'threshold size' number of times in 'sample size' to true, then the corresponding

@@ -51,11 +51,11 @@ options:
     description:
       - Subnet for which the cached CNAME record need to be removed.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

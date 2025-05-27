@@ -93,7 +93,7 @@ options:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the RNAT TCP traffic
         by using Layer 4 features.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part

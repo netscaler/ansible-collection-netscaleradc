@@ -106,8 +106,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.cachepolicylabel:
         state: present
-        labelname: _httpquicResBuiltinDefaults
-        evaluates: HTTPQUIC_RES
+        labelname: _reqBuiltinDefaults
+        evaluates: REQ
 """
 
 RETURN = r"""

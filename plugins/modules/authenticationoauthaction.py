@@ -203,6 +203,16 @@ options:
     type: str
     description:
       - URL to which access token would be posted for validation
+  intunedeviceidexpression:
+    type: str
+    description:
+      - The expression that will be evaluated to obtain IntuneDeviceId for compliance
+        check against IntuneNAC device compliance endpoint. The expression is applicable
+        when the OAuthType is INTUNE. The maximum length allowed to be used as IntuneDeviceId
+        for the device compliance check from the computed response after the expression
+        evaluation is 41.
+      - 'Examples:'
+      - add authentication oauthAction <actionName> -intuneDeviceIdExpression 'AAA.LOGIN.INTUNEURI.AFTER_STR("IntuneDeviceId://")'
   issuer:
     type: str
     description:
@@ -255,7 +265,7 @@ options:
     description:
       - Option to enable/disable PKCE flow during authentication.
   refreshinterval:
-    type: float
+    type: int
     description:
       - Interval at which services are monitored for necessary configuration.
   requestattribute:
@@ -272,7 +282,7 @@ options:
     description:
       - Resource URL for Oauth configuration.
   skewtime:
-    type: float
+    type: int
     description:
       - This option specifies the allowed clock skew in number of minutes that Citrix
         ADC allows on an incoming token. For example, if skewTime is 10, then token

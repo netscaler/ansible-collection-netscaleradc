@@ -45,7 +45,7 @@ options:
     description:
       - Name of the nodegroup. The name uniquely identifies the nodegroup on the cluster.
   priority:
-    type: float
+    type: int
     description:
       - Priority of Nodegroup. This priority is used for all the nodes bound to the
         nodegroup for Nodegroup selection

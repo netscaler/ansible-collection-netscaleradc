@@ -41,11 +41,11 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
-      - When C(enabled), the resource will be updated and enabled on the NetScaler ADC node.
-      - When C(disabled), the resource will be updated and disabled on the NetScaler ADC node.
+      - When C(enabled), the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled), the resource will be disabled on the NetScaler ADC node.
     type: str
   hashid:
-    type: float
+    type: int
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
@@ -54,7 +54,7 @@ options:
     description:
       - IP Address.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the gslb servicegroup member
   port:
@@ -90,7 +90,7 @@ options:
         is unset. When implementing HTTP redirect site persistence, the Citrix ADC
         redirects GSLB requests to GSLB services by using their site domains.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

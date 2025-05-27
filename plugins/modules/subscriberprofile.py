@@ -69,7 +69,7 @@ options:
     description:
       - Subscription-Id value
   vlan:
-    type: float
+    type: int
     description:
       - The vlan number on which the subscriber is located.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

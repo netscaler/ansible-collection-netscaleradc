@@ -96,12 +96,12 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   percentage:
-    type: float
+    type: int
     description:
       - Maximum percentage increase in the requests from (or to) a IP, Geolocation,
         URL or Host in 30 minutes interval.
   threshold:
-    type: float
+    type: int
     description:
       - Maximum number of requests that are allowed from (or to) a IP, Geolocation,
         URL or Host in 1 second time interval.

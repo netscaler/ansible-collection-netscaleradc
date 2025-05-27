@@ -92,7 +92,7 @@ options:
         node's NSIP, but it can be set to CLIP or Striped SNIP address. In non default
         partition, this parameter must be set to the SNIP/SNIP6 address.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -160,11 +160,13 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.snmptrap:
         state: present
-        trapclass: specific
+        trapclass: generic
         trapdestination:
-          - 10.189.64.10
-        communityname: snmp
-        allpartitions: ENABLED
+          - 10.102.80.59
+        version: V2
+        destport: 160
+        communityname: ia_snmpcommunity
+        srcip: 13.13.13.1
 """
 
 RETURN = r"""

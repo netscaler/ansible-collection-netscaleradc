@@ -150,7 +150,7 @@ options:
     description:
       - The name of the  command policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the command policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -53,11 +53,11 @@ options:
     description:
       - Host name of the mail exchange server.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   pref:
-    type: float
+    type: int
     description:
       - Priority number to assign to the mail exchange server. A domain name can have
         multiple mail servers, with a priority number assigned to each server. The
@@ -66,7 +66,7 @@ options:
         the mail server with the lowest priority number, and use other configured
         mail servers, in priority order, as backups.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

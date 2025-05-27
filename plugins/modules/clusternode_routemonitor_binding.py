@@ -45,7 +45,7 @@ options:
     description:
       - The netmask.
   nodeid:
-    type: float
+    type: int
     description:
       - A number that uniquely identifies the cluster node.
   routemonitor:

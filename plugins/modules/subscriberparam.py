@@ -53,7 +53,7 @@ options:
       - '3. C(ccrUpdate): Do not C(delete) the session and instead send a CCR-U to
         PCRF requesting for an updated session. !'
   idlettl:
-    type: float
+    type: int
     description:
       - 'q!Idle Timeout, in seconds, after which Citrix ADC will take an idleAction
         on a subscriber session (refer to ''idleAction'' arguement in ''set subscriber

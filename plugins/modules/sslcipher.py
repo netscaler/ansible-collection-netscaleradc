@@ -56,7 +56,7 @@ options:
     description:
       - Cipher name.
   cipherpriority:
-    type: float
+    type: int
     description:
       - This indicates priority assigned to the particular cipher
   ciphgrpalias:
@@ -110,7 +110,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.sslcipher:
         state: present
-        ciphergroupname: ssllabs-blackstone
+        ciphergroupname: DEFAULT_BACKEND
 """
 
 RETURN = r"""
