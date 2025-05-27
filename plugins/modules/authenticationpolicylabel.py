@@ -117,8 +117,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.authenticationpolicylabel:
         state: present
-        labelname: LDAP_Userextraction_External
-        loginschema: LSCHEMA_INT
+        labelname: RadFact
+        loginschema: single_auth
 """
 
 RETURN = r"""

@@ -66,7 +66,7 @@ options:
     description:
       - The SSL policy binding.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the policies bound to this SSL service
   servicename:

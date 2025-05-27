@@ -143,7 +143,7 @@ options:
     description:
       - Policy name.
   priority:
-    type: float
+    type: int
     description:
       - Priority.
   type:
@@ -169,7 +169,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.tunnelglobal_tunneltrafficpolicy_binding:
         state: present
-        policyname: ns_tunnel_nocmp
+        policyname: ns_tunnel_mimetext
+        priority: '6000'
 """
 
 RETURN = r"""

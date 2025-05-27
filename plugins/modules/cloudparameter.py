@@ -95,6 +95,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.cloudparameter:
         state: present
+        instanceid: d12838e8-f327-41f5-b290-0e42008cb9c7
+        customerid: 8jdh8fx0xio9
         deployment: Production
 """
 

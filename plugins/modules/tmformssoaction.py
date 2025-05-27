@@ -75,7 +75,7 @@ options:
     description:
       - Name of the form field in which the user types in the password.
   responsesize:
-    type: float
+    type: int
     description:
       - Number of bytes, in the response, to parse for extracting the forms.
   ssosuccessrule:

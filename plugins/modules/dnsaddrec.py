@@ -51,11 +51,11 @@ options:
     description:
       - One or more IPv4 addresses to assign to the domain name.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -92,10 +92,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.dnsaddrec:
         state: present
-        hostname: e.root-servers.net
+        hostname: fef.dmsua01.manage-dogfood.microsoft.com
         ipaddress:
-          - 192.203.230.10
-        ttl: 3600000
+          - 110.102.222.205
 """
 
 RETURN = r"""

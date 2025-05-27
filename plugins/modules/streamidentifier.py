@@ -53,11 +53,11 @@ options:
     description:
       - Enable/disable Appflow logging for stream identifier
   breachthreshold:
-    type: float
+    type: int
     description:
       - Breaching transactions threshold calculated over interval.
   interval:
-    type: float
+    type: int
     description:
       - Number of minutes of data to use when calculating session statistics (number
         of requests, bandwidth, and response times). The interval is a moving window
@@ -71,22 +71,22 @@ options:
     description:
       - Location where objects collected on the identifier will be logged.
   loginterval:
-    type: float
+    type: int
     description:
       - Time interval in minutes for logging the collected objects.
       - 'Log interval should be greater than or equal to the inteval '
       - of the stream identifier.
   loglimit:
-    type: float
+    type: int
     description:
       - Maximum number of objects to be logged in the log interval.
   maxtransactionthreshold:
-    type: float
+    type: int
     description:
       - Maximum per transcation value of metric. Metric to be tracked is specified
         by tracktransactions attribute.
   mintransactionthreshold:
-    type: float
+    type: int
     description:
       - Minimum per transcation value of metric. Metric to be tracked is specified
         by tracktransactions attribute.
@@ -95,7 +95,7 @@ options:
     description:
       - The name of stream identifier.
   samplecount:
-    type: float
+    type: int
     description:
       - Size of the sample from which to select a request for evaluation. The smaller
         the sample count, the more accurate is the statistical data. To evaluate all

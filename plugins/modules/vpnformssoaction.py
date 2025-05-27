@@ -68,7 +68,7 @@ options:
     description:
       - Name of the form field in which the user types in the password.
   responsesize:
-    type: float
+    type: int
     description:
       - Maximum number of bytes to allow in the response size. Specifies the number
         of bytes in the response to be parsed for extracting the forms.

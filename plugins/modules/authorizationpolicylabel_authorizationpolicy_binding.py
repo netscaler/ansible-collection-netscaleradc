@@ -77,7 +77,7 @@ options:
     description:
       - Name of the authorization policy to bind to the policy label.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

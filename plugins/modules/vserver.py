@@ -56,7 +56,7 @@ options:
         or content switching) routes requests to the cache redirection virtual server
         before sending it to the configured servers.
   clttimeout:
-    type: float
+    type: int
     description:
       - The timeout value in seconds for idle client connection
   name:
@@ -93,11 +93,11 @@ options:
     description:
       - The state of the spillover persistence.
   sopersistencetimeout:
-    type: float
+    type: int
     description:
       - The spillover persistence entry timeout.
   sothreshold:
-    type: float
+    type: int
     description:
       - The spillver threshold value.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

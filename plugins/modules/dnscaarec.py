@@ -54,11 +54,11 @@ options:
     description:
       - Flag associated with the CAA record.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   recordid:
-    type: float
+    type: int
     description:
       - Unique, internally generated record ID. View the details of the CAA record
         to obtain its record ID. Records can be removedby either specifying the domain
@@ -71,7 +71,7 @@ options:
         record. The RFC currently defines three available tags - issue, issuwild and
         iodef.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

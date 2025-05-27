@@ -43,7 +43,7 @@ options:
     description:
       - Email address of the contact administrator.
   hbcustominterval:
-    type: float
+    type: int
     description:
       - Interval (in days) between CallHome heartbeats
   ipaddress:
@@ -59,7 +59,7 @@ options:
     description:
       - CallHome mode of operation
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   port:

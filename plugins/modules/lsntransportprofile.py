@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   finrsttimeout:
-    type: float
+    type: int
     description:
       - Timeout, in seconds, for a TCP LSN session after a FIN or RST message is received
         from one of the endpoints.
@@ -54,7 +54,7 @@ options:
         FIN or RST, and ACK messages from the other endpoint so that both endpoints
         can properly close the connection.
   groupsessionlimit:
-    type: float
+    type: int
     description:
       - Maximum number of concurrent LSN sessions(for the specified protocol) allowed
         for all subscriber of a group to which this profile has bound. This limit
@@ -93,21 +93,21 @@ options:
         in different subscriber's connections (LSN sessions), and a subscriber initiates
         a connection from a well-known port, the Citrix ADC drops this connection.
   portquota:
-    type: float
+    type: int
     description:
       - Maximum number of LSN NAT ports to be used at a time by each subscriber for
         the specified protocol. For example, each subscriber can be limited to a maximum
         of 500 TCP NAT ports. When the LSN NAT mappings for a subscriber reach the
         limit, the Citrix ADC does not allocate additional NAT ports for that subscriber.
   sessionquota:
-    type: float
+    type: int
     description:
       - 'Maximum number of concurrent LSN sessions allowed for each subscriber for
         the specified protocol. '
       - When the number of LSN sessions reaches the limit for a subscriber, the Citrix
         ADC does not allow the subscriber to open additional sessions.
   sessiontimeout:
-    type: float
+    type: int
     description:
       - Timeout, in seconds, for an idle LSN session. If an LSN session is idle for
         a time that exceeds this value, the Citrix ADC removes the session.
@@ -115,7 +115,7 @@ options:
       - This timeout does not apply for a TCP LSN session when a FIN or RST message
         is received from either of the endpoints.
   stuntimeout:
-    type: float
+    type: int
     description:
       - STUN protocol timeout
   syncheck:
@@ -137,7 +137,7 @@ options:
         timeout.'
       - '* Such packets can be a part of a DoS attack.'
   synidletimeout:
-    type: float
+    type: int
     description:
       - SYN Idle timeout
   transportprofilename:

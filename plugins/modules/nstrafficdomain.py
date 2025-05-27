@@ -47,7 +47,7 @@ options:
     description:
       - Name of traffic domain  being added.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies a traffic domain.
   vmac:

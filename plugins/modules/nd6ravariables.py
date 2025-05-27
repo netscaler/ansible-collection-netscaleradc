@@ -47,7 +47,7 @@ options:
     description:
       - Cease router advertisements on this vlan.
   currhoplimit:
-    type: float
+    type: int
     description:
       - Current Hop limit.
   defaultlifetime:
@@ -55,7 +55,7 @@ options:
     description:
       - Default life time, in seconds.
   linkmtu:
-    type: float
+    type: int
     description:
       - The Link MTU.
   managedaddrconfig:
@@ -66,11 +66,11 @@ options:
     description:
       - Value to be placed in the Managed address configuration flag field.
   maxrtadvinterval:
-    type: float
+    type: int
     description:
       - Maximum time allowed between unsolicited multicast RAs, in seconds.
   minrtadvinterval:
-    type: float
+    type: int
     description:
       - Minimum time interval between RA messages, in seconds.
   onlyunicastrtadvresponse:
@@ -88,11 +88,11 @@ options:
     description:
       - Value to be placed in the Other configuration flag field.
   reachabletime:
-    type: float
+    type: int
     description:
       - Reachable time, in milliseconds.
   retranstime:
-    type: float
+    type: int
     description:
       - Retransmission time, in milliseconds.
   sendrouteradv:
@@ -110,7 +110,7 @@ options:
     description:
       - Include source link layer address option in RA messages.
   vlan:
-    type: float
+    type: int
     description:
       - The VLAN number.
   nd6ravariables_onlinkipv6prefix_binding:

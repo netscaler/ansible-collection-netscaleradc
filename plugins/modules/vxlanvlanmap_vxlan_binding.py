@@ -50,7 +50,7 @@ options:
       - The vlan id or the range of vlan ids in the on-premise network.
     elements: str
   vxlan:
-    type: float
+    type: int
     description:
       - The VXLAN assigned to the vlan inside the cloud.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

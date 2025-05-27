@@ -48,12 +48,12 @@ options:
     description:
       - Advertise this route.
   cost:
-    type: float
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         using this route. The lower the cost, the higher the preference.
   cost1:
-    type: float
+    type: int
     description:
       - 'The cost of a route is used to compare routes of the same type. The route
         having the lowest cost is the most preferred route. Possible values: 0 through
@@ -63,7 +63,7 @@ options:
     description:
       - Display a detailed view.
   distance:
-    type: float
+    type: int
     description:
       - Administrative distance of this route, which determines the preference of
         this route over other routes, with same destination, from different routing
@@ -73,6 +73,10 @@ options:
     description:
       - IP address of the gateway for this route. Can be either the IP address of
         the gateway, or can be null to specify a null interface route.
+  mgmt:
+    type: bool
+    description:
+      - Route in management plane.
   monitor:
     type: str
     description:
@@ -123,17 +127,17 @@ options:
       - Protocol used by routes that you want to remove from the routing table of
         the Citrix ADC.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   vlan:
-    type: float
+    type: int
     description:
       - VLAN as the gateway for this route.
   weight:
-    type: float
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
@@ -152,9 +156,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.route:
         state: present
-        network: 169.254.169.254
-        netmask: 255.255.255.255
-        gateway: 10.189.64.1
+        network: 169.254.0.0
+        netmask: 255.255.0.0
+        gateway: 172.16.1.1
 """
 
 RETURN = r"""

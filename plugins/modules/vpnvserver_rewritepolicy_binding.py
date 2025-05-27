@@ -71,7 +71,7 @@ options:
     description:
       - The name of the policy, if any, bound to the VPN virtual server.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the policy's priority. The lower the number, the higher
         the priority. Policies are evaluated in the order of their priority numbers.
@@ -99,11 +99,11 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnvserver_rewritepolicy_binding:
         state: present
-        name: nsgw_wp_direct2dll_com
-        policy: rw_pol_insert_loginfooter
-        priority: '100'
-        gotopriorityexpression: END
-        bindpoint: RESPONSE
+        name: Storefront_Gateway
+        policy: Add_X-GW-SessionIdPol
+        priority: '220'
+        gotopriorityexpression: NEXT
+        bindpoint: REQUEST
 """
 
 RETURN = r"""

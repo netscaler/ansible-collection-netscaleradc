@@ -30,9 +30,9 @@ options:
     choices:
       - present
       - absent
-      - unset
       - enabled
       - disabled
+      - unset
       - renamed
     default: present
     description:
@@ -41,6 +41,8 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled), the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
       - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
@@ -69,7 +71,7 @@ options:
         by the cipHeader parameter in the set ns param command or, in the GUI, the
         Client IP Header parameter in the Configure HTTP Parameters dialog box.
   clttimeout:
-    type: float
+    type: int
     description:
       - Idle time, in seconds, after which a client connection is terminated. Applicable
         if connection proxy based site persistence is used.
@@ -82,7 +84,7 @@ options:
     description:
       - Any comments that you might want to associate with the GSLB service.
   cookietimeout:
-    type: float
+    type: int
     description:
       - Timeout value, in minutes, for the cookie, when cookie based site persistence
         is enabled.
@@ -97,7 +99,7 @@ options:
         complete their transactions. Applicable if connection proxy based site persistence
         is used.
   hashid:
-    type: float
+    type: int
     description:
       - Unique hash identifier for the GSLB service, used by hash based load balancing
         methods.
@@ -119,20 +121,20 @@ options:
     description:
       - The new IP address of the service.
   maxaaausers:
-    type: float
+    type: int
     description:
       - Maximum number of SSL VPN users that can be logged on concurrently to the
         VPN virtual server that is represented by this GSLB service. A GSLB service
         whose user count reaches the maximum is not considered when a GSLB decision
         is made, until the count drops below the maximum.
   maxbandwidth:
-    type: float
+    type: int
     description:
       - Integer specifying the maximum bandwidth allowed for the service. A GSLB service
         whose bandwidth reaches the maximum is not considered when a GSLB decision
         is made, until its bandwidth consumption drops below the maximum.
   maxclient:
-    type: float
+    type: int
     description:
       - The maximum number of open connections that the service can support at any
         given time. A GSLB service whose connection count reaches the maximum is not
@@ -143,24 +145,24 @@ options:
     description:
       - Name of the monitor to bind to the service.
   monthreshold:
-    type: float
+    type: int
     description:
       - Monitoring threshold value for the GSLB service. If the sum of the weights
         of the monitors that are bound to this GSLB service and are in the UP state
         is not equal to or greater than this threshold value, the service is marked
         as DOWN.
   naptrdomainttl:
-    type: float
+    type: int
     description:
       - Modify the TTL of the internally created naptr domain
   naptrorder:
-    type: float
+    type: int
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
   naptrpreference:
-    type: float
+    type: int
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
@@ -250,7 +252,7 @@ options:
         When implementing HTTP redirect site persistence, the Citrix ADC redirects
         GSLB requests to GSLB services by using their site domains.
   svrtimeout:
-    type: float
+    type: int
     description:
       - Idle time, in seconds, after which a server connection is terminated. Applicable
         if connection proxy based site persistence is used.
@@ -265,7 +267,7 @@ options:
         balancing (GSLB) to return a predetermined IP address to a specific group
         of clients, which are identified by using a DNS policy.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the monitor-service binding. A larger number specifies
         a greater weight. Contributes to the monitoring threshold, which determines
@@ -384,17 +386,16 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.gslbservice:
         state: present
-        servicename: GSLB_SVC_USE2_storefront.blackstone.com
-        ip: 10.76.126.10
-        servicetype: SSL
-        port: 443
-        publicip: 10.76.126.10
-        publicport: 443
-        maxclient: '0'
-        sitename: GSLB_Site_USE2
-        clttimeout: 180
-        svrtimeout: 360
-        downstateflush: ENABLED
+        servicename: sgw2
+        ip: 3.3.3.61
+        servicetype: ANY
+        port: 65535
+        sitename: site2
+        naptrreplacement: sgw2.
+        naptrorder: '20'
+        naptrservices: APP1:PortA
+        naptrdomainttl: 200
+        naptrpreference: '40'
 """
 
 RETURN = r"""

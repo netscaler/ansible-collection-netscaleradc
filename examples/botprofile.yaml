@@ -1,0 +1,20 @@
+---
+- name: Sample botprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botprofile
+      delegate_to: localhost
+      netscaler.adc.botprofile:
+        state: present
+        name: Bot_management_prof
+        signature: new_bot_signatures.json
+        bot_enable_white_list: 'ON'
+        bot_enable_black_list: 'ON'
+        bot_enable_rate_limit: 'ON'
+        devicefingerprint: 'ON'
+        devicefingerprintaction:
+          - LOG
+          - DROP
+        bot_enable_ip_reputation: 'ON'
+        verboseloglevel: HTTP_FULL_HEADER

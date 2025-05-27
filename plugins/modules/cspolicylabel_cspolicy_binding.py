@@ -68,7 +68,7 @@ options:
     description:
       - Name of the content switching policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
   targetvserver:

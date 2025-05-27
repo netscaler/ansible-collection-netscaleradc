@@ -146,7 +146,7 @@ options:
     description:
       - The feature to be checked while applying this config
   index:
-    type: float
+    type: int
     description:
       - The index of the string associated with the patset.
   name:
@@ -167,9 +167,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.policypatset_pattern_binding:
         state: present
-        name: prod_patset
-        string: https://portal2.bx.com
-        index: '4'
+        name: ns_cvpn_sp2013_hostnames
+        string: hi
 """
 
 RETURN = r"""

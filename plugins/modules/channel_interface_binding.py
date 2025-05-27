@@ -65,7 +65,7 @@ options:
       - Use spaces to separate multiple entries.
     elements: str
   svmcmd:
-    type: float
+    type: int
     description:
       - New attribute added to identify the source of cmd, when SVM fires the nitro
         cmd, it will set the value of SVMCMD to be 1.

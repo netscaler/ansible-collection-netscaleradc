@@ -71,7 +71,7 @@ options:
     description:
       - The name of the policy, if any, bound to the VPN virtual server.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the policy's priority. The lower the number, the higher
         the priority. Policies are evaluated in the order of their priority numbers.

@@ -128,9 +128,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.appflowpolicy:
         state: present
-        name: af_policy_act_log_10.189.64.10
+        name: af_policy_v1_10.102.233.21
         rule: 'true'
-        action: af_action_log_10.189.64.10_nop
+        action: af_action_v1_10.102.233.21
 """
 
 RETURN = r"""

@@ -63,7 +63,7 @@ options:
         are removed from DNS response. System will wait for monitor response timeout
         period before moving to TROFS .
   autodisabledelay:
-    type: float
+    type: int
     description:
       - The time allowed (in seconds) for a graceful shutdown. During this period,
         new connections or requests will continue to be sent to this service for clients
@@ -90,6 +90,13 @@ options:
       - API
     description:
       - Auto scale option for a servicegroup
+  bootstrap:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - Flag to check if kafka broker servicegroup is of type bootstrap or not.
   cacheable:
     type: str
     choices:
@@ -130,7 +137,7 @@ options:
     description:
       - Enable client keep-alive for the service group.
   clttimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which to terminate an idle client connection.
   cmp:
@@ -150,12 +157,12 @@ options:
       - The identifier for this IP:Port pair. Used when the persistency type is set
         to Custom Server ID.
   dbsttl:
-    type: float
+    type: int
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
   delay:
-    type: float
+    type: int
     description:
       - Time, in seconds, allocated for a shutdown of the services in the service
         group. During this period, new requests are sent to the service only for clients
@@ -173,7 +180,7 @@ options:
         group whose state transitions from UP to DOWN. Do not enable this option for
         applications that must complete their transactions.
   dup_weight:
-    type: float
+    type: int
     description:
       - weight of the monitor that is bound to servicegroup.
   graceful:
@@ -185,7 +192,7 @@ options:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
   hashid:
-    type: float
+    type: int
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
@@ -213,16 +220,16 @@ options:
         details displayed when a service group name is provided, except that bound
         monitors are not displayed.
   maxbandwidth:
-    type: float
+    type: int
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the service
         group.
   maxclient:
-    type: float
+    type: int
     description:
       - Maximum number of simultaneous open connections for the service group.
   maxreq:
-    type: float
+    type: int
     description:
       - Maximum number of requests that can be sent on a persistent connection to
         the service group.
@@ -245,7 +252,7 @@ options:
       - Name of the monitor bound to the service group. Used to assign a weight to
         the monitor.
   monthreshold:
-    type: float
+    type: int
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
@@ -263,7 +270,7 @@ options:
     description:
       - New name for the service group.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the servicegroup member
   pathmonitor:
@@ -296,7 +303,7 @@ options:
     description:
       - Enable RTSP session ID mapping for the service group.
   serverid:
-    type: float
+    type: int
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
@@ -366,6 +373,7 @@ options:
       - ADNS_DOT
       - HTTP_QUIC
       - ADNS_DOH
+      - KAFKA_BROKER
     description:
       - Protocol used to exchange data with the service.
   sp:
@@ -376,7 +384,7 @@ options:
     description:
       - Enable surge protection for the service group.
   svrtimeout:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which to terminate an idle server connection.
   tcpb:
@@ -392,11 +400,15 @@ options:
       - Name of the TCP profile that contains TCP configuration settings for the service
         group.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
+  topicname:
+    type: str
+    description:
+      - Name of the Kafka topic.
   useproxyport:
     type: str
     choices:
@@ -419,7 +431,7 @@ options:
         address or subnet IP (SNIP) address is used as the source IP address to initiate
         server side connections.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
@@ -488,19 +500,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.servicegroup:
         state: present
-        servicegroupname: lb_svcgr_xml_voila2
-        servicetype: HTTP
-        maxclient: '0'
-        maxreq: '0'
-        cip: DISABLED
-        usip: 'NO'
-        useproxyport: 'YES'
-        clttimeout: 180
-        svrtimeout: 360
-        cka: 'NO'
-        tcpb: 'NO'
-        cmp: 'NO'
-        comment: voila 2 xml service group
+        servicegroupname: LB_ia_svcgrp13916
+        servicetype: SSL
 """
 
 RETURN = r"""

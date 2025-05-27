@@ -53,11 +53,11 @@ options:
     description:
       - Link-local IPv6 address of the adjacent network device to add to the ND6 table.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -73,7 +73,7 @@ options:
       - IP address of the VXLAN tunnel endpoint (VTEP) through which the IPv6 address
         of this ND6 entry is reachable.
   vxlan:
-    type: float
+    type: int
     description:
       - ID of the VXLAN on which the IPv6 address of this ND6 entry is reachable.
   nd6ravariables_onlinkipv6prefix_binding:

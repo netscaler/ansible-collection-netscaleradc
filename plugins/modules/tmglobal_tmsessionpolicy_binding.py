@@ -133,7 +133,7 @@ options:
     description:
       - The name of the policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -150,9 +150,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.tmglobal_tmsessionpolicy_binding:
         state: present
-        policyname: SETTMSESSPARAMS_ADV_POL
-        priority: '65534'
-        gotopriorityexpression: NEXT
+        policyname: ia_tmsespol1
+        priority: '23'
 """
 
 RETURN = r"""

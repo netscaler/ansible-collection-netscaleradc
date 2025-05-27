@@ -45,7 +45,7 @@ options:
     description:
       - The name of command policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the policy.
   username:
@@ -66,7 +66,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.systemuser_systemcmdpolicy_binding:
         state: present
-        username: GD-CTRLUPADC-P-APP
+        username: guest
         policyname: read-only
         priority: '100'
 """

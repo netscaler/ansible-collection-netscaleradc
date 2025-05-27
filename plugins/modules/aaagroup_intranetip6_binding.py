@@ -79,7 +79,7 @@ options:
     description:
       - The Intranet IP6(s) bound to the group
   numaddr:
-    type: float
+    type: int
     description:
       - Numbers of ipv6 address bound starting with intranetip6
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -53,12 +53,12 @@ options:
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
   authservretry:
-    type: float
+    type: int
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
         server.
   authtimeout:
-    type: float
+    type: int
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         RADIUS server.
@@ -76,14 +76,22 @@ options:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   ipattributetype:
-    type: float
+    type: int
     description:
       - IP attribute type in the RADIUS response.
   ipvendorid:
-    type: float
+    type: int
     description:
       - Vendor ID attribute in the RADIUS response.
       - If the attribute is not vendor-encoded, it is set to 0.
+  messageauthenticator:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Control whether the Message-Authenticator attribute is included in a RADIUS
+        Access-Request packet.
   passencoding:
     type: str
     choices:
@@ -95,16 +103,16 @@ options:
       - Enable password encoding in RADIUS packets that the Citrix ADC sends to the
         RADIUS server.
   pwdattributetype:
-    type: float
+    type: int
     description:
       - Attribute type of the Vendor ID in the RADIUS response.
   pwdvendorid:
-    type: float
+    type: int
     description:
       - Vendor ID of the password in the RADIUS response. Used to extract the user
         password.
   radattributetype:
-    type: float
+    type: int
     description:
       - Attribute type for RADIUS group extraction.
   radgroupseparator:
@@ -136,7 +144,7 @@ options:
       - Send the Citrix ADC IP (NSIP) address to the RADIUS server as the Network
         Access Server IP (NASIP) part of the Radius protocol.
   radvendorid:
-    type: float
+    type: int
     description:
       - Vendor ID for RADIUS group extraction.
   serverip:

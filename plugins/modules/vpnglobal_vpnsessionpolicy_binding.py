@@ -141,7 +141,7 @@ options:
     description:
       - The name of the policy.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the policy's priority. The lower the priority number, the
         higher the policy's priority. Maximum value for default syntax policies is

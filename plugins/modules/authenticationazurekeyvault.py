@@ -78,7 +78,7 @@ options:
     description:
       - Name of the service used to send push notifications
   refreshinterval:
-    type: float
+    type: int
     description:
       - Interval at which access token in obtained.
   servicekeyname:

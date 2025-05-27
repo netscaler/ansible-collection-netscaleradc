@@ -38,7 +38,7 @@ options:
     description:
       - Terminate all active icaconnections.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   transproto:
@@ -51,7 +51,7 @@ options:
   username:
     type: str
     description:
-      - User name for which to display connections.
+      - User name for which ica connections needs to be terminated.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

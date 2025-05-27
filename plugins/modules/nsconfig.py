@@ -103,11 +103,11 @@ options:
     description:
       - Port range for cache redirection services.
   exclusivequotamaxclient:
-    type: float
+    type: int
     description:
       - The percentage of maxClient to be given to PEs
   exclusivequotaspillover:
-    type: float
+    type: int
     description:
       - The percentage of spillover threshold to be given to PEs
   force:
@@ -119,11 +119,11 @@ options:
     description:
       - Port range configured for FTP services.
   grantquotamaxclient:
-    type: float
+    type: int
     description:
       - The percentage of shared quota to be granted at a time for maxClient
   grantquotaspillover:
-    type: float
+    type: int
     description:
       - The percentage of shared quota to be granted at a time for spillover
   httpport:
@@ -171,13 +171,13 @@ options:
         nodes become standalone appliances. The ''C(basic)'' and ''C(extended)'' levels
         are propagated to the cluster nodes.'
   maxconn:
-    type: float
+    type: int
     description:
       - The maximum number of connections that will be made from the system to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
   maxreq:
-    type: float
+    type: int
     description:
       - The maximum number of requests that the system can pass on a particular connection
         between the system and a server attached to it. Setting this value to 0 allows
@@ -188,7 +188,7 @@ options:
       - Netmask corresponding to the IP address. This parameter is mandatory to bring
         up the appliance.
   nsvlan:
-    type: float
+    type: int
     description:
       - VLAN (NSVLAN) for the subnet on which the IP address resides.
   outtype:
@@ -199,11 +199,11 @@ options:
     description:
       - Format to display the difference in configurations.
   pmtumin:
-    type: float
+    type: int
     description:
       - The minimum Path MTU.
   pmtutimeout:
-    type: float
+    type: int
     description:
       - The timeout value in minutes.
   rbaconfig:
@@ -227,6 +227,18 @@ options:
       - DISABLED
     description:
       - enable/disable secure flag for persistence cookie
+  securemanagementtd:
+    type: int
+    description:
+      - This positive integer identifies Management traffic domain. If not specified,
+        defaults to 4094
+  securemanagementtraffic:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This enabled secure management traffic handling.
   tagged:
     type: str
     choices:
@@ -269,7 +281,7 @@ EXAMPLES = r"""
         state: present
         nsvlan: '10'
         ifnum:
-          - 1/1
+          - 0/1
         tagged: 'NO'
 """
 

@@ -57,11 +57,11 @@ options:
     description:
       - Name of the form field to which a field format will be assigned.
   fieldformatmaxlength:
-    type: float
+    type: int
     description:
       - The maximum allowed length for data in this form field.
   fieldformatminlength:
-    type: float
+    type: int
     description:
       - The minimum allowed length for data in this form field.
   fieldtype:

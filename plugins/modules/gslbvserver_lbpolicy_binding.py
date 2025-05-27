@@ -68,7 +68,7 @@ options:
     description:
       - Name of the virtual server on which to perform the binding operation.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   policyname:
@@ -76,7 +76,7 @@ options:
     description:
       - Name of the policy bound to the GSLB vserver.
   priority:
-    type: float
+    type: int
     description:
       - Priority.
   type:

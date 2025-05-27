@@ -72,7 +72,7 @@ options:
       - Name of a policy to bind to the virtual server (for example, the name of an
         authentication, session, or endpoint analysis policy).
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the policy's priority. The lower the number, the higher
         the priority. Policies are evaluated in the order of their priority numbers.

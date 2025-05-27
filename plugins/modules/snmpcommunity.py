@@ -72,7 +72,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.snmpcommunity:
         state: present
-        communityname: HP5U7#mmTW2&Yi48
+        communityname: ia_snmpcom1
         permissions: ALL
 """
 

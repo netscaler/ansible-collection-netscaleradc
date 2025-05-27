@@ -36,7 +36,7 @@ options:
       - When C(flushed), the resource will be flushed on the NetScaler ADC node.
     type: str
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   sessionid:

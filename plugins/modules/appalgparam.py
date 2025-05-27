@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   pptpgreidletimeout:
-    type: float
+    type: int
     description:
       - Interval in sec, after which data sessions of PPTP GRE is cleared.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

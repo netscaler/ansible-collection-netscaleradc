@@ -48,7 +48,7 @@ options:
     description:
       - Enable dynamic routing for this bridgegroup.
   id:
-    type: float
+    type: int
     description:
       - An integer that uniquely identifies the bridge group.
   ipv6dynamicrouting:

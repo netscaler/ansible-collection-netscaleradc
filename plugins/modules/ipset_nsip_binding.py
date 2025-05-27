@@ -62,9 +62,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.ipset_nsip_binding:
         state: present
-        name: ipset_adns
+        name: ip1
         ipaddress:
-          - 10.189.33.7
+          - 10.10.10.113
 """
 
 RETURN = r"""

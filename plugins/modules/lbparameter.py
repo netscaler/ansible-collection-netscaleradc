@@ -84,7 +84,7 @@ options:
       - Use this parameter to specify the passphrase used to generate secured persistence
         cookie value. It specifies the passphrase with a maximum of 31 characters.
   dbsttl:
-    type: float
+    type: int
     description:
       - Specify the TTL for DNS record for domain based service. The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
@@ -116,7 +116,7 @@ options:
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
   lbhashfingers:
-    type: float
+    type: int
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
@@ -131,7 +131,7 @@ options:
       - Sample usage -
       - '             set lb parameter -LiteralADCCookieAttribute ";SameSite=None"'
   maxpipelinenat:
-    type: float
+    type: int
     description:
       - Maximum number of concurrent requests to allow on a single client connection,
         which is identified by the <clientip:port>-<vserver ip:port> tuple. This parameter
@@ -185,7 +185,7 @@ options:
       - This option is used to retain the original state of service or servicegroup
         member when an enable server command is issued.
   startuprrfactor:
-    type: float
+    type: int
     description:
       - 'Number of requests, per service, for which to apply the round robin load
         balancing method before switching to the configured load balancing method,
@@ -284,6 +284,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.lbparameter:
         state: present
+        retainservicestate: 'ON'
 """
 
 RETURN = r"""

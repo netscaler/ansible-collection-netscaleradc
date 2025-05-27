@@ -38,6 +38,17 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  cacheevictionpolicy:
+    type: str
+    choices:
+      - RELAXED
+      - MODERATE
+      - AGGRESSIVE
+    description:
+      - The cacheEvictionPolicy determines the threshold for preemptive eviction of
+        cache objects using the LRU (Least Recently Used) algorithm. If set to C(AGGRESSIVE),
+        eviction is triggered when free cache memory drops to 40%. C(MODERATE) triggers
+        eviction at 25%, and C(RELAXED) triggers eviction at 10%.
   enablebypass:
     type: str
     choices:
@@ -61,19 +72,19 @@ options:
         objects can be synced to Secondary in a HA deployment.  If set to C(NO), objects
         will never be synced to Secondary node.
   maxpostlen:
-    type: float
+    type: int
     description:
       - Maximum number of POST body bytes to consider when evaluating parameters for
         a content group for which you have configured hit parameters and invalidation
         parameters.
   memlimit:
-    type: float
+    type: int
     description:
       - Amount of memory available for storing the cache objects. In practice, the
         amount of memory available for caching can be less than half the total memory
         of the Citrix ADC.
   prefetchmaxpending:
-    type: float
+    type: int
     description:
       - Maximum number of outstanding prefetches in the Integrated Cache.
   undefaction:
@@ -123,7 +134,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.cacheparameter:
         state: present
-        via: 'NS-CACHE-10.0:  50'
+        via: 'NS-CACHE-10.0: 224'
+        maxpostlen: '0'
 """
 
 RETURN = r"""

@@ -51,7 +51,7 @@ options:
     description:
       - The IP address of the network to which the route belongs.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part

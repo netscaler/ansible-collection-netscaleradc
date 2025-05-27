@@ -74,7 +74,7 @@ options:
       - The location list in priority order used for the given action.
     elements: str
   ttl:
-    type: float
+    type: int
     description:
       - Time to live, in seconds.
   viewname:

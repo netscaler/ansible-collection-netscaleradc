@@ -49,7 +49,7 @@ options:
     description:
       - Name of the cipher.
   cipherpriority:
-    type: float
+    type: int
     description:
       - cipher priority
   description:

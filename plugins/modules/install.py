@@ -19,8 +19,8 @@ ANSIBLE_METADATA = {
 DOCUMENTATION = r"""
 ---
 module: install
-short_description: Configuration for install resource.
-description: Configuration for install resource.
+short_description: Configuration for 0 resource.
+description: Configuration for 0 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -33,6 +33,7 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(installed), the resources will be installed on the NetScaler ADC node
       - When C(Install), the resource will be installed on the NetScaler ADC node.
     type: str
   async:

@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cerrequesttimeout:
-    type: float
+    type: int
     description:
       - q!Healthcheck request timeout, in seconds, after which the Citrix ADC considers
         that no CCA packet received to the initiated CCR. After this time Citrix ADC
@@ -54,7 +54,7 @@ options:
         When the session is idle, healthcheck timer expires and DWR packets are initiated
         in order to check that PCRF server is active. By default set to No. !
   healthcheckttl:
-    type: float
+    type: int
     description:
       - q!Healthcheck timeout, in seconds, after which the DWR will be sent in order
         to ensure the state of the PCRF server. Any CCR, CCA, RAR or RRA message resets
@@ -72,13 +72,13 @@ options:
         If default subscriber profile is also not configured an undef would be raised
         to expressions which use Subscriber attributes.
   idlettl:
-    type: float
+    type: int
     description:
       - q!Idle Time, in seconds, after which the Gx CCR-U request will be sent after
         any PCRF activity on a session. Any RAR or CCA message resets the timer.
       - Zero value disables the idle timeout. !
   negativettl:
-    type: float
+    type: int
     description:
       - q!Negative TTL, in seconds, after which the Gx CCR-I request will be resent
         for sessions that have not been resolved by PCRF due to server being down
@@ -101,7 +101,7 @@ options:
         DIAMETER_LIMITED_SUCCESS (2002) received in CCA-I. If set to C(NO), regular
         session is created.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   pcrfrealm:
@@ -119,12 +119,12 @@ options:
       - Set this setting to C(YES) if needed to purge Subscriber Database in case
         of Gx failure. By default set to C(NO).
   requestretryattempts:
-    type: float
+    type: int
     description:
       - If the request does not complete within requestTimeout time, the request is
         retransmitted for requestRetryAttempts time.
   requesttimeout:
-    type: float
+    type: int
     description:
       - q!Time, in seconds, within which the Gx CCR request must complete. If the
         request does not complete within this time, the request is retransmitted for
@@ -134,7 +134,7 @@ options:
         use Subscriber attributes.
       - Zero disables the timeout. !
   revalidationtimeout:
-    type: float
+    type: int
     description:
       - q!Revalidation Timeout, in seconds, after which the Gx CCR-U request will
         be sent after any PCRF activity on a session. Any RAR or CCA message resets
@@ -153,7 +153,7 @@ options:
       - The AVP code in which PCRF sends service path applicable for subscriber.
     elements: int
   servicepathvendorid:
-    type: float
+    type: int
     description:
       - The vendorid of the AVP in which PCRF sends service path for subscriber.
   vserver:
@@ -177,10 +177,8 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.subscribergxinterface:
         state: present
-        pcrfrealm: pcrf.com
-        servicepathavp:
-          - '262099'
-        servicepathvendorid: '3845'
+        revalidationtimeout: '300'
+        negativettl: '300'
 """
 
 RETURN = r"""

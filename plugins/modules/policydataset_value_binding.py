@@ -52,7 +52,7 @@ options:
         endRange cannot be used if value is an ipv4 or ipv6 subnet and endRange cannot
         itself be a subnet.
   index:
-    type: float
+    type: int
     description:
       - The index of the value (ipv4, ipv6, number) associated with the set.
   name:

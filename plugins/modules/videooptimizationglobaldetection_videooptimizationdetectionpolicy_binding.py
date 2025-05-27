@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: videooptimizationglobaldetection_videooptimizationdetectionpolicy_binding
 short_description: Binding Resource definition for describing association between
   videooptimizationglobaldetection and videooptimizationdetectionpolicy resources
@@ -46,6 +47,7 @@ options:
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+      - TM_GLOBAL
     description:
       - '0'
   gotopriorityexpression:
@@ -79,7 +81,7 @@ options:
     description:
       - Name of the videooptimization detection policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
   type:

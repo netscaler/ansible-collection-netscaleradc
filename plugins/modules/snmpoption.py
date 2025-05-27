@@ -38,6 +38,13 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  customtrap:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - By default, Customtrap will be disabled, set to enabled when using the feature.
   partitionnameintrap:
     type: str
     choices:

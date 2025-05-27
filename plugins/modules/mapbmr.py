@@ -39,7 +39,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   eabitlength:
-    type: float
+    type: int
     description:
       - The Embedded Address (EA) bit field encodes the CE-specific IPv4 address and
         port information.  The EA bit field, which is unique for a
@@ -60,12 +60,12 @@ options:
       - "\t\t\tAlso it allows to determine destination IPv6 address of MAP CE before\
         \ sending packets to MAP CE"
   psidlength:
-    type: float
+    type: int
     description:
       - Length of Port Set IdentifierPort Set Identifier(PSID) in Embedded Address
         (EA) bits
   psidoffset:
-    type: float
+    type: int
     description:
       - Start bit position  of Port Set Identifier(PSID) value in Embedded Address
         (EA) bits.

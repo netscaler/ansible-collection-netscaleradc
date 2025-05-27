@@ -74,7 +74,7 @@ options:
     description:
       - Name of the cache policy to bind to the policy label.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -91,9 +91,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.cachepolicylabel_cachepolicy_binding:
         state: present
-        labelname: _httpquicResBuiltinDefaults
-        policyname: _personalizedRes
-        priority: '800'
+        labelname: _reqBuiltinDefaults
+        policyname: SecureAccess_cache_policy
+        priority: '10'
         gotopriorityexpression: END
 """
 

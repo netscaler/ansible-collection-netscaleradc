@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   buffersizemb:
-    type: float
+    type: int
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.

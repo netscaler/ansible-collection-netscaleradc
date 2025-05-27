@@ -52,6 +52,7 @@ options:
       - CICO
       - SelfManagedPool
       - SelfManagedvCPU
+      - LASConnected
     description:
       - This paramter indicates type of license customer interested while configuring
         add/set licenseserver
@@ -60,17 +61,28 @@ options:
     description:
       - IP address of the License server.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
+  password:
+    type: str
+    description:
+      - Password to use when authenticating with ADM Agent for LAS licensing.
   port:
-    type: float
+    type: int
     description:
       - License server port.
   servername:
     type: str
     description:
       - Fully qualified domain name of the License server.
+  username:
+    type: str
+    description:
+      - Username to authenticate with ADM Agent for LAS licensing. Must begin with
+        a letter, number, or the underscore character (_), and must contain only letters,
+        numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals
+        (=), colon (:), and underscore characters.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

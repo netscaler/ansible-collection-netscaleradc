@@ -128,7 +128,7 @@ options:
       - Enabling bot device fingerprint protection for mobile clients
     elements: str
   dfprequestlimit:
-    type: float
+    type: int
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
@@ -151,7 +151,7 @@ options:
     description:
       - Enable keyboard-mouse based bot detection.
   kmeventspostbodylimit:
-    type: float
+    type: int
     description:
       - Size of the KM data send by the browser, needs to be processed on ADC
   kmjavascriptname:
@@ -189,7 +189,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessiontimeout:
-    type: float
+    type: int
     description:
       - Timeout, in seconds, after which a user session is terminated.
   signature:
@@ -492,6 +492,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botprofile
+      delegate_to: localhost
+      netscaler.adc.botprofile:
+        state: present
+        name: Bot_management_prof
+        signature: new_bot_signatures.json
+        bot_enable_white_list: 'ON'
+        bot_enable_black_list: 'ON'
+        bot_enable_rate_limit: 'ON'
+        devicefingerprint: 'ON'
+        devicefingerprintaction:
+          - LOG
+          - DROP
+        bot_enable_ip_reputation: 'ON'
+        verboseloglevel: HTTP_FULL_HEADER
 """
 
 RETURN = r"""

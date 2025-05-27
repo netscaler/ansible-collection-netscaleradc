@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   memlimit:
-    type: float
+    type: int
     description:
       - Amount of Citrix ADC memory to reserve for the LSN feature, in multiples of
         2MB.

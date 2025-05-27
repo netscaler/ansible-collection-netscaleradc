@@ -45,7 +45,7 @@ options:
     description:
       - Name of the nodegroup. The name uniquely identifies the nodegroup on the cluster.
   node:
-    type: float
+    type: int
     description:
       - Nodes in the nodegroup
 extends_documentation_fragment: netscaler.adc.netscaler_adc

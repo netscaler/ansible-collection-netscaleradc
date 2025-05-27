@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   apptimeout:
-    type: float
+    type: int
     description:
       - Time interval, in minutes, of user inactivity after which the connection is
         closed.
@@ -54,7 +54,7 @@ options:
     description:
       - Setting to start, stop or reset TM session force timer
   forcedtimeoutval:
-    type: float
+    type: int
     description:
       - Time interval, in minutes, for which force timer should be set.
   formssoaction:

@@ -130,6 +130,13 @@ options:
       - DISABLED
     description:
       - Log the LSN messages
+  protocolviolations:
+    type: str
+    choices:
+      - ALL
+      - NONE
+    description:
+      - Log protocol violations
   serverip:
     type: str
     description:

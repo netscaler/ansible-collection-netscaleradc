@@ -87,7 +87,7 @@ options:
     description:
       - This argument is deprecated.
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are setting the cpuyield and/or KVMVirtioMultiqueue.
         It can be configured only through the cluster IP address.

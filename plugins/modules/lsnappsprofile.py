@@ -142,7 +142,7 @@ options:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the  TCP traffic
         by using Layer 4 features.
   td:
-    type: float
+    type: int
     description:
       - 'ID of the traffic domain through which the Citrix ADC sends the outbound
         traffic after performing LSN. '

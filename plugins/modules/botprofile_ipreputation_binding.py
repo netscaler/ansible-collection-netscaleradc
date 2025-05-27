@@ -155,6 +155,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botprofile_ipreputation_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botprofile_ipreputation_binding
+      delegate_to: localhost
+      netscaler.adc.botprofile_ipreputation_binding:
+        state: present
+        name: Bot_management_prof
+        bot_ipreputation: true
+        category: IP
+        bot_iprep_enabled: 'ON'
+        bot_iprep_action:
+          - LOG
+          - DROP
+        logmessage: IP Reputation
 """
 
 RETURN = r"""

@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   index:
-    type: float
+    type: int
     description:
       - The serviceindex of each servicefunction in path.
   servicefunction:

@@ -97,7 +97,7 @@ options:
     description:
       - The name of the policy, if any, bound to the VPN virtual server.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the policy's priority. The lower the number, the higher
         the priority. Policies are evaluated in the order of their priority numbers.
@@ -125,9 +125,11 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpntrafficpolicy_binding:
         state: present
-        name: nsgw_wp_direct2dll_com
-        policy: traffic_pol_vpn_sso_gw
-        priority: '64000'
+        name: Storefront_Gateway
+        policy: Proxy_Apps_Traffic_Policy
+        priority: '240'
+        gotopriorityexpression: END
+        bindpoint: REQUEST
 """
 
 RETURN = r"""

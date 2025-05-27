@@ -45,7 +45,7 @@ options:
     description:
       - The name of the RTSPALG Profile.
   rtspidletimeout:
-    type: float
+    type: int
     description:
       - Idle timeout for the rtsp sessions in seconds.
   rtspportrange:

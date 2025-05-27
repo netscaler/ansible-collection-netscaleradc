@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bandwidth:
-    type: float
+    type: int
     description:
       - System bandwidth limit.
   edition:
@@ -51,9 +51,13 @@ options:
     description:
       - Product edition.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
+  password:
+    type: str
+    description:
+      - Password to use when authenticating with ADM Agent for LAS licensing.
   platform:
     type: str
     choices:
@@ -106,6 +110,13 @@ options:
       - Mbps
     description:
       - Bandwidth unit.
+  username:
+    type: str
+    description:
+      - Username to authenticate with ADM Agent for LAS licensing. Must begin with
+        a letter, number, or the underscore character (_), and must contain only letters,
+        numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals
+        (=), colon (:), and underscore characters.
   vcpu:
     type: bool
     description:

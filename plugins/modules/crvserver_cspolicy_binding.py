@@ -79,7 +79,7 @@ options:
     description:
       - Policies bound to this vserver.
   priority:
-    type: float
+    type: int
     description:
       - The priority for the policy.
   targetvserver:

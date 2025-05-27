@@ -87,7 +87,7 @@ options:
     description:
       - Specify whether this policy should be evaluated.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
   type:

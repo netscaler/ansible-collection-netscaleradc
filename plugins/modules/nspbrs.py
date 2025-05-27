@@ -33,6 +33,7 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(applied), the resources will be applied on the NetScaler ADC node
     type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
@@ -47,7 +48,8 @@ EXAMPLES = r"""
     - name: Configure nspbrs
       delegate_to: localhost
       netscaler.adc.nspbrs:
-        state: applied
+        state: present
+        action: apply
 """
 
 RETURN = r"""

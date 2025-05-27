@@ -41,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: float
+    type: int
     description:
       - Number that uniquely identifies the local node. The ID of the local node is
         always 0.

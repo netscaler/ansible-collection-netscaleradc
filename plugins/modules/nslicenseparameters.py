@@ -39,27 +39,27 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   alert1gracetimeout:
-    type: float
+    type: int
     description:
       - If ADC remains in grace for the configured hours then first grace alert will
         be raised
   alert2gracetimeout:
-    type: float
+    type: int
     description:
       - If ADC remains in grace for the configured hours then major grace alert will
         be raised
   heartbeatinterval:
-    type: float
+    type: int
     description:
       - Heartbeat between ADC and Licenseserver is configurable and applicable in
         case of pooled licensing
   inventoryrefreshinterval:
-    type: float
+    type: int
     description:
       - Inventory refresh interval between ADC and Licenseserver is configurable and
         applicable in case of pooled licensing
   licenseexpiryalerttime:
-    type: float
+    type: int
     description:
       - If ADC license contract expiry date is nearer then GUI/SNMP license expiry
         alert will be raised

@@ -142,7 +142,7 @@ options:
     description:
       - The Next Hop IPv6 address.
   nexthopvlan:
-    type: float
+    type: int
     description:
       - VLAN number to be used for link local nexthop .
   ownergroup:
@@ -151,7 +151,7 @@ options:
       - The owner node group in a Cluster for this pbr rule. If owner node group is
         not specified then the pbr rule is treated as Striped pbr rule.
   priority:
-    type: float
+    type: int
     description:
       - Priority of the PBR6, which determines the order in which it is evaluated
         relative to the other PBR6s. If you do not specify priorities while creating
@@ -299,7 +299,7 @@ options:
       - Protocol, identified by protocol name, to match against the protocol of an
         outgoing C(IPv6) packet.
   protocolnumber:
-    type: float
+    type: int
     description:
       - Protocol, identified by protocol number, to match against the protocol of
         an outgoing IPv6 packet.
@@ -354,19 +354,19 @@ options:
     description:
       - Source port (range).
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   vlan:
-    type: float
+    type: int
     description:
       - ID of the VLAN. The Citrix ADC compares the PBR6 only to the outgoing packets
         on the specified VLAN. If you do not specify an interface ID, the appliance
         compares the PBR6 to the outgoing packets on all VLANs.
   vxlan:
-    type: float
+    type: int
     description:
       - ID of the VXLAN. The Citrix ADC compares the PBR6 only to the outgoing packets
         on the specified VXLAN. If you do not specify an interface ID, the appliance

@@ -56,7 +56,7 @@ options:
       - By default , arp is enabled on LSN IP address but, you can disable it using
         command - "set ns ip"
   ownernode:
-    type: float
+    type: int
     description:
       - ID(s) of cluster node(s) on which command is to be executed
   poolname:

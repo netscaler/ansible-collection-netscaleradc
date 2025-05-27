@@ -48,24 +48,24 @@ options:
       - Switches to new admin partition without prompt for saving configuration. Configuration
         will not be saved
   maxbandwidth:
-    type: float
+    type: int
     description:
       - Maximum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits.
   maxconn:
-    type: float
+    type: int
     description:
       - Maximum number of concurrent connections that can be open in the partition.
         A zero value indicates no limit on number of open connections.
   maxmemlimit:
-    type: float
+    type: int
     description:
       - Maximum memory, in megabytes, allocated to the partition.  A zero value indicates
         the memory is unlimited on the partition and it can consume up to the system
         limits.
   minbandwidth:
-    type: float
+    type: int
     description:
       - Minimum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the

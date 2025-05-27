@@ -45,7 +45,7 @@ options:
     description:
       - The name of the network bridge.
   vlan:
-    type: float
+    type: int
     description:
       - The VLAN that is extended by this network bridge.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

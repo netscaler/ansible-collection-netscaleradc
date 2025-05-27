@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authtimeout:
-    type: float
+    type: int
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         LDAP server.
@@ -92,7 +92,7 @@ options:
       - Name attribute that the Citrix ADC uses to query the external LDAP server
         or an Active Directory.
   maxnestinglevel:
-    type: float
+    type: int
     description:
       - Number of levels up to which the system can query nested LDAP groups.
   nestedgroupextraction:
@@ -169,7 +169,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.aaaldapparams:
         state: present
-        sectype: PLAINTEXT
+        serverip: 10.102.39.101
 """
 
 RETURN = r"""
