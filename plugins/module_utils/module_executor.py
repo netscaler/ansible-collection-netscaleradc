@@ -44,13 +44,6 @@ from .logger import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 
-skippable_resource_list = [
-    # In some cases, although keys are listed as immutable in the nitro_resource_map, they can actually be updated.
-    # This list helps bypass the immutability check for these resources.
-    "systemfile"
-]
-
-
 class ModuleExecutor(object):
     def __init__(self, resource_name, supports_check_mode=True):
         self.resource_name = resource_name
@@ -470,7 +463,22 @@ class ModuleExecutor(object):
                 )
             else:
                 self.module_result["changed"] = True
-                if self.resource_name.endswith("_binding"):
+                if self.resource_name == "systemfile":
+                    # Generally systemfile is not updated. It is removed and added again.
+                    log(
+                        "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
+                        % (self.resource_name, self.resource_id)
+                    )
+                    if self.resource_name == "systemfile":
+                        # If the systemfile is present, we will delete it and add it again
+                        self.delete()
+                        ok, err = create_resource(
+                            self.client, self.resource_name, self.resource_module_params
+                        )
+                        if not ok:
+                            self.return_failure(err)
+
+                elif self.resource_name.endswith("_binding"):
                     # Generally bindings are not updated. They are removed and added again.
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
@@ -489,7 +497,7 @@ class ModuleExecutor(object):
                         self.client, self.resource_name, self.resource_module_params
                     )
 
-                elif immutable_keys_list is None or self.resource_name in skippable_resource_list:
+                elif immutable_keys_list is None:
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
