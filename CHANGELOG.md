@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.9.2] - 2025-06-25
+
+### Fixed 
+
+- Refactored logic to handle systemfile updation
+
 ## [2.9.1] - 2025-05-26
 
 ### Fixed
@@ -171,7 +177,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial Release
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.1...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.2...HEAD
+[2.9.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.1...2.9.2
 [2.9.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.0...2.9.1
 [2.9.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.8.0...2.9.0
 [2.8.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.0...2.8.0
