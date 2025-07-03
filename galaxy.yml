@@ -13,15 +13,15 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-- Sumanth Lingappa <sumanth.lingappa@cloud.com>
-- Shiva Shankar Vaddepally <shivashankar.vaddepally@cloud.com>
+  - Sumanth Lingappa <sumanth.lingappa@cloud.com>
+  - Shiva Shankar Vaddepally <shivashankar.vaddepally@cloud.com>
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
 description: Ansible Collection Modules for NetScaler ADC
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
 license:
-- MIT
+  - MIT
 # The path to the license file for the collection. This path is relative to the root of the collection. This key is
 # mutually exclusive with 'license'
 # license_file: '' # TODO
@@ -29,9 +29,9 @@ license:
 # A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
 # requirements as 'namespace' and 'name'
 tags:
-- netscaler
-- adc
-- networking
+  - netscaler
+  - adc
+  - networking
 # Collections that this collection requires to be installed for it to be usable. The key of the dict is the
 # collection label 'namespace.name'. The value is a version range
 # L(specifiers,https://python-semanticversion.readthedocs.io/en/latest/#requirement-specification). Multiple version
@@ -51,17 +51,17 @@ issues: https://github.com/netscaler/ansible-collection-netscaleradc/issues
 # and '.git' are always filtered. Mutually exclusive with 'manifest'
 build_ignore:
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_distributing.html#ignoring-files-and-folders
-- "_built_docs*"
-- ".github*"
-- ".vscode*"
-- "assets*"
-- .DS_Store
-- docs
-- examples
-- tools
-- issues
-- "**/netscaler-adc-*.tar.gz"
-- Makefile
+  - "_built_docs*"
+  - ".github*"
+  - ".vscode*"
+  - "assets*"
+  - .DS_Store
+  - docs
+  - examples
+  - tools
+  - issues
+  - "**/netscaler-adc-*.tar.gz"
+  - Makefile
 
 # A dict controlling use of manifest directives used in building the collection artifact. The key 'directives' is a
 # list of MANIFEST.in style
