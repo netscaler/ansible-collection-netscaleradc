@@ -1,0 +1,13 @@
+---
+- name: Sample appfwprofile_excluderescontenttype_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_excluderescontenttype_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_excluderescontenttype_binding:
+        state: present
+        name: webgoat_prof
+        comment: For all PostScript files
+        excluderescontenttype: application/postscript
+        resourceid: 50cec74c0bfccbabea50dddd9a9fec081e041714a9c2e7425142f3b27898056f

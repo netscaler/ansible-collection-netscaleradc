@@ -939,3 +939,12 @@ plugins/modules/metricsprofile_uservserver_binding.py validate-modules:missing-g
 plugins/modules/metricsprofile_vpnvserver_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemnsbtracing.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemsignedexereport.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/sslprofile_sslechconfig_binding.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/sslhpkekey.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/sslechconfig.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/nslaslicense.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/nskeymanagerproxy.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/kafkacluster_servicegroup_binding.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/kafkacluster.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/filesystemencryption.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/authenticationprotecteduseraction.py validate-modules:missing-gplv3-license # We use MIT license

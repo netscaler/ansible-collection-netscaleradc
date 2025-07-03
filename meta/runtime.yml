@@ -973,3 +973,12 @@ action_groups:
     - vxlan_srcip_binding
     - vxlanvlanmap
     - vxlanvlanmap_vxlan_binding
+    - sslprofile_sslechconfig_binding.py
+    - sslhpkekey.py
+    - sslechconfig.py
+    - nslaslicense.py
+    - nskeymanagerproxy.py
+    - kafkacluster_servicegroup_binding.py
+    - kafkacluster.py
+    - filesystemencryption.py
+    - authenticationprotecteduseraction.py

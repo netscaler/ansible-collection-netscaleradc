@@ -7,6 +7,4 @@
       delegate_to: localhost
       netscaler.adc.netprofile:
         state: present
-        name: tets_netprofile_dns
-        srcip: 10.189.130.20
-        mbf: ENABLED
+        name: net_test_profile2
