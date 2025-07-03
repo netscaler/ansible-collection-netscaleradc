@@ -68,7 +68,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vlan_interface_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure vlan_interface_binding
       delegate_to: localhost

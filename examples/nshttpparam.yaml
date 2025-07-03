@@ -7,4 +7,4 @@
       delegate_to: localhost
       netscaler.adc.nshttpparam:
         state: present
-        dropinvalreqs: 'ON'
+        ignoreconnectcodingscheme: DISABLED

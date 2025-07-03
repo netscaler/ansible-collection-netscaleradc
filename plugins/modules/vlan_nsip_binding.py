@@ -70,7 +70,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vlan_nsip_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure vlan_nsip_binding
       delegate_to: localhost

@@ -38,6 +38,11 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  deviceprofilename:
+    type: str
+    description:
+      - Device profile is created on ADM and contains the user name and password of
+        the instance(s). ADM will use this info to add the NS for registration
   forceupdateip:
     type: bool
     description:

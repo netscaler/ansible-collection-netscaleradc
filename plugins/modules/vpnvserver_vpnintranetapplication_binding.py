@@ -56,7 +56,7 @@ EXAMPLES = r"""
 ---
 - name: Sample vpnvserver_vpnintranetapplication_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure vpnvserver_vpnintranetapplication_binding
       delegate_to: localhost

@@ -129,7 +129,7 @@ EXAMPLES = r"""
 ---
 - name: Sample nstimeout playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure nstimeout
       delegate_to: localhost

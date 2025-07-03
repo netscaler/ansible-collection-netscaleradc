@@ -102,7 +102,7 @@ EXAMPLES = r"""
 ---
 - name: Sample lbvserver_appflowpolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure lbvserver_appflowpolicy_binding
       delegate_to: localhost

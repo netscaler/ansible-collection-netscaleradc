@@ -7,4 +7,4 @@
       delegate_to: localhost
       netscaler.adc.sslcipher:
         state: present
-        ciphergroupname: ssllabs-blackstone
+        ciphergroupname: DEFAULT_BACKEND

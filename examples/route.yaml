@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.route:
         state: present
-        network: 169.254.169.254
-        netmask: 255.255.255.255
-        gateway: 10.189.64.1
+        network: 169.254.0.0
+        netmask: 255.255.0.0
+        gateway: 172.16.1.1

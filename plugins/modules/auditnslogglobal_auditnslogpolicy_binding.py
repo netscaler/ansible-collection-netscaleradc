@@ -76,7 +76,7 @@ EXAMPLES = r"""
 ---
 - name: Sample auditnslogglobal_auditnslogpolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure auditnslogglobal_auditnslogpolicy_binding
       delegate_to: localhost

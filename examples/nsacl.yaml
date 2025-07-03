@@ -7,13 +7,10 @@
       delegate_to: localhost
       netscaler.adc.nsacl:
         state: present
-        aclname: ACL_SF_Allow_USE1-B
+        aclname: acl1
         aclaction: ALLOW
         srcip: true
-        srcipop: '='
-        srcipval: 10.189.96.60
+        srcipval: 222.222.80.55
         destip: true
-        destipop: '='
-        destipdataset: SF_LBVIP
-        priority: '15'
-        kernelstate: SFAPPLIED61
+        destipval: 209.1.2.12
+        protocol: TCP

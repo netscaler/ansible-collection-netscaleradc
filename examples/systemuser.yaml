@@ -7,7 +7,7 @@
       delegate_to: localhost
       netscaler.adc.systemuser:
         state: present
-        username: GD-CTRLUPADC-P-APP
-        password: REQ_PASSWORD
-        externalauth: DISABLED
-        timeout: 900
+        username: guest
+        password: guest
+        promptstring: guest
+        timeout: 300

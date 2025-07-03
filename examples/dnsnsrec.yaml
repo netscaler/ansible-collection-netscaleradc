@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.dnsnsrec:
         state: present
-        domain: .
-        nameserver: m.root-servers.net
-        ttl: 3600000
+        domain: n2.com
+        nameserver: ns1.n1.com
+        ttl: 3601

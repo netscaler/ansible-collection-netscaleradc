@@ -161,7 +161,7 @@ EXAMPLES = r"""
 ---
 - name: Sample systemglobal_authenticationldappolicy_binding playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure systemglobal_authenticationldappolicy_binding
       delegate_to: localhost

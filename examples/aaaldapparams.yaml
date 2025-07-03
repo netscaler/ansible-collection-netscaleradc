@@ -7,4 +7,4 @@
       delegate_to: localhost
       netscaler.adc.aaaldapparams:
         state: present
-        sectype: PLAINTEXT
+        serverip: 10.102.39.101

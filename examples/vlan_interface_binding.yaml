@@ -9,4 +9,4 @@
         state: present
         id: '815'
         ifnum:
-          - 10/2
+        - 10/2

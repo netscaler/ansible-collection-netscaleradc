@@ -303,10 +303,11 @@ options:
   trafficplane:
     type: str
     choices:
-      - DEFAULT
+      - MGMT
       - DATA
     description:
-      - Traffic Plane to which the logs will be sent.
+      - Valid only when Secure Management feature is enabled. Traffic Plane to which
+        the auditlogs will be sent.
   transport:
     type: str
     choices:

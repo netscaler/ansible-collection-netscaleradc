@@ -1,0 +1,9 @@
+---
+- name: Sample protocolmptcp playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure protocolmptcp
+      delegate_to: localhost
+      netscaler.adc.protocolmptcp:
+        state: present

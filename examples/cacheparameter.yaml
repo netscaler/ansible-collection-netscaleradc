@@ -7,4 +7,5 @@
       delegate_to: localhost
       netscaler.adc.cacheparameter:
         state: present
-        via: 'NS-CACHE-10.0:  50'
+        via: 'NS-CACHE-10.0: 224'
+        maxpostlen: '0'

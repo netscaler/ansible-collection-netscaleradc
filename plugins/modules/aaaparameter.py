@@ -245,8 +245,8 @@ options:
     description:
       - Entities for which WAF Protection need to be applied.
       - 'Available settings function as follows:'
-      - '* C(DEFAULT) - Both C(AUTH) and C(VPN) Protections are enabled. This is default
-        value for wafProtection'
+      - '* C(DEFAULT) - C(AUTH), C(VPN) and C(PORTAL) Protections are enabled. This
+        is the default value for wafProtection'
       - '* C(AUTH) - Endpoints used for Authentication applicable for both AAATM,
         IDP, GATEWAY use cases.'
       - '* C(VPN) - Endpoints used for Gateway use cases.'
