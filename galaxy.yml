@@ -55,13 +55,13 @@ build_ignore:
   - ".github*"
   - ".vscode*"
   - "assets*"
-  - .DS_Store
-  - docs
-  - examples
-  - tools
-  - issues
+  - ".DS_Store"
+  - "docs"
+  - "examples"
+  - "tools"
+  - "issues"
   - "**/netscaler-adc-*.tar.gz"
-  - Makefile
+  - "Makefile"
 
 # A dict controlling use of manifest directives used in building the collection artifact. The key 'directives' is a
 # list of MANIFEST.in style

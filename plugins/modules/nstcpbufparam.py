@@ -54,7 +54,7 @@ EXAMPLES = r"""
 ---
 - name: Sample nstcpbufparam playbook
   hosts: demo_netscalers
-  gather_facts: 'false'
+  gather_facts: false
   tasks:
     - name: Configure nstcpbufparam
       delegate_to: localhost
