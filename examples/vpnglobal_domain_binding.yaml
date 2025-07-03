@@ -3,8 +3,8 @@
   hosts: demo_netscalers
   gather_facts: false
   tasks:
-  - name: Configure vpnglobal_domain_binding
-    delegate_to: localhost
-    netscaler.adc.vpnglobal_domain_binding:
-      state: present
-      intranetdomain: '*.dll.corp'
+    - name: Configure vpnglobal_domain_binding
+      delegate_to: localhost
+      netscaler.adc.vpnglobal_domain_binding:
+        state: present
+        intranetdomain: '*.dll.corp'

@@ -3,12 +3,12 @@
   hosts: demo_netscalers
   gather_facts: false
   tasks:
-  - name: Configure vpnvserver_responderpolicy_binding
-    delegate_to: localhost
-    netscaler.adc.vpnvserver_responderpolicy_binding:
-      state: present
-      name: nsgw_wp_direct2dll_com
-      policy: res_pol_redir_wp_logoff
-      priority: '110'
-      gotopriorityexpression: END
-      bindpoint: REQUEST
+    - name: Configure vpnvserver_responderpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_responderpolicy_binding:
+        state: present
+        name: nsgw_wp_direct2dll_com
+        policy: res_pol_redir_wp_logoff
+        priority: '110'
+        gotopriorityexpression: END
+        bindpoint: REQUEST

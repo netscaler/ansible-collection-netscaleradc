@@ -3,8 +3,8 @@
   hosts: demo_netscalers
   gather_facts: false
   tasks:
-  - name: Configure dnsparameter
-    delegate_to: localhost
-    netscaler.adc.dnsparameter:
-      state: present
-      namelookuppriority: DNS
+    - name: Configure dnsparameter
+      delegate_to: localhost
+      netscaler.adc.dnsparameter:
+        state: present
+        namelookuppriority: DNS

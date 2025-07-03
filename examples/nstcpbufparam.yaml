@@ -3,8 +3,8 @@
   hosts: demo_netscalers
   gather_facts: false
   tasks:
-  - name: Configure nstcpbufparam
-    delegate_to: localhost
-    netscaler.adc.nstcpbufparam:
-      state: present
-      memlimit: 600
+    - name: Configure nstcpbufparam
+      delegate_to: localhost
+      netscaler.adc.nstcpbufparam:
+        state: present
+        memlimit: 600

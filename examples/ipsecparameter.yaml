@@ -3,8 +3,8 @@
   hosts: demo_netscalers
   gather_facts: false
   tasks:
-  - name: Configure ipsecparameter
-    delegate_to: localhost
-    netscaler.adc.ipsecparameter:
-      state: present
-      lifetime: '28800'
+    - name: Configure ipsecparameter
+      delegate_to: localhost
+      netscaler.adc.ipsecparameter:
+        state: present
+        lifetime: '28800'

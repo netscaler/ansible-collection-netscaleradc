@@ -3,9 +3,9 @@
   hosts: demo_netscalers
   gather_facts: false
   tasks:
-  - name: Configure systemglobal_authenticationldappolicy_binding
-    delegate_to: localhost
-    netscaler.adc.systemglobal_authenticationldappolicy_binding:
-      state: present
-      policyname: ldap_pol_ldap_mgmt
-      priority: '100'
+    - name: Configure systemglobal_authenticationldappolicy_binding
+      delegate_to: localhost
+      netscaler.adc.systemglobal_authenticationldappolicy_binding:
+        state: present
+        policyname: ldap_pol_ldap_mgmt
+        priority: '100'
