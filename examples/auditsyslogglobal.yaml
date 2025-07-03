@@ -1,0 +1,11 @@
+---
+- name: Sample auditsyslogglobal playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditsyslogglobal
+      delegate_to: localhost
+      netscaler.adc.auditsyslogglobal:
+        state: present
+        policyname: sp1
+        globalbindtype: SYSTEM_GLOBAL

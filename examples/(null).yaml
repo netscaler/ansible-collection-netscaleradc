@@ -1,0 +1,10 @@
+---
+- name: Sample (null) playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure (null)
+      delegate_to: localhost
+      netscaler.adc.(null):
+        state: present
+        command: rm /var/netscaler/ssl/crl.pem

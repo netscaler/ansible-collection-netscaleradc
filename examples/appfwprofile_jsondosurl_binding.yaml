@@ -1,0 +1,18 @@
+---
+- name: Sample appfwprofile_jsondosurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_jsondosurl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_jsondosurl_binding:
+        state: present
+        name: webgoat_prof
+        jsondosurl: .*
+        jsonmaxcontainerdepthcheck: 'ON'
+        jsonmaxdocumentlengthcheck: 'ON'
+        jsonmaxobjectkeycountcheck: 'ON'
+        jsonmaxobjectkeylengthcheck: 'ON'
+        jsonmaxarraylengthcheck: 'ON'
+        jsonmaxstringlengthcheck: 'ON'
+        resourceid: 585e356d88315f169cda718947d7052f6425c6d6997648506b8036f04d1b880b

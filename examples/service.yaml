@@ -7,5 +7,7 @@
       delegate_to: localhost
       netscaler.adc.service:
         state: present
-        name: nshttpd-vpn-127.0.0.1-81
-        cip: ENABLED
+        name: s133
+        ip: 10.106.38.140
+        servicetype: HTTP
+        port: 8080

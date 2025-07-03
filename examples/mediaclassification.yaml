@@ -1,0 +1,9 @@
+---
+- name: Sample mediaclassification playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure mediaclassification
+      delegate_to: localhost
+      netscaler.adc.mediaclassification:
+        state: present

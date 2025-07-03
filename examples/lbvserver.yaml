@@ -1,15 +1,16 @@
 ---
 - name: Sample lbvserver playbook
-  hosts: demo_netscalers
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Configure lbvserver
       delegate_to: localhost
       netscaler.adc.lbvserver:
         state: present
-        name: lb_dns_01
-        servicetype: DNS
-        ipv46: 169.254.100.2
-        port: 53
-        persistencetype: NONE
-        clttimeout: 120
+        nsip: 10.102.201.43
+        nitro_user: nsroot
+        nitro_pass: "ConfigADC#123"
+        nitro_protocol: http
+        validate_certs: false
+        name: lb4
+        servicetype: SSL
