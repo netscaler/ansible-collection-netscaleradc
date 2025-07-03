@@ -205,7 +205,7 @@ options:
   trafficplane:
     type: str
     choices:
-      - DEFAULT
+      - MGMT
       - DATA
     description:
       - Traffic Plane to which the logs will be sent.

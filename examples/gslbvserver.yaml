@@ -7,8 +7,7 @@
       delegate_to: localhost
       netscaler.adc.gslbvserver:
         state: present
-        name: backup_gslb_portal.bx.com
-        servicetype: SSL
+        name: LB_ia_gslbv8
         backuplbmethod: ROUNDROBIN
         tolerance: '0'
         appflowlog: DISABLED

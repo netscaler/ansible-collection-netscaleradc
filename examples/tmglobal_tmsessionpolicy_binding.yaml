@@ -7,6 +7,5 @@
       delegate_to: localhost
       netscaler.adc.tmglobal_tmsessionpolicy_binding:
         state: present
-        policyname: SETTMSESSPARAMS_ADV_POL
-        priority: '65534'
-        gotopriorityexpression: NEXT
+        policyname: ia_tmsespol1
+        priority: '23'
