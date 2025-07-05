@@ -142,7 +142,7 @@ class ModuleExecutor(object):
             self.module.params.get("nitro_user"),
             self.module.params.get("nitro_pass")
         ])
-        if have_pass:
+        if have_pass and not self.module.check_mode:
             self.client._headers.pop("X-NITRO-USER", None)
             self.client._headers.pop("X-NITRO-PASS", None)
             self.client._headers.pop("Cookie", None)
@@ -160,13 +160,13 @@ class ModuleExecutor(object):
                     self.module.params["nitro_auth_token"] = response["login"][0].get("sessionid", None)
                 else:
                     self.module.params["nitro_auth_token"] = response.get("sessionid", None)
-                
+
                 if not self.module.params["nitro_auth_token"]:
                     self.return_failure("ERROR: Login failed. No sessionid returned from the NetScaler ADC")
                 log("INFO: Login successful. Session ID: %s" % self.module.params["nitro_auth_token"])
-                
+
                 self.client._headers["Cookie"] = (
-                "NITRO_AUTH_TOKEN=%s" % self.module.params["nitro_auth_token"]
+                    "NITRO_AUTH_TOKEN=%s" % self.module.params["nitro_auth_token"]
                 )
 
         self.ns_major_version, self.ns_minor_version = get_netscaler_version(
