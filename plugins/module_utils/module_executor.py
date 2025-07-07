@@ -212,12 +212,13 @@ class ModuleExecutor(object):
             # }
         if self.resource_name == "login":
             self.module_result["sessionid"] = self.sessionid
-        if self.client._headers["Cookie"] != "":
+        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode:
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
             else:
                 log("INFO: Logout successful")
+                self.client._headers["Cookie"] = ""
         self.module.exit_json(**self.module_result)
 
     @trace
@@ -241,7 +242,7 @@ class ModuleExecutor(object):
 
     @trace
     def return_failure(self, msg):
-        if self.client._headers["Cookie"] != "":
+        if self.client._headers["Cookie"] != "" and not self.module.check_mode:
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
