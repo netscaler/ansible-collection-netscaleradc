@@ -138,6 +138,37 @@ class ModuleExecutor(object):
             self.module.params["api_path"] = "nitro/v2/config"
 
         self.client = NitroAPIClient(self.module, self.resource_name)
+        have_userpass = all([
+            self.module.params.get("nitro_user"),
+            self.module.params.get("nitro_pass")
+        ])
+        if have_userpass and not self.module.check_mode:
+            self.client._headers.pop("X-NITRO-USER", None)
+            self.client._headers.pop("X-NITRO-PASS", None)
+            self.client._headers.pop("Cookie", None)
+            ok, response = adc_login(
+                self.client,
+                self.module.params["nitro_user"],
+                self.module.params["nitro_pass"],
+            )
+            if not ok:
+                self.client._headers["Cookie"] = ""
+                self.return_failure("ERROR: Login failed: %s" % response)
+
+            else:
+                if self.netscaler_console_as_proxy_server:
+                    self.module.params["nitro_auth_token"] = response["login"][0].get("sessionid", None)
+                else:
+                    self.module.params["nitro_auth_token"] = response.get("sessionid", None)
+
+                if not self.module.params["nitro_auth_token"]:
+                    self.return_failure("ERROR: Login failed. No sessionid returned from the NetScaler ADC")
+                log("INFO: Login successful. Session ID: %s" % self.module.params["nitro_auth_token"])
+
+                self.client._headers["Cookie"] = (
+                    "NITRO_AUTH_TOKEN=%s" % self.module.params["nitro_auth_token"]
+                )
+
         self.ns_major_version, self.ns_minor_version = get_netscaler_version(
             self.client
         )
@@ -181,6 +212,13 @@ class ModuleExecutor(object):
             # }
         if self.resource_name == "login":
             self.module_result["sessionid"] = self.sessionid
+        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode:
+            ok, response = adc_logout(self.client)
+            if not ok:
+                log("ERROR: Logout failed: %s" % response)
+            else:
+                log("INFO: Logout successful")
+                self.client._headers["Cookie"] = ""
         self.module.exit_json(**self.module_result)
 
     @trace
@@ -204,6 +242,13 @@ class ModuleExecutor(object):
 
     @trace
     def return_failure(self, msg):
+        if self.client._headers["Cookie"] != "" and not self.module.check_mode:
+            ok, response = adc_logout(self.client)
+            if not ok:
+                log("ERROR: Logout failed: %s" % response)
+            else:
+                log("INFO: Logout successful")
+                self.client._headers["Cookie"] = ""
         self.module.fail_json(msg=msg, **self.module_result)
 
     @trace
