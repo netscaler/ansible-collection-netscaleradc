@@ -138,11 +138,11 @@ class ModuleExecutor(object):
             self.module.params["api_path"] = "nitro/v2/config"
 
         self.client = NitroAPIClient(self.module, self.resource_name)
-        have_pass = all([
+        have_userpass = all([
             self.module.params.get("nitro_user"),
             self.module.params.get("nitro_pass")
         ])
-        if have_pass and not self.module.check_mode:
+        if have_userpass and not self.module.check_mode:
             self.client._headers.pop("X-NITRO-USER", None)
             self.client._headers.pop("X-NITRO-PASS", None)
             self.client._headers.pop("Cookie", None)
@@ -212,6 +212,12 @@ class ModuleExecutor(object):
             # }
         if self.resource_name == "login":
             self.module_result["sessionid"] = self.sessionid
+        if self.client._headers["Cookie"] != "":
+            ok, response = adc_logout(self.client)
+            if not ok:
+                log("ERROR: Logout failed: %s" % response)
+            else:
+                log("INFO: Logout successful")
         self.module.exit_json(**self.module_result)
 
     @trace
@@ -241,6 +247,7 @@ class ModuleExecutor(object):
                 log("ERROR: Logout failed: %s" % response)
             else:
                 log("INFO: Logout successful")
+                self.client._headers["Cookie"] = ""
         self.module.fail_json(msg=msg, **self.module_result)
 
     @trace
