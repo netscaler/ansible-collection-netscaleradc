@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: contentinspectionprofile
 short_description: Configuration for ContentInspection profile resource.
 description: Configuration for ContentInspection profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,7 +46,7 @@ options:
       - Egress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of type INLINEINSPECTION or MIRROR.
   egressvlan:
-    type: raw
+    type: int
     description:
       - Egress Vlan for CI
   ingressinterface:
@@ -53,7 +55,7 @@ options:
       - Ingress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of IPS type.
   ingressvlan:
-    type: raw
+    type: int
     description:
       - Ingress Vlan for CI
   iptunnel:
@@ -62,7 +64,7 @@ options:
       - IP Tunnel for CI profile. It is used while creating a ContentInspection profile
         of type MIRROR when the IDS device is in a different network
   name:
-    type: raw
+    type: str
     description:
       - Name of a ContentInspection profile. Must begin with a letter, number, or
         the underscore \(_\) character. Other characters allowed, after the first

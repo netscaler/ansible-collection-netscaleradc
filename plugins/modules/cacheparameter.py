@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cacheparameter
 short_description: Configuration for cache parameter resource.
 description: Configuration for cache parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,19 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  cacheevictionpolicy:
+    type: str
+    choices:
+      - RELAXED
+      - MODERATE
+      - AGGRESSIVE
+    description:
+      - The cacheEvictionPolicy determines the threshold for preemptive eviction of
+        cache objects using the LRU (Least Recently Used) algorithm. If set to C(AGGRESSIVE),
+        eviction is triggered when free cache memory drops to 40%. C(MODERATE) triggers
+        eviction at 25%, and C(RELAXED) triggers eviction at 10%.
   enablebypass:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -50,7 +63,7 @@ options:
       - This parameter does not affect processing of requests that match any invalidation
         policy.
   enablehaobjpersist:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -59,30 +72,30 @@ options:
         objects can be synced to Secondary in a HA deployment.  If set to C(NO), objects
         will never be synced to Secondary node.
   maxpostlen:
-    type: raw
+    type: int
     description:
       - Maximum number of POST body bytes to consider when evaluating parameters for
         a content group for which you have configured hit parameters and invalidation
         parameters.
   memlimit:
-    type: raw
+    type: int
     description:
       - Amount of memory available for storing the cache objects. In practice, the
         amount of memory available for caching can be less than half the total memory
         of the Citrix ADC.
   prefetchmaxpending:
-    type: raw
+    type: int
     description:
       - Maximum number of outstanding prefetches in the Integrated Cache.
   undefaction:
-    type: raw
+    type: str
     choices:
       - NOCACHE
       - RESET
     description:
       - Action to take when a policy cannot be evaluated.
   verifyusing:
-    type: raw
+    type: str
     choices:
       - HOSTNAME
       - HOSTNAME_AND_IP
@@ -103,7 +116,7 @@ options:
         lookup of the destination server's IP address, and is compared with the set
         of addresses returned by the C(DNS) lookup.
   via:
-    type: raw
+    type: str
     description:
       - String to include in the Via header. A Via header is inserted into all responses
         served from a content group if its Insert Via flag is set.
@@ -113,15 +126,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample cacheparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | cacheparameter
+    - name: Configure cacheparameter
       delegate_to: localhost
       netscaler.adc.cacheparameter:
         state: present
-        via: 'NS-CACHE-10.0: 141'
+        via: 'NS-CACHE-10.0: 224'
+        maxpostlen: '0'
 """
 
 RETURN = r"""

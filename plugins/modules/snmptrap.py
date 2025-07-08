@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmptrap
 short_description: Configuration for snmp trap resource.
 description: Configuration for snmp trap resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,14 +41,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allpartitions:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send traps of all partitions to this destination.
   communityname:
-    type: raw
+    type: str
     description:
       - 'Password (string) sent with the trap messages, so that the trap listener
         can authenticate them. Can include 1 to 31 uppercase or lowercase letters,
@@ -59,13 +61,13 @@ options:
       - If the string includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my string" or 'my string').
   destport:
-    type: raw
+    type: int
     description:
       - UDP port at which the trap listener listens for trap messages. This setting
         must match the setting on the trap listener. Otherwise, the listener drops
         the trap messages.
   severity:
-    type: raw
+    type: str
     choices:
       - Critical
       - Major
@@ -81,7 +83,7 @@ options:
       - 'Important: Trap messages are not assigned severity levels unless you specify
         severity levels when configuring SNMP alarms.'
   srcip:
-    type: raw
+    type: str
     description:
       - IPv4 or IPv6 address that the Citrix ADC inserts as the source IP address
         in all SNMP trap messages that it sends to this trap listener. By default
@@ -90,13 +92,13 @@ options:
         node's NSIP, but it can be set to CLIP or Striped SNIP address. In non default
         partition, this parameter must be set to the SNIP/SNIP6 address.
   td:
-    type: raw
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   trapclass:
-    type: raw
+    type: str
     choices:
       - generic
       - specific
@@ -104,12 +106,12 @@ options:
       - 'Type of trap messages that the Citrix ADC sends to the trap listener: Generic
         or the enterprise-C(specific) messages defined in the MIB file.'
   trapdestination:
-    type: raw
+    type: str
     description:
       - IPv4 or the IPv6 address of the trap listener to which the Citrix ADC is to
         send SNMP trap messages.
   version:
-    type: raw
+    type: str
     choices:
       - V1
       - V2
@@ -150,18 +152,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample snmptrap playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | snmptrap
+    - name: Configure snmptrap
       delegate_to: localhost
       netscaler.adc.snmptrap:
         state: present
         trapclass: generic
-        trapdestination: 10.10.10.10
-        version: V3
-        allpartitions: ENABLED
+        trapdestination:
+          - 10.102.80.59
+        version: V2
+        destport: 160
+        communityname: ia_snmpcommunity
+        srcip: 13.13.13.1
 """
 
 RETURN = r"""

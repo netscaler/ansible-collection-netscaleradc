@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dbdbprofile
 short_description: Configuration for DB profile resource.
 description: Configuration for DB profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   conmultiplex:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -47,14 +49,14 @@ options:
       - Use the same server-side connection for multiple client-side requests. Default
         is enabled.
   enablecachingconmuxoff:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable caching when connection multiplexing is OFF.
   interpretquery:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -62,11 +64,11 @@ options:
       - If ENABLED, inspect the query and update the connection information, if required.
         If DISABLED, forward the query to the server.
   kcdaccount:
-    type: raw
+    type: str
     description:
       - Name of the KCD account that is used for Windows authentication.
   name:
-    type: raw
+    type: str
     description:
       - Name for the database profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -76,7 +78,7 @@ options:
         \ in double or single quotation marks (for example, \"my profile\" or 'my\
         \ profile')."
   stickiness:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'

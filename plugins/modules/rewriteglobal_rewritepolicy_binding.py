@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rewriteglobal_rewritepolicy_binding
 short_description: Binding Resource definition for describing association between
   rewriteglobal and rewritepolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between rewr
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -45,6 +47,7 @@ options:
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+      - TM_GLOBAL
     description:
       - '0'
   gotopriorityexpression:
@@ -81,7 +84,7 @@ options:
     description:
       - Name of the rewrite policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
   type:
@@ -130,6 +133,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rewriteglobal_rewritepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rewriteglobal_rewritepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.rewriteglobal_rewritepolicy_binding:
+        state: present
+        policyname: new_policy_2
+        priority: '11'
+        gotopriorityexpression: END
+        type: DNS_RES_DEFAULT
 """
 
 RETURN = r"""

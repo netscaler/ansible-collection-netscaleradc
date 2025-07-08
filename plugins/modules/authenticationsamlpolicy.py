@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationsamlpolicy
 short_description: Configuration for AAA Saml policy resource.
 description: Configuration for AAA Saml policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: raw
+    type: str
     description:
       - Name for the SAML policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -52,11 +54,11 @@ options:
         quotation marks (for example, "my authentication policy" or 'my authentication
         policy').
   reqaction:
-    type: raw
+    type: str
     description:
       - Name of the SAML authentication action to be performed if the policy matches.
   rule:
-    type: raw
+    type: str
     description:
       - Name of the Citrix ADC named rule, or an expression, that the policy uses
         to determine whether to attempt to authenticate the user with the SAML server.
@@ -65,6 +67,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationsamlpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationsamlpolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationsamlpolicy:
+        state: present
+        name: samlsecureauthidppol
+        rule: ns_true
+        reqaction: secureauth_idp
 """
 
 RETURN = r"""

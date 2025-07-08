@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsaction64
 short_description: Configuration for dns64 action resource.
 description: Configuration for dns64 action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,23 +41,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   actionname:
-    type: raw
+    type: str
     description:
       - Name of the dns64 action.
   excluderule:
-    type: raw
+    type: str
     description:
       - The expression to select the criteria for eliminating the corresponding ipv6
         addresses from the response.
   mappedrule:
-    type: raw
+    type: str
     description:
       - The expression to select the criteria for ipv4 addresses to be used for synthesis.
       - '                      Only if the mappedrule is evaluated to true the corresponding
         ipv4 address is used for synthesis using respective prefix,'
       - '                      otherwise the A RR is discarded'
   prefix:
-    type: raw
+    type: str
     description:
       - The dns64 prefix to be used if the after evaluating the rules
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -63,6 +65,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsaction64 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsaction64
+      delegate_to: localhost
+      netscaler.adc.dnsaction64:
+        state: present
+        actionname: dns64_act2
+        prefix: 64:ff9b::/96
+        mappedrule: DNS.RR.TYPE.EQ(A) && !(DNS.RR.RDATA.IP.IN_SUBNET(0.0.0.0/8) ||
+          DNS.RR.RDATA.IP.IN_SUBNET(10.0.0.0/8))
+        excluderule: DNS.RR.TYPE.EQ(AAAA) && DNS.RR.RDATA.IPV6.IN_SUBNET(::ffff:0:0/96)
 """
 
 RETURN = r"""

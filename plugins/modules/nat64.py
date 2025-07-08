@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nat64
 short_description: Configuration for nat64 config resource.
 description: Configuration for nat64 config resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -45,7 +47,7 @@ options:
         the condition of this ACL6 rule and destination IP address of these packets
         matching the NAT64 IPv6 prefix are considered for NAT64 translation.
   name:
-    type: raw
+    type: str
     description:
       - Name for the NAT64 rule. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
@@ -53,7 +55,7 @@ options:
         characters. Cannot be changed after the rule is created. Choose a name that
         helps identify the NAT64 rule.
   netprofile:
-    type: raw
+    type: str
     description:
       - Name of the configured netprofile. The Citrix ADC selects one of the IP address
         in the netprofile as the source IP address of the translated IPv4 packet to
@@ -63,6 +65,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nat64 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nat64
+      delegate_to: localhost
+      netscaler.adc.nat64:
+        state: present
+        name: ia_nat2
+        acl6name: net_acl6
+        netprofile: netpprof
 """
 
 RETURN = r"""

@@ -1,0 +1,12 @@
+---
+- name: Sample cspolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cspolicy
+      delegate_to: localhost
+      netscaler.adc.cspolicy:
+        state: present
+        policyname: cs_pol
+        rule: is_vpn_url
+        action: cs_act

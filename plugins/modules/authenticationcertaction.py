@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationcertaction
 short_description: Configuration for CERT action resource.
 description: Configuration for CERT action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,18 +41,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   groupnamefield:
-    type: raw
+    type: str
     description:
       - Client-cert field from which the group is extracted.  Must be set to either
         ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
       - 'Format: <field>:<subfield>'
   name:
-    type: raw
+    type: str
     description:
       - Name for the client cert authentication server profile (action).
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -63,7 +65,7 @@ options:
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
   twofactor:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -72,7 +74,7 @@ options:
       - Two factor authentication is client cert authentication followed by password
         authentication.
   usernamefield:
-    type: raw
+    type: str
     description:
       - Client-cert field from which the username is extracted. Must be set to either
         ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
@@ -82,6 +84,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationcertaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationcertaction
+      delegate_to: localhost
+      netscaler.adc.authenticationcertaction:
+        state: present
+        name: ca5
+        twofactor: 'ON'
+        groupnamefield: Subject:OU
 """
 
 RETURN = r"""

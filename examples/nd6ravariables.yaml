@@ -1,10 +1,10 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nd6ravariables playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nd6RAvariables
+    - name: Configure nd6ravariables
       delegate_to: localhost
       netscaler.adc.nd6ravariables:
         state: present
-        vlan: 1
+        vlan: '1'

@@ -1,0 +1,12 @@
+---
+- name: Sample icaglobal_icapolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icaglobal_icapolicy_binding
+      delegate_to: localhost
+      netscaler.adc.icaglobal_icapolicy_binding:
+        state: present
+        policyname: icapol2
+        priority: '2'
+        type: ICA_REQ_DEFAULT

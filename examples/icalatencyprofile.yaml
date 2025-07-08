@@ -1,0 +1,11 @@
+---
+- name: Sample icalatencyprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icalatencyprofile
+      delegate_to: localhost
+      netscaler.adc.icalatencyprofile:
+        state: present
+        name: l6
+        l7latencywaittime: '5'

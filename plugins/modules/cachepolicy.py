@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,18 +17,21 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cachepolicy
 short_description: Configuration for Integrated Cache policy resource.
 description: Configuration for Integrated Cache policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,6 +40,7 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
   action:
     type: str
@@ -52,15 +56,17 @@ options:
       - '* C(NOCACHE) or C(MAY_NOCACHE) action - negative cachability policy'
       - '* C(INVAL) action - Dynamic Invalidation Policy'
   invalgroups:
-    type: raw
+    type: list
     description:
       - Content group(s) to be invalidated when the INVAL action is applied. Maximum
         number of content groups that can be specified is 16.
+    elements: str
   invalobjects:
-    type: raw
+    type: list
     description:
       - Content groups(s) in which the objects will be invalidated if the action is
         INVAL.
+    elements: str
   newname:
     type: str
     description:
@@ -68,7 +74,7 @@ options:
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
   policyname:
-    type: raw
+    type: str
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -86,14 +92,14 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   storeingroup:
-    type: raw
+    type: str
     description:
       - Name of the content group in which to store the object when the final result
         of policy evaluation is CACHE. The content group must exist before being mentioned
         here. Use the "show cache contentgroup" command to view the list of existing
         content groups.
   undefaction:
-    type: raw
+    type: str
     choices:
       - NOCACHE
       - RESET
@@ -130,27 +136,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample cachepolicy playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | cachepolicy
+    - name: Configure cachepolicy
       delegate_to: localhost
       netscaler.adc.cachepolicy:
         state: present
-        policyname: _nonGetReq
-        rule: '!HTTP.REQ.METHOD.eq(GET)'
-        action: NOCACHE
-    - name: Sample Task | cachepolicy | 2
-      delegate_to: localhost
-      netscaler.adc.cachepolicy:
-        state: present
-        policyname: _cacheableCacheControlRes
-        rule: ((HTTP.RES.CACHE_CONTROL.IS_PUBLIC) || (HTTP.RES.CACHE_CONTROL.IS_MAX_AGE)
-          || (HTTP.RES.CACHE_CONTROL.IS_MUST_REVALIDATE) || (HTTP.RES.CACHE_CONTROL.IS_PROXY_REVALIDATE)
-          || (HTTP.RES.CACHE_CONTROL.IS_S_MAXAGE))
+        policyname: n_XM_CACHE_WO_DEVICEID_10.100.39.132
+        rule: HTTP.REQ.HEADER("Host").CONTAINS("callout") && HTTP.REQ.URL.QUERY.CONTAINS("DeviceId").NOT
+          && HTTP.REQ.URL.QUERY.CONTAINS("url")
         action: CACHE
-        storeingroup: DEFAULT
+        storeingroup: n_XM_WO_DEVICEID_10.100.39.132
 """
 
 RETURN = r"""

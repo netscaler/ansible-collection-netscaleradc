@@ -1,11 +1,12 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample systemgroup playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | systemgroup
+    - name: Configure systemgroup
       delegate_to: localhost
       netscaler.adc.systemgroup:
         state: present
-        groupname: sys-group1
-        promptstring: '[%T] %u@%h/%s'
+        groupname: Network - CitrixADC - P - ReadOnly
+        allowedmanagementinterface:
+          - API

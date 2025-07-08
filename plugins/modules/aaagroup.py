@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaagroup
 short_description: Configuration for AAA group resource.
 description: Configuration for AAA group resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -53,7 +55,7 @@ options:
       - Display only the group members who are currently logged in. If there are large
         number of sessions, this command may provide partial details.
   weight:
-    type: float
+    type: int
     description:
       - Weight of this group with respect to other configured aaa groups (lower the
         number higher the weight)
@@ -362,6 +364,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaagroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaagroup
+      delegate_to: localhost
+      netscaler.adc.aaagroup:
+        state: present
+        groupname: clt_scrgrp1
 """
 
 RETURN = r"""

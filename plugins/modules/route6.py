@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: route6
 short_description: Configuration for route 6 resource.
 description: Configuration for route 6 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,14 +41,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advertise:
-    type: raw
+    type: str
     choices:
       - DISABLED
       - ENABLED
     description:
       - Advertise this route.
   cost:
-    type: raw
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route. The lower the cost, the higher the preference.
@@ -55,28 +57,32 @@ options:
     description:
       - To get a detailed view.
   distance:
-    type: raw
+    type: int
     description:
       - Administrative distance of this route from the appliance.
   gateway:
-    type: raw
+    type: str
     description:
       - The gateway for this route. The value for this parameter is either an IPv6
         address or null.
+  mgmt:
+    type: bool
+    description:
+      - Route in management plane.
   monitor:
-    type: raw
+    type: str
     description:
       - Name of the monitor, of type ND6 or PING, configured on the Citrix ADC to
         monitor this route.
   msr:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Monitor this route with a monitor of type ND6 or PING.
   network:
-    type: raw
+    type: str
     description:
       - IPv6 network address for which to add a route entry to the routing table of
         the Citrix ADC.
@@ -100,23 +106,23 @@ options:
     description:
       - Type of IPv6 routes to remove from the routing table of the Citrix ADC.
   td:
-    type: raw
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   vlan:
-    type: raw
+    type: int
     description:
       - Integer value that uniquely identifies a VLAN through which the Citrix ADC
         forwards the packets for this route.
   vxlan:
-    type: raw
+    type: int
     description:
       - Integer value that uniquely identifies a VXLAN through which the Citrix ADC
         forwards the packets for this route.
   weight:
-    type: raw
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
@@ -126,6 +132,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample route6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure route6
+      delegate_to: localhost
+      netscaler.adc.route6:
+        state: present
+        network: 202::/64
+        gateway: fe80::1234
+        vlan: '23'
+        weight: '10'
+        distance: '10'
+        cost: '10'
+        advertise: ENABLED
+        msr: ENABLED
+        monitor: ia_mon1
 """
 
 RETURN = r"""

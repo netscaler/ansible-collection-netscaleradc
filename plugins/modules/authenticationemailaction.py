@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationemailaction
 short_description: Configuration for Email entity resource.
 description: Configuration for Email entity resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,23 +41,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   content:
-    type: raw
+    type: str
     description:
       - Content to be delivered to the user. "$code" string within the content will
         be replaced with the actual one-time-code to be sent.
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the group that is added to user sessions that match current IdP policy.
         It can be used in policies to identify relying party trust.
   emailaddress:
-    type: raw
+    type: str
     description:
       - An optional expression that yields user's email. When not configured, user's
         default mail address would be used. When configured, result of this expression
         is used as destination email address.
   name:
-    type: raw
+    type: str
     description:
       - Name for the new email action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -76,11 +78,11 @@ options:
         such as http(s):// or smtp(s):// for http and smtp protocols respectively.
         For SMTP, the port number is mandatory like smtps://smtp.example.com:25.
   timeout:
-    type: raw
+    type: int
     description:
       - Time after which the code expires.
   type:
-    type: raw
+    type: str
     choices:
       - SMTP
       - ATHENA

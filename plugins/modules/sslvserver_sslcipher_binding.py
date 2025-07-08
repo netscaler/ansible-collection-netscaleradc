@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslvserver_sslcipher_binding
 short_description: Binding Resource definition for describing association between
   sslvserver and sslcipher resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between sslv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -60,6 +62,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslvserver_sslcipher_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslvserver_sslcipher_binding
+      delegate_to: localhost
+      netscaler.adc.sslvserver_sslcipher_binding:
+        state: present
+        vservername: lb2
+        ciphername: TLS1.2-DHE-RSA-AES-128-SHA256
 """
 
 RETURN = r"""

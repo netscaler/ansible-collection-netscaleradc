@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: mapbmr
 short_description: Configuration for MAP-T Basic Mapping rule resource.
 description: Configuration for MAP-T Basic Mapping rule resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   eabitlength:
-    type: float
+    type: int
     description:
       - The Embedded Address (EA) bit field encodes the CE-specific IPv4 address and
         port information.  The EA bit field, which is unique for a
@@ -58,12 +60,12 @@ options:
       - "\t\t\tAlso it allows to determine destination IPv6 address of MAP CE before\
         \ sending packets to MAP CE"
   psidlength:
-    type: float
+    type: int
     description:
       - Length of Port Set IdentifierPort Set Identifier(PSID) in Embedded Address
         (EA) bits
   psidoffset:
-    type: float
+    type: int
     description:
       - Start bit position  of Port Set Identifier(PSID) value in Embedded Address
         (EA) bits.
@@ -102,6 +104,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample mapbmr playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure mapbmr
+      delegate_to: localhost
+      netscaler.adc.mapbmr:
+        state: present
+        name: bmr1
+        ruleipv6prefix: 2001:db8:89ab::/48
 """
 
 RETURN = r"""

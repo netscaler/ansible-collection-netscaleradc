@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nstrace
 short_description: Configuration for nstrace operations resource.
 description: Configuration for nstrace operations resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices: []
@@ -65,7 +67,7 @@ options:
     description:
       - Name of the trace file.
   filesize:
-    type: float
+    type: int
     description:
       - File size, in MB, treshold for rollover. If free disk space is less than 2GB
         at the time of rollover, trace will stop
@@ -204,7 +206,7 @@ options:
         corresponding client side traffic
       - start nstrace -size 0 -filter "CONNECTION.SVCNAME.EQ("service1")" -link ENABLED
       - ''
-      - Trace capturing all traffic through Citrix ADC interface 1/1
+      - Trace capturing all traffic through NetScaler interface 1/1
       - start nstrace -filter "CONNECTION.INTF.EQ("1/1")"
       - ''
       - Trace capturing all traffic specific through vlan 2
@@ -267,11 +269,11 @@ options:
       - '      Default mode: C(NEW_RX) C(TXB)'
     elements: str
   nf:
-    type: float
+    type: int
     description:
       - Number of files to be generated in cycle.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   nodes:
@@ -287,7 +289,7 @@ options:
     description:
       - Use separate trace files for each interface. Works only with cap format.
   size:
-    type: float
+    type: int
     description:
       - Size of the captured data. Set 0 for full packet trace.
   skiplocalssh:
@@ -305,11 +307,11 @@ options:
     description:
       - skip RPC packets
   time:
-    type: float
+    type: int
     description:
       - Time per file (sec).
   tracebuffers:
-    type: float
+    type: int
     description:
       - Number of 16KB trace buffers
   traceformat:

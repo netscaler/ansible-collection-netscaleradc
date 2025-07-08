@@ -1,0 +1,16 @@
+---
+- name: Sample dnsnaptrrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsnaptrrec
+      delegate_to: localhost
+      netscaler.adc.dnsnaptrrec:
+        state: present
+        domain: citrix.com1
+        order: '10'
+        preference: '10'
+        flags: U
+        services: E2U+sip
+        regexp: '!^.*$!sip:customer-service@example.com!'
+        ttl: 3600

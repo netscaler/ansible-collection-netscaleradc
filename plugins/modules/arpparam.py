@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: arpparam
 short_description: Configuration for Global arp parameters resource.
 description: Configuration for Global arp parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   spoofvalidation:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - enable/disable arp spoofing validation
   timeout:
-    type: raw
+    type: int
     description:
       - Time-out value (aging time) for the dynamically learned ARP entries, in seconds.
         The new value applies only to ARP entries that are dynamically learned after
@@ -55,6 +57,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample arpparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure arpparam
+      delegate_to: localhost
+      netscaler.adc.arpparam:
+        state: present
+        spoofvalidation: ENABLED
 """
 
 RETURN = r"""

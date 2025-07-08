@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,18 +17,21 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: crpolicy
 short_description: Configuration for cache redirection policy resource.
 description: Configuration for cache redirection policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,13 +40,14 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
   action:
     type: str
     description:
       - 'Name of the built-in cache redirection action: CACHE/ORIGIN.'
   logaction:
-    type: raw
+    type: str
     description:
       - The log action associated with the cache redirection policy
   newname:
@@ -51,7 +55,7 @@ options:
     description:
       - The new name of the content switching policy.
   policyname:
-    type: raw
+    type: str
     description:
       - Name for the cache redirection policy. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -76,6 +80,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample crpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure crpolicy
+      delegate_to: localhost
+      netscaler.adc.crpolicy:
+        state: present
+        policyname: crp1
+        rule: 'true'
+        action: origin
 """
 
 RETURN = r"""

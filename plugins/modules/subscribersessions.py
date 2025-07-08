@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: subscribersessions
 short_description: Configuration for subscriber sesions resource.
 description: Configuration for subscriber sesions resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices: []
@@ -36,11 +38,11 @@ options:
     description:
       - Subscriber IP Address.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   vlan:
-    type: float
+    type: int
     description:
       - The vlan number on which the subscriber is located.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

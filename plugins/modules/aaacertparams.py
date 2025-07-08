@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaacertparams
 short_description: Configuration for certificate parameter resource.
 description: Configuration for certificate parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,16 +39,16 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   groupnamefield:
-    type: raw
+    type: str
     description:
       - Client certificate field that specifies the group, in the format <field>:<subfield>.
   usernamefield:
-    type: raw
+    type: str
     description:
       - Client certificate field that contains the username, in the format <field>:<subfield>.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -54,6 +56,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaacertparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaacertparams
+      delegate_to: localhost
+      netscaler.adc.aaacertparams:
+        state: present
+        usernamefield: Subject:CN
+        groupnamefield: Subject:OU
+        defaultauthenticationgroup: abc
 """
 
 RETURN = r"""

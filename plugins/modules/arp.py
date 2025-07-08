@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: arp
 short_description: Configuration for arp resource.
 description: Configuration for arp resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,21 +56,21 @@ options:
     description:
       - MAC address of the network device.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   ownernode:
-    type: float
+    type: int
     description:
       - The owner node for the Arp entry.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   vlan:
-    type: float
+    type: int
     description:
       - The VLAN ID through which packets are to be sent after matching the ARP entry.
         This is a numeric value.
@@ -78,7 +80,7 @@ options:
       - IP address of the VXLAN tunnel endpoint (VTEP) through which the IP address
         of this ARP entry is reachable.
   vxlan:
-    type: float
+    type: int
     description:
       - ID of the VXLAN on which the IP address of this ARP entry is reachable.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -86,6 +88,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample arp playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure arp
+      delegate_to: localhost
+      netscaler.adc.arp:
+        state: present
+        ipaddress: 177.0.0.31
+        mac: 96:f1:a0:2b:98:1f
+        ifnum: 1/2
 """
 
 RETURN = r"""

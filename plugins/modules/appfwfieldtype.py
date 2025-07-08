@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwfieldtype
 short_description: Configuration for application firewall form field type resource.
 description: Configuration for application firewall form field type resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -58,7 +60,7 @@ options:
       - will not show internal field types added as part of FieldFormat learn rules
         deployment
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the field type. A lower number
         specifies a higher priority. Field types are checked in the order of their
@@ -73,6 +75,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwfieldtype playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwfieldtype
+      delegate_to: localhost
+      netscaler.adc.appfwfieldtype:
+        state: present
+        name: CM1454107840652651
+        regex: ^[A-Z\\a-z]+$
+        priority: '10'
 """
 
 RETURN = r"""

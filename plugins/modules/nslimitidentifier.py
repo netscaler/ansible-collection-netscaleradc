@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nslimitidentifier
-short_description: Configuration for limit Indetifier resource.
-description: Configuration for limit Indetifier resource.
+short_description: Configuration for limit Identifier resource.
+description: Configuration for limit Identifier resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,13 +41,13 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   limitidentifier:
-    type: raw
+    type: str
     description:
       - Name for a rate limit identifier. Must begin with an ASCII letter or underscore
         (_) character, and must consist only of ASCII alphanumeric or underscore characters.
         Reserved words must not be used.
   limittype:
-    type: raw
+    type: str
     choices:
       - BURSTY
       - SMOOTH
@@ -57,11 +59,11 @@ options:
         quota anytime within the timeslice.'
       - This argument is needed only when the mode is set to REQUEST_RATE.
   maxbandwidth:
-    type: raw
+    type: int
     description:
       - Maximum bandwidth permitted, in kbps.
   mode:
-    type: raw
+    type: str
     choices:
       - CONNECTION
       - REQUEST_RATE
@@ -93,27 +95,27 @@ options:
       - set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold
         5000 -limitType BURSTY
   selectorname:
-    type: raw
+    type: str
     description:
       - Name of the rate limit selector. If this argument is NULL, rate limiting will
         be applied on all traffic received by the virtual server or the Citrix ADC
         (depending on whether the limit identifier is bound to a virtual server or
         globally) without any filtering.
   threshold:
-    type: raw
+    type: int
     description:
       - Maximum number of requests that are allowed in the given timeslice when requests
         (mode is set as REQUEST_RATE) are tracked per timeslice.
       - When connections (mode is set as CONNECTION) are tracked, it is the total
         number of connections that would be let through.
   timeslice:
-    type: raw
+    type: int
     description:
       - Time interval, in milliseconds, specified in multiples of 10, during which
         requests are tracked to check if they cross the threshold. This argument is
         needed only when the mode is set to REQUEST_RATE.
   trapsintimeslice:
-    type: raw
+    type: int
     description:
       - Number of traps to be sent in the timeslice configured. A value of 0 indicates
         that traps are disabled.
@@ -122,6 +124,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nslimitidentifier playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nslimitidentifier
+      delegate_to: localhost
+      netscaler.adc.nslimitidentifier:
+        state: present
+        limitidentifier: LB_rslm1
+        threshold: '100'
 """
 
 RETURN = r"""

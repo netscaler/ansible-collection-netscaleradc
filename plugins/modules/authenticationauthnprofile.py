@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationauthnprofile
 short_description: Configuration for Authentication profile resource.
 description: Configuration for Authentication profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authenticationdomain:
-    type: raw
+    type: str
     description:
       - Domain for which TM cookie must to be set. If unspecified, cookie will be
         set for FQDN.
@@ -49,7 +51,7 @@ options:
       - Hostname of the authentication vserver to which user must be redirected for
         authentication.
   authenticationlevel:
-    type: raw
+    type: int
     description:
       - Authentication weight or level of the vserver to which this will bound. This
         is used to order TM vservers based on the protection required. A session that
@@ -60,7 +62,7 @@ options:
     description:
       - Name of the authentication vserver at which authentication should be done.
   name:
-    type: raw
+    type: str
     description:
       - Name for the authentication profile.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -72,6 +74,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationauthnprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationauthnprofile
+      delegate_to: localhost
+      netscaler.adc.authenticationauthnprofile:
+        state: present
+        name: authProf
+        authnvsname: authVserver
 """
 
 RETURN = r"""

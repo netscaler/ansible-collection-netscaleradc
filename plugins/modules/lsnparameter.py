@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnparameter
 short_description: Configuration for LSN parameter resource.
 description: Configuration for LSN parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   memlimit:
-    type: float
+    type: int
     description:
       - Amount of Citrix ADC memory to reserve for the LSN feature, in multiples of
         2MB.
@@ -47,7 +49,7 @@ options:
         the amount of active memory.'
       - This command is deprecated, use 'set extendedmemoryparam -memlimit' instead.
   sessionsync:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -64,7 +66,7 @@ options:
         parameters are enabled, the primary node synchronizes information of all LSN
         sessions related to this LSN group with the secondary node.
   subscrsessionremoval:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -79,6 +81,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnparameter
+      delegate_to: localhost
+      netscaler.adc.lsnparameter:
+        state: present
+        subscrsessionremoval: ENABLED
 """
 
 RETURN = r"""

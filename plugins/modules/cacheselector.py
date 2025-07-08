@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cacheselector
 short_description: Configuration for cache selector resource.
 description: Configuration for cache selector resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -52,6 +54,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cacheselector playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cacheselector
+      delegate_to: localhost
+      netscaler.adc.cacheselector:
+        state: present
+        selectorname: n_XM_URL_10.100.39.132
+        rule:
+          - HTTP.REQ.URL.QUERY.VALUE("url")
 """
 
 RETURN = r"""

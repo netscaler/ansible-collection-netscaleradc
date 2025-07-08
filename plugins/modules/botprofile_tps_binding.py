@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: botprofile_tps_binding
 short_description: Binding Resource definition for describing association between
   botprofile and tps resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between botp
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -94,12 +96,12 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   percentage:
-    type: float
+    type: int
     description:
       - Maximum percentage increase in the requests from (or to) a IP, Geolocation,
         URL or Host in 30 minutes interval.
   threshold:
-    type: float
+    type: int
     description:
       - Maximum number of requests that are allowed from (or to) a IP, Geolocation,
         URL or Host in 1 second time interval.

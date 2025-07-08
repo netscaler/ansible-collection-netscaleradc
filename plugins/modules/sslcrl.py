@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcrl
 short_description: Configuration for Certificate Revocation List resource.
 description: Configuration for Certificate Revocation List resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,27 +43,27 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   basedn:
-    type: raw
+    type: str
     description:
       - Base distinguished name (DN), which is used in an LDAP search to search for
         a CRL. Citrix recommends searching for the Base DN instead of the Issuer Name
         from the CA certificate, because the Issuer Name field might not exactly match
         the LDAP directory structure's DN.
   binary:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Set the LDAP-based CRL retrieval mode to binary.
   binddn:
-    type: raw
+    type: str
     description:
       - Bind distinguished name (DN) to be used to access the CRL object in the LDAP
         repository if access to the LDAP repository is restricted or anonymous access
         is not allowed.
   cacert:
-    type: raw
+    type: str
     description:
       - CA certificate that has issued the CRL. Required if CRL Auto Refresh is selected.
         Install the CA certificate on the appliance before adding the CRL.
@@ -76,7 +78,7 @@ options:
       - Name of and, optionally, path to the CA key file. /nsconfig/ssl/ is the default
         path
   crlname:
-    type: raw
+    type: str
     description:
       - Name for the Certificate Revocation List (CRL). Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -91,7 +93,7 @@ options:
     description:
       - Path to the CRL file. /var/netscaler/ssl/ is the default path.
   day:
-    type: raw
+    type: int
     description:
       - Day on which to refresh the CRL, or, if the Interval parameter is not set,
         the number of days after which to refresh the CRL. If Interval is set to MONTHLY,
@@ -121,7 +123,7 @@ options:
       - C(PEM) - Privacy Enhanced Mail.
       - C(DER) - Distinguished Encoding Rule.
   interval:
-    type: raw
+    type: str
     choices:
       - MONTHLY
       - WEEKLY
@@ -131,7 +133,7 @@ options:
     description:
       - CRL refresh interval. Use the C(NONE) setting to unset this parameter.
   method:
-    type: raw
+    type: str
     choices:
       - HTTP
       - LDAP
@@ -140,16 +142,16 @@ options:
         base DN, port, and C(LDAP) server name. If C(HTTP) is selected, specify the
         CA certificate, method, URL, and port. Cannot be changed after a CRL is added.
   password:
-    type: raw
+    type: str
     description:
       - Password to access the CRL in the LDAP repository if access to the LDAP repository
         is restricted or anonymous access is not allowed.
   port:
-    type: raw
+    type: int
     description:
       - Port for the LDAP server.
   refresh:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -161,7 +163,7 @@ options:
       - Name of and, optionally, path to the certificate to be revoked. /nsconfig/ssl/
         is the default path.
   scope:
-    type: raw
+    type: str
     choices:
       - Base
       - One
@@ -171,15 +173,15 @@ options:
       - C(One) - C(One) level below C(Base) DN.
       - C(Base) - Exactly the same level as C(Base) DN.
   server:
-    type: raw
+    type: str
     description:
       - IP address of the LDAP server from which to fetch the CRLs.
   time:
-    type: raw
+    type: str
     description:
       - Time, in hours (1-24) and minutes (1-60), at which to refresh the CRL.
   url:
-    type: raw
+    type: str
     description:
       - URL of the CRL distribution point.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -187,6 +189,28 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslcrl playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcrl
+      delegate_to: localhost
+      netscaler.adc.sslcrl:
+        state: present
+        crlname: crl_test_ldap1
+        refresh: ENABLED
+        cacert: ssl_cacert
+        server: 2.2.2.10
+        method: LDAP
+        port: 389
+        basedn: cn=ldap_new_crl_pem,ou=dsd,o=ns,c=in
+        scope: Base
+        day: '23'
+        time: 00:01
+        binddn: cn=Manager,dc=netscaler,dc=com
+        password: free
+        binary: 'YES'
 """
 
 RETURN = r"""

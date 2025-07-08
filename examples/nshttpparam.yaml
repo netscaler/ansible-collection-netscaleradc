@@ -1,0 +1,10 @@
+---
+- name: Sample nshttpparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nshttpparam
+      delegate_to: localhost
+      netscaler.adc.nshttpparam:
+        state: present
+        dropinvalreqs: 'ON'

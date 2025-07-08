@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ipset
 short_description: Configuration for network ipset resource.
 description: Configuration for network ipset resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -45,7 +47,7 @@ options:
         Cannot be changed after the IP set is created. Choose a name that helps identify
         the IP set.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -106,25 +108,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample ipset playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: IPSET | ADD
+    - name: Configure ipset
       delegate_to: localhost
-      register: result
-      tags: test
       netscaler.adc.ipset:
         state: present
-        name: ipset-001
-    - name: IPSET | DELETE
-      delegate_to: localhost
-      register: result
-      check_mode: false
-      tags: test
-      netscaler.adc.ipset:
-        state: absent
-        name: ipset-001
+        name: ip2
 """
 
 RETURN = r"""

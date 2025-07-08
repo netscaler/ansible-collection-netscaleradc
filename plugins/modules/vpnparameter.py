@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnparameter
 short_description: Configuration for VPN parameter resource.
 description: Configuration for VPN parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,19 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  accessrestrictedpageredirect:
+    type: str
+    choices:
+      - CDN
+      - NS
+      - 'OFF'
+    description:
+      - By default, an access restricted page hosted on secure private access C(CDN)
+        is displayed when a restricted app is accessed. The setting can be changed
+        to C(NS) to display the access restricted page hosted on the gateway or C(OFF)
+        to not display any access restricted page.
   advancedclientlessvpnmode:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -46,57 +59,64 @@ options:
       - Option to enable/disable Advanced ClientlessVpnMode. Additionaly, it can be
         set to C(STRICT) to block Classic ClientlessVpnMode while in AdvancedClientlessMode.
   allowedlogingroups:
-    type: raw
+    type: str
     description:
       - Specify groups that have permission to log on to Citrix Gateway. Users who
         do not belong to this group or groups are denied access even if they have
         valid credentials.
   allprotocolproxy:
-    type: raw
+    type: str
     description:
       - IP address of the proxy server to use for all protocols supported by Citrix
         Gateway.
   alwaysonprofilename:
-    type: raw
+    type: str
     description:
       - Name of the AlwaysON profile. The builtin profile named none can be used to
         explicitly disable AlwaysON.
   apptokentimeout:
-    type: raw
+    type: int
     description:
       - The timeout value in seconds for tokens to access XenMobile applications
   authorizationgroup:
-    type: raw
+    type: str
     description:
       - Comma-separated list of groups in which the user is placed when none of the
         groups that the user is a part of is configured on Citrix Gateway. The authorization
         policy can be bound to these groups to control access to the resources.
   autoproxyurl:
-    type: raw
+    type: str
     description:
       - URL to auto proxy config file
   backendcertvalidation:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - enables backend server certificate validation
+  backenddtls12:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enables DTLS 1.2 for backend server handshakes
   backendserversni:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - enables sni extension for backend server handshakes
   citrixreceiverhome:
-    type: raw
+    type: str
     description:
       - Web address for the Citrix Receiver home page. Configure Citrix Gateway so
         that when users log on to the appliance, the Citrix Gateway Plug-in opens
         a web browser that allows single sign-on to the Citrix Receiver home page.
   clientchoices:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -108,22 +128,23 @@ options:
         with up to three icons for logon choices. The most common are the Citrix Gateway
         Plug-in for Windows, Web Interface, and clientless access.
   clientcleanupprompt:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Prompt for client-side cache clean-up when a client-initiated session closes.
   clientconfiguration:
-    type: raw
+    type: list
     choices:
       - none
       - trace
     description:
       - Allow users to change client Debug logging level in Configuration tab of the
         Citrix Gateway Plug-in for Windows.
+    elements: str
   clientdebug:
-    type: raw
+    type: str
     choices:
       - debug
       - stats
@@ -142,12 +163,12 @@ options:
       - '* C(OFF) - Only critical C(events) are logged into the Windows Application
         Log.'
   clientidletimeout:
-    type: raw
+    type: int
     description:
       - Time, in minutes, after which to time out the user session if Citrix Gateway
         does not detect mouse or keyboard activity.
   clientlessmodeurlencoding:
-    type: raw
+    type: str
     choices:
       - TRANSPARENT
       - OPAQUE
@@ -167,7 +188,7 @@ options:
         bookmark in the Access Interface during their session, the bookmark works
         each time the user logs on.'
   clientlesspersistentcookie:
-    type: raw
+    type: str
     choices:
       - ALLOW
       - DENY
@@ -189,7 +210,7 @@ options:
         session. Persistent cookies are not required for clientless access if users
         do not connect to SharePoint.'
   clientlessvpnmode:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -203,7 +224,7 @@ options:
         Plug-in.'
       - '* C(DISABLED) - Do not allow clientless access.'
   clientoptions:
-    type: raw
+    type: list
     choices:
       - none
       - all
@@ -213,20 +234,21 @@ options:
     description:
       - Display only the configured menu options when you select the "Configure Citrix
         Gateway" option in the Citrix Gateway Plug-in's system tray icon for Windows.
+    elements: str
   clientsecurity:
-    type: raw
+    type: str
     description:
       - Specify the client security check for the user device to permit a Citrix Gateway
         session. The web address or IP address is not included in the expression for
         the client security check.
   clientsecuritygroup:
-    type: raw
+    type: str
     description:
       - The client security group that will be assigned on failure of the client security
         check. Users can in general be organized into Groups. In this case, the Client
         Security Group may have a more restrictive security policy.
   clientsecuritylog:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -234,16 +256,16 @@ options:
       - Specifies whether or not to display all failed Client Security scans to the
         end user
   clientsecuritymessage:
-    type: raw
+    type: str
     description:
       - The client security message that will be displayed on failure of the client
         security check.
   clientversions:
-    type: raw
+    type: str
     description:
       - checkversion api
   defaultauthorizationaction:
-    type: raw
+    type: str
     choices:
       - ALLOW
       - DENY
@@ -254,16 +276,23 @@ options:
         and then creating authorization policies to define the network resources users
         can access. If you set the default authorization policy to C(DENY), you must
         explicitly authorize access to any network resource, which improves security.
+  deviceposture:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable device posture
   dnsvservername:
-    type: raw
+    type: str
     description:
       - Name of the DNS virtual server for the user session.
   emailhome:
-    type: raw
+    type: str
     description:
       - Web address for the web-based email, such as Outlook Web Access.
   encryptcsecexp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -280,7 +309,7 @@ options:
         and also has a supporting service which runs permanently when installed
       - b) Activex Control - ActiveX control run by Microsoft Internet Explorer.
   forcecleanup:
-    type: raw
+    type: list
     choices:
       - none
       - all
@@ -296,48 +325,58 @@ options:
     description:
       - Force C(cache) clean-up when the user closes a session. You can specify C(all),
         C(none), or any combination of the client-side items.
+    elements: str
   forcedtimeout:
-    type: raw
+    type: int
     description:
       - Force a disconnection from the Citrix Gateway Plug-in with Citrix Gateway
         after a specified number of minutes. If the session closes, the user must
         log on again.
   forcedtimeoutwarning:
-    type: raw
+    type: int
     description:
       - Number of minutes to warn a user before the user session is disconnected.
   fqdnspoofedip:
-    type: raw
+    type: str
     description:
       - Spoofed IP address range that can be used by client for FQDN based split tunneling
   ftpproxy:
-    type: raw
+    type: str
     description:
       - IP address of the proxy server to be used for FTP access for all subsequent
         connections to the internal network.
   gopherproxy:
-    type: raw
+    type: str
     description:
       - IP address of the proxy server to be used for GOPHER access for all subsequent
         connections to the internal network.
   homepage:
-    type: raw
+    type: str
     description:
       - Web address of the home page that appears when users log on. Otherwise, users
         receive the default home page for Citrix Gateway, which is the Access Interface.
   httpport:
-    type: raw
+    type: list
     description:
       - Destination port numbers other than port 80, added as a comma-separated list.
         Traffic to these ports is processed as HTTP traffic, which allows functionality,
         such as HTTP authorization and single sign-on to a web application to work.
+    elements: int
   httpproxy:
-    type: raw
+    type: str
     description:
       - IP address of the proxy server to be used for HTTP access for all subsequent
         connections to the internal network.
+  httptrackconnproxy:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Enable or disable HTTP tracking for packets proxied via vpn vserver using
+        GSLB connection proxy feature.
   icaproxy:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -346,7 +385,7 @@ options:
         XenApp or XenDesktop by using Citrix Receiver instead of the Citrix Gateway
         Plug-in.
   icasessiontimeout:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -354,19 +393,19 @@ options:
       - Enable or disable ica session timeout. If enabled and in case AAA session
         gets terminated, ICA connections associated with that will also get terminated
   icauseraccounting:
-    type: raw
+    type: str
     description:
       - The name of the radiusPolicy to use for RADIUS user accounting info on the
         session.
   iconwithreceiver:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to decide whether to show plugin icon along with receiver icon
   iipdnssuffix:
-    type: raw
+    type: str
     description:
       - An intranet IP DNS suffix. When a user logs on to Citrix Gateway and is assigned
         an IP address, a DNS record for the user name and IP address combination is
@@ -376,11 +415,11 @@ options:
         can be easier to remember than an IP address. When the user logs off from
         Citrix Gateway, the record is removed from the DNS cache.
   kcdaccount:
-    type: raw
+    type: str
     description:
       - The KCD account details to be used in SSO
   killconnections:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -391,7 +430,7 @@ options:
         Plug-in for Windows and MAC when the user is connected to Citrix Gateway and
         split tunneling is disabled.
   linuxpluginupgrade:
-    type: raw
+    type: str
     choices:
       - Always
       - Essential
@@ -399,7 +438,7 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Linux
   locallanaccess:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -411,45 +450,51 @@ options:
         is useful. The client can allow local LAN access to devices that commonly
         have non-routable addresses, such as local printers or local file servers.
   loginscript:
-    type: raw
+    type: str
     description:
       - Path to the logon script that is run when a session is established. Separate
         multiple scripts by using comma. A "$" in the path signifies that the word
         following the "$" is an environment variable.
   logoutscript:
-    type: raw
+    type: str
     description:
       - Path to the logout script. Separate multiple scripts by using comma. A "$"
         in the path signifies that the word following the "$" is an environment variable.
   macpluginupgrade:
-    type: raw
+    type: str
     choices:
       - Always
       - Essential
       - Never
     description:
       - Option to set plugin upgrade behaviour for Mac
+  maxiipperuser:
+    type: int
+    description:
+      - Maximum number of Intranet IP that can be assigned to a user from AAA group,
+        VPN vserver or VPN global pool. This setting is not applicable for AAA user
+        level Intranet IP configuration
   mdxtokentimeout:
-    type: raw
+    type: int
     description:
       - Validity of MDX Token in minutes. This token is used for mdx services to access
         backend and valid  HEAD and GET request.
   netmask:
-    type: raw
+    type: str
     description:
       - The netmask for the spoofed ip address
   ntdomain:
-    type: raw
+    type: str
     description:
       - Single sign-on domain to use for single sign-on to applications in the internal
         network. This setting can be overwritten by the domain that users specify
         at the time of logon or by the domain that the authentication server returns.
   pcoipprofilename:
-    type: raw
+    type: str
     description:
       - Name of the PCOIP profile.
   proxy:
-    type: raw
+    type: str
     choices:
       - BROWSER
       - NS
@@ -462,12 +507,12 @@ options:
       - '* C(NS) - Proxy settings are configured on the Citrix ADC.'
       - '* C(OFF) - Proxy settings are not configured.'
   proxyexception:
-    type: raw
+    type: str
     description:
       - Proxy exception string that will be configured in the browser for bypassing
         the previously configured proxies. Allowed only if proxy type is Browser.
   proxylocalbypass:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -475,11 +520,11 @@ options:
       - Bypass proxy server for local addresses option in Internet Explorer and Firefox
         proxy server settings.
   rdpclientprofilename:
-    type: raw
+    type: str
     description:
       - Name of the RDP profile associated with the vserver.
   rfc1918:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -491,7 +536,7 @@ options:
       - '* 172.16.*.*,'
       - '* 192.168.*.*'
   samesite:
-    type: raw
+    type: str
     choices:
       - None
       - LAX
@@ -501,7 +546,7 @@ options:
         value will be appended only for the cookies which are specified in the builtin
         patset ns_cookies_samesite
   securebrowse:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -509,22 +554,29 @@ options:
       - Allow users to connect through Citrix Gateway to network resources from iOS
         and Android mobile devices with Citrix Receiver. Users do not need to establish
         a full VPN tunnel to access resources in the secure network.
+  secureprivateaccess:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enables or disables the secure private access configuration.
   sesstimeout:
-    type: raw
+    type: int
     description:
       - Number of minutes after which the session times out.
   smartgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   socksproxy:
-    type: raw
+    type: str
     description:
       - IP address of the proxy server to be used for SOCKS access for all subsequent
         connections to the internal network.
   splitdns:
-    type: raw
+    type: str
     choices:
       - LOCAL
       - REMOTE
@@ -533,7 +585,7 @@ options:
       - Route the DNS requests to the local DNS server configured on the user device,
         or Citrix Gateway (remote), or both.
   splittunnel:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -549,7 +601,7 @@ options:
         network and are logged on through the Citrix Gateway Plug-in, network traffic
         destined to a printer or another device within the home network is not intercepted.
   spoofiip:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -557,12 +609,12 @@ options:
       - Indicate whether or not the application requires IP spoofing, which routes
         the connection to the intranet application through the virtual adapter.
   sslproxy:
-    type: raw
+    type: str
     description:
       - IP address of the proxy server to be used for SSL access for all subsequent
         connections to the internal network.
   sso:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -574,7 +626,7 @@ options:
         \ Key or Negotiate Sign Flag). Use VPN TrafficAction to configure SSO for\
         \ these authentication types."
   ssocredential:
-    type: raw
+    type: str
     choices:
       - PRIMARY
       - SECONDARY
@@ -582,12 +634,12 @@ options:
       - Specify whether to use the primary or secondary authentication credentials
         for single sign-on to the server.
   storefronturl:
-    type: raw
+    type: str
     description:
       - Web address for StoreFront to be used in this session for enumeration of resources
         from XenApp or XenDesktop.
   transparentinterception:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -599,7 +651,7 @@ options:
         to C(ON), in which the mode is set to transparent. If you are using the Citrix
         Gateway Plug-in for Java, set this parameter to C(OFF).
   uitheme:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - GREENBUBBLE
@@ -607,7 +659,7 @@ options:
     description:
       - Set VPN UI Theme to Green-Bubble, Caxton or Custom; default is Caxton.
   useiip:
-    type: raw
+    type: str
     choices:
       - NOSPILLOVER
       - SPILLOVER
@@ -622,7 +674,7 @@ options:
         used all available intranet IP addresses.'
       - '* C(OFF) - Address pool is not configured.'
   usemip:
-    type: raw
+    type: str
     choices:
       - NS
       - 'OFF'
@@ -635,11 +687,11 @@ options:
         address, the mapped IP address is used when an intranet IP address cannot
         be assigned.
   userdomains:
-    type: raw
+    type: str
     description:
       - List of user domains specified as comma seperated value
   wihome:
-    type: raw
+    type: str
     description:
       - Web address of the Web Interface server, such as http://<ipAddress>/Citrix/XenApp,
         or Receiver for Web, which enumerates the virtualized resources, such as XenApp,
@@ -658,7 +710,7 @@ options:
     description:
       - Type of the wihome address(C(IPV4)/V6)
   windowsautologon:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -677,7 +729,7 @@ options:
         and also has a supporting service which runs permanently when installed\
       - b) Activex Control - ActiveX control run by Microsoft Internet Explorer.
   windowspluginupgrade:
-    type: raw
+    type: str
     choices:
       - Always
       - Essential
@@ -685,11 +737,11 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Win
   winsip:
-    type: raw
+    type: str
     description:
       - WINS server IP address to add to Citrix Gateway for name resolution.
   wiportalmode:
-    type: raw
+    type: str
     choices:
       - NORMAL
       - COMPACT
@@ -702,18 +754,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample vpnparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | vpnparameter
+    - name: Configure vpnparameter
       delegate_to: localhost
       netscaler.adc.vpnparameter:
         state: present
-        forcecleanup:
-          - none
-        clientconfiguration:
-          - trace
+        autoproxyurl: http://test.local/proxy.pac
 """
 
 RETURN = r"""

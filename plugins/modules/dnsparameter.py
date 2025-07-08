@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsparameter
 short_description: Configuration for DNS parameter resource.
 description: Configuration for DNS parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  autosavekeyops:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Flag to enable/disable saving of rollover operations executed automatically
+        to avoid config loss.
+      - 'Applicable only when autorollover option is enabled on a key. Note: when
+        you enable this, full configuration will be saved'
   cacheecszeroprefix:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -48,7 +60,7 @@ options:
         to any subnet. This option has no effect if caching of ECS responses is disabled
         in the corresponding DNS profile.
   cachehitbypass:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -57,7 +69,7 @@ options:
         will forward all the client requests to the backend DNS server and the response
         served will be cached on Citrix ADC
   cachenoexpire:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -65,7 +77,7 @@ options:
       - If this flag is set to YES, the existing entries in cache do not age out.
         On reaching the max limit the cache records are frozen
   cacherecords:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -77,13 +89,13 @@ options:
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
   dns64timeout:
-    type: raw
+    type: int
     description:
       - While doing DNS64 resolution, this parameter specifies the time to wait before
         sending an A query if no response is received from backend DNS server for
         AAAA query.
   dnsrootreferral:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -95,7 +107,7 @@ options:
         when the appliance is under attack from a client that is sending a flood of
         queries for unrelated domains.
   dnssec:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -106,7 +118,7 @@ options:
         Redirection for name resolution) do not support the DNSSEC OK (DO) bit in
         the EDNS0 OPT header.'
   ecsmaxsubnets:
-    type: raw
+    type: int
     description:
       - Maximum number of subnets that can be cached corresponding to a single domain.
         Subnet caching will occur for responses with EDNS Client Subnet (ECS) option.
@@ -114,17 +126,17 @@ options:
         of zero indicates that the number of subnets cached is limited only by existing
         memory constraints. The default value is zero.
   maxcachesize:
-    type: raw
+    type: int
     description:
       - Maximum memory, in megabytes, that can be used for dns caching per Packet
         Engine.
   maxnegativecachesize:
-    type: raw
+    type: int
     description:
       - Maximum memory, in megabytes, that can be used for caching of negative DNS
         responses per packet engine.
   maxnegcachettl:
-    type: raw
+    type: int
     description:
       - Maximum time to live (TTL) for all negative records ( NXDONAIN and NODATA
         ) cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations.
@@ -134,14 +146,14 @@ options:
         to those records that are cached after the modification. The TTL values of
         existing records are not changed.
   maxpipeline:
-    type: raw
+    type: int
     description:
       - Maximum number of concurrent DNS requests to allow on a single client connection,
         which is identified by the <clientip:port>-<vserver ip:port> tuple. A value
         of 0 (zero) applies no limit to the number of concurrent DNS requests allowed
         on a single client connection.
   maxttl:
-    type: raw
+    type: int
     description:
       - Maximum time to live (TTL) for all records cached in the DNS cache by DNS
         proxy, end resolver, and forwarder configurations. If the TTL of a record
@@ -150,7 +162,7 @@ options:
         this setting, the new value is applied only to those records that are cached
         after the modification. The TTL values of existing records are not changed.
   maxudppacketsize:
-    type: raw
+    type: int
     description:
       - Maximum UDP packet size that can be handled by Citrix ADC. This is the value
         advertised by Citrix ADC when responding as an authoritative server and it
@@ -159,7 +171,7 @@ options:
         a request contains a size greater than this value in the OPT record, it will
         be replaced.
   minttl:
-    type: raw
+    type: int
     description:
       - Minimum permissible time to live (TTL) for all records cached in the DNS cache
         by DNS proxy, end resolver, and forwarder configurations. If the TTL of a
@@ -169,7 +181,7 @@ options:
         cached after the modification. The TTL values of existing records are not
         changed.
   namelookuppriority:
-    type: raw
+    type: str
     choices:
       - WINS
       - DNS
@@ -178,7 +190,7 @@ options:
         lookup fails, the second-priority lookup is attempted. Used only by the SSL
         VPN feature.
   nxdomainratelimitthreshold:
-    type: raw
+    type: int
     description:
       - Rate limit threshold for Non-Existant domain (NXDOMAIN) responses generated
         from Citrix ADC. Once the threshold is breached , DNS queries leading to NXDOMAIN
@@ -186,7 +198,7 @@ options:
         responses got from the backend. The threshold will be applied per packet engine
         and per second.
   recursion:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -198,7 +210,7 @@ options:
         queries a root server and resolves the request recursively, as it does for
         an end resolver configuration.
   resolutionorder:
-    type: raw
+    type: str
     choices:
       - OnlyAQuery
       - OnlyAAAAQuery
@@ -219,23 +231,54 @@ options:
       - '* C(AAAAThenAQuery). Send a query for an AAAA record, and then send a query
         for an A record if the query for the AAAA record results in a NODATA response
         from the name server.'
+  resolvermaxactiveresolutions:
+    type: int
+    description:
+      - Maximum number of active concurrent DNS resolutions per Packet Engine
+  resolvermaxtcpconnections:
+    type: int
+    description:
+      - Maximum DNS-TCP connections opened for recursive resolution per Packet Engine
+  resolvermaxtcptimeout:
+    type: int
+    description:
+      - Maximum wait time in seconds for the response on DNS-TCP connection for recursive
+        resolution per Packet Engine
   retries:
-    type: raw
+    type: int
     description:
       - Maximum number of retry attempts when no response is received for a query
         sent to a name server. Applies to end resolver and forwarder configurations.
   splitpktqueryprocessing:
-    type: raw
+    type: str
     choices:
       - ALLOW
       - DROP
     description:
       - Processing requests split across multiple packets
+  zonetransfer:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Flag to enable/disable DNS zones configuration transfer to remote GSLB site
+        nodes
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsparameter playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure dnsparameter
+      delegate_to: localhost
+      netscaler.adc.dnsparameter:
+        state: present
+        namelookuppriority: DNS
 """
 
 RETURN = r"""

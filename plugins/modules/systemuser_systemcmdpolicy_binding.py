@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemuser_systemcmdpolicy_binding
 short_description: Binding Resource definition for describing association between
   systemuser and systemcmdpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between syst
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,7 +45,7 @@ options:
     description:
       - The name of command policy.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the policy.
   username:
@@ -55,6 +57,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample systemuser_systemcmdpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemuser_systemcmdpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.systemuser_systemcmdpolicy_binding:
+        state: present
+        username: guest
+        policyname: read-only
+        priority: '100'
 """
 
 RETURN = r"""

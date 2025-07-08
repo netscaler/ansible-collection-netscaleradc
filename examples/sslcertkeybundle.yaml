@@ -1,0 +1,12 @@
+---
+- name: Sample sslcertkeybundle playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcertkeybundle
+      delegate_to: localhost
+      netscaler.adc.sslcertkeybundle:
+        state: present
+        certkeybundlename: tc11
+        bundlefile: bundle_files/enc_cert.pem
+        passplain: '123456'

@@ -1,0 +1,15 @@
+---
+- name: Sample auditsyslogparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditsyslogparams
+      delegate_to: localhost
+      netscaler.adc.auditsyslogparams:
+        state: present
+        loglevel:
+          - EMERGENCY
+          - ALERT
+          - CRITICAL
+          - ERROR
+          - WARNING

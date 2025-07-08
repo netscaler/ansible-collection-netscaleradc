@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationsmartaccesspolicy
 short_description: Configuration for SmartAccess policy resource.
 description: Configuration for SmartAccess policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,11 +45,11 @@ options:
     description:
       - Name of the Smartaccess profile to use if the policy matches.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the Smartaccess policy.
       - Must begin with a letter, number, or the underscore character (_), and must

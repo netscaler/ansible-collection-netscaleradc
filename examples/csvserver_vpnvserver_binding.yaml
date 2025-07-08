@@ -1,0 +1,11 @@
+---
+- name: Sample csvserver_vpnvserver_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure csvserver_vpnvserver_binding
+      delegate_to: localhost
+      netscaler.adc.csvserver_vpnvserver_binding:
+        state: present
+        name: CS123
+        vserver: vpn51

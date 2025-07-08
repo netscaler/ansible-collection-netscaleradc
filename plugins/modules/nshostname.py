@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nshostname
 short_description: Configuration for host name resource.
 description: Configuration for host name resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
     description:
       - Host name for the Citrix ADC.
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are setting the hostname. Can be configured
         only through the cluster IP address.
@@ -49,15 +51,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nshostname playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nshostName
+    - name: Configure nshostname
       delegate_to: localhost
       netscaler.adc.nshostname:
         state: present
-        hostname: ansible-test
+        hostname: ns1_172.191.127.50
 """
 
 RETURN = r"""

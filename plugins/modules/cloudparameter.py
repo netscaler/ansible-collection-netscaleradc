@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cloudparameter
 short_description: Configuration for cloud parameter resource.
 description: Configuration for cloud parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -59,7 +61,7 @@ options:
     description:
       - Port number of the controller to which the Citrix ADC SDProxy connects
   customerid:
-    type: raw
+    type: str
     description:
       - Customer ID of the citrix cloud customer
   deployment:
@@ -72,11 +74,11 @@ options:
       - Describes if the customer is a C(Staging)/C(Production) or C(Dev) Citrix Cloud
         customer
   instanceid:
-    type: raw
+    type: str
     description:
       - Instance ID of the customer provided by Trust
   resourcelocation:
-    type: raw
+    type: str
     description:
       - Resource Location of the customer provided by Trust
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -84,6 +86,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cloudparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cloudparameter
+      delegate_to: localhost
+      netscaler.adc.cloudparameter:
+        state: present
+        instanceid: d12838e8-f327-41f5-b290-0e42008cb9c7
+        customerid: 8jdh8fx0xio9
+        deployment: Production
 """
 
 RETURN = r"""

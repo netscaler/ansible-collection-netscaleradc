@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: gslbservice_lbmonitor_binding
 short_description: Binding Resource definition for describing association between
   gslbservice and lbmonitor resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between gslb
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,7 +56,7 @@ options:
     description:
       - Name of the GSLB service.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the monitor-service binding. A larger number specifies
         a greater weight. Contributes to the monitoring threshold, which determines
@@ -64,6 +66,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample gslbservice_lbmonitor_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbservice_lbmonitor_binding
+      delegate_to: localhost
+      netscaler.adc.gslbservice_lbmonitor_binding:
+        state: present
+        servicename: gslbService1
+        monitor_name: http
+        weight: '34'
 """
 
 RETURN = r"""

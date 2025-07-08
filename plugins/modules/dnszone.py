@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnszone
 short_description: Configuration for DNS zone resource.
 description: Configuration for DNS zone resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dnssecoffload:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -52,14 +54,14 @@ options:
         sign a zone with up to four keys.
     elements: str
   nsec:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable nsec generation for dnssec offload.
   proxymode:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -92,7 +94,7 @@ options:
         as a proxy server.'
       - '* C(ALL) - Display all the zones configured on the appliance.'
   zonename:
-    type: raw
+    type: str
     description:
       - Name of the zone to create.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -100,6 +102,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnszone playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnszone
+      delegate_to: localhost
+      netscaler.adc.dnszone:
+        state: present
+        zonename: com
 """
 
 RETURN = r"""

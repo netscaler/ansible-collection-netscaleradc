@@ -1,0 +1,11 @@
+---
+- name: Sample nspartition playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nspartition
+      delegate_to: localhost
+      netscaler.adc.nspartition:
+        state: present
+        partitionname: p1
+        vxlan: '1'

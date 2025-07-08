@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,17 +17,20 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cmppolicy
 short_description: Configuration for compression policy resource.
 description: Configuration for compression policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -35,6 +38,7 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
   name:
     type: str
@@ -108,6 +112,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cmppolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmppolicy
+      delegate_to: localhost
+      netscaler.adc.cmppolicy:
+        state: present
+        name: Base_cmp_mypolicy3
+        rule: HTTP.RES.HEADER("Content-Type").CONTAINS("text")
+        resaction: Base_cmp_act1
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnstatic
 short_description: Configuration for static mapping resource.
 description: Configuration for static mapping resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -41,7 +43,7 @@ options:
     description:
       - Destination IP address for the LSN mapping entry.
   dsttd:
-    type: float
+    type: int
     description:
       - ID of the traffic domain through which the destination IP address for this
         LSN mapping entry is reachable from the Citrix ADC.
@@ -91,7 +93,7 @@ options:
       - Port of the LSN subscriber for the LSN mapping entry. * represents all ports
         being used. Used in case of static wildcard
   td:
-    type: float
+    type: int
     description:
       - 'ID of the traffic domain to which the subscriber belongs. '
       - ''
@@ -111,6 +113,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnstatic playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnstatic
+      delegate_to: localhost
+      netscaler.adc.lsnstatic:
+        state: present
+        nattype: DS-Lite
 """
 
 RETURN = r"""

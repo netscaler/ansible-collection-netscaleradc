@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsparam
 short_description: Configuration for Citrix ADC parameters resource.
 description: Configuration for Citrix ADC parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advancedanalyticsstats:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Disable/Enable advanace analytics stats
   aftpallowrandomsourceport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -52,7 +54,7 @@ options:
       - Allow the FTP server to come from a random source port for active FTP data
         connections
   cip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -65,55 +67,72 @@ options:
       - '* If the CIP header is not specified, the value that has been set will be
         used as the client IP header.'
   cipheader:
-    type: raw
+    type: str
     description:
       - Text that will be used as the client IP address header.
   cookieversion:
-    type: raw
+    type: str
     choices:
-      - 0
-      - 1
+      - '0'
+      - '1'
     description:
       - Version of the cookie inserted by the system.
   crportrange:
-    type: raw
+    type: str
     description:
       - Port range for cache redirection services.
   exclusivequotamaxclient:
-    type: raw
+    type: int
     description:
-      - Percentage of maxClient to be given to PEs.
+      - Percentage of maxClient threshold to be divided equally among PEs.
   exclusivequotaspillover:
-    type: raw
+    type: int
     description:
-      - Percentage of maximum limit to be given to PEs.
+      - Percentage of spillover threshold to be divided equally among PEs.
   ftpportrange:
-    type: raw
+    type: str
     description:
       - Minimum and maximum port (port range) that FTP services are allowed to use.
   grantquotamaxclient:
-    type: raw
+    type: int
     description:
-      - Percentage of shared quota to be granted at a time for maxClient.
+      - Percentage of shared pool value granted to PE once PE exhausts the local exclusive
+        quota. Where shared pool is the remaining maxclient quota after distribution
+        of exclusive quota to PEs.
+      - ''
+      - 'Example: In a 2 PE NetScaler system if configured maxclient is 100 and exclusive
+        quota is 80 percent then each PE will get 40 as local exclusive quota and
+        20 will be in shared pool. If configured grantQuota is 20 percent, then after
+        exhausting its local exclusive quota PE borrows from shared pool in chunks
+        of 4 i.e. 20 percent of 20.'
   grantquotaspillover:
-    type: raw
+    type: int
     description:
-      - Percentage of shared quota to be granted at a time for spillover.
+      - Percentage of shared pool value granted to PE once PE exhausts the local exclusive
+        quota. Where shared pool is the remaining spillover quota after distribution
+        of exclusive quota to PEs.
+      - ''
+      - 'Example: In a 2 PE NetScaler system if configured spillover is 100 and exclusive
+        quota is 80 percent then each PE will get 40 as local exclusive quota and
+        20 will be in shared pool. If configured grantQuota is 20 percent, then after
+        exhausting its local exclusive quota PE borrows from shared pool in chunks
+        of 4 i.e. 20 percent of 20.'
   httpport:
-    type: raw
+    type: list
     description:
       - HTTP ports on the web server. This allows the system to perform connection
         off-load for any client request that has a destination port matching one of
         these configured ports.
+    elements: int
   icaports:
-    type: raw
+    type: list
     description:
       - The ICA ports on the Web server. This allows the system to perform connection
-        off-load for any
-      - '                      client request that has a destination port matching
-        one of these configured ports.'
+        off-load for any client request that has a destination port matching one of
+        these configured ports.
+    elements: int
   internaluserlogin:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -122,68 +141,69 @@ options:
         disabling internal user login, you must have key-based authentication set
         up on the appliance. The file name for the key pair must be "ns_comm_key".
   ipttl:
-    type: raw
+    type: int
     description:
       - Set the IP Time to Live (TTL) and Hop Limit value for all outgoing packets
         from Citrix ADC.
   maxconn:
-    type: raw
+    type: int
     description:
       - Maximum number of connections that will be made from the appliance to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
   maxreq:
-    type: raw
+    type: int
     description:
       - Maximum number of requests that the system can pass on a particular connection
         between the appliance and a server attached to it. Setting this value to 0
         allows an unlimited number of requests to be passed. This value is overridden
         by the maximum number of requests configured on the individual service.
   mgmthttpport:
-    type: raw
+    type: int
     description:
       - This allow the configuration of management HTTP port.
   mgmthttpsport:
-    type: raw
+    type: int
     description:
       - This allows the configuration of management HTTPS port.
   pmtumin:
-    type: raw
+    type: int
     description:
       - Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation
         needed message. If the ICMP message contains a value less than this value,
         then this value is used instead.
   pmtutimeout:
-    type: raw
+    type: int
     description:
       - Interval, in minutes, for flushing the PMTU entries.
   proxyprotocol:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Disable/Enable v1 or v2 proxy protocol header for client info insertion
   securecookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable secure flag for persistence cookie.
   secureicaports:
-    type: raw
+    type: list
     description:
       - The Secure ICA ports on the Web server. This allows the system to perform
         connection off-load for any
       - '            client request that has a destination port matching one of these
         configured ports.'
+    elements: int
   servicepathingressvlan:
-    type: raw
+    type: int
     description:
       - VLAN on which the subscriber traffic arrives on the appliance.
   tcpcip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -193,12 +213,12 @@ options:
         The passed address can then be accessed through a minor modification to the
         server.
   timezone:
-    type: raw
+    type: str
     description:
       - Time zone for the Citrix ADC. Name of the time zone should be specified as
         argument.
   useproxyport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -210,15 +230,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsparam playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsparam
+    - name: Configure nsparam
       delegate_to: localhost
       netscaler.adc.nsparam:
         state: present
-        timezone: GMT+09:00-KST-Asia/Seoul
+        proxyprotocol: DISABLED
 """
 
 RETURN = r"""

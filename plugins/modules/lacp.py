@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lacp
 short_description: Configuration for Link aggregation control protocol resource.
 description: Configuration for Link aggregation control protocol resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -35,12 +37,12 @@ options:
         the module's parameters.
     type: str
   ownernode:
-    type: float
+    type: int
     description:
       - The owner node in a cluster for which we want to set the lacp priority. Owner
         node can vary from 0 to 31. Ownernode value of 254 is used for Cluster.
   syspriority:
-    type: float
+    type: int
     description:
       - Priority number that determines which peer device of an LACP LA channel can
         have control over the LA channel. This parameter is globally applied to all
@@ -51,15 +53,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample lacp playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | lacp
+    - name: Configure lacp
       delegate_to: localhost
       netscaler.adc.lacp:
         state: present
         syspriority: '32768'
+        ownernode: '255'
 """
 
 RETURN = r"""

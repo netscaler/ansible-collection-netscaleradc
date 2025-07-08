@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,18 +17,21 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: autoscalepolicy
 short_description: Configuration for Autoscale policy resource.
 description: Configuration for Autoscale policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,21 +40,22 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
   action:
-    type: raw
+    type: str
     description:
       - The autoscale profile associated with the policy.
   comment:
-    type: raw
+    type: str
     description:
       - Comments associated with this autoscale policy.
   logaction:
-    type: raw
+    type: str
     description:
       - The log action associated with the autoscale policy
   name:
-    type: raw
+    type: str
     description:
       - The name of the autoscale policy.
   newname:
@@ -59,7 +63,7 @@ options:
     description:
       - The new name of the autoscale policy.
   rule:
-    type: raw
+    type: str
     description:
       - The rule associated with the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

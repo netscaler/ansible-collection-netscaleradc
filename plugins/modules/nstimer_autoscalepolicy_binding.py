@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nstimer_autoscalepolicy_binding
 short_description: Binding Resource definition for describing association between
   nstimer and autoscalepolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between nsti
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -52,11 +54,11 @@ options:
     description:
       - The timer policy associated with the timer.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the timer policy.
   samplesize:
-    type: float
+    type: int
     description:
       - Denotes the sample size. Sample size value of 'x' means that previous '(x
         - 1)' policy's rule evaluation results and the current evaluation result are
@@ -64,7 +66,7 @@ options:
         is a state of previous 9 policy evaluation results and also the current policy
         evaluation result.
   threshold:
-    type: float
+    type: int
     description:
       - Denotes the threshold. If the rule of the policy in the binding relation evaluates
         'threshold size' number of times in 'sample size' to true, then the corresponding

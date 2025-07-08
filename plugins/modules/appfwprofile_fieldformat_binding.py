@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwprofile_fieldformat_binding
 short_description: Binding Resource definition for describing association between
   appfwprofile and fieldformat resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between appf
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -55,11 +57,11 @@ options:
     description:
       - Name of the form field to which a field format will be assigned.
   fieldformatmaxlength:
-    type: float
+    type: int
     description:
       - The maximum allowed length for data in this form field.
   fieldformatminlength:
-    type: float
+    type: int
     description:
       - The minimum allowed length for data in this form field.
   fieldtype:
@@ -104,6 +106,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile_fieldformat_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_fieldformat_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_fieldformat_binding:
+        state: present
+        name: Test_profile
+        fieldformat: text_area
+        formactionurl_ff: ^http://test.net/credit.html$
+        fieldtype: CM1454107840652651
+        fieldformatminlength: '1'
+        fieldformatmaxlength: '78'
+        isregex_ff: NOTREGEX
 """
 
 RETURN = r"""

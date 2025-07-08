@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnhttphdrlogprofile
 short_description: Configuration for LSN HTTP header logging Profile resource.
 description: Configuration for LSN HTTP header logging Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,32 +41,32 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   httphdrlogprofilename:
-    type: raw
+    type: str
     description:
       - The name of the HTTP header logging Profile.
   loghost:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Host information is logged if option is enabled.
   logmethod:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - HTTP method information is logged if option is enabled.
   logurl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - URL information is logged if option is enabled.
   logversion:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -75,6 +77,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnhttphdrlogprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnhttphdrlogprofile
+      delegate_to: localhost
+      netscaler.adc.lsnhttphdrlogprofile:
+        state: present
+        httphdrlogprofilename: httplog
+        logurl: ENABLED
+        logmethod: ENABLED
+        logversion: ENABLED
+        loghost: ENABLED
 """
 
 RETURN = r"""

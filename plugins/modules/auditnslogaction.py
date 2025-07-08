@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditnslogaction
 short_description: Configuration for ns log action resource.
 description: Configuration for ns log action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,21 +41,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   acl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log access control list (ACL) messages.
   alg:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the ALG messages
   appflowexport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -62,14 +64,14 @@ options:
       - Appflow collectors are entities to which log messages can be sent so that
         some action can be performed on them.
   contentinspectionlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log Content Inspection event information
   dateformat:
-    type: raw
+    type: str
     choices:
       - MMDDYYYY
       - DDMMYYYY
@@ -90,7 +92,7 @@ options:
       - Time, in seconds, for which the Citrix ADC waits before sending another DNS
         query to resolve the host name of the audit server if the last query failed.
   logfacility:
-    type: raw
+    type: str
     choices:
       - LOCAL0
       - LOCAL1
@@ -106,7 +108,7 @@ options:
         number indicates where a specific message originated from, such as the Citrix
         ADC itself, the VPN, or external.
   loglevel:
-    type: raw
+    type: list
     choices:
       - ALL
       - EMERGENCY
@@ -131,15 +133,16 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
+    elements: str
   lsn:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the LSN messages
   name:
-    type: raw
+    type: str
     description:
       - Name of the nslog action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -149,6 +152,13 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my nslog action" or 'my nslog action').
+  protocolviolations:
+    type: str
+    choices:
+      - ALL
+      - NONE
+    description:
+      - Log protocol violations
   serverdomainname:
     type: str
     description:
@@ -158,32 +168,32 @@ options:
     description:
       - IP address of the nslog server.
   serverport:
-    type: raw
+    type: int
     description:
       - Port on which the nslog server accepts connections.
   sslinterception:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log SSL Interception event information
   subscriberlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log subscriber session event information
   tcp:
-    type: raw
+    type: str
     choices:
       - NONE
       - ALL
     description:
       - Log TCP messages.
   timezone:
-    type: raw
+    type: str
     choices:
       - GMT_TIME
       - LOCAL_TIME
@@ -192,15 +202,22 @@ options:
       - 'Available settings function as follows:'
       - '* C(GMT_TIME). Coordinated Universal Time.'
       - '* C(LOCAL_TIME). The server''s timezone setting.'
+  trafficplane:
+    type: str
+    choices:
+      - DEFAULT
+      - DATA
+    description:
+      - Traffic Plane to which the logs will be sent.
   urlfiltering:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log URL filtering event information
   userdefinedauditlog:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -214,6 +231,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditnslogaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditnslogaction
+      delegate_to: localhost
+      netscaler.adc.auditnslogaction:
+        state: present
+        name: nslog_act1
+        serverip: 10.102.8.183
+        serverport: 80
+        loglevel:
+          - ALL
 """
 
 RETURN = r"""

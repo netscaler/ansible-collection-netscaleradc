@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: mapdomain
 short_description: Configuration for MAP-T Map Domain resource.
 description: Configuration for MAP-T Map Domain resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -80,6 +82,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample mapdomain playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure mapdomain
+      delegate_to: localhost
+      netscaler.adc.mapdomain:
+        state: present
+        name: map1
+        mapdmrname: dmr1
 """
 
 RETURN = r"""

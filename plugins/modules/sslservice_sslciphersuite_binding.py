@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslservice_sslciphersuite_binding
 short_description: Binding Resource definition for describing association between
   sslservice and sslciphersuite resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between ssls
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,6 +40,11 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  cipherdefaulton:
+    type: int
+    description:
+      - Flag indicating whether the bound cipher was the DEFAULT cipher, bound at
+        boot time, or any other cipher from the CLI
   ciphername:
     type: str
     description:

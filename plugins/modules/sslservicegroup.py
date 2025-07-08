@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslservicegroup
 short_description: Configuration for SSL service group resource.
 description: Configuration for SSL service group resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,12 +39,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   commonname:
-    type: raw
+    type: str
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server
   ocspstapling:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -56,25 +58,25 @@ options:
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
   sendclosenotify:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
   serverauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of server authentication support for the SSL service group.
   servicegroupname:
-    type: raw
+    type: str
     description:
       - Name of the SSL service group for which to set advanced configuration.
   sessreuse:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -83,13 +85,13 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: raw
+    type: int
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
   snienable:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -100,7 +102,7 @@ options:
         same second-level domain name. For example, *.sports.net can be used to secure
         domains such as login.sports.net and help.sports.net.
   ssl3:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -108,12 +110,20 @@ options:
       - State of SSLv3 protocol support for the SSL service group.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
+  sslclientlogs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This parameter is used to enable or disable the logging of additional information,
+        such as the Session ID and SNI names, from SSL handshakes to the audit logs.
   sslprofile:
-    type: raw
+    type: str
     description:
       - Name of the SSL profile that contains SSL settings for the Service Group.
   strictsigdigestcheck:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -121,28 +131,28 @@ options:
       - Parameter indicating to check whether peer's certificate is signed with one
         of signature-hash combination supported by Citrix ADC
   tls1:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service group.
   tls11:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service group.
   tls12:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service group.
   tls13:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -151,6 +161,31 @@ options:
   sslservicegroup_ecccurve_binding:
     type: dict
     description: Bindings for sslservicegroup_ecccurve_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  sslservicegroup_sslcacertbundle_binding:
+    type: dict
+    description: Bindings for sslservicegroup_sslcacertbundle_binding resource
     suboptions:
       mode:
         type: str
@@ -253,6 +288,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslservicegroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslservicegroup
+      delegate_to: localhost
+      netscaler.adc.sslservicegroup:
+        state: present
+        servicegroupname: LB_ia_svcgrp13916
+        sessreuse: ENABLED
+        sesstimeout: '120'
 """
 
 RETURN = r"""

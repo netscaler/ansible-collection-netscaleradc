@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: feopolicy
 short_description: Configuration for Front end optimization policy resource.
 description: Configuration for Front end optimization policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,15 +41,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: raw
+    type: str
     description:
       - The front end optimization action that has to be performed when the rule matches.
   name:
-    type: raw
+    type: str
     description:
       - The name of the front end optimization policy.
   rule:
-    type: raw
+    type: str
     description:
       - The rule associated with the front end optimization policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -55,6 +57,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample feopolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure feopolicy
+      delegate_to: localhost
+      netscaler.adc.feopolicy:
+        state: present
+        name: pol1_ns
+        rule: HTTP.REQ.HEADER("Accept").CONTAINS("html")
+        action: allact_ns
 """
 
 RETURN = r"""

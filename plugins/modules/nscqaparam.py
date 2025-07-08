@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nscqaparam
 short_description: Configuration for cqaparam resource.
 description: Configuration for cqaparam resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,15 +39,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   harqretxdelay:
-    type: raw
+    type: int
     description:
       - HARQ retransmission delay (in ms).
   lr1coeflist:
-    type: raw
+    type: str
     description:
       - coefficients values for Label1.
   lr1probthresh:
-    type: raw
+    type: float
     description:
       - Probability threshold values for LR model to differentiate between NET1 and
         reset(NET2 and NET3).
@@ -59,66 +61,66 @@ options:
       - Probability threshold values for LR model to differentiate between NET2 and
         NET3.
   minrttnet1:
-    type: raw
+    type: int
     description:
       - MIN RTT (in ms) for the first network.
   minrttnet2:
-    type: raw
+    type: int
     description:
       - MIN RTT (in ms) for the second network.
   minrttnet3:
-    type: raw
+    type: int
     description:
       - MIN RTT (in ms) for the third network.
   net1cclscale:
-    type: raw
+    type: str
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
   net1csqscale:
-    type: raw
+    type: str
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
   net1label:
-    type: raw
+    type: str
     description:
       - Name of the network label.
   net1logcoef:
-    type: raw
+    type: str
     description:
       - Connection quality ranking Log coefficients of network 1.
   net2cclscale:
-    type: raw
+    type: str
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
   net2csqscale:
-    type: raw
+    type: str
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
   net2label:
-    type: raw
+    type: str
     description:
       - Name of the network label 2.
   net2logcoef:
-    type: raw
+    type: str
     description:
       - Connnection quality ranking Log coefficients of network 2.
   net3cclscale:
-    type: raw
+    type: str
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
   net3csqscale:
-    type: raw
+    type: str
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
   net3label:
-    type: raw
+    type: str
     description:
       - Name of the network label 3.
   net3logcoef:
-    type: raw
+    type: str
     description:
       - Connection quality ranking Log coefficients of network 3.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -126,6 +128,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nscqaparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nscqaparam
+      delegate_to: localhost
+      netscaler.adc.nscqaparam:
+        state: present
+        lr1probthresh: 0.0
+        lr2probthresh: 0.0
 """
 
 RETURN = r"""

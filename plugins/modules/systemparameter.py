@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemparameter
 short_description: Configuration for system parameter resource.
 description: Configuration for system parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   basicauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable basic authentication for Nitro API.
   cliloglevel:
-    type: raw
+    type: str
     choices:
       - EMERGENCY
       - ALERT
@@ -66,15 +68,20 @@ options:
       - '* C(NOTICE) - Events that the administrator should know about.'
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
+  daystoexpire:
+    type: int
+    description:
+      - Password expiry days for all the system users. The daystoexpire value ranges
+        from 30 to 255.
   doppler:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable Doppler
   fipsusermode:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -86,21 +93,21 @@ options:
       - Without a FIPS license, it is disabled by default, wherein these user-land
         processes will not operate in FIPS mode.
   forcepasswordchange:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable force password change for nsroot user
   googleanalytics:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable Google analytics
   localauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -111,32 +118,51 @@ options:
         authentication servers are unavailable. This parameter is not applicable to
         SSH Key-based authentication
   maxsessionperuser:
-    type: raw
+    type: int
     description:
       - Maximum number of client connection allowed per user.The maxsessionperuser
         value ranges from 1 to 40
   minpasswordlen:
-    type: raw
+    type: int
     description:
       - Minimum length of system user password. When strong password is enabled default
         minimum length is 8. User entered value can be greater than or equal to 8.
         Default mininum value is 1 when strong password is disabled. Maximum value
         is 127 in both cases.
   natpcbforceflushlimit:
-    type: raw
+    type: int
     description:
       - Flush the system if the number of Network Address Translation Protocol Control
         Blocks (NATPCBs) exceeds this value.
   natpcbrstontimeout:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send a reset signal to client and server connections when their NATPCBs time
         out. Avoids the buildup of idle TCP connections on both the sides.
+  passwordhistorycontrol:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enables or disable password expiry feature for system users.
+      - If the feature is C(ENABLED), by default the last 6 passwords of users will
+        be maintained and will not be allowed to reuse same.
+      - When the feature is enabled the daystoexpire, warnpriorndays and pwdhistoryCount
+        will be set with default values. The values can only be set in system
+      - for system parameter. It cannot be unset. It is possible to set and unset
+        the values for daytoexpire and warnpriorndays in system groups.
+      - 'Default values if feature is C(ENABLED):'
+      - 'daystoexpire: 30'
+      - 'warnpriorndays: 5'
+      - 'pwdhistoryCount: 6'
+      - If the feature is C(DISABLED) the values cannot be set or unset in system
+        parameter and system groups
   promptstring:
-    type: raw
+    type: str
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
         hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:),
@@ -150,15 +176,20 @@ options:
       - ''
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
+  pwdhistorycount:
+    type: int
+    description:
+      - Number of passwords to be maintained as history for system users. The pwdhistorycount
+        value ranges from 1 to 10.
   rbaonresponse:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable Role-Based Authentication (RBA) on responses.
   reauthonauthparamchange:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -166,7 +197,7 @@ options:
       - Enable or disable External user reauthentication when authentication parameter
         changes
   removesensitivefiles:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -176,7 +207,7 @@ options:
         this system paramter is enabled are rm cluster instance, rm cluster node,
         rm ha node, clear config full, join cluster and add cluster instance.
   restrictedtimeout:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -186,7 +217,7 @@ options:
         - maximum] range check. When disabled, timeout will have the old behaviour.
         By default the value is disabled
   strongpassword:
-    type: raw
+    type: str
     choices:
       - enableall
       - enablelocal
@@ -202,31 +233,49 @@ options:
         So no Strong Password checks will be performed on these ObjectType commands
         for C(enablelocal) case.'
   timeout:
-    type: raw
+    type: int
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         is enabled, Timeout can have values in the range [300-86400] seconds.
       - If Restrictedtimeout argument is disabled, Timeout can have values in the
         range [0, 10-100000000] seconds. Default value is 900 seconds.
   totalauthtimeout:
-    type: raw
+    type: int
     description:
       - Total time a request can take for authentication/authorization
+  wafprotection:
+    type: list
+    choices:
+      - DEFAULT
+      - DISABLED
+      - GUI
+    description:
+      - 'Configure WAF protection for endpoints used by NetScaler management interfaces.
+        The available options are:'
+      - '* C(DEFAULT) - NetScaler decides which endpoints have WAF protection enabled.'
+      - '* C(GUI) - Endpoints used by the Management C(GUI) Interface are WAF protected.'
+      - '* C(DISABLED) - WAF protection is disabled.'
+    elements: str
+  warnpriorndays:
+    type: int
+    description:
+      - Number of days before which password expiration warning would be thrown with
+        respect to daystoexpire. The warnpriorndays value ranges from 5 to 40.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample systemparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | systemparameter
+    - name: Configure systemparameter
       delegate_to: localhost
       netscaler.adc.systemparameter:
         state: present
-        promptstring: '%u@%s'
+        maxclient: '40'
 """
 
 RETURN = r"""

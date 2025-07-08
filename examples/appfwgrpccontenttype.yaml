@@ -1,0 +1,10 @@
+---
+- name: Sample appfwgrpccontenttype playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwgrpccontenttype
+      delegate_to: localhost
+      netscaler.adc.appfwgrpccontenttype:
+        state: present
+        grpccontenttypevalue: application/grpc-web+proto

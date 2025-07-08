@@ -1,0 +1,13 @@
+---
+- name: Create SLB Servicegroup
+  delegate_to: localhost
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    servicegroupname: test-slbservicegroup
+    servicetype: TCP

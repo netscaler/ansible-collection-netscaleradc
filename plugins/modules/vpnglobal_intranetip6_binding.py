@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnglobal_intranetip6_binding
 short_description: Binding Resource definition for describing association between
   vpnglobal and intranetip6 resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vpng
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,7 +51,7 @@ options:
     description:
       - The intranet ip address or range.
   numaddr:
-    type: float
+    type: int
     description:
       - The intranet ip address or range's netmask.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

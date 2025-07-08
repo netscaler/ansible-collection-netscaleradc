@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appqoeparameter
 short_description: Configuration for QOS parameter resource.
 description: Configuration for QOS parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,20 +39,20 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   avgwaitingclient:
-    type: raw
+    type: int
     description:
       - average number of client connections, that can sit in service waiting queue
   dosattackthresh:
-    type: raw
+    type: int
     description:
       - average number of client connection that can queue up on vserver level without
         triggering DoS mitigation module
   maxaltrespbandwidth:
-    type: raw
+    type: int
     description:
       - maximum bandwidth which will determine whether to send alternate content response
   sessionlife:
-    type: raw
+    type: int
     description:
       - Time, in seconds, between the first time and the next time the AppQoE alternative
         content window is displayed. The alternative content window is displayed only

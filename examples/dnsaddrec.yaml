@@ -1,12 +1,13 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample dnsaddrec playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | dnsaddRec
+    - name: Configure dnsaddrec
       delegate_to: localhost
       netscaler.adc.dnsaddrec:
         state: present
-        hostname: k.root-servers.net
-        ipaddress: 193.0.14.129
+        hostname: e.root-servers.net
+        ipaddress:
+          - 192.203.230.10
         ttl: 3600000

@@ -1,0 +1,10 @@
+---
+- name: Sample responderpolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure responderpolicylabel
+      delegate_to: localhost
+      netscaler.adc.responderpolicylabel:
+        state: present
+        labelname: ia_respolabl5

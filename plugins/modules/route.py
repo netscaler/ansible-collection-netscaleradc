@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: route
 short_description: Configuration for route resource.
 description: Configuration for route resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,19 +41,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advertise:
-    type: raw
+    type: str
     choices:
       - DISABLED
       - ENABLED
     description:
       - Advertise this route.
   cost:
-    type: float
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         using this route. The lower the cost, the higher the preference.
   cost1:
-    type: raw
+    type: int
     description:
       - 'The cost of a route is used to compare routes of the same type. The route
         having the lowest cost is the most preferred route. Possible values: 0 through
@@ -61,34 +63,38 @@ options:
     description:
       - Display a detailed view.
   distance:
-    type: raw
+    type: int
     description:
       - Administrative distance of this route, which determines the preference of
         this route over other routes, with same destination, from different routing
         protocols. A lower value is preferred.
   gateway:
-    type: raw
+    type: str
     description:
       - IP address of the gateway for this route. Can be either the IP address of
         the gateway, or can be null to specify a null interface route.
+  mgmt:
+    type: bool
+    description:
+      - Route in management plane.
   monitor:
-    type: raw
+    type: str
     description:
       - Name of the monitor, of type ARP or PING, configured on the Citrix ADC to
         monitor this route.
   msr:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Monitor this route using a monitor of type ARP or PING.
   netmask:
-    type: raw
+    type: str
     description:
       - The subnet mask associated with the network address.
   network:
-    type: raw
+    type: str
     description:
       - IPv4 network address for which to add a route entry in the routing table of
         the Citrix ADC.
@@ -98,7 +104,7 @@ options:
       - The owner node group in a Cluster for this route. If owner node group is not
         specified then the route is treated as Striped route.
   protocol:
-    type: raw
+    type: list
     choices:
       - OSPF
       - ISIS
@@ -106,6 +112,7 @@ options:
       - BGP
     description:
       - Routing protocol used for advertising this route.
+    elements: str
   routetype:
     type: str
     choices:
@@ -120,17 +127,17 @@ options:
       - Protocol used by routes that you want to remove from the routing table of
         the Citrix ADC.
   td:
-    type: raw
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   vlan:
-    type: float
+    type: int
     description:
       - VLAN as the gateway for this route.
   weight:
-    type: raw
+    type: int
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
@@ -141,17 +148,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample route playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | route
+    - name: Configure route
       delegate_to: localhost
       netscaler.adc.route:
         state: present
-        network: 172.31.0.0
+        network: 169.254.0.0
         netmask: 255.255.0.0
-        gateway: 172.31.0.1
+        gateway: 172.16.1.1
 """
 
 RETURN = r"""

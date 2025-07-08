@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vlan_nsip_binding
 short_description: Binding Resource definition for describing association between
   vlan and nsip resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between vlan
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   id:
-    type: float
+    type: int
     description:
       - Specifies the virtual LAN ID.
   ipaddress:
@@ -55,7 +57,7 @@ options:
     description:
       - The owner node group in a Cluster for this vlan.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -65,6 +67,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vlan_nsip_binding playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure vlan_nsip_binding
+      delegate_to: localhost
+      netscaler.adc.vlan_nsip_binding:
+        state: present
+        id: '815'
+        ipaddress: 172.27.118.107
+        netmask: 255.255.255.224
 """
 
 RETURN = r"""

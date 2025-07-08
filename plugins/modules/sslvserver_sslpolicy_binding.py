@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslvserver_sslpolicy_binding
 short_description: Binding Resource definition for describing association between
   sslvserver and sslpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between sslv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -64,7 +66,7 @@ options:
     description:
       - The name of the SSL policy binding.
   priority:
-    type: float
+    type: int
     description:
       - The priority of the policies bound to this SSL service
   type:
@@ -94,6 +96,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslvserver_sslpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslvserver_sslpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.sslvserver_sslpolicy_binding:
+        state: present
+        vservername: new_XM_LB_MDM_titan.dnpg-blr.com_10.100.48.233_443
+        policyname: new_XM_MDM_titan.dnpg-blr.com_POLICY1
+        priority: '100'
+        gotopriorityexpression: END
 """
 
 RETURN = r"""

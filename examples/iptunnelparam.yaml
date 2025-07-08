@@ -1,0 +1,10 @@
+---
+- name: Sample iptunnelparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure iptunnelparam
+      delegate_to: localhost
+      netscaler.adc.iptunnelparam:
+        state: present
+        srciproundrobin: 'YES'

@@ -1,0 +1,12 @@
+---
+- name: Sample gslbservice_dnsview_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbservice_dnsview_binding
+      delegate_to: localhost
+      netscaler.adc.gslbservice_dnsview_binding:
+        state: present
+        servicename: gslbService1
+        viewname: view1
+        viewip: 2.2.2.1

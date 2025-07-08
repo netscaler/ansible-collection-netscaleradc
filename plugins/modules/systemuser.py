@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: systemuser
 short_description: Configuration for system user resource.
 description: Configuration for system user resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowedmanagementinterface:
-    type: raw
+    type: list
     choices:
       - CLI
       - API
@@ -48,8 +50,9 @@ options:
         from both C(API) and C(CLI) interfaces. If management interface for a user
         is set to C(API), then user is not allowed to access NS through C(CLI). GUI
         interface will come under C(API) interface
+    elements: str
   externalauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -57,14 +60,14 @@ options:
       - Whether to use external authentication servers for the system user authentication
         or not
   logging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Users logging privilege
   maxsession:
-    type: raw
+    type: int
     description:
       - Maximum number of client connection allowed per user
   password:
@@ -72,7 +75,7 @@ options:
     description:
       - Password for the system user. Can include any ASCII character.
   promptstring:
-    type: raw
+    type: str
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
         hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:),
@@ -87,7 +90,7 @@ options:
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
   timeout:
-    type: raw
+    type: int
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         of system parameter is enabled, Timeout can have values in the range [300-86400]
@@ -95,7 +98,7 @@ options:
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
   username:
-    type: raw
+    type: str
     description:
       - Name for a user. Must begin with a letter, number, or the underscore (_) character,
         and must contain only alphanumeric, hyphen (-), period (.), hash (#), space
@@ -160,22 +163,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample systemuser playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | systemuser
+    - name: Configure systemuser
       delegate_to: localhost
       netscaler.adc.systemuser:
         state: present
-        username: nsroot
-        timeout: 900
-    - name: Sample Task | systemuser | 2
-      delegate_to: localhost
-      netscaler.adc.systemuser:
-        state: present
-        username: user_adm1
-        password: pwd_adm1
+        username: guest
+        password: guest
+        promptstring: guest
+        timeout: 300
 """
 
 RETURN = r"""

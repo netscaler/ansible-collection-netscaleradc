@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nd6
 short_description: Configuration for nd6 resource.
 description: Configuration for nd6 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -51,11 +53,11 @@ options:
     description:
       - Link-local IPv6 address of the adjacent network device to add to the ND6 table.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -71,7 +73,7 @@ options:
       - IP address of the VXLAN tunnel endpoint (VTEP) through which the IPv6 address
         of this ND6 entry is reachable.
   vxlan:
-    type: float
+    type: int
     description:
       - ID of the VXLAN on which the IPv6 address of this ND6 entry is reachable.
   nd6ravariables_onlinkipv6prefix_binding:
@@ -104,6 +106,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nd6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nd6
+      delegate_to: localhost
+      netscaler.adc.nd6:
+        state: present
+        neighbor: fe80::20
+        mac: 00:aa:10:12:13:ef
+        ifnum: 1/2
+        vlan: 1
 """
 
 RETURN = r"""

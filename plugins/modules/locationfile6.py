@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: locationfile6
 short_description: Configuration for location file6 resource.
 description: Configuration for location file6 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,15 +46,15 @@ options:
       - Name of the IPv6 location file, with or without absolute path. If the path
         is not included, the default path (/var/netscaler/locdb) is assumed. In a
         high availability setup, the static database must be stored in the same location
-        on both Citrix ADCs.
+        on both NetScalers.
   format:
     type: str
     choices:
       - netscaler6
       - geoip-country6
     description:
-      - Format of the IPv6 location file. Required for the Citrix ADC to identify
-        how to read the location file.
+      - Format of the IPv6 location file. Required for the NetScaler to identify how
+        to read the location file.
   src:
     type: str
     description:

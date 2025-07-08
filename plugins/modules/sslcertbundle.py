@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,23 +17,27 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcertbundle
 short_description: Configuration for Imported Certbundle resource.
 description: Configuration for Imported Certbundle resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - absent
       - imported
+      - applied
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(imported), the resource will be imported on the NetScaler ADC node.
+      - When C(applied), the resources will be applied on the NetScaler ADC node
     type: str
   name:
     type: str
@@ -50,7 +54,9 @@ options:
       - URL specifying the protocol, host, and path, including file name, to the certificate
         bundle to be imported or exported. For example, http://www.example.com/cert_bundle_file.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
-        that requires client certificate authentication for access.'
+        that requires client certificate authentication for access, and the issuer
+        certificate of the HTTPS server is not present in the specific path on NetScaler
+        to authenticate the HTTPS server.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

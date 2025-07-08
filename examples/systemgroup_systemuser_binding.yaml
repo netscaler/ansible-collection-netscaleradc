@@ -1,0 +1,11 @@
+---
+- name: Sample systemgroup_systemuser_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemgroup_systemuser_binding
+      delegate_to: localhost
+      netscaler.adc.systemgroup_systemuser_binding:
+        state: present
+        groupname: network
+        username: net_ron

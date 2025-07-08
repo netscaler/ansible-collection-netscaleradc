@@ -1,0 +1,20 @@
+---
+- name: Sample sslocspresponder playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslocspresponder
+      delegate_to: localhost
+      netscaler.adc.sslocspresponder:
+        state: present
+        name: ocspresp5
+        url: http://2.2.2.7:80/
+        cache: ENABLED
+        cachetimeout: '100'
+        batchingdepth: '7'
+        batchingdelay: '500'
+        resptimeout: '4000'
+        respondercert: ssl_cert_ca5
+        producedattimeskew: '1000'
+        signingcert: ssl_cert_ca5
+        usenonce: 'NO'

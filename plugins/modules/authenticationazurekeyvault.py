@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationazurekeyvault
 short_description: Configuration for Azure Key Vault entity resource.
 description: Configuration for Azure Key Vault entity resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authentication:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -56,12 +58,12 @@ options:
     description:
       - Unique secret string to authorize relying party at authorization server.
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the group that is added to user sessions that match current IdP policy.
         It can be used in policies to identify relying party trust.
   name:
-    type: raw
+    type: str
     description:
       - Name for the new Azure Key Vault profile. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -72,11 +74,11 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   pushservice:
-    type: raw
+    type: str
     description:
       - Name of the service used to send push notifications
   refreshinterval:
-    type: raw
+    type: int
     description:
       - Interval at which access token in obtained.
   servicekeyname:
@@ -84,7 +86,7 @@ options:
     description:
       - Friendly name of the Key to be used to compute signature.
   signaturealg:
-    type: raw
+    type: str
     choices:
       - RS256
     description:

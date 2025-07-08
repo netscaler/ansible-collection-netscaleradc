@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditsyslogaction
 short_description: Configuration for system log action resource.
 description: Configuration for system log action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,21 +41,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   acl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log access control list (ACL) messages.
   alg:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log alg info
   appflowexport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -62,14 +64,14 @@ options:
       - Appflow collectors are entities to which log messages can be sent so that
         some action can be performed on them.
   contentinspectionlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log Content Inspection event information
   dateformat:
-    type: raw
+    type: str
     choices:
       - MMDDYYYY
       - DDMMYYYY
@@ -81,7 +83,7 @@ options:
       - '* C(DDMMYYYY) - European style date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
   dns:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -96,12 +98,23 @@ options:
     description:
       - Time, in seconds, for which the Citrix ADC waits before sending another DNS
         query to resolve the host name of the syslog server if the last query failed.
+  httpauthtoken:
+    type: str
+    description:
+      - Token for authenticating with the endpoint. If the endpoint requires the Authorization
+        header in a particular format, specify the complete format as the value to
+        this parameter. For eg., in case of splunk, the Authorization header is required
+        to be of the form - Splunk <auth-token>.
+  httpendpointurl:
+    type: str
+    description:
+      - The URL at which to upload the logs messages on the endpoint
   lbvservername:
     type: str
     description:
       - Name of the LB vserver. Mutually exclusive with syslog serverIP/serverName
   logfacility:
-    type: raw
+    type: str
     choices:
       - LOCAL0
       - LOCAL1
@@ -117,7 +130,7 @@ options:
         number indicates where a specific message originated from, such as the Citrix
         ADC itself, the VPN, or external.
   loglevel:
-    type: raw
+    type: list
     choices:
       - ALL
       - EMERGENCY
@@ -142,19 +155,66 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
+    elements: str
   lsn:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log lsn info
+  managementlog:
+    type: list
+    choices:
+      - ALL
+      - SHELL
+      - ACCESS
+      - NSMGMT
+      - NONE
+    description:
+      - Management log specifies the categories of log files to be exported.
+      - It use destination and transport from PE params.
+      - 'Available values function as follows:'
+      - '* C(ALL) - All categories (C(SHELL), C(NSMGMT) and C(ACCESS)).'
+      - '* C(SHELL) -  bash.log, and sh.log.'
+      - '* C(ACCESS) - auth.log, nsvpn.log, httpaccess.log, httperror.log, httpaccess-vpn.log
+        and httperror-vpn.log.'
+      - '* C(NSMGMT) - notice.log and ns.log.'
+      - '* C(NONE) - No logs.'
+    elements: str
   maxlogdatasizetohold:
-    type: raw
+    type: int
     description:
       - Max size of log data that can be held in NSB chain of server info.
+  mgmtloglevel:
+    type: list
+    choices:
+      - ALL
+      - EMERGENCY
+      - ALERT
+      - CRITICAL
+      - ERROR
+      - WARNING
+      - NOTICE
+      - INFORMATIONAL
+      - DEBUG
+      - NONE
+    description:
+      - Management log level, which specifies the types of events to log.
+      - 'Available values function as follows:'
+      - '* C(ALL) - All events.'
+      - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
+      - '* C(ALERT) - Events that might require action.'
+      - '* C(CRITICAL) - Events that indicate an imminent server crisis.'
+      - '* C(ERROR) - Events that indicate some type of error.'
+      - '* C(WARNING) - Events that require action in the near future.'
+      - '* C(NOTICE) - Events that the administrator should know about.'
+      - '* C(INFORMATIONAL) - All but low-level events.'
+      - '* C(DEBUG) - All events, in extreme detail.'
+      - '* C(NONE) - No events.'
+    elements: str
   name:
-    type: raw
+    type: str
     description:
       - Name of the syslog action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -165,11 +225,18 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my syslog action" or 'my syslog action').
   netprofile:
-    type: raw
+    type: str
     description:
       - Name of the network profile.
       - The SNIP configured in the network profile will be used as source IP while
         sending log messages.
+  protocolviolations:
+    type: str
+    choices:
+      - ALL
+      - NONE
+    description:
+      - Log protocol violations
   serverdomainname:
     type: str
     description:
@@ -179,37 +246,52 @@ options:
     description:
       - IP address of the syslog server.
   serverport:
-    type: raw
+    type: int
     description:
       - Port on which the syslog server accepts connections.
   sslinterception:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log SSL Interception event information
+  streamanalytics:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Export log stream analytics statistics to syslog server.
   subscriberlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log subscriber session event information
+  syslogcompliance:
+    type: str
+    choices:
+      - RFC5424
+    description:
+      - Setting this parameter ensures that all the Audit Logs generated for this
+        Syslog Action comply with an RFC. For example, set it to C(RFC5424) to ensure
+        RFC 5424 compliance
   tcp:
-    type: raw
+    type: str
     choices:
       - NONE
       - ALL
     description:
       - Log TCP messages.
   tcpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the TCP profile whose settings are to be applied to the audit server
         info to tune the TCP connection parameters.
   timezone:
-    type: raw
+    type: str
     choices:
       - GMT_TIME
       - LOCAL_TIME
@@ -218,22 +300,30 @@ options:
       - 'Supported settings are:'
       - '* C(GMT_TIME). Coordinated Universal time.'
       - '* C(LOCAL_TIME). Use the server''s timezone setting.'
+  trafficplane:
+    type: str
+    choices:
+      - DEFAULT
+      - DATA
+    description:
+      - Traffic Plane to which the logs will be sent.
   transport:
     type: str
     choices:
       - TCP
       - UDP
+      - HTTP
     description:
       - Transport type used to send auditlogs to syslog server. Default type is C(UDP).
   urlfiltering:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log URL filtering event information
   userdefinedauditlog:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -247,6 +337,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditsyslogaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditsyslogaction
+      delegate_to: localhost
+      netscaler.adc.auditsyslogaction:
+        state: present
+        name: act1121
+        lbvservername: lb511
+        loglevel:
+          - ALL
+        lsn: ENABLED
+        transport: TCP
+        maxlogdatasizetohold: '1000'
 """
 
 RETURN = r"""

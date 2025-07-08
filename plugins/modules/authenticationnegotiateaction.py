@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationnegotiateaction
 short_description: Configuration for Negotiate action resource.
 description: Configuration for Negotiate action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,23 +41,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   domain:
-    type: raw
+    type: str
     description:
       - Domain name of the service principal that represnts Citrix ADC.
   domainuser:
-    type: raw
+    type: str
     description:
       - User name of the account that is mapped with Citrix ADC principal. This can
         be given along with domain and password when keytab file is not available.
         If username is given along with keytab file, then that keytab file will be
         searched for this user's credentials.
   domainuserpasswd:
-    type: raw
+    type: str
     description:
       - Password of the account that is mapped to the Citrix ADC principal.
   keytab:
@@ -65,7 +67,7 @@ options:
         to Citrix ADC. If keytab is not available, domain/username/password can be
         specified in the negotiate action configuration
   name:
-    type: raw
+    type: str
     description:
       - Name for the AD KDC server profile (negotiate action).
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -78,12 +80,12 @@ options:
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
   ntlmpath:
-    type: raw
+    type: str
     description:
       - The path to the site that is enabled for NTLM authentication, including FQDN
         of the server. This is used when clients fallback to NTLM.
   ou:
-    type: raw
+    type: str
     description:
       - Active Directory organizational units (OU) attribute.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -91,6 +93,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationnegotiateaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationnegotiateaction
+      delegate_to: localhost
+      netscaler.adc.authenticationnegotiateaction:
+        state: present
+        name: neg1
+        domain: nsi-test.com
+        defaultauthenticationgroup: g1
+        keytab: /nsconfig/krb/kcd-nsi-test.keytab
 """
 
 RETURN = r"""

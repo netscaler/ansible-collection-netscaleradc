@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditsyslogparams
 short_description: Configuration for system log parameters resource.
 description: Configuration for system log parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,21 +39,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   acl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log access control list (ACL) messages.
   alg:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the ALG messages
   appflowexport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -60,14 +62,14 @@ options:
       - Appflow collectors are entities to which log messages can be sent so that
         some action can be performed on them.
   contentinspectionlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log Content Inspection event ifnormation
   dateformat:
-    type: raw
+    type: str
     choices:
       - MMDDYYYY
       - DDMMYYYY
@@ -79,14 +81,14 @@ options:
       - '* C(DDMMYYYY). European style  -date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
   dns:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log DNS related syslog messages
   logfacility:
-    type: raw
+    type: str
     choices:
       - LOCAL0
       - LOCAL1
@@ -102,7 +104,7 @@ options:
         number indicates where a specific message originated from, such as the Citrix
         ADC itself, the VPN, or external.
   loglevel:
-    type: raw
+    type: list
     choices:
       - ALL
       - EMERGENCY
@@ -112,7 +114,6 @@ options:
       - WARNING
       - NOTICE
       - INFORMATIONAL
-      - DEBUG
       - NONE
     description:
       - Types of information to be logged.
@@ -125,46 +126,60 @@ options:
       - '* C(WARNING) - Events that require action in the near future.'
       - '* C(NOTICE) - Events that the administrator should know about.'
       - '* C(INFORMATIONAL) - All but low-level events.'
-      - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
+    elements: str
   lsn:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the LSN messages
+  protocolviolations:
+    type: str
+    choices:
+      - ALL
+      - NONE
+    description:
+      - Log protocol violations
   serverip:
-    type: raw
+    type: str
     description:
       - IP address of the syslog server.
   serverport:
-    type: raw
+    type: int
     description:
       - Port on which the syslog server accepts connections.
   sslinterception:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log SSL Interceptionn event information
+  streamanalytics:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Export log stream analytics statistics to syslog server
   subscriberlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log subscriber session event information
   tcp:
-    type: raw
+    type: str
     choices:
       - NONE
       - ALL
     description:
       - Log TCP messages.
   timezone:
-    type: raw
+    type: str
     choices:
       - GMT_TIME
       - LOCAL_TIME
@@ -174,14 +189,14 @@ options:
       - '* C(GMT_TIME) - Coordinated Universal Time.'
       - '* C(LOCAL_TIME)  Use the server''s timezone setting.'
   urlfiltering:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log URL filtering event information
   userdefinedauditlog:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -195,6 +210,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditsyslogparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditsyslogparams
+      delegate_to: localhost
+      netscaler.adc.auditsyslogparams:
+        state: present
+        loglevel:
+          - ALL
 """
 
 RETURN = r"""

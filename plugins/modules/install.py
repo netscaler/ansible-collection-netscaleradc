@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,20 +17,33 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: install
 short_description: Configuration for 0 resource.
 description: Configuration for 0 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    choices: []
+    choices:
+      - installed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(installed), the resources will be installed on the NetScaler ADC node
+      - When C(Install), the resource will be installed on the NetScaler ADC node.
     type: str
+  async:
+    type: bool
+    description:
+      - Use this flag to return the install id when the nitro api request is sent.
+      - The id can be used later to track the installation progress via show ns job
+        <id> command.
+      - For the cli request of install the flag is by default set as false as the
+        installation progress details can be tracked via cli
   a:
     type: bool
     description:
@@ -41,14 +54,6 @@ options:
         send system, usage and telemetry data to Citrix ADM service. View here [https://docs.citrix.com/en-us/citrix-adc/13/data-governance.html]
         to learn more about this feature. Use of this feature is subject to the Citrix
         End User ServiceAgreement. View here [https://www.citrix.com/buy/licensing/agreements.html].
-  async:
-    type: bool
-    description:
-      - Use this flag to return the install id when the nitro api request is sent.
-      - The id can be used later to track the installation progress via show ns job
-        <id> command.
-      - For the cli request of install the flag is by default set as false as the
-        installation progress details can be tracked via cli
   enhancedupgrade:
     type: bool
     description:

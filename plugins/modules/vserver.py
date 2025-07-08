@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vserver
 short_description: Configuration for virtual server resource.
 description: Configuration for virtual server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,7 +56,7 @@ options:
         or content switching) routes requests to the cache redirection virtual server
         before sending it to the configured servers.
   clttimeout:
-    type: float
+    type: int
     description:
       - The timeout value in seconds for idle client connection
   name:
@@ -91,11 +93,11 @@ options:
     description:
       - The state of the spillover persistence.
   sopersistencetimeout:
-    type: float
+    type: int
     description:
       - The spillover persistence entry timeout.
   sothreshold:
-    type: float
+    type: int
     description:
       - The spillver threshold value.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

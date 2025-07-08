@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ipset_nsip_binding
 short_description: Binding Resource definition for describing association between
   ipset and nsip resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between ipse
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -51,6 +53,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ipset_nsip_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure ipset_nsip_binding
+      delegate_to: localhost
+      netscaler.adc.ipset_nsip_binding:
+        state: present
+        name: ip1
+        ipaddress:
+          - 10.10.10.113
 """
 
 RETURN = r"""

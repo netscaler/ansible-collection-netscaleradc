@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ping
 short_description: Configuration for 0 resource.
 description: Configuration for 0 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices: []
@@ -41,11 +43,11 @@ options:
       - Source IP address to be used in the outgoing query packets. If the IP addrESS
         does not belongs to this appliance, an error is returned and nothing is sent.
   T:
-    type: float
+    type: int
     description:
       - Traffic Domain Id
   c:
-    type: float
+    type: int
     description:
       - Number of packets to send. The default value is infinite. For Nitro API, defalut
         value is taken as 5.
@@ -54,7 +56,7 @@ options:
     description:
       - Address of host to ping.
   i:
-    type: float
+    type: int
     description:
       - Waiting time, in seconds. The default value is 1 second.
   n:
@@ -72,11 +74,11 @@ options:
       - Quiet output. Only the summary is printed. For Nitro API, this flag is set
         by default.
   s:
-    type: float
+    type: int
     description:
       - Data size, in bytes. The default value is 56.
   t:
-    type: float
+    type: int
     description:
       - Time-out, in seconds, before ping exits.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

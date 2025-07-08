@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnlogprofile
 short_description: Configuration for LSN logging Profile resource.
 description: Configuration for LSN logging Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,36 +41,36 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   analyticsprofile:
-    type: raw
+    type: str
     description:
       - Name of the Analytics Profile attached to this lsn profile.
   logcompact:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logs in Compact Logging format if option is enabled.
   logipfix:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logs in IPFIX  format if option is enabled.
   logprofilename:
-    type: raw
+    type: str
     description:
       - The name of the logging Profile.
   logsessdeletion:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - LSN Session deletion will not be logged if disabled.
   logsubscrinfo:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -79,6 +81,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnlogprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnlogprofile
+      delegate_to: localhost
+      netscaler.adc.lsnlogprofile:
+        state: present
+        logprofilename: msd
+        logsubscrinfo: ENABLED
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsnsrec
 short_description: Configuration for name server record resource.
 description: Configuration for name server record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,11 +51,11 @@ options:
     description:
       - Host name of the name server to add to the domain.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -80,17 +82,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample dnsnsrec playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | dnsnsRec
+    - name: Configure dnsnsrec
       delegate_to: localhost
       netscaler.adc.dnsnsrec:
         state: present
-        domain: .
-        nameserver: a.root-servers.net
-        ttl: 3600000
+        domain: n2.com
+        nameserver: ns1.n1.com
+        ttl: 3601
 """
 
 RETURN = r"""

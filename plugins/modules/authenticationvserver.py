@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationvserver
 short_description: Configuration for authentication virtual server resource.
 description: Configuration for authentication virtual server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -31,6 +33,7 @@ options:
       - enabled
       - disabled
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -41,16 +44,17 @@ options:
       - When C(enabled), the resource will be enabled on the NetScaler ADC node.
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log AppFlow flow information.
   authentication:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -58,20 +62,20 @@ options:
       - Require users to be authenticated before sending traffic through this virtual
         server.
   authenticationdomain:
-    type: raw
+    type: str
     description:
       - The domain of the authentication cookie set by Authentication vserver
   certkeynames:
-    type: raw
+    type: str
     description:
       - Name of the certificate key that was bound to the corresponding SSL virtual
         server as the Certificate Authority for the device certificate
   comment:
-    type: raw
+    type: str
     description:
       - Any comments associated with this virtual server.
   failedlogintimeout:
-    type: raw
+    type: int
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
@@ -81,11 +85,11 @@ options:
       - IP address of the authentication virtual server, if a single IP address is
         assigned to the virtual server.
   maxloginattempts:
-    type: raw
+    type: int
     description:
       - Maximum Number of login Attempts
   name:
-    type: raw
+    type: str
     description:
       - Name for the new authentication virtual server.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -115,7 +119,7 @@ options:
     description:
       - TCP port on which the virtual server accepts connections.
   range:
-    type: float
+    type: int
     description:
       - If you are creating a series of virtual servers with a range of IP addresses
         assigned to them, the length of the range.
@@ -123,7 +127,7 @@ options:
         numbered, starting with the primary address specified with the IP Address
         parameter.
   samesite:
-    type: raw
+    type: str
     choices:
       - None
       - LAX
@@ -139,7 +143,7 @@ options:
     description:
       - Protocol type of the authentication virtual server. Always C(SSL).
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -686,6 +690,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationvserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver:
+        state: present
+        name: authVserver
+        servicetype: SSL
+        ipv46: 0.0.0.0
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: icaaccessprofile
 short_description: Configuration for ica accessprofile resource.
 description: Configuration for ica accessprofile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clientaudioredirection:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
@@ -48,7 +50,7 @@ options:
         through a sound device installed on the client computer, also allows or prevents
         users to record audio input
   clientclipboardredirection:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
@@ -56,29 +58,37 @@ options:
       - Allow Default access/Disable the clipboard on the client device to be mapped
         to the clipboard on the server
   clientcomportredirection:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable COM port redirection to and from the client
   clientdriveredirection:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disables drive redirection to and from the client
   clientprinterredirection:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable client printers to be mapped to a server when
         a user logs on to a session
+  clienttwaindeviceredirection:
+    type: str
+    choices:
+      - DEFAULT
+      - DISABLED
+    description:
+      - Allow default access or disable TWAIN devices, such as digital cameras or
+        scanners, on the client device from published image processing applications
   clientusbdriveredirection:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
@@ -86,29 +96,44 @@ options:
       - Allow Default access/Disable the redirection of USB devices to and from the
         client
   connectclientlptports:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable automatic connection of LPT ports from the client
         when the user logs on
+  draganddrop:
+    type: str
+    choices:
+      - DEFAULT
+      - DISABLED
+    description:
+      - Allow default access or disable drag and drop between client and remote applications
+        and desktops
+  fido2redirection:
+    type: str
+    choices:
+      - DEFAULT
+      - DISABLED
+    description:
+      - Allow default access or disable FIDO2 redirection
   localremotedatasharing:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable file/data sharing via the Receiver for HTML5
   multistream:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable the multistream feature for the specified users
   name:
-    type: raw
+    type: str
     description:
       - Name for the ICA accessprofile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and
@@ -132,11 +157,37 @@ options:
         as DEFAULT, then the Citrix ADC forwards the requests to the backend XenApp/XenDesktop
         server.It then makes the decision to allow/deny access based on the policy
         configured on it.
+  smartcardredirection:
+    type: str
+    choices:
+      - DEFAULT
+      - DISABLED
+    description:
+      - Allow default access or disable smart card redirection. Smart card virtual
+        channel is always allowed in CVAD
+  wiaredirection:
+    type: str
+    choices:
+      - DEFAULT
+      - DISABLED
+    description:
+      - Allow default access or disable WIA scanner redirection
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+- name: Sample icaaccessprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icaaccessprofile
+      delegate_to: localhost
+      netscaler.adc.icaaccessprofile:
+        state: present
+        name: ipr
+        clientclipboardredirection: DEFAULT
 """
 
 RETURN = r"""

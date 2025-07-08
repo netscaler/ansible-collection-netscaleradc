@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: servicegroup_lbmonitor_binding
 short_description: Binding Resource definition for describing association between
   servicegroup and lbmonitor resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between serv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -44,12 +46,12 @@ options:
       - Unique service identifier. Used when the persistency type for the virtual
         server is set to Custom Server ID.
   dbsttl:
-    type: float
+    type: int
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
   hashid:
-    type: float
+    type: int
     description:
       - Unique numerical identifier used by hash based load balancing methods to identify
         a service.
@@ -70,7 +72,7 @@ options:
       - Specify the nameserver to which the query for bound domain needs to be sent.
         If not specified, use the global nameserver
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the servicegroup member
   passive:
@@ -79,7 +81,7 @@ options:
       - Indicates if load monitor is passive. A passive load monitor does not remove
         service from LB decision when threshold is breached.
   serverid:
-    type: float
+    type: int
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
@@ -88,7 +90,7 @@ options:
     description:
       - Name of the service group.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
@@ -98,6 +100,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample servicegroup_lbmonitor_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure servicegroup_lbmonitor_binding
+      delegate_to: localhost
+      netscaler.adc.servicegroup_lbmonitor_binding:
+        state: present
+        servicegroupname: LB_sergrp
+        monitor_name: LB_ia_mon8
+        weight: '23'
 """
 
 RETURN = r"""

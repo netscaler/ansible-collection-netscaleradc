@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: smppparam
 short_description: Configuration for SMPP configuration parameters resource.
 description: Configuration for SMPP configuration parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,21 +39,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addrnpi:
-    type: raw
+    type: int
     description:
       - Numbering Plan Indicator, such as landline, data, or WAP client, used in the
         ESME address sent in the bind request.
   addrrange:
-    type: raw
+    type: str
     description:
       - Set of SME addresses, sent in the bind request, serviced by the ESME.
   addrton:
-    type: raw
+    type: int
     description:
       - Type of Number, such as an international number or a national number, used
         in the ESME address sent in the bind request.
   clientmode:
-    type: raw
+    type: str
     choices:
       - TRANSCEIVER
       - TRANSMITTERONLY
@@ -64,7 +66,7 @@ options:
       - '* C(TRANSMITTERONLY) - Client can only send messages.'
       - '* C(RECEIVERONLY) - Client can only receive messages.'
   msgqueue:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -72,7 +74,7 @@ options:
       - Queue SMPP messages if a client that is capable of receiving the destination
         address messages is not available.
   msgqueuesize:
-    type: raw
+    type: int
     description:
       - Maximum number of SMPP messages that can be queued. After the limit is reached,
         the Citrix ADC sends a deliver_sm_resp PDU, with an appropriate error message,

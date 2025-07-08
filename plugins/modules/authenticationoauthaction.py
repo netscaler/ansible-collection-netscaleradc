@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationoauthaction
 short_description: Configuration for OAuth authentication action resource.
 description: Configuration for OAuth authentication action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,95 +41,96 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowedalgorithms:
-    type: raw
+    type: list
     choices:
       - HS256
       - RS256
       - RS512
     description:
       - Multivalued option to specify allowed token verification algorithms.
+    elements: str
   attribute1:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute1
   attribute10:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute10
   attribute11:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute11
   attribute12:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute12
   attribute13:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute13
   attribute14:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute14
   attribute15:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute15
   attribute16:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute16
   attribute2:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute2
   attribute3:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute3
   attribute4:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute4
   attribute5:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute5
   attribute6:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute6
   attribute7:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute7
   attribute8:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute8
   attribute9:
-    type: raw
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute9
   attributes:
-    type: raw
+    type: str
     description:
       - List of attribute names separated by ',' which needs to be extracted.
       - Note that preceding and trailing spaces will be removed.
@@ -136,12 +139,12 @@ options:
       - These attributes have multi-value support separated by ',' and stored as key-value
         pair in AAA session
   audience:
-    type: raw
+    type: str
     description:
       - Audience for which token sent by Authorization server is applicable. This
         is typically entity name or url that represents the recipient
   authentication:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -156,12 +159,12 @@ options:
         Endpoint/URL value. Please note that Authorization Endpoint or Token Endpoint
         is mandatory for oauthAction
   certendpoint:
-    type: raw
+    type: str
     description:
       - URL of the endpoint that contains JWKs (Json Web Key) for JWT (Json Web Token)
         verification.
   certfilepath:
-    type: raw
+    type: str
     description:
       - Path to the file that contains JWKs (Json Web Key) for JWT (Json Web Token)
         verification.
@@ -175,7 +178,7 @@ options:
     description:
       - Secret string established by user and authorization server
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
@@ -187,30 +190,40 @@ options:
     description:
       - Grant type support. value can be code or password
   graphendpoint:
-    type: raw
+    type: str
     description:
       - URL of the Graph API service to learn Enterprise Mobility Services (EMS) endpoints.
   idtokendecryptendpoint:
-    type: raw
+    type: str
     description:
       - URL to which obtained idtoken will be posted to get a decrypted user identity.
         Encrypted idtoken will be obtained by posting OAuth token to token endpoint.
         In order to decrypt idtoken, Citrix ADC posts request to the URL configured
   introspecturl:
-    type: raw
+    type: str
     description:
       - URL to which access token would be posted for validation
+  intunedeviceidexpression:
+    type: str
+    description:
+      - The expression that will be evaluated to obtain IntuneDeviceId for compliance
+        check against IntuneNAC device compliance endpoint. The expression is applicable
+        when the OAuthType is INTUNE. The maximum length allowed to be used as IntuneDeviceId
+        for the device compliance check from the computed response after the expression
+        evaluation is 41.
+      - 'Examples:'
+      - add authentication oauthAction <actionName> -intuneDeviceIdExpression 'AAA.LOGIN.INTUNEURI.AFTER_STR("IntuneDeviceId://")'
   issuer:
-    type: raw
+    type: str
     description:
       - Identity of the server whose tokens are to be accepted.
   metadataurl:
-    type: raw
+    type: str
     description:
       - Well-known configuration endpoint of the Authorization Server. Citrix ADC
         fetches server details from this endpoint.
   name:
-    type: raw
+    type: str
     description:
       - Name for the OAuth Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -222,32 +235,54 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
+  oauthmiscflags:
+    type: list
+    choices:
+      - Base64Encode_Authorization_With_Padding
+      - EnableJWTRequest
+    description:
+      - Option to set/unset miscellaneous feature flags.
+      - 'Available values function as follows:'
+      - '* C(Base64Encode_Authorization_With_Padding) - On setting this value, for
+        endpoints (token and introspect), basic authorization header will be base64
+        encoded with padding.'
+      - '* C(EnableJWTRequest) - By enabling this field, Authorisation request to
+        IDP will have jwt signed ''request'' parameter'
+    elements: str
   oauthtype:
-    type: raw
+    type: str
     choices:
       - GENERIC
       - INTUNE
-      - ATHENA
     description:
       - Type of the OAuth implementation. Default value is generic implementation
         that is applicable for most deployments.
   pkce:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to enable/disable PKCE flow during authentication.
   refreshinterval:
-    type: raw
+    type: int
     description:
       - Interval at which services are monitored for necessary configuration.
+  requestattribute:
+    type: str
+    description:
+      - Name-Value pairs of attributes to be inserted in request parameter. Configuration
+        format is name=value_expr@@@name2=value2_expr@@@.
+      - '''@@@'' is used as delimiter between Name-Value pairs. name is a literal
+        string whose value is 127 characters and does not contain ''='' character.'
+      - Value is advanced policy expression terminated by @@@ delimiter. Last value
+        need not contain the delimiter.
   resourceuri:
-    type: raw
+    type: str
     description:
       - Resource URL for Oauth configuration.
   skewtime:
-    type: raw
+    type: int
     description:
       - This option specifies the allowed clock skew in number of minutes that Citrix
         ADC allows on an incoming token. For example, if skewTime is 10, then token
@@ -265,7 +300,7 @@ options:
         this token from Authorization server upon successful authentication. Citrix
         ADC will validate presented token by posting it to the URL configured
   tokenendpointauthmethod:
-    type: raw
+    type: str
     choices:
       - client_secret_post
       - client_secret_jwt
@@ -275,11 +310,11 @@ options:
       - Option to select the variant of token authentication method. This method is
         used while exchanging code with IdP.
   userinfourl:
-    type: raw
+    type: str
     description:
       - URL to which OAuth access token will be posted to obtain user information.
   usernamefield:
-    type: raw
+    type: str
     description:
       - Attribute in the token from which username should be extracted.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -287,6 +322,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationoauthaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationoauthaction
+      delegate_to: localhost
+      netscaler.adc.authenticationoauthaction:
+        state: present
+        name: cvpn_nac
+        oauthtype: INTUNE
+        tokenendpoint: http://inac.dnpg-blr.com/e6cf700d-68dc-4f92-b7ec-186e6dea36eb/oauth2/token
+        clientid: e6602bad-8007-44b7-b2ec-819035b71ba6
+        clientsecret: 8sOJH51L+uPBVAeCxgPyFDh0Ut+9Y9M6X9jGBJrWwZk=
+        tenantid: e6cf700d-68dc-4f92-b7ec-186e6dea36eb
+        graphendpoint: http://inac.dnpg-blr.com
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaauser_vpnurlpolicy_binding
 short_description: Binding Resource definition for describing association between
   aaauser and vpnurlpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between aaau
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -73,7 +75,7 @@ options:
     description:
       - The policy Name.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the policy.  A lower number indicates a
         higher priority. Policies are evaluated in the order of their priority numbers.

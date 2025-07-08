@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,18 +17,21 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwpolicy
 short_description: Configuration for application firewall policy resource.
 description: Configuration for application firewall policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,17 +40,18 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about the policy for later reference.
   logaction:
-    type: raw
+    type: str
     description:
       - Where to log information for connections that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the policy.
       - Must begin with a letter, number, or the underscore character \(_\), and must
@@ -109,6 +113,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwpolicy
+      delegate_to: localhost
+      netscaler.adc.appfwpolicy:
+        state: present
+        name: pr_appfw_pol
+        rule: HTTP.REQ.HEADER("Host").EXISTS
+        profilename: pr_appfw
 """
 
 RETURN = r"""

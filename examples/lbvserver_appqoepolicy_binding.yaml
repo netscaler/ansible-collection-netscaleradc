@@ -1,0 +1,12 @@
+---
+- name: Sample lbvserver_appqoepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_appqoepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_appqoepolicy_binding:
+        state: present
+        name: Base_appqoe_v1
+        policyname: Base_appqoe_pol7
+        priority: '700'

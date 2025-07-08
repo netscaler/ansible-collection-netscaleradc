@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslfipskey
 short_description: Configuration for FIPS key resource.
 description: Configuration for FIPS key resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -94,7 +96,7 @@ options:
     description:
       - Only C(RSA) key and C(ECDSA) Key are supported.
   modulus:
-    type: float
+    type: int
     description:
       - Modulus, in multiples of 64, of the FIPS key to be created.
   wrapkeyname:

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: callhome
 short_description: Configuration for callhome resource.
 description: Configuration for callhome resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,39 +39,40 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   emailaddress:
-    type: raw
+    type: str
     description:
       - Email address of the contact administrator.
   hbcustominterval:
-    type: raw
+    type: int
     description:
       - Interval (in days) between CallHome heartbeats
   ipaddress:
-    type: raw
+    type: str
     description:
       - IP address of the proxy server.
   mode:
-    type: raw
+    type: str
     choices:
       - Default
       - CSP
+      - Connector
     description:
       - CallHome mode of operation
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   port:
-    type: raw
+    type: int
     description:
       - HTTP port on the Proxy server. This is a mandatory parameter for both IP address
         and service name based configuration.
   proxyauthservice:
-    type: raw
+    type: str
     description:
       - Name of the service that represents the proxy server.
   proxymode:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -83,15 +86,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample callhome playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | callhome
+    - name: Configure callhome
       delegate_to: localhost
       netscaler.adc.callhome:
         state: present
-        hbcustominterval: '30'
+        hbcustominterval: '20'
 """
 
 RETURN = r"""

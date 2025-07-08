@@ -1,13 +1,14 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample snmptrap playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | snmptrap
+    - name: Configure snmptrap
       delegate_to: localhost
       netscaler.adc.snmptrap:
         state: present
-        trapclass: generic
-        trapdestination: 10.10.10.10
-        version: V3
+        trapclass: specific
+        trapdestination:
+          - 10.189.64.10
+        communityname: snmp
         allpartitions: ENABLED

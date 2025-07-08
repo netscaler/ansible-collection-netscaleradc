@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: clusterinstance
 short_description: Configuration for cluster instance resource.
 description: Configuration for cluster instance resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,18 +45,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   backplanebasedview:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - View based on heartbeat only on bkplane interface
   clid:
-    type: raw
+    type: int
     description:
       - Unique number that identifies the cluster.
   clusterproxyarp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -62,37 +64,37 @@ options:
       - This field controls the proxy arp feature in cluster. By default the flag
         is enabled.
   deadinterval:
-    type: raw
+    type: int
     description:
       - Amount of time, in seconds, after which nodes that do not respond to the heartbeats
         are assumed to be down.If the value is less than 3 sec, set the helloInterval
         parameter to 200 msec
   dfdretainl2params:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - flag to add ext l2 header during steering. By default the flag is disabled.
   hellointerval:
-    type: raw
+    type: int
     description:
       - Interval, in milliseconds, at which heartbeats are sent to each cluster node
         to check the health status.Set the value to 200 msec, if the deadInterval
         parameter is less than 3 sec
   inc:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option is required if the cluster nodes reside on different networks.
   nodegroup:
-    type: raw
+    type: str
     description:
       - The node group in a Cluster system used for transition from L2 to L3.
   preemption:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -100,7 +102,7 @@ options:
       - Preempt a cluster node that is configured as a SPARE if an ACTIVE node becomes
         available.
   processlocal:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -108,7 +110,7 @@ options:
       - By turning on this option packets destined to a service in a cluster will
         not under go any steering.
   quorumtype:
-    type: raw
+    type: str
     choices:
       - MAJORITY
       - NONE
@@ -116,7 +118,7 @@ options:
       - Quorum Configuration Choices  - "Majority" (recommended) requires majority
         of nodes to be online for the cluster to be UP. "None" relaxes this requirement.
   retainconnectionsoncluster:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -124,8 +126,15 @@ options:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
+  secureheartbeats:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - By turning on this option cluster heartbeats will have security enabled.
   syncstatusstrictmode:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED

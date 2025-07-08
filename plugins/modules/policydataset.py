@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,17 +17,20 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policydataset
 short_description: Configuration for TYPE set resource.
 description: Configuration for TYPE set resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -35,12 +38,28 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
     type: str
     description:
       - Any comments to preserve information about this dataset or a data bound to
         this dataset.
+  dynamic:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - This is used to populate internal dataset information so that the dataset
+        can also be used dynamically in an expression. Here dynamically means the
+        dataset name can also be derived using an expression. For example for a given
+        dataset name "allow_test" it can be used dynamically as client.ip.src.equals_any("allow_"
+        + http.req.url.path.get(1)). This cannot be used with default datasets.
+  dynamiconly:
+    type: bool
+    description:
+      - Shows only dynamic datasets when set true.
   name:
     type: str
     description:
@@ -91,6 +110,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policydataset playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policydataset
+      delegate_to: localhost
+      netscaler.adc.policydataset:
+        state: present
+        name: ia_poldataset1
+        type: ipv4
 """
 
 RETURN = r"""

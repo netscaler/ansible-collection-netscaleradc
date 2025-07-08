@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsnameserver
 short_description: Configuration for name server resource.
 description: Configuration for name server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,7 +45,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dnsprofilename:
-    type: raw
+    type: str
     description:
       - Name of the DNS profile to be associated with the name server
   dnsvservername:
@@ -52,7 +54,7 @@ options:
       - Name of a DNS virtual server. Overrides any IP address-based name servers
         configured on the Citrix ADC.
   ip:
-    type: raw
+    type: str
     description:
       - IP address of an external name server or, if the Local parameter is set, IP
         address of a local DNS server (LDNS).
@@ -67,7 +69,7 @@ options:
       - If no name server is marked as being local, the appliance functions as a stub
         resolver and load balances the name servers.
   type:
-    type: raw
+    type: str
     choices:
       - UDP
       - TCP
@@ -80,6 +82,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsnameserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsnameserver
+      delegate_to: localhost
+      netscaler.adc.dnsnameserver:
+        state: present
+        dnsvservername: LB_dnsv1
 """
 
 RETURN = r"""

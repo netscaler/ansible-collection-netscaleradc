@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnskey
 short_description: Configuration for dns key resource.
 description: Configuration for dns key resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,9 +51,21 @@ options:
       - RSASHA256
       - RSASHA512
     description:
-      - Algorithm to generate for zone signing.
+      - Algorithm to generate the key.
+  autorollover:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Flag to enable/disable key rollover automatically.
+      - 'Note:'
+      - '* Key name will be appended with _AR1 for successor key. For e.g. current
+        key=k1, successor key=k1_AR1.'
+      - '* Key name can be truncated if current name length is more than 58 bytes
+        to accomodate the suffix.'
   expires:
-    type: raw
+    type: int
     description:
       - Time period for which to consider the key valid, after the key is used to
         sign a zone.
@@ -64,11 +78,11 @@ options:
         prefix to produce the names of the public key, the private key, and the DS
         record, respectively.
   keyname:
-    type: raw
+    type: str
     description:
       - Name of the public-private key pair to publish in the zone.
   keysize:
-    type: float
+    type: int
     description:
       - Size of the key, in bits.
   keytype:
@@ -81,12 +95,14 @@ options:
     description:
       - Type of key to create.
   notificationperiod:
-    type: raw
+    type: int
     description:
-      - Time at which to generate notification of key expiration, specified as number
+      - 'Time at which to generate notification of key expiration, specified as number
         of days, hours, or minutes before expiry. Must be less than the expiry period.
         The notification is an SNMP trap sent to an SNMP manager. To enable the appliance
-        to send the trap, enable the DNSKEY-EXPIRY SNMP alarm.
+        to send the trap, enable the DNSKEY-EXPIRY SNMP alarm. '
+      - In case autorollover option is enabled, rollover for successor key will be
+        intiated at this time. No notification trap will be sent.
   password:
     type: str
     description:
@@ -99,6 +115,20 @@ options:
     type: str
     description:
       - File name of the public key.
+  revoke:
+    type: bool
+    description:
+      - 'Revoke the key. Note: This operation is non-reversible.'
+  rollovermethod:
+    type: str
+    choices:
+      - PrePublication
+      - DoubleSignature
+      - DoubleRRSet
+    description:
+      - Method used for automatic rollover.
+      - '* Key type: ZSK, Method: C(PrePublication) or C(DoubleSignature).'
+      - '* Key type: KSK, Method: C(DoubleRRSet).'
   src:
     type: str
     description:
@@ -107,14 +137,14 @@ options:
         HTTPS server that requires client certificate authentication for access. This
         is a mandatory argument'
   ttl:
-    type: raw
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the DNSKEY resource record created in
         the zone. TTL is the time for which the record must be cached by the DNS proxies.
         If the TTL is not specified, either the DNS zone's minimum TTL or the default
         value of 3600 is used.
   units1:
-    type: raw
+    type: str
     choices:
       - MINUTES
       - HOURS
@@ -122,7 +152,7 @@ options:
     description:
       - Units for the expiry period.
   units2:
-    type: raw
+    type: str
     choices:
       - MINUTES
       - HOURS
@@ -138,6 +168,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnskey playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnskey
+      delegate_to: localhost
+      netscaler.adc.dnskey:
+        state: present
+        keyname: com.ksk.4096
+        publickey: /nsconfig/dns/com.ksK.key
+        privatekey: /nsconfig/dns/com.ksK.private
 """
 
 RETURN = r"""

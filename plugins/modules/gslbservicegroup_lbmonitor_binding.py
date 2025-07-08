@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: gslbservicegroup_lbmonitor_binding
 short_description: Binding Resource definition for describing association between
   gslbservicegroup and lbmonitor resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between gslb
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   hashid:
-    type: float
+    type: int
     description:
       - Unique numerical identifier used by hash based load balancing methods to identify
         a service.
@@ -55,7 +57,7 @@ options:
     description:
       - Monitor state.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the gslb servicegroup member
   passive:
@@ -92,7 +94,7 @@ options:
         is unset. When implementing HTTP redirect site persistence, the Citrix ADC
         redirects GSLB requests to GSLB services by using their site domains.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

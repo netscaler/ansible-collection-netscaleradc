@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -65,6 +65,11 @@ class ModuleExecutor(object):
         argument_spec = dict()
         argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
+
+        if self.resource_name == "gslbservice":
+            self.valid_states.add("enabled")
+            self.valid_states.add("disabled")
+
         module_state_argument = dict(
             state=dict(
                 type="str",
@@ -133,6 +138,37 @@ class ModuleExecutor(object):
             self.module.params["api_path"] = "nitro/v2/config"
 
         self.client = NitroAPIClient(self.module, self.resource_name)
+        have_userpass = all([
+            self.module.params.get("nitro_user"),
+            self.module.params.get("nitro_pass")
+        ])
+        if have_userpass and not self.module.check_mode:
+            self.client._headers.pop("X-NITRO-USER", None)
+            self.client._headers.pop("X-NITRO-PASS", None)
+            self.client._headers.pop("Cookie", None)
+            ok, response = adc_login(
+                self.client,
+                self.module.params["nitro_user"],
+                self.module.params["nitro_pass"],
+            )
+            if not ok:
+                self.client._headers["Cookie"] = ""
+                self.return_failure("ERROR: Login failed: %s" % response)
+
+            else:
+                if self.netscaler_console_as_proxy_server:
+                    self.module.params["nitro_auth_token"] = response["login"][0].get("sessionid", None)
+                else:
+                    self.module.params["nitro_auth_token"] = response.get("sessionid", None)
+
+                if not self.module.params["nitro_auth_token"]:
+                    self.return_failure("ERROR: Login failed. No sessionid returned from the NetScaler ADC")
+                log("INFO: Login successful. Session ID: %s" % self.module.params["nitro_auth_token"])
+
+                self.client._headers["Cookie"] = (
+                    "NITRO_AUTH_TOKEN=%s" % self.module.params["nitro_auth_token"]
+                )
+
         self.ns_major_version, self.ns_minor_version = get_netscaler_version(
             self.client
         )
@@ -176,6 +212,13 @@ class ModuleExecutor(object):
             # }
         if self.resource_name == "login":
             self.module_result["sessionid"] = self.sessionid
+        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode:
+            ok, response = adc_logout(self.client)
+            if not ok:
+                log("ERROR: Logout failed: %s" % response)
+            else:
+                log("INFO: Logout successful")
+                self.client._headers["Cookie"] = ""
         self.module.exit_json(**self.module_result)
 
     @trace
@@ -199,6 +242,13 @@ class ModuleExecutor(object):
 
     @trace
     def return_failure(self, msg):
+        if self.client._headers["Cookie"] != "" and not self.module.check_mode:
+            ok, response = adc_logout(self.client)
+            if not ok:
+                log("ERROR: Logout failed: %s" % response)
+            else:
+                log("INFO: Logout successful")
+                self.client._headers["Cookie"] = ""
         self.module.fail_json(msg=msg, **self.module_result)
 
     @trace
@@ -356,20 +406,37 @@ class ModuleExecutor(object):
         if not self.module_result["diff_list"]:
             del self.module_result["diff_list"]
         if immutable_resource_module_params != []:
-            msg = (
-                "Cannot change value for the following non-updateable attributes %s"
-                % immutable_resource_module_params
-            )
-            self.return_failure(msg)
+            return (False, immutable_resource_module_params)
 
-        return False if diff_list else True
+        return (False, None) if diff_list else (True, None)
+
+    @trace
+    def install(self):
+        ok, err = create_resource(
+            self.client, self.resource_name, self.resource_module_params
+        )
+        if not ok:
+            self.return_failure(err)
 
     @trace
     def create_or_update(self):
+        desired_state = self.module.params["state"]
+        if (
+            desired_state == "present" and
+            self.resource_name.endswith("_binding") and
+            "state" in self.resource_module_params
+        ):
+            self.resource_module_params.pop("state")
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
         if not self.existing_resource and "add" in self.supported_operations:
+            if (
+                self.resource_name.endswith("_binding") and
+                desired_state in {"enabled", "disabled"}
+            ):
+                self.resource_module_params["state"] = desired_state.upper()
+
             self.module_result["changed"] = True
             log(
                 "INFO: Resource %s:%s does not exist. Will be CREATED."
@@ -406,6 +473,10 @@ class ModuleExecutor(object):
                     set(self.resource_module_params.keys())
                 )
             )
+            sitename = None
+            if self.resource_name == "gslbservice":
+                sitename = self.resource_module_params.get("sitename", None)
+                self.resource_module_params.pop("sitename", None)
 
             if is_module_params_contain_update_params:
                 log(
@@ -417,9 +488,17 @@ class ModuleExecutor(object):
                 )
                 if not ok:
                     self.return_failure(err)
+            if sitename:
+                self.resource_module_params["sitename"] = sitename
+
         else:
-            # Update only if resource is not identical (idempotent)
-            if self.is_resource_identical():
+            # Update process will go through 2 iterations of is_resource_identical
+            # 1. First iteration will check if the resource is identical. If not, it will give the list of non-updatable attributes that exists
+            # in the user playbook. If non-updatable attributes are present, it will remove them from the module_params and update the resource
+            # 2. Second iteration will check if the resource is identical. If not, it will update the resource after ignoring the
+            # non-updatable resources
+            is_identical, immutable_keys_list = self.is_resource_identical()
+            if is_identical:
                 log(
                     "INFO: Resource `%s:%s` exists and is identical. No change required."
                     % (
@@ -429,29 +508,95 @@ class ModuleExecutor(object):
                 )
             else:
                 self.module_result["changed"] = True
-                if self.resource_name.endswith("_binding"):
+                if self.resource_name == "systemfile":
+                    # Generally systemfile is not updated. It is removed and added again.
+                    log(
+                        "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
+                        % (self.resource_name, self.resource_id)
+                    )
+                    if self.resource_name == "systemfile":
+                        # If the systemfile is present, we will delete it and add it again
+                        self.delete()
+                        ok, err = create_resource(
+                            self.client, self.resource_name, self.resource_module_params
+                        )
+                        if not ok:
+                            self.return_failure(err)
+
+                elif self.resource_name.endswith("_binding"):
                     # Generally bindings are not updated. They are removed and added again.
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
                         % (self.resource_name, self.resource_id)
                     )
                     self.delete()
+                    if (
+                        self.module.params["state"] == "present" and
+                        any(x in self.supported_operations for x in ("enabled", "disabled"))
+                    ):
+                        # We want to keep the previous state of the binding
+                        self.resource_module_params["state"] = (
+                            self.existing_resource.get("state", "ENABLED").upper()
+                        )
                     ok, err = create_resource(
                         self.client, self.resource_name, self.resource_module_params
                     )
-                else:
+
+                elif immutable_keys_list is None:
+                    self.module_result["changed"] = True
                     log(
-                        "INFO: Resource %s:%s exists. Will be UPDATED."
-                        % (
-                            self.resource_name,
-                            self.resource_id,
-                        )
+                        "INFO: Resource %s:%s exists and is different. Will be UPDATED."
+                        % (self.resource_name, self.resource_id)
                     )
                     ok, err = update_resource(
                         self.client, self.resource_name, self.resource_module_params
                     )
-                if not ok:
-                    self.return_failure(err)
+                    if not ok:
+                        self.return_failure(err)
+                else:
+                    for key in immutable_keys_list:
+                        self.resource_module_params.pop(key)
+
+                    is_identical, temp_immutable_list = self.is_resource_identical()
+                    # temp_immutable_list is a dummy as '_' is not allowed in lint.
+                    if is_identical:
+                        msg = (
+                            f"Resource {self.resource_name}/{self.resource_id} not updated because user is trying to "
+                            f"update following non-updatable keys: {immutable_keys_list}"
+                        )
+                        self.module.warn(msg)
+                        log(msg)
+                        self.module_result["changed"] = False
+                        self.module.exit_json(**self.module_result)
+                    else:
+                        if (
+                            self.resource_name.endswith("_binding") and
+                            self.module.params["state"] in {"enabled", "disabled"}
+                        ):
+                            existing_state = self.existing_resource.get("state", "").upper()
+                            if existing_state != desired_state:
+                                # Create the resource in desired state
+                                self.module_result["changed"] = True
+                                self.delete()
+                                self.resource_module_params["state"] = desired_state
+                                ok, err = create_resource(
+                                    self.client, self.resource_name, self.resource_module_params
+                                )
+                                if not ok:
+                                    self.return_failure(err)
+                            return
+                        self.module_result["changed"] = True
+                        msg = (
+                            f"Resource {self.resource_name}/{self.resource_id} is updated after ignoring following "
+                            f"non-updatable keys: {immutable_keys_list}"
+                        )
+                        self.module.warn(msg)
+                        log(msg)
+                        ok, err = update_resource(
+                            self.client, self.resource_name, self.resource_module_params
+                        )
+                        if not ok:
+                            self.return_failure(err)
 
     @trace
     def enable_or_disable(self, desired_state):
@@ -460,16 +605,17 @@ class ModuleExecutor(object):
         )
         self.update_diff_list(custom_msg=not_implemented_msg)
         self.module_result["changed"] = True
-        if desired_state == "enabled":
-            ok, err = enable_resource(
-                self.client, self.resource_name, self.resource_module_params
-            )
-        else:
-            ok, err = disable_resource(
-                self.client, self.resource_name, self.resource_module_params
-            )
-        if not ok:
-            self.return_failure(err)
+        if not self.resource_name.endswith("_binding"):
+            if desired_state == "enabled":
+                ok, err = enable_resource(
+                    self.client, self.resource_name, self.resource_module_params
+                )
+            else:
+                ok, err = disable_resource(
+                    self.client, self.resource_name, self.resource_module_params
+                )
+            if not ok:
+                self.return_failure(err)
 
     @trace
     def delete(self):
@@ -672,7 +818,10 @@ class ModuleExecutor(object):
             if to_be_added_bindprimary_keys:
                 self.add_bindings(
                     binding_name=binding_name,
-                    desired_bindings=desired_binding_members,
+                    desired_bindings=[
+                        x for x in desired_binding_members
+                        if x[get_bindprimary_key(binding_name, x)] in to_be_added_bindprimary_keys
+                    ],
                 )
 
             # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
@@ -914,12 +1063,17 @@ class ModuleExecutor(object):
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
+            elif self.resource_name == "install" and self.module.params["state"] == "installed":
+                self.install()
+
             elif self.module.params["state"] in {
                 "created",
                 "imported",
                 "flushed",
                 "switched",
                 "unset",
+                "renamed",
+                "applied",
             }:
                 state_action_map = {
                     "created": "create",
@@ -927,6 +1081,8 @@ class ModuleExecutor(object):
                     "flushed": "flush",
                     "switched": "switch",
                     "unset": "unset",
+                    "renamed": "rename",
+                    "applied": "apply",
                 }
                 self.act_on_resource(
                     action=state_action_map[self.module.params["state"]]

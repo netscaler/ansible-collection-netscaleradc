@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslocspresponder
 short_description: Configuration for OCSP responser resource.
 description: Configuration for OCSP responser resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,19 +41,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   batchingdelay:
-    type: raw
+    type: int
     description:
       - Maximum time, in milliseconds, to wait to accumulate OCSP requests to batch.  Does
         not apply if the Batching Depth is 1.
   batchingdepth:
-    type: raw
+    type: int
     description:
       - Number of client certificates to batch together into one OCSP request. Batching
         avoids overloading the OCSP responder. A value of 1 signifies that each request
         is queried independently. For a value greater than 1, specify a timeout (batching
         delay) to avoid inordinately delaying the processing of a single certificate.
   cache:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -59,13 +61,13 @@ options:
       - Enable caching of responses. Caching of responses received from the OCSP responder
         enables faster responses to the clients and reduces the load on the OCSP responder.
   cachetimeout:
-    type: raw
+    type: int
     description:
       - Timeout for caching the OCSP response. After the timeout, the Citrix ADC sends
         a fresh request to the OCSP responder for the certificate status. If a timeout
         is not specified, the timeout provided in the OCSP response applies.
   httpmethod:
-    type: raw
+    type: str
     choices:
       - GET
       - POST
@@ -73,14 +75,14 @@ options:
       - HTTP method used to send ocsp request. C(POST) is the default httpmethod.
         If request length is > 255, C(POST) wil be used even if C(GET) is set as httpMethod
   insertclientcert:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Include the complete client certificate in the OCSP request.
   name:
-    type: raw
+    type: str
     description:
       - Name for the OCSP responder. Cannot begin with a hash (#) or space character
         and must contain only ASCII alphanumeric, underscore (_), hash (#), period
@@ -91,35 +93,35 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder" or 'my responder').
   ocspurlresolvetimeout:
-    type: raw
+    type: int
     description:
       - Time, in milliseconds, to wait for an OCSP URL Resolution. When this time
         elapses, an error message appears or the transaction is forwarded, depending
         on the settings on the virtual server.
   producedattimeskew:
-    type: raw
+    type: int
     description:
       - Time, in seconds, for which the Citrix ADC waits before considering the response
         as invalid. The response is considered invalid if the Produced At time stamp
         in the OCSP response exceeds or precedes the current Citrix ADC clock time
         by the amount of time specified.
   respondercert:
-    type: raw
+    type: str
     description:
       - '0'
   resptimeout:
-    type: raw
+    type: int
     description:
       - Time, in milliseconds, to wait for an OCSP response. When this time elapses,
         an error message appears or the transaction is forwarded, depending on the
         settings on the virtual server. Includes Batching Delay time.
   signingcert:
-    type: raw
+    type: str
     description:
       - Certificate-key pair that is used to sign OCSP requests. If this parameter
         is not set, the requests are not signed.
   trustresponder:
-    type: raw
+    type: bool
     description:
       - A certificate to use to validate OCSP responses.  Alternatively, if -trustResponder
         is specified, no verification will be done on the reponse.  If both are omitted,
@@ -129,7 +131,7 @@ options:
     description:
       - URL of the OCSP responder.
   usenonce:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -140,6 +142,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample sslocspresponder playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslocspresponder
+      delegate_to: localhost
+      netscaler.adc.sslocspresponder:
+        state: present
+        name: ocspresp5
+        url: http://2.2.2.7:80/
+        cache: ENABLED
+        cachetimeout: '100'
+        batchingdepth: '7'
+        batchingdelay: '500'
+        resptimeout: '4000'
+        respondercert: ssl_cert_ca5
+        producedattimeskew: '1000'
+        signingcert: ssl_cert_ca5
+        usenonce: 'NO'
 """
 
 RETURN = r"""

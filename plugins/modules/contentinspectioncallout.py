@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: contentinspectioncallout
 short_description: Configuration for Content Inspection callout resource.
 description: Configuration for Content Inspection callout resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,11 +41,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this Content Inspection callout.
   name:
-    type: raw
+    type: str
     description:
       - Name for the Content Inspection callout. Not case sensitive. Must begin with
         an ASCII letter or underscore (_) character, and must consist only of ASCII
@@ -90,7 +92,7 @@ options:
         server IP address and port parameters. The service type must be TCP or SSL_TCP.
         If there are vservers and services with the same name, then vserver is selected.
   serverport:
-    type: raw
+    type: int
     description:
       - Port of the Content Inspection server.
   type:

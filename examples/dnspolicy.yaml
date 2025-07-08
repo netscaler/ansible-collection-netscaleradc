@@ -1,0 +1,12 @@
+---
+- name: Sample dnspolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnspolicy
+      delegate_to: localhost
+      netscaler.adc.dnspolicy:
+        state: present
+        name: test5
+        rule: dns.length.GT(1)
+        actionname: dns_default_act_Drop

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsnpool_lsnip_binding
 short_description: Binding Resource definition for describing association between
   lsnpool and lsnip resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lsnp
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -54,7 +56,7 @@ options:
       - By default , arp is enabled on LSN IP address but, you can disable it using
         command - "set ns ip"
   ownernode:
-    type: float
+    type: int
     description:
       - ID(s) of cluster node(s) on which command is to be executed
   poolname:
@@ -72,6 +74,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsnpool_lsnip_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnpool_lsnip_binding
+      delegate_to: localhost
+      netscaler.adc.lsnpool_lsnip_binding:
+        state: present
+        poolname: pool4
+        lsnip: 45.1.1.1-45.1.1.10
 """
 
 RETURN = r"""

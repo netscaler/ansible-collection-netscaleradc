@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnicaconnection
 short_description: Configuration for active ica connections resource.
 description: Configuration for active ica connections resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices: []
@@ -36,7 +38,7 @@ options:
     description:
       - Terminate all active icaconnections.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   transproto:
@@ -49,7 +51,7 @@ options:
   username:
     type: str
     description:
-      - User name for which to display connections.
+      - User name for which ica connections needs to be terminated.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

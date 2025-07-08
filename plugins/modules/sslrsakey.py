@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslrsakey
 short_description: Configuration for RSA key resource.
 description: Configuration for RSA key resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,7 +40,7 @@ options:
     description:
       - Encrypt the generated RSA key by using the AES algorithm.
   bits:
-    type: float
+    type: int
     description:
       - Size, in bits, of the RSA key.
   des:
@@ -86,14 +88,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Create ssl rsakey intermediate_cert
-  delegate_to: localhost
-  netscaler.adc.sslrsakey:
-    state: created
-    keyfile: certname.key
-    bits: 2048
-    exponent: F4
-    keyform: PEM
+---
+- name: Sample sslrsakey playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslrsakey
+      delegate_to: localhost
+      netscaler.adc.sslrsakey:
+        state: present
+        keyfile: ssl_rsa_der_key
+        bits: '2048'
+        exponent: '3'
+        keyform: DER
 """
 
 RETURN = r"""

@@ -1,0 +1,11 @@
+---
+- name: Sample appqoeaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appqoeaction
+      delegate_to: localhost
+      netscaler.adc.appqoeaction:
+        state: present
+        name: appact22_ns
+        priority: MEDIUM

@@ -1,0 +1,14 @@
+---
+- name: Sample vpnvserver_cachepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_cachepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_cachepolicy_binding:
+        state: present
+        name: CitrixAccessCallback
+        policy: _noCacheRest
+        priority: '20'
+        gotopriorityexpression: END
+        bindpoint: RESPONSE

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationloginschema
 short_description: Configuration for 0 resource.
 description: Configuration for 0 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,11 +51,11 @@ options:
         Please note that this applies only to loginSchemas that are used with user-defined
         factors, and not the vserver factor.
   authenticationstrength:
-    type: raw
+    type: int
     description:
       - Weight of the current authentication
   name:
-    type: raw
+    type: str
     description:
       - Name for the new login schema. Login schema defines the way login form is
         rendered. It provides a way to customize the fields that are shown to the
@@ -66,16 +68,16 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   passwdexpression:
-    type: raw
+    type: str
     description:
       - Expression for password extraction during login. This can be any relevant
         advanced policy expression.
   passwordcredentialindex:
-    type: raw
+    type: int
     description:
       - The index at which user entered password should be stored in session.
   ssocredentials:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -83,11 +85,11 @@ options:
       - This option indicates whether current factor credentials are the default SSO
         (SingleSignOn) credentials.
   usercredentialindex:
-    type: raw
+    type: int
     description:
       - The index at which user entered username should be stored in session.
   userexpression:
-    type: raw
+    type: str
     description:
       - Expression for username extraction during login. This can be any relevant
         advanced policy expression.
@@ -96,6 +98,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationloginschema playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationloginschema
+      delegate_to: localhost
+      netscaler.adc.authenticationloginschema:
+        state: present
+        name: single_auth
+        authenticationschema: /nsconfig/loginschema/LoginSchema/SingleAuth.xml
 """
 
 RETURN = r"""

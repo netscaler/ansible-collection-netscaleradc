@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationoauthidpprofile
 short_description: Configuration for OAuth Identity Provider (IdP) profile resource.
 description: Configuration for OAuth Identity Provider (IdP) profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   attributes:
-    type: raw
+    type: str
     description:
       - Name-Value pairs of attributes to be inserted in idtoken. Configuration format
         is name=value_expr@@@name2=value2_expr@@@.
@@ -48,7 +50,7 @@ options:
       - Value is advanced policy expression terminated by @@@ delimiter. Last value
         need not contain the delimiter.
   audience:
-    type: raw
+    type: str
     description:
       - Audience for which token is being sent by Citrix ADC IdP. This is typically
         entity name or url that represents the recipient
@@ -61,31 +63,31 @@ options:
     description:
       - Unique secret string to authorize relying party at authorization server.
   configservice:
-    type: raw
+    type: str
     description:
       - Name of the entity that is used to obtain configuration for the current authentication
         request. It is used only in Citrix Cloud.
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This group will be part of AAA session's internal group list. This will be
         helpful to admin in Nfactor flow to decide right AAA configuration for Relaying
         Party. In authentication policy AAA.USER.IS_MEMBER_OF("<default_auth_group>")  is
         way to use this feature.
   encrypttoken:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to encrypt token when Citrix ADC IDP sends one.
   issuer:
-    type: raw
+    type: str
     description:
       - "The name to be used in requests sent from\tCitrix ADC to IdP to uniquely\
         \ identify Citrix ADC."
   name:
-    type: raw
+    type: str
     description:
       - Name for the new OAuth Identity Provider (IdP) single sign-on profile. Must
         begin with an ASCII alphanumeric or underscore (_) character, and must contain
@@ -101,36 +103,36 @@ options:
     description:
       - URL endpoint on relying party to which the OAuth token is to be sent.
   refreshinterval:
-    type: raw
+    type: int
     description:
       - Interval at which Relying Party metadata is refreshed.
   relyingpartymetadataurl:
-    type: raw
+    type: str
     description:
       - This is the endpoint at which Citrix ADC IdP can get details about Relying
         Party (RP) being configured. Metadata response should include endpoints for
         jwks_uri for RP public key(s).
   sendpassword:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to send encrypted password in idtoken.
   signaturealg:
-    type: raw
+    type: str
     choices:
       - RS256
       - RS512
     description:
       - Algorithm to be used to sign OpenID tokens.
   signatureservice:
-    type: raw
+    type: str
     description:
       - Name of the service in cloud used to sign the data. This is applicable only
         if signature if offloaded to cloud.
   skewtime:
-    type: raw
+    type: int
     description:
       - This option specifies the duration for which the token sent by Citrix ADC
         IdP is valid. For example, if skewTime is 10, then token would be valid from
@@ -140,6 +142,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationoauthidpprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationoauthidpprofile
+      delegate_to: localhost
+      netscaler.adc.authenticationoauthidpprofile:
+        state: present
+        name: OAuthIDPProfileIDP
+        relyingpartymetadataurl: https://10.221.136.42/oauth/idp/.well-known/openid-configuration
 """
 
 RETURN = r"""

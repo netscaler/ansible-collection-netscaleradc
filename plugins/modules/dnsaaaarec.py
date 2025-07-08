@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsaaaarec
 short_description: Configuration for IPv6 address type record resource.
 description: Configuration for IPv6 address type record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -49,11 +51,11 @@ options:
     description:
       - One or more IPv6 addresses to assign to the domain name.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -79,6 +81,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsaaaarec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsaaaarec
+      delegate_to: localhost
+      netscaler.adc.dnsaaaarec:
+        state: present
+        hostname: n2.com
+        ipv6address:
+          - 2001::45
+        ttl: 3601
 """
 
 RETURN = r"""

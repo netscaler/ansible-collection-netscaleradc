@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policydataset_value_binding
 short_description: Binding Resource definition for describing association between
   policydataset and value resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between poli
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -50,7 +52,7 @@ options:
         endRange cannot be used if value is an ipv4 or ipv6 subnet and endRange cannot
         itself be a subnet.
   index:
-    type: float
+    type: int
     description:
       - The index of the value (ipv4, ipv6, number) associated with the set.
   name:
@@ -71,6 +73,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policydataset_value_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policydataset_value_binding
+      delegate_to: localhost
+      netscaler.adc.policydataset_value_binding:
+        state: present
+        name: SF_LBVIP
+        value: 10.76.126.10
+        index: '2'
 """
 
 RETURN = r"""

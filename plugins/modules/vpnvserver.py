@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnvserver
 short_description: Configuration for VPN virtual server resource.
 description: Configuration for VPN virtual server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -31,6 +33,7 @@ options:
       - enabled
       - disabled
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -41,16 +44,28 @@ options:
       - When C(enabled), the resource will be enabled on the NetScaler ADC node.
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
     type: str
+  accessrestrictedpageredirect:
+    type: str
+    choices:
+      - CDN
+      - NS
+      - 'OFF'
+    description:
+      - By default, an access restricted page hosted on secure private access C(CDN)
+        is displayed when a restricted app is accessed. The setting can be changed
+        to C(NS) to display the access restricted page hosted on the gateway or C(OFF)
+        to not display any access restricted page.
   advancedepa:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This option tells whether advanced EPA is enabled on this virtual server
   appflowlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -61,24 +76,24 @@ options:
         HTTP web addresses, HTTP request methods and response status codes, server
         response time, and latency.
   authentication:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Require authentication for users connecting to Citrix Gateway.
   authnprofile:
-    type: raw
+    type: str
     description:
       - Authentication Profile entity on virtual server. This entity can be used to
         offload authentication to AAA vserver for multi-factor(nFactor) authentication
   certkeynames:
-    type: raw
+    type: str
     description:
       - Name of the certificate key that was bound to the corresponding SSL virtual
         server as the Certificate Authority for the device certificate
   cginfrahomepageredirect:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -88,7 +103,7 @@ options:
         takes the user to the originally requested ShareFile resource after authentication
         (instead of taking the user to the default VPN home page)
   comment:
-    type: raw
+    type: str
     description:
       - Any comments associated with the virtual server.
   deploymenttype:
@@ -101,14 +116,21 @@ options:
     description:
       - '0'
   devicecert:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Indicates whether device certificate check as a part of EPA is on or off.
+  deviceposture:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable device posture
   doublehop:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -118,7 +140,7 @@ options:
         using three firewalls to divide the DMZ into two stages. Such a deployment
         can have one appliance in the DMZ and one appliance in the secure network.
   downstateflush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -130,23 +152,23 @@ options:
         be closed when they are marked DOWN.  Do not enable DOWN state flush on servers
         that must complete their transactions.
   dtls:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This option starts/stops the turn service on the vserver
   failedlogintimeout:
-    type: float
+    type: int
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
   httpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the HTTP profile to assign to this virtual server.
   icaonly:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -166,7 +188,7 @@ options:
         CVPN. Number of users that can log in and access the resources are limited
         by the CCU licenses in this mode.'
   icaproxysessionmigration:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -174,7 +196,7 @@ options:
       - This option determines if an existing ICA Proxy session is transferred when
         the user logs on from another device.
   icmpvsrresponse:
-    type: raw
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -184,7 +206,7 @@ options:
         available. With the C(PASSIVE) setting, respond even if the virtual server
         is not available.
   ipset:
-    type: raw
+    type: str
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
         service on the current vpn vserver
@@ -194,7 +216,7 @@ options:
       - IPv4 or IPv6 address of the Citrix Gateway virtual server. Usually a public
         IP address. User devices send connection requests to this IP address.
   l2conn:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -204,7 +226,7 @@ options:
         that is used to identify a connection. Allows multiple TCP and non-TCP connections
         with the same 4-tuple to coexist on the Citrix ADC.
   linuxepapluginupgrade:
-    type: raw
+    type: str
     choices:
       - Always
       - Essential
@@ -212,34 +234,34 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Linux
   listenpolicy:
-    type: raw
+    type: str
     description:
       - String specifying the listen policy for the Citrix Gateway virtual server.
         Can be either a named expression or an expression. The Citrix Gateway virtual
         server processes only the traffic for which the expression evaluates to true.
   listenpriority:
-    type: raw
+    type: int
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
         virtual server, the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
   loginonce:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This option enables/disables seamless SSO for this Vserver.
   logoutonsmartcardremoval:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to VPN plugin behavior when smartcard or its reader is removed
   macepapluginupgrade:
-    type: raw
+    type: str
     choices:
       - Always
       - Essential
@@ -247,17 +269,17 @@ options:
     description:
       - Option to set plugin upgrade behaviour for Mac
   maxaaausers:
-    type: raw
+    type: int
     description:
       - Maximum number of concurrent user sessions allowed on this virtual server.
         The actual number of users allowed to log on to this virtual server depends
         on the total number of user licenses.
   maxloginattempts:
-    type: raw
+    type: int
     description:
       - Maximum number of logon attempts
   name:
-    type: raw
+    type: str
     description:
       - Name for the Citrix Gateway virtual server. Must begin with an ASCII alphabetic
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -268,7 +290,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my server" or 'my server').
   netprofile:
-    type: raw
+    type: str
     description:
       - The name of the network profile.
   newname:
@@ -283,26 +305,30 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my server" or 'my server').
   pcoipvserverprofilename:
-    type: raw
+    type: str
     description:
       - Name of the PCoIP vserver profile associated with the vserver.
   port:
     type: int
     description:
       - TCP port on which the virtual server listens.
+  quicprofilename:
+    type: str
+    description:
+      - Name of the QUIC profile to assign to this virtual server.
   range:
-    type: float
+    type: int
     description:
       - Range of Citrix Gateway virtual server IP addresses. The consecutively numbered
         range of IP addresses begins with the address specified by the IP Address
         parameter.
       - In the configuration utility, select Network VServer to enter a range.
   rdpserverprofilename:
-    type: raw
+    type: str
     description:
       - Name of the RDP server profile associated with the vserver.
   rhistate:
-    type: raw
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -316,7 +342,7 @@ options:
         on the others, the appliance injects even if one virtual server set to C(ACTIVE)
         is UP.'
   samesite:
-    type: raw
+    type: str
     choices:
       - None
       - LAX
@@ -325,28 +351,36 @@ options:
       - SameSite attribute value for Cookies generated in VPN context. This attribute
         value will be appended only for the cookies which are specified in the builtin
         patset ns_cookies_samesite
+  secureprivateaccess:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Configure secure private access
   servicetype:
     type: str
     choices:
       - SSL
       - DTLS
+      - HTTP_QUIC
     description:
       - Protocol used by the Citrix Gateway virtual server.
   tcpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the TCP profile to assign to this virtual server.
   userdomains:
-    type: raw
+    type: str
     description:
       - List of user domains specified as comma seperated value
   vserverfqdn:
-    type: raw
+    type: str
     description:
       - Fully qualified domain name for a VPN virtual server. This is used during
         StoreFront configuration generation.
   windowsepapluginupgrade:
-    type: raw
+    type: str
     choices:
       - Always
       - Essential
@@ -431,6 +465,31 @@ options:
   vpnvserver_appflowpolicy_binding:
     type: dict
     description: Bindings for vpnvserver_appflowpolicy_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_appfwpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_appfwpolicy_binding resource
     suboptions:
       mode:
         type: str
@@ -1028,6 +1087,31 @@ options:
         elements: dict
         description: List of binding members
         default: []
+  vpnvserver_secureprivateaccessurl_binding:
+    type: dict
+    description: Bindings for vpnvserver_secureprivateaccessurl_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
   vpnvserver_sharefileserver_binding:
     type: dict
     description: Bindings for vpnvserver_sharefileserver_binding resource
@@ -1333,6 +1417,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnvserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver
+      delegate_to: localhost
+      netscaler.adc.vpnvserver:
+        state: present
+        name: test
+        logoutonsmartcardremoval: 'OFF'
 """
 
 RETURN = r"""

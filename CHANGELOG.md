@@ -7,6 +7,56 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.9.2] - 2025-06-25
+
+### Fixed 
+
+- Refactored logic to handle systemfile updation
+
+## [2.9.1] - 2025-05-26
+
+### Fixed
+
+- Supported enable and disable states to service group member bindings
+- Corrected datatype issues to resolve idempotency errors 
+- Refactored README to align to Red Hat guidelines
+
+## [2.9.0] - 2025-05-13
+
+### Added
+
+- Supported operation `apply`
+- Supported operation `rename`
+- Supported operation `install`([#487])
+
+### Fixed
+
+- Allowing system file to update contents([#496])
+
+## [2.8.0] - 2025-02-18
+
+### Added
+
+- Supported enable/disable for GSLB service operations([#452])
+
+### Fixed
+
+- server module idempotency issue in 2.7.0([#485])
+- Handling non-updatable attributes while updating a resource([#486])
+
+## [2.7.0] - 2025-01-02
+
+### Added
+
+- Supported more modules
+- Added more examples
+
+## [2.6.2] - 2024-10-18
+
+### Fixed
+
+- Ensure to_be_added_bindprimary_keys targets only the correct binding members ([#462])
+
 ## [2.6.1] - 2024-04-29
 
 ### Fixed
@@ -127,8 +177,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial Release
-
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.1...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.2...HEAD
+[2.9.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.1...2.9.2
+[2.9.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.0...2.9.1
+[2.9.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.8.0...2.9.0
+[2.8.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.7.0...2.8.0
+[2.7.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.2...2.7.0
+[2.6.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.1...2.6.2
 [2.6.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.6.0...2.6.1
 [2.6.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.2...2.6.0
 [2.5.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.1...2.5.2
@@ -169,3 +224,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#367]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/367
 [#377]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/377
 [#400]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/400
+[#462]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/462

@@ -1,0 +1,9 @@
+---
+- name: Sample vpnpcoipprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnpcoipprofile
+      delegate_to: localhost
+      netscaler.adc.vpnpcoipprofile:
+        state: present

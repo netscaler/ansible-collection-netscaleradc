@@ -1,0 +1,11 @@
+---
+- name: Sample icaaccessprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure icaaccessprofile
+      delegate_to: localhost
+      netscaler.adc.icaaccessprofile:
+        state: present
+        name: ipr
+        clientclipboardredirection: DEFAULT

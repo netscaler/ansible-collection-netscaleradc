@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaauser_intranetip6_binding
 short_description: Binding Resource definition for describing association between
   aaauser and intranetip6 resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between aaau
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -73,7 +75,7 @@ options:
     description:
       - The Intranet IP6 bound to the user
   numaddr:
-    type: float
+    type: int
     description:
       - Numbers of ipv6 address bound starting with intranetip6
   username:

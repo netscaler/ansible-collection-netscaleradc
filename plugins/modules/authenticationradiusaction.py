@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationradiusaction
 short_description: Configuration for RADIUS action resource.
 description: Configuration for RADIUS action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,30 +41,30 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   accounting:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Whether the RADIUS server is currently accepting accounting messages.
   authentication:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
   authservretry:
-    type: raw
+    type: int
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
         server.
   authtimeout:
-    type: raw
+    type: int
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
   callingstationid:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -70,21 +72,29 @@ options:
       - Send Calling-Station-ID of the client to the RADIUS server. IP Address of
         the client is sent as its Calling-Station-ID.
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   ipattributetype:
-    type: raw
+    type: int
     description:
       - Remote IP address attribute type in a RADIUS response.
   ipvendorid:
-    type: raw
+    type: int
     description:
       - Vendor ID of the intranet IP attribute in the RADIUS response.
       - 'NOTE: A value of 0 indicates that the attribute is not vendor encoded.'
+  messageauthenticator:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Control whether the Message-Authenticator attribute is included in a RADIUS
+        Access-Request packet.
   name:
-    type: raw
+    type: str
     description:
       - Name for the RADIUS action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -92,7 +102,7 @@ options:
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
         after the RADIUS action is added.
   passencoding:
-    type: raw
+    type: str
     choices:
       - pap
       - chap
@@ -102,26 +112,26 @@ options:
       - Encoding type for passwords in RADIUS packets that the Citrix ADC sends to
         the RADIUS server.
   pwdattributetype:
-    type: raw
+    type: int
     description:
       - Vendor-specific password attribute type in a RADIUS response.
   pwdvendorid:
-    type: raw
+    type: int
     description:
       - Vendor ID of the attribute, in the RADIUS response, used to extract the user
         password.
   radattributetype:
-    type: raw
+    type: int
     description:
       - RADIUS attribute type, used for RADIUS group extraction.
   radgroupseparator:
-    type: raw
+    type: str
     description:
       - RADIUS group separator string
       - The group separator delimits group names within a RADIUS attribute for RADIUS
         group extraction.
   radgroupsprefix:
-    type: raw
+    type: str
     description:
       - RADIUS groups prefix string.
       - This groups prefix precedes the group names within a RADIUS attribute for
@@ -132,12 +142,12 @@ options:
       - Key shared between the RADIUS server and the Citrix ADC.
       - Required to allow the Citrix ADC to communicate with the RADIUS server.
   radnasid:
-    type: raw
+    type: str
     description:
       - If configured, this string is sent to the RADIUS server as the Network Access
         Server ID (NASID).
   radnasip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -146,7 +156,7 @@ options:
         as the  Network Access Server IP (NASIP) address.
       - The RADIUS protocol defines the meaning and use of the NASIP address.
   radvendorid:
-    type: raw
+    type: int
     description:
       - RADIUS vendor ID attribute, used for RADIUS group extraction.
   serverip:
@@ -158,16 +168,16 @@ options:
     description:
       - RADIUS server name as a FQDN.  Mutually exclusive with RADIUS IP address.
   serverport:
-    type: raw
+    type: int
     description:
       - Port number on which the RADIUS server listens for connections.
   targetlbvserver:
-    type: raw
+    type: str
     description:
       - If transport mode is TLS, specify the name of LB vserver to associate. The
         LB vserver needs to be of type TCP and service associated needs to be SSL_TCP
   transport:
-    type: raw
+    type: str
     choices:
       - UDP
       - TCP
@@ -175,7 +185,7 @@ options:
     description:
       - Transport mode to RADIUS server.
   tunnelendpointclientip:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -186,6 +196,25 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationradiusaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationradiusaction
+      delegate_to: localhost
+      netscaler.adc.authenticationradiusaction:
+        state: present
+        name: RADIUS_10.102.222.187
+        serverip: 10.102.222.187
+        serverport: 1812
+        authtimeout: '3'
+        radkey: freebsd
+        radnasip: DISABLED
+        passencoding: pap
+        ipvendorid: '0'
+        accounting: 'ON'
+        callingstationid: DISABLED
 """
 
 RETURN = r"""

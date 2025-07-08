@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbmonitor
 short_description: Configuration for monitor resource.
 description: Configuration for monitor resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -43,17 +45,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   snmpoid:
-    type: raw
+    type: str
     description:
       - SNMP OID for SNMP monitors.
   acctapplicationid:
-    type: raw
+    type: list
     description:
       - List of Acct-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request
         (CER) message to use for monitoring Diameter servers. A maximum of eight of
         these AVPs are supported in a monitoring message.
+    elements: int
   action:
-    type: raw
+    type: str
     choices:
       - NONE
       - LOG
@@ -74,7 +77,7 @@ options:
         to the service are terminated as soon as the service is marked as C(DOWN).
         Also, log the event in NSLOG or SYSLOG.'
   alertretries:
-    type: raw
+    type: int
     description:
       - Number of consecutive probe failures after which the appliance generates an
         SNMP trap called monProbeFailed.
@@ -84,44 +87,45 @@ options:
       - Name of the application used to determine the state of the service. Applicable
         to monitors of type CITRIX-XML-SERVICE.
   attribute:
-    type: raw
+    type: str
     description:
       - Attribute to evaluate when the LDAP server responds to the query. Success
         or failure of the monitoring probe depends on whether the attribute exists
         in the response. Optional.
   authapplicationid:
-    type: raw
+    type: list
     description:
       - List of Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request
         (CER) message to use for monitoring Diameter servers. A maximum of eight of
         these AVPs are supported in a monitoring CER message.
+    elements: int
   basedn:
-    type: raw
+    type: str
     description:
       - The base distinguished name of the LDAP service, from where the LDAP server
         can begin the search for the attributes in the monitoring query. Required
         for LDAP service monitoring.
   binddn:
-    type: raw
+    type: str
     description:
       - The distinguished name with which an LDAP monitor can perform the Bind operation
         on the LDAP server. Optional. Applicable to LDAP monitors.
   customheaders:
-    type: raw
+    type: str
     description:
       - Custom header string to include in the monitoring probes.
   database:
-    type: raw
+    type: str
     description:
       - Name of the database to connect to during authentication.
   destip:
-    type: raw
+    type: str
     description:
       - IP address of the service to which to send probes. If the parameter is set
         to 0, the IP address of the server to which the monitor is bound is considered
         the destination IP address.
   destport:
-    type: raw
+    type: int
     description:
       - TCP or UDP port to which to send the probe. If the parameter is set to 0,
         the port number of the service to which the monitor is bound is considered
@@ -129,7 +133,7 @@ options:
         port is the port number that is included in the HTTP request sent to the dispatcher.
         Does not apply to monitors of type PING.
   deviation:
-    type: raw
+    type: int
     description:
       - Time value added to the learned average response time in dynamic response
         time monitoring (DRTM). When a deviation is specified, the appliance learns
@@ -137,21 +141,21 @@ options:
         average. The final value is then continually adjusted to accommodate response
         time variations over time. Specified in milliseconds, seconds, or minutes.
   dispatcherip:
-    type: raw
+    type: str
     description:
       - IP address of the dispatcher to which to send the probe.
   dispatcherport:
-    type: raw
+    type: int
     description:
       - Port number on which the dispatcher listens for the monitoring probe.
   domain:
-    type: raw
+    type: str
     description:
       - Domain in which the XenDesktop Desktop Delivery Controller (DDC) servers or
         Web Interface servers are present. Required by CITRIX-XD-DDC and CITRIX-WI-EXTENDED
         monitors for logging on to the DDC servers and Web Interface servers, respectively.
   downtime:
-    type: raw
+    type: int
     description:
       - Time duration for which to wait before probing a service that has been marked
         as DOWN. Expressed in milliseconds, seconds, or minutes.
@@ -164,7 +168,7 @@ options:
       - For example, if you want the appliance to evaluate the error message to determine
         the state of the server, use the rule MYSQL.RES.ROW(10) .TEXT_ELEM(2).EQ("MySQL").
   failureretries:
-    type: raw
+    type: int
     description:
       - Number of retries that must fail, out of the number specified for the Retries
         parameter, for a service to be marked as DOWN. For example, if the Retries
@@ -173,22 +177,22 @@ options:
         be marked as DOWN. The default value of 0 means that all the retries must
         fail if the service is to be marked as DOWN.
   filename:
-    type: raw
+    type: str
     description:
       - Name of a file on the FTP server. The appliance monitors the FTP service by
         periodically checking the existence of the file on the server. Applicable
         to FTP-EXTENDED monitors.
   filter:
-    type: raw
+    type: str
     description:
       - Filter criteria for the LDAP query. Optional.
   firmwarerevision:
-    type: raw
+    type: int
     description:
       - Firmware-Revision value for the Capabilities-Exchange-Request (CER) message
         to use for monitoring Diameter servers.
   group:
-    type: raw
+    type: str
     description:
       - Name of a newsgroup available on the NNTP service that is to be monitored.
         The appliance periodically generates an NNTP query for the name of the newsgroup
@@ -196,25 +200,26 @@ options:
         is marked as UP. If the newsgroup does not exist or if the search fails, the
         service is marked as DOWN. Applicable to NNTP monitors.
   grpchealthcheck:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Option to enable or disable gRPC health check service.
   grpcservicename:
-    type: raw
+    type: str
     description:
       - Option to specify gRPC service name on which gRPC health check need to be
         performed
   grpcstatuscode:
-    type: raw
+    type: list
     description:
       - gRPC status codes for which to mark the service as UP. The default value is
         12(health check unimplemented). If the gRPC status code 0 is received from
         the backend this configuration is ignored.
+    elements: int
   hostipaddress:
-    type: raw
+    type: str
     description:
       - Host-IP-Address value for the Capabilities-Exchange-Request (CER) message
         to use for monitoring Diameter servers. If Host-IP-Address is not specified,
@@ -226,11 +231,11 @@ options:
       - 'Hostname in the FQDN format (Example: porche.cars.org). Applicable to STOREFRONT
         monitors.'
   httprequest:
-    type: raw
+    type: str
     description:
       - HTTP request to send to the server (for example, "HEAD /file.html").
   inbandsecurityid:
-    type: raw
+    type: str
     choices:
       - NO_INBAND_SECURITY
       - TLS
@@ -238,17 +243,18 @@ options:
       - Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to
         use for monitoring Diameter servers.
   interval:
-    type: raw
+    type: int
     description:
       - Time interval between two successive probes. Must be greater than the value
         of Response Time-out.
   ipaddress:
-    type: raw
+    type: list
     description:
       - Set of IP addresses expected in the monitoring response from the DNS server,
         if the record type is A or AAAA. Applicable to DNS monitors.
+    elements: str
   iptunnel:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -256,23 +262,23 @@ options:
       - Send the monitoring probe to the service through an IP tunnel. A destination
         IP address must be specified.
   kcdaccount:
-    type: raw
+    type: str
     description:
       - KCD Account used by MSSQL monitor
   lasversion:
-    type: raw
+    type: str
     description:
       - Version number of the Citrix Advanced Access Control Logon Agent. Required
         by the CITRIX-AAC-LAS monitor.
   logonpointname:
-    type: raw
+    type: str
     description:
       - Name of the logon point that is configured for the Citrix Access Gateway Advanced
         Access Control software. Required if you want to monitor the associated login
         page or Logon Agent. Applicable to CITRIX-AAC-LAS and CITRIX-AAC-LOGINPAGE
         monitors.
   lrtm:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -281,7 +287,7 @@ options:
         not enabled, the appliance does not learn the response times of the bound
         services. Also used for LRTM load balancing.
   maxforwards:
-    type: raw
+    type: int
     description:
       - Maximum number of hops that the SIP request used for monitoring can traverse
         to reach the server. Applicable only to monitors of type SIP-UDP.
@@ -291,19 +297,19 @@ options:
       - Metric name in the metric table, whose setting is changed. A value zero disables
         the metric and it will not be used for load calculation
   metrictable:
-    type: raw
+    type: str
     description:
       - Metric table to which to bind metrics.
   metricthreshold:
-    type: float
+    type: int
     description:
       - Threshold to be used for that metric.
   metricweight:
-    type: float
+    type: int
     description:
       - The weight for the specified service metric with respect to others.
   monitorname:
-    type: raw
+    type: str
     description:
       - Name for the monitor. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -312,65 +318,65 @@ options:
       - 'CLI Users:  If the name includes one or more spaces, enclose the name in
         double or single quotation marks (for example, "my monitor" or ''my monitor'').'
   mqttclientidentifier:
-    type: raw
+    type: str
     description:
       - Client id to be used in Connect command
   mqttversion:
-    type: raw
+    type: int
     description:
       - Version of MQTT protocol used in connect message, default is version 3.1.1
         [4]
   mssqlprotocolversion:
-    type: raw
+    type: str
     choices:
-      - 70
-      - 2000
+      - '70'
+      - '2000'
       - 2000SP1
-      - 2005
-      - 2008
+      - '2005'
+      - '2008'
       - 2008R2
-      - 2012
-      - 2014
+      - '2012'
+      - '2014'
     description:
       - Version of MSSQL server that is to be monitored.
   netprofile:
-    type: raw
+    type: str
     description:
       - Name of the network profile.
   oraclesid:
-    type: raw
+    type: str
     description:
       - Name of the service identifier that is used to connect to the Oracle database
         during authentication.
   originhost:
-    type: raw
+    type: str
     description:
       - Origin-Host value for the Capabilities-Exchange-Request (CER) message to use
         for monitoring Diameter servers.
   originrealm:
-    type: raw
+    type: str
     description:
       - Origin-Realm value for the Capabilities-Exchange-Request (CER) message to
         use for monitoring Diameter servers.
   password:
-    type: raw
+    type: str
     description:
       - Password that is required for logging on to the RADIUS, NNTP, FTP, FTP-EXTENDED,
         MYSQL, MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC, CITRIX-WI-EXTENDED, CITRIX-XNC-ECV
         or CITRIX-XDM server. Used in conjunction with the user name specified for
         the User Name parameter.
   productname:
-    type: raw
+    type: str
     description:
       - Product-Name value for the Capabilities-Exchange-Request (CER) message to
         use for monitoring Diameter servers.
   query:
-    type: raw
+    type: str
     description:
       - Domain name to resolve as part of monitoring the DNS service (for example,
         example.com).
   querytype:
-    type: raw
+    type: str
     choices:
       - Address
       - Zone
@@ -380,59 +386,60 @@ options:
         for querying A records, C(AAAA) for querying C(AAAA) records, and C(Zone)
         for querying the SOA record.
   radaccountsession:
-    type: raw
+    type: str
     description:
       - Account Session ID to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
   radaccounttype:
-    type: raw
+    type: int
     description:
       - Account Type to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
   radapn:
-    type: raw
+    type: str
     description:
       - Called Station Id to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
   radframedip:
-    type: raw
+    type: str
     description:
       - Source ip with which the packet will go out . Applicable to monitors of type
         RADIUS_ACCOUNTING.
   radkey:
-    type: raw
+    type: str
     description:
       - Authentication key (shared secret text string) for RADIUS clients and servers
         to exchange. Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.
   radmsisdn:
-    type: raw
+    type: str
     description:
       - Calling Stations Id to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
   radnasid:
-    type: raw
+    type: str
     description:
       - NAS-Identifier to send in the Access-Request packet. Applicable to monitors
         of type RADIUS.
   radnasip:
-    type: raw
+    type: str
     description:
       - Network Access Server (NAS) IP address to use as the source IP address when
         monitoring a RADIUS server. Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.
   recv:
-    type: raw
+    type: str
     description:
       - String expected from the server for the service to be marked as UP. Applicable
         to TCP-ECV, HTTP-ECV, and UDP-ECV monitors.
   respcode:
-    type: raw
+    type: list
     description:
       - Response codes for which to mark the service as UP. For any other response
         code, the action performed depends on the monitor type. HTTP monitors and
         RADIUS monitors mark the service as DOWN, while HTTP-INLINE monitors perform
         the action indicated by the Action parameter.
+    elements: str
   resptimeout:
-    type: raw
+    type: int
     description:
       - Amount of time for which the appliance must wait before it marks a probe as
         FAILED.  Must be less than the value specified for the Interval parameter.
@@ -442,7 +449,7 @@ options:
         probe failure is indicated by an ICMP port unreachable error received from
         the service.'
   resptimeoutthresh:
-    type: raw
+    type: int
     description:
       - Response time threshold, specified as a percentage of the Response Time-out
         parameter. If the response to a monitor probe has not arrived when the threshold
@@ -451,12 +458,12 @@ options:
         generates a monRespTimeoutBelowThresh SNMP trap. For the traps to be generated,
         the "MONITOR-RTO-THRESHOLD" alarm must also be enabled.
   retries:
-    type: raw
+    type: int
     description:
       - Maximum number of probes to send to establish the state of a service for which
         a monitoring probe failed.
   reverse:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -464,26 +471,26 @@ options:
       - Mark a service as DOWN, instead of UP, when probe criteria are satisfied,
         and as UP instead of DOWN when probe criteria are not satisfied.
   rtsprequest:
-    type: raw
+    type: str
     description:
       - RTSP request to send to the server (for example, "OPTIONS *").
   scriptargs:
-    type: raw
+    type: str
     description:
       - String of arguments for the script. The string is copied verbatim into the
         request.
   scriptname:
-    type: raw
+    type: str
     description:
       - Path and name of the script to execute. The script must be available on the
         Citrix ADC, in the /nsconfig/monitors/ directory.
   secondarypassword:
-    type: raw
+    type: str
     description:
       - Secondary password that users might have to provide to log on to the Access
         Gateway server. Applicable to CITRIX-AG monitors.
   secure:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -492,11 +499,11 @@ options:
         TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor,
         because a CITRIX-AG monitor uses a secure connection by default.
   secureargs:
-    type: raw
+    type: str
     description:
       - List of arguments for the script which should be secure
   send:
-    type: raw
+    type: str
     description:
       - String to send to the service. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV
         monitors.
@@ -509,7 +516,7 @@ options:
     description:
       - The name of the service to which the monitor is bound.
   sipmethod:
-    type: raw
+    type: str
     choices:
       - OPTIONS
       - INVITE
@@ -517,7 +524,7 @@ options:
     description:
       - SIP method to use for the query. Applicable only to monitors of type SIP-UDP.
   sipreguri:
-    type: raw
+    type: str
     description:
       - SIP user to be registered. Applicable only if the monitor is of type SIP-UDP
         and the SIP Method parameter is set to REGISTER.
@@ -533,31 +540,31 @@ options:
         a dynamic page under the site path, terminate the site path with a slash (/).
         Applicable to CITRIX-WEB-INTERFACE, CITRIX-WI-EXTENDED and CITRIX-XDM monitors.
   snmpcommunity:
-    type: raw
+    type: str
     description:
       - Community name for SNMP monitors.
   snmpthreshold:
-    type: raw
+    type: str
     description:
       - Threshold for SNMP monitors.
   snmpversion:
-    type: raw
+    type: str
     choices:
       - V1
       - V2
     description:
       - SNMP version to be used for SNMP monitors.
   sqlquery:
-    type: raw
+    type: str
     description:
       - SQL query for a MYSQL-ECV or MSSQL-ECV monitor. Sent to the database server
         after the server authenticates the connection.
   sslprofile:
-    type: raw
+    type: str
     description:
       - SSL Profile associated with the monitor
   storedb:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -588,18 +595,19 @@ options:
       - Store Name. For monitors of type STOREFRONT, STORENAME is an optional argument
         defining storefront service store name. Applicable to STOREFRONT monitors.
   successretries:
-    type: raw
+    type: int
     description:
       - Number of consecutive successful probes required to transition a service's
         state from DOWN to UP.
   supportedvendorids:
-    type: raw
+    type: list
     description:
       - List of Supported-Vendor-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request
         (CER) message to use for monitoring Diameter servers. A maximum eight of these
         AVPs are supported in a monitoring message.
+    elements: int
   tos:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -607,12 +615,12 @@ options:
       - Probe the service by encoding the destination IP address in the IP TOS (6)
         bits.
   tosid:
-    type: raw
+    type: int
     description:
       - The TOS ID of the specified destination IP. Applicable only when the TOS parameter
         is set.
   transparent:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -623,16 +631,16 @@ options:
         must be specified. The probe is sent to the specified IP address by using
         the MAC address of the transparent device.
   trofscode:
-    type: raw
+    type: int
     description:
       - Code expected when the server is under maintenance
   trofsstring:
-    type: raw
+    type: str
     description:
       - String expected from the server for the service to be marked as trofs. Applicable
         to HTTP-ECV/TCP-ECV monitors.
   type:
-    type: raw
+    type: str
     choices:
       - PING
       - TCP
@@ -683,6 +691,9 @@ options:
       - CITRIX-STA-SERVICE-NHOP
       - MQTT
       - HTTP2
+      - DTLS
+      - QUIC
+      - KAFKA-AUTODISCOVER
     description:
       - Type of monitor that you want to create.
   units1:
@@ -720,13 +731,13 @@ options:
     description:
       - monitor response timeout units
   username:
-    type: raw
+    type: str
     description:
       - User name with which to probe the RADIUS, NNTP, FTP, FTP-EXTENDED, MYSQL,
         MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC, CITRIX-WI-EXTENDED, CITRIX-XNC or CITRIX-XDM
         server.
   validatecred:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -734,28 +745,30 @@ options:
       - Validate the credentials of the Xen Desktop DDC server user. Applicable to
         monitors of type CITRIX-XD-DDC.
   vendorid:
-    type: raw
+    type: int
     description:
       - Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use
         for monitoring Diameter servers.
   vendorspecificacctapplicationids:
-    type: raw
+    type: list
     description:
       - List of Vendor-Specific-Acct-Application-Id attribute value pairs (AVPs) to
         use for monitoring Diameter servers. A maximum of eight of these AVPs are
         supported in a monitoring message. The specified value is combined with the
         value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id
         AVP in the CER monitoring message.
+    elements: int
   vendorspecificauthapplicationids:
-    type: raw
+    type: list
     description:
       - List of Vendor-Specific-Auth-Application-Id attribute value pairs (AVPs) for
         the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter
         servers. A maximum of eight of these AVPs are supported in a monitoring message.
         The specified value is combined with the value of vendorSpecificVendorId to
         obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.
+    elements: int
   vendorspecificvendorid:
-    type: raw
+    type: int
     description:
       - Vendor-Id to use in the Vendor-Specific-Application-Id grouped attribute-value
         pair (AVP) in the monitoring CER message. To specify Auth-Application-Id or
@@ -818,42 +831,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample lbmonitor playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | lbmonitor
+    - name: Configure lbmonitor
       delegate_to: localhost
       netscaler.adc.lbmonitor:
         state: present
-        monitorname: ldns-dns
-        type: LDNS-DNS
-        query: .
-        querytype: Address
-        deviation: '0'
-        interval: 6
-        resptimeout: 3
-        downtime: 20
-    - name: Sample Task | lbmonitor | 2
-      delegate_to: localhost
-      netscaler.adc.lbmonitor:
-        state: present
-        monitorname: stasecure
+        monitorname: sta
         type: CITRIX-STA-SERVICE
-        deviation: '0'
-        interval: 2
-        units3: MIN
-        resptimeout: 4
-        downtime: 5
-    - name: Sample Task | lbmonitor | 3
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.lbmonitor:
-        state: present
-        monitorname: test-monitor1
-        type: TCP
-        interval: 15
-        retries: 20
+        retries: 1
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: service_lbmonitor_binding
 short_description: Binding Resource definition for describing association between
   service and lbmonitor resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between serv
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -59,7 +61,7 @@ options:
       - Indicates if load monitor is passive. A passive load monitor does not remove
         service from LB decision when threshold is breached.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the monitor-service binding. When a monitor is UP, the
         weight assigned to its binding with the service determines how much the monitor
@@ -70,6 +72,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample service_lbmonitor_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure service_lbmonitor_binding
+      delegate_to: localhost
+      netscaler.adc.service_lbmonitor_binding:
+        state: present
+        name: svc222
+        monitor_name: https
 """
 
 RETURN = r"""

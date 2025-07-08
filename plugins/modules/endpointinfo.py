@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: endpointinfo
 short_description: Configuration for Information resource.
 description: Configuration for Information resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -39,17 +41,17 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   endpointkind:
-    type: raw
+    type: str
     choices:
       - IP
     description:
       - Endpoint kind. Currently, C(IP) endpoints are supported
   endpointlabelsjson:
-    type: raw
+    type: str
     description:
       - String representing labels in json form. Maximum length 16K
   endpointmetadata:
-    type: raw
+    type: str
     description:
       - 'String of qualifiers, in dotted notation, structured metadata for an endpoint.
         Each qualifier is more specific than the one that precedes it, as in cluster.namespace.service.
@@ -57,7 +59,7 @@ options:
       - 'Note: A qualifier that includes a dot (.) or space ( ) must be enclosed in
         double quotation marks.'
   endpointname:
-    type: raw
+    type: str
     description:
       - Name of endpoint, depends on kind. For IP Endpoint - IP address.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

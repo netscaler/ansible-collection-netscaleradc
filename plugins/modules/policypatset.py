@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,17 +17,20 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policypatset
 short_description: Configuration for PAT set resource.
 description: Configuration for PAT set resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -35,12 +38,28 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
     type: str
     description:
       - Any comments to preserve information about this patset or a pattern bound
         to this patset.
+  dynamic:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - This is used to populate internal patset information so that the patset can
+        also be used dynamically in an expression. Here dynamically means the patset
+        name can also be derived using an expression. For example for a given patset
+        name "allow_test" it can be used dynamically as http.req.url.contains_any("allow_"
+        + http.req.url.path.get(1)). This cannot be used with default patsets.
+  dynamiconly:
+    type: bool
+    description:
+      - Shows only dynamic patsets when set true.
   name:
     type: str
     description:
@@ -83,6 +102,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policypatset playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policypatset
+      delegate_to: localhost
+      netscaler.adc.policypatset:
+        state: present
+        name: ST_WB_CKIES10_102_48_231
 """
 
 RETURN = r"""
