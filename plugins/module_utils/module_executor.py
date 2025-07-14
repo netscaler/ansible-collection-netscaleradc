@@ -77,8 +77,20 @@ class ModuleExecutor(object):
                 default="present",
             ),
         )
+        module_remove_non_updatable_params = dict(
+            remove_non_updatable_params=dict(
+                type="str",
+                choices=["yes", "no"],
+                default="no",
+                help=(
+                    "If set to `true`, the module will remove non-updatable attributes from the module params "
+                    "and update the resource. If set to `false`, the module will return an error if non-updatable "
+                    "attributes are present in the module params."
+                ),
+            ),
+        )
         argument_spec.update(module_state_argument)
-
+        argument_spec.update(module_remove_non_updatable_params)
         self.module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
@@ -421,6 +433,7 @@ class ModuleExecutor(object):
     @trace
     def create_or_update(self):
         desired_state = self.module.params["state"]
+        remove_non_updatable_params = self.module.params.get("remove_non_updatable_params", "no")
         if (
             desired_state == "present" and
             self.resource_name.endswith("_binding") and
@@ -494,7 +507,8 @@ class ModuleExecutor(object):
         else:
             # Update process will go through 2 iterations of is_resource_identical
             # 1. First iteration will check if the resource is identical. If not, it will give the list of non-updatable attributes that exists
-            # in the user playbook. If non-updatable attributes are present, it will remove them from the module_params and update the resource
+            # in the user playbook. If non-updatable attributes are present and user marks `remove_non_updatable_params` as yes,
+            # it will remove them from the module_params and update the resource
             # 2. Second iteration will check if the resource is identical. If not, it will update the resource after ignoring the
             # non-updatable resources
             is_identical, immutable_keys_list = self.is_resource_identical()
@@ -541,8 +555,9 @@ class ModuleExecutor(object):
                     ok, err = create_resource(
                         self.client, self.resource_name, self.resource_module_params
                     )
-
-                elif immutable_keys_list is None:
+                # Here we are checking if resource has immutable keys
+                # if yes, we will check if the user wants to keep the non-updatable params (which in turn will return error)
+                elif immutable_keys_list is None or (immutable_keys_list and remove_non_updatable_params == "no"):
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
@@ -554,6 +569,7 @@ class ModuleExecutor(object):
                     if not ok:
                         self.return_failure(err)
                 else:
+                    # in case user wants to remove non-updatable params, we will remove them from the module_params 
                     for key in immutable_keys_list:
                         self.resource_module_params.pop(key)
 
