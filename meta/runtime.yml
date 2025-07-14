@@ -981,5 +981,3 @@ action_groups:
     - sslechconfig.py
     - sslhpkekey.py
     - sslprofile_sslechconfig_binding.py
-    - urlfilteringparameter.py
-    - urlfilteringcategorization.py
