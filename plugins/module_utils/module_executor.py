@@ -82,11 +82,6 @@ class ModuleExecutor(object):
                 type="str",
                 choices=["yes", "no"],
                 default="no",
-                help=(
-                    "If set to `true`, the module will remove non-updatable attributes from the module params "
-                    "and update the resource. If set to `false`, the module will return an error if non-updatable "
-                    "attributes are present in the module params."
-                ),
             ),
         )
         argument_spec.update(module_state_argument)
@@ -569,7 +564,7 @@ class ModuleExecutor(object):
                     if not ok:
                         self.return_failure(err)
                 else:
-                    # in case user wants to remove non-updatable params, we will remove them from the module_params 
+                    # in case user wants to remove non-updatable params, we will remove them from the module_params
                     for key in immutable_keys_list:
                         self.resource_module_params.pop(key)
 
