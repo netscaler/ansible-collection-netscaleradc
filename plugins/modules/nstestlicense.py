@@ -35,6 +35,16 @@ options:
         ADC node.
       - When C(applied), the resources will be applied on the NetScaler ADC node
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

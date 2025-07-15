@@ -36,6 +36,16 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   nonftumode:
     type: str
     choices:

@@ -11,3 +11,4 @@
     state: present
     sitename: test-gslbsite
     siteipaddress: 10.10.10.10
+    sitepassword: test-password
