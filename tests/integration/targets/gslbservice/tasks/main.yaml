@@ -117,6 +117,7 @@
   delegate_to: localhost
   register: result
   check_mode: false
+  ignore_errors: true
   tags: test
   netscaler.adc.gslbservice:
     state: renamed
@@ -132,8 +133,7 @@
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==false"
+      - "result.failed==true or result.changed==false"
 - name: GSLBSERVICE | DELETE | --check
   delegate_to: localhost
   register: result

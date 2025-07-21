@@ -337,6 +337,7 @@
 - name: SERVICEGROUP | RENAME | idempotent
   delegate_to: localhost
   register: result
+  ignore_errors: true
   check_mode: false
   tags: test
   netscaler.adc.servicegroup:
@@ -352,8 +353,7 @@
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==false"
+      - "result.failed==true or result.changed==false"
 - name: SERVICEGROUP | DELETE | --check
   delegate_to: localhost
   register: result

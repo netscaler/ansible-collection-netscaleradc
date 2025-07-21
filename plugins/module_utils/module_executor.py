@@ -1028,7 +1028,6 @@ class ModuleExecutor(object):
                 self.module_result["changed"] = False
                 if action == "rename":
                     self.return_failure(err)
-                
         else:
             self.return_failure(err)
 
