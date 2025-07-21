@@ -14,6 +14,7 @@
     state: present
     sitename: test-gslbsite
     siteipaddress: 10.10.10.10
+    sitepassword: test-password
 - name: Assert | GSLBSITE | ADD | --check
   tags: test
   ansible.builtin.assert:
@@ -35,6 +36,7 @@
     state: present
     sitename: test-gslbsite
     siteipaddress: 10.10.10.10
+    sitepassword: test-password
 - name: Assert | GSLBSITE | ADD
   ansible.builtin.assert:
     that:
@@ -55,6 +57,7 @@
     state: present
     sitename: test-gslbsite
     siteipaddress: 10.10.10.10
+    sitepassword: test-password
 - name: Assert | GSLBSITE | ADD | idempotent
   tags: test
   ansible.builtin.assert:
@@ -76,6 +79,7 @@
     state: absent
     sitename: test-gslbsite
     siteipaddress: 10.10.10.10
+    sitepassword: test-password
 - name: Assert | GSLBSITE | DELETE | --check
   tags: test
   ansible.builtin.assert:
@@ -97,6 +101,7 @@
     state: absent
     sitename: test-gslbsite
     siteipaddress: 10.10.10.10
+    sitepassword: test-password
 - name: Assert | GSLBSITE | DELETE
   ansible.builtin.assert:
     that:
@@ -117,6 +122,7 @@
     state: absent
     sitename: test-gslbsite
     siteipaddress: 10.10.10.10
+    sitepassword: test-password
 - name: Assert | GSLBSITE | DELETE | idempotent
   tags: test
   ansible.builtin.assert:
