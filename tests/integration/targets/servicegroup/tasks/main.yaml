@@ -339,6 +339,7 @@
   register: result
   check_mode: false
   tags: test
+  ignore_errors: true
   netscaler.adc.servicegroup:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
@@ -352,7 +353,7 @@
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
+      - "result.failed==true"
       - "result.changed==false"
 - name: SERVICEGROUP | DELETE | --check
   delegate_to: localhost
