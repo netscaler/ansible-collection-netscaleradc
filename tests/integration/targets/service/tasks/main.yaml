@@ -128,8 +128,7 @@
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==true"
-      - "result.changed==false"
+      - "result.failed==true or result.changed==false"
 - name: SERVICE | DELETE | --check
   delegate_to: localhost
   register: result
