@@ -1021,8 +1021,11 @@ class ModuleExecutor(object):
             if (
                 "status_code" in err
                 and err["status_code"] == HTTP_RESOURCE_ALREADY_EXISTS
+                and action != "link"
             ):
                 self.return_failure(err)
+            else:
+                self.module_result["changed"] = False
         else:
             self.return_failure(err)
 
