@@ -1011,7 +1011,7 @@ class ModuleExecutor(object):
                 "status_code" in err
                 and err["status_code"] == HTTP_RESOURCE_ALREADY_EXISTS
             ):
-                self.module_result["changed"] = False
+                self.return_failure(err)
         else:
             self.return_failure(err)
 
