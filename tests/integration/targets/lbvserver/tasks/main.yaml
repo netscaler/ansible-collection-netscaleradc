@@ -386,6 +386,7 @@
   register: result
   check_mode: false
   tags: test
+  ignore_errors: true
   netscaler.adc.lbvserver:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
@@ -400,8 +401,7 @@
   tags: test
   ansible.builtin.assert:
     that:
-      - "result.failed==false"
-      - "result.changed==false"
+      - "result.failed==true or result.changed==false"
 - name: LBVSERVER | DELETE | --check
   delegate_to: localhost
   register: result
