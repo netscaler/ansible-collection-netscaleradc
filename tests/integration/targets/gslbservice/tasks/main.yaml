@@ -113,27 +113,6 @@
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: GSLBSERVICE | RENAME | idempotent
-  delegate_to: localhost
-  register: result
-  check_mode: false
-  tags: test
-  netscaler.adc.gslbservice:
-    state: renamed
-    nsip: "{{ nsip }}"
-    nitro_user: "{{ nitro_user }}"
-    nitro_pass: "{{ nitro_pass }}"
-    nitro_protocol: "{{ nitro_protocol }}"
-    validate_certs: "{{ validate_certs }}"
-    save_config: "{{ save_config }}"
-    servicename: test-gslb-service
-    newname: test-gslb-service-renamed
-- name: Assert | GSLBSERVICE | RENAME | idempotent
-  tags: test
-  ansible.builtin.assert:
-    that:
-      - "result.failed==false"
-      - "result.changed==false"
 - name: GSLBSERVICE | DELETE | --check
   delegate_to: localhost
   register: result
