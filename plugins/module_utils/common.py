@@ -13,12 +13,12 @@ from .constants import (
     HTTP_RESOURCE_ALREADY_EXISTS,
     HTTP_RESOURCE_NOT_FOUND,
     HTTP_SUCCESS_CODES,
+    NESTED_POST_DATA_RESOURCES,
 )
 from .decorators import trace
 from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
-nested_post_data_resources = ["bgpRouter"]
 @trace
 def get_netscaler_version(client):
     is_exist, response = get_resource(client, "nsversion")
@@ -83,15 +83,25 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
             args=get_args,
         )
     else:
-        status_code, response_body = client.get(
-            resource=resource_name,
-            id=resource_id,
-            args=get_args,
-        )
+        if resource_name in NESTED_POST_DATA_RESOURCES:
+            status_code, response_body = client.get(
+                resource="routerDynamicRouting/%s" % resource_name,
+                id=resource_id,
+                args=get_args,
+            )
+        else:
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                args=get_args,
+            )
     if status_code in {HTTP_RESOURCE_NOT_FOUND}:
         return False, []
     if status_code in HTTP_SUCCESS_CODES:
         # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
+        if resource_name in NESTED_POST_DATA_RESOURCES:
+            if "routerDynamicRouting" in response_body:
+                 response_body = response_body["routerDynamicRouting"]
         if resource_name not in response_body:
             if resource_name == "sslcipher":
                 resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
@@ -100,6 +110,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
                 ]
 
             return False, []
+        
         # `update-only` resources return a dict instead of a list.
         return_response = response_body[resource_name]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
@@ -125,6 +136,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
             resource_name, resource_module_params, return_response
         )
         return (True, return_response)
+    log("pass 3 ")
     return False, []
 
 
@@ -179,25 +191,6 @@ def is_resource_exists(client, resource_name, resource_module_params):
     return is_exists
 
 @trace
-def _check_create_resource_params_for_nested_post_data(resource_name, resource_module_params):
-    post_data = {"routerDynamicRouting": {resource_name: {}}}
-    resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
-    
-    for key in resource_module_params.keys():
-        if key in resource_add_keys:
-            keylist = key.split(".")
-            current_dict = post_data["routerDynamicRouting"][resource_name]
-            for i, k in enumerate(keylist):
-                if i == len(keylist) - 1:
-                    current_dict[k] = resource_module_params[key]
-                else:
-                    if k not in current_dict:
-                        current_dict[k] = {}
-                    current_dict = current_dict[k]
-    
-    return True, None, post_data
-
-@trace
 def _check_create_resource_params(resource_name, resource_module_params, action=None):
     post_data = {}
 
@@ -228,31 +221,49 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
             return False, msg, None
     else:
         # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
-        if resource_name in nested_post_data_resources:
-            return _check_create_resource_params_for_nested_post_data(
-                resource_name, resource_module_params
-            )
-        for key in resource_module_params.keys():
-            if not action:
-                if key in resource_add_keys:
-                    post_data[key] = resource_module_params[key]
-                elif resource_name == "service" and key == "ipaddress":
-                    post_data["ip"] = resource_module_params[key]
-                else:
-                    log(
-                        "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
-                            key, resource_name
+        if resource_name in NESTED_POST_DATA_RESOURCES:
+                post_data = {"routerDynamicRouting": {resource_name: {}}}
+                resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
+                
+                for key in resource_module_params.keys():
+                    if key in resource_add_keys:
+                        keylist = key.split(".")
+                        current_dict = post_data["routerDynamicRouting"][resource_name]
+                        for i, k in enumerate(keylist):
+                            if i == len(keylist) - 1:
+                                current_dict[k] = resource_module_params[key]
+                            else:
+                                if k not in current_dict:
+                                    current_dict[k] = {}
+                                current_dict = current_dict[k]
+                    else:
+                        log(
+                            "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                                key, resource_name
+                            )
                         )
-                    )
-            else:
-                if key in resource_action_keys:
-                    post_data[key] = resource_module_params[key]
-                else:
-                    log(
-                        "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
-                            key, resource_name, action.upper()
+        else:
+            for key in resource_module_params.keys():
+                if not action:
+                    if key in resource_add_keys:
+                        post_data[key] = resource_module_params[key]
+                    elif resource_name == "service" and key == "ipaddress":
+                        post_data["ip"] = resource_module_params[key]
+                    else:
+                        log(
+                            "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                                key, resource_name
+                            )
                         )
-                    )
+                else:
+                    if key in resource_action_keys:
+                        post_data[key] = resource_module_params[key]
+                    else:
+                        log(
+                            "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
+                                key, resource_name, action.upper()
+                            )
+                        )
 
     return True, None, post_data
 
@@ -291,7 +302,7 @@ def create_resource(client, resource_name, resource_module_params, action=None):
         return False, err
 
     # For nested post data resources, post_data is already properly structured
-    if resource_name not in nested_post_data_resources:
+    if resource_name not in NESTED_POST_DATA_RESOURCES:
         post_data = {resource_name: post_data}
     
     status_code, response_body = client.post(
@@ -366,8 +377,10 @@ def update_resource(client, resource_name, resource_module_params):
     )
     if not ok:
         return False, err
-
-    put_data = {resource_name: put_payload}
+    if resource_name in NESTED_POST_DATA_RESOURCES:
+        put_data = {"routerDynamicRouting": {resource_name: {}}}
+    else:
+        put_data = {resource_name: put_payload}
 
     status_code, response_body = client.put(
         put_data=put_data,

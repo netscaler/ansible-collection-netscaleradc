@@ -49907,9 +49907,17 @@ NITRO_RESOURCE_MAP = {
     "bgpRouter": {
         "_supported_operations": [
             "add",
+            "get",
+            "delete",
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": ["commandstring"],
         },
         "add_payload_keys": [            
             "afParams.addressFamily",
@@ -49935,10 +49943,11 @@ NITRO_RESOURCE_MAP = {
         ],
         "bindings": [],
         "bindprimary_key": "",
-        "delete_arg_keys": [],
+        "delete_arg_keys": ["localAS"],
         "disable_payload_keys": [],
         "enable_payload_keys": [],
-        "immutable_keys": [],
+        "get_arg_keys": [],
+        "immutable_keys": ["localAS"],
         "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
@@ -50027,12 +50036,9 @@ NITRO_RESOURCE_MAP = {
                 "type": "str", 
                 "no_log": False
             },
-            "rsstype": {
-                "type": "str",
-                "choices": ["ASYMMETRIC", "SYMMETRIC"],
-                "no_log": False
-            },
         },
+        "singleton": False,
+        "update_payload_keys": [],
     },
     "rsskeytype": {
         "_supported_operations": ["get", "update"],
