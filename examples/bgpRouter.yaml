@@ -1,0 +1,28 @@
+---
+- name: BGP routing 
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Configure BGP routing
+      delegate_to: localhost
+      netscaler.adc.bgpRouter:
+        state: present
+        nsip: 10.102.201.42
+        nitro_user: nsroot
+        nitro_pass: "ConfigADC#123"
+        validate_certs: no
+        nitro_protocol: http
+        afParams.addressFamily: "ipv4"
+        afParams.redistribute.protocol: "kernel"
+        localAS: 5
+        routerId: "10.102.201.42"
+        neighbor.ASOriginationInterval: 15
+        neighbor.address: "2.2.2.25"
+        neighbor.advertisementInterval: 30
+        neighbor.afParams.activate: "True"
+        neighbor.afParams.addressFamily: "ipv4"
+        neighbor.holdTimerConfig: 90
+        neighbor.keepaliveTimerConfig: 30
+        neighbor.multihopBfd: "False"
+        neighbor.remoteAS: 100
+        neighbor.singlehopBfd: "False"

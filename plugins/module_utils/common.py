@@ -18,7 +18,7 @@ from .decorators import trace
 from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
-
+nested_post_data_resources = ["bgpRouter"]
 @trace
 def get_netscaler_version(client):
     is_exist, response = get_resource(client, "nsversion")
@@ -178,6 +178,24 @@ def is_resource_exists(client, resource_name, resource_module_params):
     )
     return is_exists
 
+@trace
+def _check_create_resource_params_for_nested_post_data(resource_name, resource_module_params):
+    post_data = {"routerDynamicRouting": {resource_name: {}}}
+    resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
+    
+    for key in resource_module_params.keys():
+        if key in resource_add_keys:
+            keylist = key.split(".")
+            current_dict = post_data["routerDynamicRouting"][resource_name]
+            for i, k in enumerate(keylist):
+                if i == len(keylist) - 1:
+                    current_dict[k] = resource_module_params[key]
+                else:
+                    if k not in current_dict:
+                        current_dict[k] = {}
+                    current_dict = current_dict[k]
+    
+    return True, None, post_data
 
 @trace
 def _check_create_resource_params(resource_name, resource_module_params, action=None):
@@ -210,6 +228,10 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
             return False, msg, None
     else:
         # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
+        if resource_name in nested_post_data_resources:
+            return _check_create_resource_params_for_nested_post_data(
+                resource_name, resource_module_params
+            )
         for key in resource_module_params.keys():
             if not action:
                 if key in resource_add_keys:
@@ -242,8 +264,6 @@ def create_resource_with_action(client, resource_name, resource_module_params, a
     )
     if not ok:
         return False, err
-
-    post_data = {resource_name: post_data}
     status_code, response_body = client.post(
         post_data=post_data,
         resource=resource_name,
@@ -270,7 +290,10 @@ def create_resource(client, resource_name, resource_module_params, action=None):
     if not ok:
         return False, err
 
-    post_data = {resource_name: post_data}
+    # For nested post data resources, post_data is already properly structured
+    if resource_name not in nested_post_data_resources:
+        post_data = {resource_name: post_data}
+    
     status_code, response_body = client.post(
         post_data=post_data,
         resource=resource_name,

@@ -49904,6 +49904,136 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": ["commandstring"],
     },
+    "bgpRouter": {
+        "_supported_operations": [
+            "add",
+        ],
+        "action_payload_keys": {
+            "create": [],
+        },
+        "add_payload_keys": [            
+            "afParams.addressFamily",
+            "afParams.redistribute.protocol",
+            "afParams.redistribute.routeMap",
+            "localAS",
+            "routerId",
+            "neighbor.ASOriginationInterval",
+            "neighbor.address",
+            "neighbor.advertisementInterval",
+            "neighbor.afParams.activate",
+            "neighbor.afParams.addressFamily",
+            "neighbor.afParams.routeMap.direction",
+            "neighbor.afParams.routeMap.name",
+            "neighbor.connectTimer",
+            "neighbor.holdTimerConfig",
+            "neighbor.keepaliveTimerConfig",
+            "neighbor.md5Password",
+            "neighbor.multihopBfd",
+            "neighbor.remoteAS",
+            "neighbor.singlehopBfd",
+            "neighbor.updateSource",
+        ],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": [],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "immutable_keys": [],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "readwrite_arguments": {
+            "afParams.addressFamily": {
+                "type": "str",
+                "choices": ["ipv4", "ipv6"],
+                "no_log": False
+            },
+            "afParams.redistribute.protocol": {
+                "type": "str",
+                "choices": ["kernel", "connected", "static", "rip", "ospf", "isis", "intranet"],
+                "no_log": False
+            },
+            "afParams.redistribute.routeMap": {
+                "type": "str", 
+                "no_log": False
+            },
+            "localAS": {
+                "type": "int", 
+                "no_log": False
+            },
+            "routerId": {
+                "type": "str", 
+                "no_log": False
+            },
+            "neighbor.ASOriginationInterval": {
+                "type": "int", 
+                "no_log": False
+            },
+            "neighbor.address": {
+                "type": "str", 
+                "no_log": False
+            },
+            "neighbor.advertisementInterval": {
+                "type": "int", 
+                "no_log": False
+            },
+            "neighbor.afParams.activate": {
+                "type": "bool", 
+                "no_log": False
+            },
+            "neighbor.afParams.addressFamily": {
+                "type": "str",
+                "choices": ["ipv4", "ipv6"],
+                "no_log": False
+            },
+            "neighbor.afParams.routeMap.direction": {
+                "type": "str",
+                "choices": ["in", "out"],
+                "no_log": False
+            },
+            "neighbor.afParams.routeMap.name": {
+                "type": "str", 
+                "no_log": False
+            },
+            "neighbor.connectTimer": {
+                "type": "int", 
+                "no_log": False
+            },
+            "neighbor.holdTimerConfig": {
+                "type": "int", 
+                "no_log": False
+            },
+            "neighbor.keepaliveTimerConfig": {
+                "type": "int", 
+                "no_log": False
+            },
+            "neighbor.md5Password": {
+                "type": "str", 
+                "no_log": True
+            },
+            "neighbor.multihopBfd": {
+                "type": "bool", 
+                "no_log": False
+            },
+            "neighbor.remoteAS": {
+                "type": "int", 
+                "no_log": False
+            },
+            "neighbor.singlehopBfd": {
+                "type": "bool", 
+                "no_log": False
+            },
+            "neighbor.updateSource": {
+                "type": "str", 
+                "no_log": False
+            },
+            "rsstype": {
+                "type": "str",
+                "choices": ["ASYMMETRIC", "SYMMETRIC"],
+                "no_log": False
+            },
+        },
+    },
     "rsskeytype": {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {

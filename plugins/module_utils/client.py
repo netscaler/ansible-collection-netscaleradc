@@ -99,12 +99,21 @@ class NitroAPIClient(object):
         filter = filter if filter is not None else {}
 
         # Construct basic URL
-        url = "%s://%s/%s/%s" % (
-            self._module.params["nitro_protocol"],
-            self._module.params["nsip"],
-            self.api_path,
-            resource,
-        )
+        if resource == "bgpRouter":
+            url = "%s://%s/%s/%s/%s" % (
+                self._module.params["nitro_protocol"],
+                self._module.params["nsip"],
+                self.api_path,
+                "routerDynamicRouting",
+                resource,
+            )
+        else:
+            url = "%s://%s/%s/%s" % (
+                self._module.params["nitro_protocol"],
+                self._module.params["nsip"],
+                self.api_path,
+                resource,
+            )
 
         # Append resource id
         if id:
