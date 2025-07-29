@@ -15,7 +15,10 @@ from ansible.module_utils._text import to_text
 from ansible.module_utils.six.moves.urllib.parse import quote
 from ansible.module_utils.urls import fetch_url
 
-from .constants import HTTP_SUCCESS_CODES
+from .constants import (
+    HTTP_SUCCESS_CODES,
+    NESTED_POST_DATA_RESOURCES,
+)
 from .decorators import trace
 from .logger import log
 
@@ -99,7 +102,7 @@ class NitroAPIClient(object):
         filter = filter if filter is not None else {}
 
         # Construct basic URL
-        if resource == "bgpRouter":
+        if resource in NESTED_POST_DATA_RESOURCES:
             url = "%s://%s/%s/%s/%s" % (
                 self._module.params["nitro_protocol"],
                 self._module.params["nsip"],

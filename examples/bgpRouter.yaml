@@ -7,11 +7,6 @@
       delegate_to: localhost
       netscaler.adc.bgpRouter:
         state: present
-        nsip: 10.102.201.219
-        nitro_user: nsroot
-        nitro_pass: nspentest
-        validate_certs: no
-        nitro_protocol: http
         localAS: 10
         afParams.addressFamily: "ipv4"
         afParams.redistribute.protocol: "kernel"
