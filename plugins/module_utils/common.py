@@ -273,6 +273,8 @@ def create_resource_with_action(client, resource_name, resource_module_params, a
     ok, err, post_data = _check_create_resource_params(
         resource_name, resource_module_params, action=action
     )
+    if resource_name not in NESTED_POST_DATA_RESOURCES:
+        post_data = {resource_name: post_data}
     if not ok:
         return False, err
     status_code, response_body = client.post(

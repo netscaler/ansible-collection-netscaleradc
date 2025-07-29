@@ -16,25 +16,24 @@ ANSIBLE_METADATA = {
     "supported_by": "community",
 }
 DOCUMENTATION = r"""
---- 
+---
 module: bgpRouter
 short_description: Manage BGP Router configuration on Citrix ADC (NetScaler) devices
-description: This module allows for the management of BGP Router configurations on Citrix ADC (NetScaler) devices.
+description:
+  - Manage BGP Router configurations on Citrix ADC (NetScaler) devices.
 version_added: 2.10.0
 author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-  choices:
-    - present
-    - absent
-    default: present
-      - The state of the resource being configured by the module on the NetScaler
-        ADC node.
-      - When C(present), the resource will be added/updated configured according to
-        the module's parameters.
-      - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+    choices: ["present", "absent"]
+    default: present
+    description:
+      - The state of the resource on the NetScaler ADC node.
+      - When C(present), the resource will be added or updated.
+      - When C(absent), the resource will be deleted.
+
   afParams.addressFamily:
     type: str
     choices: ["ipv4", "ipv6"]
@@ -86,13 +85,13 @@ options:
     type: str
     choices: ["ipv4", "ipv6"]
     description:
-      - Address family identifier
+      - Address family identifier.
 
   neighbor.afParams.routeMap.direction:
     type: str
     choices: ["in", "out"]
     description:
-      - Apply the route-map to incoming routes or outgoing routes.
+      - Apply the route-map to incoming or outgoing routes.
 
   neighbor.afParams.routeMap.name:
     type: str
@@ -133,7 +132,7 @@ options:
   neighbor.singlehopBfd:
     type: bool
     description:
-      - Enable BFD on this neighbor
+      - Enable BFD on this neighbor.
 
   neighbor.updateSource:
     type: str
