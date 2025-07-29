@@ -16532,6 +16532,98 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": [],
     },
+    "bgpRouter": {
+        "_supported_operations": ["add", "delete", "get"],
+        "action_payload_keys": {
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": ["commandstring"],
+        },
+        "add_payload_keys": [
+            "afParams.addressFamily",
+            "afParams.redistribute.protocol",
+            "afParams.redistribute.routeMap",
+            "localAS",
+            "neighbor.ASOriginationInterval",
+            "neighbor.address",
+            "neighbor.advertisementInterval",
+            "neighbor.afParams.activate",
+            "neighbor.afParams.addressFamily",
+            "neighbor.afParams.routeMap.direction",
+            "neighbor.afParams.routeMap.name",
+            "neighbor.connectTimer",
+            "neighbor.holdTimerConfig",
+            "neighbor.keepaliveTimerConfig",
+            "neighbor.md5Password",
+            "neighbor.multihopBfd",
+            "neighbor.remoteAS",
+            "neighbor.singlehopBfd",
+            "neighbor.updateSource",
+            "routerId",
+        ],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": ["localAS"],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": [],
+        "immutable_keys": ["localAS"],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "readwrite_arguments": {
+            "afParams.addressFamily": {
+                "choices": ["ipv4", "ipv6"],
+                "no_log": False,
+                "type": "str",
+            },
+            "afParams.redistribute.protocol": {
+                "choices": [
+                    "connected",
+                    "intranet",
+                    "isis",
+                    "kernel",
+                    "ospf",
+                    "rip",
+                    "static",
+                ],
+                "no_log": False,
+                "type": "str",
+            },
+            "afParams.redistribute.routeMap": {"no_log": False, "type": "str"},
+            "localAS": {"no_log": False, "type": "int"},
+            "neighbor.ASOriginationInterval": {"no_log": False, "type": "int"},
+            "neighbor.address": {"no_log": False, "type": "str"},
+            "neighbor.advertisementInterval": {"no_log": False, "type": "int"},
+            "neighbor.afParams.activate": {"no_log": False, "type": "bool"},
+            "neighbor.afParams.addressFamily": {
+                "choices": ["ipv4", "ipv6"],
+                "no_log": False,
+                "type": "str",
+            },
+            "neighbor.afParams.routeMap.direction": {
+                "choices": ["in", "out"],
+                "no_log": False,
+                "type": "str",
+            },
+            "neighbor.afParams.routeMap.name": {"no_log": False, "type": "str"},
+            "neighbor.connectTimer": {"no_log": False, "type": "int"},
+            "neighbor.holdTimerConfig": {"no_log": False, "type": "int"},
+            "neighbor.keepaliveTimerConfig": {"no_log": False, "type": "int"},
+            "neighbor.md5Password": {"no_log": True, "type": "str"},
+            "neighbor.multihopBfd": {"no_log": False, "type": "bool"},
+            "neighbor.remoteAS": {"no_log": False, "type": "int"},
+            "neighbor.singlehopBfd": {"no_log": False, "type": "bool"},
+            "neighbor.updateSource": {"no_log": False, "type": "str"},
+            "routerId": {"no_log": False, "type": "str"},
+        },
+        "singleton": False,
+        "update_payload_keys": [],
+    },
     "botglobal_botpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
@@ -49903,142 +49995,6 @@ NITRO_RESOURCE_MAP = {
         },
         "singleton": False,
         "update_payload_keys": ["commandstring"],
-    },
-    "bgpRouter": {
-        "_supported_operations": [
-            "add",
-            "get",
-            "delete",
-        ],
-        "action_payload_keys": {
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": ["commandstring"],
-        },
-        "add_payload_keys": [            
-            "afParams.addressFamily",
-            "afParams.redistribute.protocol",
-            "afParams.redistribute.routeMap",
-            "localAS",
-            "routerId",
-            "neighbor.ASOriginationInterval",
-            "neighbor.address",
-            "neighbor.advertisementInterval",
-            "neighbor.afParams.activate",
-            "neighbor.afParams.addressFamily",
-            "neighbor.afParams.routeMap.direction",
-            "neighbor.afParams.routeMap.name",
-            "neighbor.connectTimer",
-            "neighbor.holdTimerConfig",
-            "neighbor.keepaliveTimerConfig",
-            "neighbor.md5Password",
-            "neighbor.multihopBfd",
-            "neighbor.remoteAS",
-            "neighbor.singlehopBfd",
-            "neighbor.updateSource",
-        ],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": ["localAS"],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": [],
-        "immutable_keys": ["localAS"],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "afParams.addressFamily": {
-                "type": "str",
-                "choices": ["ipv4", "ipv6"],
-                "no_log": False
-            },
-            "afParams.redistribute.protocol": {
-                "type": "str",
-                "choices": ["kernel", "connected", "static", "rip", "ospf", "isis", "intranet"],
-                "no_log": False
-            },
-            "afParams.redistribute.routeMap": {
-                "type": "str", 
-                "no_log": False
-            },
-            "localAS": {
-                "type": "int", 
-                "no_log": False
-            },
-            "routerId": {
-                "type": "str", 
-                "no_log": False
-            },
-            "neighbor.ASOriginationInterval": {
-                "type": "int", 
-                "no_log": False
-            },
-            "neighbor.address": {
-                "type": "str", 
-                "no_log": False
-            },
-            "neighbor.advertisementInterval": {
-                "type": "int", 
-                "no_log": False
-            },
-            "neighbor.afParams.activate": {
-                "type": "bool", 
-                "no_log": False
-            },
-            "neighbor.afParams.addressFamily": {
-                "type": "str",
-                "choices": ["ipv4", "ipv6"],
-                "no_log": False
-            },
-            "neighbor.afParams.routeMap.direction": {
-                "type": "str",
-                "choices": ["in", "out"],
-                "no_log": False
-            },
-            "neighbor.afParams.routeMap.name": {
-                "type": "str", 
-                "no_log": False
-            },
-            "neighbor.connectTimer": {
-                "type": "int", 
-                "no_log": False
-            },
-            "neighbor.holdTimerConfig": {
-                "type": "int", 
-                "no_log": False
-            },
-            "neighbor.keepaliveTimerConfig": {
-                "type": "int", 
-                "no_log": False
-            },
-            "neighbor.md5Password": {
-                "type": "str", 
-                "no_log": True
-            },
-            "neighbor.multihopBfd": {
-                "type": "bool", 
-                "no_log": False
-            },
-            "neighbor.remoteAS": {
-                "type": "int", 
-                "no_log": False
-            },
-            "neighbor.singlehopBfd": {
-                "type": "bool", 
-                "no_log": False
-            },
-            "neighbor.updateSource": {
-                "type": "str", 
-                "no_log": False
-            },
-        },
-        "singleton": False,
-        "update_payload_keys": [],
     },
     "rsskeytype": {
         "_supported_operations": ["get", "update"],
