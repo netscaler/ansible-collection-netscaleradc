@@ -12,14 +12,13 @@
         nitro_pass: nspentest
         validate_certs: no
         nitro_protocol: http
+        localAS: 10
         afParams.addressFamily: "ipv4"
         afParams.redistribute.protocol: "kernel"
-        localAS: 10
         routerId: "10.102.201.219"
         neighbor.ASOriginationInterval: 15
-        neighbor.address: "2.2.12.212"
+        neighbor.address: "2.2.12.30"
         neighbor.advertisementInterval: 30
-        neighbor.afParams.activate: "True"
         neighbor.afParams.addressFamily: "ipv4"
         neighbor.holdTimerConfig: 90
         neighbor.keepaliveTimerConfig: 30
