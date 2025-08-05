@@ -38,7 +38,6 @@ class NitroAPIClient(object):
             self._module.params.get("nitro_user"),
             self._module.params.get("nitro_pass"),
         )
-
         # Prioritize token over user/pass
         if have_token:
             self._headers["Cookie"] = (
