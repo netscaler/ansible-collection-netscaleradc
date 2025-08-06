@@ -38,6 +38,7 @@ from .constants import (
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
+    NESTED_POST_DATA_RESOURCES,
 )
 from .decorators import trace
 from .logger import log, loglines
