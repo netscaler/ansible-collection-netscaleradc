@@ -1020,11 +1020,16 @@ class ModuleExecutor(object):
             action=action,
         )
         if ok:
+            # For rename operations, always treat HTTP_RESOURCE_ALREADY_EXISTS as failure
+            # This prevents false positives where we think a rename succeeded when it actually
+            # failed due to a name conflict with a different existing resource
             if (
                 "status_code" in err
                 and err["status_code"] == HTTP_RESOURCE_ALREADY_EXISTS
             ):
                 self.module_result["changed"] = False
+                if action == "rename":
+                    self.return_failure(err)
         else:
             self.return_failure(err)
 

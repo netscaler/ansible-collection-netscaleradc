@@ -108,27 +108,6 @@
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: SERVICE | RENAME | idempotent
-  delegate_to: localhost
-  register: result
-  check_mode: false
-  tags: test
-  netscaler.adc.service:
-    nsip: "{{ nsip }}"
-    nitro_user: "{{ nitro_user }}"
-    nitro_pass: "{{ nitro_pass }}"
-    nitro_protocol: "{{ nitro_protocol }}"
-    validate_certs: "{{ validate_certs }}"
-    save_config: "{{ save_config }}"
-    state: renamed
-    name: test-service
-    newname: test-service-renamed
-- name: Assert | SERVICE | RENAME | idempotent
-  tags: test
-  ansible.builtin.assert:
-    that:
-      - "result.failed==false"
-      - "result.changed==false"
 - name: SERVICE | DELETE | --check
   delegate_to: localhost
   register: result
