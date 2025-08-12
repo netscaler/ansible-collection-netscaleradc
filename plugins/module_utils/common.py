@@ -109,7 +109,9 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
             return False, []
         # `update-only` resources return a dict instead of a list.
         if resource_name.startswith("systemglobal_"):
-            return_response = response_body["systemglobal"]
+            return_response = response_body.get("systemglobal", None)
+            if return_response is None:
+                return False, []
         else:
             return_response = response_body[resource_name]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
@@ -131,15 +133,19 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
             )
 
         # Take care of NITRO Anomolies
-        return_response = fix_nitro_anomolies(
-            resource_name, resource_module_params, return_response
-        )
-        return (True, return_response)
+        if return_response is not None:
+            return_response = fix_nitro_anomolies(
+                resource_name, resource_module_params, return_response
+            )
+        return (True, return_response if return_response is not None else [])
     return False, []
 
 
 @trace
 def fix_nitro_anomolies(resource_name, resource_module_params, return_response):
+    if return_response is None:
+        return []
+    
     for resource in return_response:
         # FIXME: NITRO-BUG: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
         # Hence, we will set it to `SEC` to make it idempotent
