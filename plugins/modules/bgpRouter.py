@@ -141,9 +141,9 @@ options:
 """
 EXAMPLES = r"""
 ---
-- name: BGP routing 
+- name: BGP routing
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   tasks:
     - name: Configure BGP routing
       delegate_to: localhost

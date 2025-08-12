@@ -92,13 +92,15 @@ class ModuleExecutor(object):
             supports_check_mode=supports_check_mode,
             mutually_exclusive=[
                 (
+                    "nitro_pass", "nitro_auth_token"
+                ),
+                (
                     "managed_netscaler_instance_name",
                     "managed_netscaler_instance_ip",
                     "managed_netscaler_instance_id",
                 ),
             ],
             required_together=[
-                ("nitro_user", "nitro_pass"),
                 (
                     "managed_netscaler_instance_username",
                     "managed_netscaler_instance_password",
@@ -144,7 +146,7 @@ class ModuleExecutor(object):
             "logout",
         }:
             self.module.params["api_path"] = "nitro/v2/config"
-
+        self.have_token = self.module.params.get("nitro_auth_token", None)
         self.client = NitroAPIClient(self.module, self.resource_name)
         have_userpass = all([
             self.module.params.get("nitro_user"),
@@ -220,7 +222,7 @@ class ModuleExecutor(object):
             # }
         if self.resource_name == "login":
             self.module_result["sessionid"] = self.sessionid
-        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode:
+        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode and not self.have_token:
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
@@ -250,7 +252,7 @@ class ModuleExecutor(object):
 
     @trace
     def return_failure(self, msg):
-        if self.client._headers["Cookie"] != "" and not self.module.check_mode:
+        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode and not self.have_token:
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
@@ -1019,11 +1021,16 @@ class ModuleExecutor(object):
             action=action,
         )
         if ok:
+            # For rename operations, always treat HTTP_RESOURCE_ALREADY_EXISTS as failure
+            # This prevents false positives where we think a rename succeeded when it actually
+            # failed due to a name conflict with a different existing resource
             if (
                 "status_code" in err
                 and err["status_code"] == HTTP_RESOURCE_ALREADY_EXISTS
             ):
                 self.module_result["changed"] = False
+                if action == "rename":
+                    self.return_failure(err)
         else:
             self.return_failure(err)
 
