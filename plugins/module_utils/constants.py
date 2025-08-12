@@ -26,6 +26,8 @@ ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE = {
     "sslcertkey": {"password"},
 }
 
+NESTED_POST_DATA_RESOURCES = ["bgpRouter"]
+
 # NITRO accepts some attributes with a name and responsds with a different name in its GET reponse.
 # Eg: For "gslbservice" resource, NITRO expects "ip" in POST request
 # but expects "ipaddress" in PUT payload and returns "ipaddress" in GET response.

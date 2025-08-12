@@ -948,3 +948,4 @@ plugins/modules/sslechconfig.py validate-modules:missing-gplv3-license # We use 
 plugins/modules/sslhpkekey.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/sslprofile_sslechconfig_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/authenticationprotecteduseraction.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/bgpRouter.py validate-modules:missing-gplv3-license # We use MIT license
