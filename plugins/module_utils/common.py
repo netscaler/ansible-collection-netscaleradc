@@ -61,11 +61,18 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 
     if resource_name.endswith("_binding"):
         # binding resources require `filter` instead of `args` to uniquely identify a resource
-        status_code, response_body = client.get(
-            resource=resource_name,
-            id=resource_id,
-            filter=get_args,
-        )
+        if resource_name.startswith("systemglobal_"):
+            status_code, response_body = client.get(
+                resource="systemglobal",
+                id=resource_id,
+                filter=get_args,
+            )
+        else:
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                filter=get_args,
+            )
     elif resource_name in {"sslcertfile"}:
         status_code, response_body = client.get(
             resource=resource_name,
@@ -92,7 +99,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
         return False, []
     if status_code in HTTP_SUCCESS_CODES:
         # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
-        if resource_name not in response_body:
+        if resource_name not in response_body and not resource_name.startswith("systemglobal_"):
             if resource_name == "sslcipher":
                 resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
                 return True, [
@@ -101,7 +108,10 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 
             return False, []
         # `update-only` resources return a dict instead of a list.
-        return_response = response_body[resource_name]
+        if resource_name.startswith("systemglobal_"):
+            return_response = response_body["systemglobal"]
+        else:
+            return_response = response_body[resource_name]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
         # So, we are converting the keys to lowercase.
         # except for `ping` and `traceroute`, all the othe resources returns a keys with lowercase.
