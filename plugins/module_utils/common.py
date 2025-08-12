@@ -19,6 +19,7 @@ from .decorators import trace
 from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
+
 @trace
 def get_netscaler_version(client):
     is_exist, response = get_resource(client, "nsversion")
@@ -70,7 +71,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
                 filter=get_args,
                 args={"type": resource_module_params["type"]},
             )
-        else: 
+        else:
             status_code, response_body = client.get(
                 resource=resource_name,
                 id=resource_id,
