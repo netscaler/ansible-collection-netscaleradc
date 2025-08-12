@@ -145,7 +145,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 def fix_nitro_anomolies(resource_name, resource_module_params, return_response):
     if return_response is None:
         return []
-    
+
     for resource in return_response:
         # FIXME: NITRO-BUG: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
         # Hence, we will set it to `SEC` to make it idempotent
