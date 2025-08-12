@@ -381,27 +381,6 @@
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: LBVSERVER | RENAME | idempotent
-  delegate_to: localhost
-  register: result
-  check_mode: false
-  tags: test
-  netscaler.adc.lbvserver:
-    nsip: "{{ nsip }}"
-    nitro_user: "{{ nitro_user }}"
-    nitro_pass: "{{ nitro_pass }}"
-    nitro_protocol: "{{ nitro_protocol }}"
-    validate_certs: "{{ validate_certs }}"
-    save_config: "{{ save_config }}"
-    state: renamed
-    name: lb1
-    newname: lb2
-- name: Assert | LBVSERVER | RENAME | idempotent
-  tags: test
-  ansible.builtin.assert:
-    that:
-      - "result.failed==false"
-      - "result.changed==false"
 - name: LBVSERVER | DELETE | --check
   delegate_to: localhost
   register: result

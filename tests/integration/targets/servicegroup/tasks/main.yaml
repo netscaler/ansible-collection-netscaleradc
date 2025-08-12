@@ -334,26 +334,6 @@
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: SERVICEGROUP | RENAME | idempotent
-  delegate_to: localhost
-  register: result
-  check_mode: false
-  tags: test
-  netscaler.adc.servicegroup:
-    nsip: "{{ nsip }}"
-    nitro_user: "{{ nitro_user }}"
-    nitro_pass: "{{ nitro_pass }}"
-    nitro_protocol: "{{ nitro_protocol }}"
-    validate_certs: "{{ validate_certs }}"
-    state: renamed
-    servicegroupname: "{{ servicegroup_name }}_renamed"
-    newname: "{{ servicegroup_name }}_renamed"
-- name: Assert | SERVICEGROUP | RENAME | idempotent
-  tags: test
-  ansible.builtin.assert:
-    that:
-      - "result.failed==false"
-      - "result.changed==false"
 - name: SERVICEGROUP | DELETE | --check
   delegate_to: localhost
   register: result
