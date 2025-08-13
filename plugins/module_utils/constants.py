@@ -114,24 +114,3 @@ NETSCALER_COMMON_ARGUMENTS = dict(
         fallback=(env_fallback, ["MANAGED_NETSCALER_INSTANCE_PASSWORD"]),
     ),
 )
-
-# this list contains globalbindings whose GET call must have query params args=type and filter=get_arg_keys (check in nitro_resource_map)
-GLOBAL_BINDING_ARG_LIST = [
-    'dnsglobal_dnspolicy_binding',
-    'responderglobal_responderpolicy_binding',
-    'contentinspectionglobal_contentinspectionpolicy_binding',
-    'appflowglobal_appflowpolicy_binding',
-    'appfwglobal_auditnslogpolicy_binding',
-    'appfwglobal_auditsyslogpolicy_binding',
-    'appfwglobal_appfwpolicy_binding',
-    'rewriteglobal_rewritepolicy_binding',
-    'transformglobal_transformpolicy_binding',
-    'sslglobal_sslpolicy_binding',
-    'tunnelglobal_tunneltrafficpolicy_binding',
-    'cmpglobal_cmppolicy_binding',
-    'feoglobal_feopolicy_binding',
-    'icaglobal_icapolicy_binding',
-    'lbglobal_lbpolicy_binding',
-    'cacheglobal_cachepolicy_binding',
-    'botglobal_botpolicy_binding',
-]
