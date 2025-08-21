@@ -1,12 +1,9 @@
 import yaml
 import argparse
-import jinja2
 from resourcelist import (
     resource_map,
     state_map
 )
-
-from collections import OrderedDict
 
 class CustomDumper(yaml.SafeDumper):
     def ignore_aliases(self, data):
@@ -147,7 +144,7 @@ def main():
     parser = argparse.ArgumentParser(description="Convert YAML files for migration")
     parser.add_argument("-i", "--input", required=True, help="Input YAML file")
     parser.add_argument("-o", "--output", required=False, help="Output YAML file")
-    parser.add_argument("-v", "--verbose", required=False, help="verbose mode")
+    parser.add_argument("-v", "--verbose", action="store_true", help="verbose mode")
     args = parser.parse_args()
     
     input_file = args.input

@@ -29,6 +29,7 @@ python3 convert_yaml.py -i input_playbook.yaml -o output_playbook.yaml
 
 - `-i, --input`: (Required) Path to the input YAML playbook
 - `-o, --output`: (Optional) Path for the output file. Defaults to `output.yaml`
+- `-v, --verbose`: (Optional) Enable verbose mode
 
 ### Example
 
@@ -85,21 +86,18 @@ Converts `citrix_adc_nitro_request` tasks to specific resource modules:
 - `action` → Uses the action value from the task
 
 ## Files
-
 - `convert_yaml.py`: Main conversion script
 - `resourcelist.py`: Contains `resource_map` and `state_map` mappings
-- `template.j2`: Jinja2 template (if used)
 
 ## Requirements
 
 - Python 3.x
 - PyYAML
-- Jinja2
 
 ## Installation
 
 ```bash
-pip install pyyaml jinja2
+pip install pyyaml
 ```
 
 ## Input Format Support
