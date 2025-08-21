@@ -1,0 +1,7 @@
+---
+- name: Sample converted playbook
+  hosts: {{ hosts }}
+  gather_facts: {{ gather_facts | default('no') }}
+  vars: {{ vars }}
+  tasks:
+    {{ tasks }}
