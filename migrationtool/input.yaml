@@ -1,0 +1,127 @@
+# ---
+# - name: Sample playbook
+#   hosts: localhost
+#   gather_facts: no
+#   tasks:
+#     - name: Setup confidential field id
+#       delegate_to: localhost
+#       citrix_adc_appfw_confidfield:
+#         nitro_user: nsroot
+#         nitro_pass: nsroot
+#         nsip: 192.168.1.2
+#         state: present
+#         fieldname: confidfield_integration_test
+#         url: 'HTTP.REQ.HOSTNAME.DOMAIN.EQ("blog.example.com")'
+#         isregex: REGEX
+#         comment: 'conf id field comment'
+    
+#     - name: Setup an AppFW fieldtype
+#       delegate_to: localhost
+#       citrix_adc_appfw_fieldtype:
+#         nitro_user: nsroot
+#         nitro_pass: nsroot
+#         nsip: 192.168.1.2
+#         state: present
+#         name: test_field_type
+#         regex: test_.*regex
+#         priority: "100"
+#         comment: 'some comment'
+
+#     - name: Setup file
+#       delegate_to: localhost
+#       citrix.adc.citrix_adc_system_file:
+#         nitro_user: nsroot
+#         nitro_pass: nsroot
+#         nsip: 10.78.33.22
+
+#         state: present
+
+#         filelocation: /var/tmp
+#         filename: testfile.txt
+#         filecontent: "Some file content"
+    
+#     - name: Setup json content type
+#       delegate_to: localhost
+#       citrix_adc_appfw_jsoncontenttype:
+#         nitro_user: nsroot
+#         nitro_pass: nsroot
+#         nsip: 192.168.1.2
+#         state: present
+#         jsoncontenttypevalue: prefix.*test
+#         isregex: REGEX
+
+#     - name: Setup confidential field id
+#       delegate_to: localhost
+#       citrix_adc_appfw_htmlerrorpage:
+#         nitro_user: nsroot
+#         nitro_pass: nsroot
+#         nsip: 192.168.1.2
+
+#         state: present
+
+#         name: "from_yaml"
+#         src: "local://error.html"
+#         comment: Some comment
+#         overwrite: yes
+#     - name: Setup file
+#       delegate_to: localhost
+#       citrix.adc.citrix_adc_system_file:
+#         nitro_user: nsroot
+#         nitro_pass: nsroot
+#         nsip: 10.78.33.22
+
+#         state: present
+
+#         filelocation: /var/tmp
+#         filename: testfile.txt
+#         filecontent: "Some file content"
+    
+#     - name: Add a server
+#       delegate_to: localhost
+#       citrix_adc_nitro_request:
+#         nsip: "{{ nsip }}"
+#         nitro_user: "{{ nitro_user }}"
+#         nitro_pass: "{{ nitro_pass }}"
+#         operation: add
+#         resource: server
+#         name: test-server-1
+#         attributes:
+#           name: test-server-1
+#           ipaddress: 192.168.1.1
+
+#     - name: Update server
+#       delegate_to: localhost
+#       citrix_adc_nitro_request:
+#         nsip: "{{ nsip }}"
+#         nitro_user: "{{ nitro_user }}"
+#         nitro_pass: "{{ nitro_pass }}"
+#         operation: update
+#         resource: server
+#         name: test-server-1
+#         attributes:
+#           name: test-server-1
+#           ipaddress: 192.168.1.2
+
+#     - name: Delete server
+#       delegate_to: localhost
+#       citrix_adc_nitro_request:
+#         nsip: "{{ nsip }}"
+#         nitro_user: "{{ nitro_user }}"
+#         nitro_pass: "{{ nitro_pass }}"
+#         operation: delete
+#         resource: server
+#         name: test-server-1
+
+- hosts: citrix_adc
+
+  gather_facts: False
+  tasks:
+    - name: Setup json content type
+      delegate_to: localhost
+      citrix_adc_appfw_jsoncontenttype:
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        nsip: 192.168.1.2
+        state: present
+        jsoncontenttypevalue: prefix.*test
+        isregex: REGEX

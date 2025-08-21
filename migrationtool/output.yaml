@@ -1,0 +1,14 @@
+- name: sample converted playbook
+  hosts: citrix_adc
+  gather_facts: false
+  vars: {}
+  tasks:
+    - name: Setup json content type
+      delegate_to: localhost
+      netscaler.adc.appfwjsoncontenttype:
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        nsip: 192.168.1.2
+        state: present
+        jsoncontenttypevalue: prefix.*test
+        isregex: REGEX
