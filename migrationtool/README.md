@@ -1,57 +1,57 @@
 # NetScaler ADC Ansible Collection Migration Tool
 
-Migrates Ansible playbooks from legacy `citrix.adc` collection to new `netscaler.adc` collection format.
+This tool helps migrate existing Ansible playbooks from the legacy `citrix.adc` collection to the new `netscaler.adc` collection format.
+
+## Overview
+
+The migration tool converts YAML playbooks that use:
+- Legacy `citrix.adc` modules 
+- `citrix_adc_nitro_request` generic module
+
+Into playbooks that use the new `netscaler.adc` collection modules.
+
+## Features
+
+- **Module Mapping**: Automatically maps legacy module names to new collection modules
+- **State Conversion**: Converts NITRO request operations to appropriate state values
+- **Credential Handling**: Preserves and converts authentication parameters
+- **YAML Structure Preservation**: Maintains playbook structure, variables, and task organization
 
 ## Usage
+
+### Basic Usage
 
 ```bash
 python3 convert_yaml.py -i input_playbook.yaml -o output_playbook.yaml
 ```
 
-**Arguments:**
-- `-i, --input`: (Required) Input YAML playbook
-- `-o, --output`: (Optional) Output file (defaults to `output.yaml`)
-- `-v, --verbose`: (Optional) Enable verbose output
+### Arguments
 
-## What it converts
+- `-i, --input`: (Required) Path to the input YAML playbook
+- `-o, --output`: (Optional) Path for the output file. Defaults to `output.yaml`
 
-1. **Legacy modules**: `citrix.adc.lbvserver` → `netscaler.adc.lbvserver`
-2. **NITRO requests**: `citrix_adc_nitro_request` → specific resource modules
+### Example
 
-### Example Conversion
+```bash
+python convert_yaml.py -i legacy_playbook.yml -o migrated_playbook.yml
+```
+
+## Supported Conversions
+
+### Legacy Module Mappings
+The tool uses `resource_map` to convert legacy module names to new collection modules:
+- `citrix.adc.lbvserver` → `netscaler.adc.lbvserver`
+- `lbvserver` → `netscaler.adc.lbvserver`
+
+### NITRO Request Conversion
+Converts `citrix_adc_nitro_request` tasks to specific resource modules:
 
 **Before:**
 ```yaml
 - name: Configure LB vserver
   citrix_adc_nitro_request:
-    operation: present
-    resource: lbvserver
-    name: my_lb_vserver
-    attributes:
-      servicetype: HTTP
-      port: 80
-```
-
-**After:**
-```yaml
-- name: Configure LB vserver
-  netscaler.adc.lbvserver:
-    state: present
-    name: my_lb_vserver
-    servicetype: HTTP
-    port: 80
-```
-
-## Requirements
-
-```bash
-pip install pyyaml jinja2
-```
-
-## Files
-
-- `convert_yaml.py`: Main conversion script
-- `resourcelist.py`: Module and state mappings
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
     operation: present
     resource: lbvserver

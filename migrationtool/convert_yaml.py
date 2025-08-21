@@ -39,15 +39,16 @@ def convert_yaml_file(input_file, output_file, template_file, verbose):
     # Convert input file (citrix.adc) to output file (citrix.adc.yaml) using template
     with open(input_file, 'r') as infile:
         data = yaml.safe_load(infile)
-    
+    task_only = False
     # Handle both list and dict formats
     if isinstance(data, list):
         # If data is a list, assume it's a list of plays/tasks
-        if len(data) > 0 and isinstance(data[0], dict):
+        if len(data) == 1 and isinstance(data[0], dict):
             # Take the first item if it's a dictionary
             play_data = data[0]
         else:
             # If it's a list of tasks, wrap it in a play structure
+            task_only = True
             play_data = {"tasks": data}
     elif isinstance(data, dict):
         play_data = data
@@ -124,16 +125,20 @@ def convert_yaml_file(input_file, output_file, template_file, verbose):
                 new_tasks.append(new_task)
     
     # Playbook struct
-    playbook = [{
-        "name": name,
-        "hosts": hosts,
-        "gather_facts": gather_facts,
-        "vars": vars_data,
-        "tasks": new_tasks
-    }]
+    if task_only:
+        playbook = new_tasks
+    else:
+        playbook = [{
+            "name": name,
+            "hosts": hosts,
+            "gather_facts": gather_facts,
+            "vars": vars_data,
+            "tasks": new_tasks
+        }]
     
     # Write the playbook directly as YAML without template
     with open(output_file, 'w') as outfile:
+        outfile.write("---\n")
         yaml.dump(playbook, outfile, default_flow_style=False, sort_keys=False, Dumper=CustomDumper, indent=2)
 
     print(f"Output written to: {output_file}")
