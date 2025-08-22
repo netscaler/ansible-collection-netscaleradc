@@ -41,8 +41,9 @@ python convert_yaml.py -i legacy_playbook.yml -o migrated_playbook.yml
 
 ### Legacy Module Mappings
 The tool uses `resource_map` to convert legacy module names to new collection modules:
-- `citrix.adc.lbvserver` → `netscaler.adc.lbvserver`
-- `lbvserver` → `netscaler.adc.lbvserver`
+- `citrix.adc.<resource_name>` → `netscaler.adc.<resource_name>`
+- `<resource_name>` → `netscaler.adc.<resource_name>`
+- `citrix_adc_nitro_request` → `netscaler.adc.<resource_name>`
 
 ### NITRO Request Conversion
 Converts `citrix_adc_nitro_request` tasks to specific resource modules:
@@ -77,12 +78,38 @@ Converts `citrix_adc_nitro_request` tasks to specific resource modules:
     port: 80
 ```
 
+Converts `citrix.adc.<resource_name>` to `netscaler.adc.<resource_name>`
+**Before:**
+```yaml
+---
+- name: create server
+    delegate_to: localhost
+    citrix_adc_nitro_request:
+    operation: add
+    resource: server
+    name: test-server-1
+    attributes:
+        name: test-server-1
+        ipaddress: 10.10.10.10
+```
+
+**After:**
+```yaml
+- name: Configure LB vserver
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    state: present
+    name: my_lb_vserver
+    servicetype: HTTP
+    ipv46: 10.10.10.10
+    port: 80
+```
+
 ### State Mapping
-- `add` → `present`
-- `update` → `present`
+- `add`, `update` → `present`
 - `delete` → `absent`
-- `present` → `present`
-- `absent` → `absent`
 - `action` → Uses the action value from the task
 
 ## Files
@@ -104,14 +131,12 @@ pip install pyyaml
 
 The tool supports various YAML input formats:
 - Single playbook dictionary
-- List of plays
-- List of tasks (automatically wrapped in a play structure)
+- List of tasks
 
 ## Output
 
 The tool generates a properly formatted YAML playbook with:
 - Converted module names
-- Updated authentication parameters  
 - Preserved task names and structure
 - Proper indentation and formatting
 
