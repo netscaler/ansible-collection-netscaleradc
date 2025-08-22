@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 # Copyright (c) 2025 Cloud Software Group, Inc.
-# MIT License (see LICENSE or https://opensource.org/licenses/MIT)import argparse
+# MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
-import yaml
 import argparse
-from resourcelist import (
+import yaml
+from utils import (
     netscaler_login_specifics,
     play_level_keys_list,
     resource_map,
