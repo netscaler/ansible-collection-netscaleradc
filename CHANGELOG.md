@@ -7,11 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ## [2.10.0] -2025-08-20
+### Added
+
+- Added migration tool to convert `citrix.adc` module playbooks to `netscaler.adc`.
+
 ### Fixed 
+
 - Added option to skip non-updatable resources or fail explicitly
 - Removal of basic authentication from Netscaler ADC Ansible collection
 - Fixed idempotency issue in rename operations
-Fixed GET request URL for global bindings to include type query parameter
+- Fixed GET request URL for global bindings to include type query parameter
 
 ## [2.9.2] - 2025-06-25
 
