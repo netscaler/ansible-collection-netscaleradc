@@ -1,10 +1,10 @@
 resource_map = {
-    "citrix_adc_appfw_confidfield" :  "netscaler.adc.appfwconfidfield",
-    "citrix_adc_appfw_fieldtype" :  "netscaler.adc.appfwfieldtype",
-    "citrix_adc_appfw_global_bindings" :  "netscaler.adc.appfwglobal_bindings",
-    "citrix_adc_appfw_htmlerrorpage" :  "netscaler.adc.appfwhtmlerrorpage",
-    "citrix_adc_appfw_jsoncontenttype" :  "netscaler.adc.appfwjsoncontenttype",
-    "citrix_adc_appfw_learningsettings" :  "netscaler.adc.appfwlearningsettings",
+    "citrix_adc_appfw_confidfield": "netscaler.adc.appfwconfidfield",
+    "citrix_adc_appfw_fieldtype": "netscaler.adc.appfwfieldtype",
+    "citrix_adc_appfw_global_bindings": "netscaler.adc.appfwglobal_bindings",
+    "citrix_adc_appfw_htmlerrorpage": "netscaler.adc.appfwhtmlerrorpage",
+    "citrix_adc_appfw_jsoncontenttype": "netscaler.adc.appfwjsoncontenttype",
+    "citrix_adc_appfw_learningsettings": "netscaler.adc.appfwlearningsettings",
     "citrix_adc_appfw_policylabel": "netscaler.adc.appfwpolicylabel",
     "citrix_adc_appfw_policy": "netscaler.adc.appfwpolicy",
     "citrix_adc_appfw_profile": "netscaler.adc.appfwprofile",
@@ -73,7 +73,7 @@ play_level_keys_list = [
     "force_handlers",
     "ignore_errors",
     "ignore_unreachable",
-    "run_once"
+    "run_once",
 ]
 
 task_level_keys_list = [
@@ -114,10 +114,14 @@ task_level_keys_list = [
     "become_method",
     "block",
     "rescue",
-    "always"
+    "always",
 ]
 netscaler_login_specifics = [
-    "nsip", "nitro_user", "nitro_pass", "validate_certs", "nitro_protocol"
+    "nsip",
+    "nitro_user",
+    "nitro_pass",
+    "validate_certs",
+    "nitro_protocol",
 ]
 if __name__ == "__main__":
     pass

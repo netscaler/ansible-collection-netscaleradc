@@ -1,0 +1,33 @@
+---
+- name: First Play - Server Management  
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Add a server
+      delegate_to: localhost
+      citrix_adc_nitro_request:
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        nsip: 10.106.210.21
+        operation: add
+        resource: server
+        name: test-server-1
+        attributes:
+          name: test-server-1
+          ipaddress: 192.168.1.1
+
+- name: Second Play - AppFW Configuration
+  hosts: citrix_adc
+  gather_facts: no
+  tasks:
+    - name: Setup confidential field id
+      delegate_to: localhost
+      citrix_adc_appfw_confidfield:
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        nsip: 10.106.210.21
+        state: present
+        fieldname: confidfield_integration_test
+        url: 'HTTP.REQ.HOSTNAME.DOMAIN.EQ("blog.example.com")'
+        isregex: REGEX
+        comment: 'conf id field comment'

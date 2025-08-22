@@ -1,0 +1,152 @@
+---
+# - name: create server
+#   delegate_to: localhost
+#   citrix_adc_nitro_request:
+#     operation: add
+#     resource: server
+#     name: test-server-1
+#     attributes:
+#         name: test-server-1
+#         ipaddress: 10.10.10.10
+
+# - name: Configure LB vserver
+#   delegate_to: localhost
+#   citrix_adc_nitro_request:
+#     operation: add
+#     resource: lbvserver
+#     name: my_lb_vserver
+#     attributes:
+#       servicetype: HTTP
+#       port: 80
+# - name: NetScaler Configuration
+#   hosts: localhost
+#   become: yes
+#   vars:
+#     nsip: 10.1.1.1
+#   tasks:
+#     - name: Configure LB vserver
+#       delegate_to: localhost
+#       citrix_adc_nitro_request:
+#         operation: add
+#         resource: lbvserver
+#         name: my_lb_vserver
+#         attributes:
+#           servicetype: HTTP
+#           port: 80
+          
+- name: playbook
+  hosts: localhost
+  vars:
+    nsip: 10.106.210.21
+    nitro_user: nsroot
+    nitro_pass: notnsroot
+  module_defaults:
+    group/netscaler.adc.nitro: 
+      nsip: 10.106.210.21
+      nitro_user: nsroot
+      nitro_pass: notnsroot
+      validate_certs: no
+      nitro_protocol: http
+  tasks:
+
+    - name: Add a server
+      delegate_to: localhost
+      citrix_adc_nitro_request:
+        operation: add
+        nsip: 10.106.210.21
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        validate_certs: no
+        nitro_protocol: http
+        resource: server
+        name: test-server-1
+        attributes:
+          name: test-server-1
+          ipaddress: 192.168.1.1
+          
+    - name: Setup an AppFW fieldtype
+      delegate_to: localhost
+      citrix_adc_appfw_fieldtype:
+        state: present
+        name: test_field_type
+        regex: test_.*regex
+        priority: "100"
+        comment: 'some comment'
+
+    - name: Setup file
+      delegate_to: localhost
+      citrix.adc.citrix_adc_system_file:
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        nsip: 10.106.210.21
+
+        state: present
+
+        filelocation: /var/tmp
+        filename: testfile.txt
+        filecontent: "Some file content"
+    
+    - name: Setup json content type
+      delegate_to: localhost
+      citrix_adc_appfw_jsoncontenttype:
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        nsip: 10.106.210.21
+        state: present
+        jsoncontenttypevalue: prefix.*test
+        isregex: REGEX
+
+    - name: Setup confidential field id
+      delegate_to: localhost
+      citrix_adc_appfw_htmlerrorpage:
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        nsip: 10.106.210.21
+
+        state: present
+
+        name: "from_yaml"
+        src: "local://error.html"
+        comment: Some comment
+        overwrite: yes
+    - name: Setup file
+      delegate_to: localhost
+      citrix.adc.citrix_adc_system_file:
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        nsip: 10.106.210.21
+
+        state: present
+
+        filelocation: /var/tmp
+        filename: testfile.txt
+        filecontent: "Some file content"
+
+
+
+#     - name: Delete server
+#       delegate_to: localhost
+#       citrix_adc_nitro_request:
+#         nitro_user: nsroot
+#         nitro_pass: notnsroot
+#         nsip: 10.106.210.21
+#         operation: delete
+#         resource: server
+#         name: test-server-1
+
+# ---
+# - name: NetScaler Configuration
+#   hosts: localhost
+#   become: yes
+#   vars:
+#     nsip: 10.1.1.1
+#   tasks:
+#     - name: Configure LB vserver
+#       delegate_to: "{{ nsip }}"
+#       citrix_adc_nitro_request:
+#         operation: add
+#         resource: lbvserver
+#         name: my_lb_vserver
+#         attributes:
+#           servicetype: HTTP
+#           port: 80
