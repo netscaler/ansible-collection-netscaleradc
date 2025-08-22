@@ -58,7 +58,6 @@ build_ignore:
   - ".DS_Store"
   - "docs"
   - "examples"
-  - "tools"
   - "issues"
   - "**/netscaler-adc-*.tar.gz"
   - "Makefile"
