@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+# Copyright (c) 2025 Cloud Software Group, Inc.
+# MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 resource_map = {
     "citrix_adc_appfw_confidfield": "netscaler.adc.appfwconfidfield",
     "citrix_adc_appfw_fieldtype": "netscaler.adc.appfwfieldtype",
