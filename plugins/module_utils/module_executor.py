@@ -340,7 +340,7 @@ class ModuleExecutor(object):
                     if key in resources and resources[key] != value:
                         match_found = False
                         break
-                
+
                 # If all parameters match, use this resource
                 if match_found:
                     self.existing_resource = resources
