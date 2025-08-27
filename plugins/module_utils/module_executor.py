@@ -38,6 +38,7 @@ from .constants import (
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
+    GETALL_ONLY_RESOURCES,
 )
 from .decorators import trace
 from .logger import log, loglines
@@ -321,17 +322,31 @@ class ModuleExecutor(object):
         if is_exist is False:
             return {}
         if len(existing_resource) > 1:
-            msg = (
-                "ERROR: For resource `%s` Found more than one resource with the same primary key `%s` and resource_module_params %s"
-                % (
-                    self.resource_name,
-                    self.resource_id,
-                    self.resource_module_params,
-                )
-            )
-            self.return_failure(msg)
+            if self.resource_name in GETALL_ONLY_RESOURCES:
+                for resources in existing_resource:
+                    # Check if all module params match this resource
+                    match_found = True
+                    for key, value in self.resource_module_params.items():
+                        if key in resources and resources[key] != value:
+                            match_found = False
+                            break
 
-        self.existing_resource = existing_resource[0]
+                    # If all parameters match, use this resource
+                    if match_found:
+                        self.existing_resource = resources
+                        break
+            else:
+                msg = (
+                    "ERROR: For resource `%s` Found more than one resource with the same primary key `%s` and resource_module_params %s"
+                    % (
+                        self.resource_name,
+                        self.resource_id,
+                        self.resource_module_params,
+                    )
+                )
+                self.return_failure(msg)
+        else:
+            self.existing_resource = existing_resource[0]
 
         if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
             self.existing_resource = self._add_nitro_attributes_aliases(

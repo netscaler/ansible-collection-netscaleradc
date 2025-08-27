@@ -86,7 +86,7 @@ def get_task_level_keys(task_data, verbose):
 def get_cred_attributes(plugindata, verbose):
     logincreds = {}
     if verbose:
-        print(f"getting nitro credentials")
+        print("getting nitro credentials")
     try:
         for key in netscaler_login_specifics:
             if key in plugindata:
@@ -227,7 +227,7 @@ def convert_yaml_file(input_file, output_file, template_file, verbose):
         print(f"Error occurred during conversion: {e}")
         return
     print(f"Output written to: {output_file}")
-    print(f"YAML conversion completed")
+    print("YAML conversion completed")
 
 
 def main():
