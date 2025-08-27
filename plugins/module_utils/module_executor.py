@@ -38,6 +38,7 @@ from .constants import (
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
+    GETALL_ONLY_RESOURCES,
 )
 from .decorators import trace
 from .logger import log, loglines
@@ -320,7 +321,7 @@ class ModuleExecutor(object):
         )
         if is_exist is False:
             return {}
-        if len(existing_resource) > 1:
+        if self.resource_name not in GETALL_ONLY_RESOURCES and len(existing_resource) > 1:
             msg = (
                 "ERROR: For resource `%s` Found more than one resource with the same primary key `%s` and resource_module_params %s"
                 % (
@@ -330,8 +331,20 @@ class ModuleExecutor(object):
                 )
             )
             self.return_failure(msg)
-
-        self.existing_resource = existing_resource[0]
+            self.existing_resource = existing_resource[0]
+        else:
+            for resources in existing_resource:
+                # Check if all module params match this resource
+                match_found = True
+                for key, value in self.resource_module_params.items():
+                    if key in resources and resources[key] != value:
+                        match_found = False
+                        break
+                
+                # If all parameters match, use this resource
+                if match_found:
+                    self.existing_resource = resources
+                    break
 
         if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
             self.existing_resource = self._add_nitro_attributes_aliases(

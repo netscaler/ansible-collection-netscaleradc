@@ -135,3 +135,19 @@ GLOBAL_BINDING_ARG_LIST = [
     'cacheglobal_cachepolicy_binding',
     'botglobal_botpolicy_binding',
 ]
+
+GETALL_ONLY_RESOURCES = [
+    'appfwlearningdata',
+    'application',
+    'bridgetable',
+    'gslbldnsentry',
+    'locationfile',
+    'locationfile6',
+    'routerdynamicrouting',
+    'sslcertbundle',
+    'sslcertfile',
+    'sslcrlfile',
+    'ssldhfile',
+    'sslkeyfile',
+    'systementitydata'
+]
