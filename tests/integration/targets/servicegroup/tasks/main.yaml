@@ -295,6 +295,45 @@
     that:
       - "result.failed==false"
       - "result.changed==false"
+- name: SERVICEGROUP | RENAME | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: renamed
+    servicegroupname: "{{ servicegroup_name }}"
+    newname: "{{ servicegroup_name }}_renamed"
+- name: Assert | SERVICEGROUP | RENAME | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SERVICEGROUP | RENAME
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: renamed
+    servicegroupname: "{{ servicegroup_name }}"
+    newname: "{{ servicegroup_name }}_renamed"
+- name: Assert | SERVICEGROUP | RENAME
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
 - name: SERVICEGROUP | DELETE | --check
   delegate_to: localhost
   register: result
@@ -307,7 +346,7 @@
     nitro_protocol: "{{ nitro_protocol }}"
     validate_certs: "{{ validate_certs }}"
     state: absent
-    servicegroupname: "{{ servicegroup_name }}"
+    servicegroupname: "{{ servicegroup_name }}_renamed"
     servicetype: TCP
     autoscale: DNS
     servicegroup_servicegroupmember_binding:
@@ -315,13 +354,13 @@
       binding_members:
         - port: 443
           servername: "{{ server1_name }}"
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
         - port: 443
           servername: "{{ server2_name }}"
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
         - port: 443
           ip: 10.10.10.10
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
 - name: Assert | SERVICEGROUP | DELETE | --check
   tags: test
   ansible.builtin.assert:
@@ -340,7 +379,7 @@
     nitro_protocol: "{{ nitro_protocol }}"
     validate_certs: "{{ validate_certs }}"
     state: absent
-    servicegroupname: "{{ servicegroup_name }}"
+    servicegroupname: "{{ servicegroup_name }}_renamed"
     servicetype: TCP
     autoscale: DNS
     servicegroup_servicegroupmember_binding:
@@ -348,10 +387,10 @@
       binding_members:
         - port: 443
           servername: "{{ server1_name }}"
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
         - port: 443
           servername: "{{ server2_name }}"
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
         - port: 443
           ip: 10.10.10.10
           servicegroupname: "{{ servicegroup_name }}"
@@ -372,7 +411,7 @@
     nitro_protocol: "{{ nitro_protocol }}"
     validate_certs: "{{ validate_certs }}"
     state: absent
-    servicegroupname: "{{ servicegroup_name }}"
+    servicegroupname: "{{ servicegroup_name }}_renamed"
     servicetype: TCP
     autoscale: DNS
     servicegroup_servicegroupmember_binding:
@@ -380,13 +419,13 @@
       binding_members:
         - port: 443
           servername: "{{ server1_name }}"
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
         - port: 443
           servername: "{{ server2_name }}"
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
         - port: 443
           ip: 10.10.10.10
-          servicegroupname: "{{ servicegroup_name }}"
+          servicegroupname: "{{ servicegroup_name }}_renamed"
 - name: Assert | SERVICEGROUP | DELETE | idempotent
   tags: test
   ansible.builtin.assert:

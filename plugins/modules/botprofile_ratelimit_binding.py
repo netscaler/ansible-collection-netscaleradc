@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: botprofile_ratelimit_binding
 short_description: Binding Resource definition for describing association between
   botprofile and ratelimit resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between botp
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,6 +40,16 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   bot_bind_comment:
     type: str
     description:
@@ -50,10 +62,11 @@ options:
       - DROP
       - REDIRECT
       - RESET
+      - RESPOND_STATUS_TOO_MANY_REQUESTS
     description:
       - One or more actions to be taken when the current rate becomes more than the
-        configured rate. Only C(LOG) action can be combined with C(DROP), C(REDIRECT)
-        or C(RESET) action.
+        configured rate. Only C(LOG) action can be combined with C(DROP), C(REDIRECT),
+        C(RESPOND_STATUS_TOO_MANY_REQUESTS) or C(RESET) action.
     elements: str
   bot_rate_limit_enabled:
     type: str
@@ -76,6 +89,7 @@ options:
       - '*C(SESSION) - Rate-limiting based on the configured cookie name.'
       - '*C(URL) - Rate-limiting based on the configured C(URL).'
       - '*C(GEOLOCATION) - Rate-limiting based on the configured country name.'
+      - '*C(JA3_FINGERPRINT) - Rate-limiting based on client SSL JA3 fingerprint.'
   bot_rate_limit_url:
     type: str
     description:
@@ -89,6 +103,11 @@ options:
         only one binding is allowed for a cookie name. To update the values of an
         existing binding, user has to first unbind that binding, and then needs to
         bind again with new values.
+  condition:
+    type: str
+    description:
+      - Expression to be used in a rate-limiting condition. This expression result
+        must be a boolean value.
   cookiename:
     type: str
     description:
@@ -347,6 +366,13 @@ options:
       - ZW
     description:
       - Country name which is used for geolocation rate-limiting.
+  limittype:
+    type: str
+    choices:
+      - BURSTY
+      - SMOOTH
+    description:
+      - Rate-Limiting traffic Type
   logmessage:
     type: str
     description:
@@ -363,12 +389,12 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   rate:
-    type: float
+    type: int
     description:
       - Maximum number of requests that are allowed in this session in the given period
         time.
   timeslice:
-    type: float
+    type: int
     description:
       - Time interval during which requests are tracked to check if they cross the
         given rate.
@@ -377,6 +403,25 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botprofile_ratelimit_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botprofile_ratelimit_binding
+      delegate_to: localhost
+      netscaler.adc.botprofile_ratelimit_binding:
+        state: present
+        name: Bot_management_prof
+        bot_ratelimit: true
+        bot_rate_limit_type: SOURCE_IP
+        rate: '5'
+        timeslice: '20000'
+        bot_rate_limit_action:
+          - LOG
+          - DROP
+        bot_rate_limit_enabled: 'ON'
+        logmessage: Demo Rate Limit
 """
 
 RETURN = r"""

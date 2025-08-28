@@ -1,0 +1,11 @@
+---
+- name: Sample policydataset playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policydataset
+      delegate_to: localhost
+      netscaler.adc.policydataset:
+        state: present
+        name: SF_LBVIP
+        type: ipv4

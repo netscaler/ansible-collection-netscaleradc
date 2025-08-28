@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nshttpparam
 short_description: Configuration for HTTP parameter resource.
 description: Configuration for HTTP parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,36 +38,46 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   conmultiplex:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Reuse server connections for requests from more than one client connections.
   dropinvalreqs:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Drop invalid HTTP requests or responses.
   http2serverside:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable/Disable HTTP/2 on server side
   ignoreconnectcodingscheme:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Ignore Coding scheme in CONNECT request.
   insnssrvrhdr:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -73,35 +85,35 @@ options:
       - Enable or disable Citrix ADC server header insertion for Citrix ADC generated
         HTTP responses.
   logerrresp:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Server header value to be inserted.
   markconnreqinval:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Mark CONNECT requests as invalid.
   markhttp09inval:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Mark HTTP/0.9 requests as invalid.
   maxreusepool:
-    type: raw
+    type: int
     description:
       - Maximum limit on the number of connections, from the Citrix ADC to a particular
         server that are kept in the reuse pool. This setting is helpful for optimal
         memory utilization and for reducing the idle connections to the server just
         after the peak time.
   nssrvrhdr:
-    type: raw
+    type: str
     description:
       - The server header value to be inserted. If no explicit header is specified
         then NSBUILD.RELEASE is used as default server header.
@@ -110,6 +122,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nshttpparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nshttpparam
+      delegate_to: localhost
+      netscaler.adc.nshttpparam:
+        state: present
+        ignoreconnectcodingscheme: DISABLED
 """
 
 RETURN = r"""

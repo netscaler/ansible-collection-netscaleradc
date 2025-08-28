@@ -1,0 +1,134 @@
+---
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: setup.yaml
+- name: SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup_servicegroupmember_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: disabled
+    servicegroupname: test-slbservicegroup
+    port: 65530
+    ip: 10.10.10.10
+- name: Assert | SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | ADD
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == true
+- name: SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | ENABLE STATE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup_servicegroupmember_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: enabled
+    servicegroupname: test-slbservicegroup
+    port: 65530
+    ip: 10.10.10.10
+- name: Assert | SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | ENABLE STATE
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == true
+- name: SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup_servicegroupmember_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    servicegroupname: test-slbservicegroup
+    port: 65530
+    ip: 10.10.10.10
+- name: Assert | SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+- name: SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.servicegroup_servicegroupmember_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    servicegroupname: test-slbservicegroup
+    ip: 10.10.10.10
+    port: 65530
+- name: Assert | SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == true
+- name: SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup_servicegroupmember_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    servicegroupname: test-slbservicegroup
+    ip: 10.10.10.10
+    port: 65530
+- name: Assert | SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | DELETE
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == true
+- name: SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup_servicegroupmember_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    servicegroupname: test-slbservicegroup
+    ip: 10.10.10.10
+    port: 65530
+- name: Assert | SLBSERVICEGROUP_SLBSERVICEGROUPMEMEBER_BINDING | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+- name: Include teardown tasks
+  ansible.builtin.include_tasks: teardown.yaml

@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.sslvserver module – Configuration for SSL virtual server resource. &mdash; Ansible collections  documentation</title>
@@ -13,15 +15,11 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.sslvserver_ecccurve_binding module – Binding Resource definition for describing association between sslvserver and ecccurve resources" href="sslvserver_ecccurve_binding_module.html" />
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.sslvserver module – Configuration for SSL virtual server resource.<a class="headerlink" href="#netscaler-adc-sslvserver-module-configuration-for-ssl-virtual-server-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +171,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cipherredirect"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-cipherredirect"><strong>cipherredirect</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cipherredirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cipherredirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of Cipher Redirect. If cipher redirect is enabled, you can configure an SSL virtual server or service to display meaningful error messages if the SSL handshake fails because of a cipher mismatch between the virtual server or service and the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,21 +183,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cipherurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-cipherurl"><strong>cipherurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cipherurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cipherurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The redirect URL to be used with the Cipher Redirect feature.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cleartextport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-cleartextport"><strong>cleartextport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cleartextport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cleartextport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Port on which clear-text data is sent by the appliance to the server. Do not specify this parameter for SSL offloading with end-to-end encryption.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientauth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-clientauth"><strong>clientauth</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientauth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of client authentication. If client authentication is enabled, the virtual server terminates the SSL handshake if the SSL client does not provide a valid certificate.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -211,7 +209,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientcert"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-clientcert"><strong>clientcert</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientcert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientcert" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of client authentication. If this parameter is set to MANDATORY, the appliance terminates the SSL handshake if the SSL client does not provide a valid certificate. With the OPTIONAL setting, the appliance requests a certificate from the SSL clients but proceeds with the SSL transaction even if the client presents an invalid certificate.</p>
 <p>Caution: Define proper access control policies before changing this setting to <code class="docutils literal notranslate"><span class="pre">Optional</span></code>.</p>
@@ -223,8 +221,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-defaultsni"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-defaultsni"><strong>defaultsni</strong></p>
+<a class="ansibleOptionLink" href="#parameter-defaultsni" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Default domain name supported by the SSL virtual server. The parameter is effective, when zero touch certificate management is active for the SSL virtual server i.e. no manual SNI cert or default server cert is bound to the v-server.</p>
+<p>For SSL transactions, when SNI is not presented by the client, server-certificate corresponding to the default SNI, if available in the cert-store, is selected else connection is terminated.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dh"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dh"><strong>dh</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of Diffie-Hellman (DH) key exchange.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -234,16 +240,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dhcount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dhcount"><strong>dhcount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dhcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dhcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of interactions, between the client and the Citrix ADC, after which the DH private-public pair is regenerated. A value of zero (0) specifies refresh every time.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dhekeyexchangewithpsk"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dhekeyexchangewithpsk"><strong>dhekeyexchangewithpsk</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dhekeyexchangewithpsk" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dhekeyexchangewithpsk" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Whether or not the SSL Virtual Server will require a DHE key exchange to occur when a PSK is accepted during a TLS 1.3 resumption handshake.</p>
 <p>A DHE key exchange ensures forward secrecy even in the event that ticket keys are compromised, at the expense of an additional round trip and resources required to carry out the DHE key exchange.</p>
@@ -256,16 +262,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dhfile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dhfile"><strong>dhfile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dhfile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dhfile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of and, optionally, path to the DH parameter file, in PEM format, to be installed. /nsconfig/ssl/ is the default path.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dhkeyexpsizelimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dhkeyexpsizelimit"><strong>dhkeyexpsizelimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dhkeyexpsizelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dhkeyexpsizelimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option enables the use of NIST recommended (NIST Special Publication 800-56A) bit size for private-key size. For example, for DH params of size 2048bit, the private-key size recommended is 224bits. This is rounded-up to 256bits.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -275,9 +281,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dtls1"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dtls1"><strong>dtls1</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dtls1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dtls1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of DTLSv1.0 protocol support for the SSL Virtual Server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -287,9 +293,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dtls12"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dtls12"><strong>dtls12</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dtls12" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dtls12" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of DTLSv1.2 protocol support for the SSL Virtual Server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -299,16 +305,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dtlsprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-dtlsprofilename"><strong>dtlsprofilename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dtlsprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dtlsprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the DTLS profile whose settings are to be applied to the virtual server.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ersa"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-ersa"><strong>ersa</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ersa" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ersa" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of Ephemeral RSA (eRSA) key exchange. Ephemeral RSA allows clients that support only export ciphers to communicate with the secure server even if the server certificate does not support export clients. The ephemeral RSA key is automatically generated when you bind an export cipher to an SSL or TCP-based SSL virtual server or service. When you remove the export cipher, the eRSA key is not deleted. It is reused at a later date when another export cipher is bound to an SSL or TCP-based SSL virtual server or service. The eRSA key is deleted when the appliance restarts.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -318,16 +324,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ersacount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-ersacount"><strong>ersacount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ersacount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ersacount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Refresh count for regeneration of the RSA public-key and private-key pair. Zero (0) specifies infinite usage (no refresh).</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hsts"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-hsts"><strong>hsts</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hsts" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-hsts" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of HSTS protocol support for the SSL Virtual Server. Using HSTS, a server can enforce the use of an HTTPS connection for all communication with a client</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -337,9 +343,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-includesubdomains"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-includesubdomains"><strong>includesubdomains</strong></p>
-<a class="ansibleOptionLink" href="#parameter-includesubdomains" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-includesubdomains" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests for subdomains.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -349,7 +355,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_id"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-managed-netscaler-instance-id"><strong>managed_netscaler_instance_id</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -359,7 +365,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_ip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-managed-netscaler-instance-ip"><strong>managed_netscaler_instance_ip</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -369,7 +375,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-managed-netscaler-instance-name"><strong>managed_netscaler_instance_name</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -379,7 +385,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_password"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-managed-netscaler-instance-password"><strong>managed_netscaler_instance_password</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -391,7 +397,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>ensure to configure username and password of a managed instance.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_username"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-managed-netscaler-instance-username"><strong>managed_netscaler_instance_username</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -403,14 +409,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>ensure to configure username and password of a managed instance.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxage"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-maxage"><strong>maxage</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Set the maximum time, in seconds, in the strict transport security (STS) header during which the client must send only HTTPS requests to the server</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-netscaler_console_as_proxy_server"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-netscaler-console-as-proxy-server"><strong>netscaler_console_as_proxy_server</strong></p>
 <a class="ansibleOptionLink" href="#parameter-netscaler_console_as_proxy_server" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -424,21 +430,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_pass"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-nitro-pass"><strong>nitro_pass</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_pass" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The password with which to authenticate to the NetScaler ADC node.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_protocol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-nitro-protocol"><strong>nitro_protocol</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_protocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -450,14 +456,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nitro_user"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-nitro-user"><strong>nitro_user</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nitro_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The username with which to authenticate to the NetScaler ADC node.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nsip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-nsip"><strong>nsip</strong></p>
 <a class="ansibleOptionLink" href="#parameter-nsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
 </div></td>
@@ -465,9 +471,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ocspstapling"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-ocspstapling"><strong>ocspstapling</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ocspstapling" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ocspstapling" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of OCSP stapling support on the SSL virtual server. Supported only if the protocol used is higher than SSLv3. Possible values:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>: The appliance sends a request to the OCSP responder to check the status of the server certificate and caches the response for the specified time. If the response is valid at the time of SSL handshake with the client, the OCSP-based server certificate status is sent to the client during the handshake.</p>
@@ -479,9 +485,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-preload"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-preload"><strong>preload</strong></p>
-<a class="ansibleOptionLink" href="#parameter-preload" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-preload" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Flag indicates the consent of the site owner to have their domain preloaded.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -491,7 +497,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pushenctrigger"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-pushenctrigger"><strong>pushenctrigger</strong></p>
 <a class="ansibleOptionLink" href="#parameter-pushenctrigger" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -509,9 +515,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-redirectportrewrite"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-redirectportrewrite"><strong>redirectportrewrite</strong></p>
-<a class="ansibleOptionLink" href="#parameter-redirectportrewrite" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-redirectportrewrite" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of the port rewrite while performing HTTPS redirect. If this parameter is <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code> and the URL from the server does not contain the standard port, the port is rewritten to the standard.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -521,7 +527,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-save_config"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-save-config"><strong>save_config</strong></p>
 <a class="ansibleOptionLink" href="#parameter-save_config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
 </div></td>
@@ -534,9 +540,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sendclosenotify"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sendclosenotify"><strong>sendclosenotify</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sendclosenotify" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sendclosenotify" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable sending SSL Close-Notify at the end of a transaction</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -546,9 +552,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessreuse"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sessreuse"><strong>sessreuse</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessreuse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessreuse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of session reuse. Establishing the initial handshake requires CPU-intensive public key encryption operations. With the <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code> setting, session key exchange is avoided for session resumption requests received from the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -558,16 +564,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sesstimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sesstimeout"><strong>sesstimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time, in seconds, for which to keep the session active. Any session resumption request received after the timeout period will require a fresh SSL handshake and establishment of a new SSL session.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-snienable"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-snienable"><strong>snienable</strong></p>
-<a class="ansibleOptionLink" href="#parameter-snienable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-snienable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of the Server Name Indication (SNI) feature on the virtual server and service-based offload. SNI helps to enable SSL encryption on multiple domains on a single virtual server or service if the domains are controlled by the same organization and share the same second-level domain name. For example, *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -577,9 +583,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssl2"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-ssl2"><strong>ssl2</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssl2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssl2" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of SSLv2 protocol support for the SSL Virtual Server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -589,9 +595,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssl3"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-ssl3"><strong>ssl3</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssl3" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssl3" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of SSLv3 protocol support for the SSL Virtual Server.</p>
 <p>Note: On platforms with SSL acceleration chips, if the SSL chip does not support SSLv3, this parameter cannot be set to <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>.</p>
@@ -602,16 +608,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslprofile"><strong>sslprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the SSL profile that contains SSL settings for the virtual server.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslredirect"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslredirect"><strong>sslredirect</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslredirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslredirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of HTTPS redirects for the SSL virtual server.</p>
 <p>For an SSL session, if the client browser receives a redirect message, the browser tries to connect to the new location. However, the secure SSL session breaks if the object has moved from a secure site (<a class="reference external" href="https://">https://</a>) to an unsecure site (<a class="reference external" href="http://">http://</a>). Typically, a warning message appears on the screen, prompting the user to continue or disconnect.</p>
@@ -623,9 +629,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslv2redirect"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslv2redirect"><strong>sslv2redirect</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslv2redirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslv2redirect" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of SSLv2 Redirect. If SSLv2 redirect is enabled, you can configure an SSL virtual server or service to display meaningful error messages if the SSL handshake fails because of a protocol version mismatch between the virtual server or service and the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -635,21 +641,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslv2url"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslv2url"><strong>sslv2url</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslv2url" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslv2url" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>URL of the page to which to redirect the client in case of a protocol version mismatch. Typically, this page has a clear explanation of the error or an alternative location that the transaction can continue from.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_appfwpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-appfwpolicy-binding"><strong>sslvserver_appfwpolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_appfwpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_appfwpolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_appfwpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-appfwpolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_appfwpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -657,7 +663,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_appfwpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-appfwpolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_appfwpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -673,14 +679,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_auditnslogpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-auditnslogpolicy-binding"><strong>sslvserver_auditnslogpolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_auditnslogpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_auditnslogpolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_auditnslogpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-auditnslogpolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_auditnslogpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -688,7 +694,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_auditnslogpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-auditnslogpolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_auditnslogpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -704,14 +710,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_auditsyslogpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-auditsyslogpolicy-binding"><strong>sslvserver_auditsyslogpolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_auditsyslogpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_auditsyslogpolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_auditsyslogpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-auditsyslogpolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_auditsyslogpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -719,7 +725,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_auditsyslogpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-auditsyslogpolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_auditsyslogpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -735,14 +741,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_authorizationpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-authorizationpolicy-binding"><strong>sslvserver_authorizationpolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_authorizationpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_authorizationpolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_authorizationpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-authorizationpolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_authorizationpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -750,7 +756,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_authorizationpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-authorizationpolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_authorizationpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -766,14 +772,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_cachepolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-cachepolicy-binding"><strong>sslvserver_cachepolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_cachepolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_cachepolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_cachepolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-cachepolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_cachepolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -781,7 +787,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_cachepolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-cachepolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_cachepolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -797,14 +803,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_cmppolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-cmppolicy-binding"><strong>sslvserver_cmppolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_cmppolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_cmppolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_cmppolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-cmppolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_cmppolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -812,7 +818,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_cmppolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-cmppolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_cmppolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -828,14 +834,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_ecccurve_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-ecccurve-binding"><strong>sslvserver_ecccurve_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_ecccurve_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_ecccurve_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_ecccurve_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-ecccurve-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_ecccurve_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -843,7 +849,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_ecccurve_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-ecccurve-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_ecccurve_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -859,14 +865,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_responderpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-responderpolicy-binding"><strong>sslvserver_responderpolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_responderpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_responderpolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_responderpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-responderpolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_responderpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -874,7 +880,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_responderpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-responderpolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_responderpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -890,14 +896,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_rewritepolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-rewritepolicy-binding"><strong>sslvserver_rewritepolicy_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_rewritepolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for sslvserver_rewritepolicy_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_rewritepolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-rewritepolicy-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_rewritepolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -905,9 +911,40 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslvserver_rewritepolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-rewritepolicy-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-sslvserver_rewritepolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;desired&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sslvserver_sslcacertbundle_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-sslcacertbundle-binding"><strong>sslvserver_sslcacertbundle_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sslvserver_sslcacertbundle_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for sslvserver_sslcacertbundle_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sslvserver_sslcacertbundle_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-sslcacertbundle-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sslvserver_sslcacertbundle_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sslvserver_sslcacertbundle_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-sslvserver-sslcacertbundle-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sslvserver_sslcacertbundle_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
 <p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
@@ -1092,7 +1129,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-strictsigdigestcheck"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-strictsigdigestcheck"><strong>strictsigdigestcheck</strong></p>
-<a class="ansibleOptionLink" href="#parameter-strictsigdigestcheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-strictsigdigestcheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Parameter indicating to check whether peer entity certificate during TLS1.2 handshake is signed with one of signature-hash combination supported by Citrix ADC.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1104,7 +1141,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls1"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-tls1"><strong>tls1</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls1" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.0 protocol support for the SSL Virtual Server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1116,7 +1153,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls11"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-tls11"><strong>tls11</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls11" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls11" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.1 protocol support for the SSL Virtual Server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1128,7 +1165,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls12"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-tls12"><strong>tls12</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls12" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls12" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.2 protocol support for the SSL Virtual Server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1140,7 +1177,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls13"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-tls13"><strong>tls13</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls13" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls13" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLSv1.3 protocol support for the SSL Virtual Server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1152,7 +1189,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls13sessionticketsperauthcontext"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-tls13sessionticketsperauthcontext"><strong>tls13sessionticketsperauthcontext</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls13sessionticketsperauthcontext" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls13sessionticketsperauthcontext" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated, ticket-based resumption is enabled, and either (1) a handshake completes or (2) post-handhsake client auth completes.</p>
 <p>This value can be increased to enable clients to open multiple parallel connections using a fresh ticket for each connection.</p>
@@ -1173,14 +1210,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-vservername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-vservername"><strong>vservername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-vservername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-vservername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the SSL virtual server for which to set advanced configuration.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-zerorttearlydata"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslvserver-module-parameter-zerorttearlydata"><strong>zerorttearlydata</strong></p>
-<a class="ansibleOptionLink" href="#parameter-zerorttearlydata" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-zerorttearlydata" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>State of TLS 1.3 0-RTT early data support for the SSL Virtual Server. This setting only has an effect if resumption is enabled, as early data cannot be sent along with an initial handshake.</p>
 <p>Early application data has significantly different security properties - in particular there is no guarantee that the data cannot be replayed.</p>
@@ -1205,7 +1242,17 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </section>
 <section id="examples">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample sslvserver playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
+<span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure sslvserver</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.sslvserver</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">vservername</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backup_gslb_portal.bx.com</span>
+<span class="w">        </span><span class="nt">sslprofile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns_default_ssl_profile_frontend</span>
 </pre></div>
 </div>
 </section>
@@ -1270,6 +1317,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">

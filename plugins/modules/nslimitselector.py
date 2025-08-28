@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nslimitselector
 short_description: Configuration for limit selector resource.
 description: Configuration for limit selector resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,12 +40,23 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   rule:
-    type: raw
+    type: list
     description:
       - '0'
+    elements: str
   selectorname:
-    type: raw
+    type: str
     description:
       - '0'
 extends_documentation_fragment: netscaler.adc.netscaler_adc

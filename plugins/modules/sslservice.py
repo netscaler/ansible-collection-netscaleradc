@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslservice
 short_description: Configuration for SSL service resource.
 description: Configuration for SSL service resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   cipherredirect:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -48,14 +60,14 @@ options:
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
   cipherurl:
-    type: raw
+    type: str
     description:
       - URL of the page to which to redirect the client in case of a cipher mismatch.
         Typically, this page has a clear explanation of the error or an alternative
         location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
   clientauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -64,7 +76,7 @@ options:
         terminates the SSL handshake if the SSL client does not provide a valid certificate.
       - This parameter is not applicable when configuring a backend service.
   clientcert:
-    type: raw
+    type: str
     choices:
       - Mandatory
       - Optional
@@ -78,12 +90,12 @@ options:
       - 'Caution: Define proper access control policies before changing this setting
         to C(Optional).'
   commonname:
-    type: raw
+    type: str
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server
   dh:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -91,20 +103,20 @@ options:
       - State of Diffie-Hellman (DH) key exchange. This parameter is not applicable
         when configuring a backend service.
   dhcount:
-    type: raw
+    type: int
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
         every time. This parameter is not applicable when configuring a backend service.
         Allowed DH count values are 0 and >= 500.
   dhfile:
-    type: raw
+    type: str
     description:
       - Name for and, optionally, path to the PEM-format DH parameter file to be installed.
         /nsconfig/ssl/ is the default path. This parameter is not applicable when
         configuring a backend service.
   dhkeyexpsizelimit:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -114,25 +126,25 @@ options:
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
   dtls1:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.0 protocol support for the SSL service.
   dtls12:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.2 protocol support for the SSL service.
   dtlsprofilename:
-    type: raw
+    type: str
     description:
       - Name of the DTLS profile that contains DTLS settings for the service.
   ersa:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -147,13 +159,13 @@ options:
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend service.
   ersacount:
-    type: raw
+    type: int
     description:
       - Refresh count for regeneration of RSA public-key and private-key pair. Zero
         (0) specifies infinite usage (no refresh).
       - This parameter is not applicable when configuring a backend service.
   ocspstapling:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -184,7 +196,7 @@ options:
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
   redirectportrewrite:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -193,25 +205,25 @@ options:
         is set to C(ENABLED), and the URL from the server does not contain the standard
         port, the port is rewritten to the standard.
   sendclosenotify:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
   serverauth:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of server authentication support for the SSL service.
   servicename:
-    type: raw
+    type: str
     description:
       - Name of the SSL service.
   sessreuse:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -220,13 +232,13 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: raw
+    type: int
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
   snienable:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -237,7 +249,7 @@ options:
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
   ssl2:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -245,7 +257,7 @@ options:
       - State of SSLv2 protocol support for the SSL service.
       - This parameter is not applicable when configuring a backend service.
   ssl3:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -253,12 +265,20 @@ options:
       - State of SSLv3 protocol support for the SSL service.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
+  sslclientlogs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This parameter is used to enable or disable the logging of additional information,
+        such as the Session ID and SNI name, from SSL handshakes to the audit logs.
   sslprofile:
-    type: raw
+    type: str
     description:
       - Name of the SSL profile that contains SSL settings for the service.
   sslredirect:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -275,7 +295,7 @@ options:
       - ''
       - This parameter is not applicable when configuring a backend service.
   sslv2redirect:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -286,14 +306,14 @@ options:
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
   sslv2url:
-    type: raw
+    type: str
     description:
       - URL of the page to which to redirect the client in case of a protocol version
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
   strictsigdigestcheck:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -301,28 +321,28 @@ options:
       - Parameter indicating to check whether peer's certificate during TLS1.2 handshake
         is signed with one of signature-hash combination supported by Citrix ADC
   tls1:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service.
   tls11:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service.
   tls12:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service.
   tls13:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -331,6 +351,31 @@ options:
   sslservice_ecccurve_binding:
     type: dict
     description: Bindings for sslservice_ecccurve_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  sslservice_sslcacertbundle_binding:
+    type: dict
+    description: Bindings for sslservice_sslcacertbundle_binding resource
     suboptions:
       mode:
         type: str
@@ -478,6 +523,31 @@ options:
         elements: dict
         description: List of binding members
         default: []
+  sslservicegroup_sslcacertbundle_binding:
+    type: dict
+    description: Bindings for sslservicegroup_sslcacertbundle_binding resource
+    suboptions:
+      mode:
+        type: str
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
   sslservicegroup_sslcertkey_binding:
     type: dict
     description: Bindings for sslservicegroup_sslcertkey_binding resource
@@ -559,21 +629,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample sslservice playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | sslservice
+    - name: Configure sslservice
       delegate_to: localhost
       netscaler.adc.sslservice:
         state: present
-        servicename: nsrnatsip-127.0.0.1-5061
-        ersa: ENABLED
-        sessreuse: DISABLED
-        ssl3: DISABLED
-        tls1: DISABLED
+        servicename: local-150
         tls11: DISABLED
-        dtls1: DISABLED
+        tls12: DISABLED
 """
 
 RETURN = r"""

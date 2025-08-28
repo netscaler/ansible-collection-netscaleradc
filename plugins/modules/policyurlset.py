@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: policyurlset
 short_description: Configuration for URL set resource.
 description: Configuration for URL set resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,6 +39,16 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(imported), the resource will be imported on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   canaryurl:
     type: str
@@ -56,12 +68,12 @@ options:
     description:
       - when set, display shows all imported urlsets.
   interval:
-    type: float
+    type: int
     description:
       - The interval, in seconds, rounded down to the nearest 15 minutes, at which
         the update of urlset occurs.
   matchedid:
-    type: float
+    type: int
     description:
       - An ID that would be sent to AppFlow to indicate which URLSet was the last
         one that matched the requested URL.
@@ -103,6 +115,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample policyurlset playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policyurlset
+      delegate_to: localhost
+      netscaler.adc.policyurlset:
+        state: present
+        name: top10k
+        imported: false
 """
 
 RETURN = r"""

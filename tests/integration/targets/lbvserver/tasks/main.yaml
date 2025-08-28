@@ -340,6 +340,47 @@
     that:
       - "result.failed==false"
       - "result.changed==false"
+- name: LBVSERVER | RENAME | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: renamed
+    name: lb1
+    newname: lb2
+- name: Assert | LBVSERVER | RENAME | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | RENAME
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: renamed
+    name: lb1
+    newname: lb2
+- name: Assert | LBVSERVER | RENAME
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
 - name: LBVSERVER | DELETE | --check
   delegate_to: localhost
   register: result
@@ -353,7 +394,7 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: lb1
+    name: lb2
     servicetype: HTTP
     ipv46: 10.10.10.11
     port: 80
@@ -361,15 +402,15 @@
     lbvserver_servicegroup_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: sg1
     lbvserver_service_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: s1
           weight: 10
-        - name: lb1
+        - name: lb2
           servicename: s2
           weight: 20
 - name: Assert | LBVSERVER | DELETE | --check
@@ -391,7 +432,7 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: lb1
+    name: lb2
     servicetype: HTTP
     ipv46: 10.10.10.11
     port: 80
@@ -399,15 +440,15 @@
     lbvserver_servicegroup_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: sg1
     lbvserver_service_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: s1
           weight: 10
-        - name: lb1
+        - name: lb2
           servicename: s2
           weight: 20
 - name: Assert | LBVSERVER | DELETE
@@ -428,7 +469,7 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: lb1
+    name: lb2
     servicetype: HTTP
     ipv46: 10.10.10.11
     port: 80
@@ -436,15 +477,15 @@
     lbvserver_servicegroup_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: sg1
     lbvserver_service_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: s1
           weight: 10
-        - name: lb1
+        - name: lb2
           servicename: s2
           weight: 20
 - name: Assert | LBVSERVER | DELETE | idempotent
@@ -466,7 +507,7 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: lb1
+    name: lb2
     servicetype: HTTP
     ipv46: 10.10.10.11
     port: 80
@@ -474,15 +515,15 @@
     lbvserver_servicegroup_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: sg1
     lbvserver_service_binding:
       mode: desired
       binding_members:
-        - name: lb1
+        - name: lb2
           servicename: s1
           weight: 10
-        - name: lb1
+        - name: lb2
           servicename: s2
           weight: 20
 - name: Assert | LBVSERVER | DELETE | idempotent

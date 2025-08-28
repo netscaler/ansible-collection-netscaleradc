@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsvariable
 short_description: Configuration for variable resource.
 description: Configuration for variable resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,17 +40,27 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   comment:
-    type: raw
+    type: str
     description:
       - Comments associated with this variable.
   expires:
-    type: raw
+    type: int
     description:
       - Value expiration in seconds. If the value is not referenced within the expiration
         period it will be deleted. 0 (the default) means no expiration.
   iffull:
-    type: raw
+    type: str
     choices:
       - undef
       - lru
@@ -58,7 +70,7 @@ options:
       - '   C(undef) - force the assignment to return an undefined (Undef) result
         to the policy executing the assignment.'
   ifnovalue:
-    type: raw
+    type: str
     choices:
       - undef
       - init
@@ -72,7 +84,7 @@ options:
       - '   C(undef) - force the expression evaluation to return an undefined (Undef)
         result to the policy executing the expression.'
   ifvaluetoobig:
-    type: raw
+    type: str
     choices:
       - undef
       - truncate
@@ -85,7 +97,7 @@ options:
       - '   C(undef) - force the assignment or expression evaluation to return an
         undefined (Undef) result to the policy executing the assignment or expression.'
   init:
-    type: raw
+    type: str
     description:
       - 'Initialization value for this variable, to which a singleton variable or
         map entry will be set if it is referenced before an assignment action has
@@ -93,7 +105,7 @@ options:
         assigned a value, setting this parameter will have no effect on that variable
         value. Default: 0 for ulong, NULL for text'
   name:
-    type: raw
+    type: str
     description:
       - 'Variable name.  This follows the same syntax rules as other expression entity
         names:'

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tmsessionpolicy
 short_description: Configuration for TM session policy resource.
 description: Configuration for TM session policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,12 +40,22 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   action:
-    type: raw
+    type: str
     description:
       - Action to be applied to connections that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the session policy. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -54,7 +66,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
   rule:
-    type: raw
+    type: str
     description:
       - Expression, against which traffic is evaluated. Both classic and advance expressions
         are supported in default partition but only advance expressions in non-default
@@ -72,6 +84,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample tmsessionpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmsessionpolicy
+      delegate_to: localhost
+      netscaler.adc.tmsessionpolicy:
+        state: present
+        name: ia_tmsespol1
+        rule: REQ.HTTP.METHOD == GET
+        action: ia_tmsesact1
 """
 
 RETURN = r"""

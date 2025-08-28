@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.appfwprofile module – Configuration for application firewall profile resource. &mdash; Ansible collections  documentation</title>
@@ -13,15 +15,11 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.appfwprofile_appfwconfidfield_binding module – Binding Resource definition for describing association between appfwprofile and appfwconfidfield resources" href="appfwprofile_appfwconfidfield_binding_module.html" />
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.appfwprofile module – Configuration for application firewall profile resource.<a class="headerlink" href="#netscaler-adc-appfwprofile-module-configuration-for-application-firewall-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +162,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-addcookieflags"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-addcookieflags"><strong>addcookieflags</strong></p>
-<a class="ansibleOptionLink" href="#parameter-addcookieflags" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-addcookieflags" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Add the specified flags to cookies. Available settings function as follows:</p>
 <p>* None - Do not add flags to cookies.</p>
@@ -191,7 +189,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-apispec"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-apispec"><strong>apispec</strong></p>
-<a class="ansibleOptionLink" href="#parameter-apispec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-apispec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the API Specification.</p>
 </div></td>
@@ -693,13 +691,44 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-appfwprofile_grpcvalidation_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-grpcvalidation-binding"><strong>appfwprofile_grpcvalidation_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-appfwprofile_grpcvalidation_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for appfwprofile_grpcvalidation_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-appfwprofile_grpcvalidation_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-grpcvalidation-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-appfwprofile_grpcvalidation_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-appfwprofile_grpcvalidation_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-grpcvalidation-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-appfwprofile_grpcvalidation_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;desired&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonblockkeyword_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonblockkeyword-binding"><strong>appfwprofile_jsonblockkeyword_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonblockkeyword_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for appfwprofile_jsonblockkeyword_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonblockkeyword_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonblockkeyword-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonblockkeyword_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -707,7 +736,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonblockkeyword_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonblockkeyword-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonblockkeyword_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -723,14 +752,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsoncmdurl_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsoncmdurl-binding"><strong>appfwprofile_jsoncmdurl_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsoncmdurl_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for appfwprofile_jsoncmdurl_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsoncmdurl_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsoncmdurl-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsoncmdurl_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -738,7 +767,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsoncmdurl_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsoncmdurl-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsoncmdurl_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -754,14 +783,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsondosurl_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsondosurl-binding"><strong>appfwprofile_jsondosurl_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsondosurl_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for appfwprofile_jsondosurl_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsondosurl_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsondosurl-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsondosurl_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -769,7 +798,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsondosurl_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsondosurl-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsondosurl_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -785,14 +814,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonsqlurl_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonsqlurl-binding"><strong>appfwprofile_jsonsqlurl_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonsqlurl_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for appfwprofile_jsonsqlurl_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonsqlurl_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonsqlurl-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonsqlurl_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -800,7 +829,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonsqlurl_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonsqlurl-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonsqlurl_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -816,14 +845,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonxssurl_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonxssurl-binding"><strong>appfwprofile_jsonxssurl_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonxssurl_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for appfwprofile_jsonxssurl_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonxssurl_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonxssurl-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonxssurl_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -831,7 +860,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_jsonxssurl_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-jsonxssurl-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_jsonxssurl_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -847,14 +876,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_logexpression_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-logexpression-binding"><strong>appfwprofile_logexpression_binding</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_logexpression_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bindings for appfwprofile_logexpression_binding resource</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_logexpression_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-logexpression-binding-binding-members"><strong>binding_members</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_logexpression_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
 </div></td>
@@ -862,9 +891,40 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appfwprofile_logexpression_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-logexpression-binding-mode"><strong>mode</strong></p>
 <a class="ansibleOptionLink" href="#parameter-appfwprofile_logexpression_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;desired&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-appfwprofile_restvalidation_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-restvalidation-binding"><strong>appfwprofile_restvalidation_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-appfwprofile_restvalidation_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for appfwprofile_restvalidation_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-appfwprofile_restvalidation_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-restvalidation-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-appfwprofile_restvalidation_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-appfwprofile_restvalidation_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-appfwprofile-restvalidation-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-appfwprofile_restvalidation_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
 <p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
@@ -1197,7 +1257,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-as_prof_bypass_list_enable"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-as-prof-bypass-list-enable"><strong>as_prof_bypass_list_enable</strong></p>
-<a class="ansibleOptionLink" href="#parameter-as_prof_bypass_list_enable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-as_prof_bypass_list_enable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable bypass list for the profile.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1209,7 +1269,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-as_prof_deny_list_enable"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-as-prof-deny-list-enable"><strong>as_prof_deny_list_enable</strong></p>
-<a class="ansibleOptionLink" href="#parameter-as_prof_deny_list_enable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-as_prof_deny_list_enable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable deny list for the profile.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1233,7 +1293,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-blockkeywordaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-blockkeywordaction"><strong>blockkeywordaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-blockkeywordaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-blockkeywordaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Block Keyword action. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1252,7 +1312,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bufferoverflowaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-bufferoverflowaction"><strong>bufferoverflowaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bufferoverflowaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-bufferoverflowaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Buffer Overflow actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1271,42 +1331,42 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bufferoverflowmaxcookielength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-bufferoverflowmaxcookielength"><strong>bufferoverflowmaxcookielength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxcookielength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxcookielength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer cookies are blocked.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bufferoverflowmaxheaderlength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-bufferoverflowmaxheaderlength"><strong>bufferoverflowmaxheaderlength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxheaderlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxheaderlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum length, in characters, for HTTP headers in requests sent to your protected web sites. Requests with longer headers are blocked.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bufferoverflowmaxquerylength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-bufferoverflowmaxquerylength"><strong>bufferoverflowmaxquerylength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxquerylength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxquerylength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum length, in bytes, for query string sent to your protected web sites. Requests with longer query strings are blocked.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bufferoverflowmaxtotalheaderlength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-bufferoverflowmaxtotalheaderlength"><strong>bufferoverflowmaxtotalheaderlength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxtotalheaderlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxtotalheaderlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum length, in bytes, for the total HTTP header length in requests sent to your protected web sites. The minimum value of this and maxHeaderLen in httpProfile will be used. Requests with longer length are blocked.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bufferoverflowmaxurllength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-bufferoverflowmaxurllength"><strong>bufferoverflowmaxurllength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxurllength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-bufferoverflowmaxurllength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are blocked.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-canonicalizehtmlresponse"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-canonicalizehtmlresponse"><strong>canonicalizehtmlresponse</strong></p>
-<a class="ansibleOptionLink" href="#parameter-canonicalizehtmlresponse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-canonicalizehtmlresponse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Perform HTML entity encoding for any special characters in responses sent by your protected web sites.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1318,7 +1378,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ceflogging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-ceflogging"><strong>ceflogging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ceflogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ceflogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable CEF format logs for the profile.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1330,7 +1390,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-checkrequestheaders"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-checkrequestheaders"><strong>checkrequestheaders</strong></p>
-<a class="ansibleOptionLink" href="#parameter-checkrequestheaders" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-checkrequestheaders" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check request headers as well as web forms for injected SQL and cross-site scripts.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1342,14 +1402,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientipexpression"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-clientipexpression"><strong>clientipexpression</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientipexpression" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientipexpression" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Expression to get the client IP.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cmdinjectionaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cmdinjectionaction"><strong>cmdinjectionaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cmdinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cmdinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Command injection action. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1368,7 +1428,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cmdinjectiongrammar"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cmdinjectiongrammar"><strong>cmdinjectiongrammar</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cmdinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cmdinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check for CMD injection using CMD grammar</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1380,14 +1440,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cmdinjectiontype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cmdinjectiontype"><strong>cmdinjectiontype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cmdinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cmdinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Available CMD injection types.</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplChar</span></code>              : Checks for CMD Special Chars</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDKeyword</span></code>              : Checks for CMD Keywords</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharANDKeyword</span></code>    : Checks for both and blocks if both are found</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharORKeyword</span></code>     : Checks for both and blocks if anyone is found,</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code>                    : Disables checking using both CMD Special Char and Keyword</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplChar</span></code> : Checks for CMD Special Chars</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDKeyword</span></code> : Checks for CMD Keywords</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharANDKeyword</span></code> : Checks for both and blocks if both are found</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharORKeyword</span></code> : Checks for both and blocks if anyone is found,</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code> : Disables checking using both CMD Special Char and Keyword</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CMDSplChar&quot;</span></code></p></li>
@@ -1400,14 +1460,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-comment"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-comment"><strong>comment</strong></p>
-<a class="ansibleOptionLink" href="#parameter-comment" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-comment" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Any comments about the purpose of profile, or other useful information about the profile.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-contenttypeaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-contenttypeaction"><strong>contenttypeaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-contenttypeaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-contenttypeaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Content-type actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1428,7 +1488,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookieconsistencyaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cookieconsistencyaction"><strong>cookieconsistencyaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookieconsistencyaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookieconsistencyaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Cookie Consistency actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1449,7 +1509,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookieencryption"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cookieencryption"><strong>cookieencryption</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookieencryption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookieencryption" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of cookie encryption. Available settings function as follows:</p>
 <p>* None - Do not encrypt cookies.</p>
@@ -1467,7 +1527,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookiehijackingaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cookiehijackingaction"><strong>cookiehijackingaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookiehijackingaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookiehijackingaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more actions to prevent cookie hijacking. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1487,7 +1547,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookieproxying"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cookieproxying"><strong>cookieproxying</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookieproxying" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookieproxying" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Cookie proxy setting. Available settings function as follows:</p>
 <p>* None - Do not proxy cookies.</p>
@@ -1501,7 +1561,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookiesamesiteattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cookiesamesiteattribute"><strong>cookiesamesiteattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookiesamesiteattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookiesamesiteattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Cookie Samesite attribute added to support adding cookie SameSite attribute for all set-cookies including appfw session cookies. Default value will be “SameSite=Lax”.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1514,7 +1574,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookietransforms"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-cookietransforms"><strong>cookietransforms</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookietransforms" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookietransforms" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Perform the specified type of cookie transformation.</p>
 <p>Available settings function as follows:</p>
@@ -1531,7 +1591,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-creditcard"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-creditcard"><strong>creditcard</strong></p>
-<a class="ansibleOptionLink" href="#parameter-creditcard" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-creditcard" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Credit card types that the application firewall should protect.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1548,7 +1608,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-creditcardaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-creditcardaction"><strong>creditcardaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-creditcardaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-creditcardaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Credit Card actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1568,14 +1628,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-creditcardmaxallowed"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-creditcardmaxallowed"><strong>creditcardmaxallowed</strong></p>
-<a class="ansibleOptionLink" href="#parameter-creditcardmaxallowed" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-creditcardmaxallowed" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This parameter value is used by the block action. It represents the maximum number of credit card numbers that can appear on a web page served by your protected web sites. Pages that contain more credit card numbers are blocked.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-creditcardxout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-creditcardxout"><strong>creditcardxout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-creditcardxout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-creditcardxout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Mask any credit card number detected in a response by replacing each digit, except the digits in the final group, with the letter “X.”</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1587,7 +1647,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crosssitescriptingaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-crosssitescriptingaction"><strong>crosssitescriptingaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crosssitescriptingaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-crosssitescriptingaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Cross-Site Scripting (XSS) actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1608,7 +1668,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crosssitescriptingcheckcompleteurls"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-crosssitescriptingcheckcompleteurls"><strong>crosssitescriptingcheckcompleteurls</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crosssitescriptingcheckcompleteurls" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-crosssitescriptingcheckcompleteurls" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check complete URLs for cross-site scripts, instead of just the query portions of URLs.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1620,7 +1680,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crosssitescriptingtransformunsafehtml"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-crosssitescriptingtransformunsafehtml"><strong>crosssitescriptingtransformunsafehtml</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crosssitescriptingtransformunsafehtml" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-crosssitescriptingtransformunsafehtml" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Transform cross-site scripts. This setting configures the application firewall to disable dangerous HTML instead of blocking the request.</p>
 <p>CAUTION: Make sure that this parameter is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if you are configuring any cross-site scripting transformations. If it is set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, no cross-site scripting transformations are performed regardless of any other settings.</p>
@@ -1633,7 +1693,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-csrftagaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-csrftagaction"><strong>csrftagaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-csrftagaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-csrftagaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Cross-Site Request Forgery (CSRF) Tagging actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1662,7 +1722,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultcharset"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-defaultcharset"><strong>defaultcharset</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultcharset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultcharset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Default character set for protected web pages. Web pages sent by your protected web sites in response to user requests are assigned this character set if the page does not already specify a character set. The character sets supported by the application firewall are:</p>
 <p>* iso-8859-1 (English US)</p>
@@ -1677,27 +1737,34 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultfieldformatmaxlength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-defaultfieldformatmaxlength"><strong>defaultfieldformatmaxlength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultfieldformatmaxlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultfieldformatmaxlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum length, in characters, for data entered into a field that is assigned the default field type.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-defaultfieldformatmaxoccurrences"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-defaultfieldformatmaxoccurrences"><strong>defaultfieldformatmaxoccurrences</strong></p>
+<a class="ansibleOptionLink" href="#parameter-defaultfieldformatmaxoccurrences" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maxiumum allowed occurrences of the form field name in a request.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultfieldformatminlength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-defaultfieldformatminlength"><strong>defaultfieldformatminlength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultfieldformatminlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultfieldformatminlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum length, in characters, for data entered into a field that is assigned the default field type.</p>
 <p>To disable the minimum and maximum length settings and allow data of any length to be entered into the field, set this parameter to zero (0).</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultfieldformattype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-defaultfieldformattype"><strong>defaultfieldformattype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultfieldformattype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultfieldformattype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Designate a default field type to be applied to web form fields that do not have a field type explicitly assigned to them.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaults"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-defaults"><strong>defaults</strong></p>
 <a class="ansibleOptionLink" href="#parameter-defaults" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
@@ -1712,9 +1779,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-denyurlaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-denyurlaction"><strong>denyurlaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-denyurlaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-denyurlaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Deny URL actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1732,9 +1799,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dosecurecreditcardlogging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-dosecurecreditcardlogging"><strong>dosecurecreditcardlogging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dosecurecreditcardlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dosecurecreditcardlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Setting this option logs credit card numbers in the response when the match is found.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1744,14 +1811,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dynamiclearning"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-dynamiclearning"><strong>dynamiclearning</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dynamiclearning" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-dynamiclearning" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more security checks. Available options are as follows:</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">SQLInjection</span></code> - Enable dynamic learning for <code class="docutils literal notranslate"><span class="pre">SQLInjection</span></code> security check.</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">CrossSiteScripting</span></code> - Enable dynamic learning for <code class="docutils literal notranslate"><span class="pre">CrossSiteScripting</span></code> security check.</p>
-<p>* <code class="docutils literal notranslate"><span class="pre">fieldFormat</span></code> - Enable dynamic learning for  <code class="docutils literal notranslate"><span class="pre">fieldFormat</span></code> security check.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">fieldFormat</span></code> - Enable dynamic learning for <code class="docutils literal notranslate"><span class="pre">fieldFormat</span></code> security check.</p>
 <p>* None - Disable security checks for all security checks.</p>
 <p>CLI users: To enable dynamic learning on one or more security checks, type “set appfw profile -dynamicLearning” followed by the security checks to be enabled. To turn off dynamic learning on all security checks, type “set appfw profile -dynamicLearning <code class="docutils literal notranslate"><span class="pre">none</span></code>“.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1768,9 +1835,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-enableformtagging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-enableformtagging"><strong>enableformtagging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-enableformtagging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-enableformtagging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable tagging of web form fields for use by the Form Field Consistency and CSRF Form Tagging checks.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1780,16 +1847,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-errorurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-errorurl"><strong>errorurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-errorurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-errorurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>URL that application firewall uses as the Error URL.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-excludefileuploadfromchecks"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-excludefileuploadfromchecks"><strong>excludefileuploadfromchecks</strong></p>
-<a class="ansibleOptionLink" href="#parameter-excludefileuploadfromchecks" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-excludefileuploadfromchecks" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Exclude uploaded files from Form checks.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1799,9 +1866,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-exemptclosureurlsfromsecuritychecks"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-exemptclosureurlsfromsecuritychecks"><strong>exemptclosureurlsfromsecuritychecks</strong></p>
-<a class="ansibleOptionLink" href="#parameter-exemptclosureurlsfromsecuritychecks" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-exemptclosureurlsfromsecuritychecks" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Exempt URLs that pass the Start URL closure check from SQL injection, cross-site script, field format and field consistency security checks at locations other than headers.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1811,9 +1878,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fakeaccountdetection"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-fakeaccountdetection"><strong>fakeaccountdetection</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fakeaccountdetection" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fakeaccountdetection" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Fake account detection flag : <code class="docutils literal notranslate"><span class="pre">ON</span></code>/<code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">ON</span></code> fake account detection in enabled on ADC, if set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code> fake account detection is disabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1823,9 +1890,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldconsistencyaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-fieldconsistencyaction"><strong>fieldconsistencyaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldconsistencyaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldconsistencyaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Form Field Consistency actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1844,9 +1911,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fieldformataction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-fieldformataction"><strong>fieldformataction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fieldformataction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fieldformataction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Field Format actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1865,16 +1932,35 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-fieldscan"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-fieldscan"><strong>fieldscan</strong></p>
+<a class="ansibleOptionLink" href="#parameter-fieldscan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Check if formfield limit scan is <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-fieldscanlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-fieldscanlimit"><strong>fieldscanlimit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-fieldscanlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Field scan limit value for HTML</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fileuploadmaxnum"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-fileuploadmaxnum"><strong>fileuploadmaxnum</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fileuploadmaxnum" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fileuploadmaxnum" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum allowed number of file uploads per form-submission request. The maximum setting (65535) allows an unlimited number of uploads.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-fileuploadtypesaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-fileuploadtypesaction"><strong>fileuploadtypesaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-fileuploadtypesaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-fileuploadtypesaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more file upload types actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -1891,9 +1977,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-geolocationlogging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-geolocationlogging"><strong>geolocationlogging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-geolocationlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-geolocationlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable Geo-Location Logging in CEF format logs for the profile.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1903,9 +1989,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-grpcaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-grpcaction"><strong>grpcaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-grpcaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-grpcaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>gRPC validation</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1917,9 +2003,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-htmlerrorobject"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-htmlerrorobject"><strong>htmlerrorobject</strong></p>
-<a class="ansibleOptionLink" href="#parameter-htmlerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-htmlerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name to assign to the HTML Error Object.</p>
 <p>Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (&#64;), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the HTML error object is added.</p>
@@ -1927,30 +2013,30 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, “my HTML error object” or ‘my HTML error object’\).</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-htmlerrorstatuscode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-htmlerrorstatuscode"><strong>htmlerrorstatuscode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-htmlerrorstatuscode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-htmlerrorstatuscode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Response status code associated with HTML error page. Non-empty HTML error object must be imported to the application firewall profile for the status code.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-htmlerrorstatusmessage"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-htmlerrorstatusmessage"><strong>htmlerrorstatusmessage</strong></p>
-<a class="ansibleOptionLink" href="#parameter-htmlerrorstatusmessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-htmlerrorstatusmessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Response status message associated with HTML error page</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-importprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-importprofilename"><strong>importprofilename</strong></p>
 <a class="ansibleOptionLink" href="#parameter-importprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the profile which will be created/updated to associate the relaxation rules</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-infercontenttypexmlpayloadaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-infercontenttypexmlpayloadaction"><strong>infercontenttypexmlpayloadaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-infercontenttypexmlpayloadaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-infercontenttypexmlpayloadaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more infer content type payload actions. Available settings function as follows:</p>
 <p>* Block - Block connections that have mismatch in content-type header and payload.</p>
@@ -1967,9 +2053,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-insertcookiesamesiteattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-insertcookiesamesiteattribute"><strong>insertcookiesamesiteattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-insertcookiesamesiteattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-insertcookiesamesiteattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Configure whether application firewall should add samesite attribute for set-cookies</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -1979,9 +2065,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-inspectcontenttypes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-inspectcontenttypes"><strong>inspectcontenttypes</strong></p>
-<a class="ansibleOptionLink" href="#parameter-inspectcontenttypes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-inspectcontenttypes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more InspectContentType lists.</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code></p>
@@ -2000,9 +2086,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-inspectquerycontenttypes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-inspectquerycontenttypes"><strong>inspectquerycontenttypes</strong></p>
-<a class="ansibleOptionLink" href="#parameter-inspectquerycontenttypes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-inspectquerycontenttypes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Inspect request query as well as web forms for injected SQL and cross-site scripts for following content types.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2014,9 +2100,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-invalidpercenthandling"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-invalidpercenthandling"><strong>invalidpercenthandling</strong></p>
-<a class="ansibleOptionLink" href="#parameter-invalidpercenthandling" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-invalidpercenthandling" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Configure the method that the application firewall uses to handle percent-encoded names and values. Available settings function as follows:</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">asp_mode</span></code> - Microsoft ASP format.</p>
@@ -2028,9 +2114,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonblockkeywordaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonblockkeywordaction"><strong>jsonblockkeywordaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonblockkeywordaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonblockkeywordaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>JSON Block Keyword action. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2047,9 +2133,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsoncmdinjectionaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsoncmdinjectionaction"><strong>jsoncmdinjectionaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsoncmdinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsoncmdinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more JSON CMD Injection actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2066,9 +2152,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsoncmdinjectiongrammar"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsoncmdinjectiongrammar"><strong>jsoncmdinjectiongrammar</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsoncmdinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsoncmdinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check for CMD injection using CMD grammar in JSON</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2078,16 +2164,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsoncmdinjectiontype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsoncmdinjectiontype"><strong>jsoncmdinjectiontype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsoncmdinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsoncmdinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Available CMD injection types.</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplChar</span></code>              : Checks for CMD Special Chars</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDKeyword</span></code>              : Checks for CMD Keywords</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharANDKeyword</span></code>    : Checks for both and blocks if both are found</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharORKeyword</span></code>     : Checks for both and blocks if anyone is found,</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code>                    : Disables checking using both SQL Special Char and Keyword</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplChar</span></code> : Checks for CMD Special Chars</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDKeyword</span></code> : Checks for CMD Keywords</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharANDKeyword</span></code> : Checks for both and blocks if both are found</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">CMDSplCharORKeyword</span></code> : Checks for both and blocks if anyone is found,</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code> : Disables checking using both SQL Special Char and Keyword</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CMDSplChar&quot;</span></code></p></li>
@@ -2098,9 +2184,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsondosaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsondosaction"><strong>jsondosaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsondosaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsondosaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more JSON Denial-of-Service (JsonDoS) actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2117,32 +2203,70 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonerrorobject"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonerrorobject"><strong>jsonerrorobject</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name to the imported JSON Error Object to be set on application firewall profile.</p>
 <p>The following requirement applies only to the Citrix ADC CLI:</p>
 <p>If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, “my JSON error object” or ‘my JSON error object’\).</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonerrorstatuscode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonerrorstatuscode"><strong>jsonerrorstatuscode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonerrorstatuscode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonerrorstatuscode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Response status code associated with JSON error page. Non-empty JSON error object must be imported to the application firewall profile for the status code.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonerrorstatusmessage"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonerrorstatusmessage"><strong>jsonerrorstatusmessage</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonerrorstatusmessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonerrorstatusmessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Response status message associated with JSON error page</p>
 </div></td>
 </tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-jsonfieldscan"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonfieldscan"><strong>jsonfieldscan</strong></p>
+<a class="ansibleOptionLink" href="#parameter-jsonfieldscan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Check if JSON field limit scan is <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-jsonfieldscanlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonfieldscanlimit"><strong>jsonfieldscanlimit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-jsonfieldscanlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Field scan limit value for JSON</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-jsonmessagescan"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonmessagescan"><strong>jsonmessagescan</strong></p>
+<a class="ansibleOptionLink" href="#parameter-jsonmessagescan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Check if JSON message limit scan is <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-jsonmessagescanlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonmessagescanlimit"><strong>jsonmessagescanlimit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-jsonmessagescanlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Message scan limit value for JSON</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonsqlinjectionaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonsqlinjectionaction"><strong>jsonsqlinjectionaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonsqlinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonsqlinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more JSON SQL Injection actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2159,9 +2283,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonsqlinjectiongrammar"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonsqlinjectiongrammar"><strong>jsonsqlinjectiongrammar</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonsqlinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonsqlinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check for SQL injection using SQL grammar in JSON</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2171,16 +2295,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonsqlinjectiontype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonsqlinjectiontype"><strong>jsonsqlinjectiontype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonsqlinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonsqlinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Available SQL injection types.</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplChar</span></code>              : Checks for SQL Special Chars</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLKeyword</span></code>              : Checks for SQL Keywords</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharANDKeyword</span></code>    : Checks for both and blocks if both are found</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharORKeyword</span></code>     : Checks for both and blocks if anyone is found,</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code>                    : Disables checking using both SQL Special Char and Keyword</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplChar</span></code> : Checks for SQL Special Chars</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLKeyword</span></code> : Checks for SQL Keywords</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharANDKeyword</span></code> : Checks for both and blocks if both are found</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharORKeyword</span></code> : Checks for both and blocks if anyone is found,</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code> : Disables checking using both SQL Special Char and Keyword</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SQLSplChar&quot;</span></code></p></li>
@@ -2191,9 +2315,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-jsonxssaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-jsonxssaction"><strong>jsonxssaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-jsonxssaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-jsonxssaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more JSON Cross-Site Scripting actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2210,9 +2334,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-logeverypolicyhit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-logeverypolicyhit"><strong>logeverypolicyhit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-logeverypolicyhit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-logeverypolicyhit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log every profile match, regardless of security checks results.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2222,7 +2346,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </ul>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_id"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-managed-netscaler-instance-id"><strong>managed_netscaler_instance_id</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_id" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -2232,7 +2356,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_ip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-managed-netscaler-instance-ip"><strong>managed_netscaler_instance_ip</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_ip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -2242,7 +2366,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-managed-netscaler-instance-name"><strong>managed_netscaler_instance_name</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -2252,7 +2376,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>Define only in case of an ADM service proxy call</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_password"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-managed-netscaler-instance-password"><strong>managed_netscaler_instance_password</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_password" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -2264,7 +2388,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>ensure to configure username and password of a managed instance.</p>
 </div></td>
 </tr>
-<tr class="row-odd"><td><div class="ansible-option-cell">
+<tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-managed_netscaler_instance_username"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-managed-netscaler-instance-username"><strong>managed_netscaler_instance_username</strong></p>
 <a class="ansibleOptionLink" href="#parameter-managed_netscaler_instance_username" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 <p><em class="ansible-option-versionadded">added in netscaler.adc 2.6.0</em></p>
@@ -2276,16 +2400,48 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>ensure to configure username and password of a managed instance.</p>
 </div></td>
 </tr>
-<tr class="row-even"><td><div class="ansible-option-cell">
+<tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-matchurlstring"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-matchurlstring"><strong>matchurlstring</strong></p>
 <a class="ansibleOptionLink" href="#parameter-matchurlstring" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Match this action url in archived Relaxation Rules to replace.</p>
 </div></td>
 </tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-messagescan"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-messagescan"><strong>messagescan</strong></p>
+<a class="ansibleOptionLink" href="#parameter-messagescan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Check if HTML message limit scan is <code class="docutils literal notranslate"><span class="pre">ON</span></code> or <code class="docutils literal notranslate"><span class="pre">OFF</span></code></p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-messagescanlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-messagescanlimit"><strong>messagescanlimit</strong></p>
+<a class="ansibleOptionLink" href="#parameter-messagescanlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Message scan limit value for HTML</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-messagescanlimitcontenttypes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-messagescanlimitcontenttypes"><strong>messagescanlimitcontenttypes</strong></p>
+<a class="ansibleOptionLink" href="#parameter-messagescanlimitcontenttypes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable Message Scan Limit for following content types.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FORM-DATA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;JSON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NONE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-multipleheaderaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-multipleheaderaction"><strong>multipleheaderaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-multipleheaderaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-multipleheaderaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more multiple header actions. Available settings function as follows:</p>
 <p>* Block - Block connections that have multiple headers.</p>
@@ -2311,7 +2467,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (&#64;), equals (=), colon (:), and underscore (_) characters. Cannot be changed after the profile is added.</p>
 <p>The following requirement applies only to the Citrix ADC CLI:</p>
@@ -2375,11 +2531,11 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-optimizepartialreqs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-optimizepartialreqs"><strong>optimizepartialreqs</strong></p>
-<a class="ansibleOptionLink" href="#parameter-optimizepartialreqs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-optimizepartialreqs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Optimize handle of HTTP partial requests i.e. those with range headers.</p>
 <p>Available settings are as follows:</p>
-<p>* <code class="docutils literal notranslate"><span class="pre">ON</span></code>  - Partial requests by the client result in partial requests to the backend server in most cases.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">ON</span></code> - Partial requests by the client result in partial requests to the backend server in most cases.</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">OFF</span></code> - Partial requests by the client are changed to full requests to the backend server</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
@@ -2402,7 +2558,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-percentdecoderecursively"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-percentdecoderecursively"><strong>percentdecoderecursively</strong></p>
-<a class="ansibleOptionLink" href="#parameter-percentdecoderecursively" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-percentdecoderecursively" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Configure whether the application firewall should use percentage recursive decoding</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2414,14 +2570,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-postbodylimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-postbodylimit"><strong>postbodylimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-postbodylimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-postbodylimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum allowed HTTP post body size, in bytes. Maximum supported value is 10GB. Citrix recommends enabling streaming option for large values of post body limit (&gt;20MB).</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-postbodylimitaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-postbodylimitaction"><strong>postbodylimitaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-postbodylimitaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-postbodylimitaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Post Body Limit actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check. Must always be set.</p>
@@ -2438,21 +2594,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-postbodylimitsignature"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-postbodylimitsignature"><strong>postbodylimitsignature</strong></p>
-<a class="ansibleOptionLink" href="#parameter-postbodylimitsignature" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-postbodylimitsignature" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum allowed HTTP post body size for signature inspection for location HTTP_POST_BODY in the signatures, in bytes. Note that the changes in value could impact CPU and latency profile.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-protofileobject"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-protofileobject"><strong>protofileobject</strong></p>
-<a class="ansibleOptionLink" href="#parameter-protofileobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-protofileobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the imported proto file.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-refererheadercheck"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-refererheadercheck"><strong>refererheadercheck</strong></p>
-<a class="ansibleOptionLink" href="#parameter-refererheadercheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-refererheadercheck" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable validation of Referer headers.</p>
 <p>Referer validation ensures that a web form that a user sends to your web site originally came from your web site, not an outside attacker.</p>
@@ -2487,7 +2643,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-requestcontenttype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-requestcontenttype"><strong>requestcontenttype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-requestcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-requestcontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Default Content-Type header for requests.</p>
 <p>A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.</p>
@@ -2495,7 +2651,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-responsecontenttype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-responsecontenttype"><strong>responsecontenttype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-responsecontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-responsecontenttype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Default Content-Type header for responses.</p>
 <p>A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.</p>
@@ -2503,7 +2659,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-restaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-restaction"><strong>restaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-restaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-restaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>rest validation</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2517,7 +2673,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rfcprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-rfcprofile"><strong>rfcprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rfcprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-rfcprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Object name of the rfc profile.</p>
 </div></td>
@@ -2537,7 +2693,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-semicolonfieldseparator"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-semicolonfieldseparator"><strong>semicolonfieldseparator</strong></p>
-<a class="ansibleOptionLink" href="#parameter-semicolonfieldseparator" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-semicolonfieldseparator" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Allow ‘;’ as a form field separator in URL queries and POST form bodies.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2549,7 +2705,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessioncookiename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sessioncookiename"><strong>sessioncookiename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessioncookiename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessioncookiename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the session cookie that the application firewall uses to track user sessions.</p>
 <p>Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.</p>
@@ -2559,7 +2715,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionlessfieldconsistency"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sessionlessfieldconsistency"><strong>sessionlessfieldconsistency</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionlessfieldconsistency" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionlessfieldconsistency" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Perform sessionless Field Consistency Checks.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2572,7 +2728,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionlessurlclosure"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sessionlessurlclosure"><strong>sessionlessurlclosure</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionlessurlclosure" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionlessurlclosure" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable session less URL Closure Checks.</p>
 <p>This check is applicable to Profile Type: HTML.</p>
@@ -2585,7 +2741,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-signatures"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-signatures"><strong>signatures</strong></p>
-<a class="ansibleOptionLink" href="#parameter-signatures" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-signatures" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Object name for signatures.</p>
 <p>This check is applicable to Profile Type: HTML, XML.</p>
@@ -2593,7 +2749,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectionaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectionaction"><strong>sqlinjectionaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more HTML SQL Injection actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2614,7 +2770,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectionchecksqlwildchars"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectionchecksqlwildchars"><strong>sqlinjectionchecksqlwildchars</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectionchecksqlwildchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectionchecksqlwildchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check for form fields that contain SQL wild chars .</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2626,7 +2782,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectiongrammar"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectiongrammar"><strong>sqlinjectiongrammar</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectiongrammar" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check for SQL injection using SQL grammar</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2638,7 +2794,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectiononlycheckfieldswithsqlchars"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectiononlycheckfieldswithsqlchars"><strong>sqlinjectiononlycheckfieldswithsqlchars</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectiononlycheckfieldswithsqlchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectiononlycheckfieldswithsqlchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check only form fields that contain SQL special strings (characters) for injected SQL code.</p>
 <p>Most SQL servers require a special string to activate an SQL request, so SQL code without a special string is harmless to most SQL servers.</p>
@@ -2651,7 +2807,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectionparsecomments"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectionparsecomments"><strong>sqlinjectionparsecomments</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectionparsecomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectionparsecomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Parse HTML comments and exempt them from the HTML SQL Injection check. You must specify the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:</p>
 <p>* Check all - Check all content.</p>
@@ -2669,7 +2825,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectionruletype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectionruletype"><strong>sqlinjectionruletype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectionruletype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectionruletype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specifies SQL Injection rule type: <code class="docutils literal notranslate"><span class="pre">ALLOW</span></code>/<code class="docutils literal notranslate"><span class="pre">DENY</span></code>. If <code class="docutils literal notranslate"><span class="pre">ALLOW</span></code> rule type is configured then allow list rules are used, if <code class="docutils literal notranslate"><span class="pre">DENY</span></code> rule type is configured then deny rules are used.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2681,7 +2837,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectiontransformspecialchars"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectiontransformspecialchars"><strong>sqlinjectiontransformspecialchars</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectiontransformspecialchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectiontransformspecialchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Transform injected SQL code. This setting configures the application firewall to disable SQL special strings instead of blocking the request. Since most SQL servers require a special string to activate an SQL keyword, in most cases a request that contains injected SQL code is safe if special strings are disabled.</p>
 <p>CAUTION: Make sure that this parameter is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code> if you are configuring any SQL injection transformations. If it is set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, no SQL injection transformations are performed regardless of any other settings.</p>
@@ -2694,14 +2850,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sqlinjectiontype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-sqlinjectiontype"><strong>sqlinjectiontype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sqlinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sqlinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Available SQL injection types.</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplChar</span></code>              : Checks for SQL Special Chars</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLKeyword</span></code>                 : Checks for SQL Keywords</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharANDKeyword</span></code>    : Checks for both and blocks if both are found</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharORKeyword</span></code>     : Checks for both and blocks if anyone is found</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code>                    : Disables checking using both SQL Special Char and Keyword</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplChar</span></code> : Checks for SQL Special Chars</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLKeyword</span></code> : Checks for SQL Keywords</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharANDKeyword</span></code> : Checks for both and blocks if both are found</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharORKeyword</span></code> : Checks for both and blocks if anyone is found</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">None</span></code> : Disables checking using both SQL Special Char and Keyword</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SQLSplChar&quot;</span></code></p></li>
@@ -2714,7 +2870,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-starturlaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-starturlaction"><strong>starturlaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-starturlaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-starturlaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Start URL actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2735,9 +2891,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-starturlclosure"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-starturlclosure"><strong>starturlclosure</strong></p>
-<a class="ansibleOptionLink" href="#parameter-starturlclosure" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-starturlclosure" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Toggle  the state of Start URL Closure.</p>
+<td><div class="ansible-option-cell"><p>Toggle the state of Start URL Closure.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
@@ -2763,7 +2919,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-streaming"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-streaming"><strong>streaming</strong></p>
-<a class="ansibleOptionLink" href="#parameter-streaming" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-streaming" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Setting this option converts content-length form submission requests (requests with content-type “application/x-www-form-urlencoded” or “multipart/form-data”) to chunked requests when atleast one of the following protections : Signatures, SQL injection protection, XSS protection, form field consistency protection, starturl closure, CSRF tagging, JSON SQL, JSON XSS, JSON DOS is enabled. Please make sure that the backend server accepts chunked requests before enabling this option. Citrix recommends enabling this option for large request sizes(&gt;20MB).</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2788,7 +2944,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-striphtmlcomments"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-striphtmlcomments"><strong>striphtmlcomments</strong></p>
-<a class="ansibleOptionLink" href="#parameter-striphtmlcomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-striphtmlcomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Strip HTML comments before forwarding a web page sent by a protected web site in response to a user request.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2801,7 +2957,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-stripxmlcomments"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-stripxmlcomments"><strong>stripxmlcomments</strong></p>
-<a class="ansibleOptionLink" href="#parameter-stripxmlcomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-stripxmlcomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Strip XML comments before forwarding a web page sent by a protected web site in response to a user request.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2813,9 +2969,9 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-trace"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-trace"><strong>trace</strong></p>
-<a class="ansibleOptionLink" href="#parameter-trace" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-trace" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>Toggle  the state of trace</p>
+<td><div class="ansible-option-cell"><p>Toggle the state of trace</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
@@ -2825,16 +2981,16 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-type"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-type"><strong>type</strong></p>
-<a class="ansibleOptionLink" href="#parameter-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-type" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Application firewall profile type, which controls which security checks and settings are applied to content that is filtered with the profile. Available settings function as follows:</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">HTML</span></code> - <code class="docutils literal notranslate"><span class="pre">HTML</span></code>-based web sites.</p>
-<p>* <code class="docutils literal notranslate"><span class="pre">XML</span></code> -  <code class="docutils literal notranslate"><span class="pre">XML</span></code>-based web sites and services.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">XML</span></code> - <code class="docutils literal notranslate"><span class="pre">XML</span></code>-based web sites and services.</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">JSON</span></code> - <code class="docutils literal notranslate"><span class="pre">JSON</span></code>-based web sites and services.</p>
 <p>* <code class="docutils literal notranslate"><span class="pre">HTML</span></code> <code class="docutils literal notranslate"><span class="pre">XML</span></code> (Web 2.0) - Sites that contain both <code class="docutils literal notranslate"><span class="pre">HTML</span></code> and <code class="docutils literal notranslate"><span class="pre">XML</span></code> content, such as ATOM feeds, blogs, and RSS feeds.</p>
-<p>* <code class="docutils literal notranslate"><span class="pre">HTML</span></code> <code class="docutils literal notranslate"><span class="pre">JSON</span></code>  - Sites that contain both <code class="docutils literal notranslate"><span class="pre">HTML</span></code> and <code class="docutils literal notranslate"><span class="pre">JSON</span></code> content.</p>
-<p>* <code class="docutils literal notranslate"><span class="pre">XML</span></code> <code class="docutils literal notranslate"><span class="pre">JSON</span></code>   - Sites that contain both <code class="docutils literal notranslate"><span class="pre">XML</span></code> and <code class="docutils literal notranslate"><span class="pre">JSON</span></code> content.</p>
-<p>* <code class="docutils literal notranslate"><span class="pre">HTML</span></code> <code class="docutils literal notranslate"><span class="pre">XML</span></code> <code class="docutils literal notranslate"><span class="pre">JSON</span></code>   - Sites that contain <code class="docutils literal notranslate"><span class="pre">HTML</span></code>, <code class="docutils literal notranslate"><span class="pre">XML</span></code> and <code class="docutils literal notranslate"><span class="pre">JSON</span></code> content.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">HTML</span></code> <code class="docutils literal notranslate"><span class="pre">JSON</span></code> - Sites that contain both <code class="docutils literal notranslate"><span class="pre">HTML</span></code> and <code class="docutils literal notranslate"><span class="pre">JSON</span></code> content.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">XML</span></code> <code class="docutils literal notranslate"><span class="pre">JSON</span></code> - Sites that contain both <code class="docutils literal notranslate"><span class="pre">XML</span></code> and <code class="docutils literal notranslate"><span class="pre">JSON</span></code> content.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">HTML</span></code> <code class="docutils literal notranslate"><span class="pre">XML</span></code> <code class="docutils literal notranslate"><span class="pre">JSON</span></code> - Sites that contain <code class="docutils literal notranslate"><span class="pre">HTML</span></code>, <code class="docutils literal notranslate"><span class="pre">XML</span></code> and <code class="docutils literal notranslate"><span class="pre">JSON</span></code> content.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTML&quot;</span></code></p></li>
@@ -2845,7 +3001,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-urldecoderequestcookies"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-urldecoderequestcookies"><strong>urldecoderequestcookies</strong></p>
-<a class="ansibleOptionLink" href="#parameter-urldecoderequestcookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-urldecoderequestcookies" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>URL Decode request cookies before subjecting them to SQL and cross-site scripting checks.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2857,7 +3013,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usehtmlerrorobject"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-usehtmlerrorobject"><strong>usehtmlerrorobject</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usehtmlerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-usehtmlerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send an imported HTML Error object to a user when a request is blocked, instead of redirecting the user to the designated Error URL.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2881,7 +3037,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-verboseloglevel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-verboseloglevel"><strong>verboseloglevel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-verboseloglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-verboseloglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Detailed Logging Verbose Log Level.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -2894,7 +3050,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlattachmentaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlattachmentaction"><strong>xmlattachmentaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlattachmentaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlattachmentaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more XML Attachment actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2915,7 +3071,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmldosaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmldosaction"><strong>xmldosaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmldosaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmldosaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more XML Denial-of-Service (XDoS) actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2936,7 +3092,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlerrorobject"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlerrorobject"><strong>xmlerrorobject</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlerrorobject" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name to assign to the XML Error Object, which the application firewall displays when a user request is blocked.</p>
 <p>Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (&#64;), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the XML error object is added.</p>
@@ -2946,21 +3102,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlerrorstatuscode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlerrorstatuscode"><strong>xmlerrorstatuscode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlerrorstatuscode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlerrorstatuscode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Response status code associated with XML error page. Non-empty XML error object must be imported to the application firewall profile for the status code.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlerrorstatusmessage"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlerrorstatusmessage"><strong>xmlerrorstatusmessage</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlerrorstatusmessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlerrorstatusmessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Response status message associated with XML error page</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlformataction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlformataction"><strong>xmlformataction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlformataction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlformataction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more XML Format actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -2979,7 +3135,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlsoapfaultaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlsoapfaultaction"><strong>xmlsoapfaultaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlsoapfaultaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlsoapfaultaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more XML SOAP Fault Filtering actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -3000,7 +3156,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlsqlinjectionaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlsqlinjectionaction"><strong>xmlsqlinjectionaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectionaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more XML SQL Injection actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -3019,7 +3175,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlsqlinjectionchecksqlwildchars"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlsqlinjectionchecksqlwildchars"><strong>xmlsqlinjectionchecksqlwildchars</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectionchecksqlwildchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectionchecksqlwildchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check for form fields that contain SQL wild chars .</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -3031,7 +3187,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlsqlinjectiononlycheckfieldswithsqlchars"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlsqlinjectiononlycheckfieldswithsqlchars"><strong>xmlsqlinjectiononlycheckfieldswithsqlchars</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectiononlycheckfieldswithsqlchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectiononlycheckfieldswithsqlchars" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Check only form fields that contain SQL special characters, which most SQL servers require before accepting an SQL command, for injected SQL.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -3043,7 +3199,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlsqlinjectionparsecomments"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlsqlinjectionparsecomments"><strong>xmlsqlinjectionparsecomments</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectionparsecomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectionparsecomments" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Parse comments in XML Data and exempt those sections of the request that are from the XML SQL Injection check. You must configure the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:</p>
 <p>* Check all - Check all content.</p>
@@ -3061,13 +3217,13 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlsqlinjectiontype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlsqlinjectiontype"><strong>xmlsqlinjectiontype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlsqlinjectiontype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Available SQL injection types.</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplChar</span></code>              : Checks for SQL Special Chars</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLKeyword</span></code>              : Checks for SQL Keywords</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharANDKeyword</span></code>    : Checks for both and blocks if both are found</p>
-<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharORKeyword</span></code>     : Checks for both and blocks if anyone is found</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplChar</span></code> : Checks for SQL Special Chars</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLKeyword</span></code> : Checks for SQL Keywords</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharANDKeyword</span></code> : Checks for both and blocks if both are found</p>
+<p>-<code class="docutils literal notranslate"><span class="pre">SQLSplCharORKeyword</span></code> : Checks for both and blocks if anyone is found</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SQLSplChar&quot;</span></code></p></li>
@@ -3080,7 +3236,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlvalidationaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlvalidationaction"><strong>xmlvalidationaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlvalidationaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlvalidationaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more XML Validation actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -3099,7 +3255,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlwsiaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlwsiaction"><strong>xmlwsiaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlwsiaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlwsiaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more Web Services Interoperability (WSI) actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -3120,7 +3276,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-xmlxssaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appfwprofile-module-parameter-xmlxssaction"><strong>xmlxssaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-xmlxssaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-xmlxssaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>One or more XML Cross-Site Scripting actions. Available settings function as follows:</p>
 <p>* Block - Block connections that violate this security check.</p>
@@ -3152,7 +3308,20 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </section>
 <section id="examples">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample appfwprofile playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
+<span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure appfwprofile</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.appfwprofile</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr_appfw</span>
+<span class="w">        </span><span class="nt">starturlaction</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">learn</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stats</span>
 </pre></div>
 </div>
 </section>
@@ -3217,6 +3386,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">

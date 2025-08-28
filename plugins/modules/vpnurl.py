@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnurl
 short_description: Configuration for VPN URL resource.
 description: Configuration for VPN URL resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,16 +40,26 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   actualurl:
     type: str
     description:
       - Web address for the bookmark link.
   appjson:
-    type: raw
+    type: str
     description:
       - To store the template details in the json format.
   applicationtype:
-    type: raw
+    type: str
     choices:
       - CVPN
       - VPN
@@ -55,7 +67,7 @@ options:
     description:
       - The type of application this C(VPN) URL represents. Possible values are C(CVPN)/C(SaaS)/C(VPN)
   clientlessaccess:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -65,11 +77,11 @@ options:
         based session. Allows single sign-on and other HTTP processing on Citrix Gateway
         for HTTPS resources.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments associated with the bookmark link.
   iconurl:
-    type: raw
+    type: str
     description:
       - URL to fetch icon file for displaying this resource.
   linkname:
@@ -77,11 +89,11 @@ options:
     description:
       - Description of the bookmark link. The description appears in the Access Interface.
   samlssoprofile:
-    type: raw
+    type: str
     description:
       - Profile to be used for doing SAML SSO
   ssotype:
-    type: raw
+    type: str
     choices:
       - unifiedgateway
       - selfauth
@@ -89,11 +101,11 @@ options:
     description:
       - Single sign on type for unified gateway
   urlname:
-    type: raw
+    type: str
     description:
       - Name of the bookmark link.
   vservername:
-    type: raw
+    type: str
     description:
       - Name of the associated LB/CS vserver
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -101,6 +113,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnurl playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnurl
+      delegate_to: localhost
+      netscaler.adc.vpnurl:
+        state: present
+        urlname: url3
+        linkname: url3
+        actualurl: https://a.c.com/
+        ssotype: samlauth
+        samlssoprofile: new
 """
 
 RETURN = r"""

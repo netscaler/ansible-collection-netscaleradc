@@ -1,0 +1,10 @@
+---
+- name: Sample cmpparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmpparameter
+      delegate_to: localhost
+      netscaler.adc.cmpparameter:
+        state: present
+        externalcache: 'YES'

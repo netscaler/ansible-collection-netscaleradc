@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: clusternode
 short_description: Configuration for cluster node resource.
 description: Configuration for cluster node resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,8 +40,18 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   backplane:
-    type: raw
+    type: str
     description:
       - Interface through which the node communicates with the other nodes in the
         cluster. Must be specified in the three-tuple form n/c/u, where n represents
@@ -52,10 +64,14 @@ options:
     description:
       - Option to remove nodegroup config
   delay:
-    type: raw
+    type: int
     description:
       - Applicable for Passive node and node becomes passive after this timeout (in
         minutes)
+  force:
+    type: bool
+    description:
+      - Node will be removed from cluster without prompting for user confirmation.
   ipaddress:
     type: str
     description:
@@ -66,11 +82,11 @@ options:
     description:
       - The default node group in a Cluster system.
   nodeid:
-    type: raw
+    type: int
     description:
       - Unique number that identifies the cluster node.
   priority:
-    type: raw
+    type: int
     description:
       - Preference for selecting a node as the configuration coordinator. The node
         with the lowest priority value is selected as the configuration coordinator.
@@ -82,7 +98,7 @@ options:
         nodes have the same priority, the cluster elects one of the nodes as the configuration
         coordinator.'
   tunnelmode:
-    type: raw
+    type: str
     choices:
       - NONE
       - GRE

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsprofile
 short_description: Configuration for DNS profile resource.
 description: Configuration for DNS profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,8 +40,18 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   cacheecsresponses:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -50,7 +62,7 @@ options:
         when Citrix ADC is authoritative for a GSLB domain is supported using a knob
         in GSLB vserver. In all other modes, ECS option is ignored.
   cachenegativeresponses:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -61,7 +73,7 @@ options:
         The appliance does not serve negative responses from the cache until this
         parameter is enabled again.
   cacherecords:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -73,14 +85,14 @@ options:
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
   dnsanswerseclogging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - DNS answer section; if enabled, answer section in the response will be logged.
   dnserrorlogging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -88,7 +100,7 @@ options:
       - DNS error logging; if enabled, whenever error is encountered in DNS module
         reason for the error will be logged.
   dnsextendedlogging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -96,11 +108,11 @@ options:
       - DNS extended logging; if enabled, authority and additional section in the
         response will be logged.
   dnsprofilename:
-    type: raw
+    type: str
     description:
       - Name of the DNS profile
   dnsquerylogging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -108,7 +120,7 @@ options:
       - DNS query logging; if enabled, DNS query information such as DNS query id,
         DNS query flags , DNS domain name and DNS query type will be logged
   dropmultiqueryrequest:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -118,11 +130,54 @@ options:
         by default the DNS request containing multiple queries is forwarded to the
         backend and in case of ADNS and Resolver configuration NOCODE error response
         will be sent to the client.
+  insertecs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Insert ECS Option on DNS query
+  maxcacheableecsprefixlength:
+    type: int
+    description:
+      - The maximum ecs prefix length that will be cached
+  maxcacheableecsprefixlength6:
+    type: int
+    description:
+      - The maximum ecs prefix length that will be cached for IPv6 subnets
+  recursiveresolution:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - DNS recursive resolution; if enabled, will do recursive resolution for DNS
+        query when the profile is associated with ADNS service, CS Vserver and DNS
+        action
+  replaceecs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Replace ECS Option on DNS query
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsprofile
+      delegate_to: localhost
+      netscaler.adc.dnsprofile:
+        state: present
+        dnsprofilename: p1
+        cacherecords: ENABLED
+        cachenegativeresponses: ENABLED
 """
 
 RETURN = r"""

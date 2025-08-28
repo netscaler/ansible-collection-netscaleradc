@@ -1,17 +1,13 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample systemuser playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | systemuser
+    - name: Configure systemuser
       delegate_to: localhost
       netscaler.adc.systemuser:
         state: present
-        username: nsroot
+        username: GD-CTRLUPADC-P-APP
+        password: REQ_PASSWORD
+        externalauth: DISABLED
         timeout: 900
-    - name: Sample Task | systemuser | 2
-      delegate_to: localhost
-      netscaler.adc.systemuser:
-        state: present
-        username: user_adm1
-        password: pwd_adm1

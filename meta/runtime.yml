@@ -1,7 +1,7 @@
 ---
 # Collections must specify a minimum required ansible version to upload
 # to galaxy
-requires_ansible: '>=2.14.0'
+requires_ansible: '>=2.15.0'
 # Content that Ansible needs to load from another location or that has
 # been deprecated/removed
 # plugin_routing:
@@ -89,6 +89,8 @@ action_groups:
     - admparameter
     - analyticsglobal_analyticsprofile_binding
     - analyticsprofile
+    - apiprofile
+    - apiprofile_apispec_binding
     - apispec
     - apispecfile
     - appalgparam
@@ -108,6 +110,7 @@ action_groups:
     - appfwglobal_auditnslogpolicy_binding
     - appfwglobal_auditsyslogpolicy_binding
     - appfwgrpccontenttype
+    - appfwgrpcvalidation_binding
     - appfwgrpcwebjsoncontenttype
     - appfwgrpcwebtextcontenttype
     - appfwhtmlerrorpage
@@ -136,12 +139,14 @@ action_groups:
     - appfwprofile_fieldconsistency_binding
     - appfwprofile_fieldformat_binding
     - appfwprofile_fileuploadtype_binding
+    - appfwprofile_grpcvalidation_binding
     - appfwprofile_jsonblockkeyword_binding
     - appfwprofile_jsoncmdurl_binding
     - appfwprofile_jsondosurl_binding
     - appfwprofile_jsonsqlurl_binding
     - appfwprofile_jsonxssurl_binding
     - appfwprofile_logexpression_binding
+    - appfwprofile_restvalidation_binding
     - appfwprofile_safeobject_binding
     - appfwprofile_sqlinjection_binding
     - appfwprofile_starturl_binding
@@ -286,6 +291,7 @@ action_groups:
     - cloudparameter
     - cloudparaminternal
     - cloudprofile
+    - cloudservice
     - cloudtunnelparameter
     - cloudtunnelvserver
     - cluster
@@ -306,6 +312,7 @@ action_groups:
     - clusternodegroup_streamidentifier_binding
     - clusternodegroup_vpnvserver_binding
     - clusterpropstatus
+    - clustersync
     - cmpaction
     - cmpglobal_cmppolicy_binding
     - cmpparameter
@@ -366,6 +373,7 @@ action_groups:
     - csvserver_transformpolicy_binding
     - csvserver_vpnvserver_binding
     - dbdbprofile
+    - dbsmonitors
     - dbuser
     - dnsaaaarec
     - dnsaction
@@ -436,6 +444,7 @@ action_groups:
     - inat
     - inatparam
     - install
+    - interface
     - interfacepair
     - ip6tunnel
     - ip6tunnelparam
@@ -503,6 +512,7 @@ action_groups:
     - lldpneighbors
     - lldpparam
     - location
+    - locationdata
     - locationfile
     - locationfile6
     - locationparameter
@@ -567,8 +577,10 @@ action_groups:
     - nscapacity
     - nscentralmanagementserver
     - nsconfig
+    - nsconfigview
     - nsconsoleloginprompt
     - nscqaparam
+    - nsdhcpip
     - nsdhcpparams
     - nsdiameter
     - nsencryptionkey
@@ -588,13 +600,18 @@ action_groups:
     - nslimitidentifier
     - nslimitselector
     - nslimitsessions
+    - nsmgmtparam
     - nsmigration
     - nsmode
+    - nsnextgenapi
     - nsparam
     - nspartition
     - nspartition_bridgegroup_binding
     - nspartition_vlan_binding
     - nspartition_vxlan_binding
+    - nspbr
+    - nspbr6
+    - nspbrs
     - nsratecontrol
     - nsrpcnode
     - nsservicefunction
@@ -602,12 +619,14 @@ action_groups:
     - nsservicepath_nsservicefunction_binding
     - nssimpleacl
     - nssimpleacl6
+    - nssourceroutecachetable
     - nsspparams
     - nsstats
     - nssurgeq
     - nstcpbufparam
     - nstcpparam
     - nstcpprofile
+    - nstestlicense
     - nstimeout
     - nstimer
     - nstimer_autoscalepolicy_binding
@@ -621,6 +640,7 @@ action_groups:
     - nsweblogparam
     - nsxmlnamespace
     - ntpparam
+    - ntpsync
     - ntpserver
     - onlinkipv6prefix
     - pcpprofile
@@ -638,6 +658,7 @@ action_groups:
     - policypatsetfile
     - policystringmap
     - policystringmap_pattern_binding
+    - policytracing
     - policyurlset
     - protocolhttpband
     - ptp
@@ -649,6 +670,7 @@ action_groups:
     - rdpconnections
     - rdpserverprofile
     - reboot
+    - reporting
     - reportingconfig
     - reputationsettings
     - responderaction
@@ -683,6 +705,7 @@ action_groups:
     - servicegroup
     - servicegroup_lbmonitor_binding
     - servicegroup_servicegroupmember_binding
+    - shutdown
     - smppparam
     - smppuser
     - snmpalarm
@@ -699,6 +722,7 @@ action_groups:
     - spilloveraction
     - spilloverpolicy
     - sslaction
+    - sslcacertbundle
     - sslcacertgroup
     - sslcacertgroup_sslcertkey_binding
     - sslcert
@@ -713,6 +737,7 @@ action_groups:
     - sslcipher_sslciphersuite_binding
     - sslcrl
     - sslcrlfile
+    - ssldefaultprofile
     - ssldhfile
     - ssldhparam
     - ssldtlsprofile
@@ -741,23 +766,27 @@ action_groups:
     - sslservice
     - sslservice_ecccurve_binding
     - sslservice_sslcertkey_binding
+    - sslservice_sslcacertbundle_binding
     - sslservice_sslcipher_binding
     - sslservice_sslciphersuite_binding
     - sslservice_sslpolicy_binding
     - sslservicegroup
     - sslservicegroup_ecccurve_binding
     - sslservicegroup_sslcertkey_binding
+    - sslservicegroup_sslcacertbundle_binding
     - sslservicegroup_sslcipher_binding
     - sslservicegroup_sslciphersuite_binding
     - sslvserver
     - sslvserver_ecccurve_binding
     - sslvserver_sslcertkey_binding
     - sslvserver_sslcertkeybundle_binding
+    - sslvserver_sslcacertbundle_binding
     - sslvserver_sslcipher_binding
     - sslvserver_sslciphersuite_binding
     - sslvserver_sslpolicy_binding
     - sslwrapkey
     - streamidentifier
+    - streamidentifier_analyticsprofile_binding
     - streamselector
     - streamsession
     - subscribergxinterface
@@ -766,6 +795,7 @@ action_groups:
     - subscriberradiusinterface
     - subscribersessions
     - systemadmuserinfo
+    - systemautorestorefeature
     - systembackup
     - systemcmdpolicy
     - systemcollectionparam
@@ -786,6 +816,7 @@ action_groups:
     - systemgroup_systemuser_binding
     - systemhwerror
     - systemkek
+    - systemlevelreporting
     - systemparameter
     - systemrestorepoint
     - systemsession
@@ -815,8 +846,6 @@ action_groups:
     - tunnelglobal_tunneltrafficpolicy_binding
     - tunneltrafficpolicy
     - ulfdserver
-    - urlfilteringcategorization
-    - urlfilteringparameter
     - userprotocol
     - uservserver
     - videooptimizationdetectionaction
@@ -843,6 +872,7 @@ action_groups:
     - vpneula
     - vpnformssoaction
     - vpnglobal_appcontroller_binding
+    - vpnglobal_appfwpolicy_binding
     - vpnglobal_auditnslogpolicy_binding
     - vpnglobal_auditsyslogpolicy_binding
     - vpnglobal_authenticationcertpolicy_binding
@@ -856,6 +886,7 @@ action_groups:
     - vpnglobal_domain_binding
     - vpnglobal_intranetip6_binding
     - vpnglobal_intranetip_binding
+    - vpnglobal_secureprivateaccessurl_binding
     - vpnglobal_sharefileserver_binding
     - vpnglobal_sslcertkey_binding
     - vpnglobal_staserver_binding
@@ -889,6 +920,7 @@ action_groups:
     - vpnvserver_analyticsprofile_binding
     - vpnvserver_appcontroller_binding
     - vpnvserver_appflowpolicy_binding
+    - vpnvserver_appfwpolicy_binding
     - vpnvserver_auditnslogpolicy_binding
     - vpnvserver_auditsyslogpolicy_binding
     - vpnvserver_authenticationcertpolicy_binding
@@ -912,6 +944,7 @@ action_groups:
     - vpnvserver_intranetip_binding
     - vpnvserver_responderpolicy_binding
     - vpnvserver_rewritepolicy_binding
+    - vpnvserver_secureprivateaccessurl_binding
     - vpnvserver_sharefileserver_binding
     - vpnvserver_staserver_binding
     - vpnvserver_vpnclientlessaccesspolicy_binding
@@ -940,3 +973,11 @@ action_groups:
     - vxlan_srcip_binding
     - vxlanvlanmap
     - vxlanvlanmap_vxlan_binding
+    - filesystemencryption.py
+    - kafkacluster.py
+    - kafkacluster_servicegroup_binding.py
+    - nskeymanagerproxy.py
+    - nslaslicense.py
+    - sslechconfig.py
+    - sslhpkekey.py
+    - sslprofile_sslechconfig_binding.py

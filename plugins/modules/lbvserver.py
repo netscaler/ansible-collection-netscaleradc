@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver
 short_description: Configuration for Load Balancing Virtual Server resource.
 description: Configuration for Load Balancing Virtual Server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -31,6 +33,7 @@ options:
       - enabled
       - disabled
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -41,50 +44,65 @@ options:
       - When C(enabled), the resource will be enabled on the NetScaler ADC node.
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   adfsproxyprofile:
-    type: raw
+    type: str
     description:
       - Name of the adfsProxy profile to be used to support ADFSPIP protocol for ADFS
         servers.
+  apiprofile:
+    type: str
+    description:
+      - The API profile where one or more API specs are bounded to.
   appflowlog:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Apply AppFlow logging to the virtual server.
   authentication:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable user authentication.
   authenticationhost:
-    type: raw
+    type: str
     description:
       - Fully qualified domain name (FQDN) of the authentication virtual server to
         which the user must be redirected for authentication. Make sure that the Authentication
         parameter is set to ENABLED.
   authn401:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable user authentication with HTTP 401 responses.
   authnprofile:
-    type: raw
+    type: str
     description:
       - Name of the authentication profile to be used when authentication is turned
         on.
   authnvsname:
-    type: raw
+    type: str
     description:
       - Name of an authentication virtual server with which to authenticate users.
   backuplbmethod:
-    type: raw
+    type: str
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -100,11 +118,11 @@ options:
       - '                       Valid only if the primary method is based on static
         proximity.'
   backuppersistencetimeout:
-    type: raw
+    type: int
     description:
       - Time period for which backup persistence is in effect.
   backupvserver:
-    type: raw
+    type: str
     description:
       - Name of the backup virtual server to which to forward requests if the primary
         virtual server goes DOWN or reaches its spillover threshold.
@@ -117,7 +135,7 @@ options:
       - If this option is enabled while resolving DNS64 query AAAA queries are not
         sent to back end dns server
   cacheable:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -127,15 +145,15 @@ options:
         virtual server that has an IP address and port combination of *:80, so such
         a cache redirection virtual server must be configured on the appliance.
   clttimeout:
-    type: raw
+    type: int
     description:
       - Idle time, in seconds, after which a client connection is terminated.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments that you might want to associate with the virtual server.
   connfailover:
-    type: raw
+    type: str
     choices:
       - DISABLED
       - STATEFUL
@@ -152,37 +170,37 @@ options:
         in the packets it receives.'
       - '* C(DISABLED) - Connection failover does not occur.'
   cookiename:
-    type: raw
+    type: str
     description:
       - Use this parameter to specify the cookie name for COOKIE peristence type.
         It specifies the name of cookie with a maximum of 32 characters. If not specified,
         cookie name is internally generated.
   datalength:
-    type: raw
+    type: int
     description:
       - Length of the token to be extracted from the data segment of an incoming packet,
         for use in the token method of load balancing. The length of the token, specified
         in bytes, must not be greater than 24 KB. Applicable to virtual servers of
         type TCP.
   dataoffset:
-    type: raw
+    type: int
     description:
       - Offset to be considered when extracting a token from the TCP payload. Applicable
         to virtual servers, of type TCP, using the token method of load balancing.
         Must be within the first 24 KB of the TCP payload.
   dbprofilename:
-    type: raw
+    type: str
     description:
       - Name of the DB profile whose settings are to be applied to the virtual server.
   dbslb:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
   disableprimaryondown:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -196,14 +214,21 @@ options:
       - DISABLED
     description:
       - This argument is for enabling/disabling the dns64 on lbvserver
+  dnsoverhttps:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This option is used to enable/disable DNS over HTTPS (DoH) processing.
   dnsprofilename:
-    type: raw
+    type: str
     description:
       - Name of the DNS profile to be associated with the VServer. DNS profile properties
         will be applied to the transactions processed by a VServer. This parameter
         is valid only for DNS and DNS-TCP VServers.
   downstateflush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -212,27 +237,27 @@ options:
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
   hashlength:
-    type: raw
+    type: int
     description:
       - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH
         load balancing methods.
   healththreshold:
-    type: raw
+    type: int
     description:
       - Threshold in percent of active services below which vserver state is made
         down. If this threshold is 0, vserver state will be up even if one bound service
         is up.
   httpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the HTTP profile whose settings are to be applied to the virtual server.
   httpsredirecturl:
-    type: raw
+    type: str
     description:
       - URL to which all HTTP traffic received on the port specified in the -redirectFromPort
         parameter is redirected.
   icmpvsrresponse:
-    type: raw
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -252,7 +277,7 @@ options:
         of type VIP. To set that parameter, use the add ip command in the CLI or the
         Create IP dialog box in the GUI.'
   insertvserveripport:
-    type: raw
+    type: str
     choices:
       - 'OFF'
       - VIPADDR
@@ -304,7 +329,7 @@ options:
         servers to the same extent, the request is processed by the virtual server
         whose port number matches the port number in the request.
   ipset:
-    type: raw
+    type: str
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
         service on the current lb vserver
@@ -313,7 +338,7 @@ options:
     description:
       - IPv4 or IPv6 address to assign to the virtual server.
   l2conn:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -323,7 +348,7 @@ options:
         that is used to identify a connection. Allows multiple TCP and non-TCP connections
         with the same 4-tuple to co-exist on the Citrix ADC.
   lbmethod:
-    type: raw
+    type: str
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -384,25 +409,25 @@ options:
       - '* C(USER_TOKEN) - Same as C(TOKEN) LB method but token needs to be provided
         from an extension.'
   lbprofilename:
-    type: raw
+    type: str
     description:
       - Name of the LB profile which is associated to the vserver
   listenpolicy:
-    type: raw
+    type: str
     description:
       - Expression identifying traffic accepted by the virtual server. Can be either
         an expression (for example, CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24) or the name
         of a named expression. In the above example, the virtual server accepts all
         requests whose destination IP address is in the 192.0.2.0/24 subnet.
   listenpriority:
-    type: raw
+    type: int
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
   m:
-    type: raw
+    type: str
     choices:
       - IP
       - MAC
@@ -426,7 +451,7 @@ options:
       - You can use either the C(IPTUNNEL) or the C(TOS) option to implement Direct
         Server Return (DSR).
   macmoderetainvlan:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -434,24 +459,24 @@ options:
       - This option is used to retain vlan information of incoming packet when macmode
         is enabled
   maxautoscalemembers:
-    type: raw
+    type: int
     description:
       - Maximum number of members expected to be present when vserver is used in Autoscale.
   minautoscalemembers:
-    type: raw
+    type: int
     description:
       - Minimum number of members expected to be present when vserver is used in Autoscale.
   mssqlserverversion:
-    type: raw
+    type: str
     choices:
-      - 70
-      - 2000
+      - '70'
+      - '2000'
       - 2000SP1
-      - 2005
-      - 2008
+      - '2005'
+      - '2008'
       - 2008R2
-      - 2012
-      - 2014
+      - '2012'
+      - '2014'
     description:
       - For a load balancing virtual server of type MSSQL, the Microsoft SQL Server
         version. Set this parameter if you expect some clients to run a version different
@@ -459,23 +484,23 @@ options:
         the client-side and server-side connections by ensuring that all communication
         conforms to the server's version.
   mysqlcharacterset:
-    type: raw
+    type: int
     description:
       - Character set that the virtual server advertises to clients.
   mysqlprotocolversion:
-    type: raw
+    type: int
     description:
       - MySQL protocol version that the virtual server advertises to clients.
   mysqlservercapabilities:
-    type: raw
+    type: int
     description:
       - Server capabilities that the virtual server advertises to clients.
   mysqlserverversion:
-    type: raw
+    type: str
     description:
       - MySQL server version string that the virtual server advertises to clients.
   name:
-    type: raw
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -485,12 +510,12 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
   netmask:
-    type: raw
+    type: str
     description:
       - IPv4 subnet mask to apply to the destination IP address or source IP address
         when the load balancing method is DESTINATIONIPHASH or SOURCEIPHASH.
   netprofile:
-    type: raw
+    type: str
     description:
       - Name of the network profile to associate with the virtual server. If you set
         this parameter, the virtual server uses only the IP addresses in the network
@@ -500,7 +525,7 @@ options:
     description:
       - New name for the virtual server.
   newservicerequest:
-    type: raw
+    type: int
     description:
       - Number of requests, or percentage of the load on existing services, by which
         to increase the load on a new service at each interval in slow-start mode.
@@ -510,36 +535,36 @@ options:
         by the LB method. Subsequently, any new services added will use the global
         RR factor.
   newservicerequestincrementinterval:
-    type: raw
+    type: int
     description:
       - Interval, in seconds, between successive increments in the load on a new service
         or a service whose state has just changed from DOWN to UP. A value of 0 (zero)
         specifies manual slow start.
   newservicerequestunit:
-    type: raw
+    type: str
     choices:
       - PER_SECOND
       - PERCENT
     description:
       - Units in which to increment load at each interval in slow-start mode.
   oracleserverversion:
-    type: raw
+    type: str
     choices:
       - 10G
       - 11G
     description:
       - Oracle server version
   order:
-    type: raw
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   orderthreshold:
-    type: raw
+    type: int
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
   persistavpno:
-    type: raw
+    type: list
     description:
       - Persist AVP number for Diameter Persistency.
       - '            In case this AVP is not defined in Base RFC 3588 and it is nested
@@ -548,8 +573,9 @@ options:
         child. So say persist AVP number X'
       - '            is nested inside AVP Y which is nested in Z, then define the
         list as  Z Y X'
+    elements: int
   persistencebackup:
-    type: raw
+    type: str
     choices:
       - SOURCEIP
       - NONE
@@ -557,7 +583,7 @@ options:
       - Backup persistence type for the virtual server. Becomes operational if the
         primary persistence mechanism fails.
   persistencetype:
-    type: raw
+    type: str
     choices:
       - SOURCEIP
       - COOKIEINSERT
@@ -605,7 +631,7 @@ options:
       - '* C(USERSESSION) - Persistence session is created based on the persistence
         parameter value provided from an extension.'
   persistmask:
-    type: raw
+    type: str
     description:
       - Persistence mask for IP based persistence types, for IPv4 virtual servers.
   port:
@@ -618,7 +644,7 @@ options:
       - Citrix ADC provides support for external health check of the vserver status.
         Select port for HTTP/TCP monitring
   probeprotocol:
-    type: raw
+    type: str
     choices:
       - TCP
       - HTTP
@@ -626,7 +652,7 @@ options:
       - Citrix ADC provides support for external health check of the vserver status.
         Select C(HTTP) or C(TCP) probes for healthcheck
   probesuccessresponsecode:
-    type: raw
+    type: str
     description:
       - HTTP code to return in SUCCESS case.
   processlocal:
@@ -640,7 +666,7 @@ options:
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
   push:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -648,12 +674,12 @@ options:
       - Process traffic with the push virtual server that is bound to this load balancing
         virtual server.
   pushlabel:
-    type: raw
+    type: str
     description:
       - Expression for extracting a label from the server's response. Can be either
         an expression or the name of a named expression.
   pushmulticlients:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -661,22 +687,22 @@ options:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
   pushvserver:
-    type: raw
+    type: str
     description:
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which
         the server pushes updates received on the load balancing virtual server that
         you are configuring.
   quicbridgeprofilename:
-    type: raw
+    type: str
     description:
       - Name of the QUIC Bridge profile whose settings are to be applied to the virtual
         server.
   quicprofilename:
-    type: raw
+    type: str
     description:
       - Name of QUIC profile which will be attached to the VServer.
   range:
-    type: float
+    type: int
     description:
       - 'Number of IP addresses that the appliance must generate and assign to the
         virtual server. The virtual server then functions as a network virtual server,
@@ -692,7 +718,7 @@ options:
         example:'
       - add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80
   recursionavailable:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -702,12 +728,12 @@ options:
         when the vserver is load balancing a set of DNS servers thatsupport recursive
         queries.
   redirectfromport:
-    type: raw
+    type: int
     description:
       - Port number for the virtual server, from which we absorb the traffic for http
         redirect
   redirectportrewrite:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -715,7 +741,7 @@ options:
       - Rewrite the port and change the protocol to ensure successful HTTP redirects
         from services.
   redirurl:
-    type: raw
+    type: str
     description:
       - URL to which to redirect traffic if the virtual server becomes unavailable.
       - WARNING! Make sure that the domain in the URL does not match the domain specified
@@ -726,7 +752,7 @@ options:
     description:
       - The redirect URL to be unset.
   resrule:
-    type: raw
+    type: str
     description:
       - Expression specifying which part of a server's response to use for creating
         rule based persistence sessions (persistence type RULE). Can be either an
@@ -734,7 +760,7 @@ options:
       - 'Example:'
       - HTTP.RES.HEADER("setcookie").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE("server1").
   retainconnectionsoncluster:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -743,7 +769,7 @@ options:
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
   rhistate:
-    type: raw
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -762,14 +788,14 @@ options:
         Citrix ADC advertises the route for the VIP address if at least one of the
         associated virtual servers, whose RHI STATE set to C(ACTIVE), is in UP state.'
   rtspnat:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use network address translation (NAT) for RTSP data connections.
   rule:
-    type: raw
+    type: str
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.
       - 'The following requirements apply only to the Citrix ADC CLI:'
@@ -780,7 +806,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   servicename:
-    type: raw
+    type: str
     description:
       - Service to bind to the virtual server.
   servicetype:
@@ -830,10 +856,13 @@ options:
       - MQTT_TLS
       - QUIC_BRIDGE
       - HTTP_QUIC
+      - DOT
+      - SSL_PROXY
+      - KAFKA_PRODUCER
     description:
       - Protocol used by the service (also called the service type).
   sessionless:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -843,7 +872,7 @@ options:
         and scenarios involving direct server return (DSR), where session information
         is unnecessary.
   skippersistency:
-    type: raw
+    type: str
     choices:
       - Bypass
       - ReLb
@@ -852,7 +881,7 @@ options:
       - This argument decides the behavior incase the service which is selected from
         an existing persistence session has reached threshold.
   sobackupaction:
-    type: raw
+    type: str
     choices:
       - DROP
       - ACCEPT
@@ -861,7 +890,7 @@ options:
       - Action to be performed if spillover is to take effect, but no backup chain
         to spillover is usable or exists
   somethod:
-    type: raw
+    type: str
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
@@ -887,7 +916,7 @@ options:
         svc3 transition to DOWN.'
       - '* C(NONE) - Spillover does not occur.'
   sopersistence:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -895,50 +924,50 @@ options:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup virtual servers.
   sopersistencetimeout:
-    type: raw
+    type: int
     description:
       - Timeout for spillover persistence, in minutes.
   sothreshold:
-    type: raw
+    type: int
     description:
       - Threshold at which spillover occurs. Specify an integer for the CONNECTION
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
         method (do not enter the units), or a percentage for the HEALTH method (do
         not enter the percentage symbol).
   tcpprobeport:
-    type: raw
+    type: int
     description:
       - Port number for external TCP probe. NetScaler provides support for external
         TCP health check of the vserver status over the selected port. This option
         is only supported for vservers assigned with an IPAddress or ipset.
   tcpprofilename:
-    type: raw
+    type: str
     description:
       - Name of the TCP profile whose settings are to be applied to the virtual server.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   timeout:
-    type: raw
+    type: int
     description:
       - Time period for which a persistence session is in effect.
   toggleorder:
-    type: raw
+    type: str
     choices:
       - ASCENDING
       - DESCENDING
     description:
       - Configure this option to toggle order preference
   tosid:
-    type: raw
+    type: int
     description:
       - TOS ID of the virtual server. Applicable only when the load balancing redirection
         mode is set to TOS.
   trofspersistence:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -946,21 +975,21 @@ options:
       - When value is C(ENABLED), Trofs persistence is honored. When value is C(DISABLED),
         Trofs persistence is not honored.
   v6netmasklen:
-    type: raw
+    type: int
     description:
       - Number of bits to consider in an IPv6 destination or source IP address, for
         creating the hash that is required by the DESTINATIONIPHASH and SOURCEIPHASH
         load balancing methods.
   v6persistmasklen:
-    type: raw
+    type: int
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
   vipheader:
-    type: raw
+    type: str
     description:
       - Name for the inserted header. The default name is vip-header.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the specified service.
   lbvserver_analyticsprofile_binding:
@@ -1544,79 +1573,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Simple LBVserver playbook
-  hosts: localhost
+- name: Sample lbvserver playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | service
-      delegate_to: localhost
-      netscaler.adc.service:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-        state: present
-        name: s1
-        ipaddress: 10.10.10.181
-        servicetype: HTTP
-        port: 80
-    - name: Sample Task | service
-      delegate_to: localhost
-      netscaler.adc.service:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-        state: present
-        name: s2
-        ipaddress: 10.10.10.10
-        servicetype: HTTP
-        port: 80
-    - name: Sample Task | servicegroup
-      delegate_to: localhost
-      netscaler.adc.servicegroup:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-        state: present
-        servicegroupname: sg1
-        servicetype: HTTP
-    - name: Sample Task | lbvserver with bindings
+    - name: Configure lbvserver
       delegate_to: localhost
       netscaler.adc.lbvserver:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
         state: present
-        name: test_lbvser
-        servicetype: HTTP
-        ipv46: 10.10.10.11
-        port: 80
-        lbmethod: LEASTCONNECTION
-        lbvserver_servicegroup_binding:
-          # mode: desired # bind | unbind | desired
-          binding_members:
-            - name: test_lbvser
-              servicename: sg1
-        lbvserver_service_binding:
-          # mode: desired # bind | unbind | desired
-          binding_members:
-            - name: test_lbvser
-              servicename: s1
-              weight: 16
-            - name: test_lbvser
-              servicename: s2
-              weight: 20
+        name: lb4
+        servicetype: SSL
 """
 
 RETURN = r"""

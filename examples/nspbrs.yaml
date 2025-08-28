@@ -1,0 +1,9 @@
+---
+- name: Sample nspbrs playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nspbrs
+      delegate_to: localhost
+      netscaler.adc.nspbrs:
+        state: applied

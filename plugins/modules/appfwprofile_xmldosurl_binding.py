@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwprofile_xmldosurl_binding
 short_description: Binding Resource definition for describing association between
   appfwprofile and xmldosurl resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between appf
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,6 +39,16 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   alertonly:
     type: str
@@ -104,7 +116,7 @@ options:
     description:
       - XML DoS URL regular expression length.
   xmlmaxattributenamelength:
-    type: float
+    type: int
     description:
       - Specify the longest name of any XML attribute. Protects against overflow attacks.
   xmlmaxattributenamelengthcheck:
@@ -115,7 +127,7 @@ options:
     description:
       - State if XML Max attribute name length check is C(ON) or C(OFF).
   xmlmaxattributes:
-    type: float
+    type: int
     description:
       - Specify maximum number of attributes per XML element. Protects against overflow
         attacks.
@@ -127,7 +139,7 @@ options:
     description:
       - State if XML Max attributes check is C(ON) or C(OFF).
   xmlmaxattributevaluelength:
-    type: float
+    type: int
     description:
       - Specify the longest value of any XML attribute. Protects against overflow
         attacks.
@@ -139,7 +151,7 @@ options:
     description:
       - State if XML Max atribute value length is C(ON) or C(OFF).
   xmlmaxchardatalength:
-    type: float
+    type: int
     description:
       - Specify the maximum size of CDATA. Protects against overflow attacks and large
         quantities of unparsed data within XML messages.
@@ -151,7 +163,7 @@ options:
     description:
       - State if XML Max CDATA length check is C(ON) or C(OFF).
   xmlmaxelementchildren:
-    type: float
+    type: int
     description:
       - Specify the maximum number of children allowed per XML element. Protects against
         overflow attacks.
@@ -163,7 +175,7 @@ options:
     description:
       - State if XML Max element children check is C(ON) or C(OFF).
   xmlmaxelementdepth:
-    type: float
+    type: int
     description:
       - Maximum nesting (depth) of XML elements. This check protects against documents
         that have excessive hierarchy depths.
@@ -175,7 +187,7 @@ options:
     description:
       - State if XML Max element depth check is C(ON) or C(OFF).
   xmlmaxelementnamelength:
-    type: float
+    type: int
     description:
       - Specify the longest name of any element (including the expanded namespace)
         to protect against overflow attacks.
@@ -187,7 +199,7 @@ options:
     description:
       - State if XML Max element name length check is C(ON) or C(OFF).
   xmlmaxelements:
-    type: float
+    type: int
     description:
       - Specify the maximum number of XML elements allowed. Protects against overflow
         attacks.
@@ -199,7 +211,7 @@ options:
     description:
       - State if XML Max elements check is C(ON) or C(OFF).
   xmlmaxentityexpansiondepth:
-    type: float
+    type: int
     description:
       - Specify maximum entity expansion depth. Protects aganist Entity Expansion
         Attack.
@@ -211,7 +223,7 @@ options:
     description:
       - State if XML Max Entity Expansions Depth Check is C(ON) or C(OFF).
   xmlmaxentityexpansions:
-    type: float
+    type: int
     description:
       - Specify maximum allowed number of entity expansions. Protects aganist Entity
         Expansion Attack.
@@ -223,7 +235,7 @@ options:
     description:
       - State if XML Max Entity Expansions Check is C(ON) or C(OFF).
   xmlmaxfilesize:
-    type: float
+    type: int
     description:
       - Specify the maximum size of XML messages. Protects against overflow attacks.
   xmlmaxfilesizecheck:
@@ -234,7 +246,7 @@ options:
     description:
       - State if XML Max file size check is C(ON) or C(OFF).
   xmlmaxnamespaces:
-    type: float
+    type: int
     description:
       - Specify maximum number of active namespaces. Protects against overflow attacks.
   xmlmaxnamespacescheck:
@@ -245,7 +257,7 @@ options:
     description:
       - State if XML Max namespaces check is C(ON) or C(OFF).
   xmlmaxnamespaceurilength:
-    type: float
+    type: int
     description:
       - Specify the longest URI of any XML namespace. Protects against overflow attacks.
   xmlmaxnamespaceurilengthcheck:
@@ -256,7 +268,7 @@ options:
     description:
       - State if XML Max namespace URI length check is C(ON) or C(OFF).
   xmlmaxnodes:
-    type: float
+    type: int
     description:
       - Specify the maximum number of XML nodes. Protects against overflow attacks.
   xmlmaxnodescheck:
@@ -267,15 +279,15 @@ options:
     description:
       - State if XML Max nodes check is C(ON) or C(OFF).
   xmlmaxsoaparrayrank:
-    type: float
+    type: int
     description:
       - XML Max Individual SOAP Array Rank. This is the dimension of the SOAP array.
   xmlmaxsoaparraysize:
-    type: float
+    type: int
     description:
       - XML Max Total SOAP Array Size. Protects against SOAP Array Abuse attack.
   xmlminfilesize:
-    type: float
+    type: int
     description:
       - Enforces minimum message size.
   xmlminfilesizecheck:
@@ -297,6 +309,35 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwprofile_xmldosurl_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwprofile_xmldosurl_binding
+      delegate_to: localhost
+      netscaler.adc.appfwprofile_xmldosurl_binding:
+        state: present
+        name: webgoat_prof
+        xmldosurl: .*
+        xmlmaxelementdepthcheck: 'ON'
+        xmlmaxelementnamelengthcheck: 'ON'
+        xmlmaxelementscheck: 'ON'
+        xmlmaxelementchildrencheck: 'ON'
+        xmlmaxattributescheck: 'ON'
+        xmlmaxattributenamelengthcheck: 'ON'
+        xmlmaxattributevaluelengthcheck: 'ON'
+        xmlmaxchardatalengthcheck: 'ON'
+        xmlmaxfilesizecheck: 'ON'
+        xmlminfilesizecheck: 'ON'
+        xmlblockpi: 'ON'
+        xmlblockdtd: 'ON'
+        xmlblockexternalentities: 'ON'
+        xmlmaxentityexpansionscheck: 'ON'
+        xmlmaxentityexpansiondepthcheck: 'ON'
+        xmlmaxnamespacescheck: 'ON'
+        xmlmaxnamespaceurilengthcheck: 'ON'
+        xmlsoaparraycheck: 'ON'
 """
 
 RETURN = r"""

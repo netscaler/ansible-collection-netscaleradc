@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: transformaction
 short_description: Configuration for transform action resource.
 description: Configuration for transform action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,22 +40,32 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this URL Transformation action.
   cookiedomainfrom:
-    type: raw
+    type: str
     description:
       - Pattern that matches the domain to be transformed in Set-Cookie headers.
   cookiedomaininto:
-    type: raw
+    type: str
     description:
       - 'PCRE-format regular expression that describes the transformation to be performed
         on cookie domains that match the cookieDomainFrom pattern. '
       - 'NOTE: The cookie domain to be transformed is extracted from the request.'
   name:
-    type: raw
+    type: str
     description:
       - Name for the URL transformation action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -65,7 +77,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my transform action or my transform action).
   priority:
-    type: float
+    type: int
     description:
       - Positive integer specifying the priority of the action within the profile.
         A lower number specifies a higher priority. Must be unique within the list
@@ -76,22 +88,22 @@ options:
     description:
       - Name of the URL Transformation profile with which to associate this action.
   requrlfrom:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the request URL pattern to be
         transformed.
   requrlinto:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the reqUrlFrom pattern.
   resurlfrom:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the response URL pattern to
         be transformed.
   resurlinto:
-    type: raw
+    type: str
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the resUrlFrom pattern.

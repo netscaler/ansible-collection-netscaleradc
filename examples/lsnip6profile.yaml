@@ -1,0 +1,12 @@
+---
+- name: Sample lsnip6profile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsnip6profile
+      delegate_to: localhost
+      netscaler.adc.lsnip6profile:
+        state: present
+        name: ds1
+        type: DS-Lite
+        network6: 3ffe:100::1

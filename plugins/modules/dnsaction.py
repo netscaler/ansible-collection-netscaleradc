@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsaction
 short_description: Configuration for DNS action resource.
 description: Configuration for DNS action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,8 +40,18 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   actionname:
-    type: raw
+    type: str
     description:
       - Name of the dns action.
   actiontype:
@@ -54,7 +66,7 @@ options:
     description:
       - The type of DNS action that is being configured.
   dnsprofilename:
-    type: raw
+    type: str
     description:
       - Name of the DNS profile to be associated with the transaction for which the
         action is chosen
@@ -63,8 +75,8 @@ options:
     description:
       - List of IP address to be returned in case of rewrite_response actiontype.
         They can be of IPV4 or IPV6 type.
-      - "\t    In case of set command We will remove all the IP address previously\
-        \ present in the action and will add new once given in set dns action command."
+      - '        In case of set command We will remove all the IP address previously
+        present in the action and will add new once given in set dns action command.'
     elements: str
   preferredloclist:
     type: list
@@ -72,7 +84,7 @@ options:
       - The location list in priority order used for the given action.
     elements: str
   ttl:
-    type: raw
+    type: int
     description:
       - Time to live, in seconds.
   viewname:
@@ -84,6 +96,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsaction
+      delegate_to: localhost
+      netscaler.adc.dnsaction:
+        state: present
+        actionname: ia_dnsact8
+        actiontype: Rewrite_Response
+        ipaddress:
+          - 1.1.1.102
+        ttl: 3601
 """
 
 RETURN = r"""

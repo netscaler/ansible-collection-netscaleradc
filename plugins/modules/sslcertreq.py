@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcertreq
 short_description: Configuration for certificate request resource.
 description: Configuration for certificate request resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -32,6 +34,16 @@ options:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(created), the `create` operation will be applied on the resource.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   challengepassword:
     type: str
@@ -140,23 +152,31 @@ options:
         within the Subject field of the main certificate.)'
       - '      5. Directory names (alternative Distinguished Names to that given in
         the Subject)'
+      - Example:-subjectAltName "DNS:*.example.com DNS:www.example.org"
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Create ssl certReq certname.csr
-  delegate_to: localhost
-  netscaler.adc.sslcertreq:
-    state: created
-    reqfile: certname.csr
-    keyfile: certname.key
-    keyform: PEM
-    countryname: IN
-    statename: KAR
-    organizationname: example
-    commonname: example
-    emailaddress: test1@example.com
+---
+- name: Sample sslcertreq playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcertreq
+      delegate_to: localhost
+      netscaler.adc.sslcertreq:
+        state: present
+        reqfile: ssl_rsa_der_csr
+        keyfile: ssl_rsa_der_key
+        keyform: DER
+        countryname: US
+        statename: asda
+        organizationname: asdad
+        organizationunitname: adsada
+        localityname: adsad
+        commonname: asdsad
+        emailaddress: adsad
 """
 
 RETURN = r"""

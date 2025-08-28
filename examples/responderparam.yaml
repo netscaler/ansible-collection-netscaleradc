@@ -1,0 +1,10 @@
+---
+- name: Sample responderparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure responderparam
+      delegate_to: localhost
+      netscaler.adc.responderparam:
+        state: present
+        undefaction: NOOP

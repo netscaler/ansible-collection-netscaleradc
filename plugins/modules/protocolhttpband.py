@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: protocolhttpband
 short_description: Configuration for HTTP request/response band resource.
 description: Configuration for HTTP request/response band resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,12 +38,22 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   reqbandsize:
-    type: raw
+    type: int
     description:
       - 'Band size, in bytes, for HTTP request band statistics. For example, if you
         specify a band size of 100 bytes, statistics will be maintained and displayed
@@ -50,7 +62,7 @@ options:
       - 100 - 199 bytes
       - 200 - 299 bytes and so on.
   respbandsize:
-    type: raw
+    type: int
     description:
       - 'Band size, in bytes, for HTTP response band statistics. For example, if you
         specify a band size of 100 bytes, statistics will be maintained and displayed

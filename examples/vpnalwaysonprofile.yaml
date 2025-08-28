@@ -1,0 +1,13 @@
+---
+- name: Sample vpnalwaysonprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnalwaysonprofile
+      delegate_to: localhost
+      netscaler.adc.vpnalwaysonprofile:
+        state: present
+        name: aop1
+        networkaccessonvpnfailure: fullAccess
+        clientcontrol: DENY
+        locationbasedvpn: Remote

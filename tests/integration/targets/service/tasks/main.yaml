@@ -67,6 +67,47 @@
     that:
       - "result.failed==false"
       - "result.changed==false"
+- name: SERVICE | RENAME | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.service:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: renamed
+    name: test-service
+    newname: test-service-renamed
+- name: Assert | SERVICE | RENAME | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SERVICE | RENAME
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.service:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: renamed
+    name: test-service
+    newname: test-service-renamed
+- name: Assert | SERVICE | RENAME
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
 - name: SERVICE | DELETE | --check
   delegate_to: localhost
   register: result
@@ -80,7 +121,7 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: test-service
+    name: test-service-renamed
     servicetype: HTTP
     ipaddress: 172.18.0.4
     port: 5000
@@ -103,7 +144,7 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: test-service
+    name: test-service-renamed
     servicetype: HTTP
     ipaddress: 172.18.0.4
     port: 5000
@@ -125,7 +166,7 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: test-service
+    name: test-service-renamed
     servicetype: HTTP
     ip: 172.18.0.4
     port: 5000

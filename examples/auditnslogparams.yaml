@@ -1,0 +1,11 @@
+---
+- name: Sample auditnslogparams playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure auditnslogparams
+      delegate_to: localhost
+      netscaler.adc.auditnslogparams:
+        state: present
+        loglevel:
+          - ALL

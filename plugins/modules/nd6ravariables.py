@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nd6ravariables
 short_description: Configuration for nd6 Router Advertisment configuration variables
   resource.
@@ -24,6 +25,7 @@ description: Configuration for nd6 Router Advertisment configuration variables r
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,78 +39,88 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   ceaserouteradv:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Cease router advertisements on this vlan.
   currhoplimit:
-    type: raw
+    type: int
     description:
       - Current Hop limit.
   defaultlifetime:
-    type: raw
+    type: int
     description:
       - Default life time, in seconds.
   linkmtu:
-    type: raw
+    type: int
     description:
       - The Link MTU.
   managedaddrconfig:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Value to be placed in the Managed address configuration flag field.
   maxrtadvinterval:
-    type: raw
+    type: int
     description:
       - Maximum time allowed between unsolicited multicast RAs, in seconds.
   minrtadvinterval:
-    type: raw
+    type: int
     description:
       - Minimum time interval between RA messages, in seconds.
   onlyunicastrtadvresponse:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Send only Unicast Router Advertisements in respond to Router Solicitations.
   otheraddrconfig:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Value to be placed in the Other configuration flag field.
   reachabletime:
-    type: raw
+    type: int
     description:
       - Reachable time, in milliseconds.
   retranstime:
-    type: raw
+    type: int
     description:
       - Retransmission time, in milliseconds.
   sendrouteradv:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - whether the router sends periodic RAs and responds to Router Solicitations.
   srclinklayeraddroption:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Include source link layer address option in RA messages.
   vlan:
-    type: raw
+    type: int
     description:
       - The VLAN number.
   nd6ravariables_onlinkipv6prefix_binding:
@@ -142,15 +154,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nd6ravariables playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nd6RAvariables
+    - name: Configure nd6ravariables
       delegate_to: localhost
       netscaler.adc.nd6ravariables:
         state: present
-        vlan: 1
+        vlan: '1'
 """
 
 RETURN = r"""

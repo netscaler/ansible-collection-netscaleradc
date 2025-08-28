@@ -1,0 +1,16 @@
+---
+- name: Sample cspolicylabel_cspolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cspolicylabel_cspolicy_binding
+      delegate_to: localhost
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        state: present
+        labelname: CSW_polabl5
+        policyname: CSW_pol4
+        priority: '2300'
+        gotopriorityexpression: END
+        invoke: true
+        labeltype: policylabel
+        invoke_labelname: CSW_invoke_labelname

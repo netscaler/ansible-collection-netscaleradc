@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: extendedmemoryparam
 short_description: Configuration for Parameter for extended memory used by LSN and
   Subscriber Store resource.
@@ -25,6 +26,7 @@ description: Configuration for Parameter for extended memory used by LSN and Sub
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,10 +40,20 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
-  memlimit:
-    type: raw
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
     description:
-      - Amount of Citrix ADC memory to reserve for the memory used by LSN and Subscriber
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+  memlimit:
+    type: int
+    description:
+      - Amount of NetScaler memory to reserve for the memory used by LSN and Subscriber
         Session Store feature, in multiples of 2MB.
       - ''
       - 'Note: If you later reduce the value of this parameter, the amount of active
@@ -52,6 +64,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample extendedmemoryparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure extendedmemoryparam
+      delegate_to: localhost
+      netscaler.adc.extendedmemoryparam:
+        state: present
+        memlimit: 4380
 """
 
 RETURN = r"""

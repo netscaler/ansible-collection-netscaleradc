@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationepaaction
 short_description: Configuration for epa action resource.
 description: Configuration for epa action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,26 +40,43 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   csecexpr:
     type: str
     description:
       - it holds the ClientSecurityExpression to be sent to the client
   defaultepagroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the EPA check succeeds.
   deletefiles:
-    type: raw
+    type: str
     description:
       - String specifying the path(s) and name(s) of the files to be deleted by the
         endpoint analysis (EPA) tool. Multiple files to be delimited by comma
+  deviceposture:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Parameter to enable/disable device posture service scan
   killprocess:
-    type: raw
+    type: str
     description:
       - String specifying the name of a process to be terminated by the endpoint analysis
         (EPA) tool. Multiple processes to be delimited by comma
   name:
-    type: raw
+    type: str
     description:
       - Name for the epa action. Must begin with a
       - "\t    letter, number, or the underscore character (_), and must consist"
@@ -68,7 +87,7 @@ options:
         \ or more spaces, enclose the name in double or single quotation marks (for\
         \ example, \"my aaa action\" or 'my aaa action')."
   quarantinegroup:
-    type: raw
+    type: str
     description:
       - This is the quarantine group that is chosen when the EPA check fails
       - if configured.
@@ -77,6 +96,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample authenticationepaaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationepaaction
+      delegate_to: localhost
+      netscaler.adc.authenticationepaaction:
+        state: present
+        name: EPA_ACT2
+        csecexpr: sys.client_expr("proc_0_perl")
+        killprocess: process2
+        deletefiles: file2
+        defaultepagroup: DG2
+        quarantinegroup: QG2
 """
 
 RETURN = r"""

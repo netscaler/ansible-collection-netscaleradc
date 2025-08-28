@@ -1,0 +1,28 @@
+---
+- name: Ansible ssh playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Calling shell module
+      connection: netscaler.adc.ssh_netscaler_adc
+      remote_user: nsroot
+      vars:
+        ansible_python_interpreter: /var/python/bin/python
+      ansible.builtin.command: "echo hello"
+      changed_when: false
+      register: echo_result
+
+    - name: Show command output
+      ansible.builtin.debug:
+        msg: "{{ echo_result }}"
+
+    - name: Setup server
+      delegate_to: localhost
+      netscaler.adc.server:
+        nsip: "{{ ansible_host }}"
+        nitro_user: "{{ remote_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: false
+
+        name: test-server-1
+        ipaddress: 192.168.2.2

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: iptunnelparam
 short_description: Configuration for ip tunnel parameter resource.
 description: Configuration for ip tunnel parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   dropfrag:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -45,37 +57,37 @@ options:
       - Drop any IP packet that requires fragmentation before it is sent through the
         tunnel.
   dropfragcputhreshold:
-    type: raw
+    type: int
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation to use the IP tunnel. Applies only if dropFragparameter
         is set to NO. The default value, 0, specifies that this parameter is not set.
   enablestrictrx:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for IPSec packets received through tunnel
   enablestricttx:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for packets to be sent IPSec protected
   mac:
-    type: raw
+    type: str
     description:
       - The shared MAC used for shared IP between cluster nodes/HA peers
   srcip:
-    type: raw
+    type: str
     description:
       - Common source-IP address for all tunnels. For a specific tunnel, this global
         setting is overridden if you have specified another source IP address. Must
         be a MIP or SNIP address.
   srciproundrobin:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -86,7 +98,7 @@ options:
         for all the IP tunnels. This setting does not apply to a tunnel for which
         a source IP address has been specified.
   useclientsourceip:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -97,6 +109,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample iptunnelparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure iptunnelparam
+      delegate_to: localhost
+      netscaler.adc.iptunnelparam:
+        state: present
+        srciproundrobin: 'YES'
 """
 
 RETURN = r"""

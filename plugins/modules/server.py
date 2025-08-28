@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: server
 short_description: Configuration for server resource.
 description: Configuration for server resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -31,6 +33,7 @@ options:
       - enabled
       - disabled
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -41,17 +44,28 @@ options:
       - When C(enabled), the resource will be enabled on the NetScaler ADC node.
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   internal:
     type: bool
     description:
       - Display names of the servers that have been created for internal use.
   comment:
-    type: raw
+    type: str
     description:
       - Any information about the server.
   delay:
-    type: float
+    type: int
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
@@ -67,7 +81,7 @@ options:
   domainresolveretry:
     type: int
     description:
-      - Time, in seconds, for which the Citrix ADC must wait, after DNS resolution
+      - Time, in seconds, for which the NetScaler must wait, after DNS resolution
         fails, before sending the next DNS query to resolve the domain name.
   graceful:
     type: str
@@ -93,7 +107,7 @@ options:
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing
         mode, you cannot use the server in the IPv4 addressing mode.
   name:
-    type: raw
+    type: str
     description:
       - Name for the server.
       - Must begin with an ASCII alphabetic or underscore (_) character, and must
@@ -118,7 +132,7 @@ options:
         C(A) being the default querytype. The type of DNS resolution done on the domains
         in C(SRV) records is inherited from ipv6 argument.
   td:
-    type: float
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -137,23 +151,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample server playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | server
+    - name: Configure server
       delegate_to: localhost
       netscaler.adc.server:
         state: present
-        name: 10.10.10.10
-        ipaddress: 10.10.10.10
-    - name: Sample Task | server 2
-      delegate_to: localhost
-      tags: test
-      netscaler.adc.server:
-        state: present
-        domain: test.ap-southeast-1.example.com
-        name: test.ap-southeast-1.example.com
+        name: STA_SERVER
+        domain: sta.devalab.com
 """
 
 RETURN = r"""

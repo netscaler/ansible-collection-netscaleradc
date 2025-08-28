@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nslicenseparameters
 short_description: Configuration for licenseparameters resource.
 description: Configuration for licenseparameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,30 +38,41 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   alert1gracetimeout:
-    type: raw
+    type: int
     description:
       - If ADC remains in grace for the configured hours then first grace alert will
         be raised
   alert2gracetimeout:
-    type: raw
+    type: int
     description:
       - If ADC remains in grace for the configured hours then major grace alert will
         be raised
   heartbeatinterval:
-    type: raw
+    type: int
     description:
       - Heartbeat between ADC and Licenseserver is configurable and applicable in
         case of pooled licensing
   inventoryrefreshinterval:
-    type: raw
+    type: int
     description:
       - Inventory refresh interval between ADC and Licenseserver is configurable and
         applicable in case of pooled licensing
   licenseexpiryalerttime:
-    type: raw
+    type: int
     description:
-      - If ADC termed license is nearer to expiry then SNMP expiry alert will be raised
+      - If ADC license contract expiry date is nearer then GUI/SNMP license expiry
+        alert will be raised
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

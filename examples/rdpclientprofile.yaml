@@ -1,0 +1,15 @@
+---
+- name: Sample rdpclientprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rdpclientprofile
+      delegate_to: localhost
+      netscaler.adc.rdpclientprofile:
+        state: present
+        name: rdpc2
+        rdpurloverride: DISABLE
+        audiocapturemode: ENABLE
+        rdpfilename: mstsc.rdp
+        rdpcustomparams: span monitors:i:1
+        psk: test!@3

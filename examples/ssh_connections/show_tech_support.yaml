@@ -1,0 +1,42 @@
+#
+# Execute like: ansible-playbook show_tech_support.yml -i hosts
+#
+---
+- name: Ansible ssh playbook
+  hosts: demo_netscalers
+  remote_user: nsroot
+  connection: netscaler.adc.ssh_netscaler_adc
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /var/python/bin/python
+
+
+  tasks:
+    - name: Generate technical support bundle
+      changed_when: false
+      ansible.builtin.command: "nscli -s -U :nsroot:{{ nitro_pass }} show techsupport"
+      register: sts_output
+      no_log: true
+
+    - name: Parse output to find tarball path
+      ansible.builtin.set_fact:
+        sts_bundle: >-
+          {{
+            (sts_output.stdout_lines
+            | select('search', 'points to')
+            | list
+            | first)
+            .split('points to --->')[1]
+            | trim
+          }}
+
+
+    - name: Download STS Bundle locally
+      changed_when: false
+      ansible.builtin.fetch:
+        src: "{{ sts_bundle }}"
+        dest: "my_ns_sts"
+
+    - name: Show STS Bundle path
+      ansible.builtin.debug:
+        msg: "STS Bundle downloaded locally into the following directory: ./my_ns_sts{{ sts_bundle }}"

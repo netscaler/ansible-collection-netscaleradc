@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: botsettings
 short_description: Configuration for Bot engine settings resource.
 description: Configuration for Bot engine settings resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   defaultnonintrusiveprofile:
-    type: raw
+    type: str
     choices:
       - BOT_BYPASS
       - BOT_STATS
@@ -47,18 +59,18 @@ options:
         checks will be disabled and IPRep cronjob(24 Hours) will be removed if this
         is set to C(BOT_BYPASS).
   defaultprofile:
-    type: raw
+    type: str
     description:
       - Profile to use when a connection does not match any policy. Default setting
         is " ", which sends unmatched connections back to the Citrix ADC without attempting
         to filter them further.
   dfprequestlimit:
-    type: raw
+    type: int
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
   javascriptname:
-    type: raw
+    type: str
     description:
       - Name of the JavaScript that the Bot Management feature  uses in response.
       - Must begin with a letter or number, and can consist of from 1 to 31 letters,
@@ -68,23 +80,23 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   proxypassword:
-    type: raw
+    type: str
     description:
       - Password with which user logs on.
   proxyport:
-    type: raw
+    type: int
     description:
       - Proxy Server Port to get updated signatures from AWS.
   proxyserver:
-    type: raw
+    type: str
     description:
       - Proxy Server IP to get updated signatures from AWS.
   proxyusername:
-    type: raw
+    type: str
     description:
       - Proxy Username
   sessioncookiename:
-    type: raw
+    type: str
     description:
       - Name of the SessionCookie that the Bot Management feature uses for tracking.
       - Must begin with a letter or number, and can consist of from 1 to 31 letters,
@@ -94,22 +106,22 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
   sessiontimeout:
-    type: raw
+    type: int
     description:
       - Timeout, in seconds, after which a user session is terminated.
   signatureautoupdate:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable bot auto update signatures
   signatureurl:
-    type: raw
+    type: str
     description:
       - URL to download the bot signature mapping file from server
   trapurlautogenerate:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -117,11 +129,11 @@ options:
       - Enable/disable trap URL auto generation. When enabled, trap URL is updated
         within the configured interval.
   trapurlinterval:
-    type: raw
+    type: int
     description:
       - Time in seconds after which trap URL is updated.
   trapurllength:
-    type: raw
+    type: int
     description:
       - Length of the auto-generated trap URL.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -129,6 +141,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample botsettings playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure botsettings
+      delegate_to: localhost
+      netscaler.adc.botsettings:
+        state: present
+        proxyport: 0
 """
 
 RETURN = r"""

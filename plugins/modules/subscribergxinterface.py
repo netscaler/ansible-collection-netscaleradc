@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: subscribergxinterface
 short_description: Configuration for Gx interface Parameters resource.
 description: Configuration for Gx interface Parameters resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,14 +38,24 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   cerrequesttimeout:
-    type: raw
+    type: int
     description:
       - q!Healthcheck request timeout, in seconds, after which the Citrix ADC considers
         that no CCA packet received to the initiated CCR. After this time Citrix ADC
         should send again CCR to PCRF server. !
   healthcheck:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -52,13 +64,13 @@ options:
         When the session is idle, healthcheck timer expires and DWR packets are initiated
         in order to check that PCRF server is active. By default set to No. !
   healthcheckttl:
-    type: raw
+    type: int
     description:
       - q!Healthcheck timeout, in seconds, after which the DWR will be sent in order
         to ensure the state of the PCRF server. Any CCR, CCA, RAR or RRA message resets
         the timer. !
   holdonsubscriberabsence:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -70,13 +82,13 @@ options:
         If default subscriber profile is also not configured an undef would be raised
         to expressions which use Subscriber attributes.
   idlettl:
-    type: float
+    type: int
     description:
       - q!Idle Time, in seconds, after which the Gx CCR-U request will be sent after
         any PCRF activity on a session. Any RAR or CCA message resets the timer.
       - Zero value disables the idle timeout. !
   negativettl:
-    type: raw
+    type: int
     description:
       - q!Negative TTL, in seconds, after which the Gx CCR-I request will be resent
         for sessions that have not been resolved by PCRF due to server being down
@@ -90,7 +102,7 @@ options:
       - Zero value disables the Negative Sessions. And Citrix ADC does not install
         Negative sessions even if subscriber session could not be fetched. !
   negativettllimitedsuccess:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -99,7 +111,7 @@ options:
         DIAMETER_LIMITED_SUCCESS (2002) received in CCA-I. If set to C(NO), regular
         session is created.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   pcrfrealm:
@@ -109,7 +121,7 @@ options:
         the message is to be routed. This is the realm used in Destination-Realm AVP
         by Citrix ADC Gx client (as a Diameter node).
   purgesdbongxfailure:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -117,12 +129,12 @@ options:
       - Set this setting to C(YES) if needed to purge Subscriber Database in case
         of Gx failure. By default set to C(NO).
   requestretryattempts:
-    type: raw
+    type: int
     description:
       - If the request does not complete within requestTimeout time, the request is
         retransmitted for requestRetryAttempts time.
   requesttimeout:
-    type: raw
+    type: int
     description:
       - q!Time, in seconds, within which the Gx CCR request must complete. If the
         request does not complete within this time, the request is retransmitted for
@@ -132,29 +144,30 @@ options:
         use Subscriber attributes.
       - Zero disables the timeout. !
   revalidationtimeout:
-    type: raw
+    type: int
     description:
       - q!Revalidation Timeout, in seconds, after which the Gx CCR-U request will
         be sent after any PCRF activity on a session. Any RAR or CCA message resets
         the timer.
       - Zero value disables the idle timeout. !
   service:
-    type: raw
+    type: str
     description:
       - Name of DIAMETER/SSL_DIAMETER service corresponding to PCRF to which the Gx
         connection is established. The service type of the service must be DIAMETER/SSL_DIAMETER.
         Mutually exclusive with vserver parameter. Therefore, you cannot set both
         Service and the Virtual Server in the Gx Interface.
   servicepathavp:
-    type: raw
+    type: list
     description:
       - The AVP code in which PCRF sends service path applicable for subscriber.
+    elements: int
   servicepathvendorid:
-    type: raw
+    type: int
     description:
       - The vendorid of the AVP in which PCRF sends service path for subscriber.
   vserver:
-    type: raw
+    type: str
     description:
       - Name of the load balancing, or content switching vserver to which the Gx connections
         are established. The service type of the virtual server must be DIAMETER/SSL_DIAMETER.
@@ -166,18 +179,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample subscribergxinterface playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | subscribergxInterface
+    - name: Configure subscribergxinterface
       delegate_to: localhost
       netscaler.adc.subscribergxinterface:
         state: present
-        pcrfrealm: pcrf.com
-        servicepathavp:
-          - 262099
-        servicepathvendorid: 3845
+        revalidationtimeout: '300'
+        negativettl: '300'
 """
 
 RETURN = r"""

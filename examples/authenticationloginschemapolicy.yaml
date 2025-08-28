@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationloginschemapolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationloginschemapolicy
+      delegate_to: localhost
+      netscaler.adc.authenticationloginschemapolicy:
+        state: present
+        name: second_factor_schema
+        rule: 'true'
+        action: second_factor_schema_action

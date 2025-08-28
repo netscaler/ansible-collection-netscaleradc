@@ -1,0 +1,20 @@
+---
+- name: Sample tmsessionaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmsessionaction
+      delegate_to: localhost
+      netscaler.adc.tmsessionaction:
+        state: present
+        name: ia_tmsesact1
+        sesstimeout: 2
+        defaultauthorizationaction: ALLOW
+        sso: 'OFF'
+        ssocredential: PRIMARY
+        ssodomain: citrite.net
+        httponlycookie: 'YES'
+        kcdaccount: kcd212
+        persistentcookie: 'ON'
+        persistentcookievalidity: 2
+        homepage: http://dc1.test.com

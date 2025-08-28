@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,18 +17,21 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: rnat
 short_description: Configuration for RNAT configured route resource.
 description: Configuration for RNAT configured route resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,13 +40,24 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   aclname:
-    type: raw
+    type: str
     description:
       - An extended ACL defined for the RNAT entry.
   connfailover:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -51,7 +65,7 @@ options:
       - Synchronize all connection-related information for the RNAT sessions with
         the secondary ADC in a high availability (HA) pair.
   name:
-    type: raw
+    type: str
     description:
       - Name for the RNAT4 rule. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
@@ -69,11 +83,11 @@ options:
         can specify all NetScaler-owned IP addresses, except the NSIP, that fall within
         the specified range.
   netmask:
-    type: raw
+    type: str
     description:
       - The subnet mask for the network address.
   network:
-    type: raw
+    type: str
     description:
       - The network address defined for the RNAT entry.
   newname:
@@ -84,16 +98,16 @@ options:
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
   ownergroup:
-    type: raw
+    type: str
     description:
       - The owner node group in a Cluster for this rnat rule.
   redirectport:
-    type: raw
+    type: int
     description:
       - Port number to which the IPv4 packets are redirected. Applicable to TCP and
         UDP protocols.
   srcippersistency:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -101,13 +115,13 @@ options:
       - Enables the Citrix ADC to use the same NAT IP address for all RNAT sessions
         initiated from a particular server.
   td:
-    type: raw
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   useproxyport:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -219,6 +233,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample rnat playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure rnat
+      delegate_to: localhost
+      netscaler.adc.rnat:
+        state: present
+        name: 1.2.2.0
+        connfailover: ENABLED
 """
 
 RETURN = r"""

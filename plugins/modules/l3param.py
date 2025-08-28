@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: l3param
 short_description: Configuration for Layer 3 related parameter resource.
 description: Configuration for Layer 3 related parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,33 +38,46 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   acllogtime:
-    type: raw
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Parameter to tune acl logging time
   allowclasseipv4:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable IPv4 Class E address clients
   dropdfflag:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dropping the IP DF flag.
   dropipfragments:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dropping of IP fragments.
   dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -70,46 +85,53 @@ options:
       - Enable/Disable Dynamic routing on partition. This configuration is not applicable
         to default partition
   externalloopback:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable external loopback.
   forwardicmpfragments:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable forwarding of ICMP fragments.
   icmpgenratethreshold:
-    type: raw
+    type: int
     description:
       - NS generated ICMP pkts per 10ms rate threshold
   implicitaclallow:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Do not apply ACLs for internal ports
+  implicitpbr:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/Disable Policy Based Routing for control packets
   ipv6dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable IPv6 Dynamic routing
   miproundrobin:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable round robin usage of mapped IPs.
   overridernat:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -117,14 +139,14 @@ options:
       - USNIP/USIP settings override RNAT settings for configured
       - '              service/virtual server traffic..'
   srcnat:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Perform NAT if only the source is in the private network
   tnlpmtuwoconn:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -132,7 +154,7 @@ options:
       - Enable/Disable learning PMTU of IP tunnel when ICMP error does not contain
         connection information.
   usipserverstraypkt:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -144,20 +166,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Task
-  hosts: localhost
+- name: Sample l3param playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample task | set l3param
+    - name: Configure l3param
       delegate_to: localhost
       netscaler.adc.l3param:
         state: present
-        acllogtime: 3000
-    - name: Sample task | unset l3param
-      delegate_to: localhost
-      netscaler.adc.l3param:
-        state: unset
-        acllogtime: "true"
+        icmperrgenerate: DISABLED
 """
 
 RETURN = r"""

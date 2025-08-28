@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.onlinkipv6prefix module – Configuration for on-link IPv6 global prefixes for Router Advertisment resource. &mdash; Ansible collections  documentation</title>
@@ -13,19 +15,15 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.pcpprofile module – Configuration for PCP Profile resource." href="pcpprofile_module.html" />
-    <link rel="prev" title="netscaler.adc.ntpserver module – Configuration for NTP server resource." href="ntpserver_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+    <link rel="prev" title="netscaler.adc.ntpsync module – Configuration for NTP sync resource." href="ntpsync_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
 
 
 
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.onlinkipv6prefix module – Configuration for on-link IPv6 global prefixes for Router Advertisment resource.<a class="headerlink" href="#netscaler-adc-onlinkipv6prefix-module-configuration-for-on-link-ipv6-global-prefixes-for-router-advertisment-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +171,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-autonomusprefix"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-onlinkipv6prefix-module-parameter-autonomusprefix"><strong>autonomusprefix</strong></p>
-<a class="ansibleOptionLink" href="#parameter-autonomusprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-autonomusprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>RA Prefix Autonomus flag.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +183,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-decrementprefixlifetimes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-onlinkipv6prefix-module-parameter-decrementprefixlifetimes"><strong>decrementprefixlifetimes</strong></p>
-<a class="ansibleOptionLink" href="#parameter-decrementprefixlifetimes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-decrementprefixlifetimes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>RA Prefix Autonomus flag.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,7 +195,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-depricateprefix"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-onlinkipv6prefix-module-parameter-depricateprefix"><strong>depricateprefix</strong></p>
-<a class="ansibleOptionLink" href="#parameter-depricateprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-depricateprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Depricate the prefix.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -209,7 +207,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ipv6prefix"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-onlinkipv6prefix-module-parameter-ipv6prefix"><strong>ipv6prefix</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ipv6prefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ipv6prefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Onlink prefixes for RA messages.</p>
 </div></td>
@@ -325,7 +323,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-onlinkprefix"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-onlinkipv6prefix-module-parameter-onlinkprefix"><strong>onlinkprefix</strong></p>
-<a class="ansibleOptionLink" href="#parameter-onlinkprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-onlinkprefix" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>RA Prefix onlink flag.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -337,14 +335,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prefixpreferredlifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-onlinkipv6prefix-module-parameter-prefixpreferredlifetime"><strong>prefixpreferredlifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prefixpreferredlifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-prefixpreferredlifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Preferred life time of the prefix, in seconds.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prefixvalidelifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-onlinkipv6prefix-module-parameter-prefixvalidelifetime"><strong>prefixvalidelifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prefixvalidelifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-prefixvalidelifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Valide life time of the prefix, in seconds.</p>
 </div></td>
@@ -404,7 +402,22 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </section>
 <section id="examples">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample onlinkipv6prefix playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
+<span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure onlinkipv6prefix</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.onlinkipv6prefix</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">ipv6prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2001::/64</span>
+<span class="w">        </span><span class="nt">onlinkprefix</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;NO&#39;</span>
+<span class="w">        </span><span class="nt">autonomusprefix</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;NO&#39;</span>
+<span class="w">        </span><span class="nt">depricateprefix</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;YES&#39;</span>
+<span class="w">        </span><span class="nt">decrementprefixlifetimes</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;YES&#39;</span>
+<span class="w">        </span><span class="nt">prefixvalidelifetime</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;30&#39;</span>
+<span class="w">        </span><span class="nt">prefixpreferredlifetime</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;20&#39;</span>
 </pre></div>
 </div>
 </section>
@@ -469,6 +482,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">
@@ -487,7 +501,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
           
 
 <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ntpserver_module.html" class="btn btn-neutral float-left" title="netscaler.adc.ntpserver module – Configuration for NTP server resource." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ntpsync_module.html" class="btn btn-neutral float-left" title="netscaler.adc.ntpsync module – Configuration for NTP sync resource." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="pcpprofile_module.html" class="btn btn-neutral float-right" title="netscaler.adc.pcpprofile module – Configuration for PCP Profile resource." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,0 +1,11 @@
+---
+- name: Sample dnspolicylabel playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnspolicylabel
+      delegate_to: localhost
+      netscaler.adc.dnspolicylabel:
+        state: present
+        labelname: invoke_labelname2
+        transform: dns_res

@@ -1,0 +1,12 @@
+---
+- name: Sample authenticationvserver playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authenticationvserver
+      delegate_to: localhost
+      netscaler.adc.authenticationvserver:
+        state: present
+        name: Citrix_AAA_vServer
+        servicetype: SSL
+        ipv46: 0.0.0.0

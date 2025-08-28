@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbvserver_servicegroup_binding
 short_description: Binding Resource definition for describing association between
   lbvserver and servicegroup resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between lbvs
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,6 +40,16 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   name:
     type: str
     description:
@@ -49,7 +61,7 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
   servicegroupname:
@@ -61,7 +73,7 @@ options:
     description:
       - Service to bind to the virtual server.
   weight:
-    type: float
+    type: int
     description:
       - Integer specifying the weight of the service. A larger number specifies a
         greater weight. Defines the capacity of the service relative to the other
@@ -72,22 +84,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Create a lb
-  delegate_to: localhost
-  netscaler.adc.lbvserver:
-    name: test_lb
-    servicetype: SSL
-- name: Create a servicegroup
-  delegate_to: localhost
-  netscaler.adc.servicegroup:
-    servicegroupname: test_sg
-    servicetype: SSL
-- name: Create a servicegroup
-  delegate_to: localhost
-  netscaler.adc.lbvserver_servicegroup_binding:
-    weight: 1
-    name: test_lb
-    servicename: test_sg
+---
+- name: Sample lbvserver_servicegroup_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbvserver_servicegroup_binding
+      delegate_to: localhost
+      netscaler.adc.lbvserver_servicegroup_binding:
+        state: present
+        name: CR_cachev21
+        servicename: CR_SVG
 """
 
 RETURN = r"""

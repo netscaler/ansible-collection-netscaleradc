@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,18 +17,21 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: tunneltrafficpolicy
 short_description: Configuration for tunnel policy resource.
 description: Configuration for tunnel policy resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,21 +40,32 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   action:
     type: str
     description:
       - Name of the built-in compression action to associate with the policy.
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: raw
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: raw
+    type: str
     description:
       - Name for the tunnel traffic policy.
       - Must begin with an ASCII alphanumeric or underscore (_) character, and must
@@ -89,6 +103,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample tunneltrafficpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tunneltrafficpolicy
+      delegate_to: localhost
+      netscaler.adc.tunneltrafficpolicy:
+        state: present
+        name: compress
+        rule: url == /*.asp
 """
 
 RETURN = r"""

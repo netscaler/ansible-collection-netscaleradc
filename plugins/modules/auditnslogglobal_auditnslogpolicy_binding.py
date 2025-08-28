@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: auditnslogglobal_auditnslogpolicy_binding
 short_description: Binding Resource definition for describing association between
   auditnslogglobal and auditnslogpolicy resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between audi
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,6 +39,16 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   builtin:
     type: list
@@ -55,6 +67,7 @@ options:
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+      - TM_GLOBAL
     description:
       - '0'
   policyname:
@@ -62,7 +75,7 @@ options:
     description:
       - Name of the audit nslog policy.
   priority:
-    type: float
+    type: int
     description:
       - Specifies the priority of the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -70,6 +83,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample auditnslogglobal_auditnslogpolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure auditnslogglobal_auditnslogpolicy_binding
+      delegate_to: localhost
+      netscaler.adc.auditnslogglobal_auditnslogpolicy_binding:
+        state: present
+        policyname: SETNSLOGPARAMS_ADV_POL
+        priority: '2000000000'
 """
 
 RETURN = r"""

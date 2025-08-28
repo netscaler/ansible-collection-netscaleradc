@@ -1,0 +1,10 @@
+---
+- name: Sample dnssuffix playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnssuffix
+      delegate_to: localhost
+      netscaler.adc.dnssuffix:
+        state: present
+        Dnssuffix: sssss.ssss

@@ -1,0 +1,13 @@
+---
+- name: Sample dnstxtrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnstxtrec
+      delegate_to: localhost
+      netscaler.adc.dnstxtrec:
+        state: present
+        domain: sample2
+        String:
+          - sample
+        ttl: 36000

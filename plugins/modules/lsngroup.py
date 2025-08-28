@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lsngroup
 short_description: Configuration for LSN group resource.
 description: Configuration for LSN group resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,6 +39,16 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   allocpolicy:
     type: str
@@ -76,7 +88,7 @@ options:
         association or replace with another LSN client entity once the LSN group is
         created.
   ftp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -93,7 +105,7 @@ options:
         with endpoint-independent-mapping, endpoint-independent filtering, and destination
         port as 69 (well-known port for TFTP), to the LSN group.'
   ftpcm:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -102,7 +114,7 @@ options:
         (CM or connection failover) refers to keeping active an established TCP or
         UDP connection when a failover occurs.
   groupname:
-    type: raw
+    type: str
     description:
       - 'Name for the LSN group. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -120,7 +132,7 @@ options:
       - By default, no LSN ip6 profile is associated with an LSN group during its
         creation. Only one ip6profile can be associated with a group.
   logging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -187,7 +199,7 @@ options:
         subscriber''s connections) from the subscriber''s allocated port block, the
         ADC allocates a new random port block for the subscriber.'
   portblocksize:
-    type: raw
+    type: int
     description:
       - Size of the NAT port block to be allocated for each subscriber.
       - ''
@@ -203,21 +215,21 @@ options:
       - The default port block size is 256 for Deterministic NAT, and 0 for Dynamic
         NAT.
   pptp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the PPTP Application Layer Gateway.
   rtspalg:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the RTSP ALG.
   sessionlogging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -236,7 +248,7 @@ options:
       - '* Protocol name'
       - '* Destination IP address, port, and traffic domain ID'
   sessionsync:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -249,14 +261,14 @@ options:
       - For this setting to work, you must enable the global session synchronization
         parameter.
   sipalg:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the SIP ALG.
   snmptraplimit:
-    type: raw
+    type: int
     description:
       - Maximum number of SNMP Trap messages that can be generated for the LSN group
         in one minute.
@@ -490,6 +502,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample lsngroup playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsngroup
+      delegate_to: localhost
+      netscaler.adc.lsngroup:
+        state: present
+        groupname: dsl_http
+        clientname: dsl_http
 """
 
 RETURN = r"""

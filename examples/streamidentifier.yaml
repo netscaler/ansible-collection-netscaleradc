@@ -1,0 +1,16 @@
+---
+- name: Sample streamidentifier playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure streamidentifier
+      delegate_to: localhost
+      netscaler.adc.streamidentifier:
+        state: present
+        name: xyz
+        selectorname: insight_sel
+        appflowlog: ENABLED
+        tracktransactions: RESPTIME
+        maxtransactionthreshold: '2'
+        mintransactionthreshold: '1'
+        acceptancethreshold: '100.000000'

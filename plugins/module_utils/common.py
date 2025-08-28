@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -13,6 +13,7 @@ from .constants import (
     HTTP_RESOURCE_ALREADY_EXISTS,
     HTTP_RESOURCE_NOT_FOUND,
     HTTP_SUCCESS_CODES,
+    GLOBAL_BINDING_ARG_LIST
 )
 from .decorators import trace
 from .logger import log
@@ -61,16 +62,36 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 
     if resource_name.endswith("_binding"):
         # binding resources require `filter` instead of `args` to uniquely identify a resource
-        status_code, response_body = client.get(
-            resource=resource_name,
-            id=resource_id,
-            filter=get_args,
-        )
+        if resource_name in GLOBAL_BINDING_ARG_LIST:
+            # here we are making sure that for globalbindings present in the list query params args=type and filter=get_arg_keys
+            del get_args["type"]
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                filter=get_args,
+                args={"type": resource_module_params["type"]},
+            )
+        else:
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                filter=get_args,
+            )
     elif resource_name in {"sslcertfile"}:
         status_code, response_body = client.get(
             resource=resource_name,
             id=resource_id,
             filter=get_args,
+        )
+    elif resource_name == "server":
+        if "ipaddress" in get_args:
+            get_args.pop("ipaddress")
+        if "domain" in get_args:
+            get_args.pop("domain")
+        status_code, response_body = client.get(
+            resource=resource_name,
+            id=resource_id,
+            args=get_args,
         )
     else:
         status_code, response_body = client.get(
@@ -180,29 +201,47 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
         ]
     except KeyError:
         resource_action_keys = []
-
-    # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
-    for key in resource_module_params.keys():
-        if not action:
-            if key in resource_add_keys:
-                post_data[key] = resource_module_params[key]
-            elif resource_name == "service" and key == "ipaddress":
-                post_data["ip"] = resource_module_params[key]
-            else:
-                log(
-                    "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
-                        key, resource_name
-                    )
-                )
+    if action == "rename":
+        oldnamekey = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+        if oldnamekey in resource_module_params:
+            post_data[oldnamekey] = resource_module_params[oldnamekey]
         else:
-            if key in resource_action_keys:
-                post_data[key] = resource_module_params[key]
-            else:
-                log(
-                    "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
-                        key, resource_name, action.upper()
+            msg = "ERROR: Key `{}` is required for the resource `{}` for RENAME operation".format(
+                oldnamekey, resource_name
+            )
+            log(msg)
+            return False, msg, None
+        if "newname" in resource_module_params:
+            post_data["newname"] = resource_module_params["newname"]
+        else:
+            msg = "ERROR: Key `newname` is required for the resource `{}` for RENAME operation".format(
+                resource_name
+            )
+            log(msg)
+            return False, msg, None
+    else:
+        # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
+        for key in resource_module_params.keys():
+            if not action:
+                if key in resource_add_keys:
+                    post_data[key] = resource_module_params[key]
+                elif resource_name == "service" and key == "ipaddress":
+                    post_data["ip"] = resource_module_params[key]
+                else:
+                    log(
+                        "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                            key, resource_name
+                        )
                     )
-                )
+            else:
+                if key in resource_action_keys:
+                    post_data[key] = resource_module_params[key]
+                else:
+                    log(
+                        "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
+                            key, resource_name, action.upper()
+                        )
+                    )
 
     return True, None, post_data
 
@@ -461,6 +500,9 @@ def save_config(client, all=False):
 
 @trace
 def enable_resource(client, resource_name, resource_params):
+    if resource_name == "gslbservice":
+        resource_name = "service"
+        resource_params["name"] = resource_params["servicename"]
     post_payload = {resource_name: {}}
     enable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]
 
@@ -483,6 +525,11 @@ def enable_resource(client, resource_name, resource_params):
 
 @trace
 def disable_resource(client, resource_name, resource_params):
+
+    if resource_name == "gslbservice":
+        resource_name = "service"
+        resource_params["name"] = resource_params["servicename"]
+
     post_payload = {resource_name: {}}
     disable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]
 
@@ -583,6 +630,12 @@ def get_valid_desired_states(resource_name):
         desired_states.add("switched")
     if "unset" in supported_operations:
         desired_states.add("unset")
+    if "Install" in supported_operations or "install" in supported_operations:
+        desired_states.add("installed")
+    if "rename" in supported_operations:
+        desired_states.add("renamed")
+    if "apply" in supported_operations:
+        desired_states.add("applied")
     return desired_states
 
 

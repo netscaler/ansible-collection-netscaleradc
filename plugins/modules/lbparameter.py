@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: lbparameter
 short_description: Configuration for LB parameter resource.
 description: Configuration for LB parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   allowboundsvcremoval:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -47,7 +59,7 @@ options:
         removed, even if it bound to vservers. If disabled, an error will be thrown,
         when the user tries to remove a svc/svcgroup without unbinding from its vservers.
   computedadccookieattribute:
-    type: raw
+    type: str
     description:
       - 'ComputedADCCookieAttribute accepts ns variable as input in form of string
         starting with $ (to understand how to configure ns variable, please check
@@ -67,7 +79,7 @@ options:
       - '             For incoming client request, if above policy evaluates TRUE,
         then SameSite=Strict will be appended to ADC generated cookie'
   consolidatedlconn:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -77,17 +89,17 @@ options:
         setting allows consideration of only the number of connections on the packet
         engine that received the new connection.
   cookiepassphrase:
-    type: raw
+    type: str
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
         cookie value. It specifies the passphrase with a maximum of 31 characters.
   dbsttl:
-    type: raw
+    type: int
     description:
       - Specify the TTL for DNS record for domain based service. The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
   dropmqttjumbomessage:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -95,7 +107,7 @@ options:
       - When this option is enabled, MQTT messages of length greater than 64k will
         be dropped and the client/server connections will be reset.
   httponlycookieflag:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -104,7 +116,7 @@ options:
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
   lbhashalgorithm:
-    type: raw
+    type: str
     choices:
       - DEFAULT
       - PRAC
@@ -114,13 +126,13 @@ options:
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
   lbhashfingers:
-    type: raw
+    type: int
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory
   literaladccookieattribute:
-    type: raw
+    type: str
     description:
       - 'String configured as LiteralADCCookieAttribute will be appended as attribute
         for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence,
@@ -129,7 +141,7 @@ options:
       - Sample usage -
       - '             set lb parameter -LiteralADCCookieAttribute ";SameSite=None"'
   maxpipelinenat:
-    type: raw
+    type: int
     description:
       - Maximum number of concurrent requests to allow on a single client connection,
         which is identified by the <clientip:port>-<vserver ip:port> tuple. This parameter
@@ -137,7 +149,7 @@ options:
         only when "svrTimeout" is set to zero. A value of 0 (zero) applies no limit
         to the number of concurrent requests allowed on a single client connection
   monitorconnectionclose:
-    type: raw
+    type: str
     choices:
       - RESET
       - FIN
@@ -145,7 +157,7 @@ options:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
   monitorskipmaxclient:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -155,7 +167,7 @@ options:
         by the service's Max Clients setting. Enables monitoring to continue even
         if the service has reached its connection limit.
   preferdirectroute:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -166,8 +178,16 @@ options:
         intermediary device, such as a firewall, even if their destination is directly
         connected to the appliance. Route lookup is performed after the packets have
         been processed and returned by the intermediary device.
+  proximityfromself:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - Use the ADC location instead of client IP for static proximity LB or GSLB
+        decision.
   retainservicestate:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -175,7 +195,7 @@ options:
       - This option is used to retain the original state of service or servicegroup
         member when an enable server command is issued.
   startuprrfactor:
-    type: raw
+    type: int
     description:
       - 'Number of requests, per service, for which to apply the round robin load
         balancing method before switching to the configured load balancing method,
@@ -206,7 +226,7 @@ options:
       - Not applicable to a virtual server for which a hash based load balancing method
         is configured.
   storemqttclientidandusername:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -214,7 +234,7 @@ options:
       - This option allows to store the MQTT clientid and username in transactional
         logs
   undefaction:
-    type: raw
+    type: str
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
         settings function as follows:'
@@ -223,14 +243,14 @@ options:
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
   useencryptedpersistencecookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
   useportforhashlb:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -239,14 +259,14 @@ options:
         load balancing methods. With the C(NO) setting, only the IP address of the
         service is considered when creating a hash.
   usesecuredpersistencecookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
   vserverspecificmac:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -266,21 +286,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Task
-  hosts: localhost
+- name: Sample lbparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample playbook
+    - name: Configure lbparameter
       delegate_to: localhost
       netscaler.adc.lbparameter:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
         state: present
-        allowboundsvcremoval: DISABLED
+        retainservicestate: 'ON'
 """
 
 RETURN = r"""

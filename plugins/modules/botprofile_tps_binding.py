@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: botprofile_tps_binding
 short_description: Binding Resource definition for describing association between
   botprofile and tps resources
@@ -25,6 +26,7 @@ description: Binding Resource definition for describing association between botp
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -37,6 +39,16 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   bot_bind_comment:
     type: str
@@ -94,12 +106,12 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
   percentage:
-    type: float
+    type: int
     description:
       - Maximum percentage increase in the requests from (or to) a IP, Geolocation,
         URL or Host in 30 minutes interval.
   threshold:
-    type: float
+    type: int
     description:
       - Maximum number of requests that are allowed from (or to) a IP, Geolocation,
         URL or Host in 1 second time interval.

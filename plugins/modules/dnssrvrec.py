@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnssrvrec
 short_description: Configuration for server record resource.
 description: Configuration for server record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,8 +40,18 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   domain:
-    type: raw
+    type: str
     description:
       - Domain name, which, by convention, is prefixed by the symbolic name of the
         desired service and the symbolic name of the desired protocol, each with an
@@ -51,25 +63,25 @@ options:
     description:
       - Subnet for which the cached SRV record need to be removed.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   port:
-    type: float
+    type: int
     description:
       - Port on which the target host listens for client requests.
   priority:
-    type: float
+    type: int
     description:
       - Integer specifying the priority of the target host. The lower the number,
         the higher the priority. If multiple target hosts have the same priority,
         selection is based on the Weight parameter.
   target:
-    type: raw
+    type: str
     description:
       - Target host for the specified service.
   ttl:
-    type: raw
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -91,7 +103,7 @@ options:
       - '* C(PROXY) - Display all proxy address records.'
       - '* C(ALL) - Display all address records.'
   weight:
-    type: float
+    type: int
     description:
       - Weight for the target host. Aids host selection when two or more hosts have
         the same priority. A larger number indicates greater weight.
@@ -100,6 +112,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnssrvrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnssrvrec
+      delegate_to: localhost
+      netscaler.adc.dnssrvrec:
+        state: present
+        domain: http2.abc.com
+        target: target
+        priority: '23'
+        weight: '23'
+        port: '23'
+        ttl: 3601
 """
 
 RETURN = r"""

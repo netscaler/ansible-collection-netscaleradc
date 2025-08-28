@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: apispec
 short_description: Configuration for API specification resource.
 description: Configuration for API specification resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,6 +38,20 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+  encrypted:
+    type: bool
+    description:
+      - Specify the encrypted API spec. Must be in NetScaler format
   file:
     type: str
     description:
@@ -54,6 +70,13 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my spec" or 'my spec').
+  skipvalidation:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - Disabling openapi spec validation while adding it
   type:
     type: str
     choices:

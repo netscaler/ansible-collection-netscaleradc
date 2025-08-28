@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: icaparameter
 short_description: Configuration for Config Parameters for NS ICA resource.
 description: Configuration for Config Parameters for NS ICA resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,26 +38,57 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+  dfpersistence:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/Disable DF Persistence
+  edtlosstolerant:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/Disable EDT Loss Tolerant feature
   edtpmtuddf:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable DF enforcement for EDT PMTUD Control Blocks
   edtpmtuddftimeout:
-    type: raw
+    type: int
     description:
       - DF enforcement timeout for EDTPMTUDDF
+  edtpmtudrediscovery:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/Disable EDT PMTUD Rediscovery
   enablesronhafailover:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable/Disable Session Reliability on HA failover. The default value is No
   hdxinsightnonnsap:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -63,7 +96,7 @@ options:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
   l7latencyfrequency:
-    type: raw
+    type: int
     description:
       - Specify the time interval/period for which L7 Client Latency value is to be
         calculated. By default, L7 Client Latency is calculated for every packet.
