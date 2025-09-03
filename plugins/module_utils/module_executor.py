@@ -389,6 +389,7 @@ class ModuleExecutor(object):
             )
         # By default, compare as string values
         return str(existing_attribute_value) == str(module_params_attribute_value)
+
     @trace
     def is_resource_identical_nested(self):
         diff_list = []
@@ -427,7 +428,6 @@ class ModuleExecutor(object):
             self.module_result.pop("diff_list", None)
             return True
 
-    
     @trace
     def is_resource_identical(self):
         """

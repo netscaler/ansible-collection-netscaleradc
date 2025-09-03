@@ -138,6 +138,7 @@ options:
     type: str
     description:
       - Source of routing updates.
+extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 EXAMPLES = r"""
 ---

@@ -21,6 +21,7 @@ from .decorators import trace
 from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
+
 @trace
 def get_netscaler_version(client):
     is_exist, response = get_resource(client, "nsversion")
@@ -114,7 +115,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
         # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
         if resource_name in NESTED_POST_DATA_RESOURCES:
             if "routerDynamicRouting" in response_body:
-                 return_response = response_body["routerDynamicRouting"][NESTED_POST_DATA_RESOURCES_ALIAS[resource_name]]
+                return_response = response_body["routerDynamicRouting"][NESTED_POST_DATA_RESOURCES_ALIAS[resource_name]]
             else:
                 return False, []
         elif resource_name not in response_body:
@@ -125,8 +126,8 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
                 ]
 
             return False, []
-        
-        # `update-only` resources return a dict instead of a list. 
+
+        # `update-only` resources return a dict instead of a list.
         if resource_name not in NESTED_POST_DATA_RESOURCES:
             return_response = response_body[resource_name]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
@@ -205,6 +206,7 @@ def is_resource_exists(client, resource_name, resource_module_params):
         resource_module_params=resource_module_params,
     )
     return is_exists
+
 
 @trace
 def _check_create_resource_params(resource_name, resource_module_params, action=None):
