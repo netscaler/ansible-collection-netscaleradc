@@ -697,7 +697,7 @@ action_groups:
     - route
     - route6
     - routerdynamicrouting
-    - bgpRouter
+    - bgprouter
     - rsskeytype
     - save_config
     - server

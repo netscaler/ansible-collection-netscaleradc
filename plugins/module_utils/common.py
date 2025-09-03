@@ -14,7 +14,8 @@ from .constants import (
     HTTP_RESOURCE_NOT_FOUND,
     HTTP_SUCCESS_CODES,
     NESTED_POST_DATA_RESOURCES,
-    GLOBAL_BINDING_ARG_LIST
+    GLOBAL_BINDING_ARG_LIST,
+    NESTED_POST_DATA_RESOURCES_ALIAS,
 )
 from .decorators import trace
 from .logger import log
@@ -96,7 +97,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
     else:
         if resource_name in NESTED_POST_DATA_RESOURCES:
             status_code, response_body = client.get(
-                resource="routerDynamicRouting/%s" % resource_name,
+                resource="routerDynamicRouting/%s" % NESTED_POST_DATA_RESOURCES_ALIAS[resource_name],
                 id=resource_id,
                 args=get_args,
             )
@@ -108,12 +109,15 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
             )
     if status_code in {HTTP_RESOURCE_NOT_FOUND}:
         return False, []
+    return_response = None
     if status_code in HTTP_SUCCESS_CODES:
         # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
         if resource_name in NESTED_POST_DATA_RESOURCES:
             if "routerDynamicRouting" in response_body:
-                 response_body = response_body["routerDynamicRouting"]
-        if resource_name not in response_body:
+                 return_response = response_body["routerDynamicRouting"][NESTED_POST_DATA_RESOURCES_ALIAS[resource_name]]
+            else:
+                return False, []
+        elif resource_name not in response_body:
             if resource_name == "sslcipher":
                 resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
                 return True, [
@@ -122,32 +126,33 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 
             return False, []
         
-        # `update-only` resources return a dict instead of a list.
-        return_response = response_body[resource_name]
+        # `update-only` resources return a dict instead of a list. 
+        if resource_name not in NESTED_POST_DATA_RESOURCES:
+            return_response = response_body[resource_name]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
         # So, we are converting the keys to lowercase.
         # except for `ping` and `traceroute`, all the othe resources returns a keys with lowercase.
         # These `ping` and `traceroute` do not have GET operation. So, we are not handling them here.
-        if isinstance(return_response, dict):
-            return_response = [{k.lower(): v for k, v in return_response.items()}]
-        elif isinstance(return_response, list):
-            return_response = [
-                {k.lower(): v for k, v in resource.items()}
-                for resource in return_response
-            ]
-        else:
-            log(
-                "WARNING: Unexpected response for resource `{}`. Expected a list or a dict, but got: {}".format(
-                    resource_name, return_response
+        if resource_name not in NESTED_POST_DATA_RESOURCES:
+            if isinstance(return_response, dict):
+                return_response = [{k.lower(): v for k, v in return_response.items()}]
+            elif isinstance(return_response, list):
+                return_response = [
+                    {k.lower(): v for k, v in resource.items()}
+                    for resource in return_response
+                ]
+            else:
+                log(
+                    "WARNING: Unexpected response for resource `{}`. Expected a list or a dict, but got: {}".format(
+                        resource_name, return_response
+                    )
                 )
-            )
 
         # Take care of NITRO Anomolies
         return_response = fix_nitro_anomolies(
             resource_name, resource_module_params, return_response
         )
         return (True, return_response)
-    log("pass 3 ")
     return False, []
 
 
@@ -233,26 +238,27 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
     else:
         # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
         if resource_name in NESTED_POST_DATA_RESOURCES:
-                post_data = {"routerDynamicRouting": {resource_name: {}}}
-                resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
-                
-                for key in resource_module_params.keys():
-                    if key in resource_add_keys:
-                        keylist = key.split(".")
-                        current_dict = post_data["routerDynamicRouting"][resource_name]
-                        for i, k in enumerate(keylist):
-                            if i == len(keylist) - 1:
-                                current_dict[k] = resource_module_params[key]
-                            else:
-                                if k not in current_dict:
-                                    current_dict[k] = {}
-                                current_dict = current_dict[k]
-                    else:
-                        log(
-                            "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
-                                key, resource_name
-                            )
+            resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
+            resource_name = NESTED_POST_DATA_RESOURCES_ALIAS[resource_name]
+            post_data = {"routerDynamicRouting": {resource_name: {}}}
+            
+            for key in resource_module_params.keys():
+                if key in resource_add_keys:
+                    keylist = key.split(".")
+                    current_dict = post_data["routerDynamicRouting"][resource_name]
+                    for i, k in enumerate(keylist):
+                        if i == len(keylist) - 1:
+                            current_dict[k] = resource_module_params[key]
+                        else:
+                            if k not in current_dict:
+                                current_dict[k] = {}
+                            current_dict = current_dict[k]
+                else:
+                    log(
+                        "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                            key, resource_name
                         )
+                    )
         else:
             for key in resource_module_params.keys():
                 if not action:

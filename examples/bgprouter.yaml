@@ -5,9 +5,9 @@
   tasks:
     - name: Configure BGP routing
       delegate_to: localhost
-      netscaler.adc.bgpRouter:
+      netscaler.adc.bgprouter:
         state: present
-        localAS: 10
+        localAS: 122
         afParams.addressFamily: "ipv4"
         afParams.redistribute.protocol: "kernel"
         routerId: "10.102.201.219"

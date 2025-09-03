@@ -18,6 +18,7 @@ from ansible.module_utils.urls import fetch_url
 from .constants import (
     HTTP_SUCCESS_CODES,
     NESTED_POST_DATA_RESOURCES,
+    NESTED_POST_DATA_RESOURCES_ALIAS,
 )
 from .decorators import trace
 from .logger import log
@@ -107,7 +108,7 @@ class NitroAPIClient(object):
                 self._module.params["nsip"],
                 self.api_path,
                 "routerDynamicRouting",
-                resource,
+                NESTED_POST_DATA_RESOURCES_ALIAS[resource],
             )
         else:
             url = "%s://%s/%s/%s" % (

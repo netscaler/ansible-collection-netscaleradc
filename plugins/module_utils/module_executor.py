@@ -40,6 +40,7 @@ from .constants import (
     NITRO_ATTRIBUTES_ALIASES,
     NESTED_POST_DATA_RESOURCES,
     GETALL_ONLY_RESOURCES,
+    NESTED_POST_DATA_RESOURCES_ALIAS,
 )
 from .decorators import trace
 from .logger import log, loglines
@@ -148,7 +149,10 @@ class ModuleExecutor(object):
         }:
             self.module.params["api_path"] = "nitro/v2/config"
         self.have_token = self.module.params.get("nitro_auth_token", None)
-        self.client = NitroAPIClient(self.module, self.resource_name)
+        if self.resource_name in NESTED_POST_DATA_RESOURCES:
+            self.client = NitroAPIClient(self.module, NESTED_POST_DATA_RESOURCES_ALIAS[self.resource_name])
+        else:
+            self.client = NitroAPIClient(self.module, self.resource_name)
         have_userpass = all([
             self.module.params.get("nitro_user"),
             self.module.params.get("nitro_pass")
@@ -385,7 +389,45 @@ class ModuleExecutor(object):
             )
         # By default, compare as string values
         return str(existing_attribute_value) == str(module_params_attribute_value)
+    @trace
+    def is_resource_identical_nested(self):
+        diff_list = []
 
+        def get_nested_value(data, path):
+            cur = data
+            for p in path.split('.'):
+                if isinstance(cur, dict) and p in cur:
+                    cur = cur[p]
+                else:
+                    return None
+            return cur
+
+        for key, desired_value in self.resource_module_params.items():
+            existing_value = get_nested_value(self.existing_resource, key)
+
+            if not self.is_attribute_equal(key, existing_value, desired_value):
+                str_tuple = (
+                    key,
+                    type(existing_value),
+                    existing_value,
+                    type(desired_value),
+                    desired_value,
+                )
+                msg_str = (
+                    "Attribute `%s` differs. Desired: (%s) %s. Existing: (%s) %s"
+                    % str_tuple
+                )
+                diff_list.append(msg_str)
+                log(msg_str)
+
+        if diff_list:
+            self.module_result["diff_list"] = diff_list
+            return False
+        else:
+            self.module_result.pop("diff_list", None)
+            return True
+
+    
     @trace
     def is_resource_identical(self):
         """
@@ -465,7 +507,7 @@ class ModuleExecutor(object):
 
             self.module_result["changed"] = True
             log(
-                "INFO: Resource %s:%s does not exist. Will be CREATED."
+                "INFO: Resource 111 %s:%s does not exist. Will be CREATED."
                 % (
                     self.resource_name,
                     self.resource_id,
@@ -524,8 +566,14 @@ class ModuleExecutor(object):
             # it will remove them from the module_params and update the resource
             # 2. Second iteration will check if the resource is identical. If not, it will update the resource after ignoring the
             # non-updatable resources
-            is_identical, immutable_keys_list = self.is_resource_identical()
+            if self.resource_name in NESTED_POST_DATA_RESOURCES:
+                is_identical = self.is_resource_identical_nested()
+                immutable_keys_list = None
+            else:
+                is_identical, immutable_keys_list = self.is_resource_identical()
+            log(f"is_identical: {is_identical}")
             if is_identical:
+                log("i am here")
                 log(
                     "INFO: Resource `%s:%s` exists and is identical. No change required."
                     % (
@@ -585,8 +633,10 @@ class ModuleExecutor(object):
                     # in case user wants to remove non-updatable params, we will remove them from the module_params
                     for key in immutable_keys_list:
                         self.resource_module_params.pop(key)
-
-                    is_identical, temp_immutable_list = self.is_resource_identical()
+                    if self.resource_name in NESTED_POST_DATA_RESOURCES:
+                        is_identical = self.is_resource_identical_nested()
+                    else:
+                        is_identical, temp_immutable_list = self.is_resource_identical()
                     # temp_immutable_list is a dummy as '_' is not allowed in lint.
                     if is_identical:
                         msg = (
@@ -752,6 +802,7 @@ class ModuleExecutor(object):
                 )
 
             else:
+                log("i am here 222")
                 log(
                     "INFO: Resource %s:%s's binding %s:%s exists and is identical. No change required."
                     % (

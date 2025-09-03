@@ -16532,8 +16532,8 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": [],
     },
-    "bgpRouter": {
-        "_supported_operations": ["add", "delete", "get"],
+    "bgprouter": {
+        "_supported_operations": ["add", "delete", "get", "unset"],
         "action_payload_keys": {
             "create": [],
             "force": [],
