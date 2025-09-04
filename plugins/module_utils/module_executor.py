@@ -396,7 +396,7 @@ class ModuleExecutor(object):
 
         def get_nested_value(data, path):
             cur = data
-            for p in path.split('.'):
+            for p in path.split('_'):
                 if isinstance(cur, dict) and p in cur:
                     cur = cur[p]
                 else:
@@ -507,7 +507,7 @@ class ModuleExecutor(object):
 
             self.module_result["changed"] = True
             log(
-                "INFO: Resource 111 %s:%s does not exist. Will be CREATED."
+                "INFO: Resource %s:%s does not exist. Will be CREATED."
                 % (
                     self.resource_name,
                     self.resource_id,
@@ -573,7 +573,6 @@ class ModuleExecutor(object):
                 is_identical, immutable_keys_list = self.is_resource_identical()
             log(f"is_identical: {is_identical}")
             if is_identical:
-                log("i am here")
                 log(
                     "INFO: Resource `%s:%s` exists and is identical. No change required."
                     % (
@@ -802,7 +801,6 @@ class ModuleExecutor(object):
                 )
 
             else:
-                log("i am here 222")
                 log(
                     "INFO: Resource %s:%s's binding %s:%s exists and is identical. No change required."
                     % (

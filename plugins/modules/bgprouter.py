@@ -17,7 +17,7 @@ ANSIBLE_METADATA = {
 }
 DOCUMENTATION = r"""
 ---
-module: bgpRouter
+module: bgprouter
 short_description: Manage BGP Router configuration on Citrix ADC (NetScaler) devices
 description:
   - Manage BGP Router configurations on Citrix ADC (NetScaler) devices.
@@ -34,19 +34,19 @@ options:
       - When C(present), the resource will be added or updated.
       - When C(absent), the resource will be deleted.
 
-  afParams.addressFamily:
+  afParams_addressFamily:
     type: str
     choices: ["ipv4", "ipv6"]
     description:
       - Address family for this BGP AF parameter.
 
-  afParams.redistribute.protocol:
+  afParams_redistribute_protocol:
     type: str
     choices: ["kernel", "connected", "static", "rip", "ospf", "isis", "intranet"]
     description:
       - The protocol from which routes need to be redistributed.
 
-  afParams.redistribute.routeMap:
+  afParams_redistribute_routeMap:
     type: str
     description:
       - Route map reference.
@@ -61,80 +61,80 @@ options:
     description:
       - Router ID in IP address format.
 
-  neighbor.ASOriginationInterval:
+  neighbor_ASOriginationInterval:
     type: int
     description:
       - Minimum interval between sending AS-origination routing updates.
 
-  neighbor.address:
+  neighbor_address:
     type: str
     description:
       - Address of the neighboring router.
 
-  neighbor.advertisementInterval:
+  neighbor_advertisementInterval:
     type: int
     description:
       - Minimum interval between sending BGP routing updates.
 
-  neighbor.afParams.activate:
+  neighbor_afParams_activate:
     type: bool
     description:
       - Enable the Address Family for the neighbor.
 
-  neighbor.afParams.addressFamily:
+  neighbor_afParams_addressFamily:
     type: str
     choices: ["ipv4", "ipv6"]
     description:
       - Address family identifier.
 
-  neighbor.afParams.routeMap.direction:
+  neighbor_afParams_routeMap_direction:
     type: str
     choices: ["in", "out"]
     description:
       - Apply the route-map to incoming or outgoing routes.
 
-  neighbor.afParams.routeMap.name:
+  neighbor_afParams_routeMap_name:
     type: str
     description:
       - Name of the route map.
 
-  neighbor.connectTimer:
+  neighbor_connectTimer:
     type: int
     description:
       - Time interval (in seconds) for the ConnectRetry timer.
 
-  neighbor.holdTimerConfig:
+  neighbor_holdTimerConfig:
     type: int
     description:
       - Hold timer value for the neighbor in seconds.
 
-  neighbor.keepaliveTimerConfig:
+  neighbor_keepaliveTimerConfig:
     type: int
     description:
       - Keepalive timer value for the neighbor in seconds.
 
-  neighbor.md5Password:
+  neighbor_md5Password:
     type: str
     description:
       - MD5 password used for neighbor authentication.
     no_log: true
 
-  neighbor.multihopBfd:
+  neighbor_multihopBfd:
     type: bool
     description:
       - Enable BFD for multihop BGP sessions.
 
-  neighbor.remoteAS:
+  neighbor_remoteAS:
     type: int
     description:
       - Remote AS number for the neighbor.
 
-  neighbor.singlehopBfd:
+  neighbor_singlehopBfd:
     type: bool
     description:
       - Enable BFD on this neighbor.
 
-  neighbor.updateSource:
+  neighbor_updateSource:
     type: str
     description:
       - Source of routing updates.
@@ -148,21 +148,21 @@ EXAMPLES = r"""
   tasks:
     - name: Configure BGP routing
       delegate_to: localhost
-      netscaler.adc.bgpRouter:
+      netscaler.adc.bgprouter:
         state: present
         localAS: 10
-        afParams.addressFamily: "ipv4"
-        afParams.redistribute.protocol: "kernel"
+        afParams_addressFamily: "ipv4"
+        afParams_redistribute_protocol: "kernel"
         routerId: "10.102.201.219"
-        neighbor.ASOriginationInterval: 15
-        neighbor.address: "2.2.12.30"
-        neighbor.advertisementInterval: 30
-        neighbor.afParams.addressFamily: "ipv4"
-        neighbor.holdTimerConfig: 90
-        neighbor.keepaliveTimerConfig: 30
-        neighbor.multihopBfd: "False"
-        neighbor.remoteAS: 100
-        neighbor.singlehopBfd: "False"
+        neighbor_ASOriginationInterval: 15
+        neighbor_address: "2.2.12.30"
+        neighbor_advertisementInterval: 30
+        neighbor_afParams_addressFamily: "ipv4"
+        neighbor_holdTimerConfig: 90
+        neighbor_keepaliveTimerConfig: 30
+        neighbor_multihopBfd: "False"
+        neighbor_remoteAS: 100
+        neighbor_singlehopBfd: "False"
 """
 RETURN = r"""
 ---

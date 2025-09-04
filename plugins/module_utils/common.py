@@ -246,7 +246,7 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
             
             for key in resource_module_params.keys():
                 if key in resource_add_keys:
-                    keylist = key.split(".")
+                    keylist = key.split("_")
                     current_dict = post_data["routerDynamicRouting"][resource_name]
                     for i, k in enumerate(keylist):
                         if i == len(keylist) - 1:

@@ -7,16 +7,16 @@
       delegate_to: localhost
       netscaler.adc.bgprouter:
         state: present
-        localAS: 122
-        afParams.addressFamily: "ipv4"
-        afParams.redistribute.protocol: "kernel"
+        localAS: 10
+        afParams_addressFamily: "ipv4"
+        afParams_redistribute_protocol: "kernel"
         routerId: "10.102.201.219"
-        neighbor.ASOriginationInterval: 15
-        neighbor.address: "2.2.12.30"
-        neighbor.advertisementInterval: 30
-        neighbor.afParams.addressFamily: "ipv4"
-        neighbor.holdTimerConfig: 90
-        neighbor.keepaliveTimerConfig: 30
-        neighbor.multihopBfd: "False"
-        neighbor.remoteAS: 100
-        neighbor.singlehopBfd: "False"
+        neighbor_ASOriginationInterval: 15
+        neighbor_address: "2.2.12.30"
+        neighbor_advertisementInterval: 30
+        neighbor_afParams_addressFamily: "ipv4"
+        neighbor_holdTimerConfig: 90
+        neighbor_keepaliveTimerConfig: 30
+        neighbor_multihopBfd: "False"
+        neighbor_remoteAS: 100
+        neighbor_singlehopBfd: "False"
