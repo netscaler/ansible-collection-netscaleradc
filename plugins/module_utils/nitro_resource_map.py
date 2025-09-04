@@ -16533,7 +16533,7 @@ NITRO_RESOURCE_MAP = {
         "update_payload_keys": [],
     },
     "bgprouter": {
-        "_supported_operations": ["add", "delete", "get", "unset"],
+        "_supported_operations": ["add", "delete", "get"],
         "action_payload_keys": {
             "create": [],
             "force": [],

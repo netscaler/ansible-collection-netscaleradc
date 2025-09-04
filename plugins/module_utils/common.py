@@ -243,7 +243,7 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
             resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
             resource_name = NESTED_POST_DATA_RESOURCES_ALIAS[resource_name]
             post_data = {"routerDynamicRouting": {resource_name: {}}}
-            
+
             for key in resource_module_params.keys():
                 if key in resource_add_keys:
                     keylist = key.split("_")
@@ -325,7 +325,7 @@ def create_resource(client, resource_name, resource_module_params, action=None):
     # For nested post data resources, post_data is already properly structured
     if resource_name not in NESTED_POST_DATA_RESOURCES:
         post_data = {resource_name: post_data}
-    
+
     status_code, response_body = client.post(
         post_data=post_data,
         resource=resource_name,

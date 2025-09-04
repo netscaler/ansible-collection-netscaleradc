@@ -34,6 +34,17 @@ options:
       - When C(present), the resource will be added or updated.
       - When C(absent), the resource will be deleted.
 
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+
   afParams_addressFamily:
     type: str
     choices: ["ipv4", "ipv6"]
@@ -117,7 +128,6 @@ options:
     type: str
     description:
       - MD5 password used for neighbor authentication.
-    no_log: true
 
   neighbor_multihopBfd:
     type: bool
