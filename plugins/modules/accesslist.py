@@ -63,7 +63,7 @@ EXAMPLES = r"""
 ---
 - name: Manage accesslist configuration
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   tasks:
     - name: Create accesslist
       accesslist:
