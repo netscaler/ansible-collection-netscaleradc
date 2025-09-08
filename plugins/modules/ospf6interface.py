@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {
     "supported_by": "community",
 }
 DOCUMENTATION = r"""
-module: ospfinterface
+module: ospf6interface
 short_description: Manage OSPF interface configuration on Citrix ADC (NetScaler) devices
 description:
   - Manage OSPF interface configuration on Citrix ADC (NetScaler) devices.
@@ -26,22 +26,11 @@ author:
 options:
   state:
     type: str
-    choices: ["present", "absent"]
+    choices: ["present"]
     default: present
     description:
       - The state of the resource on the NetScaler ADC node.
       - When C(present), the resource will be added or updated.
-      - When C(absent), the resource will be deleted.
-  remove_non_updatable_params:
-    choices:
-      - 'yes'
-      - 'no'
-    default: 'no'
-    description:
-      - When given yes, the module will remove any parameters that are not updatable
-        in the resource.
-      - If no, the module will return error if any non-updatable parameters are provided.
-    type: str
   areaId:
     type: int
     description:
@@ -103,6 +92,13 @@ options:
       - Link state transmit delay.
       - Minimum value is 1.
       - Maximum value is 65535.
+  remove_non_updatable_params:
+    description:
+      - When given yes, the module will remove any parameters that are not updatable in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+    choices: ['yes', 'no']
+    default: 'no'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 

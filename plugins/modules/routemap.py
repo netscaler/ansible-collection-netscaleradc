@@ -122,7 +122,34 @@ options:
       - Maximum value is 4294967295.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
-EXAMPLES = r""""""
+
+EXAMPLES = r"""
+---
+- name: Configure route map
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure route map
+      delegate_to: localhost
+      netscaler.adc.routemap:
+        state: present
+        name: "routeMap1" 
+        rules_action: "permit"
+        rules_sequence: 10
+        rules_matchIpAddress: "accessList1"
+        rules_setMetric: 20
+        rules_setMetricType: "type-1"
+        rules_setCommunity: "commList1"
+        rules_setAsPath: "asPathList1"
+        rules_localPreference: 100
+        rules_weight: 200
+        rules_matchMetric: 10
+        rules_matchRouteType: "type-1"
+        rules_matchIpNextHop: "accessList2"
+        rules_matchCommunity: "commList2"
+        rules_matchAsPath: "asPathList2"
+"""
+
 RETURN = r"""
 ---
 changed:

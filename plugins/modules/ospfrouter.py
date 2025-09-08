@@ -106,7 +106,10 @@ options:
       - Router-id for the OSPF process.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
-EXAMPLES = r""""""
+
+EXAMPLES = r"""
+"""
+
 RETURN = r"""
 ---
 changed:

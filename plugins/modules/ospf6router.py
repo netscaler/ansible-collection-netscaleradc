@@ -88,7 +88,8 @@ options:
       - OSPFv3 Tag.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
-EXAMPLES = r""""""
+EXAMPLES = r"""
+"""
 RETURN = r"""
 ---
 changed:

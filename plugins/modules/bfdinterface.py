@@ -17,11 +17,13 @@ ANSIBLE_METADATA = {
 }
 DOCUMENTATION = r"""
 ---
-module: bfd_interface
+module: bfdinterface
 short_description: Configure BFD on an interface
 description:
   - This module allows you to configure Bidirectional Forwarding Detection (BFD) on a network interface.
   - BFD is a network protocol used to detect faults between two forwarding engines.
+author:
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     description:
@@ -29,39 +31,37 @@ options:
     type: str
     choices: ['present']
     default: 'present'
-  interface:
-    description:
-      - The name of the interface to configure BFD on.
-    type: str
-    required: true
   interval:
     description:
       - The BFD detection interval in milliseconds.
     type: int
-    default: 100
-  min_rx:
+  minrx:
     description:
       - The minimum BFD receive interval in milliseconds.
     type: int
-    default: 100
   multiplier:
     description:
       - The BFD detection multiplier.
     type: int
-    default: 3
   name:
     description:
       - The name of the BFD configuration.
     type: str
-    required: true
   passive:
     description:
       - Whether to enable passive mode for BFD.
-    type: bool
-    default: false
+    type: str
+  remove_non_updatable_params:
+    description:
+      - When given yes, the module will remove any parameters that are not updatable in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+    choices: ['yes', 'no']
+    default: 'no'
+extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
-EXAMPLE = r"""
+EXAMPLES = r"""
 ---
 - name: Configure BFD interface
   hosts: localhost
@@ -72,10 +72,10 @@ EXAMPLE = r"""
       netscaler.adc.bfdinterface:
         state: present
         interval: 100
-        min_rx: 100
+        minrx: 100
         multiplier: 3
         name: "bfd1"
-        passive: false
+        passive: "false"
 """
 RETURN = r"""
 ---

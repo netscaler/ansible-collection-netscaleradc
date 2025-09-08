@@ -106,6 +106,7 @@ options:
       - Link state transmit delay.
       - Minimum value is 1.
       - Maximum value is 65535.
+extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 EXAMPLES = r"""
 ---

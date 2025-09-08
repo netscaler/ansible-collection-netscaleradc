@@ -44,7 +44,6 @@ options:
 
   action:
     type: str
-    choices: ["deny", "permit"]
     description:
       - Allow or deny if traffic matches the rule.
 
@@ -57,22 +56,17 @@ options:
     type: str
     description:
       - Wildcard mask to apply to the address.
+
+  remove_non_updatable_params:
+    type: str
+    choices: ["yes", "no"]
+    default: "no"
+    description:
+      - Remove non-updatable parameters from the configuration.
+
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 EXAMPLES = r"""
----
-- name: Manage accesslist configuration
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Create accesslist
-      accesslist:
-        state: present
-        id: 1
-        remark: "Test access list"
-        action: permit
-        address: "192.168.1.1"
-        wildcard: "0.0.0.0"
 """
 RETURN = r"""
 ---

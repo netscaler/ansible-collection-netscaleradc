@@ -31426,7 +31426,11 @@ NITRO_RESOURCE_MAP = {
         "primary_key": "",
         "primary_key_composite": [],
         "readwrite_arguments": {
-            "addressFamily": {"no_log": False, "type": "str"},
+            "addressFamily": {
+                "no_log": False,
+                "type": "str",
+                "choices": ["ipv4", "ipv6"],
+            },
             "distance": {"no_log": False, "type": "int"},
             "interface": {"no_log": False, "type": "str"},
             "isBest": {"no_log": False, "type": "str"},
@@ -47152,6 +47156,7 @@ NITRO_RESOURCE_MAP = {
             "passiveInterface": {"no_log": False, "type": "list"},
             "routerId": {"no_log": False, "type": "str"},
             "tagId": {"no_log": False, "type": "str"},
+            "tag": {"no_log": False, "type": "str"},
         },
         "singleton": False,
         "update_payload_keys": [],

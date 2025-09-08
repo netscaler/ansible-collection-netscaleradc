@@ -250,6 +250,8 @@ action_groups:
     - autoscaleprofile
     - azureapplication
     - azurekeyvault
+    - bgprouter
+    - bfdinterface
     - botglobal_botpolicy_binding
     - botpolicy
     - botpolicylabel
@@ -411,6 +413,7 @@ action_groups:
     - fis
     - fis_channel_binding
     - fis_interface_binding
+    - filesystemencryption.py
     - forwardingsession
     - gslbconfig
     - gslbldnsentries
@@ -448,6 +451,7 @@ action_groups:
     - interfacepair
     - ip6tunnel
     - ip6tunnelparam
+    - iproute
     - ipsecalgprofile
     - ipsecalgsession
     - ipsecparameter
@@ -458,6 +462,8 @@ action_groups:
     - iptunnel
     - iptunnelparam
     - ipv6
+    - kafkacluster.py
+    - kafkacluster_servicegroup_binding.py
     - l2param
     - l3param
     - l4param
@@ -594,9 +600,11 @@ action_groups:
     - nsicapprofile
     - nsip
     - nsip6
+    - nskeymanagerproxy.py
     - nslicenseparameters
     - nslicenseproxyserver
     - nslicenseserver
+    - nslaslicense.py
     - nslimitidentifier
     - nslimitselector
     - nslimitsessions
@@ -697,7 +705,7 @@ action_groups:
     - route
     - route6
     - routerdynamicrouting
-    - bgprouter
+    - routemap
     - rsskeytype
     - save_config
     - server
@@ -742,12 +750,14 @@ action_groups:
     - ssldhfile
     - ssldhparam
     - ssldtlsprofile
+    - sslechconfig.py
     - sslecdsakey
     - sslfips
     - sslfipskey
     - sslfipssimsource
     - sslfipssimtarget
     - sslglobal_sslpolicy_binding
+    - sslhpkekey.py
     - sslhsmkey
     - sslkeyfile
     - ssllogprofile
@@ -760,9 +770,10 @@ action_groups:
     - sslpolicylabel_sslpolicy_binding
     - sslprofile
     - sslprofile_ecccurve_binding
-    - sslprofile_sslcertkey_binding
     - sslprofile_sslcipher_binding
     - sslprofile_sslciphersuite_binding
+    - sslprofile_sslcertkey_binding
+    - sslprofile_sslechconfig_binding.py
     - sslrsakey
     - sslservice
     - sslservice_ecccurve_binding
@@ -974,11 +985,3 @@ action_groups:
     - vxlan_srcip_binding
     - vxlanvlanmap
     - vxlanvlanmap_vxlan_binding
-    - filesystemencryption.py
-    - kafkacluster.py
-    - kafkacluster_servicegroup_binding.py
-    - nskeymanagerproxy.py
-    - nslaslicense.py
-    - sslechconfig.py
-    - sslhpkekey.py
-    - sslprofile_sslechconfig_binding.py
