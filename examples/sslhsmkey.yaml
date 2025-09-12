@@ -1,0 +1,18 @@
+
+---
+- name: Create ssl hsm key
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create ssl hsm key
+      delegate_to: localhost
+      citrixadc_sslhsmkey:
+        hsmkeyname: "hsmk1"
+        hsmtype: "SAFENET"
+        serialnum: "116877xxxx465464"
+        password: "xxxxxxx"
+      register: result
+
+    - name: Debug result
+      debug:
+        var: result
