@@ -42,17 +42,17 @@ options:
     description:
       - Access list entry comment.
 
-  action:
+  rules_action:
     type: str
     description:
       - Allow or deny if traffic matches the rule.
 
-  address:
+  rules_address:
     type: str
     description:
       - Address to match.
 
-  wildcard:
+  rules_wildcard:
     type: str
     description:
       - Wildcard mask to apply to the address.
