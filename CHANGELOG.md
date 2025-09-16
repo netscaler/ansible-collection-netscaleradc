@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.10.1] - 2025-09-16
+
+# Fixed 
+
+- Resolved error while importing new SSL certificate with duplicate primary key error
+
 ## [2.10.0] - 2025-08-22
 
 ### Added
@@ -190,7 +196,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial Release
+
 [unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.10.0...HEAD
+[2.10.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.10.0...2.10.1
 [2.10.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.2...2.10.0
 [2.9.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.1...2.9.2
 [2.9.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.0...2.9.1
