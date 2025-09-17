@@ -35,10 +35,10 @@ from .common import (
 )
 from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
+    GETALL_ONLY_RESOURCES,
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
-    GETALL_ONLY_RESOURCES,
 )
 from .decorators import trace
 from .logger import log, loglines
@@ -91,9 +91,7 @@ class ModuleExecutor(object):
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
             mutually_exclusive=[
-                (
-                    "nitro_pass", "nitro_auth_token"
-                ),
+                ("nitro_pass", "nitro_auth_token"),
                 (
                     "managed_netscaler_instance_name",
                     "managed_netscaler_instance_ip",
@@ -148,10 +146,9 @@ class ModuleExecutor(object):
             self.module.params["api_path"] = "nitro/v2/config"
         self.have_token = self.module.params.get("nitro_auth_token", None)
         self.client = NitroAPIClient(self.module, self.resource_name)
-        have_userpass = all([
-            self.module.params.get("nitro_user"),
-            self.module.params.get("nitro_pass")
-        ])
+        have_userpass = all(
+            [self.module.params.get("nitro_user"), self.module.params.get("nitro_pass")]
+        )
         if have_userpass and not self.module.check_mode:
             self.client._headers.pop("X-NITRO-USER", None)
             self.client._headers.pop("X-NITRO-PASS", None)
@@ -167,13 +164,22 @@ class ModuleExecutor(object):
 
             else:
                 if self.netscaler_console_as_proxy_server:
-                    self.module.params["nitro_auth_token"] = response["login"][0].get("sessionid", None)
+                    self.module.params["nitro_auth_token"] = response["login"][0].get(
+                        "sessionid", None
+                    )
                 else:
-                    self.module.params["nitro_auth_token"] = response.get("sessionid", None)
+                    self.module.params["nitro_auth_token"] = response.get(
+                        "sessionid", None
+                    )
 
                 if not self.module.params["nitro_auth_token"]:
-                    self.return_failure("ERROR: Login failed. No sessionid returned from the NetScaler ADC")
-                log("INFO: Login successful. Session ID: %s" % self.module.params["nitro_auth_token"])
+                    self.return_failure(
+                        "ERROR: Login failed. No sessionid returned from the NetScaler ADC"
+                    )
+                log(
+                    "INFO: Login successful. Session ID: %s"
+                    % self.module.params["nitro_auth_token"]
+                )
 
                 self.client._headers["Cookie"] = (
                     "NITRO_AUTH_TOKEN=%s" % self.module.params["nitro_auth_token"]
@@ -222,7 +228,11 @@ class ModuleExecutor(object):
             # }
         if self.resource_name == "login":
             self.module_result["sessionid"] = self.sessionid
-        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode and not self.have_token:
+        if (
+            self.client._headers.get("Cookie", None) not in (None, "")
+            and not self.module.check_mode
+            and not self.have_token
+        ):
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
@@ -252,7 +262,11 @@ class ModuleExecutor(object):
 
     @trace
     def return_failure(self, msg):
-        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode and not self.have_token:
+        if (
+            self.client._headers.get("Cookie", None) not in (None, "")
+            and not self.module.check_mode
+            and not self.have_token
+        ):
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
@@ -445,21 +459,23 @@ class ModuleExecutor(object):
     @trace
     def create_or_update(self):
         desired_state = self.module.params["state"]
-        remove_non_updatable_params = self.module.params.get("remove_non_updatable_params", "no")
+        remove_non_updatable_params = self.module.params.get(
+            "remove_non_updatable_params", "no"
+        )
         if (
-            desired_state == "present" and
-            self.resource_name.endswith("_binding") and
-            "state" in self.resource_module_params
+            desired_state == "present"
+            and self.resource_name.endswith("_binding")
+            and "state" in self.resource_module_params
         ):
             self.resource_module_params.pop("state")
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
         if not self.existing_resource and "add" in self.supported_operations:
-            if (
-                self.resource_name.endswith("_binding") and
-                desired_state in {"enabled", "disabled"}
-            ):
+            if self.resource_name.endswith("_binding") and desired_state in {
+                "enabled",
+                "disabled",
+            }:
                 self.resource_module_params["state"] = desired_state.upper()
 
             self.module_result["changed"] = True
@@ -556,9 +572,8 @@ class ModuleExecutor(object):
                         % (self.resource_name, self.resource_id)
                     )
                     self.delete()
-                    if (
-                        self.module.params["state"] == "present" and
-                        any(x in self.supported_operations for x in ("enabled", "disabled"))
+                    if self.module.params["state"] == "present" and any(
+                        x in self.supported_operations for x in ("enabled", "disabled")
                     ):
                         # We want to keep the previous state of the binding
                         self.resource_module_params["state"] = (
@@ -569,7 +584,9 @@ class ModuleExecutor(object):
                     )
                 # Here we are checking if resource has immutable keys
                 # if yes, we will check if the user wants to keep the non-updatable params (which in turn will return error)
-                elif immutable_keys_list is None or (immutable_keys_list and remove_non_updatable_params == "no"):
+                elif immutable_keys_list is None or (
+                    immutable_keys_list and remove_non_updatable_params == "no"
+                ):
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
@@ -597,18 +614,21 @@ class ModuleExecutor(object):
                         self.module_result["changed"] = False
                         self.module.exit_json(**self.module_result)
                     else:
-                        if (
-                            self.resource_name.endswith("_binding") and
-                            self.module.params["state"] in {"enabled", "disabled"}
-                        ):
-                            existing_state = self.existing_resource.get("state", "").upper()
+                        if self.resource_name.endswith(
+                            "_binding"
+                        ) and self.module.params["state"] in {"enabled", "disabled"}:
+                            existing_state = self.existing_resource.get(
+                                "state", ""
+                            ).upper()
                             if existing_state != desired_state:
                                 # Create the resource in desired state
                                 self.module_result["changed"] = True
                                 self.delete()
                                 self.resource_module_params["state"] = desired_state
                                 ok, err = create_resource(
-                                    self.client, self.resource_name, self.resource_module_params
+                                    self.client,
+                                    self.resource_name,
+                                    self.resource_module_params,
                                 )
                                 if not ok:
                                     self.return_failure(err)
@@ -847,8 +867,10 @@ class ModuleExecutor(object):
                 self.add_bindings(
                     binding_name=binding_name,
                     desired_bindings=[
-                        x for x in desired_binding_members
-                        if x[get_bindprimary_key(binding_name, x)] in to_be_added_bindprimary_keys
+                        x
+                        for x in desired_binding_members
+                        if x[get_bindprimary_key(binding_name, x)]
+                        in to_be_added_bindprimary_keys
                     ],
                 )
 
@@ -967,9 +989,9 @@ class ModuleExecutor(object):
                     )
                 else:
                     # set system user USERNAME -password NEW_PASSWORD
-                    self.resource_module_params[
-                        "password"
-                    ] = self.resource_module_params["new_password"]
+                    self.resource_module_params["password"] = (
+                        self.resource_module_params["new_password"]
+                    )
                     ok, err = update_resource(
                         self.client, "systemuser", self.resource_module_params
                     )
@@ -1096,7 +1118,10 @@ class ModuleExecutor(object):
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
-            elif self.resource_name == "install" and self.module.params["state"] == "installed":
+            elif (
+                self.resource_name == "install"
+                and self.module.params["state"] == "installed"
+            ):
                 self.install()
 
             elif self.module.params["state"] in {
