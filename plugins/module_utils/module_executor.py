@@ -500,15 +500,15 @@ class ModuleExecutor(object):
                     errorcode = None
                     message = None
                     err_str = str(err)
-                    m = re.search(r'status_code:\s*(\d+)', err_str)
-                    if m:
-                        status_code = int(m.group(1))
-                    m = re.search(r"'errorcode':\s*(\d+)", err_str)
-                    if m:
-                        errorcode = int(m.group(1))
-                    m = re.search(r"'message':\s*'([^']+)'", err_str)
-                    if m:
-                        message = m.group(1)
+                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
+                    if regex_string:
+                        status_code = int(regex_string.group(1))
+                    regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
+                    if regex_string:
+                        regex_string = int(regex_string.group(1))
+                    regex_string = re.search(r"'message':\s*'([^']+)'", err_str)
+                    if regex_string:
+                        message = regex_string.group(1)
                     if not (
                         status_code == 599 and
                         errorcode == 1065 and
@@ -707,22 +707,22 @@ class ModuleExecutor(object):
                     errorcode = None
                     message = None
                     err_str = str(err)
-                    m = re.search(r'status_code:\s*(\d+)', err_str)
-                    if m:
-                        status_code = int(m.group(1))
-                    m = re.search(r"'errorcode':\s*(\d+)", err_str)
-                    if m:
-                        errorcode = int(m.group(1))
-                    m = re.search(r"'message':\s*'([^']+)'", err_str)
-                    if m:
-                        message = m.group(1)
+                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
+                    if regex_string:
+                        status_code = int(regex_string.group(1))
+                    regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
+                    if regex_string:
+                        errorcode = int(regex_string.group(1))
+                    regex_string = re.search(r"'message':\s*'([^']+)'", err_str)
+                    if regex_string:
+                        message = regex_string.group(1)
                     if not (
                         status_code == 599 and
                         errorcode == 1065 and
                         message == "Internal error while adding HSM key."
                     ):
                         self.return_failure(err)
-                else:     
+                else:
                     self.return_failure(err)
 
     @trace
