@@ -680,7 +680,7 @@ class ModuleExecutor(object):
                 self.client, self.resource_name, self.resource_module_params
             )
             if not ok:
-                if self.resource_name != "sslhsmkey":
+                if self.resource_name == "sslhsmkey":
                     # sslhsmkey returns errocode 1065 and message
                     # "Internal error while adding HSM key" on successful addition
                     status_code = None

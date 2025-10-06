@@ -6,7 +6,7 @@
   tasks:
     - name: Create ssl hsm key
       delegate_to: localhost
-      citrixadc_sslhsmkey:
+      netscaler.adc.sslhsmkey:
         hsmkeyname: "hsmk1"
         hsmtype: "SAFENET"
         serialnum: "116877xxxx465464"
