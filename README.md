@@ -211,7 +211,7 @@ python3 migrationtool/convert_yaml.py -i legacy_playbook.yaml -o migrated_playbo
     port: 80
 ```
 
-For detailed migration tool documentation, usage examples, and troubleshooting, refer to the [Migration Tool README](https://github.com/netscaler/ansible-collection-netscaleradc/blob/main/migrationtool/README.md).
+For detailed migration tool documentation, usage examples, and troubleshooting, refer to the [Migration Tool README](https://github.com/netscaler/ansible-collection-netscaleradc/blob/main/tools/migrationtool/README.md).
 
 ### Invocation
 

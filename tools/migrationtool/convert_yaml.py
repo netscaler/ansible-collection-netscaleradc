@@ -4,6 +4,7 @@
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 import argparse
+
 import yaml
 from utils import (
     netscaler_login_specifics,
