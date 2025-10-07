@@ -1,20 +1,20 @@
 fmt:
-	autoflake plugins/modules/*.py
-	autoflake plugins/module_utils/*.py
-	autoflake --recursive tests/
-	autoflake migrationtool/*py
+    autoflake plugins/modules/*.py
+    autoflake plugins/module_utils/*.py
+    autoflake --recursive tests/
+    autoflake tools/migrationtool/*py
 
-	black plugins/modules/*.py
-	black plugins/module_utils/*.py
-	black tests/
-	black migrationtool/*.py
+    black plugins/modules/*.py
+    black plugins/module_utils/*.py
+    black tests/
+    black tools/migrationtool/*.py
 
-	isort plugins/modules/*.py
-	isort plugins/module_utils/*.py
-	isort tests/
-	isort migrationtool/*.py
+    isort plugins/modules/*.py
+    isort plugins/module_utils/*.py
+    isort tests/
+    isort tools/migrationtool/*.py
 
-	yamlfmt .
+    yamlfmt $(shell find . -name '*.yml' -o -name '*.yaml')
 
 install:
 	ansible-galaxy collection install . --force
@@ -42,7 +42,7 @@ build:
 	ansible-galaxy collection build --force
 
 galaxy_importer: build
-	python3 -m galaxy_importer.main netscaler-adc-2.10.0.tar.gz
+	python3 -m galaxy_importer.main netscaler-adc-2.10.1.tar.gz
 
 # build_docs:
 # 	rm -rf _built_docs

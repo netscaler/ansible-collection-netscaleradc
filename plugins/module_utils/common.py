@@ -10,6 +10,7 @@ __metaclass__ = type
 import re
 
 from .constants import (
+    GLOBAL_BINDING_ARG_LIST,
     HTTP_RESOURCE_ALREADY_EXISTS,
     HTTP_RESOURCE_NOT_FOUND,
     HTTP_SUCCESS_CODES,

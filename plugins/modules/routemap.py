@@ -133,7 +133,7 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.routemap:
         state: present
-        name: "routeMap1" 
+        name: "routeMap1"
         rules_action: "permit"
         rules_sequence: 10
         rules_matchIpAddress: "accessList1"

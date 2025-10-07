@@ -66,25 +66,25 @@ class NitroAPIClient(object):
         )
         if netscaler_console_as_proxy:
             if self._module.params.get("managed_netscaler_instance_name"):
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_NAME"
-                ] = self._module.params.get("managed_netscaler_instance_name")
+                self._headers["_MPS_API_PROXY_MANAGED_INSTANCE_NAME"] = (
+                    self._module.params.get("managed_netscaler_instance_name")
+                )
             if self._module.params.get("managed_netscaler_instance_ip"):
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_IP"
-                ] = self._module.params.get("managed_netscaler_instance_ip")
+                self._headers["_MPS_API_PROXY_MANAGED_INSTANCE_IP"] = (
+                    self._module.params.get("managed_netscaler_instance_ip")
+                )
             if self._module.params.get("managed_netscaler_instance_id"):
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_ID"
-                ] = self._module.params.get("managed_netscaler_instance_id")
+                self._headers["_MPS_API_PROXY_MANAGED_INSTANCE_ID"] = (
+                    self._module.params.get("managed_netscaler_instance_id")
+                )
             if self._module.params.get("managed_netscaler_instance_username"):
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_USERNAME"
-                ] = self._module.params.get("managed_netscaler_instance_username")
+                self._headers["_MPS_API_PROXY_MANAGED_INSTANCE_USERNAME"] = (
+                    self._module.params.get("managed_netscaler_instance_username")
+                )
             if self._module.params.get("managed_netscaler_instance_password"):
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_PASSWORD"
-                ] = self._module.params.get("managed_netscaler_instance_password")
+                self._headers["_MPS_API_PROXY_MANAGED_INSTANCE_PASSWORD"] = (
+                    self._module.params.get("managed_netscaler_instance_password")
+                )
 
     @trace
     def url_builder(
