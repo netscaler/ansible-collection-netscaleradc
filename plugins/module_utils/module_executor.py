@@ -8,6 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 import os
+import re
 
 from ansible.module_utils.basic import AnsibleModule
 
@@ -490,7 +491,30 @@ class ModuleExecutor(object):
                 self.client, self.resource_name, self.resource_module_params
             )
             if not ok:
-                self.return_failure(err)
+                if not self.resource_name == "sslhsmkey":
+                    self.return_failure(err)
+                else:
+                    # sslhsmkey returns errocode 1065 and message
+                    # "Internal error while adding HSM key" on successful addition
+                    status_code = None
+                    errorcode = None
+                    message = None
+                    err_str = str(err)
+                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
+                    if regex_string:
+                        status_code = int(regex_string.group(1))
+                    regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
+                    if regex_string:
+                        regex_string = int(regex_string.group(1))
+                    regex_string = re.search(r"'message':\s*'([^']+)'", err_str)
+                    if regex_string:
+                        message = regex_string.group(1)
+                    if not (
+                        status_code == 599 and
+                        errorcode == 1065 and
+                        message == "Internal error while adding HSM key."
+                    ):
+                        self.return_failure(err)
 
             # There can be module_params in the playbook which are not part of `add_payload_keys`,
             # but part of `update_payload_keys` in the NITRO_RESOURCE_MAP
@@ -676,7 +700,30 @@ class ModuleExecutor(object):
                 self.client, self.resource_name, self.resource_module_params
             )
             if not ok:
-                self.return_failure(err)
+                if self.resource_name == "sslhsmkey":
+                    # sslhsmkey returns errocode 1065 and message
+                    # "Internal error while adding HSM key" on successful addition
+                    status_code = None
+                    errorcode = None
+                    message = None
+                    err_str = str(err)
+                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
+                    if regex_string:
+                        status_code = int(regex_string.group(1))
+                    regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
+                    if regex_string:
+                        errorcode = int(regex_string.group(1))
+                    regex_string = re.search(r"'message':\s*'([^']+)'", err_str)
+                    if regex_string:
+                        message = regex_string.group(1)
+                    if not (
+                        status_code == 599 and
+                        errorcode == 1065 and
+                        message == "Internal error while adding HSM key."
+                    ):
+                        self.return_failure(err)
+                else:
+                    self.return_failure(err)
 
     @trace
     def delete_bindings(
