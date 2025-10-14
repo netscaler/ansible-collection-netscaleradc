@@ -1,12 +1,17 @@
 ---
 - name: Sample location playbook
-  hosts: demo_netscalers
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Configure location
       delegate_to: localhost
       netscaler.adc.location:
         state: present
-        ipfrom: 1.1.1.1
-        ipto: 2.2.2.2
-        preferredlocation: '*.US.*'
+        nsip: 10.106.210.21
+        nitro_user: nsroot
+        nitro_pass: notnsroot
+        nitro_protocol: http
+        validate_certs: false
+        ipfrom: "170.173.217.0"
+        ipto: "170.173.222.255"
+        preferredlocation: "prov.WA.sdc.*.*.*"

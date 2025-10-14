@@ -151,3 +151,22 @@ GETALL_ONLY_RESOURCES = [
     "sslkeyfile",
     "systementitydata",
 ]
+
+# Dynamic Protocol list
+DYNAMIC_PROTOCOLS = [
+    "accesslist",
+    "bfdinterface",
+    "iproute",
+    "ospf6interface",
+]
+
+DYNAMIC_PROTOCOLS_ALIAS = {
+    "accesslist": "accessList",
+    "accessList": "accesslist",
+    "bfdinterface": "bfdInterface",
+    "bfdInterface": "bfdinterface",
+    "iproute": "ipRoute",
+    "ipRoute": "iproute",
+    "ospf6interface": "ospf6Interface",
+    "ospf6Interface": "ospf6interface",
+}

@@ -500,7 +500,7 @@ class ModuleExecutor(object):
                     errorcode = None
                     message = None
                     err_str = str(err)
-                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
+                    regex_string = re.search(r"status_code:\s*(\d+)", err_str)
                     if regex_string:
                         status_code = int(regex_string.group(1))
                     regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
@@ -510,9 +510,9 @@ class ModuleExecutor(object):
                     if regex_string:
                         message = regex_string.group(1)
                     if not (
-                        status_code == 599 and
-                        errorcode == 1065 and
-                        message == "Internal error while adding HSM key."
+                        status_code == 599
+                        and errorcode == 1065
+                        and message == "Internal error while adding HSM key."
                     ):
                         self.return_failure(err)
 
@@ -580,15 +580,21 @@ class ModuleExecutor(object):
                         "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
                         % (self.resource_name, self.resource_id)
                     )
-                    if self.resource_name == "systemfile":
-                        # If the systemfile is present, we will delete it and add it again
-                        self.delete()
-                        ok, err = create_resource(
-                            self.client, self.resource_name, self.resource_module_params
-                        )
-                        if not ok:
-                            self.return_failure(err)
-
+                    # If the systemfile is present, we will delete it and add it again
+                    self.delete()
+                    ok, err = create_resource(
+                        self.client, self.resource_name, self.resource_module_params
+                    )
+                    if not ok:
+                        self.return_failure(err)
+                elif self.resource_name == "location":
+                    # TODO: primary composite key needs to be added.
+                    # location resource has composite primary key. 1.ipfrom 2.ipto
+                    ok, err = create_resource(
+                        self.client, self.resource_name, self.resource_module_params
+                    )
+                    if not ok:
+                        self.return_failure(err)
                 elif self.resource_name.endswith("_binding"):
                     # Generally bindings are not updated. They are removed and added again.
                     log(
@@ -707,7 +713,7 @@ class ModuleExecutor(object):
                     errorcode = None
                     message = None
                     err_str = str(err)
-                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
+                    regex_string = re.search(r"status_code:\s*(\d+)", err_str)
                     if regex_string:
                         status_code = int(regex_string.group(1))
                     regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
@@ -717,9 +723,9 @@ class ModuleExecutor(object):
                     if regex_string:
                         message = regex_string.group(1)
                     if not (
-                        status_code == 599 and
-                        errorcode == 1065 and
-                        message == "Internal error while adding HSM key."
+                        status_code == 599
+                        and errorcode == 1065
+                        and message == "Internal error while adding HSM key."
                     ):
                         self.return_failure(err)
                 else:

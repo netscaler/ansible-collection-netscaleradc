@@ -1,20 +1,20 @@
 fmt:
-    autoflake plugins/modules/*.py
-    autoflake plugins/module_utils/*.py
-    autoflake --recursive tests/
-    autoflake tools/migrationtool/*py
+	autoflake plugins/modules/*.py
+	autoflake plugins/module_utils/*.py
+	autoflake --recursive tests/
+	autoflake tools/migrationtool/*.py
 
-    black plugins/modules/*.py
-    black plugins/module_utils/*.py
-    black tests/
-    black tools/migrationtool/*.py
+	black plugins/modules/*.py
+	black plugins/module_utils/*.py
+	black tests/
+	black tools/migrationtool/*.py
 
-    isort plugins/modules/*.py
-    isort plugins/module_utils/*.py
-    isort tests/
-    isort tools/migrationtool/*.py
+	isort plugins/modules/*.py
+	isort plugins/module_utils/*.py
+	isort tests/
+	isort tools/migrationtool/*.py
 
-    yamlfmt $(shell find . -name '*.yml' -o -name '*.yaml')
+	yamlfmt $(shell find . -name '*.yml' -o -name '*.yaml')
 
 install:
 	ansible-galaxy collection install . --force
@@ -63,7 +63,7 @@ galaxy_importer: build
 # skip the playbook which contains "password" in the file name
 run_examples:
 	@for playbook in examples/*.yaml; do \
-		if [[ $$playbook == *"password"* || $$playbook == *"login"* || $$playbook == *"logout"* || $$playbook == *"route"* || $$playbook == locationfile.yaml || $$playbook == nsip6.yaml || $$playbook == hanode.yaml ]]; then \
+		if [[ $$playbook == *"password"* || $$playbook == *"login"* || $$playbook == *"logout"* || $$playbook == *"route"* || $$playbook == *"locationfile.yaml"* || $$playbook == *"nsip6.yaml"* || $$playbook == *"hanode.yaml"* ]]; then \
 			continue; \
 		fi; \
 		echo "Running $$playbook"; \
