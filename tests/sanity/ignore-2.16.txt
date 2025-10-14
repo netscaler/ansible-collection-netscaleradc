@@ -951,3 +951,6 @@ plugins/modules/authenticationprotecteduseraction.py validate-modules:missing-gp
 plugins/modules/accesslist.py  validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/bfdinterface.py  validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/iproute.py  validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/routemap.py  validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/ospf6interface.py  validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/ospf6router.py  validate-modules:missing-gplv3-license # We use MIT license

@@ -984,3 +984,6 @@ action_groups:
     - accesslist
     - bfdinterface
     - iproute
+    - routemap
+    - ospf6interface
+    - ospf6router

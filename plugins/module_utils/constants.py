@@ -158,6 +158,8 @@ DYNAMIC_PROTOCOLS = [
     "bfdinterface",
     "iproute",
     "ospf6interface",
+    "routemap",
+    "ospf6router",
 ]
 
 DYNAMIC_PROTOCOLS_ALIAS = {
@@ -169,4 +171,8 @@ DYNAMIC_PROTOCOLS_ALIAS = {
     "ipRoute": "iproute",
     "ospf6interface": "ospf6Interface",
     "ospf6Interface": "ospf6interface",
+    "routemap": "routeMap",
+    "routeMap": "routemap",
+    "ospf6router": "ospf6Router",
+    "ospf6Router": "ospf6router",
 }

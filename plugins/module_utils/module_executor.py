@@ -315,7 +315,24 @@ class ModuleExecutor(object):
                 # defined in the playbook, it's value will be None. So, filter out those attributes.
                 # Also, filter out attributes ending with `_binding` as they are handled separately
                 if v is not None:
-                    self.resource_module_params[k] = v
+                    if isinstance(v, list):
+                        filtered_list = []
+                        for listitem in v:
+                            if isinstance(listitem, dict):
+                                filtered_dict = {
+                                    key: value
+                                    for key, value in listitem.items()
+                                    if value is not None
+                                }
+                                if filtered_dict:
+                                    filtered_list.append(filtered_dict)
+                            else:
+                                if listitem is not None:
+                                    filtered_list.append(listitem)
+                        if filtered_list:
+                            self.resource_module_params[k] = filtered_list
+                    else:
+                        self.resource_module_params[k] = v
 
         if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
             self.resource_module_params = self._add_nitro_attributes_aliases(
