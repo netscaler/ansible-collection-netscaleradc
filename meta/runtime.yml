@@ -987,3 +987,6 @@ action_groups:
     - routemap
     - ospf6interface
     - ospf6router
+    - ospfrouter
+    - ospfinterface
+    - bgprouter
