@@ -16532,6 +16532,108 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": [],
     },
+    "bgprouter": {
+        "_supported_operations": ["get", "add", "unset", "update", "delete"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": ["afParams", "localAS", "neighbor", "routerId"],
+        },
+        "add_payload_keys": ["afParams", "localAS", "neighbor", "routerId"],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": ["localAS"],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": [],
+        "immutable_keys": [],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "update_payload_keys": ["afParams", "localAS", "neighbor", "routerId"],
+        "readwrite_arguments": {
+            "localAS": {"no_log": False, "type": "int"},
+            "routerId": {"no_log": False, "type": "str"},
+            "afParams": {
+                "type": "list",
+                "elements": "dict",
+                "options": {
+                    "addressFamily": {
+                        "no_log": False,
+                        "type": "str",
+                        "choices": ["ipv4", "ipv6"],
+                    },
+                    "redistribute": {
+                        "type": "list",
+                        "elements": "dict",
+                        "options": {
+                            "protocol": {
+                                "no_log": False,
+                                "type": "str",
+                                "choices": [
+                                    "kernel",
+                                    "connected",
+                                    "static",
+                                    "rip",
+                                    "ospf",
+                                    "isis",
+                                    "intranet",
+                                ],
+                            },
+                            "routeMap": {"no_log": False, "type": "str"},
+                        },
+                    },
+                },
+            },
+            "neighbor": {
+                "type": "list",
+                "elements": "dict",
+                "options": {
+                    "ASOriginationInterval": {"no_log": False, "type": "int"},
+                    "address": {"no_log": False, "type": "str"},
+                    "advertisementInterval": {"no_log": False, "type": "int"},
+                    "afParams": {
+                        "type": "list",
+                        "elements": "dict",
+                        "options": {
+                            "activate": {"no_log": False, "type": "bool"},
+                            "addressFamily": {
+                                "no_log": False,
+                                "type": "str",
+                                "choices": ["ipv4", "ipv6"],
+                            },
+                            "routeMap": {
+                                "type": "list",
+                                "elements": "dict",
+                                "options": {
+                                    "direction": {
+                                        "no_log": False,
+                                        "type": "str",
+                                        "choices": ["in", "out"],
+                                    },
+                                    "name": {"no_log": False, "type": "str"},
+                                },
+                            },
+                        },
+                    },
+                    "connectTimer": {"no_log": False, "type": "int"},
+                    "holdTimerConfig": {"no_log": False, "type": "int"},
+                    "keepaliveTimerConfig": {"no_log": False, "type": "int"},
+                    "md5Password": {"no_log": True, "type": "str"},
+                    "multihopBfd": {"no_log": False, "type": "bool"},
+                    "remoteAS": {"no_log": False, "type": "int"},
+                    "singlehopBfd": {"no_log": False, "type": "bool"},
+                    "updateSource": {"no_log": False, "type": "str"},
+                },
+            },
+        },
+        "singleton": False,
+    },
     "botglobal_botpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {

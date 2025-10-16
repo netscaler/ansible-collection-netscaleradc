@@ -10,6 +10,8 @@ __metaclass__ = type
 import re
 
 from .constants import (
+    DYNAMIC_PROTOCOLS,
+    DYNAMIC_PROTOCOLS_ALIAS,
     GLOBAL_BINDING_ARG_LIST,
     HTTP_RESOURCE_ALREADY_EXISTS,
     HTTP_RESOURCE_NOT_FOUND,
@@ -94,16 +96,29 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
             args=get_args,
         )
     else:
-        status_code, response_body = client.get(
-            resource=resource_name,
-            id=resource_id,
-            args=get_args,
-        )
+        if resource_name in DYNAMIC_PROTOCOLS:
+            new_resource_name = (
+                "routerDynamicRouting/" + DYNAMIC_PROTOCOLS_ALIAS[resource_name]
+            )
+            status_code, response_body = client.get(
+                resource=new_resource_name,
+                id=resource_id,
+                args=get_args,
+            )
+        else:
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                args=get_args,
+            )
     if status_code in {HTTP_RESOURCE_NOT_FOUND}:
         return False, []
     if status_code in HTTP_SUCCESS_CODES:
         # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
-        if resource_name not in response_body:
+        if (
+            resource_name not in response_body
+            and resource_name not in DYNAMIC_PROTOCOLS
+        ):
             if resource_name == "sslcipher":
                 resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
                 return True, [
@@ -112,7 +127,12 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 
             return False, []
         # `update-only` resources return a dict instead of a list.
-        return_response = response_body[resource_name]
+        if resource_name in DYNAMIC_PROTOCOLS:
+            return_response = response_body.get("routerDynamicRouting", {}).get(
+                DYNAMIC_PROTOCOLS_ALIAS[resource_name], {}
+            )
+        else:
+            return_response = response_body[resource_name]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
         # So, we are converting the keys to lowercase.
         # except for `ping` and `traceroute`, all the othe resources returns a keys with lowercase.
@@ -242,7 +262,6 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
                             key, resource_name, action.upper()
                         )
                     )
-
     return True, None, post_data
 
 
@@ -281,7 +300,11 @@ def create_resource(client, resource_name, resource_module_params, action=None):
     if not ok:
         return False, err
 
-    post_data = {resource_name: post_data}
+    if resource_name in DYNAMIC_PROTOCOLS:
+        post_data = {DYNAMIC_PROTOCOLS_ALIAS[resource_name]: post_data}
+        post_data = {"routerDynamicRouting": post_data}
+    else:
+        post_data = {resource_name: post_data}
     status_code, response_body = client.post(
         post_data=post_data,
         resource=resource_name,
@@ -355,7 +378,11 @@ def update_resource(client, resource_name, resource_module_params):
     if not ok:
         return False, err
 
-    put_data = {resource_name: put_payload}
+    if resource_name in DYNAMIC_PROTOCOLS:
+        put_data = {DYNAMIC_PROTOCOLS_ALIAS[resource_name]: put_payload}
+        put_data = {"routerDynamicRouting": put_data}
+    else:
+        put_data = {resource_name: put_payload}
 
     status_code, response_body = client.put(
         put_data=put_data,
