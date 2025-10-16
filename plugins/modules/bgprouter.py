@@ -91,7 +91,8 @@ options:
             description:
               - Route map reference for redistribution.
   neighbor:
-    type: dict
+    type: list
+    elements: dict
     description:
       - Neighbor router configuration.
     suboptions:
@@ -125,8 +126,7 @@ options:
               - ipv4
               - ipv6
           routeMap:
-            type: list
-            elements: dict
+            type: dict
             description:
               - Route maps applied to neighbor routes.
             suboptions:

@@ -47,7 +47,8 @@ options:
       - When given yes, the module will remove any parameters that are not updatable in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
   afParams:
-    type: dict
+    type: list
+    elements: dict
     description:
       - Address family-specific parameters for OSPFv3.
     suboptions:
@@ -56,7 +57,8 @@ options:
         description:
           - Address family for OSPFv3
       redistribute:
-        type: dict
+        type: list
+        elements: dict
         description:
           - Redistribution settings for OSPFv3.
         suboptions:

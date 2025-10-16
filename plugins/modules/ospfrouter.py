@@ -18,9 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: nsweblogparam
-short_description: Configuration for Web log parameters resource.
-description: Configuration for Web log parameters resource.
+module: ospfrouter
+short_description: Configuration for OSPF Router resource.
+description: Configuration for OSPF Router resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -29,6 +29,7 @@ options:
   state:
     choices:
       - present
+      - absent
       - unset
     default: present
     description:
@@ -36,6 +37,7 @@ options:
         ADC node.
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
+      - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   remove_non_updatable_params:

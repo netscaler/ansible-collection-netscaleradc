@@ -26,7 +26,7 @@ author:
 options:
   state:
     type: str
-    choices: ["present", "absent", "unset", "get", "delete"]
+    choices: ["present", "absent", "unset", "get"]
     default: present
     description:
       - The state of the resource on the NetScaler ADC node.

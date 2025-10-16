@@ -26,47 +26,37 @@ author:
 options:
   state:
     type: str
-    choices: ["present", "absent"]
+    choices: ["present", "unset"]
     default: present
     description:
       - The state of the resource on the NetScaler ADC node.
       - When C(present), the resource will be added or updated.
-      - When C(absent), the resource will be deleted.
+      - When C(unset), the resource will be unset.
 
   areaId:
     type: int
     description:
       - Area on which OSPFv3 is running.
-      - Minimum value: 0
-      - Maximum value: 4294967295
 
   cost:
     type: int
     description:
       - Interface cost.
-      - Minimum value: 1
-      - Maximum value: 65535
 
   deadInterval:
     type: int
     description:
       - Interval after which a neighbor is declared dead.
-      - Minimum value: 1
-      - Maximum value: 65535
 
   helloInterval:
     type: int
     description:
       - Time between HELLO packets.
-      - Minimum value: 1
-      - Maximum value: 65535
 
   instanceId:
     type: int
     description:
       - Interface Instance Id - <0-31> for v6, <64-95> for v4.
-      - Minimum value: 0
-      - Maximum value: 255
 
   name:
     type: str
@@ -87,15 +77,11 @@ options:
     type: int
     description:
       - Router priority.
-      - Minimum value: 0
-      - Maximum value: 255
 
   retransmitInterval:
     type: int
     description:
       - Time between retransmitting lost link state advertisements.
-      - Minimum value: 1
-      - Maximum value: 65535
 
   tagId:
     type: int
@@ -106,8 +92,6 @@ options:
     type: int
     description:
       - Link state transmit delay.
-      - Minimum value: 1
-      - Maximum value: 65535
 
   remove_non_updatable_params:
     type: str

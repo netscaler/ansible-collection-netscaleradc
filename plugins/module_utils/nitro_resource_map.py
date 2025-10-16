@@ -16595,7 +16595,7 @@ NITRO_RESOURCE_MAP = {
         "primary_key": "",
         "primary_key_composite": [],
         "update_payload_keys": ["afParams", "localAS", "neighbor", "routerId"],
-        "readwrite_argument": {
+        "readwrite_arguments": {
             "localAS": {"no_log": False, "type": "int"},
             "routerId": {"no_log": False, "type": "str"},
             "afParams": {
@@ -16641,7 +16641,11 @@ NITRO_RESOURCE_MAP = {
                         "elements": "dict",
                         "options": {
                             "activate": {"no_log": False, "type": "bool"},
-                            "addressFamily": {"no_log": False, "type": "str"},
+                            "addressFamily": {
+                                "no_log": False,
+                                "type": "str",
+                                "choices": ["ipv4", "ipv6"],
+                            },
                             "routeMap": {
                                 "type": "dict",
                                 "options": {
@@ -46881,29 +46885,24 @@ NITRO_RESOURCE_MAP = {
             "areaId": {
                 "no_log": False,
                 "type": "int",
-                "description": "OSPFv3 area ID (0-4294967295)",
             },
             "cost": {
                 "no_log": False,
                 "type": "int",
-                "description": "Interface cost (1-65535)",
             },
             "deadInterval": {
                 "no_log": False,
                 "type": "int",
-                "description": "Neighbor dead interval (1-65535)",
             },
             "helloInterval": {
                 "no_log": False,
                 "type": "int",
-                "description": "HELLO packet interval (1-65535)",
             },
             "instanceId": {
                 "no_log": False,
                 "type": "int",
-                "description": "Instance ID (0-255)",
             },
-            "name": {"no_log": False, "type": "str", "description": "Interface name"},
+            "name": {"no_log": False, "type": "str"},
             "networkType": {
                 "no_log": False,
                 "type": "str",
@@ -46913,23 +46912,19 @@ NITRO_RESOURCE_MAP = {
                     "point-to-multipoint",
                     "point-to-point",
                 ],
-                "description": "Network type",
             },
             "priority": {
                 "no_log": False,
                 "type": "int",
-                "description": "Router priority (0-255)",
             },
             "retransmitInterval": {
                 "no_log": False,
                 "type": "int",
-                "description": "Retransmit interval (1-65535)",
             },
-            "tagId": {"no_log": False, "type": "int", "description": "OSPFv3 Tag"},
+            "tagId": {"no_log": False, "type": "int"},
             "transmitDelay": {
                 "no_log": False,
                 "type": "int",
-                "description": "Transmit delay (1-65535)",
             },
         },
         "singleton": False,
