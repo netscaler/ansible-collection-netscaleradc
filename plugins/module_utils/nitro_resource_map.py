@@ -16667,7 +16667,6 @@ NITRO_RESOURCE_MAP = {
                     "multihopBfd": {"no_log": False, "type": "bool"},
                     "remoteAS": {"no_log": False, "type": "int"},
                     "singlehopBfd": {"no_log": False, "type": "bool"},
-                    "state": {"no_log": False, "type": "str"},
                     "updateSource": {"no_log": False, "type": "str"},
                 },
             },
@@ -50497,7 +50496,7 @@ NITRO_RESOURCE_MAP = {
                 "type": "list",
                 "elements": "dict",
                 "options": {
-                    "action": {"no_log": False, "type": "str"},
+                    "action": {"no_log": False, "type": "str", "choices": ["permit", "deny"]},
                     "localPreference": {"no_log": False, "type": "int"},
                     "matchAsPath": {"no_log": False, "type": "str"},
                     "matchCommunity": {"no_log": False, "type": "str"},

@@ -27,7 +27,6 @@ author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    type: str
     choices:
       - present
       - absent
@@ -38,6 +37,7 @@ options:
       - When C(present), the resource will be added/updated configured according to the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+    type: str
   remove_non_updatable_params:
     type: str
     choices:
@@ -130,6 +130,18 @@ options:
             description:
               - Route map configuration.
             elements: dict
+            suboptions:
+              name:
+                type: str
+                description:
+                  - Name of the route map.
+              direction:
+                type: str
+                description:
+                  - Direction for the route map.
+                choices:
+                  - in
+                  - out
       connectTimer:
         type: int
         description:

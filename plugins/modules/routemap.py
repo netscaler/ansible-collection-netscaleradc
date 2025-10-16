@@ -26,14 +26,12 @@ author:
 options:
   state:
     type: str
-    choices: ["present", "absent", "unset", "get"]
+    choices: ["present", "absent"]
     default: present
     description:
       - The state of the resource on the NetScaler ADC node.
       - When C(present), the resource will be added or updated.
       - When C(absent), the resource will be deleted.
-      - When C(unset), the resource will be unset.
-      - When C(get), retrieve the resource.
       - When C(delete), delete the resource.
 
   name:
@@ -85,7 +83,7 @@ options:
 
       matchRouteType:
         type: str
-        choices: ["type-1", "type-2"]
+        choices: []
         description:
           - Match OSPF external routes of type 1 or type 2 metrics.
 
@@ -116,7 +114,7 @@ options:
 
       setMetricType:
         type: str
-        choices: ["type-1", "type-2"]
+        choices: []
         description:
           - Set type of metric for destination routing protocol. OSPF external type 1 metric or OSPF external type 2 metric.
 
