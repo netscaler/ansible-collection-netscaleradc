@@ -1,18 +1,20 @@
 ---
-- name: Sample routeMap playbook
+- name: Sample ospfrouter playbook
   hosts: localhost
   gather_facts: false
   tasks:
-    - name: Configure routeMap
+    - name: Configure ospfrouter
       delegate_to: localhost
       netscaler.adc.ospfrouter:
         state: present
-        nsip: 10.106.210.21
-        nitro_user: nsroot
-        nitro_pass: notnsroot
-        validate_certs: false
-        nitro_protocol: http
-        tagId: "11"
+
+        processId: 1
         routerId: "1.1.1.1"
-        afParams:
-          - addressFamily: "ipv6"
+        passiveInterface:
+          - vlan22
+        redistribute:
+          - protocol: connected
+        networks:
+          - ipaddress: "33.1.2.5"
+            netmask: 25
+            area: 1

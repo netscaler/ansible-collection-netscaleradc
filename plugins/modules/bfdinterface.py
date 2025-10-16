@@ -74,6 +74,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Configure bfdinterface
+  hosts: localhost
+  tasks:
+    - name: Create bfdinterface
+      delegate_to: localhost
+      netscaler.adc.bfdinterface:
+        state: present
+        name: vlan0
+        passive: true
+        interval: 752
+        minrx: 501
+        multiplier: 3
 """
 RETURN = r"""
 ---

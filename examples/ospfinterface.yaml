@@ -14,7 +14,7 @@
         priority: 1
         mtu: 1500
         networkType: broadcast
-        authType: null
+        authType: "null"
         retransmitInterval: 5
         transmitDelay: 1
         bfd: false

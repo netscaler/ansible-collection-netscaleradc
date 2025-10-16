@@ -135,6 +135,21 @@ options:
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 EXAMPLES = r"""
+---
+- name: Sample routeMap playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure routeMap
+      delegate_to: localhost
+      netscaler.adc.routemap:
+        state: present
+        name: test
+        rules:
+          - action: permit
+            sequence: 10
+            setMetric: 105
+            matchAsPath: "300"
 """
 RETURN = r"""
 ---

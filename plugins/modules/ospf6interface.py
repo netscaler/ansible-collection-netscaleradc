@@ -84,9 +84,9 @@ options:
       - Time between retransmitting lost link state advertisements.
 
   tagId:
-    type: int
+    type: str
     description:
-      - OSPFv3 Tag.
+      - Tag identifier.
 
   transmitDelay:
     type: int
@@ -104,6 +104,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Configure ospf6interface
+  hosts: localhost
+  tasks:
+    - name: Create ospf6interface
+      delegate_to: localhost
+      netscaler.adc.ospf6interface:
+        state: present
+        name: "vlan10"
+        areaId: 0
+        tagId: "22"
+        instanceId: 0
 """
 RETURN = r"""
 ---

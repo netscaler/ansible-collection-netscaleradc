@@ -7,9 +7,10 @@
       delegate_to: localhost
       netscaler.adc.routemap:
         state: present
+
         name: test
         rules:
           - action: permit
             sequence: 10
-            setMetric: 300
+            setMetric: 105
             matchAsPath: "300"

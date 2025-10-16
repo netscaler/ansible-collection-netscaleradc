@@ -16647,7 +16647,8 @@ NITRO_RESOURCE_MAP = {
                                 "choices": ["ipv4", "ipv6"],
                             },
                             "routeMap": {
-                                "type": "dict",
+                                "type": "list",
+                                "elements": "dict",
                                 "options": {
                                     "direction": {
                                         "no_log": False,
@@ -16666,6 +16667,7 @@ NITRO_RESOURCE_MAP = {
                     "multihopBfd": {"no_log": False, "type": "bool"},
                     "remoteAS": {"no_log": False, "type": "int"},
                     "singlehopBfd": {"no_log": False, "type": "bool"},
+                    "state": {"no_log": False, "type": "str"},
                     "updateSource": {"no_log": False, "type": "str"},
                 },
             },
@@ -46870,7 +46872,19 @@ NITRO_RESOURCE_MAP = {
                 "transmitDelay",
             ],
         },
-        "add_payload_keys": [],
+        "add_payload_keys": [
+            "areaId",
+            "cost",
+            "deadInterval",
+            "helloInterval",
+            "instanceId",
+            "name",
+            "networkType",
+            "priority",
+            "retransmitInterval",
+            "tagId",
+            "transmitDelay",
+        ],
         "bindings": [],
         "bindprimary_key": "",
         "delete_arg_keys": [],
@@ -46921,7 +46935,7 @@ NITRO_RESOURCE_MAP = {
                 "no_log": False,
                 "type": "int",
             },
-            "tagId": {"no_log": False, "type": "int"},
+            "tagId": {"no_log": False, "type": "str"},
             "transmitDelay": {
                 "no_log": False,
                 "type": "int",
@@ -46997,7 +47011,6 @@ NITRO_RESOURCE_MAP = {
         "update_payload_keys": [
             "afParams",
             "passiveInterface",
-            "routerId",
             "tagId",
         ],
     },
@@ -47025,11 +47038,18 @@ NITRO_RESOURCE_MAP = {
             ],
         },
         "add_payload_keys": [
-            "networks",
-            "passiveInterface",
-            "processId",
-            "redistribute",
-            "routerId",
+            "authKey",
+            "authType",
+            "bfd",
+            "cost",
+            "deadInterval",
+            "helloInterval",
+            "mtu",
+            "name",
+            "networkType",
+            "priority",
+            "retransmitInterval",
+            "transmitDelay"
         ],
         "bindings": [],
         "bindprimary_key": "",
@@ -47054,7 +47074,11 @@ NITRO_RESOURCE_MAP = {
             "helloInterval": {"no_log": False, "type": "int"},
             "mtu": {"no_log": False, "type": "int"},
             "name": {"no_log": False, "type": "str"},
-            "networkType": {"no_log": False, "type": "str"},
+            "networkType": {
+                "no_log": False,
+                "type": "str",
+                "choices": ["broadcast", "non-broadcast", "point-to-multipoint", "point-to-point"],
+            },
             "priority": {"no_log": False, "type": "int"},
             "retransmitInterval": {"no_log": False, "type": "int"},
             "transmitDelay": {"no_log": False, "type": "int"},
@@ -47111,7 +47135,8 @@ NITRO_RESOURCE_MAP = {
         "primary_key_composite": [],
         "readwrite_arguments": {
             "networks": {
-                "type": "dict",
+                "type": "list",
+                "elements": "dict",
                 "options": {
                     "area": {"no_log": False, "type": "int"},
                     "ipaddress": {"no_log": False, "type": "str"},
@@ -47121,7 +47146,8 @@ NITRO_RESOURCE_MAP = {
             "passiveInterface": {"no_log": False, "type": "list", "elements": "str"},
             "processId": {"no_log": False, "type": "int"},
             "redistribute": {
-                "type": "dict",
+                "type": "list",
+                "elements": "dict",
                 "options": {
                     "metric": {"no_log": False, "type": "int"},
                     "metricType": {"no_log": False, "type": "int"},
@@ -50490,7 +50516,7 @@ NITRO_RESOURCE_MAP = {
             },
         },
         "singleton": False,
-        "update_payload_keys": ["rules"],
+        "update_payload_keys": ["name", "rules"],
     },
     "routerdynamicrouting": {
         "_supported_operations": [

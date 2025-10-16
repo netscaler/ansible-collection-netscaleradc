@@ -305,34 +305,30 @@ class ModuleExecutor(object):
 
     @trace
     def _filter_resource_module_params(self):
+        def filter_values(value):
+            if isinstance(value, dict):
+                cleaned_dict = {}
+                for k, v in value.items():
+                    cleaned_v = filter_values(v)
+                    if cleaned_v is not None:
+                        cleaned_dict[k] = cleaned_v
+                return cleaned_dict if cleaned_dict else None
+            elif isinstance(value, list):
+                cleaned_list = []
+                for item in value:
+                    cleaned_item = filter_values(item)
+                    if cleaned_item is not None:
+                        cleaned_list.append(cleaned_item)
+                return cleaned_list if cleaned_list else None
+            else:
+                return value if value is not None else None
+
         log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
-            if (not k.endswith("_binding")) and (
-                k
-                in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
-            ):
-                # self.module.params is a dict of key:value pairs. If an attribute is not
-                # defined in the playbook, it's value will be None. So, filter out those attributes.
-                # Also, filter out attributes ending with `_binding` as they are handled separately
-                if v is not None:
-                    if isinstance(v, list):
-                        filtered_list = []
-                        for listitem in v:
-                            if isinstance(listitem, dict):
-                                filtered_dict = {
-                                    key: value
-                                    for key, value in listitem.items()
-                                    if value is not None
-                                }
-                                if filtered_dict:
-                                    filtered_list.append(filtered_dict)
-                            else:
-                                if listitem is not None:
-                                    filtered_list.append(listitem)
-                        if filtered_list:
-                            self.resource_module_params[k] = filtered_list
-                    else:
-                        self.resource_module_params[k] = v
+            if not k.endswith("_binding") and k in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"]:
+                cleaned_value = filter_values(v)
+                if cleaned_value is not None:
+                    self.resource_module_params[k] = cleaned_value
 
         if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
             self.resource_module_params = self._add_nitro_attributes_aliases(

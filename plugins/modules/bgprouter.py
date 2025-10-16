@@ -126,21 +126,10 @@ options:
               - ipv4
               - ipv6
           routeMap:
-            type: dict
+            type: list
             description:
-              - Route maps applied to neighbor routes.
-            suboptions:
-              direction:
-                type: str
-                description:
-                  - Apply the route-map to incoming or outgoing routes.
-                choices:
-                  - in
-                  - out
-              name:
-                type: str
-                description:
-                  - Name of the route-map.
+              - Route map configuration.
+            elements: dict
       connectTimer:
         type: int
         description:
@@ -179,6 +168,38 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample bgprouter playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure bgprouter
+      delegate_to: localhost
+      netscaler.adc.bgprouter:
+        state: present
+
+        localAS: 122
+        routerId: "2.2.2.2"
+        afParams:
+          - addressFamily: "ipv4"
+            redistribute:
+              - protocol: "static"
+                routeMap: "test"
+          - addressFamily: "ipv6"
+        neighbor:
+          - address: "44.1.1.33"
+            remoteAS: 300
+            ASOriginationInterval: 11
+            advertisementInterval: 34
+            updateSource: "vlan101"
+            singlehopBfd: false
+            multihopBfd: false
+            afParams:
+              - addressFamily: "ipv4"
+                routeMap:
+                  - name: "test"
+                    direction: "out"
+              - addressFamily: "ipv6"
 """
 
 RETURN = r"""

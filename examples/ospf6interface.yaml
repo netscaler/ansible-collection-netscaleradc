@@ -6,7 +6,8 @@
       delegate_to: localhost
       netscaler.adc.ospf6interface:
         state: present
-        name: vlan0
+
+        name: "vlan10"
         areaId: 0
         tagId: "22"
         instanceId: 0

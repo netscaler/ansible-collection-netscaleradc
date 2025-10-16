@@ -50,28 +50,92 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  buffersizemb:
+  routerId:
+    description:
+      - Router ID for the OSPF process
+    type: str
+  processId:
+    description:
+      - OSPF process ID
     type: int
+  networks:
     description:
-      - Buffer size, in MB, allocated for log transaction data on the system. The
-        maximum value is limited to the memory available on the system.
-  customreqhdrs:
+      - Network configurations for OSPF
     type: list
+    elements: dict
+    suboptions:
+      ipaddress:
+        description:
+          - IP address of the network
+        type: str
+      netmask:
+        description:
+          - Network mask
+        type: int
+      area:
+        description:
+          - OSPF area ID
+        type: int
+  passiveInterface:
     description:
-      - Name(s) of HTTP request headers whose values should be exported by the Web
-        Logging feature.
-    elements: str
-  customrsphdrs:
+      - List of passive interfaces
     type: list
-    description:
-      - Name(s) of HTTP response headers whose values should be exported by the Web
-        Logging feature.
     elements: str
+  redistribute:
+    description:
+      - Route redistribution configuration
+    type: list
+    elements: dict
+    suboptions:
+      protocol:
+        description:
+          - Protocol to redistribute
+        type: str
+        choices: ['bgp', 'connected', 'intranet', 'isis', 'kernel', 'ospf', 'rip', 'static']
+      metric:
+        description:
+          - Metric for redistributed routes
+        type: int
+      metricType:
+        description:
+          - Metric type for redistributed routes
+        type: int
+      routeMap:
+        description:
+          - Route map for redistribution
+        type: str
+      tag:
+        description:
+          - Tag for redistributed routes
+        type: int
+      ospfProcessId:
+        description:
+          - OSPF process ID for redistribution
+        type: int
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ospfrouter playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure ospfrouter
+      delegate_to: localhost
+      netscaler.adc.ospfrouter:
+        state: present
+        processId: 1
+        routerId: "1.1.1.1"
+        passiveInterface:
+          - vlan22
+        redistribute:
+          - protocol: connected
+        networks:
+          - ipaddress: "33.1.2.5"
+            netmask: 25
+            area: 1
 """
 
 RETURN = r"""

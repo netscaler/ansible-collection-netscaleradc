@@ -73,6 +73,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Configure accessslist
+  hosts: localhost
+  tasks:
+    - name: Create accesslist
+      delegate_to: localhost
+      netscaler.adc.accesslist:
+        state: present
+        id: 1
+        remark: "Allow all traffic"
+        rules:
+          - action: permit
+            address: 2.1.1.21
+            wildcard: "0.0.0.255"
 """
 RETURN = r"""
 ---

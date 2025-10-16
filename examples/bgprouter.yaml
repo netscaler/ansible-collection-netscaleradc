@@ -7,30 +7,26 @@
       delegate_to: localhost
       netscaler.adc.bgprouter:
         state: present
-        localAS: 100
-        routerId: 2.2.2.2
+
+        localAS: 122
+        routerId: "2.2.2.2"
         afParams:
-          - addressFamily: ipv4
+          - addressFamily: "ipv4"
             redistribute:
-              - protocol: static
-                routeMap: test
-          - addressFamily: ipv6
+              - protocol: "static"
+                routeMap: "test"
+          - addressFamily: "ipv6"
         neighbor:
-          - address: 44.1.1.33
+          - address: "44.1.1.33"
             remoteAS: 300
-            ASOriginationInterval: 15
-            advertisementInterval: 30
-            updateSource: vlan101
-            holdTimer: 90
-            keepaliveTimer: 30
-            state: Connect
+            ASOriginationInterval: 11
+            advertisementInterval: 34
+            updateSource: "vlan101"
             singlehopBfd: false
             multihopBfd: false
             afParams:
-              - addressFamily: ipv4
-                activate: true
+              - addressFamily: "ipv4"
                 routeMap:
-                  - name: test
-                    direction: out
-              - addressFamily: ipv6
-                activate: false
+                  - name: "test"
+                    direction: "out"
+              - addressFamily: "ipv6"

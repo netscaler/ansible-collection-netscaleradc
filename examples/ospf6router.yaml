@@ -6,8 +6,10 @@
     - name: Configure ospf6router
       delegate_to: localhost
       netscaler.adc.ospf6router:
-        state: present
+        state: unset
         tagId: 11
-        routerId: 1.1.1.1
         afParams:
           - addressFamily: ipv6
+            redistribute:
+              - protocol: static
+                metric: 111

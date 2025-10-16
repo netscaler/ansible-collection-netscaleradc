@@ -83,6 +83,7 @@ options:
       - Name of the OSPF interface.
   networkType:
     type: str
+    choices: ['broadcast', 'non-broadcast', 'point-to-multipoint', 'point-to-point']
     description:
       - Type of the OSPF network.
   priority:
@@ -103,6 +104,27 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ospfinterface playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure ospfinterface
+      delegate_to: localhost
+      netscaler.adc.ospfinterface:
+        state: present
+
+        name: vlan100
+        helloInterval: 10
+        deadInterval: 40
+        cost: 10
+        priority: 1
+        mtu: 1500
+        networkType: broadcast
+        authType: "null"
+        retransmitInterval: 5
+        transmitDelay: 1
+        bfd: false
 """
 
 RETURN = r"""
