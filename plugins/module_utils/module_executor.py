@@ -305,30 +305,17 @@ class ModuleExecutor(object):
 
     @trace
     def _filter_resource_module_params(self):
-        def filter_values(value):
-            if isinstance(value, dict):
-                cleaned_dict = {}
-                for k, v in value.items():
-                    cleaned_v = filter_values(v)
-                    if cleaned_v is not None:
-                        cleaned_dict[k] = cleaned_v
-                return cleaned_dict if cleaned_dict else None
-            elif isinstance(value, list):
-                cleaned_list = []
-                for item in value:
-                    cleaned_item = filter_values(item)
-                    if cleaned_item is not None:
-                        cleaned_list.append(cleaned_item)
-                return cleaned_list if cleaned_list else None
-            else:
-                return value if value is not None else None
-
         log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
-            if not k.endswith("_binding") and k in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"]:
-                cleaned_value = filter_values(v)
-                if cleaned_value is not None:
-                    self.resource_module_params[k] = cleaned_value
+            if (not k.endswith("_binding")) and (
+                k
+                in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
+            ):
+                # self.module.params is a dict of key:value pairs. If an attribute is not
+                # defined in the playbook, it's value will be None. So, filter out those attributes.
+                # Also, filter out attributes ending with `_binding` as they are handled separately
+                if v is not None:
+                    self.resource_module_params[k] = v
 
         if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
             self.resource_module_params = self._add_nitro_attributes_aliases(
@@ -513,7 +500,7 @@ class ModuleExecutor(object):
                     errorcode = None
                     message = None
                     err_str = str(err)
-                    regex_string = re.search(r"status_code:\s*(\d+)", err_str)
+                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
                     if regex_string:
                         status_code = int(regex_string.group(1))
                     regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
@@ -523,9 +510,9 @@ class ModuleExecutor(object):
                     if regex_string:
                         message = regex_string.group(1)
                     if not (
-                        status_code == 599
-                        and errorcode == 1065
-                        and message == "Internal error while adding HSM key."
+                        status_code == 599 and
+                        errorcode == 1065 and
+                        message == "Internal error while adding HSM key."
                     ):
                         self.return_failure(err)
 
@@ -593,21 +580,15 @@ class ModuleExecutor(object):
                         "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
                         % (self.resource_name, self.resource_id)
                     )
-                    # If the systemfile is present, we will delete it and add it again
-                    self.delete()
-                    ok, err = create_resource(
-                        self.client, self.resource_name, self.resource_module_params
-                    )
-                    if not ok:
-                        self.return_failure(err)
-                elif self.resource_name == "location":
-                    # TODO: primary composite key needs to be added.
-                    # location resource has composite primary key. 1.ipfrom 2.ipto
-                    ok, err = create_resource(
-                        self.client, self.resource_name, self.resource_module_params
-                    )
-                    if not ok:
-                        self.return_failure(err)
+                    if self.resource_name == "systemfile":
+                        # If the systemfile is present, we will delete it and add it again
+                        self.delete()
+                        ok, err = create_resource(
+                            self.client, self.resource_name, self.resource_module_params
+                        )
+                        if not ok:
+                            self.return_failure(err)
+
                 elif self.resource_name.endswith("_binding"):
                     # Generally bindings are not updated. They are removed and added again.
                     log(
@@ -726,7 +707,7 @@ class ModuleExecutor(object):
                     errorcode = None
                     message = None
                     err_str = str(err)
-                    regex_string = re.search(r"status_code:\s*(\d+)", err_str)
+                    regex_string = re.search(r'status_code:\s*(\d+)', err_str)
                     if regex_string:
                         status_code = int(regex_string.group(1))
                     regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
@@ -736,9 +717,9 @@ class ModuleExecutor(object):
                     if regex_string:
                         message = regex_string.group(1)
                     if not (
-                        status_code == 599
-                        and errorcode == 1065
-                        and message == "Internal error while adding HSM key."
+                        status_code == 599 and
+                        errorcode == 1065 and
+                        message == "Internal error while adding HSM key."
                     ):
                         self.return_failure(err)
                 else:
