@@ -26,11 +26,12 @@ author:
 options:
   state:
     type: str
-    choices: ["present"]
+    choices: ["present", "unset"]
     default: present
     description:
       - The state of the resource on the NetScaler ADC node.
       - When C(present), the resource will be added or updated.
+      - When C(unset), the resource will be unset.
   interval:
     type: int
     description:
