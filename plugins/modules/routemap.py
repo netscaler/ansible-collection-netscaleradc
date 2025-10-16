@@ -26,14 +26,13 @@ author:
 options:
   state:
     type: str
-    choices: ["present", "absent", "unset]
+    choices: ["unset", "absent", "present"]
     default: present
     description:
       - The state of the resource on the NetScaler ADC node.
       - When C(present), the resource will be added or updated.
       - When C(absent), the resource will be deleted.
       - When C(unset), the resource will be unset.
-      
 
   name:
     type: str
@@ -48,7 +47,6 @@ options:
     suboptions:
       action:
         type: str
-        choices: ["permit", "deny"]
         description:
           - Specifies if the route-map denies or permits the operations.
 

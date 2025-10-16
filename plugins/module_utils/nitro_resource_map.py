@@ -50496,7 +50496,7 @@ NITRO_RESOURCE_MAP = {
                 "type": "list",
                 "elements": "dict",
                 "options": {
-                    "action": {"no_log": False, "type": "str", "choices": ["permit", "deny"]},
+                    "action": {"no_log": False, "type": "str"},
                     "localPreference": {"no_log": False, "type": "int"},
                     "matchAsPath": {"no_log": False, "type": "str"},
                     "matchCommunity": {"no_log": False, "type": "str"},
