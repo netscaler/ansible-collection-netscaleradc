@@ -1,0 +1,13 @@
+---
+- name: Configure ospf6interface
+  hosts: localhost
+  tasks:
+    - name: Create ospf6interface
+      delegate_to: localhost
+      netscaler.adc.ospf6interface:
+        state: present
+
+        name: "vlan10"
+        areaId: 0
+        tagId: "22"
+        instanceId: 0

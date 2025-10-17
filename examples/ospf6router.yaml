@@ -1,0 +1,15 @@
+---
+- name: Sample ospf6router playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure ospf6router
+      delegate_to: localhost
+      netscaler.adc.ospf6router:
+        state: unset
+        tagId: 11
+        afParams:
+          - addressFamily: ipv6
+            redistribute:
+              - protocol: static
+                metric: 111

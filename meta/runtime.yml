@@ -981,4 +981,12 @@ action_groups:
     - sslechconfig.py
     - sslhpkekey.py
     - sslprofile_sslechconfig_binding.py
+    - accesslist
+    - bfdinterface
+    - iproute
+    - routemap
+    - ospf6interface
+    - ospf6router
+    - ospfrouter
+    - ospfinterface
     - bgprouter
