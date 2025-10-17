@@ -61,7 +61,7 @@ DOCUMENTATION = r"""
               - ssh_askpass
               - sshpass
               - disable
-          version_added: '2.19'
+          version_added: '2.19.0'
           env:
               - name: ANSIBLE_SSH_PASSWORD_MECHANISM
           ini:
@@ -272,7 +272,7 @@ DOCUMENTATION = r"""
           vars:
             - name: ansible_private_key
             - name: ansible_ssh_private_key
-          version_added: '2.19'
+          version_added: '2.19.0'
       private_key_passphrase:
           description:
             - Private key passphrase, dependent on O(private_key).
@@ -283,7 +283,7 @@ DOCUMENTATION = r"""
           vars:
             - name: ansible_private_key_passphrase
             - name: ansible_ssh_private_key_passphrase
-          version_added: '2.19'
+          version_added: '2.19.0'
       sftp_batch_mode:
         default: 'yes'
         description: 'TODO: write it'
@@ -352,7 +352,7 @@ DOCUMENTATION = r"""
           vars:
             - name: ansible_pkcs11_provider
       verbosity:
-        version_added: '2.19'
+        version_added: '2.19.0'
         default: 0
         type: int
         description:
