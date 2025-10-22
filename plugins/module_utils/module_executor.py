@@ -8,6 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 import os
+import re
 
 from ansible.module_utils.basic import AnsibleModule
 
@@ -35,6 +36,7 @@ from .common import (
 )
 from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
+    GETALL_ONLY_RESOURCES,
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
@@ -90,9 +92,7 @@ class ModuleExecutor(object):
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
             mutually_exclusive=[
-                (
-                    "nitro_pass", "nitro_auth_token"
-                ),
+                ("nitro_pass", "nitro_auth_token"),
                 (
                     "managed_netscaler_instance_name",
                     "managed_netscaler_instance_ip",
@@ -147,10 +147,9 @@ class ModuleExecutor(object):
             self.module.params["api_path"] = "nitro/v2/config"
         self.have_token = self.module.params.get("nitro_auth_token", None)
         self.client = NitroAPIClient(self.module, self.resource_name)
-        have_userpass = all([
-            self.module.params.get("nitro_user"),
-            self.module.params.get("nitro_pass")
-        ])
+        have_userpass = all(
+            [self.module.params.get("nitro_user"), self.module.params.get("nitro_pass")]
+        )
         if have_userpass and not self.module.check_mode:
             self.client._headers.pop("X-NITRO-USER", None)
             self.client._headers.pop("X-NITRO-PASS", None)
@@ -166,13 +165,22 @@ class ModuleExecutor(object):
 
             else:
                 if self.netscaler_console_as_proxy_server:
-                    self.module.params["nitro_auth_token"] = response["login"][0].get("sessionid", None)
+                    self.module.params["nitro_auth_token"] = response["login"][0].get(
+                        "sessionid", None
+                    )
                 else:
-                    self.module.params["nitro_auth_token"] = response.get("sessionid", None)
+                    self.module.params["nitro_auth_token"] = response.get(
+                        "sessionid", None
+                    )
 
                 if not self.module.params["nitro_auth_token"]:
-                    self.return_failure("ERROR: Login failed. No sessionid returned from the NetScaler ADC")
-                log("INFO: Login successful. Session ID: %s" % self.module.params["nitro_auth_token"])
+                    self.return_failure(
+                        "ERROR: Login failed. No sessionid returned from the NetScaler ADC"
+                    )
+                log(
+                    "INFO: Login successful. Session ID: %s"
+                    % self.module.params["nitro_auth_token"]
+                )
 
                 self.client._headers["Cookie"] = (
                     "NITRO_AUTH_TOKEN=%s" % self.module.params["nitro_auth_token"]
@@ -221,7 +229,11 @@ class ModuleExecutor(object):
             # }
         if self.resource_name == "login":
             self.module_result["sessionid"] = self.sessionid
-        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode and not self.have_token:
+        if (
+            self.client._headers.get("Cookie", None) not in (None, "")
+            and not self.module.check_mode
+            and not self.have_token
+        ):
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
@@ -251,7 +263,11 @@ class ModuleExecutor(object):
 
     @trace
     def return_failure(self, msg):
-        if self.client._headers.get("Cookie", None) not in (None, "") and not self.module.check_mode and not self.have_token:
+        if (
+            self.client._headers.get("Cookie", None) not in (None, "")
+            and not self.module.check_mode
+            and not self.have_token
+        ):
             ok, response = adc_logout(self.client)
             if not ok:
                 log("ERROR: Logout failed: %s" % response)
@@ -289,17 +305,30 @@ class ModuleExecutor(object):
 
     @trace
     def _filter_resource_module_params(self):
+        def filter_values(value):
+            if isinstance(value, dict):
+                cleaned_dict = {}
+                for k, v in value.items():
+                    cleaned_v = filter_values(v)
+                    if cleaned_v is not None:
+                        cleaned_dict[k] = cleaned_v
+                return cleaned_dict if cleaned_dict else None
+            elif isinstance(value, list):
+                cleaned_list = []
+                for item in value:
+                    cleaned_item = filter_values(item)
+                    if cleaned_item is not None:
+                        cleaned_list.append(cleaned_item)
+                return cleaned_list if cleaned_list else None
+            else:
+                return value if value is not None else None
+
         log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
-            if (not k.endswith("_binding")) and (
-                k
-                in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
-            ):
-                # self.module.params is a dict of key:value pairs. If an attribute is not
-                # defined in the playbook, it's value will be None. So, filter out those attributes.
-                # Also, filter out attributes ending with `_binding` as they are handled separately
-                if v is not None:
-                    self.resource_module_params[k] = v
+            if not k.endswith("_binding") and k in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"]:
+                cleaned_value = filter_values(v)
+                if cleaned_value is not None:
+                    self.resource_module_params[k] = cleaned_value
 
         if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
             self.resource_module_params = self._add_nitro_attributes_aliases(
@@ -321,17 +350,31 @@ class ModuleExecutor(object):
         if is_exist is False:
             return {}
         if len(existing_resource) > 1:
-            msg = (
-                "ERROR: For resource `%s` Found more than one resource with the same primary key `%s` and resource_module_params %s"
-                % (
-                    self.resource_name,
-                    self.resource_id,
-                    self.resource_module_params,
-                )
-            )
-            self.return_failure(msg)
+            if self.resource_name in GETALL_ONLY_RESOURCES:
+                for resources in existing_resource:
+                    # Check if all module params match this resource
+                    match_found = True
+                    for key, value in self.resource_module_params.items():
+                        if key in resources and resources[key] != value:
+                            match_found = False
+                            break
 
-        self.existing_resource = existing_resource[0]
+                    # If all parameters match, use this resource
+                    if match_found:
+                        self.existing_resource = resources
+                        break
+            else:
+                msg = (
+                    "ERROR: For resource `%s` Found more than one resource with the same primary key `%s` and resource_module_params %s"
+                    % (
+                        self.resource_name,
+                        self.resource_id,
+                        self.resource_module_params,
+                    )
+                )
+                self.return_failure(msg)
+        else:
+            self.existing_resource = existing_resource[0]
 
         if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
             self.existing_resource = self._add_nitro_attributes_aliases(
@@ -430,21 +473,23 @@ class ModuleExecutor(object):
     @trace
     def create_or_update(self):
         desired_state = self.module.params["state"]
-        remove_non_updatable_params = self.module.params.get("remove_non_updatable_params", "no")
+        remove_non_updatable_params = self.module.params.get(
+            "remove_non_updatable_params", "no"
+        )
         if (
-            desired_state == "present" and
-            self.resource_name.endswith("_binding") and
-            "state" in self.resource_module_params
+            desired_state == "present"
+            and self.resource_name.endswith("_binding")
+            and "state" in self.resource_module_params
         ):
             self.resource_module_params.pop("state")
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
         if not self.existing_resource and "add" in self.supported_operations:
-            if (
-                self.resource_name.endswith("_binding") and
-                desired_state in {"enabled", "disabled"}
-            ):
+            if self.resource_name.endswith("_binding") and desired_state in {
+                "enabled",
+                "disabled",
+            }:
                 self.resource_module_params["state"] = desired_state.upper()
 
             self.module_result["changed"] = True
@@ -459,7 +504,30 @@ class ModuleExecutor(object):
                 self.client, self.resource_name, self.resource_module_params
             )
             if not ok:
-                self.return_failure(err)
+                if not self.resource_name == "sslhsmkey":
+                    self.return_failure(err)
+                else:
+                    # sslhsmkey returns errocode 1065 and message
+                    # "Internal error while adding HSM key" on successful addition
+                    status_code = None
+                    errorcode = None
+                    message = None
+                    err_str = str(err)
+                    regex_string = re.search(r"status_code:\s*(\d+)", err_str)
+                    if regex_string:
+                        status_code = int(regex_string.group(1))
+                    regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
+                    if regex_string:
+                        regex_string = int(regex_string.group(1))
+                    regex_string = re.search(r"'message':\s*'([^']+)'", err_str)
+                    if regex_string:
+                        message = regex_string.group(1)
+                    if not (
+                        status_code == 599
+                        and errorcode == 1065
+                        and message == "Internal error while adding HSM key."
+                    ):
+                        self.return_failure(err)
 
             # There can be module_params in the playbook which are not part of `add_payload_keys`,
             # but part of `update_payload_keys` in the NITRO_RESOURCE_MAP
@@ -525,15 +593,21 @@ class ModuleExecutor(object):
                         "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
                         % (self.resource_name, self.resource_id)
                     )
-                    if self.resource_name == "systemfile":
-                        # If the systemfile is present, we will delete it and add it again
-                        self.delete()
-                        ok, err = create_resource(
-                            self.client, self.resource_name, self.resource_module_params
-                        )
-                        if not ok:
-                            self.return_failure(err)
-
+                    # If the systemfile is present, we will delete it and add it again
+                    self.delete()
+                    ok, err = create_resource(
+                        self.client, self.resource_name, self.resource_module_params
+                    )
+                    if not ok:
+                        self.return_failure(err)
+                elif self.resource_name == "location":
+                    # TODO: primary composite key needs to be added.
+                    # location resource has composite primary key. 1.ipfrom 2.ipto
+                    ok, err = create_resource(
+                        self.client, self.resource_name, self.resource_module_params
+                    )
+                    if not ok:
+                        self.return_failure(err)
                 elif self.resource_name.endswith("_binding"):
                     # Generally bindings are not updated. They are removed and added again.
                     log(
@@ -541,9 +615,8 @@ class ModuleExecutor(object):
                         % (self.resource_name, self.resource_id)
                     )
                     self.delete()
-                    if (
-                        self.module.params["state"] == "present" and
-                        any(x in self.supported_operations for x in ("enabled", "disabled"))
+                    if self.module.params["state"] == "present" and any(
+                        x in self.supported_operations for x in ("enabled", "disabled")
                     ):
                         # We want to keep the previous state of the binding
                         self.resource_module_params["state"] = (
@@ -554,7 +627,9 @@ class ModuleExecutor(object):
                     )
                 # Here we are checking if resource has immutable keys
                 # if yes, we will check if the user wants to keep the non-updatable params (which in turn will return error)
-                elif immutable_keys_list is None or (immutable_keys_list and remove_non_updatable_params == "no"):
+                elif immutable_keys_list is None or (
+                    immutable_keys_list and remove_non_updatable_params == "no"
+                ):
                     self.module_result["changed"] = True
                     log(
                         "INFO: Resource %s:%s exists and is different. Will be UPDATED."
@@ -582,18 +657,21 @@ class ModuleExecutor(object):
                         self.module_result["changed"] = False
                         self.module.exit_json(**self.module_result)
                     else:
-                        if (
-                            self.resource_name.endswith("_binding") and
-                            self.module.params["state"] in {"enabled", "disabled"}
-                        ):
-                            existing_state = self.existing_resource.get("state", "").upper()
+                        if self.resource_name.endswith(
+                            "_binding"
+                        ) and self.module.params["state"] in {"enabled", "disabled"}:
+                            existing_state = self.existing_resource.get(
+                                "state", ""
+                            ).upper()
                             if existing_state != desired_state:
                                 # Create the resource in desired state
                                 self.module_result["changed"] = True
                                 self.delete()
                                 self.resource_module_params["state"] = desired_state
                                 ok, err = create_resource(
-                                    self.client, self.resource_name, self.resource_module_params
+                                    self.client,
+                                    self.resource_name,
+                                    self.resource_module_params,
                                 )
                                 if not ok:
                                     self.return_failure(err)
@@ -641,7 +719,30 @@ class ModuleExecutor(object):
                 self.client, self.resource_name, self.resource_module_params
             )
             if not ok:
-                self.return_failure(err)
+                if self.resource_name == "sslhsmkey":
+                    # sslhsmkey returns errocode 1065 and message
+                    # "Internal error while adding HSM key" on successful addition
+                    status_code = None
+                    errorcode = None
+                    message = None
+                    err_str = str(err)
+                    regex_string = re.search(r"status_code:\s*(\d+)", err_str)
+                    if regex_string:
+                        status_code = int(regex_string.group(1))
+                    regex_string = re.search(r"'errorcode':\s*(\d+)", err_str)
+                    if regex_string:
+                        errorcode = int(regex_string.group(1))
+                    regex_string = re.search(r"'message':\s*'([^']+)'", err_str)
+                    if regex_string:
+                        message = regex_string.group(1)
+                    if not (
+                        status_code == 599
+                        and errorcode == 1065
+                        and message == "Internal error while adding HSM key."
+                    ):
+                        self.return_failure(err)
+                else:
+                    self.return_failure(err)
 
     @trace
     def delete_bindings(
@@ -832,8 +933,10 @@ class ModuleExecutor(object):
                 self.add_bindings(
                     binding_name=binding_name,
                     desired_bindings=[
-                        x for x in desired_binding_members
-                        if x[get_bindprimary_key(binding_name, x)] in to_be_added_bindprimary_keys
+                        x
+                        for x in desired_binding_members
+                        if x[get_bindprimary_key(binding_name, x)]
+                        in to_be_added_bindprimary_keys
                     ],
                 )
 
@@ -952,9 +1055,9 @@ class ModuleExecutor(object):
                     )
                 else:
                     # set system user USERNAME -password NEW_PASSWORD
-                    self.resource_module_params[
-                        "password"
-                    ] = self.resource_module_params["new_password"]
+                    self.resource_module_params["password"] = (
+                        self.resource_module_params["new_password"]
+                    )
                     ok, err = update_resource(
                         self.client, "systemuser", self.resource_module_params
                     )
@@ -1081,7 +1184,10 @@ class ModuleExecutor(object):
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
-            elif self.resource_name == "install" and self.module.params["state"] == "installed":
+            elif (
+                self.resource_name == "install"
+                and self.module.params["state"] == "installed"
+            ):
                 self.install()
 
             elif self.module.params["state"] in {

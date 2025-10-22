@@ -114,3 +114,65 @@ NETSCALER_COMMON_ARGUMENTS = dict(
         fallback=(env_fallback, ["MANAGED_NETSCALER_INSTANCE_PASSWORD"]),
     ),
 )
+
+# this list contains globalbindings whose GET call must have query params args=type and filter=get_arg_keys (check in nitro_resource_map)
+GLOBAL_BINDING_ARG_LIST = [
+    "dnsglobal_dnspolicy_binding",
+    "responderglobal_responderpolicy_binding",
+    "contentinspectionglobal_contentinspectionpolicy_binding",
+    "appflowglobal_appflowpolicy_binding",
+    "appfwglobal_auditnslogpolicy_binding",
+    "appfwglobal_auditsyslogpolicy_binding",
+    "appfwglobal_appfwpolicy_binding",
+    "rewriteglobal_rewritepolicy_binding",
+    "transformglobal_transformpolicy_binding",
+    "sslglobal_sslpolicy_binding",
+    "tunnelglobal_tunneltrafficpolicy_binding",
+    "cmpglobal_cmppolicy_binding",
+    "feoglobal_feopolicy_binding",
+    "icaglobal_icapolicy_binding",
+    "lbglobal_lbpolicy_binding",
+    "cacheglobal_cachepolicy_binding",
+    "botglobal_botpolicy_binding",
+]
+
+GETALL_ONLY_RESOURCES = [
+    "appfwlearningdata",
+    "application",
+    "bridgetable",
+    "gslbldnsentry",
+    "locationfile",
+    "locationfile6",
+    "routerdynamicrouting",
+    "sslcertbundle",
+    "sslcertfile",
+    "sslcrlfile",
+    "ssldhfile",
+    "sslkeyfile",
+    "systementitydata",
+]
+
+# Dynamic Protocol list
+DYNAMIC_PROTOCOLS = [
+    "accesslist",
+    "bfdinterface",
+    "iproute",
+    "ospf6interface",
+    "routemap",
+    "ospf6router",
+    "bgprouter",
+    "ospfrouter",
+    "ospfinterface",
+]
+
+DYNAMIC_PROTOCOLS_ALIAS = {
+    "accesslist": "accessList",
+    "bfdinterface": "bfdInterface",
+    "iproute": "ipRoute",
+    "ospf6interface": "ospf6Interface",
+    "routemap": "routeMap",
+    "ospf6router": "ospf6Router",
+    "bgprouter": "bgpRouter",
+    "ospfrouter": "ospfRouter",
+    "ospfinterface": "ospfInterface",
+}
