@@ -1,0 +1,20 @@
+---
+- name: Sample ospfrouter playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure ospfrouter
+      delegate_to: localhost
+      netscaler.adc.ospfrouter:
+        state: present
+
+        processId: 1
+        routerId: "1.1.1.1"
+        passiveInterface:
+          - vlan22
+        redistribute:
+          - protocol: connected
+        networks:
+          - ipaddress: "33.1.2.5"
+            netmask: 25
+            area: 1

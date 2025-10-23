@@ -1,0 +1,20 @@
+---
+- name: Sample ospfinterface playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Configure ospfinterface
+      delegate_to: localhost
+      netscaler.adc.ospfinterface:
+        state: present
+        name: vlan100
+        helloInterval: 10
+        deadInterval: 40
+        cost: 10
+        priority: 1
+        mtu: 1500
+        networkType: broadcast
+        authType: "null"
+        retransmitInterval: 5
+        transmitDelay: 1
+        bfd: false
