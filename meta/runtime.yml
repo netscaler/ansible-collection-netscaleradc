@@ -999,3 +999,12 @@ action_groups:
     - vxlan_srcip_binding
     - vxlanvlanmap
     - vxlanvlanmap_vxlan_binding
+    - accesslist
+    - bfdinterface
+    - iproute
+    - routemap
+    - ospf6interface
+    - ospf6router
+    - ospfrouter
+    - ospfinterface
+    - bgprouter
