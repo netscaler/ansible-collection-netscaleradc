@@ -15,6 +15,8 @@ Tested with Ansible Core >=2.15 versions.
 
 Tested with Python >=3.11
 
+> **Note**: For Python 3.14+, ansible-core >=2.20.0 is required due to compatibility requirements.
+
 ## Installation
 
 ### via Ansible-galaxy
