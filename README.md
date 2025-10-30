@@ -11,11 +11,13 @@ The collection provides Ansible modules to configure and manage NetScaler ADC ap
 
 Tested with Ansible Core >=2.15 versions.
 
-### Python version compatibility
+### Python and ansible-core version compatibility
 
-Tested with Python >=3.11
+Tested with Python >=3.11 and ansible-core <2.20.0.
 
-> **Note**: For Python 3.14+, ansible-core >=2.20.0 is required due to compatibility requirements.
+> **Note:**  
+> - For Python 3.11, use ansible-core <2.20.0.  
+> - For Python 3.12+ and Python 3.14+, ansible-core >=2.20.0 is required due to compatibility requirements.
 
 ## Installation
 
