@@ -48,6 +48,11 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  deviceprofilename:
+    type: str
+    description:
+      - Device profile is created on ADM and contains the user name and password of
+        the instance(s). ADM will use this info to add the NS for registration
   forceupdateip:
     type: bool
     description:
@@ -62,7 +67,7 @@ options:
       - CICO
       - SelfManagedPool
       - SelfManagedvCPU
-      - LASConnected
+      - LAS
     description:
       - This paramter indicates type of license customer interested while configuring
         add/set licenseserver

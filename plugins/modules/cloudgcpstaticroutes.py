@@ -18,9 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: policypatsetfile
-short_description: Configuration for patset file resource.
-description: Configuration for patset file resource.
+module: cloudgcpstaticroutes
+short_description: Configuration for Cloud api to push static routes to cloud  resource.
+description: Configuration for Cloud api to push static routes to cloud  resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -29,19 +29,14 @@ options:
   state:
     choices:
       - present
-      - absent
-      - imported
-      - changed
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
-      - When C(absent), the resource will be deleted from the NetScaler ADC node.
-      - When C(imported), the resource will be imported on the NetScaler ADC node.
-      - When C(changed), the resource will be changed(?action=update) on the NetScaler
-        ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   remove_non_updatable_params:
     choices:
@@ -53,44 +48,13 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  charset:
+  status:
     type: str
     choices:
-      - ASCII
-      - UTF_8
+      - ENABLED
+      - DISABLED
     description:
-      - Character set associated with the characters in the string.
-  comment:
-    type: str
-    description:
-      - Any comments to preserve information about this patsetfile.
-  delimiter:
-    type: str
-    description:
-      - patset file patterns delimiter.
-  imported:
-    type: bool
-    description:
-      - When set, display only shows all imported patsetfiles.
-  name:
-    type: str
-    description:
-      - Name to assign to the imported patset file. Unique name of the pattern set.
-        Not case sensitive. Must begin with an ASCII letter or underscore (_) character
-        and must contain only alphanumeric and underscore characters.
-  overwrite:
-    type: bool
-    description:
-      - Overwrites the existing file
-  src:
-    type: str
-    description:
-      - URL in protocol, host, path, and file name format from where the patset file
-        will be imported. If file is already present, then it can be imported using
-        local keyword (import patsetfile local:filename patsetfile1)
-      - '                      NOTE: The import fails if the object to be imported
-        is on an HTTPS server that requires client certificate authentication for
-        access'
+      - status to push routes or not
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

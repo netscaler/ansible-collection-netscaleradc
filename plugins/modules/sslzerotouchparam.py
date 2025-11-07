@@ -18,9 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: sslfips
-short_description: Configuration for fips resource.
-description: Configuration for fips resource.
+module: sslzerotouchparam
+short_description: Configuration for Zerotouch params resource.
+description: Configuration for Zerotouch params resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -30,7 +30,6 @@ options:
     choices:
       - present
       - unset
-      - changed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -38,8 +37,6 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
-      - When C(changed), the resource will be changed(?action=update) on the NetScaler
-        ADC node.
     type: str
   remove_non_updatable_params:
     choices:
@@ -51,34 +48,64 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  fipsfw:
-    type: str
+  ocspbatchingdelay:
+    type: int
     description:
-      - Path to the FIPS firmware file.
-  hsmlabel:
-    type: str
+      - Maximum time, in milliseconds, to wait to accumulate OCSP requests to batch.
+        Does not apply if the Batching Depth is 1.
+  ocspbatchingdepth:
+    type: int
     description:
-      - Label to identify the Hardware Security Module (HSM).
-  inithsm:
+      - Number of certificates to batch together into one OCSP request. Batching avoids
+        overloading the OCSP responder. A value of 1 signifies that each request is
+        queried independently. For a value greater than 1, specify a timeout (batching
+        delay) to avoid inordinately delaying the processing of a single certificate.
+  ocspcachetimeout:
+    type: int
+    description:
+      - Timeout(in minutes) for caching the OCSP response.
+  ocsphttpmethod:
     type: str
     choices:
-      - Level-2
+      - GET
+      - POST
     description:
-      - FIPS initialization level. The appliance currently supports C(Level-2) (FIPS
-        140-2).
-  oldsopassword:
+      - HTTP method used to send ocsp request. C(POST) is the default httpmethod.
+        If request length is > 255, C(POST) wil be used even if C(GET) is set as httpMethod
+  ocspproducedattimeskew:
+    type: int
+    description:
+      - Time, in seconds, for which the Citrix ADC waits before considering the response
+        as invalid. The response is considered invalid if the Produced At time stamp
+        in the OCSP response exceeds or precedes the current Citrix ADC clock time
+        by the amount of time specified.
+  ocspresptimeout:
+    type: int
+    description:
+      - Time, in milliseconds, to wait for an OCSP response. When this time elapses,
+        an error message appears or the transaction is forwarded, depending on the
+        settings on the virtual server. Includes Batching Delay time.
+  ocsptrustresponder:
     type: str
+    choices:
+      - 'YES'
+      - 'NO'
     description:
-      - Old password for the security officer.
-  sopassword:
+      - If trustResponder is set to C(YES), signature verification will be skipped
+        for the OCSP response
+  ocspurlresolvetimeout:
+    type: int
+    description:
+      - Time, in milliseconds, to wait for an OCSP URL Resolution. When this time
+        elapses, an error message appears or the transaction is forwarded, depending
+        on the settings on the virtual server.
+  ocspusenonce:
     type: str
+    choices:
+      - ENABLED
+      - DISABLED
     description:
-      - Security officer password that will be in effect after you have configured
-        the HSM.
-  userpassword:
-    type: str
-    description:
-      - The Hardware Security Module's (HSM) User password.
+      - Enable the OCSP nonce extension, which is designed to prevent replay attacks.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

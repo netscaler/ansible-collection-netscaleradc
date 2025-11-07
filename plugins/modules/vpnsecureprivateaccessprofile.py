@@ -18,9 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: policypatsetfile
-short_description: Configuration for patset file resource.
-description: Configuration for patset file resource.
+module: vpnsecureprivateaccessprofile
+short_description: Configuration for Secure Private Access Profile resource.
+description: Configuration for Secure Private Access Profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -30,8 +30,7 @@ options:
     choices:
       - present
       - absent
-      - imported
-      - changed
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,9 +38,7 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
-      - When C(imported), the resource will be imported on the NetScaler ADC node.
-      - When C(changed), the resource will be changed(?action=update) on the NetScaler
-        ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   remove_non_updatable_params:
     choices:
@@ -53,44 +50,45 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  charset:
+  chromeenterprisepremiummode:
     type: str
     choices:
-      - ASCII
-      - UTF_8
+      - 'OFF'
+      - WITH_PARTNER_CONNECTOR
+      - WITHOUT_PARTNER_CONNECTOR
     description:
-      - Character set associated with the characters in the string.
-  comment:
+      - Secure Private Access Chrome Enterprise Premium mode of operation.
+  customerid:
     type: str
     description:
-      - Any comments to preserve information about this patsetfile.
-  delimiter:
+      - Customer ID of the citrix cloud customer.
+  forceclienttype:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Automatically configures the session for Citrix Secure Access client connectivity.
+  googlecustomerid:
     type: str
     description:
-      - patset file patterns delimiter.
-  imported:
-    type: bool
+      - Your organization's unique ID on Google's Admin console Profile settings.
+  googlesecuritygatewayid:
+    type: str
     description:
-      - When set, display only shows all imported patsetfiles.
+      - The ID of the Google Secure Gateway.
   name:
     type: str
     description:
-      - Name to assign to the imported patset file. Unique name of the pattern set.
-        Not case sensitive. Must begin with an ASCII letter or underscore (_) character
-        and must contain only alphanumeric and underscore characters.
-  overwrite:
-    type: bool
-    description:
-      - Overwrites the existing file
-  src:
+      - name of Secure Private Access profile
+  sharedsecret:
     type: str
     description:
-      - URL in protocol, host, path, and file name format from where the patset file
-        will be imported. If file is already present, then it can be imported using
-        local keyword (import patsetfile local:filename patsetfile1)
-      - '                      NOTE: The import fails if the object to be imported
-        is on an HTTPS server that requires client certificate authentication for
-        access'
+      - Secure Private Access Shared Secret.
+  url:
+    type: str
+    description:
+      - Public URL for your Secure Private Access site or load balancing server.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

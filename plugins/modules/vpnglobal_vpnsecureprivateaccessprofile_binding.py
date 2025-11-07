@@ -18,9 +18,11 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: policypatsetfile
-short_description: Configuration for patset file resource.
-description: Configuration for patset file resource.
+module: vpnglobal_vpnsecureprivateaccessprofile_binding
+short_description: Binding Resource definition for describing association between
+  vpnglobal and vpnsecureprivateaccessprofile resources
+description: Binding Resource definition for describing association between vpnglobal
+  and vpnsecureprivateaccessprofile resources
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -30,8 +32,6 @@ options:
     choices:
       - present
       - absent
-      - imported
-      - changed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,9 +39,6 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
-      - When C(imported), the resource will be imported on the NetScaler ADC node.
-      - When C(changed), the resource will be changed(?action=update) on the NetScaler
-        ADC node.
     type: str
   remove_non_updatable_params:
     choices:
@@ -53,44 +50,16 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  charset:
-    type: str
-    choices:
-      - ASCII
-      - UTF_8
-    description:
-      - Character set associated with the characters in the string.
-  comment:
+  gotopriorityexpression:
     type: str
     description:
-      - Any comments to preserve information about this patsetfile.
-  delimiter:
+      - Applicable only to advance vpn session policy. An expression or other value
+        specifying the priority of the next policy which will get evaluated if the
+        current policy rule evaluates to TRUE.
+  secureprivateaccessprofile:
     type: str
     description:
-      - patset file patterns delimiter.
-  imported:
-    type: bool
-    description:
-      - When set, display only shows all imported patsetfiles.
-  name:
-    type: str
-    description:
-      - Name to assign to the imported patset file. Unique name of the pattern set.
-        Not case sensitive. Must begin with an ASCII letter or underscore (_) character
-        and must contain only alphanumeric and underscore characters.
-  overwrite:
-    type: bool
-    description:
-      - Overwrites the existing file
-  src:
-    type: str
-    description:
-      - URL in protocol, host, path, and file name format from where the patset file
-        will be imported. If file is already present, then it can be imported using
-        local keyword (import patsetfile local:filename patsetfile1)
-      - '                      NOTE: The import fails if the object to be imported
-        is on an HTTPS server that requires client certificate authentication for
-        access'
+      - The name of the Secure Private Access Profile bound to vpn global.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

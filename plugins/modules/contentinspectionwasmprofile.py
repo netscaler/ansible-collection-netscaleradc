@@ -18,9 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: policypatsetfile
-short_description: Configuration for patset file resource.
-description: Configuration for patset file resource.
+module: contentinspectionwasmprofile
+short_description: Configuration for WASM profile resource.
+description: Configuration for WASM profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -30,8 +30,7 @@ options:
     choices:
       - present
       - absent
-      - imported
-      - changed
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,9 +38,7 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
-      - When C(imported), the resource will be imported on the NetScaler ADC node.
-      - When C(changed), the resource will be changed(?action=update) on the NetScaler
-        ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   remove_non_updatable_params:
     choices:
@@ -53,44 +50,43 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  charset:
-    type: str
-    choices:
-      - ASCII
-      - UTF_8
+  anomalousdatasize:
+    type: int
     description:
-      - Character set associated with the characters in the string.
-  comment:
-    type: str
+      - Transaction data size (in KB) greater than which a transaction is considered
+        as anomalous. Default is 512KB.
+  anomalousttfbtime:
+    type: int
     description:
-      - Any comments to preserve information about this patsetfile.
-  delimiter:
-    type: str
+      - Transaction time (in milliseconds) above which a transaction is considered
+        as anomalous. Default is 1 seconds.
+  maxbodylen:
+    type: int
     description:
-      - patset file patterns delimiter.
-  imported:
-    type: bool
-    description:
-      - When set, display only shows all imported patsetfiles.
+      - Max data size (in KB) that will be sent to the CI Agent. Default is 16KB.
+        Maximum value that can be configured is 32KB.
   name:
     type: str
     description:
-      - Name to assign to the imported patset file. Unique name of the pattern set.
-        Not case sensitive. Must begin with an ASCII letter or underscore (_) character
-        and must contain only alphanumeric and underscore characters.
-  overwrite:
-    type: bool
+      - Name of CI WASM profile
+  timeout:
+    type: int
     description:
-      - Overwrites the existing file
-  src:
+      - Timeout (in milliseconds) for the connection with the CI WASM agent
+  timeoutaction:
+    type: str
+    choices:
+      - BYPASS
+      - DROP
+      - RESET
+    description:
+      - Timeout action for the connection with the CI agent. Either the original request
+        can be bypassed i.e. request/response is forwarded to the endpoint or the
+        transaction is dropped/reset.
+  wasmmodule:
     type: str
     description:
-      - URL in protocol, host, path, and file name format from where the patset file
-        will be imported. If file is already present, then it can be imported using
-        local keyword (import patsetfile local:filename patsetfile1)
-      - '                      NOTE: The import fails if the object to be imported
-        is on an HTTPS server that requires client certificate authentication for
-        access'
+      - Name of the WASM Module
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2025 Cloud Software Group, Inc.
+# Copyright (c) 2023 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -18,9 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: policypatsetfile
-short_description: Configuration for patset file resource.
-description: Configuration for patset file resource.
+module: urlfilteringparameter
+short_description: Configuration for URLFILTERING paramter resource.
+description: Configuration for URLFILTERING paramter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -29,73 +29,57 @@ options:
   state:
     choices:
       - present
-      - absent
-      - imported
-      - changed
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
-      - When C(absent), the resource will be deleted from the NetScaler ADC node.
-      - When C(imported), the resource will be imported on the NetScaler ADC node.
-      - When C(changed), the resource will be changed(?action=update) on the NetScaler
-        ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
-  remove_non_updatable_params:
-    choices:
-      - 'yes'
-      - 'no'
-    default: 'no'
-    description:
-      - When given yes, the module will remove any parameters that are not updatable
-        in the resource.
-      - If no, the module will return error if any non-updatable parameters are provided.
-    type: str
-  charset:
-    type: str
-    choices:
-      - ASCII
-      - UTF_8
-    description:
-      - Character set associated with the characters in the string.
-  comment:
+  cloudhost:
     type: str
     description:
-      - Any comments to preserve information about this patsetfile.
-  delimiter:
+      - URL Filtering Cloud host.
+  hoursbetweendbupdates:
+    type: float
+    description:
+      - URL Filtering hours between DB updates.
+  localdatabasethreads:
+    type: float
+    description:
+      - URL Filtering Local DB number of threads.
+  seeddbpath:
     type: str
     description:
-      - patset file patterns delimiter.
-  imported:
-    type: bool
-    description:
-      - When set, display only shows all imported patsetfiles.
-  name:
+      - URL Filtering Seed DB path.
+  timeofdaytoupdatedb:
     type: str
     description:
-      - Name to assign to the imported patset file. Unique name of the pattern set.
-        Not case sensitive. Must begin with an ASCII letter or underscore (_) character
-        and must contain only alphanumeric and underscore characters.
-  overwrite:
-    type: bool
-    description:
-      - Overwrites the existing file
-  src:
-    type: str
-    description:
-      - URL in protocol, host, path, and file name format from where the patset file
-        will be imported. If file is already present, then it can be imported using
-        local keyword (import patsetfile local:filename patsetfile1)
-      - '                      NOTE: The import fails if the object to be imported
-        is on an HTTPS server that requires client certificate authentication for
-        access'
+      - URL Filtering time of day to update DB.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+- name: Sample urlfilteringparameter playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure urlfilteringparameter
+      delegate_to: localhost
+      netscaler.adc.urlfilteringparameter:
+        state: present
+        hoursbetweendbupdates: '24'
+        timeofdaytoupdatedb: 03:00
+        maxnumberofcloudthreads: '4'
+        cloudkeepalivetimeout: 120000
+        cloudserverconnecttimeout: 1000
+        clouddblookuptimeout: 2000
+        seeddbsizelevel: '1'
+        localdatabasethreads: '1'
 """
 
 RETURN = r"""
