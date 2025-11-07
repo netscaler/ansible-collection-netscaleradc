@@ -1015,7 +1015,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_appflowpolicy_binding:
     type: dict
@@ -1040,7 +1039,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_appfwpolicy_binding:
     type: dict
@@ -1065,7 +1063,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_appqoepolicy_binding:
     type: dict
@@ -1090,7 +1087,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_auditnslogpolicy_binding:
     type: dict
@@ -1115,7 +1111,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_auditsyslogpolicy_binding:
     type: dict
@@ -1140,7 +1135,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_authorizationpolicy_binding:
     type: dict
@@ -1165,7 +1159,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_botpolicy_binding:
     type: dict
@@ -1190,7 +1183,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_cachepolicy_binding:
     type: dict
@@ -1215,7 +1207,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_cmppolicy_binding:
     type: dict
@@ -1240,7 +1231,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_contentinspectionpolicy_binding:
     type: dict
@@ -1265,7 +1255,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_dnspolicy64_binding:
     type: dict
@@ -1290,7 +1279,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_feopolicy_binding:
     type: dict
@@ -1315,7 +1303,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_lbpolicy_binding:
     type: dict
@@ -1340,7 +1327,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_responderpolicy_binding:
     type: dict
@@ -1365,7 +1351,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_rewritepolicy_binding:
     type: dict
@@ -1390,7 +1375,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_service_binding:
     type: dict
@@ -1415,7 +1399,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_servicegroup_binding:
     type: dict
@@ -1440,7 +1423,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_spilloverpolicy_binding:
     type: dict
@@ -1465,7 +1447,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_tmtrafficpolicy_binding:
     type: dict
@@ -1490,7 +1471,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_transformpolicy_binding:
     type: dict
@@ -1515,7 +1495,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_videooptimizationdetectionpolicy_binding:
     type: dict
@@ -1540,7 +1519,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lbvserver_videooptimizationpacingpolicy_binding:
     type: dict
@@ -1565,7 +1543,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

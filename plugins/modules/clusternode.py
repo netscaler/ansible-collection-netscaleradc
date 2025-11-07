@@ -128,7 +128,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_authenticationvserver_binding:
     type: dict
@@ -153,7 +152,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_clusternode_binding:
     type: dict
@@ -178,7 +176,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_crvserver_binding:
     type: dict
@@ -203,7 +200,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_csvserver_binding:
     type: dict
@@ -228,7 +224,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_gslbsite_binding:
     type: dict
@@ -253,7 +248,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_gslbvserver_binding:
     type: dict
@@ -278,7 +272,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_lbvserver_binding:
     type: dict
@@ -303,7 +296,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_nslimitidentifier_binding:
     type: dict
@@ -328,7 +320,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_service_binding:
     type: dict
@@ -353,7 +344,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_streamidentifier_binding:
     type: dict
@@ -378,7 +368,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   clusternodegroup_vpnvserver_binding:
     type: dict
@@ -403,7 +392,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

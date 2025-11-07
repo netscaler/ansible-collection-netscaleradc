@@ -420,7 +420,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_analyticsprofile_binding:
     type: dict
@@ -445,7 +444,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_appcontroller_binding:
     type: dict
@@ -470,7 +468,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_appflowpolicy_binding:
     type: dict
@@ -495,7 +492,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_appfwpolicy_binding:
     type: dict
@@ -520,7 +516,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_auditnslogpolicy_binding:
     type: dict
@@ -545,7 +540,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_auditsyslogpolicy_binding:
     type: dict
@@ -570,7 +564,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationcertpolicy_binding:
     type: dict
@@ -595,7 +588,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationdfapolicy_binding:
     type: dict
@@ -620,7 +612,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationldappolicy_binding:
     type: dict
@@ -645,7 +636,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationlocalpolicy_binding:
     type: dict
@@ -670,7 +660,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationloginschemapolicy_binding:
     type: dict
@@ -695,7 +684,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationnegotiatepolicy_binding:
     type: dict
@@ -720,7 +708,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationoauthidppolicy_binding:
     type: dict
@@ -745,7 +732,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationpolicy_binding:
     type: dict
@@ -770,7 +756,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationradiuspolicy_binding:
     type: dict
@@ -795,7 +780,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationsamlidppolicy_binding:
     type: dict
@@ -820,7 +804,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationsamlpolicy_binding:
     type: dict
@@ -845,7 +828,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationtacacspolicy_binding:
     type: dict
@@ -870,7 +852,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_authenticationwebauthpolicy_binding:
     type: dict
@@ -895,7 +876,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_cachepolicy_binding:
     type: dict
@@ -920,7 +900,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_cspolicy_binding:
     type: dict
@@ -945,7 +924,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_feopolicy_binding:
     type: dict
@@ -970,7 +948,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_icapolicy_binding:
     type: dict
@@ -995,7 +972,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_intranetip6_binding:
     type: dict
@@ -1020,7 +996,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_intranetip_binding:
     type: dict
@@ -1045,7 +1020,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_responderpolicy_binding:
     type: dict
@@ -1070,7 +1044,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_rewritepolicy_binding:
     type: dict
@@ -1095,7 +1068,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_secureprivateaccessurl_binding:
     type: dict
@@ -1120,7 +1092,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_sharefileserver_binding:
     type: dict
@@ -1145,7 +1116,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_staserver_binding:
     type: dict
@@ -1170,7 +1140,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnclientlessaccesspolicy_binding:
     type: dict
@@ -1195,7 +1164,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnepaprofile_binding:
     type: dict
@@ -1220,7 +1188,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpneula_binding:
     type: dict
@@ -1245,7 +1212,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnintranetapplication_binding:
     type: dict
@@ -1270,7 +1236,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnnexthopserver_binding:
     type: dict
@@ -1295,7 +1260,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnportaltheme_binding:
     type: dict
@@ -1320,7 +1284,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnsessionpolicy_binding:
     type: dict
@@ -1345,7 +1308,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpntrafficpolicy_binding:
     type: dict
@@ -1370,7 +1332,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnurl_binding:
     type: dict
@@ -1395,7 +1356,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   vpnvserver_vpnurlpolicy_binding:
     type: dict
@@ -1420,7 +1380,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

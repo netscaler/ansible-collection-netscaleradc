@@ -433,7 +433,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   gslbvserver_gslbservice_binding:
     type: dict
@@ -458,7 +457,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   gslbvserver_gslbservicegroup_binding:
     type: dict
@@ -483,7 +481,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   gslbvserver_lbpolicy_binding:
     type: dict
@@ -508,7 +505,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   gslbvserver_spilloverpolicy_binding:
     type: dict
@@ -533,7 +529,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

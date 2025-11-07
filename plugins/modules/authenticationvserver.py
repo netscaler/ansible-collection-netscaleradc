@@ -181,7 +181,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_auditsyslogpolicy_binding:
     type: dict
@@ -206,7 +205,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationcertpolicy_binding:
     type: dict
@@ -232,7 +230,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationldappolicy_binding:
     type: dict
@@ -258,7 +255,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationlocalpolicy_binding:
     type: dict
@@ -284,7 +280,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationloginschemapolicy_binding:
     type: dict
@@ -310,7 +305,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationnegotiatepolicy_binding:
     type: dict
@@ -336,7 +330,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationoauthidppolicy_binding:
     type: dict
@@ -362,7 +355,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationpolicy_binding:
     type: dict
@@ -387,7 +379,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationradiuspolicy_binding:
     type: dict
@@ -413,7 +404,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationsamlidppolicy_binding:
     type: dict
@@ -439,7 +429,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationsamlpolicy_binding:
     type: dict
@@ -465,7 +454,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationsmartaccesspolicy_binding:
     type: dict
@@ -491,7 +479,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationtacacspolicy_binding:
     type: dict
@@ -517,7 +504,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_authenticationwebauthpolicy_binding:
     type: dict
@@ -543,7 +529,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_cachepolicy_binding:
     type: dict
@@ -568,7 +553,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_cspolicy_binding:
     type: dict
@@ -593,7 +577,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_responderpolicy_binding:
     type: dict
@@ -618,7 +601,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_rewritepolicy_binding:
     type: dict
@@ -643,7 +625,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_tmsessionpolicy_binding:
     type: dict
@@ -668,7 +649,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   authenticationvserver_vpnportaltheme_binding:
     type: dict
@@ -693,7 +673,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

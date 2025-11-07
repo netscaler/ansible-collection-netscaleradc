@@ -423,7 +423,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_auditnslogpolicy_binding:
     type: dict
@@ -448,7 +447,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_auditsyslogpolicy_binding:
     type: dict
@@ -473,7 +471,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_authorizationpolicy_binding:
     type: dict
@@ -498,7 +495,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_cachepolicy_binding:
     type: dict
@@ -523,7 +519,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_cmppolicy_binding:
     type: dict
@@ -548,7 +543,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_ecccurve_binding:
     type: dict
@@ -573,7 +567,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_responderpolicy_binding:
     type: dict
@@ -598,7 +591,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_rewritepolicy_binding:
     type: dict
@@ -623,7 +615,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_sslcacertbundle_binding:
     type: dict
@@ -648,7 +639,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_sslcertkey_binding:
     type: dict
@@ -673,7 +663,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_sslcertkeybundle_binding:
     type: dict
@@ -698,7 +687,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_sslcipher_binding:
     type: dict
@@ -723,7 +711,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_sslciphersuite_binding:
     type: dict
@@ -748,7 +735,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslvserver_sslpolicy_binding:
     type: dict
@@ -773,7 +759,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

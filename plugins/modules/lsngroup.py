@@ -295,7 +295,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_lsnappsprofile_binding:
     type: dict
@@ -320,7 +319,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_lsnhttphdrlogprofile_binding:
     type: dict
@@ -345,7 +343,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_lsnlogprofile_binding:
     type: dict
@@ -370,7 +367,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_lsnpool_binding:
     type: dict
@@ -395,7 +391,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_lsnrtspalgprofile_binding:
     type: dict
@@ -420,7 +415,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_lsnsipalgprofile_binding:
     type: dict
@@ -445,7 +439,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_lsntransportprofile_binding:
     type: dict
@@ -470,7 +463,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsngroup_pcpserver_binding:
     type: dict
@@ -495,7 +487,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

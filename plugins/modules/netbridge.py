@@ -81,7 +81,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   netbridge_nsip6_binding:
     type: dict
@@ -106,7 +105,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   netbridge_nsip_binding:
     type: dict
@@ -131,7 +129,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   netbridge_vlan_binding:
     type: dict
@@ -156,7 +153,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

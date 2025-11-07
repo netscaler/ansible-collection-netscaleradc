@@ -1642,7 +1642,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_blockkeyword_binding:
     type: dict
@@ -1667,7 +1666,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_bypasslist_binding:
     type: dict
@@ -1692,7 +1690,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_cmdinjection_binding:
     type: dict
@@ -1717,7 +1714,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_contenttype_binding:
     type: dict
@@ -1742,7 +1738,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_cookieconsistency_binding:
     type: dict
@@ -1767,7 +1762,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_creditcardnumber_binding:
     type: dict
@@ -1792,7 +1786,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_crosssitescripting_binding:
     type: dict
@@ -1817,7 +1810,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_csrftag_binding:
     type: dict
@@ -1842,7 +1834,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_denylist_binding:
     type: dict
@@ -1867,7 +1858,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_denyurl_binding:
     type: dict
@@ -1892,7 +1882,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_excluderescontenttype_binding:
     type: dict
@@ -1917,7 +1906,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_fakeaccount_binding:
     type: dict
@@ -1942,7 +1930,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_fieldconsistency_binding:
     type: dict
@@ -1967,7 +1954,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_fieldformat_binding:
     type: dict
@@ -1992,7 +1978,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_fileuploadtype_binding:
     type: dict
@@ -2017,7 +2002,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_grpcvalidation_binding:
     type: dict
@@ -2042,7 +2026,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_jsonblockkeyword_binding:
     type: dict
@@ -2067,7 +2050,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_jsoncmdurl_binding:
     type: dict
@@ -2092,7 +2074,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_jsondosurl_binding:
     type: dict
@@ -2117,7 +2098,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_jsonsqlurl_binding:
     type: dict
@@ -2142,7 +2122,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_jsonxssurl_binding:
     type: dict
@@ -2167,7 +2146,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_logexpression_binding:
     type: dict
@@ -2192,7 +2170,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_restvalidation_binding:
     type: dict
@@ -2217,7 +2194,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_safeobject_binding:
     type: dict
@@ -2242,7 +2218,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_sqlinjection_binding:
     type: dict
@@ -2267,7 +2242,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_starturl_binding:
     type: dict
@@ -2292,7 +2266,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_trustedlearningclients_binding:
     type: dict
@@ -2317,7 +2290,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_xmlattachmenturl_binding:
     type: dict
@@ -2342,7 +2314,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_xmldosurl_binding:
     type: dict
@@ -2367,7 +2338,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_xmlsqlinjection_binding:
     type: dict
@@ -2392,7 +2362,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_xmlvalidationurl_binding:
     type: dict
@@ -2417,7 +2386,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_xmlwsiurl_binding:
     type: dict
@@ -2442,7 +2410,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   appfwprofile_xmlxss_binding:
     type: dict
@@ -2467,7 +2434,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

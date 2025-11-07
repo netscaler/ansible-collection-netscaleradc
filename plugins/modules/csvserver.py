@@ -672,7 +672,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_appflowpolicy_binding:
     type: dict
@@ -697,7 +696,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_appfwpolicy_binding:
     type: dict
@@ -722,7 +720,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_appqoepolicy_binding:
     type: dict
@@ -747,7 +744,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_auditnslogpolicy_binding:
     type: dict
@@ -772,7 +768,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_auditsyslogpolicy_binding:
     type: dict
@@ -797,7 +792,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_authorizationpolicy_binding:
     type: dict
@@ -822,7 +816,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_botpolicy_binding:
     type: dict
@@ -847,7 +840,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_cachepolicy_binding:
     type: dict
@@ -872,7 +864,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_cmppolicy_binding:
     type: dict
@@ -897,7 +888,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_contentinspectionpolicy_binding:
     type: dict
@@ -922,7 +912,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_cspolicy_binding:
     type: dict
@@ -947,7 +936,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_domain_binding:
     type: dict
@@ -972,7 +960,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_feopolicy_binding:
     type: dict
@@ -997,7 +984,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_gslbvserver_binding:
     type: dict
@@ -1022,7 +1008,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_lbvserver_binding:
     type: dict
@@ -1047,7 +1032,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_responderpolicy_binding:
     type: dict
@@ -1072,7 +1056,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_rewritepolicy_binding:
     type: dict
@@ -1097,7 +1080,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_spilloverpolicy_binding:
     type: dict
@@ -1122,7 +1104,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_tmtrafficpolicy_binding:
     type: dict
@@ -1147,7 +1128,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_transformpolicy_binding:
     type: dict
@@ -1172,7 +1152,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   csvserver_vpnvserver_binding:
     type: dict
@@ -1197,7 +1176,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

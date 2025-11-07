@@ -92,7 +92,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_auditnslogpolicy_binding:
     type: dict
@@ -117,7 +116,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_auditsyslogpolicy_binding:
     type: dict
@@ -142,7 +140,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_authorizationpolicy_binding:
     type: dict
@@ -167,7 +164,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_intranetip6_binding:
     type: dict
@@ -192,7 +188,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_intranetip_binding:
     type: dict
@@ -217,7 +212,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_tmsessionpolicy_binding:
     type: dict
@@ -242,7 +236,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_vpnintranetapplication_binding:
     type: dict
@@ -267,7 +260,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_vpnsessionpolicy_binding:
     type: dict
@@ -292,7 +284,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_vpntrafficpolicy_binding:
     type: dict
@@ -317,7 +308,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_vpnurl_binding:
     type: dict
@@ -342,7 +332,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaagroup_vpnurlpolicy_binding:
     type: dict
@@ -367,7 +356,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -191,7 +191,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   lsnappsprofile_port_binding:
     type: dict
@@ -216,7 +215,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

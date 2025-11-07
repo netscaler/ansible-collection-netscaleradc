@@ -133,7 +133,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_crvserver_binding:
     type: dict
@@ -158,7 +157,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_csvserver_binding:
     type: dict
@@ -183,7 +181,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_gslbvserver_binding:
     type: dict
@@ -208,7 +205,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_lbvserver_binding:
     type: dict
@@ -233,7 +229,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_service_binding:
     type: dict
@@ -258,7 +253,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_servicegroup_binding:
     type: dict
@@ -283,7 +277,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_uservserver_binding:
     type: dict
@@ -308,7 +301,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   metricsprofile_vpnvserver_binding:
     type: dict
@@ -333,7 +325,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

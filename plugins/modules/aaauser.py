@@ -95,7 +95,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_auditsyslogpolicy_binding:
     type: dict
@@ -120,7 +119,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_authorizationpolicy_binding:
     type: dict
@@ -145,7 +143,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_intranetip6_binding:
     type: dict
@@ -170,7 +167,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_intranetip_binding:
     type: dict
@@ -195,7 +191,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_tmsessionpolicy_binding:
     type: dict
@@ -220,7 +215,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_vpnintranetapplication_binding:
     type: dict
@@ -245,7 +239,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_vpnsessionpolicy_binding:
     type: dict
@@ -270,7 +263,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_vpntrafficpolicy_binding:
     type: dict
@@ -295,7 +287,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_vpnurl_binding:
     type: dict
@@ -320,7 +311,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   aaauser_vpnurlpolicy_binding:
     type: dict
@@ -345,7 +335,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

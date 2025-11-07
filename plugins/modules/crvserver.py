@@ -460,7 +460,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_appflowpolicy_binding:
     type: dict
@@ -485,7 +484,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_appfwpolicy_binding:
     type: dict
@@ -510,7 +508,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_appqoepolicy_binding:
     type: dict
@@ -535,7 +532,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_cachepolicy_binding:
     type: dict
@@ -560,7 +556,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_cmppolicy_binding:
     type: dict
@@ -585,7 +580,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_crpolicy_binding:
     type: dict
@@ -610,7 +604,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_cspolicy_binding:
     type: dict
@@ -635,7 +628,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_feopolicy_binding:
     type: dict
@@ -660,7 +652,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_icapolicy_binding:
     type: dict
@@ -685,7 +676,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_lbvserver_binding:
     type: dict
@@ -710,7 +700,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_policymap_binding:
     type: dict
@@ -735,7 +724,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_responderpolicy_binding:
     type: dict
@@ -760,7 +748,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_rewritepolicy_binding:
     type: dict
@@ -785,7 +772,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   crvserver_spilloverpolicy_binding:
     type: dict
@@ -810,7 +796,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

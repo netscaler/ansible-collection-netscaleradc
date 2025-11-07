@@ -295,7 +295,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_captcha_binding:
     type: dict
@@ -320,7 +319,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_ipreputation_binding:
     type: dict
@@ -345,7 +343,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_kmdetectionexpr_binding:
     type: dict
@@ -370,7 +367,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_logexpression_binding:
     type: dict
@@ -395,7 +391,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_ratelimit_binding:
     type: dict
@@ -420,7 +415,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_tps_binding:
     type: dict
@@ -445,7 +439,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_trapinsertionurl_binding:
     type: dict
@@ -470,7 +463,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   botprofile_whitelist_binding:
     type: dict
@@ -495,7 +487,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

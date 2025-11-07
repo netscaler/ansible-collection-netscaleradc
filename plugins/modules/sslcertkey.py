@@ -31,6 +31,7 @@ options:
       - present
       - absent
       - unset
+      - changed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,6 +40,8 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(changed), the resource will be changed(?action=update) on the NetScaler
+        ADC node.
     type: str
   remove_non_updatable_params:
     choices:
@@ -180,7 +183,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -61,6 +61,16 @@ options:
       - connection parameters. EMS must be supported by both the TLS client and server
       - in order to be enabled during a handshake. This setting applies to both
       - frontend and backend SSL profiles.
+  allowlegacykdf:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - 'FIPS 140-3 certification requires all handshakes without EMS be blocked. '
+      - 'Such KDFs are allowed by default. This setting is to allow/disallow such
+        legacy KDFs '
+      - when needed. This setting applies to both frontend and backend SSL profiles.
   allowunknownsni:
     type: str
     choices:
@@ -649,7 +659,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslprofile_sslcertkey_binding:
     type: dict
@@ -674,7 +683,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslprofile_sslcipher_binding:
     type: dict
@@ -699,7 +707,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslprofile_sslciphersuite_binding:
     type: dict
@@ -724,7 +731,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   sslprofile_sslechconfig_binding:
     type: dict
@@ -749,7 +755,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

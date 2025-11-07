@@ -151,7 +151,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   rnat_nsip_binding:
     type: dict
@@ -176,7 +175,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   rnat_retainsourceportset_binding:
     type: dict
@@ -201,7 +199,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
   rnatglobal_auditsyslogpolicy_binding:
     type: dict
@@ -226,7 +223,6 @@ options:
       binding_members:
         type: list
         elements: dict
-        description: List of binding members
         default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
