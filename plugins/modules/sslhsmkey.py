@@ -85,19 +85,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
----
-- name: Create ssl hsm key
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Create ssl hsm key
-      delegate_to: localhost
-      netscaler.adc.sslhsmkey:
-        state: present
-        hsmkeyname: "hsmk1"
-        hsmtype: "SAFENET"
-        serialnum: "116877xxxx465464"
-        password: "xxxxxxx"
 """
 
 RETURN = r"""
