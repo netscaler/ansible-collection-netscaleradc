@@ -161,3 +161,7 @@ To add support for new modules:
 1. Update `resource_map` in `resourcelist.py`
 2. Add appropriate state mappings if needed
 3. Test with sample playbooks
+
+### Support
+As Red Hat Ansible Certified Content, this collection is entitled to support through the Ansible Automation Platform (AAP) using the **Create issue** button on the top right corner. If a support case cannot be opened with Red Hat and the collection has been obtained either from Galaxy or GitHub, we strongly encourage engaging with the NetScaler and Ansible community. You can contribute to the collection or seek assistance via the [NetScaler's Official GitHub Repository](https://github.com/netscaler/ansible-collection-netscaleradc) or connect with other Ansible users on the [Ansible Forum](https://forum.ansible.com/).
+
