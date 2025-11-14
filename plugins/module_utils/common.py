@@ -663,6 +663,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("renamed")
     if "apply" in supported_operations:
         desired_states.add("applied")
+    if "change" in supported_operations:
+        desired_states.add("changed")
     return desired_states
 
 

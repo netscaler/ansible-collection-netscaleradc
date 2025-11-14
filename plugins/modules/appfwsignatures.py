@@ -31,12 +31,15 @@ options:
     choices:
       - absent
       - imported
+      - changed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(imported), the resource will be imported on the NetScaler ADC node.
+      - When C(changed), the resource will be changed(?action=update) on the NetScaler
+        ADC node.
     type: str
   remove_non_updatable_params:
     choices:

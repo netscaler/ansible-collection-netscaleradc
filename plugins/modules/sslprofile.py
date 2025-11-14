@@ -61,6 +61,16 @@ options:
       - connection parameters. EMS must be supported by both the TLS client and server
       - in order to be enabled during a handshake. This setting applies to both
       - frontend and backend SSL profiles.
+  allowlegacykdf:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - 'FIPS 140-3 certification requires all handshakes without EMS be blocked. '
+      - 'Such KDFs are allowed by default. This setting is to allow/disallow such
+        legacy KDFs '
+      - when needed. This setting applies to both frontend and backend SSL profiles.
   allowunknownsni:
     type: str
     choices:

@@ -4,13 +4,13 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 
 ---
 
-- Total number of resources: **947**
-- Total number of supported resources: **947**
-- Total number of supported resources with examples: **494**
-- Total number of unsupported resources: **0**
-- Percentage of supported resources: **100.0%**
-- Percentage of supported resources with examples: **52.16%**
-- Percentage of unsupported resources: **0.0%**
+- Total number of resources: **942**
+- Total number of supported resources: **940**
+- Total number of supported resources with examples: **502**
+- Total number of unsupported resources: **2**
+- Percentage of supported resources: **99.79%**
+- Percentage of supported resources with examples: **53.29%**
+- Percentage of unsupported resources: **0.21%**
 
 ---
 
@@ -657,8 +657,6 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [rdpconnections](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/rdpconnections_module.html) | ✅ | ❌ |
 | [rdpserverprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/rdpserverprofile_module.html) | ✅ | ✅ |
 | [reboot](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/reboot_module.html) | ✅ | ❌ |
-| [reporting](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/reporting_module.html) | ✅ | ❌ |
-| [reportingconfig](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/reportingconfig_module.html) | ✅ | ❌ |
 | [reputationsettings](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/reputationsettings_module.html) | ✅ | ❌ |
 | [responderaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/responderaction_module.html) | ✅ | ✅ |
 | [responderglobal_responderpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/responderglobal_responderpolicy_binding_module.html) | ✅ | ✅ |
@@ -787,9 +785,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [systemautorestorefeature](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemautorestorefeature_module.html) | ✅ | ❌ |
 | [systembackup](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systembackup_module.html) | ✅ | ❌ |
 | [systemcmdpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemcmdpolicy_module.html) | ✅ | ✅ |
-| [systemcollectionparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemcollectionparam_module.html) | ✅ | ❌ |
 | [systemcpuparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemcpuparam_module.html) | ✅ | ❌ |
-| [systementitydata](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systementitydata_module.html) | ✅ | ❌ |
 | [systemextramgmtcpu](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemextramgmtcpu_module.html) | ✅ | ✅ |
 | [systemfile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemfile_module.html) | ✅ | ❌ |
 | [systemglobal_auditnslogpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemglobal_auditnslogpolicy_binding_module.html) | ✅ | ❌ |
@@ -805,7 +801,6 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [systemgroup_systemuser_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemgroup_systemuser_binding_module.html) | ✅ | ✅ |
 | [systemhwerror](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemhwerror_module.html) | ✅ | ❌ |
 | [systemkek](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemkek_module.html) | ✅ | ❌ |
-| [systemlevelreporting](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemlevelreporting_module.html) | ✅ | ❌ |
 | [systemnsbtracing](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemnsbtracing_module.html) | ✅ | ❌ |
 | [systemparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemparameter_module.html) | ✅ | ✅ |
 | [systemrestorepoint](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemrestorepoint_module.html) | ✅ | ❌ |
