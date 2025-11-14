@@ -239,9 +239,9 @@ For external contributions, refer the [guidelines](https://github.com/netscaler/
 
 ## Support
 
-For issues : https://github.com/netscaler/ansible-collection-netscaleradc/issues
+As Red Hat Ansible Certified Content, this collection is entitled to support through the Ansible Automation Platform (AAP) using the **Create issue** button on the top right corner. If a support case cannot be opened with Red Hat and the collection has been obtained either from Galaxy or GitHub, we strongly encourage engaging with the NetScaler and Ansible community. You can contribute to the collection or seek assistance via the [NetScaler's Official GitHub Repository](https://github.com/netscaler/ansible-collection-netscaleradc) or connect with other Ansible users on the [Ansible Forum](https://forum.ansible.com/).
 
-For discussions or feature requests: https://github.com/netscaler/ansible-collection-netscaleradc/discussions
+For feature requests: https://github.com/netscaler/ansible-collection-netscaleradc/discussions
 
 ## Release Notes
 
