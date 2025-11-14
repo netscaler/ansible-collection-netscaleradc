@@ -30246,7 +30246,7 @@ NITRO_RESOURCE_MAP = {
         "delete_arg_keys": [],
         "disable_payload_keys": [],
         "enable_payload_keys": [],
-        "get_arg_keys": [],
+        "get_arg_keys": ["id"],
         "immutable_keys": ["inc", "ipaddress", "rpcnodepassword"],
         "password_keys": ["rpcnodepassword"],
         "primary_key": "id",
