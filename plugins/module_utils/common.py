@@ -665,6 +665,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("applied")
     if "change" in supported_operations:
         desired_states.add("changed")
+    if "reboot" in supported_operations:
+        desired_states.add("rebooted")
     return desired_states
 
 
