@@ -600,7 +600,6 @@ plugins/modules/rdpclientprofile.py validate-modules:missing-gplv3-license # We 
 plugins/modules/rdpconnections.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/rdpserverprofile.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/reboot.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/reportingconfig.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/reputationsettings.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/responderaction.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/responderglobal_responderpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
@@ -719,9 +718,7 @@ plugins/modules/subscribersessions.py validate-modules:missing-gplv3-license # W
 plugins/modules/systemadmuserinfo.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systembackup.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemcmdpolicy.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/systemcollectionparam.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemcpuparam.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/systementitydata.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemextramgmtcpu.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemfile.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemglobal_auditnslogpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
@@ -921,13 +918,11 @@ plugins/modules/nssourceroutecachetable.py validate-modules:missing-gplv3-licens
 plugins/modules/nstestlicense.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/ntpsync.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/policytracing.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/reporting.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/interface.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/vpnvserver_appfwpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/vpnvserver_secureprivateaccessurl_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/vpnglobal_appfwpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/vpnglobal_secureprivateaccessurl_binding.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/systemlevelreporting.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/metricsprofile_authenticationvserver_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/metricsprofile_crvserver_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/metricsprofile_csvserver_binding.py validate-modules:missing-gplv3-license # We use MIT license
