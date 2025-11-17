@@ -48706,7 +48706,7 @@ NITRO_RESOURCE_MAP = {
         "update_payload_keys": ["name", "psk", "rdpip", "rdpport", "rdpredirection"],
     },
     "reboot": {
-        "_supported_operations": ["Reboot"],
+        "_supported_operations": ["reboot"],
         "action_payload_keys": {
             "apply": [],
             "create": [],
