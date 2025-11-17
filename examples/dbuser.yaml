@@ -1,0 +1,10 @@
+---
+- name: Sample dbuser playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dbuser
+      delegate_to: localhost
+      netscaler.adc.dbuser:
+        state: present
+        username: us1

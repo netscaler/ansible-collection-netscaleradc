@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta content="2.6.1" name="antsibull-docs" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="2.16.1" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.lsngroup module – Configuration for LSN group resource. &mdash; Ansible collections  documentation</title>
@@ -13,15 +15,11 @@
 
   
     <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="netscaler.adc.lsngroup_ipsecalgprofile_binding module – Binding Resource definition for describing association between lsngroup and ipsecalgprofile resources" href="lsngroup_ipsecalgprofile_binding_module.html" />
@@ -131,7 +129,7 @@
 <h1>netscaler.adc.lsngroup module – Configuration for LSN group resource.<a class="headerlink" href="#netscaler-adc-lsngroup-module-configuration-for-lsn-group-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.6.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -208,10 +206,10 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ftp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-ftp"><strong>ftp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ftp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ftp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable Application Layer Gateway (ALG) for the FTP protocol. For some application-layer protocols, the IP addresses and protocol port numbers are usually communicated in the packet’s payload. When acting as an ALG, the Citrix ADC changes the packet’s payload to ensure that the protocol continues to work over LSN.</p>
-<p>Note:  The Citrix ADC also includes ALG for ICMP and TFTP protocols. ALG for the ICMP protocol is enabled by default, and there is no provision to disable it. ALG for the TFTP protocol is disabled by default. ALG is enabled automatically for an LSN group when you bind a UDP LSN application profile, with endpoint-independent-mapping, endpoint-independent filtering, and destination port as 69 (well-known port for TFTP), to the LSN group.</p>
+<p>Note: The Citrix ADC also includes ALG for ICMP and TFTP protocols. ALG for the ICMP protocol is enabled by default, and there is no provision to disable it. ALG for the TFTP protocol is disabled by default. ALG is enabled automatically for an LSN group when you bind a UDP LSN application profile, with endpoint-independent-mapping, endpoint-independent filtering, and destination port as 69 (well-known port for TFTP), to the LSN group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
@@ -221,7 +219,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ftpcm"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-ftpcm"><strong>ftpcm</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ftpcm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-ftpcm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable the FTP connection mirroring for specified LSN group. Connection mirroring (CM or connection failover) refers to keeping active an established TCP or UDP connection when a failover occurs.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -233,7 +231,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-groupname"><strong>groupname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the LSN group. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;), equals (=), and hyphen (-) characters. Cannot be changed after the LSN group is created. The following requirement applies only to the Citrix ADC CLI: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “lsn group1” or ‘lsn group1’).</p>
 </div></td>
@@ -248,7 +246,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-logging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-logging"><strong>logging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-logging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-logging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log mapping entries and sessions created or deleted for this LSN group. The Citrix ADC logs LSN sessions for this LSN group only when both logging and session logging parameters are enabled.</p>
 <p>The ADC uses its existing syslog and audit log framework to log LSN information. You must enable global level LSN logging by enabling the LSN parameter in the related NSLOG action and SYLOG action entities. When the Logging parameter is enabled, the Citrix ADC generates log messages related to LSN mappings and LSN sessions of this LSN group. The ADC then sends these log messages to servers associated with the NSLOG action and SYSLOG actions entities.</p>
@@ -260,7 +258,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p>* Subscriber’s IP address, port, and traffic domain ID</p>
 <p>* NAT IP address and port</p>
 <p>* Protocol name</p>
-<p>* Destination IP address, port, and traffic domain ID might be  present, depending on the following conditions:</p>
+<p>* Destination IP address, port, and traffic domain ID might be present, depending on the following conditions:</p>
 <p>** Destination IP address and port are not logged for Endpoint-Independent mapping</p>
 <p>** Only Destination IP address (and not port) is logged for Address-Dependent mapping</p>
 <p>** Destination IP address and port are logged for Address-Port-Dependent mapping</p>
@@ -610,7 +608,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of NAT IP address and port allocation (from the bound LSN pools) for subscribers:</p>
 <p>Available options function as follows:</p>
-<p>* Deterministic - Allocate a NAT IP address and a block of ports to each subscriber (of the LSN client bound to the LSN group). The Citrix ADC sequentially allocates NAT resources to these subscribers. The Citrix ADC ADC assigns the first block of ports (block size determined by the port block size parameter of the LSN group) on the beginning NAT IP address to the beginning subscriber IP address. The next range of ports is assigned to the next subscriber, and so on, until the NAT address does not have enough ports for the next subscriber. In this case, the first port block on the next NAT address is used for the subscriber, and so on.  Because each subscriber now receives a deterministic NAT IP address and a block of ports, a subscriber can be identified without any need for logging. For a connection, a subscriber can be identified based only on the NAT IP address and port, and the destination IP address and port. The maximum number of LSN subscribers allowed, globally, is 1 million.</p>
+<p>* Deterministic - Allocate a NAT IP address and a block of ports to each subscriber (of the LSN client bound to the LSN group). The Citrix ADC sequentially allocates NAT resources to these subscribers. The Citrix ADC ADC assigns the first block of ports (block size determined by the port block size parameter of the LSN group) on the beginning NAT IP address to the beginning subscriber IP address. The next range of ports is assigned to the next subscriber, and so on, until the NAT address does not have enough ports for the next subscriber. In this case, the first port block on the next NAT address is used for the subscriber, and so on. Because each subscriber now receives a deterministic NAT IP address and a block of ports, a subscriber can be identified without any need for logging. For a connection, a subscriber can be identified based only on the NAT IP address and port, and the destination IP address and port. The maximum number of LSN subscribers allowed, globally, is 1 million.</p>
 <p>* Dynamic - Allocate a random NAT IP address and a port from the LSN NAT pool for a subscriber’s connection. If port block allocation is enabled (in LSN pool) and a port block size is specified (in the LSN group), the Citrix ADC allocates a random NAT IP address and a block of ports for a subscriber when it initiates a connection for the first time. The ADC allocates this NAT IP address and a port (from the allocated block of ports) for different connections from this subscriber. If all the ports are allocated (for different subscriber’s connections) from the subscriber’s allocated port block, the ADC allocates a new random port block for the subscriber.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
@@ -676,17 +674,17 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-portblocksize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-portblocksize"><strong>portblocksize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-portblocksize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-portblocksize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Size of the NAT port block to be allocated for each subscriber.</p>
-<p>To set this parameter for Dynamic NAT, you must enable the port block allocation parameter in the bound LSN pool. For Deterministic NAT, the port block allocation parameter is always  enabled, and you cannot disable it.</p>
+<p>To set this parameter for Dynamic NAT, you must enable the port block allocation parameter in the bound LSN pool. For Deterministic NAT, the port block allocation parameter is always enabled, and you cannot disable it.</p>
 <p>In Dynamic NAT, the Citrix ADC allocates a random NAT port block, from the available NAT port pool of an NAT IP address, for each subscriber. For a subscriber, if all the ports are allocated from the subscriber’s allocated port block, the ADC allocates a new random port block for the subscriber.</p>
 <p>The default port block size is 256 for Deterministic NAT, and 0 for Dynamic NAT.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pptp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-pptp"><strong>pptp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pptp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-pptp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable the PPTP Application Layer Gateway.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -698,7 +696,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rtspalg"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-rtspalg"><strong>rtspalg</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rtspalg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-rtspalg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable the RTSP ALG.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -723,7 +721,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionlogging"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-sessionlogging"><strong>sessionlogging</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionlogging" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log sessions created or deleted for the LSN group. The Citrix ADC logs LSN sessions for this LSN group only when both logging and session logging parameters are enabled.</p>
 <p>A log message for an LSN session consists of the following information:</p>
@@ -744,7 +742,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionsync"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-sessionsync"><strong>sessionsync</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionsync" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionsync" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>In a high availability (HA) deployment, synchronize information of all LSN sessions related to this LSN group with the secondary node. After a failover, established TCP connections and UDP packet flows are kept active and resumed on the secondary node (new primary).</p>
 <p>For this setting to work, you must enable the global session synchronization parameter.</p>
@@ -757,7 +755,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sipalg"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-sipalg"><strong>sipalg</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sipalg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-sipalg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable the SIP ALG.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -769,7 +767,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-snmptraplimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-snmptraplimit"><strong>snmptraplimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-snmptraplimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
+<a class="ansibleOptionLink" href="#parameter-snmptraplimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of SNMP Trap messages that can be generated for the LSN group in one minute.</p>
 </div></td>
@@ -816,7 +814,17 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </section>
 <section id="examples">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample lsngroup playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
+<span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure lsngroup</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.lsngroup</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">groupname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dsl_http</span>
+<span class="w">        </span><span class="nt">clientname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dsl_http</span>
 </pre></div>
 </div>
 </section>
@@ -881,6 +889,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <h3>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+<li><p>Shiva Shankar Vaddepally (&#64;shivashankar-vaddepally)</p></li>
 </ul>
 </section>
 <section id="collection-links">

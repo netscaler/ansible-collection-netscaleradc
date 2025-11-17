@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,18 +17,21 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appflowaction
 short_description: Configuration for AppFlow action resource.
 description: Configuration for AppFlow action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
       - unset
+      - renamed
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,9 +40,20 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
+      - When C(renamed), the resource will be renamed on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   botinsight:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -47,7 +61,7 @@ options:
       - On enabling this option, the Citrix ADC will send the bot insight records
         to the configured collectors.
   ciinsight:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -55,7 +69,7 @@ options:
       - On enabling this option, the Citrix ADC will send the ContentInspection Insight
         records to the configured collectors.
   clientsidemeasurements:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -68,13 +82,13 @@ options:
       - Name(s) of collector(s) to be associated with the AppFlow action.
     elements: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments about this action.  In the CLI, if including spaces between words,
         enclose the comment in quotation marks. (The quotation marks are not required
         in the configuration utility.)
   distributionalgorithm:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -86,7 +100,7 @@ options:
     description:
       - If only the stats records are to be exported, turn on this option.
   name:
-    type: raw
+    type: str
     description:
       - Name for the action. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -107,7 +121,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow action" or 'my appflow action').
   pagetracking:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -115,7 +129,7 @@ options:
       - On enabling this option, the Citrix ADC will start tracking the page for waterfall
         chart by inserting a NS_ESNS cookie in the response.
   securityinsight:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -130,7 +144,7 @@ options:
     description:
       - Log C(ANOMALOUS) or C(ALL) transactions
   videoanalytics:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -138,7 +152,7 @@ options:
       - On enabling this option, the Citrix ADC will send the videoinsight records
         to the configured collectors.
   webinsight:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -175,6 +189,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appflowaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appflowaction
+      delegate_to: localhost
+      netscaler.adc.appflowaction:
+        state: present
+        name: af_action_v1_10.102.233.21
+        collectors:
+          - af_collector_10.102.233.21
+        clientsidemeasurements: ENABLED
 """
 
 RETURN = r"""

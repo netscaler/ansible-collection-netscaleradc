@@ -1,0 +1,10 @@
+---
+- name: Sample appfwgrpcwebjsoncontenttype playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwgrpcwebjsoncontenttype
+      delegate_to: localhost
+      netscaler.adc.appfwgrpcwebjsoncontenttype:
+        state: present
+        grpcwebjsoncontenttypevalue: application/grpc-web+json

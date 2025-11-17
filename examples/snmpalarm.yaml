@@ -1,0 +1,11 @@
+---
+- name: Sample snmpalarm playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure snmpalarm
+      delegate_to: localhost
+      netscaler.adc.snmpalarm:
+        state: present
+        trapname: SYSLOG-CONNECTION-DROPPED
+        time: 0

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nstimeout
 short_description: Configuration for timeout resource.
 description: Configuration for timeout resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,86 +38,96 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   anyclient:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for non-TCP client connections. This value
         is over ridden by the client timeout that is configured on individual entities.
   anyserver:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for non TCP server connections. This value
         is over ridden by the server timeout that is configured on individual entities.
   anytcpclient:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for TCP client connections. This value takes
         precedence over  entity level timeout settings (vserver/service). This is
         applicable only to transport protocol TCP.
   anytcpserver:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for TCP server connections. This value takes
         precedence over entity level timeout settings ( vserver/service). This is
         applicable only to transport protocol TCP.
   client:
-    type: float
+    type: int
     description:
       - Client idle timeout (in seconds). If zero, the service-type default value
         is taken when service is created.
   halfclose:
-    type: raw
+    type: int
     description:
       - Idle timeout, in seconds, for connections that are in TCP half-closed state.
   httpclient:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for client connections of HTTP service type.
         This value is over ridden by the client timeout that is configured on individual
         entities.
   httpserver:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for server connections of HTTP service type.
         This value is over ridden by the server timeout that is configured on individual
         entities.
   newconnidletimeout:
-    type: raw
+    type: int
     description:
       - Timer interval, in seconds, for new TCP NATPCB connections on which no data
         was received.
   nontcpzombie:
-    type: raw
+    type: int
     description:
       - Interval at which the zombie clean-up process for non-TCP connections should
         run. Inactive IP NAT connections will be cleaned up.
   reducedfintimeout:
-    type: raw
+    type: int
     description:
       - Alternative idle timeout, in seconds, for closed TCP NATPCB connections.
   reducedrsttimeout:
-    type: raw
+    type: int
     description:
       - Timer interval, in seconds, for abruptly terminated TCP NATPCB connections.
   server:
-    type: float
+    type: int
     description:
       - Server idle timeout (in seconds).  If zero, the service-type default value
         is taken when service is created.
   tcpclient:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for non-HTTP client connections of TCP service
         type. This value is over ridden by the client timeout that is configured on
         individual entities.
   tcpserver:
-    type: raw
+    type: int
     description:
       - Global idle timeout, in seconds, for non-HTTP server connections of TCP service
         type. This value is over ridden by the server timeout that is configured on
         entities.
   zombie:
-    type: raw
+    type: int
     description:
       - Interval, in seconds, at which the Citrix ADC zombie cleanup process must
         run. This process cleans up inactive TCP connections.
@@ -124,6 +136,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nstimeout playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure nstimeout
+      delegate_to: localhost
+      netscaler.adc.nstimeout:
+        state: present
+        newconnidletimeout: '25'
 """
 
 RETURN = r"""

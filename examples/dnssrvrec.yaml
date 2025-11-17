@@ -1,0 +1,15 @@
+---
+- name: Sample dnssrvrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnssrvrec
+      delegate_to: localhost
+      netscaler.adc.dnssrvrec:
+        state: present
+        domain: http2.abc.com
+        target: target
+        priority: '23'
+        weight: '23'
+        port: '23'
+        ttl: 3601

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: dnsnaptrrec
 short_description: Configuration for NAPTR record resource.
 description: Configuration for NAPTR record resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -35,6 +37,16 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   domain:
     type: str
@@ -49,22 +61,22 @@ options:
     description:
       - flags for this NAPTR.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
   order:
-    type: float
+    type: int
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
   preference:
-    type: float
+    type: int
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
   recordid:
-    type: float
+    type: int
     description:
       - Unique, internally generated record ID. View the details of the naptr record
         to obtain its record ID. Records can be removed by either specifying the domain
@@ -85,7 +97,7 @@ options:
     description:
       - Service Parameters applicable to this delegation path.
   ttl:
-    type: float
+    type: int
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -111,6 +123,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample dnsnaptrrec playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnsnaptrrec
+      delegate_to: localhost
+      netscaler.adc.dnsnaptrrec:
+        state: present
+        domain: citrix.com1
+        order: '10'
+        preference: '10'
+        flags: U
+        services: E2U+sip
+        regexp: '!^.*$!sip:customer-service@example.com!'
+        ttl: 3600
 """
 
 RETURN = r"""

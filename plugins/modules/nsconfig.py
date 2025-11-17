@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsconfig
 short_description: Configuration for system config resource.
 description: Configuration for system config resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,6 +38,23 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+  async:
+    type: bool
+    description:
+      - Using this option will run the operation in async mode and return the job
+        id. The job ID can be used later to track the conversion progress via show
+        ns job <id> Command. This option is mostly useful for API to avoid timeouts
+        for large input configuration
   all:
     type: bool
     description:
@@ -78,6 +97,10 @@ options:
     type: str
     description:
       - Location of the configurations.
+  configfile:
+    type: str
+    description:
+      - Full path of config file to be converted to nitro
   cookieversion:
     type: str
     choices:
@@ -90,13 +113,13 @@ options:
     description:
       - Port range for cache redirection services.
   exclusivequotamaxclient:
-    type: float
+    type: int
     description:
       - The percentage of maxClient to be given to PEs
   exclusivequotaspillover:
-    type: float
+    type: int
     description:
-      - The percentage of max limit to be given to PEs
+      - The percentage of spillover threshold to be given to PEs
   force:
     type: bool
     description:
@@ -106,11 +129,11 @@ options:
     description:
       - Port range configured for FTP services.
   grantquotamaxclient:
-    type: float
+    type: int
     description:
       - The percentage of shared quota to be granted at a time for maxClient
   grantquotaspillover:
-    type: float
+    type: int
     description:
       - The percentage of shared quota to be granted at a time for spillover
   httpport:
@@ -121,15 +144,16 @@ options:
         these configured ports.
     elements: int
   ifnum:
-    type: raw
+    type: list
     description:
       - Interfaces of the appliances that must be bound to the NSVLAN.
+    elements: str
   ignoredevicespecific:
     type: bool
     description:
       - Suppress device specific differences.
   ipaddress:
-    type: raw
+    type: str
     description:
       - IP address of the Citrix ADC. Commonly referred to as NSIP address. This parameter
         is mandatory to bring up the appliance.
@@ -157,24 +181,24 @@ options:
         nodes become standalone appliances. The ''C(basic)'' and ''C(extended)'' levels
         are propagated to the cluster nodes.'
   maxconn:
-    type: float
+    type: int
     description:
       - The maximum number of connections that will be made from the system to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
   maxreq:
-    type: float
+    type: int
     description:
       - The maximum number of requests that the system can pass on a particular connection
         between the system and a server attached to it. Setting this value to 0 allows
         an unlimited number of requests to be passed.
   netmask:
-    type: raw
+    type: str
     description:
       - Netmask corresponding to the IP address. This parameter is mandatory to bring
         up the appliance.
   nsvlan:
-    type: raw
+    type: int
     description:
       - VLAN (NSVLAN) for the subnet on which the IP address resides.
   outtype:
@@ -185,11 +209,11 @@ options:
     description:
       - Format to display the difference in configurations.
   pmtumin:
-    type: float
+    type: int
     description:
       - The minimum Path MTU.
   pmtutimeout:
-    type: float
+    type: int
     description:
       - The timeout value in minutes.
   rbaconfig:
@@ -201,6 +225,11 @@ options:
       - RBA configurations and TACACS policies bound to system global will not be
         cleared if RBA is set to C(NO).This option is applicable only for BASIC level
         of clear configuration.Default is C(YES), which will clear rba configurations.
+  responsefile:
+    type: str
+    description:
+      - Full path of file to store the nitro graph. If not specified, nitro graph
+        is returned as part of the API response.
   securecookie:
     type: str
     choices:
@@ -208,8 +237,20 @@ options:
       - DISABLED
     description:
       - enable/disable secure flag for persistence cookie
+  securemanagementtd:
+    type: int
+    description:
+      - This positive integer identifies Management traffic domain. If not specified,
+        defaults to 4094
+  securemanagementtraffic:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This enabled secure management traffic handling.
   tagged:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -240,16 +281,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsconfig playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsconfig
+    - name: Configure nsconfig
       delegate_to: localhost
       netscaler.adc.nsconfig:
         state: present
-        ipaddress: 10.10.10.10
-        netmask: 255.255.255.0
+        nsvlan: '10'
+        ifnum:
+          - 0/1
+        tagged: 'NO'
 """
 
 RETURN = r"""

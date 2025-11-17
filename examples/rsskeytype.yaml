@@ -1,9 +1,9 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample rsskeytype playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | rsskeytype
+    - name: Configure rsskeytype
       delegate_to: localhost
       netscaler.adc.rsskeytype:
         state: present

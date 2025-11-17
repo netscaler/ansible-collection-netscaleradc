@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: sslcert
 short_description: Configuration for cerificate resource.
 description: Configuration for cerificate resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -32,6 +34,16 @@ options:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(created), the `create` operation will be applied on the resource.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   cacert:
     type: str
@@ -98,7 +110,7 @@ options:
       - '* C(SRVR_CERT) - SSL server certificate used on SSL servers for end-to-end
         encryption.'
   days:
-    type: float
+    type: int
     description:
       - Number of days for which the certificate will be valid, beginning with the
         time and day (system time) of creation.
@@ -170,21 +182,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Create ssl cert certname.cert
-  delegate_to: localhost
-  netscaler.adc.sslcert:
-    state: created
-    certfile: certname.cert
-    reqfile: certname.csr
-    keyform: PEM
-    days: 1480
-    certform: PEM
-    cacert: root_cert.cert
-    cacertform: PEM
-    cakey: root_cert.key
-    cakeyform: PEM
-    caserial: root_cert.srl
-    certtype: SRVR_CERT
+---
+- name: Sample sslcert playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure sslcert
+      delegate_to: localhost
+      netscaler.adc.sslcert:
+        state: present
+        certfile: ssl_rsa_der_cert
+        reqfile: ssl_rsa_der_csr
+        certtype: ROOT_CERT
+        keyfile: ssl_rsa_der_key
+        keyform: DER
+        days: '3650'
+        certform: DER
+        cacertform: PEM
+        cakeyform: PEM
 """
 
 RETURN = r"""

@@ -1,0 +1,10 @@
+---
+- name: Sample l2param playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure l2param
+      delegate_to: localhost
+      netscaler.adc.l2param:
+        state: present
+        returntoethernetsender: ENABLED

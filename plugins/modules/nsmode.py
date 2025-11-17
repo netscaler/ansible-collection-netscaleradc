@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsmode
 short_description: Configuration for ns mode resource.
 description: Configuration for ns mode resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -34,6 +36,16 @@ options:
         ADC node.
       - When C(enabled), the resource will be enabled on the NetScaler ADC node.
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   mode:
     type: list
@@ -63,6 +75,7 @@ options:
       - RISE_APBR
       - RISE_RHI
       - BridgeBPDUs
+      - SINGLE_IP
       - ULFD
     description:
       - Mode to be enabled. Multiple modes can be specified by providing a blank space
@@ -73,6 +86,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample nsmode playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure nsmode
+      delegate_to: localhost
+      netscaler.adc.nsmode:
+        state: present
+        usnip: 'true'
 """
 
 RETURN = r"""

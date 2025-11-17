@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: cmpparameter
 short_description: Configuration for CMP parameter resource.
 description: Configuration for CMP parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   addvaryheader:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -46,12 +58,12 @@ options:
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
   cmpbypasspct:
-    type: raw
+    type: int
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
         0 - 100'
   cmplevel:
-    type: raw
+    type: str
     choices:
       - optimal
       - bestspeed
@@ -62,7 +74,7 @@ options:
       - ' * Best speed - Corresponds to a gzip level of 1.'
       - ' * Best compression - Corresponds to a gzip level of 9.'
   cmponpush:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -71,7 +83,7 @@ options:
         data. Upon receipt of a packet with a PUSH flag, the appliance immediately
         begins compression of the accumulated packets.
   externalcache:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -87,33 +99,51 @@ options:
     description:
       - Heuristic basefile expiry.
   heurexpiryhistwt:
-    type: float
+    type: int
     description:
       - For heuristic basefile expiry, weightage to be given to historical delta compression
         ratio, specified as percentage.  For example, to give 25% weightage to historical
         ratio (and therefore 75% weightage to the ratio for current delta compression
         transaction), specify 25.
   heurexpirythres:
-    type: float
+    type: int
     description:
       - Threshold compression ratio for heuristic basefile expiry, multiplied by 100.
         For example, to set the threshold ratio to 1.25, specify 125.
   minressize:
-    type: raw
+    type: int
     description:
       - Smallest response size, in bytes, to be compressed.
   policytype:
-    type: raw
+    type: str
     choices:
       - ADVANCED
     description:
       - Type of the policy. The only possible value is C(ADVANCED)
   quantumsize:
-    type: raw
+    type: int
     description:
       - Minimum quantum of data to be filled before compression begins.
+  randomgzipfilename:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Control the addition of a random filename of random length in the GZIP header
+        to apply the Heal-the-BREACH mitigation for the BREACH attack.
+  randomgzipfilenamemaxlength:
+    type: int
+    description:
+      - Maximum length of the random filename to be added in the GZIP header to apply
+        the Heal-the-BREACH mitigation for the BREACH attack.
+  randomgzipfilenameminlength:
+    type: int
+    description:
+      - Minimum length of the random filename to be added in the GZIP header to apply
+        the Heal-the-BREACH mitigation for the BREACH attack.
   servercmp:
-    type: raw
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -121,7 +151,7 @@ options:
       - Allow the server to send compressed data to the Citrix ADC. With the default
         setting, the Citrix ADC appliance handles all compression.
   varyheadervalue:
-    type: raw
+    type: str
     description:
       - The value of the HTTP Vary header for compressed responses. If this argument
         is not specified, a default value of "Accept-Encoding" will be used.
@@ -130,6 +160,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample cmpparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cmpparameter
+      delegate_to: localhost
+      netscaler.adc.cmpparameter:
+        state: present
+        cmplevel: bestspeed
+        quantumsize: '7899'
+        servercmp: 'OFF'
+        minressize: '2'
+        cmpbypasspct: '80'
+        cmponpush: ENABLED
+        policytype: ADVANCED
+        addvaryheader: ENABLED
 """
 
 RETURN = r"""

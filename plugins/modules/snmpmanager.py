@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpmanager
 short_description: Configuration for manager resource.
 description: Configuration for manager resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,8 +40,18 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   domainresolveretry:
-    type: raw
+    type: int
     description:
       - Amount of time, in seconds, for which the Citrix ADC waits before sending
         another DNS query to resolve the host name of the SNMP manager if the last
@@ -47,7 +59,7 @@ options:
         After a query succeeds, the TTL determines the wait time. The minimum and
         default value is 5.
   ipaddress:
-    type: raw
+    type: str
     description:
       - 'IP address of the SNMP manager. Can be an IPv4 or IPv6 address. You can instead
         specify an IPv4 network address or IPv6 network prefix if you want the Citrix
@@ -58,7 +70,7 @@ options:
       - 'Note: The Citrix ADC does not support host names for SNMP managers that have
         IPv6 addresses.'
   netmask:
-    type: raw
+    type: str
     description:
       - Subnet mask associated with an IPv4 network address. If the IP address specifies
         the address or host name of a specific host, accept the default value of 255.255.255.255.
@@ -67,6 +79,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample snmpmanager playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure snmpmanager
+      delegate_to: localhost
+      netscaler.adc.snmpmanager:
+        state: present
+        ipaddress:
+          - citrix.com
+        domainresolveretry: 6
 """
 
 RETURN = r"""

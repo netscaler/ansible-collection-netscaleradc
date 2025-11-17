@@ -1,12 +1,12 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample snmpgroup playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | snmpgroup
+    - name: Configure snmpgroup
       delegate_to: localhost
       netscaler.adc.snmpgroup:
         state: present
-        name: v3_grp
+        name: ia_snmpgrp1
         securitylevel: noAuthNoPriv
-        readviewname: v3_grp_view
+        readviewname: sample

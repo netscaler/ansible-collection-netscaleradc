@@ -1,0 +1,16 @@
+---
+- name: Sample cacheglobal_cachepolicy_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure cacheglobal_cachepolicy_binding
+      delegate_to: localhost
+      netscaler.adc.cacheglobal_cachepolicy_binding:
+        state: present
+        policy: NOPOLICY
+        priority: '185883'
+        gotopriorityexpression: USE_INVOCATION_RESULT
+        type: HTTPQUIC_RES_DEFAULT
+        invoke: true
+        labeltype: policylabel
+        labelname: _httpquicResBuiltinDefaults

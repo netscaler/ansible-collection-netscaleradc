@@ -1,0 +1,11 @@
+---
+- name: Sample dnszone playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnszone
+      delegate_to: localhost
+      netscaler.adc.dnszone:
+        state: present
+        zonename: gslb.blackstone.com
+        proxymode: 'NO'

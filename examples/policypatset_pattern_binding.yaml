@@ -1,0 +1,12 @@
+---
+- name: Sample policypatset_pattern_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure policypatset_pattern_binding
+      delegate_to: localhost
+      netscaler.adc.policypatset_pattern_binding:
+        state: present
+        name: prod_patset
+        string: https://portal2.bx.com
+        index: '4'

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nscapacity
 short_description: Configuration for capacity resource.
 description: Configuration for capacity resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   bandwidth:
-    type: raw
+    type: int
     description:
       - System bandwidth limit.
   edition:
@@ -49,11 +61,15 @@ options:
     description:
       - Product edition.
   nodeid:
-    type: float
+    type: int
     description:
       - Unique number that identifies the cluster node.
+  password:
+    type: str
+    description:
+      - Password to use when authenticating with ADM Agent for LAS licensing.
   platform:
-    type: raw
+    type: str
     choices:
       - VS10
       - VE10
@@ -104,8 +120,15 @@ options:
       - Mbps
     description:
       - Bandwidth unit.
+  username:
+    type: str
+    description:
+      - Username to authenticate with ADM Agent for LAS licensing. Must begin with
+        a letter, number, or the underscore character (_), and must contain only letters,
+        numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals
+        (=), colon (:), and underscore characters.
   vcpu:
-    type: raw
+    type: bool
     description:
       - licensed using vcpu pool.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -1,0 +1,12 @@
+---
+- name: Sample dnskey playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure dnskey
+      delegate_to: localhost
+      netscaler.adc.dnskey:
+        state: present
+        keyname: com.ksk.4096
+        publickey: /nsconfig/dns/com.ksK.key
+        privatekey: /nsconfig/dns/com.ksK.private

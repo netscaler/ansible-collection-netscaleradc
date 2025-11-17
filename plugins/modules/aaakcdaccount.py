@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: aaakcdaccount
 short_description: Configuration for Kerberos constrained delegation account resource.
 description: Configuration for Kerberos constrained delegation account resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,8 +40,18 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   cacert:
-    type: raw
+    type: str
     description:
       - CA Cert for UserCert or when doing PKINIT backchannel.
   delegateduser:
@@ -47,12 +59,12 @@ options:
     description:
       - Username that can perform kerberos constrained delegation.
   enterpriserealm:
-    type: raw
+    type: str
     description:
       - Enterprise Realm of the user. This should be given only in certain KDC deployments
         where KDC expects Enterprise username instead of Principal Name
   kcdaccount:
-    type: raw
+    type: str
     description:
       - The name of the KCD account.
   kcdpassword:
@@ -60,7 +72,7 @@ options:
     description:
       - Password for Delegated User.
   keytab:
-    type: raw
+    type: str
     description:
       - The path to the keytab file. If specified other parameters in this command
         need not be given
@@ -69,16 +81,16 @@ options:
     description:
       - Kerberos Realm.
   servicespn:
-    type: raw
+    type: str
     description:
       - Service SPN. When specified, this will be used to fetch kerberos tickets.
         If not specified, Citrix ADC will construct SPN using service fqdn
   usercert:
-    type: raw
+    type: str
     description:
       - SSL Cert (including private key) for Delegated User.
   userrealm:
-    type: raw
+    type: str
     description:
       - Realm of the user
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -86,6 +98,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample aaakcdaccount playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure aaakcdaccount
+      delegate_to: localhost
+      netscaler.adc.aaakcdaccount:
+        state: present
+        kcdaccount: kcdaccount1
+        realmstr: dnpg
 """
 
 RETURN = r"""

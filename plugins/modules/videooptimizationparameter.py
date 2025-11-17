@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: videooptimizationparameter
 short_description: Configuration for VideoOptimization parameter resource.
 description: Configuration for VideoOptimization parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,12 +38,22 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   quicpacingrate:
-    type: raw
+    type: int
     description:
       - QUIC Video Pacing Rate (Kbps).
   randomsamplingpercentage:
-    type: raw
+    type: float
     description:
       - Random Sampling Percentage.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
@@ -50,11 +62,11 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample videooptimizationparameter playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | videooptimizationparameter
+    - name: Configure videooptimizationparameter
       delegate_to: localhost
       netscaler.adc.videooptimizationparameter:
         state: present

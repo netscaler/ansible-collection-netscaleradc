@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: gslbservicegroup_gslbservicegroupmember_binding
 short_description: Binding Resource definition for describing association between
   gslbservicegroup and gslbservicegroupmember resources
@@ -25,11 +26,14 @@ description: Binding Resource definition for describing association between gslb
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
       - present
       - absent
+      - enabled
+      - disabled
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,9 +41,21 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled), the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled), the resource will be disabled on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   hashid:
-    type: float
+    type: int
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
@@ -48,7 +64,7 @@ options:
     description:
       - IP Address.
   order:
-    type: float
+    type: int
     description:
       - Order number to be assigned to the gslb servicegroup member
   port:
@@ -84,7 +100,7 @@ options:
         is unset. When implementing HTTP redirect site persistence, the Citrix ADC
         redirects GSLB requests to GSLB services by using their site domains.
   weight:
-    type: float
+    type: int
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

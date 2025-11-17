@@ -1,0 +1,12 @@
+---
+- name: Sample appqoepolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appqoepolicy
+      delegate_to: localhost
+      netscaler.adc.appqoepolicy:
+        state: present
+        name: apppol3_ns
+        rule: SUBSCRIBER.AVP(250).VALUE.CONTAINS("name")
+        action: appact22_ns

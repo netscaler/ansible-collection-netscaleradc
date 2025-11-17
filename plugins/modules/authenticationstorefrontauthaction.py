@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: authenticationstorefrontauthaction
 short_description: Configuration for Storefront authentication action resource.
 description: Configuration for Storefront authentication action resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,19 +40,29 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   defaultauthenticationgroup:
-    type: raw
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   domain:
-    type: raw
+    type: str
     description:
       - Domain of the server that is used for authentication. If users enter name
         without domain, this parameter is added to username in the authentication
         request to server.
   name:
-    type: raw
+    type: str
     description:
       - Name for the Storefront Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must

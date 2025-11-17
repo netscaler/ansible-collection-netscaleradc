@@ -1,0 +1,20 @@
+---
+- name: Sample gslbservice playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure gslbservice
+      delegate_to: localhost
+      netscaler.adc.gslbservice:
+        state: present
+        servicename: GSLB_SVC_USE2_storefront.blackstone.com
+        ip: 10.76.126.10
+        servicetype: SSL
+        port: 443
+        publicip: 10.76.126.10
+        publicport: 443
+        maxclient: '0'
+        sitename: GSLB_Site_USE2
+        clttimeout: 180
+        svrtimeout: 360
+        downstateflush: ENABLED

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: snmpoption
 short_description: Configuration for SNMP option resource.
 description: Configuration for SNMP option resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,25 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
+  customtrap:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - By default, Customtrap will be disabled, set to enabled when using the feature.
   partitionnameintrap:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -45,7 +64,7 @@ options:
       - Send partition name as a varbind in traps. By default the partition names
         are not sent as a varbind.
   severityinfointrap:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -54,7 +73,7 @@ options:
         message. Enable this option to send severity level of trap as one of the varbind
         in the trap message.
   snmpset:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -62,7 +81,7 @@ options:
       - Accept SNMP SET requests sent to the Citrix ADC, and allow SNMP managers to
         write values to MIB objects that are configured for write access.
   snmptraplogging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -71,7 +90,7 @@ options:
         if no trap listeners are configured. With the default setting, SNMP trap events
         are logged if at least one trap listener is configured on the appliance.
   snmptraplogginglevel:
-    type: raw
+    type: str
     choices:
       - EMERGENCY
       - ALERT

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: analyticsprofile
 short_description: Configuration for Analytics profile resource.
 description: Configuration for Analytics profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,8 +40,18 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   allhttpheaders:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -47,35 +59,35 @@ options:
       - On enabling this option, the Citrix ADC will log all the request and response
         headers.
   analyticsauthtoken:
-    type: raw
+    type: str
     description:
       - Token for authenticating with the endpoint. If the endpoint requires the Authorization
         header in a particular format, specify the complete format as the value to
         this parameter. For eg., in case of splunk, the Authorizaiton header is required
         to be of the form - Splunk <auth-token>.
   analyticsendpointcontenttype:
-    type: raw
+    type: str
     description:
       - By default, application/json content-type is used. If this needs to be overridden,
         specify the value.
   analyticsendpointmetadata:
-    type: raw
+    type: str
     description:
       - If the endpoint requires some metadata to be present before the actual json
         data, specify the same.
   analyticsendpointurl:
-    type: raw
+    type: str
     description:
       - The URL at which to upload the analytics data on the endpoint
   auditlogs:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option indicates the whether auditlog should be sent to the REST collector.
   collectors:
-    type: raw
+    type: str
     description:
       - The collector can be an IP, an appflow collector name, a service or a vserver.
         If IP is specified, the transport is considered as logstream and default port
@@ -84,35 +96,40 @@ options:
         service is assumed as the collector. If vserver is specified, the services
         bound to it are considered as collectors and the records are load balanced.
   cqareporting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP CQA parameters.
+  dataformatfile:
+    type: str
+    description:
+      - This option is for configuring the file containing the data format and metadata
+        required by the analytics endpoint.
   events:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option indicates the whether events should be sent to the REST collector.
   grpcstatus:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log the gRPC status headers
   httpauthentication:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log Authentication header.
   httpclientsidemeasurements:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -121,28 +138,33 @@ options:
         HTTP response to collect the client side page-timings and will send the same
         to the configured collectors.
   httpcontenttype:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log content-length header.
   httpcookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log cookie header.
+  httpcustomheaders:
+    type: list
+    description:
+      - Specify the list of custom headers to be exported in web transaction records.
+    elements: str
   httpdomainname:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log domain name.
   httphost:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -150,14 +172,14 @@ options:
       - On enabling this option, the Citrix ADC will log the Host header in appflow
         records
   httplocation:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log location header.
   httpmethod:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -165,7 +187,7 @@ options:
       - On enabling this option, the Citrix ADC will log the method header in appflow
         records
   httppagetracking:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -173,7 +195,7 @@ options:
       - On enabling this option, the Citrix ADC will link the embedded objects of
         a page together.
   httpreferer:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -181,76 +203,88 @@ options:
       - On enabling this option, the Citrix ADC will log the referer header in appflow
         records
   httpsetcookie:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log set-cookie header.
   httpsetcookie2:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log set-cookie2 header.
   httpurl:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log the URL in appflow records
   httpurlquery:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log URL Query.
   httpuseragent:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log User-Agent header.
   httpvia:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will Via header.
   httpxforwardedforheader:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log X-Forwarded-For header.
   integratedcache:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log the Integrated Caching appflow
         records
+  managementlog:
+    type: list
+    choices:
+      - ALL
+      - SHELL
+      - ACCESS
+      - NSMGMT
+      - NONE
+    description:
+      - This option indicates the whether managementlog should be sent to the REST
+        collector.
+    elements: str
   metrics:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option indicates the whether metrics should be sent to the REST collector.
   metricsexportfrequency:
-    type: raw
+    type: int
     description:
       - This option is for configuring the metrics export frequency in seconds, frequency
         value must be in [30,300] seconds range
   name:
-    type: raw
+    type: str
     description:
       - Name for the analytics profile. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -261,35 +295,44 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow profile" or 'my appflow profile').
   outputmode:
-    type: raw
+    type: str
     choices:
       - avro
       - prometheus
       - influx
+      - json
     description:
       - This option indicates the format of REST API POST body. It depends on the
         consumer of the analytics data.
   schemafile:
-    type: raw
+    type: str
     description:
       - This option is for configuring json schema file containing a list of counters
         to be exported by metricscollector
   servemode:
-    type: raw
+    type: str
     choices:
       - Push
       - Pull
     description:
       - This option is for setting the mode of how data is provided
   tcpburstreporting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP burst parameters.
+  topn:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - On enabling this topn support, the topn information of the stream identifier
+        this profile is bound to will be exported to the analytics endpoint.
   type:
-    type: raw
+    type: str
     choices:
       - global
       - webinsight
@@ -303,10 +346,12 @@ options:
       - botinsight
       - CIinsight
       - udpinsight
+      - ngsinsight
+      - streaminsight
     description:
       - This option indicates what information needs to be collected and exported.
   urlcategory:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -317,6 +362,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample analyticsprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure analyticsprofile
+      delegate_to: localhost
+      netscaler.adc.analyticsprofile:
+        state: present
+        name: splunk_mgmtlog_prof
+        collectors: splunk_http_8088
+        type: timeseries
+        analyticsendpointmetadata: '{"source":"netscaler","sourcetype":"mgmtlog","index":"ns-mgmt-logs"}'
+        analyticsauthtoken: REQ_PASSWORD
+        analyticsendpointurl: /services/collector/event
+        analyticsendpointcontenttype: application/json
 """
 
 RETURN = r"""

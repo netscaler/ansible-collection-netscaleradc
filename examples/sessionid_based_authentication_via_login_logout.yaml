@@ -30,7 +30,7 @@
         ipaddress: 4.4.4.4
         netmask: 255.255.255.192
         type: VIP
-    - name: Sample Task | nsip
+    - name: Sample Task | nsip | remove
       delegate_to: localhost
       netscaler.adc.nsip:
         # `nitro_auth_token` can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable

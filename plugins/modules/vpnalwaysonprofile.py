@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vpnalwaysonprofile
 short_description: Configuration for AlwyasON profile resource.
 description: Configuration for AlwyasON profile resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,15 +40,25 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   clientcontrol:
-    type: raw
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Allow/Deny user to log off and connect to another Gateway
   locationbasedvpn:
-    type: raw
+    type: str
     choices:
       - Remote
       - Everywhere
@@ -60,11 +72,11 @@ options:
         When set to EveryWhere, the client skips the check to detect if it is on the
         enterprise network and tries to establish the tunnel
   name:
-    type: raw
+    type: str
     description:
       - name of AlwaysON profile
   networkaccessonvpnfailure:
-    type: raw
+    type: str
     choices:
       - onlyToGateway
       - fullAccess
@@ -78,6 +90,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vpnalwaysonprofile playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnalwaysonprofile
+      delegate_to: localhost
+      netscaler.adc.vpnalwaysonprofile:
+        state: present
+        name: aop1
+        networkaccessonvpnfailure: fullAccess
+        clientcontrol: DENY
+        locationbasedvpn: Remote
 """
 
 RETURN = r"""

@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: ntpparam
 short_description: Configuration for NTP parameter resource.
 description: Configuration for NTP parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   authentication:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -45,21 +57,22 @@ options:
       - Apply NTP authentication, which enables the NTP client (Citrix ADC) to verify
         that the server is in fact known and trusted.
   autokeylogsec:
-    type: raw
+    type: int
     description:
       - Autokey protocol requires the keys to be refreshed periodically. This parameter
         specifies the interval between regenerations of new session keys. In seconds,
         expressed as a power of 2.
   revokelogsec:
-    type: raw
+    type: int
     description:
       - Interval between re-randomizations of the autokey seeds to prevent brute-force
         attacks on the autokey algorithms.
   trustedkey:
-    type: raw
+    type: list
     description:
       - Key identifiers that are trusted for server authentication with symmetric
         key cryptography in the keys file.
+    elements: int
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -10,6 +10,9 @@ __metaclass__ = type
 import re
 
 from .constants import (
+    DYNAMIC_PROTOCOLS,
+    DYNAMIC_PROTOCOLS_ALIAS,
+    GLOBAL_BINDING_ARG_LIST,
     HTTP_RESOURCE_ALREADY_EXISTS,
     HTTP_RESOURCE_NOT_FOUND,
     HTTP_SUCCESS_CODES,
@@ -61,28 +64,61 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 
     if resource_name.endswith("_binding"):
         # binding resources require `filter` instead of `args` to uniquely identify a resource
-        status_code, response_body = client.get(
-            resource=resource_name,
-            id=resource_id,
-            filter=get_args,
-        )
+        if resource_name in GLOBAL_BINDING_ARG_LIST:
+            # here we are making sure that for globalbindings present in the list query params args=type and filter=get_arg_keys
+            del get_args["type"]
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                filter=get_args,
+                args={"type": resource_module_params["type"]},
+            )
+        else:
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                filter=get_args,
+            )
     elif resource_name in {"sslcertfile"}:
         status_code, response_body = client.get(
             resource=resource_name,
             id=resource_id,
             filter=get_args,
         )
-    else:
+    elif resource_name == "server":
+        if "ipaddress" in get_args:
+            get_args.pop("ipaddress")
+        if "domain" in get_args:
+            get_args.pop("domain")
         status_code, response_body = client.get(
             resource=resource_name,
             id=resource_id,
             args=get_args,
         )
+    else:
+        if resource_name in DYNAMIC_PROTOCOLS:
+            new_resource_name = (
+                "routerDynamicRouting/" + DYNAMIC_PROTOCOLS_ALIAS[resource_name]
+            )
+            status_code, response_body = client.get(
+                resource=new_resource_name,
+                id=resource_id,
+                args=get_args,
+            )
+        else:
+            status_code, response_body = client.get(
+                resource=resource_name,
+                id=resource_id,
+                args=get_args,
+            )
     if status_code in {HTTP_RESOURCE_NOT_FOUND}:
         return False, []
     if status_code in HTTP_SUCCESS_CODES:
         # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
-        if resource_name not in response_body:
+        if (
+            resource_name not in response_body
+            and resource_name not in DYNAMIC_PROTOCOLS
+        ):
             if resource_name == "sslcipher":
                 resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
                 return True, [
@@ -91,7 +127,12 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
 
             return False, []
         # `update-only` resources return a dict instead of a list.
-        return_response = response_body[resource_name]
+        if resource_name in DYNAMIC_PROTOCOLS:
+            return_response = response_body.get("routerDynamicRouting", {}).get(
+                DYNAMIC_PROTOCOLS_ALIAS[resource_name], {}
+            )
+        else:
+            return_response = response_body[resource_name]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
         # So, we are converting the keys to lowercase.
         # except for `ping` and `traceroute`, all the othe resources returns a keys with lowercase.
@@ -180,30 +221,47 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
         ]
     except KeyError:
         resource_action_keys = []
-
-    # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
-    for key in resource_module_params.keys():
-        if not action:
-            if key in resource_add_keys:
-                post_data[key] = resource_module_params[key]
-            elif resource_name == "service" and key == "ipaddress":
-                post_data["ip"] = resource_module_params[key]
-            else:
-                log(
-                    "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
-                        key, resource_name
-                    )
-                )
+    if action == "rename":
+        oldnamekey = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+        if oldnamekey in resource_module_params:
+            post_data[oldnamekey] = resource_module_params[oldnamekey]
         else:
-            if key in resource_action_keys:
-                post_data[key] = resource_module_params[key]
-            else:
-                log(
-                    "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
-                        key, resource_name, action.upper()
+            msg = "ERROR: Key `{}` is required for the resource `{}` for RENAME operation".format(
+                oldnamekey, resource_name
+            )
+            log(msg)
+            return False, msg, None
+        if "newname" in resource_module_params:
+            post_data["newname"] = resource_module_params["newname"]
+        else:
+            msg = "ERROR: Key `newname` is required for the resource `{}` for RENAME operation".format(
+                resource_name
+            )
+            log(msg)
+            return False, msg, None
+    else:
+        # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
+        for key in resource_module_params.keys():
+            if not action:
+                if key in resource_add_keys:
+                    post_data[key] = resource_module_params[key]
+                elif resource_name == "service" and key == "ipaddress":
+                    post_data["ip"] = resource_module_params[key]
+                else:
+                    log(
+                        "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                            key, resource_name
+                        )
                     )
-                )
-
+            else:
+                if key in resource_action_keys:
+                    post_data[key] = resource_module_params[key]
+                else:
+                    log(
+                        "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
+                            key, resource_name, action.upper()
+                        )
+                    )
     return True, None, post_data
 
 
@@ -242,7 +300,11 @@ def create_resource(client, resource_name, resource_module_params, action=None):
     if not ok:
         return False, err
 
-    post_data = {resource_name: post_data}
+    if resource_name in DYNAMIC_PROTOCOLS:
+        post_data = {DYNAMIC_PROTOCOLS_ALIAS[resource_name]: post_data}
+        post_data = {"routerDynamicRouting": post_data}
+    else:
+        post_data = {resource_name: post_data}
     status_code, response_body = client.post(
         post_data=post_data,
         resource=resource_name,
@@ -316,7 +378,11 @@ def update_resource(client, resource_name, resource_module_params):
     if not ok:
         return False, err
 
-    put_data = {resource_name: put_payload}
+    if resource_name in DYNAMIC_PROTOCOLS:
+        put_data = {DYNAMIC_PROTOCOLS_ALIAS[resource_name]: put_payload}
+        put_data = {"routerDynamicRouting": put_data}
+    else:
+        put_data = {resource_name: put_payload}
 
     status_code, response_body = client.put(
         put_data=put_data,
@@ -461,6 +527,9 @@ def save_config(client, all=False):
 
 @trace
 def enable_resource(client, resource_name, resource_params):
+    if resource_name == "gslbservice":
+        resource_name = "service"
+        resource_params["name"] = resource_params["servicename"]
     post_payload = {resource_name: {}}
     enable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]
 
@@ -483,6 +552,11 @@ def enable_resource(client, resource_name, resource_params):
 
 @trace
 def disable_resource(client, resource_name, resource_params):
+
+    if resource_name == "gslbservice":
+        resource_name = "service"
+        resource_params["name"] = resource_params["servicename"]
+
     post_payload = {resource_name: {}}
     disable_payload_keys = NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]
 
@@ -583,6 +657,14 @@ def get_valid_desired_states(resource_name):
         desired_states.add("switched")
     if "unset" in supported_operations:
         desired_states.add("unset")
+    if "Install" in supported_operations or "install" in supported_operations:
+        desired_states.add("installed")
+    if "rename" in supported_operations:
+        desired_states.add("renamed")
+    if "apply" in supported_operations:
+        desired_states.add("applied")
+    if "reboot" in supported_operations:
+        desired_states.add("rebooted")
     return desired_states
 
 

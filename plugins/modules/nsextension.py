@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsextension
 short_description: Configuration for Extension resource.
 description: Configuration for Extension resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -40,8 +42,18 @@ options:
       - When C(imported), the resource will be imported on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   comment:
-    type: raw
+    type: str
     description:
       - Any comments to preserve information about the extension object.
   detail:
@@ -52,7 +64,7 @@ options:
     description:
       - Show detail for extension function.
   name:
-    type: raw
+    type: str
     description:
       - Name to assign to the extension object on the Citrix ADC.
   overwrite:
@@ -65,9 +77,11 @@ options:
       - Local path to and name of, or URL (protocol, host, path, and file name) for,
         the file in which to store the imported extension.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
-        that requires client certificate authentication for access.'
+        that requires client certificate authentication for access, and the issuer
+        certificate of the HTTPS server is not present in the specific path on NetScaler
+        to authenticate the HTTPS server.'
   trace:
-    type: raw
+    type: str
     choices:
       - 'off'
       - calls
@@ -85,12 +99,12 @@ options:
       - Note that the DEBUG log level must be enabled to see extension tracing.
       - This can be done by set audit syslogParams -loglevel ALL or -loglevel DEBUG.
   tracefunctions:
-    type: raw
+    type: str
     description:
       - Comma-separated list of extension functions to trace. By default, all extension
         functions are traced.
   tracevariables:
-    type: raw
+    type: str
     description:
       - Comma-separated list of variables (in traced extension functions) to trace.
         By default, all variables are traced.

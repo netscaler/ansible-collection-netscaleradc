@@ -1,0 +1,11 @@
+---
+- name: Sample vpnvserver_vpneula_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vpnvserver_vpneula_binding
+      delegate_to: localhost
+      netscaler.adc.vpnvserver_vpneula_binding:
+        state: present
+        name: vpnlb
+        eula: e1

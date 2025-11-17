@@ -1,11 +1,11 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nstcpprofile playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nstcpProfile
+    - name: Configure nstcpprofile
       delegate_to: localhost
       netscaler.adc.nstcpprofile:
         state: present
-        name: tcpprofile-mptcp
-        mptcp: ENABLED
+        name: nstcp_default_profile
+        flavor: Westwood

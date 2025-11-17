@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: vxlan
 short_description: Configuration for "VXLAN" resource.
 description: Configuration for "VXLAN" resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,20 +40,30 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing on this VXLAN.
   id:
-    type: raw
+    type: int
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
   innervlantagging:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -59,7 +71,7 @@ options:
       - Specifies whether Citrix ADC should generate VXLAN packets with inner VLAN
         tag.
   ipv6dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -68,7 +80,7 @@ options:
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
   port:
-    type: raw
+    type: int
     description:
       - Specifies UDP destination port for VXLAN packets.
   protocol:
@@ -88,7 +100,7 @@ options:
     description:
       - C(VXLAN) encapsulation type. C(VXLAN), C(VXLANGPE)
   vlan:
-    type: raw
+    type: int
     description:
       - ID of VLANs whose traffic is allowed over this VXLAN. If you do not specify
         any VLAN IDs, the Citrix ADC allows traffic of all VLANs that are not part
@@ -198,6 +210,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample vxlan playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure vxlan
+      delegate_to: localhost
+      netscaler.adc.vxlan:
+        state: present
+        id: '1'
 """
 
 RETURN = r"""

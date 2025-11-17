@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,6 +17,7 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: appfwsignatures
 short_description: Configuration for application firewall signatures XML configuration
   resource.
@@ -24,6 +25,7 @@ description: Configuration for application firewall signatures XML configuration
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -35,6 +37,16 @@ options:
         ADC node.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(imported), the resource will be imported on the NetScaler ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   action:
     type: list
@@ -119,6 +131,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample appfwsignatures playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure appfwsignatures
+      delegate_to: localhost
+      netscaler.adc.appfwsignatures:
+        state: present
+        src: http://10.217.30.16/test_sigs/v13/sigs/sig-r11.1b0v13s6_enabled.xml
+        name: Space caps
 """
 
 RETURN = r"""

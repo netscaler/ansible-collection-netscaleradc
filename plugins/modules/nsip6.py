@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: nsip6
 short_description: Configuration for ip6 resource.
 description: Configuration for ip6 resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -38,15 +40,25 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   advertiseondefaultpartition:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Advertise VIPs from Shared VLAN on Default Partition
   decrementhoplimit:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -54,7 +66,7 @@ options:
       - Decrement Hop Limit by 1 when C(ENABLED).This setting is applicable only for
         UDP traffic.
   dynamicrouting:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -62,14 +74,14 @@ options:
       - Allow dynamic routing on this IP address. Specific to Subnet IPv6 (SNIP6)
         address.
   ftp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow File Transfer Protocol (FTP) access to this IP address.
   gui:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - SECUREONLY
@@ -77,7 +89,7 @@ options:
     description:
       - Allow graphical user interface (GUI) access to this IP address.
   hostroute:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -85,39 +97,49 @@ options:
       - Option to push the VIP6 to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocols.
   icmp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to ICMP requests for this IP address.
+  icmpresponse:
+    type: str
+    choices:
+      - NONE
+      - ONE_VSERVER
+      - ALL_VSERVERS
+      - VSVR_CNTRLD
+    description:
+      - Respond to ICMPv6 requests for a Virtual IP (VIP) address on the basis of
+        the states of the virtual servers associated with that VIP
   ip6hostrtgw:
-    type: raw
+    type: str
     description:
       - 'IPv6 address of the gateway for the route. If Gateway is not set, VIP uses
         :: as the gateway.'
   ipv6address:
-    type: raw
+    type: str
     description:
       - IPv6 address to create on the Citrix ADC.
   map:
-    type: raw
+    type: str
     description:
       - Mapped IPV4 address for the IPV6 address.
   metric:
-    type: raw
+    type: int
     description:
       - Integer value to add to or subtract from the cost of the route advertised
         for the VIP6 address.
   mgmtaccess:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow access to management applications on this IP address.
   mptcpadvertise:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -125,18 +147,18 @@ options:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
   nd:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to Neighbor Discovery (ND) requests for this IP address.
   ndowner:
-    type: raw
+    type: int
     description:
       - NdOwner in Cluster for VIPS and Striped SNIPS
   networkroute:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -144,7 +166,7 @@ options:
       - Option to push the SNIP6 subnet to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocol.
   ospf6lsatype:
-    type: raw
+    type: str
     choices:
       - INTRA_AREA
       - EXTERNAL
@@ -152,13 +174,13 @@ options:
       - Type of LSAs to be used by the IPv6 OSPF protocol, running on the Citrix ADC,
         for advertising the route for the VIP6 address.
   ospfarea:
-    type: raw
+    type: int
     description:
       - ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for
         the VIP6 address by the IPv6 OSPF protocol running on the Citrix ADC. When
         ospfArea is not set, VIP6 is advertised on all areas.
   ownerdownresponse:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -166,14 +188,14 @@ options:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
   ownernode:
-    type: float
+    type: int
     description:
       - ID of the cluster node for which you are adding the IP address. Must be used
         if you want the IP address to be active only on the specific node. Can be
         configured only through the cluster IP address. Cannot be changed after the
         IP address is created.
   restrictaccess:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -190,31 +212,31 @@ options:
       - Scope of the IPv6 address to be created. Cannot be changed after the IP address
         is created.
   snmp:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow Simple Network Management Protocol (SNMP) access to this IP address.
   ssh:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow secure Shell (SSH) access to this IP address.
   tag:
-    type: raw
+    type: int
     description:
       - Tag value for the network/host route associated with this IP.
   td:
-    type: raw
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   telnet:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -234,17 +256,17 @@ options:
       - Type of IP address to be created on the Citrix ADC. Cannot be changed after
         the IP address is created.
   vlan:
-    type: float
+    type: int
     description:
       - The VLAN number.
   vrid6:
-    type: raw
+    type: int
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
         configuration using VRRP.
   vserver:
-    type: raw
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -252,7 +274,7 @@ options:
       - Enable or disable the state of all the virtual servers associated with this
         VIP6 address.
   vserverrhilevel:
-    type: raw
+    type: str
     choices:
       - ONE_VSERVER
       - ALL_VSERVERS
@@ -288,21 +310,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 EXAMPLES = r"""
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsip6 playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsip6
+    - name: Configure nsip6
       delegate_to: localhost
       netscaler.adc.nsip6:
         state: present
-        ipv6address: ae80::1024:45aa:fe3b:9843/64
-        scope: link-local
-        type: SNIP
-        vlan: '1'
-        vserver: DISABLED
-        mgmtaccess: DISABLED
-        dynamicrouting: ENABLED
+        ipv6address: 9901::211
+        vrid6: '13'
 """
 
 RETURN = r"""

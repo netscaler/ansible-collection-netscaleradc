@@ -1,0 +1,18 @@
+---
+- name: Sample tmformssoaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure tmformssoaction
+      delegate_to: localhost
+      netscaler.adc.tmformssoaction:
+        state: present
+        name: ia_formssoact5
+        actionurl: /owa/auth/owaauth.dll
+        userfield: sample
+        passwdfield: sample
+        ssosuccessrule: HTTP.RES.IS_VALID
+        namevaluepair: sample
+        responsesize: '8096'
+        nvtype: DYNAMIC
+        submitmethod: GET

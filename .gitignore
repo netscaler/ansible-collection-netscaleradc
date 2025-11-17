@@ -1,6 +1,5 @@
 .vscode/
 
-tools/
 issues/
 
 plugins/module_utils/test.ipynb

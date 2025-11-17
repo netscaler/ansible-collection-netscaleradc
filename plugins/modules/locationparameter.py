@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Copyright (c) 2023 Cloud Software Group, Inc.
+# Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 from __future__ import absolute_import, division, print_function
@@ -17,12 +17,14 @@ ANSIBLE_METADATA = {
 }
 
 DOCUMENTATION = r"""
+---
 module: locationparameter
 short_description: Configuration for location parameter resource.
 description: Configuration for location parameter resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
+  - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
     choices:
@@ -36,8 +38,18 @@ options:
         the module's parameters.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
+    type: str
   context:
-    type: raw
+    type: str
     choices:
       - geographic
       - custom
@@ -47,7 +59,7 @@ options:
         In C(custom) context, the qualifiers labels can have any meaning that you
         designate.'
   matchwildcardtoany:
-    type: raw
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -65,32 +77,32 @@ options:
       - '          wildcard qualifiers in the LDNS location do not match'
       - '          non-wildcard qualifiers in an expression'
   q1label:
-    type: raw
+    type: str
     description:
       - Label specifying the meaning of the first qualifier. Can be specified for
         custom context only.
   q2label:
-    type: raw
+    type: str
     description:
       - Label specifying the meaning of the second qualifier. Can be specified for
         custom context only.
   q3label:
-    type: raw
+    type: str
     description:
       - Label specifying the meaning of the third qualifier. Can be specified for
         custom context only.
   q4label:
-    type: raw
+    type: str
     description:
       - Label specifying the meaning of the fourth qualifier. Can be specified for
         custom context only.
   q5label:
-    type: raw
+    type: str
     description:
       - Label specifying the meaning of the fifth qualifier. Can be specified for
         custom context only.
   q6label:
-    type: raw
+    type: str
     description:
       - Label specifying the meaning of the sixth qualifier. Can be specified for
         custom context only.
@@ -99,6 +111,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample locationparameter playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure locationparameter
+      delegate_to: localhost
+      netscaler.adc.locationparameter:
+        state: present
+        q2label: Country_Code
+        q3label: Subdivision_1_Name
+        q4label: Subdivision_2_Name
+        q5label: City
 """
 
 RETURN = r"""

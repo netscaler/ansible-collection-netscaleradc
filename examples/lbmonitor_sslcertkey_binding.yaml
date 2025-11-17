@@ -1,0 +1,11 @@
+---
+- name: Sample lbmonitor_sslcertkey_binding playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lbmonitor_sslcertkey_binding
+      delegate_to: localhost
+      netscaler.adc.lbmonitor_sslcertkey_binding:
+        state: present
+        monitorname: https
+        certkeyname: myclient

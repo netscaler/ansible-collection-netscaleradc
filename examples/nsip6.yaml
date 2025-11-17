@@ -1,16 +1,16 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsip6 playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsip6
+    - name: Configure nsip6
       delegate_to: localhost
       netscaler.adc.nsip6:
         state: present
-        ipv6address: ae80::1024:45aa:fe3b:9843/64
+        ipv6address: fe80::1031:4dff:fe59:3f9f/64
         scope: link-local
-        type: SNIP
+        type: NSIP
         vlan: '1'
         vserver: DISABLED
-        mgmtaccess: DISABLED
+        mgmtaccess: ENABLED
         dynamicrouting: ENABLED

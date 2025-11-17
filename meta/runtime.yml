@@ -1,7 +1,7 @@
 ---
 # Collections must specify a minimum required ansible version to upload
 # to galaxy
-requires_ansible: '>=2.14.0'
+requires_ansible: '>=2.15.0'
 # Content that Ansible needs to load from another location or that has
 # been deprecated/removed
 # plugin_routing:
@@ -50,13 +50,13 @@ action_groups:
     - aaacertparams
     - aaaglobal_aaapreauthenticationpolicy_binding
     - aaaglobal_authenticationnegotiateaction_binding
-    - aaagroup
     - aaagroup_aaauser_binding
     - aaagroup_auditnslogpolicy_binding
     - aaagroup_auditsyslogpolicy_binding
     - aaagroup_authorizationpolicy_binding
     - aaagroup_intranetip6_binding
     - aaagroup_intranetip_binding
+    - aaagroup
     - aaagroup_tmsessionpolicy_binding
     - aaagroup_vpnintranetapplication_binding
     - aaagroup_vpnsessionpolicy_binding
@@ -74,12 +74,12 @@ action_groups:
     - aaasession
     - aaassoprofile
     - aaatacacsparams
-    - aaauser
     - aaauser_auditnslogpolicy_binding
     - aaauser_auditsyslogpolicy_binding
     - aaauser_authorizationpolicy_binding
     - aaauser_intranetip6_binding
     - aaauser_intranetip_binding
+    - aaauser
     - aaauser_tmsessionpolicy_binding
     - aaauser_vpnintranetapplication_binding
     - aaauser_vpnsessionpolicy_binding
@@ -89,17 +89,19 @@ action_groups:
     - admparameter
     - analyticsglobal_analyticsprofile_binding
     - analyticsprofile
-    - apispec
+    - apiprofile_apispec_binding
+    - apiprofile
     - apispecfile
+    - apispec
     - appalgparam
-    - appflowaction
     - appflowaction_analyticsprofile_binding
+    - appflowaction
     - appflowcollector
     - appflowglobal_appflowpolicy_binding
     - appflowparam
-    - appflowpolicy
-    - appflowpolicylabel
     - appflowpolicylabel_appflowpolicy_binding
+    - appflowpolicylabel
+    - appflowpolicy
     - appfwarchive
     - appfwconfidfield
     - appfwcustomsettings
@@ -116,10 +118,9 @@ action_groups:
     - appfwlearningdata
     - appfwlearningsettings
     - appfwmultipartformcontenttype
-    - appfwpolicy
-    - appfwpolicylabel
     - appfwpolicylabel_appfwpolicy_binding
-    - appfwprofile
+    - appfwpolicylabel
+    - appfwpolicy
     - appfwprofile_appfwconfidfield_binding
     - appfwprofile_blockkeyword_binding
     - appfwprofile_bypasslist_binding
@@ -136,12 +137,15 @@ action_groups:
     - appfwprofile_fieldconsistency_binding
     - appfwprofile_fieldformat_binding
     - appfwprofile_fileuploadtype_binding
+    - appfwprofile_grpcvalidation_binding
     - appfwprofile_jsonblockkeyword_binding
     - appfwprofile_jsoncmdurl_binding
     - appfwprofile_jsondosurl_binding
     - appfwprofile_jsonsqlurl_binding
     - appfwprofile_jsonxssurl_binding
     - appfwprofile_logexpression_binding
+    - appfwprofile
+    - appfwprofile_restvalidation_binding
     - appfwprofile_safeobject_binding
     - appfwprofile_sqlinjection_binding
     - appfwprofile_starturl_binding
@@ -165,8 +169,8 @@ action_groups:
     - appqoecustomresp
     - appqoeparameter
     - appqoepolicy
-    - arp
     - arpparam
+    - arp
     - auditmessageaction
     - auditnslogaction
     - auditnslogglobal_auditnslogpolicy_binding
@@ -190,17 +194,18 @@ action_groups:
     - authenticationldapaction
     - authenticationldappolicy
     - authenticationlocalpolicy
-    - authenticationloginschema
     - authenticationloginschemapolicy
+    - authenticationloginschema
     - authenticationnegotiateaction
     - authenticationnegotiatepolicy
     - authenticationnoauthaction
     - authenticationoauthaction
     - authenticationoauthidppolicy
     - authenticationoauthidpprofile
-    - authenticationpolicy
-    - authenticationpolicylabel
     - authenticationpolicylabel_authenticationpolicy_binding
+    - authenticationpolicylabel
+    - authenticationpolicy
+    - authenticationprotecteduseraction
     - authenticationpushservice
     - authenticationradiusaction
     - authenticationradiuspolicy
@@ -213,7 +218,6 @@ action_groups:
     - authenticationstorefrontauthaction
     - authenticationtacacsaction
     - authenticationtacacspolicy
-    - authenticationvserver
     - authenticationvserver_auditnslogpolicy_binding
     - authenticationvserver_auditsyslogpolicy_binding
     - authenticationvserver_authenticationcertpolicy_binding
@@ -231,39 +235,41 @@ action_groups:
     - authenticationvserver_authenticationwebauthpolicy_binding
     - authenticationvserver_cachepolicy_binding
     - authenticationvserver_cspolicy_binding
+    - authenticationvserver
     - authenticationvserver_responderpolicy_binding
     - authenticationvserver_rewritepolicy_binding
     - authenticationvserver_tmsessionpolicy_binding
     - authenticationvserver_vpnportaltheme_binding
     - authenticationwebauthaction
     - authenticationwebauthpolicy
-    - authorizationpolicy
-    - authorizationpolicylabel
     - authorizationpolicylabel_authorizationpolicy_binding
+    - authorizationpolicylabel
+    - authorizationpolicy
     - autoscaleaction
     - autoscalepolicy
     - autoscaleprofile
     - azureapplication
     - azurekeyvault
+    - bgprouter
     - botglobal_botpolicy_binding
-    - botpolicy
-    - botpolicylabel
     - botpolicylabel_botpolicy_binding
-    - botprofile
+    - botpolicylabel
+    - botpolicy
     - botprofile_blacklist_binding
     - botprofile_captcha_binding
     - botprofile_ipreputation_binding
     - botprofile_kmdetectionexpr_binding
     - botprofile_logexpression_binding
+    - botprofile
     - botprofile_ratelimit_binding
     - botprofile_tps_binding
     - botprofile_trapinsertionurl_binding
     - botprofile_whitelist_binding
     - botsettings
     - botsignature
-    - bridgegroup
     - bridgegroup_nsip6_binding
     - bridgegroup_nsip_binding
+    - bridgegroup
     - bridgegroup_vlan_binding
     - bridgetable
     - cachecontentgroup
@@ -271,14 +277,14 @@ action_groups:
     - cacheglobal_cachepolicy_binding
     - cacheobject
     - cacheparameter
-    - cachepolicy
-    - cachepolicylabel
     - cachepolicylabel_cachepolicy_binding
+    - cachepolicylabel
+    - cachepolicy
     - cacheselector
     - callhome
     - change_password
-    - channel
     - channel_interface_binding
+    - channel
     - cloudallowedngsticketprofile
     - cloudawsparam
     - cloudcredential
@@ -286,14 +292,11 @@ action_groups:
     - cloudparameter
     - cloudparaminternal
     - cloudprofile
+    - cloudservice
     - cloudtunnelparameter
     - cloudtunnelvserver
-    - cluster
     - clusterfiles
     - clusterinstance
-    - clusternode
-    - clusternode_routemonitor_binding
-    - clusternodegroup
     - clusternodegroup_authenticationvserver_binding
     - clusternodegroup_clusternode_binding
     - clusternodegroup_crvserver_binding
@@ -302,26 +305,30 @@ action_groups:
     - clusternodegroup_gslbvserver_binding
     - clusternodegroup_lbvserver_binding
     - clusternodegroup_nslimitidentifier_binding
+    - clusternodegroup
     - clusternodegroup_service_binding
     - clusternodegroup_streamidentifier_binding
     - clusternodegroup_vpnvserver_binding
+    - clusternode
+    - clusternode_routemonitor_binding
     - clusterpropstatus
+    - cluster
+    - clustersync
     - cmpaction
     - cmpglobal_cmppolicy_binding
     - cmpparameter
-    - cmppolicy
-    - cmppolicylabel
     - cmppolicylabel_cmppolicy_binding
+    - cmppolicylabel
+    - cmppolicy
     - contentinspectionaction
     - contentinspectioncallout
     - contentinspectionglobal_contentinspectionpolicy_binding
     - contentinspectionparameter
-    - contentinspectionpolicy
-    - contentinspectionpolicylabel
     - contentinspectionpolicylabel_contentinspectionpolicy_binding
+    - contentinspectionpolicylabel
+    - contentinspectionpolicy
     - contentinspectionprofile
     - crpolicy
-    - crvserver
     - crvserver_analyticsprofile_binding
     - crvserver_appflowpolicy_binding
     - crvserver_appfwpolicy_binding
@@ -334,15 +341,15 @@ action_groups:
     - crvserver_icapolicy_binding
     - crvserver_lbvserver_binding
     - crvserver_policymap_binding
+    - crvserver
     - crvserver_responderpolicy_binding
     - crvserver_rewritepolicy_binding
     - crvserver_spilloverpolicy_binding
     - csaction
     - csparameter
-    - cspolicy
-    - cspolicylabel
     - cspolicylabel_cspolicy_binding
-    - csvserver
+    - cspolicylabel
+    - cspolicy
     - csvserver_analyticsprofile_binding
     - csvserver_appflowpolicy_binding
     - csvserver_appfwpolicy_binding
@@ -359,6 +366,7 @@ action_groups:
     - csvserver_feopolicy_binding
     - csvserver_gslbvserver_binding
     - csvserver_lbvserver_binding
+    - csvserver
     - csvserver_responderpolicy_binding
     - csvserver_rewritepolicy_binding
     - csvserver_spilloverpolicy_binding
@@ -366,10 +374,11 @@ action_groups:
     - csvserver_transformpolicy_binding
     - csvserver_vpnvserver_binding
     - dbdbprofile
+    - dbsmonitors
     - dbuser
     - dnsaaaarec
-    - dnsaction
     - dnsaction64
+    - dnsaction
     - dnsaddrec
     - dnscaarec
     - dnscnamerec
@@ -380,10 +389,10 @@ action_groups:
     - dnsnaptrrec
     - dnsnsrec
     - dnsparameter
-    - dnspolicy
     - dnspolicy64
-    - dnspolicylabel
     - dnspolicylabel_dnspolicy_binding
+    - dnspolicylabel
+    - dnspolicy
     - dnsprofile
     - dnsproxyrecords
     - dnsptrrec
@@ -400,26 +409,27 @@ action_groups:
     - feoglobal_feopolicy_binding
     - feoparameter
     - feopolicy
-    - fis
+    - filesystemencryption
     - fis_channel_binding
     - fis_interface_binding
+    - fis
     - forwardingsession
     - gslbconfig
     - gslbldnsentries
     - gslbldnsentry
     - gslbparameter
-    - gslbservice
     - gslbservice_dnsview_binding
-    - gslbservice_lbmonitor_binding
-    - gslbservicegroup
     - gslbservicegroup_gslbservicegroupmember_binding
     - gslbservicegroup_lbmonitor_binding
+    - gslbservicegroup
+    - gslbservice_lbmonitor_binding
+    - gslbservice
     - gslbsite
-    - gslbvserver
     - gslbvserver_domain_binding
     - gslbvserver_gslbservice_binding
     - gslbvserver_gslbservicegroup_binding
     - gslbvserver_lbpolicy_binding
+    - gslbvserver
     - gslbvserver_spilloverpolicy_binding
     - hafailover
     - hafiles
@@ -433,45 +443,48 @@ action_groups:
     - icalatencyprofile
     - icaparameter
     - icapolicy
-    - inat
     - inatparam
+    - inat
+    - __init__
     - install
     - interfacepair
-    - ip6tunnel
+    - interface
     - ip6tunnelparam
+    - ip6tunnel
     - ipsecalgprofile
     - ipsecalgsession
     - ipsecparameter
     - ipsecprofile
-    - ipset
     - ipset_nsip6_binding
     - ipset_nsip_binding
-    - iptunnel
+    - ipset
     - iptunnelparam
+    - iptunnel
     - ipv6
+    - kafkacluster
+    - kafkacluster_servicegroup_binding
     - l2param
     - l3param
     - l4param
     - lacp
     - lbaction
     - lbglobal_lbpolicy_binding
-    - lbgroup
     - lbgroup_lbvserver_binding
-    - lbmetrictable
+    - lbgroup
     - lbmetrictable_metric_binding
-    - lbmonitor
+    - lbmetrictable
     - lbmonitor_metric_binding
+    - lbmonitor
     - lbmonitor_sslcertkey_binding
     - lbparameter
     - lbpersistentsessions
-    - lbpolicy
-    - lbpolicylabel
     - lbpolicylabel_lbpolicy_binding
+    - lbpolicylabel
+    - lbpolicy
     - lbprofile
-    - lbroute
     - lbroute6
+    - lbroute
     - lbsipparameters
-    - lbvserver
     - lbvserver_analyticsprofile_binding
     - lbvserver_appflowpolicy_binding
     - lbvserver_appfwpolicy_binding
@@ -486,6 +499,7 @@ action_groups:
     - lbvserver_dnspolicy64_binding
     - lbvserver_feopolicy_binding
     - lbvserver_lbpolicy_binding
+    - lbvserver
     - lbvserver_responderpolicy_binding
     - lbvserver_rewritepolicy_binding
     - lbvserver_service_binding
@@ -495,29 +509,30 @@ action_groups:
     - lbvserver_transformpolicy_binding
     - lbvserver_videooptimizationdetectionpolicy_binding
     - lbvserver_videooptimizationpacingpolicy_binding
-    - lbwlm
     - lbwlm_lbvserver_binding
-    - linkset
+    - lbwlm
     - linkset_channel_binding
     - linkset_interface_binding
+    - linkset
+    - list.txt
     - lldpneighbors
     - lldpparam
-    - location
-    - locationfile
+    - locationdata
     - locationfile6
+    - locationfile
     - locationparameter
+    - location
     - login
     - logout
     - lsnappsattributes
-    - lsnappsprofile
     - lsnappsprofile_lsnappsattributes_binding
     - lsnappsprofile_port_binding
-    - lsnclient
+    - lsnappsprofile
     - lsnclient_network6_binding
     - lsnclient_network_binding
     - lsnclient_nsacl6_binding
     - lsnclient_nsacl_binding
-    - lsngroup
+    - lsnclient
     - lsngroup_ipsecalgprofile_binding
     - lsngroup_lsnappsprofile_binding
     - lsngroup_lsnhttphdrlogprofile_binding
@@ -527,12 +542,13 @@ action_groups:
     - lsngroup_lsnsipalgprofile_binding
     - lsngroup_lsntransportprofile_binding
     - lsngroup_pcpserver_binding
+    - lsngroup
     - lsnhttphdrlogprofile
     - lsnip6profile
     - lsnlogprofile
     - lsnparameter
-    - lsnpool
     - lsnpool_lsnip_binding
+    - lsnpool
     - lsnrtspalgprofile
     - lsnrtspalgsession
     - lsnsession
@@ -540,35 +556,50 @@ action_groups:
     - lsnsipalgprofile
     - lsnstatic
     - lsntransportprofile
-    - mapbmr
     - mapbmr_bmrv4network_binding
+    - mapbmr
     - mapdmr
-    - mapdomain
     - mapdomain_mapbmr_binding
-    - nat64
+    - mapdomain
+    - metricsprofile_authenticationvserver_binding
+    - metricsprofile_crvserver_binding
+    - metricsprofile_csvserver_binding
+    - metricsprofile_gslbvserver_binding
+    - metricsprofile_lbvserver_binding
+    - metricsprofile
+    - metricsprofile_service_binding
+    - metricsprofile_servicegroup_binding
+    - metricsprofile_uservserver_binding
+    - metricsprofile_vpnvserver_binding
     - nat64param
+    - nat64
     - nd6
-    - nd6ravariables
     - nd6ravariables_onlinkipv6prefix_binding
-    - netbridge
+    - nd6ravariables
     - netbridge_iptunnel_binding
     - netbridge_nsip6_binding
     - netbridge_nsip_binding
+    - netbridge
     - netbridge_vlan_binding
-    - netprofile
     - netprofile_natrule_binding
+    - netprofile
     - netprofile_srcportset_binding
-    - nsacls
+    - nsacl6
+    - nsacl
     - nsacls6
+    - nsacls
     - nsappflowcollector
     - nsappflowparam
     - nsaptlicense
     - nsassignment
     - nscapacity
     - nscentralmanagementserver
+    - nschannelparam
     - nsconfig
+    - nsconfigview
     - nsconsoleloginprompt
     - nscqaparam
+    - nsdhcpip
     - nsdhcpparams
     - nsdiameter
     - nsencryptionkey
@@ -580,40 +611,49 @@ action_groups:
     - nshttpparam
     - nshttpprofile
     - nsicapprofile
-    - nsip
     - nsip6
+    - nsip
+    - nskeymanagerproxy
+    - nslaslicense
     - nslicenseparameters
     - nslicenseproxyserver
     - nslicenseserver
     - nslimitidentifier
     - nslimitselector
     - nslimitsessions
+    - nsmgmtparam
     - nsmigration
     - nsmode
+    - nsnextgenapi
     - nsparam
-    - nspartition
     - nspartition_bridgegroup_binding
+    - nspartition
     - nspartition_vlan_binding
     - nspartition_vxlan_binding
+    - nspbr6
+    - nspbr
+    - nspbrs
     - nsratecontrol
     - nsrpcnode
     - nsservicefunction
-    - nsservicepath
     - nsservicepath_nsservicefunction_binding
-    - nssimpleacl
+    - nsservicepath
     - nssimpleacl6
+    - nssimpleacl
+    - nssourceroutecachetable
     - nsspparams
     - nsstats
     - nssurgeq
     - nstcpbufparam
     - nstcpparam
     - nstcpprofile
+    - nstestlicense
     - nstimeout
-    - nstimer
     - nstimer_autoscalepolicy_binding
+    - nstimer
     - nstrace
-    - nstrafficdomain
     - nstrafficdomain_bridgegroup_binding
+    - nstrafficdomain
     - nstrafficdomain_vlan_binding
     - nstrafficdomain_vxlan_binding
     - nsvariable
@@ -622,22 +662,24 @@ action_groups:
     - nsxmlnamespace
     - ntpparam
     - ntpserver
+    - ntpsync
     - onlinkipv6prefix
     - pcpprofile
     - pcpserver
-    - ping
     - ping6
+    - ping
     - policydataset
     - policydataset_value_binding
     - policyexpression
     - policyhttpcallout
     - policymap
     - policyparam
-    - policypatset
-    - policypatset_pattern_binding
     - policypatsetfile
-    - policystringmap
+    - policypatset_pattern_binding
+    - policypatset
     - policystringmap_pattern_binding
+    - policystringmap
+    - policytracing
     - policyurlset
     - protocolhttpband
     - ptp
@@ -650,39 +692,41 @@ action_groups:
     - rdpserverprofile
     - reboot
     - reportingconfig
+    - reporting
     - reputationsettings
     - responderaction
     - responderglobal_responderpolicy_binding
     - responderhtmlpage
     - responderparam
-    - responderpolicy
     - responderpolicylabel
     - responderpolicylabel_responderpolicy_binding
+    - responderpolicy
     - rewriteaction
     - rewriteglobal_rewritepolicy_binding
     - rewriteparam
-    - rewritepolicy
     - rewritepolicylabel
     - rewritepolicylabel_rewritepolicy_binding
-    - rnat
-    - rnat6
+    - rewritepolicy
     - rnat6_nsip6_binding
-    - rnat_nsip_binding
-    - rnat_retainsourceportset_binding
+    - rnat6
     - rnatglobal_auditsyslogpolicy_binding
+    - rnat_nsip_binding
     - rnatparam
+    - rnat
+    - rnat_retainsourceportset_binding
     - rnatsession
-    - route
     - route6
+    - route
     - routerdynamicrouting
     - rsskeytype
     - save_config
     - server
-    - service
-    - service_lbmonitor_binding
-    - servicegroup
     - servicegroup_lbmonitor_binding
+    - servicegroup
     - servicegroup_servicegroupmember_binding
+    - service_lbmonitor_binding
+    - service
+    - shutdown
     - smppparam
     - smppuser
     - snmpalarm
@@ -699,29 +743,33 @@ action_groups:
     - spilloveraction
     - spilloverpolicy
     - sslaction
+    - sslcacertbundle
     - sslcacertgroup
     - sslcacertgroup_sslcertkey_binding
-    - sslcert
     - sslcertbundle
     - sslcertfile
     - sslcertificatechain
+    - sslcertkeybundle
     - sslcertkey
     - sslcertkey_sslocspresponder_binding
-    - sslcertkeybundle
+    - sslcert
     - sslcertreq
     - sslcipher
     - sslcipher_sslciphersuite_binding
-    - sslcrl
     - sslcrlfile
+    - sslcrl
+    - ssldefaultprofile
     - ssldhfile
     - ssldhparam
     - ssldtlsprofile
     - sslecdsakey
-    - sslfips
+    - sslechconfig
     - sslfipskey
+    - sslfips
     - sslfipssimsource
     - sslfipssimtarget
     - sslglobal_sslpolicy_binding
+    - sslhpkekey
     - sslhsmkey
     - sslkeyfile
     - ssllogprofile
@@ -729,34 +777,39 @@ action_groups:
     - sslparameter
     - sslpkcs12
     - sslpkcs8
-    - sslpolicy
     - sslpolicylabel
     - sslpolicylabel_sslpolicy_binding
-    - sslprofile
+    - sslpolicy
     - sslprofile_ecccurve_binding
+    - sslprofile
     - sslprofile_sslcertkey_binding
     - sslprofile_sslcipher_binding
     - sslprofile_sslciphersuite_binding
+    - sslprofile_sslechconfig_binding
     - sslrsakey
-    - sslservice
     - sslservice_ecccurve_binding
+    - sslservicegroup_ecccurve_binding
+    - sslservicegroup
+    - sslservicegroup_sslcacertbundle_binding
+    - sslservicegroup_sslcertkey_binding
+    - sslservicegroup_sslcipher_binding
+    - sslservicegroup_sslciphersuite_binding
+    - sslservice
+    - sslservice_sslcacertbundle_binding
     - sslservice_sslcertkey_binding
     - sslservice_sslcipher_binding
     - sslservice_sslciphersuite_binding
     - sslservice_sslpolicy_binding
-    - sslservicegroup
-    - sslservicegroup_ecccurve_binding
-    - sslservicegroup_sslcertkey_binding
-    - sslservicegroup_sslcipher_binding
-    - sslservicegroup_sslciphersuite_binding
-    - sslvserver
     - sslvserver_ecccurve_binding
+    - sslvserver
+    - sslvserver_sslcacertbundle_binding
     - sslvserver_sslcertkey_binding
     - sslvserver_sslcertkeybundle_binding
     - sslvserver_sslcipher_binding
     - sslvserver_sslciphersuite_binding
     - sslvserver_sslpolicy_binding
     - sslwrapkey
+    - streamidentifier_analyticsprofile_binding
     - streamidentifier
     - streamselector
     - streamsession
@@ -766,6 +819,7 @@ action_groups:
     - subscriberradiusinterface
     - subscribersessions
     - systemadmuserinfo
+    - systemautorestorefeature
     - systembackup
     - systemcmdpolicy
     - systemcollectionparam
@@ -780,18 +834,21 @@ action_groups:
     - systemglobal_authenticationpolicy_binding
     - systemglobal_authenticationradiuspolicy_binding
     - systemglobal_authenticationtacacspolicy_binding
-    - systemgroup
     - systemgroup_nspartition_binding
+    - systemgroup
     - systemgroup_systemcmdpolicy_binding
     - systemgroup_systemuser_binding
     - systemhwerror
     - systemkek
+    - systemlevelreporting
+    - systemnsbtracing
     - systemparameter
     - systemrestorepoint
     - systemsession
+    - systemsignedexereport
     - systemsshkey
-    - systemuser
     - systemuser_nspartition_binding
+    - systemuser
     - systemuser_systemcmdpolicy_binding
     - tmformssoaction
     - tmglobal_auditnslogpolicy_binding
@@ -804,38 +861,36 @@ action_groups:
     - tmsessionpolicy
     - tmtrafficaction
     - tmtrafficpolicy
-    - traceroute
     - traceroute6
+    - traceroute
     - transformaction
     - transformglobal_transformpolicy_binding
-    - transformpolicy
     - transformpolicylabel
     - transformpolicylabel_transformpolicy_binding
+    - transformpolicy
     - transformprofile
     - tunnelglobal_tunneltrafficpolicy_binding
     - tunneltrafficpolicy
     - ulfdserver
-    - urlfilteringcategorization
-    - urlfilteringparameter
     - userprotocol
     - uservserver
     - videooptimizationdetectionaction
-    - videooptimizationdetectionpolicy
     - videooptimizationdetectionpolicylabel
     - videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding
+    - videooptimizationdetectionpolicy
     - videooptimizationglobaldetection_videooptimizationdetectionpolicy_binding
     - videooptimizationglobalpacing_videooptimizationpacingpolicy_binding
     - videooptimizationpacingaction
-    - videooptimizationpacingpolicy
     - videooptimizationpacingpolicylabel
     - videooptimizationpacingpolicylabel_videooptimizationpacingpolicy_binding
+    - videooptimizationpacingpolicy
     - videooptimizationparameter
-    - vlan
     - vlan_channel_binding
     - vlan_interface_binding
     - vlan_linkset_binding
     - vlan_nsip6_binding
     - vlan_nsip_binding
+    - vlan
     - vpnalwaysonprofile
     - vpnclientlessaccesspolicy
     - vpnclientlessaccessprofile
@@ -843,6 +898,7 @@ action_groups:
     - vpneula
     - vpnformssoaction
     - vpnglobal_appcontroller_binding
+    - vpnglobal_appfwpolicy_binding
     - vpnglobal_auditnslogpolicy_binding
     - vpnglobal_auditsyslogpolicy_binding
     - vpnglobal_authenticationcertpolicy_binding
@@ -856,6 +912,7 @@ action_groups:
     - vpnglobal_domain_binding
     - vpnglobal_intranetip6_binding
     - vpnglobal_intranetip_binding
+    - vpnglobal_secureprivateaccessurl_binding
     - vpnglobal_sharefileserver_binding
     - vpnglobal_sslcertkey_binding
     - vpnglobal_staserver_binding
@@ -881,14 +938,14 @@ action_groups:
     - vpnsessionpolicy
     - vpntrafficaction
     - vpntrafficpolicy
-    - vpnurl
     - vpnurlaction
     - vpnurlpolicy
-    - vpnvserver
+    - vpnurl
     - vpnvserver_aaapreauthenticationpolicy_binding
     - vpnvserver_analyticsprofile_binding
     - vpnvserver_appcontroller_binding
     - vpnvserver_appflowpolicy_binding
+    - vpnvserver_appfwpolicy_binding
     - vpnvserver_auditnslogpolicy_binding
     - vpnvserver_auditsyslogpolicy_binding
     - vpnvserver_authenticationcertpolicy_binding
@@ -910,8 +967,10 @@ action_groups:
     - vpnvserver_icapolicy_binding
     - vpnvserver_intranetip6_binding
     - vpnvserver_intranetip_binding
+    - vpnvserver
     - vpnvserver_responderpolicy_binding
     - vpnvserver_rewritepolicy_binding
+    - vpnvserver_secureprivateaccessurl_binding
     - vpnvserver_sharefileserver_binding
     - vpnvserver_staserver_binding
     - vpnvserver_vpnclientlessaccesspolicy_binding
@@ -924,19 +983,28 @@ action_groups:
     - vpnvserver_vpntrafficpolicy_binding
     - vpnvserver_vpnurl_binding
     - vpnvserver_vpnurlpolicy_binding
-    - vrid
-    - vrid6
     - vrid6_channel_binding
     - vrid6_interface_binding
+    - vrid6
     - vrid6_trackinterface_binding
     - vrid_channel_binding
     - vrid_interface_binding
-    - vrid_trackinterface_binding
     - vridparam
+    - vrid
+    - vrid_trackinterface_binding
     - vserver
-    - vxlan
     - vxlan_nsip6_binding
     - vxlan_nsip_binding
+    - vxlan
     - vxlan_srcip_binding
     - vxlanvlanmap
     - vxlanvlanmap_vxlan_binding
+    - accesslist
+    - bfdinterface
+    - iproute
+    - routemap
+    - ospf6interface
+    - ospf6router
+    - ospfrouter
+    - ospfinterface
+    - bgprouter
