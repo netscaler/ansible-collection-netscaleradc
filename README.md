@@ -157,6 +157,62 @@ export NETSCALER_NITRO_AUTH_TOKEN=$(curl -X POST -H "Content-Type:application/js
 echo $echo $NETSCALER_NITRO_AUTH_TOKEN
 ```
 
+### Migration Tool
+
+The collection includes a migration tool to help convert existing Ansible playbooks from the legacy `citrix.adc` collection to the new `netscaler.adc` collection format. This tool simplifies the transition from legacy automation to the updated collection.
+
+#### Features
+
+- **Module Mapping**: Automatically converts `citrix.adc` modules to `netscaler.adc` modules
+- **NITRO Request Conversion**: Transforms `citrix_adc_nitro_request` tasks to specific resource modules
+- **State Conversion**: Maps legacy operations (`add`, `update`, `delete`) to appropriate state values
+- **Credential Preservation**: Maintains authentication parameters and playbook structure
+- **YAML Structure Preservation**: Keeps task names, variables, and organization intact
+
+#### Usage
+
+```bash
+# Basic conversion
+python3 migrationtool/convert_yaml.py -i legacy_playbook.yaml -o migrated_playbook.yaml
+
+# With verbose output
+python3 migrationtool/convert_yaml.py -i legacy_playbook.yaml -o migrated_playbook.yaml -v
+```
+
+#### Example Conversion
+
+**Before (Legacy citrix.adc):**
+```yaml
+- name: Configure LB vserver
+  citrix_adc_nitro_request:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    operation: add
+    resource: lbvserver
+    name: my_lb_vserver
+    attributes:
+      servicetype: HTTP
+      ipv46: 10.10.10.10
+      port: 80
+```
+
+**After (New netscaler.adc):**
+```yaml
+- name: Configure LB vserver
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    state: present
+    name: my_lb_vserver
+    servicetype: HTTP
+    ipv46: 10.10.10.10
+    port: 80
+```
+
+For detailed migration tool documentation, usage examples, and troubleshooting, refer to the [Migration Tool README](https://github.com/netscaler/ansible-collection-netscaleradc/blob/main/tools/migrationtool/README.md).
+
 ### Invocation
 
 The credentials of the netscaler can be provided either in the playbook by hardcoding or defining in a inventory.ini file.
@@ -183,9 +239,9 @@ For external contributions, refer the [guidelines](https://github.com/netscaler/
 
 ## Support
 
-For issues : https://github.com/netscaler/ansible-collection-netscaleradc/issues
+As Red Hat Ansible Certified Content, this collection is entitled to support through the Ansible Automation Platform (AAP) using the **Create issue** button on the top right corner. If a support case cannot be opened with Red Hat and the collection has been obtained either from Galaxy or GitHub, we strongly encourage engaging with the NetScaler and Ansible community. You can contribute to the collection or seek assistance via the [NetScaler's Official GitHub Repository](https://github.com/netscaler/ansible-collection-netscaleradc) or connect with other Ansible users on the [Ansible Forum](https://forum.ansible.com/).
 
-For discussions or feature requests: https://github.com/netscaler/ansible-collection-netscaleradc/discussions
+For feature requests: https://github.com/netscaler/ansible-collection-netscaleradc/discussions
 
 ## Release Notes
 

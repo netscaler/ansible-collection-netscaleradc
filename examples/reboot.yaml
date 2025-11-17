@@ -1,0 +1,9 @@
+---
+- name: Reboot a system
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Reboot the NetScaler ADC node
+      delegate_to: localhost
+      netscaler.adc.reboot:
+        state: rebooted

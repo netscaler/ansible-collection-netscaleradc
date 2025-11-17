@@ -2,16 +2,19 @@ fmt:
 	autoflake plugins/modules/*.py
 	autoflake plugins/module_utils/*.py
 	autoflake --recursive tests/
+	autoflake tools/migrationtool/*.py
 
 	black plugins/modules/*.py
 	black plugins/module_utils/*.py
 	black tests/
+	black tools/migrationtool/*.py
 
 	isort plugins/modules/*.py
 	isort plugins/module_utils/*.py
 	isort tests/
+	isort tools/migrationtool/*.py
 
-	yamlfmt .
+	yamlfmt $(shell find . -name '*.yml' -o -name '*.yaml')
 
 install:
 	ansible-galaxy collection install . --force
@@ -39,7 +42,7 @@ build:
 	ansible-galaxy collection build --force
 
 galaxy_importer: build
-	python3 -m galaxy_importer.main netscaler-adc-2.9.1.tar.gz
+	python3 -m galaxy_importer.main netscaler-adc-2.11.0.tar.gz
 
 # build_docs:
 # 	rm -rf _built_docs
@@ -60,7 +63,7 @@ galaxy_importer: build
 # skip the playbook which contains "password" in the file name
 run_examples:
 	@for playbook in examples/*.yaml; do \
-		if [[ $$playbook == *"password"* || $$playbook == *"login"* || $$playbook == *"logout"* || $$playbook == *"route"* || $$playbook == locationfile.yaml || $$playbook == nsip6.yaml || $$playbook == hanode.yaml ]]; then \
+		if [[ $$playbook == *"password"* || $$playbook == *"login"* || $$playbook == *"logout"* || $$playbook == *"route"* || $$playbook == *"locationfile.yaml"* || $$playbook == *"nsip6.yaml"* || $$playbook == *"hanode.yaml"* ]]; then \
 			continue; \
 		fi; \
 		echo "Running $$playbook"; \

@@ -27,11 +27,22 @@ author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    choices: []
+    choices:
+      - rebooted
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+    type: str
+  remove_non_updatable_params:
+    choices:
+      - 'yes'
+      - 'no'
+    default: 'no'
+    description:
+      - When given yes, the module will remove any parameters that are not updatable
+        in the resource.
+      - If no, the module will return error if any non-updatable parameters are provided.
     type: str
   warm:
     type: bool

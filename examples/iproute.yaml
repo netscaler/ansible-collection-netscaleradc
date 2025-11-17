@@ -1,0 +1,12 @@
+---
+- name: Configure bfdinterface
+  hosts: localhost
+  tasks:
+    - name: Create bfdinterface
+      delegate_to: localhost
+      netscaler.adc.iproute:
+        state: present
+        addressFamily: ipv4
+        prefix: 33.1.1.0
+        prefixLength: 24
+        nextHop: 10.106.210.24
