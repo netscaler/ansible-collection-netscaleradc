@@ -1199,6 +1199,7 @@ class ModuleExecutor(object):
                 "renamed",
                 "applied",
                 "rebooted",
+                "changed",
             }:
                 state_action_map = {
                     "created": "create",
@@ -1209,6 +1210,7 @@ class ModuleExecutor(object):
                     "renamed": "rename",
                     "applied": "apply",
                     "rebooted": "reboot",
+                    "changed": "update",
                 }
                 self.act_on_resource(
                     action=state_action_map[self.module.params["state"]]

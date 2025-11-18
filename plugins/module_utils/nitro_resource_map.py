@@ -12,6 +12,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47,6 +48,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -82,6 +84,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -108,6 +111,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -146,6 +150,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -162,6 +167,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -178,6 +184,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -194,6 +201,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -210,6 +218,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -226,6 +235,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -242,6 +252,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -258,6 +269,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -274,6 +286,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -290,6 +303,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -306,6 +320,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -322,6 +337,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -344,6 +360,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -374,6 +391,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -422,6 +440,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -470,6 +489,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -518,6 +538,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -559,6 +580,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -600,6 +622,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -648,6 +671,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -686,6 +710,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -734,6 +759,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -782,6 +808,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -812,6 +839,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -869,6 +897,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -939,6 +968,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1044,6 +1074,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1074,6 +1105,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1265,6 +1297,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1314,6 +1347,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1362,6 +1396,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1393,6 +1428,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1512,6 +1548,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1554,6 +1591,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1585,6 +1623,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1654,6 +1693,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1691,6 +1731,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1707,6 +1748,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1723,6 +1765,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1739,6 +1782,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1755,6 +1799,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1771,6 +1816,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1787,6 +1833,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1803,6 +1850,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1819,6 +1867,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1835,6 +1884,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1851,6 +1901,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1873,6 +1924,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1921,6 +1973,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -1969,6 +2022,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2017,6 +2071,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2058,6 +2113,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2099,6 +2155,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2147,6 +2204,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2181,6 +2239,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2229,6 +2288,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2277,6 +2337,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2307,6 +2368,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2352,7 +2414,7 @@ NITRO_RESOURCE_MAP = {
         "update_payload_keys": [],
     },
     "accesslist": {
-        "_supported_operations": ["get", "unset", "update", "delete", "add"],
+        "_supported_operations": ["add", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
             "create": [],
@@ -2378,13 +2440,13 @@ NITRO_RESOURCE_MAP = {
             "id": {"no_log": False, "type": "str"},
             "remark": {"no_log": False, "type": "str"},
             "rules": {
-                "type": "list",
                 "elements": "dict",
                 "options": {
                     "action": {"no_log": False, "type": "str"},
                     "address": {"no_log": False, "type": "str"},
                     "wildcard": {"no_log": False, "type": "str"},
                 },
+                "type": "list",
             },
         },
         "singleton": True,
@@ -2394,6 +2456,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2427,6 +2490,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2462,6 +2526,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": ["dataformatfile", "name"],
             "create": [],
             "force": [],
             "import": [],
@@ -2801,6 +2866,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2826,6 +2892,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -2851,6 +2918,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2887,6 +2955,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": ["file", "name", "skipvalidation", "type"],
             "create": [],
             "force": [],
             "import": [],
@@ -2928,6 +2997,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["name", "overwrite", "src"],
@@ -2959,6 +3029,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -2995,6 +3066,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3047,6 +3119,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -3128,6 +3201,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3166,6 +3240,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3205,6 +3280,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3291,6 +3367,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3639,6 +3716,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3666,6 +3744,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -3697,6 +3776,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3723,6 +3803,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -3749,6 +3830,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3803,6 +3885,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "export", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "src"],
@@ -3835,6 +3918,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3871,6 +3955,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["export"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3908,6 +3993,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -3941,6 +4027,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4016,6 +4103,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4080,6 +4168,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4144,6 +4233,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4178,6 +4268,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4212,6 +4303,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4246,6 +4338,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -4278,6 +4371,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4312,6 +4406,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -4344,6 +4439,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "delete", "export", "get", "reset"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4461,6 +4557,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4584,6 +4681,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4627,6 +4725,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4653,6 +4752,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -4685,6 +4785,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4711,6 +4812,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -4737,6 +4839,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -4800,6 +4903,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -5137,6 +5241,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5153,6 +5258,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5169,6 +5275,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5185,6 +5292,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5201,6 +5309,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5217,6 +5326,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5233,6 +5343,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5249,6 +5360,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5265,6 +5377,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5281,6 +5394,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5297,6 +5411,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5313,6 +5428,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5329,6 +5445,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5345,6 +5462,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5361,6 +5479,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5377,6 +5496,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5393,6 +5513,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5409,6 +5530,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5425,6 +5547,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5441,6 +5564,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5457,6 +5581,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5473,6 +5598,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5489,6 +5615,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5505,6 +5632,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5521,6 +5649,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5537,6 +5666,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5553,6 +5683,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5569,6 +5700,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5585,6 +5717,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5601,6 +5734,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5617,6 +5751,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5633,6 +5768,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5649,6 +5785,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5665,6 +5802,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -6421,6 +6559,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6483,6 +6622,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6565,6 +6705,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6648,6 +6789,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6748,6 +6890,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6800,6 +6943,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6859,6 +7003,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -6914,6 +7059,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7014,6 +7160,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7069,6 +7216,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7153,6 +7301,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7205,6 +7354,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7257,6 +7407,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7337,6 +7488,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7399,6 +7551,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7470,6 +7623,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7557,6 +7711,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7620,6 +7775,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7702,6 +7858,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7793,6 +7950,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7905,6 +8063,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -7996,6 +8155,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8087,6 +8247,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8142,6 +8303,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8201,6 +8363,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8267,6 +8430,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8367,6 +8531,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8419,6 +8584,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8471,6 +8637,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8543,6 +8710,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8771,6 +8939,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8837,6 +9006,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8926,6 +9096,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -8981,6 +9152,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9047,6 +9219,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -9079,6 +9252,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9212,6 +9386,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": [
@@ -9279,6 +9454,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9313,6 +9489,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -9345,6 +9522,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9379,6 +9557,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -9411,6 +9590,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -9443,6 +9623,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "export"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["appname", "apptemplatefilename", "deploymentfilename"],
@@ -9482,6 +9663,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9580,6 +9762,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -9610,6 +9793,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9659,6 +9843,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9690,6 +9875,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "send"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9746,6 +9932,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9788,6 +9975,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9858,6 +10046,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -9995,7 +10184,7 @@ NITRO_RESOURCE_MAP = {
                 "type": "str",
             },
             "trafficplane": {
-                "choices": ["DATA", "DEFAULT"],
+                "choices": ["DATA", "MGMT"],
                 "no_log": False,
                 "type": "str",
             },
@@ -10039,6 +10228,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10085,6 +10275,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10238,6 +10429,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10277,6 +10469,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10476,7 +10669,7 @@ NITRO_RESOURCE_MAP = {
                 "type": "str",
             },
             "trafficplane": {
-                "choices": ["DATA", "DEFAULT"],
+                "choices": ["DATA", "MGMT"],
                 "no_log": False,
                 "type": "str",
             },
@@ -10536,6 +10729,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10656,6 +10850,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10818,6 +11013,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10856,6 +11052,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10909,6 +11106,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -10962,6 +11160,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11047,6 +11246,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11108,6 +11308,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11167,6 +11368,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11206,6 +11408,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11253,6 +11456,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11305,6 +11509,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11344,6 +11549,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11416,6 +11622,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11485,6 +11692,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11773,6 +11981,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11811,6 +12020,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11849,6 +12059,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11924,6 +12135,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -11982,6 +12194,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12051,6 +12264,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12090,6 +12304,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12128,6 +12343,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12384,6 +12600,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12442,6 +12659,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12547,6 +12765,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12581,6 +12800,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -12622,6 +12842,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12648,6 +12869,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -12676,6 +12898,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12728,6 +12951,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12767,6 +12991,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12820,6 +13045,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -12988,6 +13214,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13027,6 +13254,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13335,6 +13563,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13393,6 +13622,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13897,6 +14127,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13936,6 +14167,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -13976,6 +14208,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14015,6 +14248,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14065,6 +14299,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14216,6 +14451,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14258,6 +14494,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14343,6 +14580,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14359,6 +14597,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14375,6 +14614,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14391,6 +14631,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14407,6 +14648,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14423,6 +14665,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14439,6 +14682,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14455,6 +14699,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14471,6 +14716,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14487,6 +14733,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14503,6 +14750,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14519,6 +14767,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14535,6 +14784,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14551,6 +14801,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14567,6 +14818,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14583,6 +14835,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14599,6 +14852,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14615,6 +14869,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14631,6 +14886,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14647,6 +14903,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14663,6 +14920,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14709,6 +14967,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14773,6 +15032,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14837,6 +15097,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14901,6 +15162,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -14965,6 +15227,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15029,6 +15292,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15093,6 +15357,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15157,6 +15422,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15221,6 +15487,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15285,6 +15552,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15349,6 +15617,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15413,6 +15682,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15477,6 +15747,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15541,6 +15812,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15605,6 +15877,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15669,6 +15942,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15733,6 +16007,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15797,6 +16072,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15861,6 +16137,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15925,6 +16202,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -15989,6 +16267,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16026,6 +16305,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16154,6 +16434,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16193,6 +16474,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16220,6 +16502,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -16249,6 +16532,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16275,6 +16559,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -16296,6 +16581,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16358,6 +16644,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16421,6 +16708,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16463,6 +16751,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16496,6 +16785,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16544,6 +16834,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16571,8 +16862,41 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": [],
     },
+    "bfdinterface": {
+        "_supported_operations": ["add", "get", "unset"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": ["name", "passive"],
+        },
+        "add_payload_keys": ["interval", "minrx", "multiplier", "name", "passive"],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": [],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": [],
+        "immutable_keys": [],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "readwrite_arguments": {
+            "interval": {"no_log": False, "type": "int"},
+            "minrx": {"no_log": False, "type": "int"},
+            "multiplier": {"no_log": False, "type": "int"},
+            "name": {"no_log": False, "type": "str"},
+            "passive": {"no_log": False, "type": "bool"},
+        },
+        "singleton": False,
+        "update_payload_keys": ["interval", "minrx", "multiplier", "name", "passive"],
+    },
     "bgprouter": {
-        "_supported_operations": ["get", "add", "unset", "update", "delete"],
+        "_supported_operations": ["add", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
             "create": [],
@@ -16594,71 +16918,68 @@ NITRO_RESOURCE_MAP = {
         "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
-        "update_payload_keys": ["afParams", "localAS", "neighbor", "routerId"],
         "readwrite_arguments": {
-            "localAS": {"no_log": False, "type": "int"},
-            "routerId": {"no_log": False, "type": "str"},
             "afParams": {
-                "type": "list",
                 "elements": "dict",
                 "options": {
                     "addressFamily": {
+                        "choices": ["ipv4", "ipv6"],
                         "no_log": False,
                         "type": "str",
-                        "choices": ["ipv4", "ipv6"],
                     },
                     "redistribute": {
-                        "type": "list",
                         "elements": "dict",
                         "options": {
                             "protocol": {
+                                "choices": [
+                                    "connected",
+                                    "intranet",
+                                    "isis",
+                                    "kernel",
+                                    "ospf",
+                                    "rip",
+                                    "static",
+                                ],
                                 "no_log": False,
                                 "type": "str",
-                                "choices": [
-                                    "kernel",
-                                    "connected",
-                                    "static",
-                                    "rip",
-                                    "ospf",
-                                    "isis",
-                                    "intranet",
-                                ],
                             },
                             "routeMap": {"no_log": False, "type": "str"},
                         },
+                        "type": "list",
                     },
                 },
-            },
-            "neighbor": {
                 "type": "list",
+            },
+            "localAS": {"no_log": False, "type": "int"},
+            "neighbor": {
                 "elements": "dict",
                 "options": {
                     "ASOriginationInterval": {"no_log": False, "type": "int"},
                     "address": {"no_log": False, "type": "str"},
                     "advertisementInterval": {"no_log": False, "type": "int"},
                     "afParams": {
-                        "type": "list",
                         "elements": "dict",
                         "options": {
                             "activate": {"no_log": False, "type": "bool"},
                             "addressFamily": {
+                                "choices": ["ipv4", "ipv6"],
                                 "no_log": False,
                                 "type": "str",
-                                "choices": ["ipv4", "ipv6"],
                             },
                             "routeMap": {
-                                "type": "list",
                                 "elements": "dict",
                                 "options": {
                                     "direction": {
+                                        "choices": ["in", "out"],
                                         "no_log": False,
                                         "type": "str",
-                                        "choices": ["in", "out"],
                                     },
                                     "name": {"no_log": False, "type": "str"},
                                 },
+                                "type": "list",
                             },
                         },
+                        "type": "list",
                     },
                     "connectTimer": {"no_log": False, "type": "int"},
                     "holdTimerConfig": {"no_log": False, "type": "int"},
@@ -16669,47 +16990,18 @@ NITRO_RESOURCE_MAP = {
                     "singlehopBfd": {"no_log": False, "type": "bool"},
                     "updateSource": {"no_log": False, "type": "str"},
                 },
+                "type": "list",
             },
+            "routerId": {"no_log": False, "type": "str"},
         },
         "singleton": False,
-    },
-    "bfdinterface": {
-        "_supported_operations": ["get", "add", "unset"],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": ["name", "passive"],
-        },
-        "add_payload_keys": ["interval", "minrx", "name", "multiplier", "passive"],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": [],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": [],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "update_payload_keys": ["name", "interval", "minrx", "multiplier", "passive"],
-        "readwrite_arguments": {
-            "interval": {"no_log": False, "type": "int"},
-            "minrx": {"no_log": False, "type": "int"},
-            "name": {"no_log": False, "type": "str"},
-            "multiplier": {"no_log": False, "type": "int"},
-            "passive": {"no_log": False, "type": "bool"},
-        },
-        "singleton": False,
+        "update_payload_keys": ["afParams", "localAS", "neighbor", "routerId"],
     },
     "botglobal_botpolicy_binding": {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16788,6 +17080,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16821,6 +17114,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -16861,6 +17155,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16887,6 +17182,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -16909,6 +17205,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -16971,6 +17268,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17094,6 +17392,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17110,6 +17409,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17126,6 +17426,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17142,6 +17443,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17158,6 +17460,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17174,6 +17477,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17190,6 +17494,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17206,6 +17511,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17222,6 +17528,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17334,6 +17641,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17400,6 +17708,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17474,6 +17783,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17558,6 +17868,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17612,6 +17923,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -17666,6 +17978,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18035,6 +18348,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18104,6 +18418,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18155,6 +18470,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18216,6 +18532,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18303,6 +18620,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -18343,6 +18661,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18372,6 +18691,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -18388,6 +18708,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -18404,6 +18725,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -18434,6 +18756,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18466,6 +18789,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18498,6 +18822,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18535,6 +18860,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18583,6 +18909,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18804,6 +19131,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18834,6 +19162,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18919,6 +19248,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "expire", "flush", "get", "save"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -18978,6 +19308,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19060,6 +19391,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19105,6 +19437,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -19150,6 +19483,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19176,6 +19510,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -19211,6 +19546,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19272,6 +19608,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19302,6 +19639,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19356,6 +19694,16 @@ NITRO_RESOURCE_MAP = {
     },
     "change_password": {
         "_supported_operations": ["add", "update"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [],
+        },
         "add_payload_keys": ["first_boot", "new_password", "password", "username"],
         "bindings": [],
         "bindprimary_key": "",
@@ -19364,6 +19712,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": ["new_password", "password", "username"],
+        "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
         "readwrite_arguments": {
@@ -19387,6 +19736,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19441,6 +19791,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -19522,6 +19873,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19550,6 +19902,16 @@ NITRO_RESOURCE_MAP = {
     },
     "clear_config": {
         "_supported_operations": ["add"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [],
+        },
         "add_payload_keys": ["all", "mode"],
         "bindings": [],
         "bindprimary_key": "",
@@ -19558,6 +19920,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
+        "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
         "readwrite_arguments": {
@@ -19583,6 +19946,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19613,6 +19977,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19640,6 +20005,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19675,6 +20041,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19729,6 +20096,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19782,6 +20150,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19811,6 +20180,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -19997,6 +20367,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["check"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20024,6 +20395,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20068,6 +20440,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20100,6 +20473,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["join"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20139,6 +20513,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20155,6 +20530,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20171,6 +20547,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20187,6 +20564,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20203,6 +20581,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20219,6 +20598,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20235,6 +20615,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20251,6 +20632,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20267,6 +20649,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20283,6 +20666,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20299,6 +20683,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20315,6 +20700,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20335,6 +20721,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20391,6 +20778,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20521,6 +20909,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20573,6 +20962,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20589,6 +20979,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20605,6 +20996,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20621,6 +21013,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20637,6 +21030,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20653,6 +21047,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20669,6 +21064,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20685,6 +21081,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20701,6 +21098,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20717,6 +21115,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20733,6 +21132,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20749,6 +21149,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20785,6 +21186,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20823,6 +21225,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -20860,6 +21263,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20876,6 +21280,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20892,6 +21297,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20908,6 +21314,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20924,6 +21331,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20940,6 +21348,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20956,6 +21365,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20972,6 +21382,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20988,6 +21399,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21004,6 +21416,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21020,6 +21433,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21043,6 +21457,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21072,6 +21487,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21101,6 +21517,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21130,6 +21547,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21159,6 +21577,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21188,6 +21607,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21217,6 +21637,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21246,6 +21667,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21275,6 +21697,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21304,6 +21727,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21333,6 +21757,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21362,6 +21787,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21389,6 +21815,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21425,6 +21852,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21472,6 +21900,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21551,6 +21980,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21647,6 +22077,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21673,6 +22104,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21703,6 +22135,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21729,6 +22162,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21755,6 +22189,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21817,6 +22252,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21883,6 +22319,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -21943,6 +22380,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22017,6 +22455,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22053,6 +22492,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22088,6 +22528,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22126,6 +22567,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22153,6 +22595,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22175,6 +22618,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22237,6 +22681,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22300,6 +22745,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22345,6 +22791,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22502,6 +22949,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22518,6 +22966,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22534,6 +22983,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22550,6 +23000,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22566,6 +23017,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22582,6 +23034,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22598,6 +23051,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22614,6 +23068,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22630,6 +23085,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22646,6 +23102,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22662,6 +23119,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22678,6 +23136,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22694,6 +23153,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22710,6 +23170,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22726,6 +23187,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22864,6 +23326,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22893,6 +23356,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -22957,6 +23421,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23021,6 +23486,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23085,6 +23551,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23149,6 +23616,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23213,6 +23681,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23277,6 +23746,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23341,6 +23811,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23405,6 +23876,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23469,6 +23941,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23498,6 +23971,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23562,6 +24036,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23626,6 +24101,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23690,6 +24166,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23763,6 +24240,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23810,6 +24288,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23852,6 +24331,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23879,6 +24359,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23909,6 +24390,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -23935,6 +24417,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23985,6 +24468,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24049,6 +24533,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24272,6 +24757,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24288,6 +24774,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24304,6 +24791,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24320,6 +24808,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24336,6 +24825,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24352,6 +24842,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24368,6 +24859,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24384,6 +24876,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24400,6 +24893,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24416,6 +24910,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24432,6 +24927,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24448,6 +24944,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24464,6 +24961,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24480,6 +24978,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24496,6 +24995,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24512,6 +25012,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24528,6 +25029,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24544,6 +25046,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24560,6 +25063,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24576,6 +25080,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24592,6 +25097,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24608,6 +25114,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24892,6 +25399,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24921,6 +25429,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -24991,6 +25500,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25061,6 +25571,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25131,6 +25642,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25201,6 +25713,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25271,6 +25784,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25341,6 +25855,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25411,6 +25926,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25481,6 +25997,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25551,6 +26068,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25621,6 +26139,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25691,6 +26210,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25741,6 +26261,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25811,6 +26332,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25840,6 +26362,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25870,6 +26393,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -25940,6 +26464,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26010,6 +26535,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26080,6 +26606,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26150,6 +26677,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26220,6 +26748,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26257,6 +26786,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26324,6 +26854,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["restart"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26358,6 +26889,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26389,6 +26921,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26435,6 +26968,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26504,6 +27038,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26536,6 +27071,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26574,6 +27110,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26615,6 +27152,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26653,6 +27191,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26733,6 +27272,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [
                 "algorithm",
                 "filenameprefix",
@@ -26850,6 +27390,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26898,6 +27439,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -26935,6 +27477,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27013,6 +27556,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27051,6 +27595,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27216,6 +27761,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27243,6 +27789,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -27276,6 +27823,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27314,6 +27862,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27340,6 +27889,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -27366,6 +27916,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27424,6 +27975,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27555,6 +28107,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27608,6 +28161,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27654,6 +28208,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27726,6 +28281,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27774,6 +28330,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27805,6 +28362,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27832,6 +28390,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27871,6 +28430,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27908,6 +28468,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -27962,6 +28523,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28009,6 +28571,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28044,6 +28607,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28165,6 +28729,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28224,6 +28789,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28274,6 +28840,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28305,6 +28872,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28337,6 +28905,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28362,6 +28931,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28378,6 +28948,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28399,6 +28970,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28429,6 +29001,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "delete"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28466,6 +29039,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28532,6 +29106,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28566,6 +29141,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28593,6 +29169,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["delete"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28620,6 +29197,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28738,6 +29316,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -28849,6 +29428,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28865,6 +29445,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28881,6 +29462,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28897,6 +29479,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28999,6 +29582,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29029,6 +29613,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29075,6 +29660,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29185,6 +29771,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29201,6 +29788,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29300,6 +29888,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29366,6 +29955,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29441,6 +30031,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29550,6 +30141,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29704,6 +30296,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29720,6 +30313,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29736,6 +30330,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29752,6 +30347,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29768,6 +30364,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29920,6 +30517,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -29975,6 +30573,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30007,6 +30606,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30037,6 +30637,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30088,6 +30689,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30139,6 +30741,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": ["force"],
             "import": [],
@@ -30166,6 +30769,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30220,6 +30824,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30246,7 +30851,7 @@ NITRO_RESOURCE_MAP = {
         "delete_arg_keys": [],
         "disable_payload_keys": [],
         "enable_payload_keys": [],
-        "get_arg_keys": ["id"],
+        "get_arg_keys": [],
         "immutable_keys": ["inc", "ipaddress", "rpcnodepassword"],
         "password_keys": ["rpcnodepassword"],
         "primary_key": "id",
@@ -30259,6 +30864,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30275,6 +30881,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30334,6 +30941,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30364,6 +30972,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30394,6 +31003,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": ["force", "save"],
             "import": [],
@@ -30432,6 +31042,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30588,6 +31199,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30621,6 +31233,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30680,6 +31293,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30739,6 +31353,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30826,6 +31441,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30869,6 +31485,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -30963,6 +31580,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31016,6 +31634,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Install"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31070,6 +31689,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31220,6 +31840,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31250,6 +31871,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31282,6 +31904,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31332,11 +31955,7 @@ NITRO_RESOURCE_MAP = {
         ],
     },
     "iproute": {
-        "_supported_operations": [
-            "add",
-            "delete",
-            "get",
-        ],
+        "_supported_operations": ["add", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
             "create": [],
@@ -31348,10 +31967,10 @@ NITRO_RESOURCE_MAP = {
             "unset": [],
         },
         "add_payload_keys": [
-            "ipRoute",
             "addressFamily",
             "distance",
             "interface",
+            "ipRoute",
             "nextHop",
             "prefix",
             "prefixLength",
@@ -31359,57 +31978,33 @@ NITRO_RESOURCE_MAP = {
         "bindings": [],
         "bindprimary_key": "",
         "delete_arg_keys": [
-            "prefix",
             "addressFamily",
-            "nextHop",
             "interface",
+            "nextHop",
+            "prefix",
             "prefixLength",
         ],
         "disable_payload_keys": [],
         "enable_payload_keys": [],
-        "get_arg_keys": ["prefixLength", "prefix", "addressFamily"],
+        "get_arg_keys": ["addressFamily", "prefix", "prefixLength"],
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
         "readwrite_arguments": {
             "addressFamily": {
-                "no_log": False,
-                "type": "str",
                 "choices": ["ipv4", "ipv6"],
-            },
-            "distance": {
-                "no_log": False,
-                "type": "int",
-            },
-            "interface": {
                 "no_log": False,
                 "type": "str",
             },
-            "isBest": {
-                "no_log": False,
-                "type": "bool",
-            },
-            "metric": {
-                "no_log": False,
-                "type": "str",
-            },
-            "nextHop": {
-                "no_log": False,
-                "type": "str",
-            },
-            "prefix": {
-                "no_log": False,
-                "type": "str",
-            },
-            "prefixLength": {
-                "no_log": False,
-                "type": "int",
-            },
-            "type": {
-                "no_log": False,
-                "type": "str",
-            },
+            "distance": {"no_log": False, "type": "int"},
+            "interface": {"no_log": False, "type": "str"},
+            "isBest": {"no_log": False, "type": "bool"},
+            "metric": {"no_log": False, "type": "str"},
+            "nextHop": {"no_log": False, "type": "str"},
+            "prefix": {"no_log": False, "type": "str"},
+            "prefixLength": {"no_log": False, "type": "int"},
+            "type": {"no_log": False, "type": "str"},
         },
         "singleton": False,
         "update_payload_keys": [],
@@ -31426,6 +32021,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31481,6 +32077,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31515,6 +32112,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31592,6 +32190,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31684,6 +32283,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31709,6 +32309,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -31725,6 +32326,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -31746,6 +32348,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31775,6 +32378,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31812,6 +32416,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31893,6 +32498,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -31963,6 +32569,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32029,6 +32636,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32054,6 +32662,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -32074,6 +32683,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32103,6 +32713,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32233,6 +32844,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32371,6 +32983,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32417,6 +33030,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32456,6 +33070,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32494,6 +33109,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32603,6 +33219,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32658,6 +33275,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -32712,6 +33330,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32748,6 +33367,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32773,6 +33393,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -32795,6 +33416,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -32835,6 +33457,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33104,6 +33727,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33120,6 +33744,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33438,6 +34063,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33474,6 +34100,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33520,6 +34147,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33679,6 +34307,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33719,6 +34348,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33754,6 +34384,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33792,6 +34423,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33820,6 +34452,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33860,6 +34493,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -33922,6 +34556,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34037,6 +34672,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34069,6 +34705,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34100,6 +34737,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34166,6 +34804,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -34527,6 +35166,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34543,6 +35183,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34559,6 +35200,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34575,6 +35217,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34591,6 +35234,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34607,6 +35251,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34623,6 +35268,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34639,6 +35285,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34655,6 +35302,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34671,6 +35319,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34687,6 +35336,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34703,6 +35353,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34719,6 +35370,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34735,6 +35387,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34751,6 +35404,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34767,6 +35421,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34783,6 +35438,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34799,6 +35455,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34815,6 +35472,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34831,6 +35489,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34847,6 +35506,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34863,6 +35523,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34879,6 +35540,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35236,6 +35898,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35266,6 +35929,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35330,6 +35994,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35394,6 +36059,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35458,6 +36124,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35522,6 +36189,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35586,6 +36254,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35650,6 +36319,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35714,6 +36384,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35778,6 +36449,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35842,6 +36514,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35906,6 +36579,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -35970,6 +36644,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36034,6 +36709,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36098,6 +36774,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36162,6 +36839,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36226,6 +36904,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36264,6 +36943,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36302,6 +36982,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36366,6 +37047,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36430,6 +37112,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36494,6 +37177,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36558,6 +37242,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36630,6 +37315,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36658,6 +37344,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -36679,6 +37366,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36708,6 +37396,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36734,6 +37423,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -36750,6 +37440,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -36769,6 +37460,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36798,6 +37490,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36827,6 +37520,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36857,6 +37551,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36892,6 +37587,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36937,6 +37633,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -36964,6 +37661,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "add", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["locationfile", "src"],
@@ -37011,6 +37709,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["locationfile", "src"],
@@ -37046,6 +37745,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37106,6 +37806,16 @@ NITRO_RESOURCE_MAP = {
     },
     "login": {
         "_supported_operations": ["add"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [],
+        },
         "add_payload_keys": ["password", "username"],
         "bindings": [],
         "bindprimary_key": "",
@@ -37114,6 +37824,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": ["password", "username"],
+        "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
         "readwrite_arguments": {
@@ -37125,6 +37836,16 @@ NITRO_RESOURCE_MAP = {
     },
     "logout": {
         "_supported_operations": ["add"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [],
+        },
         "add_payload_keys": [],
         "bindings": [],
         "bindprimary_key": "",
@@ -37133,6 +37854,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
+        "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
         "readwrite_arguments": {},
@@ -37151,6 +37873,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37195,6 +37918,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37260,6 +37984,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37276,6 +38001,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37323,6 +38049,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37352,6 +38079,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37381,6 +38109,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37412,6 +38141,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37428,6 +38158,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37444,6 +38175,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37460,6 +38192,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37479,6 +38212,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37511,6 +38245,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37542,6 +38277,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37572,6 +38308,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37610,6 +38347,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37692,6 +38430,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37708,6 +38447,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37724,6 +38464,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37740,6 +38481,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37756,6 +38498,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37772,6 +38515,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37788,6 +38532,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37804,6 +38549,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37820,6 +38566,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37883,6 +38630,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37912,6 +38660,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37941,6 +38690,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37970,6 +38720,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -37999,6 +38750,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38028,6 +38780,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38057,6 +38810,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38086,6 +38840,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38115,6 +38870,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38152,6 +38908,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38219,6 +38976,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38259,6 +39017,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38330,6 +39089,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38377,6 +39137,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38408,6 +39169,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38440,6 +39202,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38478,6 +39241,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38529,6 +39293,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38559,6 +39324,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38608,6 +39374,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38646,6 +39413,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38757,6 +39525,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38834,6 +39603,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38927,6 +39697,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -38965,6 +39736,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38988,6 +39760,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39018,6 +39791,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39048,6 +39822,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39074,6 +39849,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39094,6 +39870,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39131,6 +39908,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39195,6 +39973,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39211,6 +39990,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39227,6 +40007,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39243,6 +40024,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39259,6 +40041,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39275,6 +40058,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39291,6 +40075,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39307,6 +40092,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39323,6 +40109,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39360,6 +40147,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39404,6 +40192,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39448,6 +40237,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39492,6 +40282,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39536,6 +40327,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39580,6 +40372,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39624,6 +40417,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39668,6 +40462,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39712,6 +40507,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39764,6 +40560,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39795,6 +40592,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39852,6 +40650,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "clear", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39879,6 +40678,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39904,6 +40704,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -39959,6 +40760,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40012,6 +40814,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40049,6 +40852,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40080,6 +40884,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40096,6 +40901,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40112,6 +40918,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40128,6 +40935,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40148,6 +40956,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40177,6 +40986,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40207,6 +41017,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40237,6 +41048,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40274,6 +41086,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40320,6 +41133,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40336,6 +41150,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40391,6 +41206,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40422,6 +41238,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40462,6 +41279,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -40812,6 +41630,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41144,6 +41963,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
             "apply": ["type"],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41173,6 +41993,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
             "apply": ["type"],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41202,6 +42023,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41233,6 +42055,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41318,6 +42141,14 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["change", "count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [
+                "bindtype",
+                "countavailable",
+                "id",
+                "licensedir",
+                "sessionid",
+                "useproxy",
+            ],
             "create": [],
             "force": [],
             "import": [],
@@ -41362,6 +42193,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41418,6 +42250,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41511,6 +42344,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41571,6 +42405,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41612,6 +42447,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41705,6 +42541,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Switch", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41732,6 +42569,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41759,6 +42597,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41847,6 +42686,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["release"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41874,6 +42714,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41904,6 +42745,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -41953,6 +42795,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42026,6 +42869,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42098,6 +42942,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["comment", "name", "overwrite", "src"],
@@ -42144,6 +42989,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42255,6 +43101,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42300,6 +43147,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42330,6 +43178,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42418,6 +43267,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42805,6 +43655,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -42919,6 +43770,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43157,6 +44009,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43396,6 +44249,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43428,6 +44282,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["apply"],
         "action_payload_keys": {
             "apply": ["filelocation", "filename"],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43458,6 +44313,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43503,6 +44359,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43534,6 +44391,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43543,6 +44401,7 @@ NITRO_RESOURCE_MAP = {
             "unset": [],
         },
         "add_payload_keys": [
+            "deviceprofilename",
             "forceupdateip",
             "licensemode",
             "licenseserverip",
@@ -43557,16 +44416,22 @@ NITRO_RESOURCE_MAP = {
         "disable_payload_keys": [],
         "enable_payload_keys": [],
         "get_arg_keys": ["servername"],
-        "immutable_keys": ["forceupdateip", "password", "username"],
+        "immutable_keys": [
+            "deviceprofilename",
+            "forceupdateip",
+            "password",
+            "username",
+        ],
         "password_keys": ["password"],
         "primary_key": "licenseserverip",
         "primary_key_composite": ["servername"],
         "readwrite_arguments": {
+            "deviceprofilename": {"no_log": False, "type": "str"},
             "forceupdateip": {"no_log": False, "type": "bool"},
             "licensemode": {
                 "choices": [
                     "CICO",
-                    "LASConnected",
+                    "LAS",
                     "Pooled",
                     "SelfManagedPool",
                     "SelfManagedvCPU",
@@ -43597,6 +44462,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43676,6 +44542,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43706,6 +44573,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43736,6 +44604,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43778,6 +44647,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43807,6 +44677,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43866,9 +44737,10 @@ NITRO_RESOURCE_MAP = {
         "update_payload_keys": [],
     },
     "nsnextgenapi": {
-        "_supported_operations": ["clear", "disable", "enable", "get"],
+        "_supported_operations": ["clear", "disable", "enable", "get", "reset"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -43896,6 +44768,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44047,6 +44920,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44095,6 +44969,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -44111,6 +44986,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -44127,6 +45003,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -44156,6 +45033,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44185,6 +45063,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44214,6 +45093,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44253,6 +45133,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44569,6 +45450,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44866,6 +45748,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44893,6 +45776,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44935,6 +45819,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -44981,6 +45866,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45011,6 +45897,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45036,6 +45923,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -45056,6 +45944,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45094,6 +45983,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45154,6 +46044,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45206,6 +46097,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45233,6 +46125,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45267,6 +46160,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45300,6 +46194,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45331,6 +46226,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45361,6 +46257,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -45628,6 +46525,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46023,6 +46921,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["apply", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46050,6 +46949,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46133,6 +47033,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46163,6 +47064,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -46183,6 +47085,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46233,6 +47136,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46348,6 +47252,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46378,6 +47283,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -46394,6 +47300,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -46410,6 +47317,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -46435,6 +47343,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46464,6 +47373,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46493,6 +47403,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46530,6 +47441,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46602,6 +47514,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46646,6 +47559,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46685,6 +47599,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46716,6 +47631,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46757,6 +47673,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46819,6 +47736,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -46842,344 +47760,6 @@ NITRO_RESOURCE_MAP = {
         "singleton": True,
         "update_payload_keys": [],
     },
-    "ospf6interface": {
-        "_supported_operations": [
-            "add",
-            "get",
-            "unset",
-            "update",
-        ],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": [
-                "areaId",
-                "cost",
-                "deadInterval",
-                "helloInterval",
-                "instanceId",
-                "name",
-                "networkType",
-                "priority",
-                "retransmitInterval",
-                "tagId",
-                "transmitDelay",
-            ],
-        },
-        "add_payload_keys": [
-            "areaId",
-            "cost",
-            "deadInterval",
-            "helloInterval",
-            "instanceId",
-            "name",
-            "networkType",
-            "priority",
-            "retransmitInterval",
-            "tagId",
-            "transmitDelay",
-        ],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": [],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": ["name"],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "areaId": {
-                "no_log": False,
-                "type": "int",
-            },
-            "cost": {
-                "no_log": False,
-                "type": "int",
-            },
-            "deadInterval": {
-                "no_log": False,
-                "type": "int",
-            },
-            "helloInterval": {
-                "no_log": False,
-                "type": "int",
-            },
-            "instanceId": {
-                "no_log": False,
-                "type": "int",
-            },
-            "name": {"no_log": False, "type": "str"},
-            "networkType": {
-                "no_log": False,
-                "type": "str",
-                "choices": [
-                    "broadcast",
-                    "non-broadcast",
-                    "point-to-multipoint",
-                    "point-to-point",
-                ],
-            },
-            "priority": {
-                "no_log": False,
-                "type": "int",
-            },
-            "retransmitInterval": {
-                "no_log": False,
-                "type": "int",
-            },
-            "tagId": {"no_log": False, "type": "str"},
-            "transmitDelay": {
-                "no_log": False,
-                "type": "int",
-            },
-        },
-        "singleton": False,
-        "update_payload_keys": [
-            "areaId",
-            "cost",
-            "deadInterval",
-            "helloInterval",
-            "instanceId",
-            "name",
-            "networkType",
-            "priority",
-            "retransmitInterval",
-            "tagId",
-            "transmitDelay",
-        ],
-    },
-    "ospf6router": {
-        "_supported_operations": [
-            "add",
-            "get",
-            "unset",
-            "update",
-            "delete",
-        ],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": ["afParams", "passiveInterface", "routerId", "tagId"],
-        },
-        "add_payload_keys": ["afParams", "passiveInterface", "routerId", "tagId"],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": ["tagId"],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": ["tagId"],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "afParams": {
-                "type": "list",
-                "elements": "dict",
-                "options": {
-                    "addressFamily": {"no_log": False, "type": "str"},
-                    "redistribute": {
-                        "type": "list",
-                        "elements": "dict",
-                        "options": {
-                            "metric": {"no_log": False, "type": "int"},
-                            "metricType": {"no_log": False, "type": "int"},
-                            "protocol": {"no_log": False, "type": "str"},
-                            "routeMap": {"no_log": False, "type": "str"},
-                        },
-                    },
-                },
-            },
-            "passiveInterface": {"no_log": False, "type": "list", "elements": "str"},
-            "routerId": {"no_log": False, "type": "str"},
-            "tagId": {"no_log": False, "type": "str"},
-        },
-        "singleton": False,
-        "update_payload_keys": [
-            "afParams",
-            "passiveInterface",
-            "tagId",
-        ],
-    },
-    "ospfinterface": {
-        "_supported_operations": [
-            "add",
-            "get",
-            "unset",
-            "update",
-        ],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": [
-                "networks",
-                "passiveInterface",
-                "processId",
-                "redistribute",
-                "routerId",
-            ],
-        },
-        "add_payload_keys": [
-            "authKey",
-            "authType",
-            "bfd",
-            "cost",
-            "deadInterval",
-            "helloInterval",
-            "mtu",
-            "name",
-            "networkType",
-            "priority",
-            "retransmitInterval",
-            "transmitDelay"
-        ],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": ["processId"],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": ["processId"],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "authKey": {"no_log": False, "type": "str"},
-            "authType": {
-                "no_log": False,
-                "type": "str",
-                "choices": ["null", "simple", "message-digest"],
-            },
-            "bfd": {"no_log": False, "type": "bool"},
-            "cost": {"no_log": False, "type": "int"},
-            "deadInterval": {"no_log": False, "type": "int"},
-            "helloInterval": {"no_log": False, "type": "int"},
-            "mtu": {"no_log": False, "type": "int"},
-            "name": {"no_log": False, "type": "str"},
-            "networkType": {
-                "no_log": False,
-                "type": "str",
-                "choices": ["broadcast", "non-broadcast", "point-to-multipoint", "point-to-point"],
-            },
-            "priority": {"no_log": False, "type": "int"},
-            "retransmitInterval": {"no_log": False, "type": "int"},
-            "transmitDelay": {"no_log": False, "type": "int"},
-        },
-        "singleton": False,
-        "update_payload_keys": [
-            "networks",
-            "passiveInterface",
-            "processId",
-            "redistribute",
-            "routerId",
-        ],
-    },
-    "ospfrouter": {
-        "_supported_operations": [
-            "add",
-            "get",
-            "unset",
-            "update",
-            "delete",
-        ],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": [
-                "networks",
-                "passiveInterface",
-                "processId",
-                "redistribute",
-                "routerId",
-            ],
-        },
-        "add_payload_keys": [
-            "networks",
-            "passiveInterface",
-            "processId",
-            "redistribute",
-            "routerId",
-        ],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": ["processId"],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": ["processId"],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "networks": {
-                "type": "list",
-                "elements": "dict",
-                "options": {
-                    "area": {"no_log": False, "type": "int"},
-                    "ipaddress": {"no_log": False, "type": "str"},
-                    "netmask": {"no_log": False, "type": "int"},
-                },
-            },
-            "passiveInterface": {"no_log": False, "type": "list", "elements": "str"},
-            "processId": {"no_log": False, "type": "int"},
-            "redistribute": {
-                "type": "list",
-                "elements": "dict",
-                "options": {
-                    "metric": {"no_log": False, "type": "int"},
-                    "metricType": {"no_log": False, "type": "int"},
-                    "ospfProcessId": {"no_log": False, "type": "int"},
-                    "protocol": {
-                        "no_log": False,
-                        "type": "str",
-                        "choices": [
-                            "bgp",
-                            "connected",
-                            "intranet",
-                            "isis",
-                            "kernel",
-                            "ospf",
-                            "rip",
-                            "static",
-                        ],
-                    },
-                    "routeMap": {"no_log": False, "type": "str"},
-                    "tag": {"no_log": False, "type": "int"},
-                },
-            },
-            "routerId": {"no_log": False, "type": "str"},
-        },
-        "singleton": True,
-        "update_payload_keys": [
-            "networks",
-            "passiveInterface",
-            "processId",
-            "redistribute",
-            "routerId",
-        ],
-    },
     "onlinkipv6prefix": {
         "_supported_operations": [
             "add",
@@ -47192,6 +47772,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47259,6 +47840,299 @@ NITRO_RESOURCE_MAP = {
             "prefixvalidelifetime",
         ],
     },
+    "ospf6interface": {
+        "_supported_operations": ["add", "get", "unset", "update"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [
+                "areaId",
+                "cost",
+                "deadInterval",
+                "helloInterval",
+                "instanceId",
+                "name",
+                "networkType",
+                "priority",
+                "retransmitInterval",
+                "tagId",
+                "transmitDelay",
+            ],
+        },
+        "add_payload_keys": [
+            "areaId",
+            "cost",
+            "deadInterval",
+            "helloInterval",
+            "instanceId",
+            "name",
+            "networkType",
+            "priority",
+            "retransmitInterval",
+            "tagId",
+            "transmitDelay",
+        ],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": [],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": ["name"],
+        "immutable_keys": [],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "readwrite_arguments": {
+            "areaId": {"no_log": False, "type": "int"},
+            "cost": {"no_log": False, "type": "int"},
+            "deadInterval": {"no_log": False, "type": "int"},
+            "helloInterval": {"no_log": False, "type": "int"},
+            "instanceId": {"no_log": False, "type": "int"},
+            "name": {"no_log": False, "type": "str"},
+            "networkType": {
+                "choices": [
+                    "broadcast",
+                    "non-broadcast",
+                    "point-to-multipoint",
+                    "point-to-point",
+                ],
+                "no_log": False,
+                "type": "str",
+            },
+            "priority": {"no_log": False, "type": "int"},
+            "retransmitInterval": {"no_log": False, "type": "int"},
+            "tagId": {"no_log": False, "type": "str"},
+            "transmitDelay": {"no_log": False, "type": "int"},
+        },
+        "singleton": False,
+        "update_payload_keys": [
+            "areaId",
+            "cost",
+            "deadInterval",
+            "helloInterval",
+            "instanceId",
+            "name",
+            "networkType",
+            "priority",
+            "retransmitInterval",
+            "tagId",
+            "transmitDelay",
+        ],
+    },
+    "ospf6router": {
+        "_supported_operations": ["add", "delete", "get", "unset", "update"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": ["afParams", "passiveInterface", "routerId", "tagId"],
+        },
+        "add_payload_keys": ["afParams", "passiveInterface", "routerId", "tagId"],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": ["tagId"],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": ["tagId"],
+        "immutable_keys": [],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "readwrite_arguments": {
+            "afParams": {
+                "elements": "dict",
+                "options": {
+                    "addressFamily": {"no_log": False, "type": "str"},
+                    "redistribute": {
+                        "elements": "dict",
+                        "options": {
+                            "metric": {"no_log": False, "type": "int"},
+                            "metricType": {"no_log": False, "type": "int"},
+                            "protocol": {"no_log": False, "type": "str"},
+                            "routeMap": {"no_log": False, "type": "str"},
+                        },
+                        "type": "list",
+                    },
+                },
+                "type": "list",
+            },
+            "passiveInterface": {"elements": "str", "no_log": False, "type": "list"},
+            "routerId": {"no_log": False, "type": "str"},
+            "tagId": {"no_log": False, "type": "str"},
+        },
+        "singleton": False,
+        "update_payload_keys": ["afParams", "passiveInterface", "tagId"],
+    },
+    "ospfinterface": {
+        "_supported_operations": ["add", "get", "unset", "update"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [
+                "networks",
+                "passiveInterface",
+                "processId",
+                "redistribute",
+                "routerId",
+            ],
+        },
+        "add_payload_keys": [
+            "authKey",
+            "authType",
+            "bfd",
+            "cost",
+            "deadInterval",
+            "helloInterval",
+            "mtu",
+            "name",
+            "networkType",
+            "priority",
+            "retransmitInterval",
+            "transmitDelay",
+        ],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": ["processId"],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": ["processId"],
+        "immutable_keys": [],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "readwrite_arguments": {
+            "authKey": {"no_log": False, "type": "str"},
+            "authType": {
+                "choices": ["message-digest", "null", "simple"],
+                "no_log": False,
+                "type": "str",
+            },
+            "bfd": {"no_log": False, "type": "bool"},
+            "cost": {"no_log": False, "type": "int"},
+            "deadInterval": {"no_log": False, "type": "int"},
+            "helloInterval": {"no_log": False, "type": "int"},
+            "mtu": {"no_log": False, "type": "int"},
+            "name": {"no_log": False, "type": "str"},
+            "networkType": {
+                "choices": [
+                    "broadcast",
+                    "non-broadcast",
+                    "point-to-multipoint",
+                    "point-to-point",
+                ],
+                "no_log": False,
+                "type": "str",
+            },
+            "priority": {"no_log": False, "type": "int"},
+            "retransmitInterval": {"no_log": False, "type": "int"},
+            "transmitDelay": {"no_log": False, "type": "int"},
+        },
+        "singleton": False,
+        "update_payload_keys": [
+            "networks",
+            "passiveInterface",
+            "processId",
+            "redistribute",
+            "routerId",
+        ],
+    },
+    "ospfrouter": {
+        "_supported_operations": ["add", "delete", "get", "unset", "update"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [
+                "networks",
+                "passiveInterface",
+                "processId",
+                "redistribute",
+                "routerId",
+            ],
+        },
+        "add_payload_keys": [
+            "networks",
+            "passiveInterface",
+            "processId",
+            "redistribute",
+            "routerId",
+        ],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": ["processId"],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": ["processId"],
+        "immutable_keys": [],
+        "password_keys": [],
+        "primary_key": "",
+        "primary_key_composite": [],
+        "readwrite_arguments": {
+            "networks": {
+                "elements": "dict",
+                "options": {
+                    "area": {"no_log": False, "type": "int"},
+                    "ipaddress": {"no_log": False, "type": "str"},
+                    "netmask": {"no_log": False, "type": "int"},
+                },
+                "type": "list",
+            },
+            "passiveInterface": {"elements": "str", "no_log": False, "type": "list"},
+            "processId": {"no_log": False, "type": "int"},
+            "redistribute": {
+                "elements": "dict",
+                "options": {
+                    "metric": {"no_log": False, "type": "int"},
+                    "metricType": {"no_log": False, "type": "int"},
+                    "ospfProcessId": {"no_log": False, "type": "int"},
+                    "protocol": {
+                        "choices": [
+                            "bgp",
+                            "connected",
+                            "intranet",
+                            "isis",
+                            "kernel",
+                            "ospf",
+                            "rip",
+                            "static",
+                        ],
+                        "no_log": False,
+                        "type": "str",
+                    },
+                    "routeMap": {"no_log": False, "type": "str"},
+                    "tag": {"no_log": False, "type": "int"},
+                },
+                "type": "list",
+            },
+            "routerId": {"no_log": False, "type": "str"},
+        },
+        "singleton": True,
+        "update_payload_keys": [
+            "networks",
+            "passiveInterface",
+            "processId",
+            "redistribute",
+            "routerId",
+        ],
+    },
     "pcpprofile": {
         "_supported_operations": [
             "add",
@@ -47271,6 +48145,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47350,6 +48225,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47382,6 +48258,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Ping"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47421,6 +48298,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Ping6"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47471,6 +48349,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47501,6 +48380,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -47525,6 +48405,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47565,6 +48446,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47610,6 +48492,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47707,6 +48590,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47740,6 +48624,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47775,6 +48660,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47805,6 +48691,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -47824,6 +48711,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -47944,6 +48832,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["charset", "delimiter", "name", "overwrite", "src"],
@@ -47987,6 +48876,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48014,6 +48904,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -48033,6 +48924,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48064,6 +48956,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48115,6 +49008,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": [
@@ -48166,6 +49060,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48202,6 +49097,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48237,6 +49133,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48272,6 +49169,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48307,6 +49205,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48429,6 +49328,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48467,6 +49367,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48634,6 +49535,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48672,6 +49574,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48706,13 +49609,15 @@ NITRO_RESOURCE_MAP = {
         "update_payload_keys": ["name", "psk", "rdpip", "rdpport", "rdpredirection"],
     },
     "reboot": {
-        "_supported_operations": ["reboot"],
+        "_supported_operations": ["Reboot"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
             "link": [],
+            "reboot": ["warm"],
             "switch": [],
             "unlink": [],
             "unset": [],
@@ -48732,136 +49637,11 @@ NITRO_RESOURCE_MAP = {
         "singleton": True,
         "update_payload_keys": [],
     },
-    "reporting": {
-        "_supported_operations": ["disable", "enable", "get"],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": [],
-        },
-        "add_payload_keys": [],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": [],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": [],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {},
-        "singleton": True,
-        "update_payload_keys": [],
-    },
-    "reportingconfig": {
-        "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": [],
-        },
-        "add_payload_keys": ["entitytypes", "name"],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": ["name"],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": ["name"],
-        "immutable_keys": ["entitytypes", "name"],
-        "password_keys": [],
-        "primary_key": "entitytypes",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "entitytypes": {
-                "choices": [
-                    "appfwpolicy",
-                    "appfwpolicylabel",
-                    "appfwprofile",
-                    "appqoepolicy",
-                    "authenticationloginschemapolicy",
-                    "authenticationoauthidppolicy",
-                    "authenticationpolicy",
-                    "authenticationpolicylabel",
-                    "authenticationsamlidppolicy",
-                    "authenticationvserver",
-                    "authorizationpolicylabel",
-                    "botpolicy",
-                    "botpolicylabel",
-                    "botprofile",
-                    "cachecontentgroup",
-                    "cachepolicy",
-                    "cachepolicylabel",
-                    "cmppolicy",
-                    "cmppolicylabel",
-                    "contentinspectionpolicy",
-                    "contentinspectionpolicylabel",
-                    "crvserver",
-                    "csvserver",
-                    "dnspolicylabel",
-                    "dnsrecords",
-                    "dospolicy",
-                    "gslbdomain",
-                    "gslbservice",
-                    "gslbservicegroup",
-                    "gslbservicegroupmember",
-                    "gslbsite",
-                    "gslbvserver",
-                    "inat",
-                    "inatsession",
-                    "lbvserver",
-                    "lldp",
-                    "nsacl",
-                    "nsacl6",
-                    "nslimitidentifier",
-                    "nsmemory",
-                    "nspbr",
-                    "nspbr6",
-                    "pcpserver",
-                    "responderpolicy",
-                    "responderpolicylabel",
-                    "rewritepolicy",
-                    "rewritepolicylabel",
-                    "rnatip",
-                    "service",
-                    "servicegroup",
-                    "servicegroupmember",
-                    "spilloverpolicy",
-                    "sslvserver",
-                    "tmsessionpolicy",
-                    "tmtrafficpolicy",
-                    "tunnelip",
-                    "tunnelip6",
-                    "uservserver",
-                    "videooptimizationdetectionpolicy",
-                    "videooptimizationdetectionpolicylabel",
-                    "videooptimizationpacingpolicy",
-                    "videooptimizationpacingpolicylabel",
-                    "vlan",
-                    "vxlan",
-                ],
-                "no_log": False,
-                "type": "str",
-            },
-            "name": {"no_log": False, "type": "str"},
-        },
-        "singleton": False,
-        "update_payload_keys": [],
-    },
     "reputationsettings": {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48908,6 +49688,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -48987,6 +49768,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49087,6 +49869,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["name"],
             "create": [],
             "force": [],
             "import": ["cacertfile", "comment", "name", "overwrite", "src"],
@@ -49120,6 +49903,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49159,6 +49943,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49199,6 +49984,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49235,6 +50021,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49284,6 +50071,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49303,6 +50091,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49366,6 +50155,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49452,6 +50242,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49558,6 +50349,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49597,6 +50389,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49635,6 +50428,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49670,6 +50464,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49699,6 +50494,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49746,6 +50542,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49810,6 +50607,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -49876,6 +50674,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49892,6 +50691,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49908,6 +50708,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49924,6 +50725,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49973,6 +50775,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50011,6 +50814,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50041,6 +50845,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50071,6 +50876,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50100,6 +50906,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50129,6 +50936,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50159,6 +50967,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50197,6 +51006,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50237,6 +51047,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50358,6 +51169,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50462,13 +51274,7 @@ NITRO_RESOURCE_MAP = {
         ],
     },
     "routemap": {
-        "_supported_operations": [
-            "add",
-            "delete",
-            "get",
-            "unset",
-            "update",
-        ],
+        "_supported_operations": ["add", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
             "create": [],
@@ -50493,7 +51299,6 @@ NITRO_RESOURCE_MAP = {
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "rules": {
-                "type": "list",
                 "elements": "dict",
                 "options": {
                     "action": {"no_log": False, "type": "str"},
@@ -50512,6 +51317,7 @@ NITRO_RESOURCE_MAP = {
                     "setMetricType": {"no_log": False, "type": "str"},
                     "weight": {"no_log": False, "type": "int"},
                 },
+                "type": "list",
             },
         },
         "singleton": False,
@@ -50529,6 +51335,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": ["commandstring"],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50559,6 +51366,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50590,6 +51398,16 @@ NITRO_RESOURCE_MAP = {
     },
     "save_config": {
         "_supported_operations": ["add"],
+        "action_payload_keys": {
+            "apply": [],
+            "create": [],
+            "force": [],
+            "import": [],
+            "link": [],
+            "switch": [],
+            "unlink": [],
+            "unset": [],
+        },
         "add_payload_keys": ["all"],
         "bindings": [],
         "bindprimary_key": "",
@@ -50598,6 +51416,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
+        "password_keys": [],
         "primary_key": "",
         "primary_key_composite": [],
         "readwrite_arguments": {
@@ -50621,6 +51440,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50699,6 +51519,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -50884,6 +51705,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50900,6 +51722,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50916,6 +51739,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -51040,6 +51864,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51087,6 +51912,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51290,6 +52116,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -51306,6 +52133,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -51437,6 +52265,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51511,6 +52340,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51581,6 +52411,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Shutdown"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51608,6 +52439,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51667,6 +52499,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51705,6 +52538,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51929,6 +52763,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51963,6 +52798,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -51993,6 +52829,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52028,6 +52865,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52059,6 +52897,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52092,6 +52931,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52173,6 +53013,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52230,6 +53071,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -52268,6 +53110,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52331,6 +53174,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52387,6 +53231,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52429,6 +53274,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52470,6 +53316,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52504,6 +53351,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52674,6 +53522,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52704,6 +53553,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52730,6 +53580,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -52749,6 +53600,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52788,6 +53640,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["create"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [
                 "cacert",
                 "cacertform",
@@ -52845,6 +53698,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -52872,6 +53726,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": ["name"],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -52902,6 +53757,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -52932,6 +53788,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -52971,6 +53828,16 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [
+                "cert",
+                "certkey",
+                "fipskey",
+                "inform",
+                "key",
+                "nodomaincheck",
+                "passplain",
+                "password",
+            ],
             "create": [],
             "force": [],
             "import": [],
@@ -53051,6 +53918,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -53075,6 +53943,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53113,6 +53982,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": ["bundlefile", "certkeybundlename", "passplain"],
             "create": [],
             "force": [],
             "import": [],
@@ -53144,6 +54014,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["create"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [
                 "challengepassword",
                 "commonname",
@@ -53217,6 +54088,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53246,6 +54118,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -53266,6 +54139,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53318,6 +54192,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [
                 "cacertfile",
                 "cakeyfile",
@@ -53433,6 +54308,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -53463,6 +54339,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53490,6 +54367,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["name", "src"],
@@ -53520,6 +54398,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["create"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": ["bits", "dhfile", "gen"],
             "force": [],
             "import": [],
@@ -53559,6 +54438,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53642,6 +54522,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["create"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [
                 "aes256",
                 "curve",
@@ -53687,6 +54568,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53749,6 +54631,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["change", "get", "reset", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["fipsfw"],
             "create": [],
             "force": [],
             "import": [],
@@ -53797,6 +54680,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": ["curve", "exponent", "fipskeyname", "keytype", "modulus"],
             "force": [],
             "import": ["exponent", "fipskeyname", "inform", "iv", "key", "wrapkeyname"],
@@ -53838,6 +54722,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["enable", "init"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53869,6 +54754,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["enable", "init"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53901,6 +54787,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -53979,6 +54866,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54010,6 +54898,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54062,6 +54951,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["name", "password", "src"],
@@ -54101,6 +54991,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54176,6 +55067,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54274,6 +55166,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54463,6 +55356,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54502,6 +55396,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54542,6 +55437,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54572,6 +55468,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -54592,6 +55489,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54618,6 +55516,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -54642,6 +55541,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54704,6 +55604,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -54712,6 +55613,7 @@ NITRO_RESOURCE_MAP = {
             "unlink": [],
             "unset": [
                 "allowextendedmastersecret",
+                "allowlegacykdf",
                 "allowunknownsni",
                 "alpnprotocol",
                 "ciphername",
@@ -54782,6 +55684,7 @@ NITRO_RESOURCE_MAP = {
         },
         "add_payload_keys": [
             "allowextendedmastersecret",
+            "allowlegacykdf",
             "allowunknownsni",
             "alpnprotocol",
             "cipherredirect",
@@ -54866,6 +55769,11 @@ NITRO_RESOURCE_MAP = {
         "primary_key_composite": [],
         "readwrite_arguments": {
             "allowextendedmastersecret": {
+                "choices": ["NO", "YES"],
+                "no_log": False,
+                "type": "str",
+            },
+            "allowlegacykdf": {
                 "choices": ["NO", "YES"],
                 "no_log": False,
                 "type": "str",
@@ -55065,6 +55973,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55081,6 +55990,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55097,6 +56007,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55113,6 +56024,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55129,6 +56041,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55191,6 +56104,7 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": [
             "allowextendedmastersecret",
+            "allowlegacykdf",
             "allowunknownsni",
             "alpnprotocol",
             "ciphername",
@@ -55263,6 +56177,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55305,6 +56220,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55335,6 +56251,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55367,6 +56284,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55398,6 +56316,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55428,6 +56347,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["create"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [
                 "aes256",
                 "bits",
@@ -55475,6 +56395,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55647,6 +56568,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55663,6 +56585,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55679,6 +56602,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55695,6 +56619,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55711,6 +56636,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55727,6 +56653,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55743,6 +56670,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55759,6 +56687,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55775,6 +56704,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55791,6 +56721,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55807,6 +56738,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55893,6 +56825,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55934,6 +56867,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -55964,6 +56898,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56022,6 +56957,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56054,6 +56990,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56085,6 +57022,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56139,6 +57077,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56226,6 +57165,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56242,6 +57182,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56258,6 +57199,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56274,6 +57216,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56290,6 +57233,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56351,6 +57295,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56392,6 +57337,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56421,6 +57367,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56476,6 +57423,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56507,6 +57455,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56537,6 +57486,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -56738,6 +57688,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56754,6 +57705,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56770,6 +57722,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56786,6 +57739,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56802,6 +57756,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56818,6 +57773,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56834,6 +57790,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56850,6 +57807,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56866,6 +57824,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56882,6 +57841,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56898,6 +57858,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56914,6 +57875,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56930,6 +57892,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56946,6 +57909,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56962,6 +57926,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57056,6 +58021,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57097,6 +58063,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57127,6 +58094,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57185,6 +58153,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57215,6 +58184,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57246,6 +58216,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57276,6 +58247,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57337,6 +58309,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "create", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": ["password", "salt", "wrapkeyname"],
             "force": [],
             "import": [],
@@ -57376,6 +58349,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57468,6 +58442,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57514,6 +58489,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57550,6 +58526,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57580,6 +58557,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57607,6 +58585,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57695,6 +58674,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57746,6 +58726,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57798,6 +58779,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57832,6 +58814,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57863,6 +58846,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57890,6 +58874,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57925,6 +58910,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [
                 "comment",
                 "filename",
@@ -57972,6 +58958,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -57999,41 +58986,11 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": ["action", "cmdspec", "policyname"],
     },
-    "systemcollectionparam": {
-        "_supported_operations": ["get", "unset", "update"],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": ["datapath", "loglevel"],
-        },
-        "add_payload_keys": [],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": [],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": [],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "communityname": {"no_log": False, "type": "str"},
-            "datapath": {"no_log": False, "type": "str"},
-            "loglevel": {"no_log": False, "type": "str"},
-        },
-        "singleton": True,
-        "update_payload_keys": ["datapath", "loglevel"],
-    },
     "systemcpuparam": {
         "_supported_operations": ["count", "get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58063,70 +59020,11 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": ["pemode"],
     },
-    "systementitydata": {
-        "_supported_operations": ["delete", "get"],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": [],
-        },
-        "add_payload_keys": [],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": [
-            "alldeleted",
-            "allinactive",
-            "core",
-            "datasource",
-            "name",
-            "type",
-        ],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": [
-            "core",
-            "counters",
-            "datasource",
-            "endtime",
-            "last",
-            "name",
-            "starttime",
-            "type",
-            "unit",
-        ],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {
-            "alldeleted": {"no_log": False, "type": "bool"},
-            "allinactive": {"no_log": False, "type": "bool"},
-            "core": {"no_log": False, "type": "int"},
-            "counters": {"no_log": False, "type": "str"},
-            "datasource": {"no_log": False, "type": "str"},
-            "endtime": {"no_log": False, "type": "str"},
-            "last": {"no_log": False, "type": "int"},
-            "name": {"no_log": False, "type": "str"},
-            "starttime": {"no_log": False, "type": "str"},
-            "type": {"no_log": False, "type": "str"},
-            "unit": {
-                "choices": ["DAYS", "HOURS", "MONTHS"],
-                "no_log": False,
-                "type": "str",
-            },
-        },
-        "singleton": True,
-        "update_payload_keys": [],
-    },
     "systemextramgmtcpu": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58154,6 +59052,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58186,6 +59085,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58318,6 +59218,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58450,6 +59351,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58582,6 +59484,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58714,6 +59617,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58846,6 +59750,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -58978,6 +59883,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59118,6 +60024,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59170,6 +60077,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -59186,6 +60094,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -59202,6 +60111,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -59230,6 +60140,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59259,6 +60170,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59289,6 +60201,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59318,6 +60231,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["check"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59345,6 +60259,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["change"],
         "action_payload_keys": {
             "apply": [],
+            "change": ["level"],
             "create": [],
             "force": [],
             "import": [],
@@ -59370,37 +60285,11 @@ NITRO_RESOURCE_MAP = {
         "singleton": True,
         "update_payload_keys": [],
     },
-    "systemlevelreporting": {
-        "_supported_operations": ["disable", "enable", "get"],
-        "action_payload_keys": {
-            "apply": [],
-            "create": [],
-            "force": [],
-            "import": [],
-            "link": [],
-            "switch": [],
-            "unlink": [],
-            "unset": [],
-        },
-        "add_payload_keys": [],
-        "bindings": [],
-        "bindprimary_key": "",
-        "delete_arg_keys": [],
-        "disable_payload_keys": [],
-        "enable_payload_keys": [],
-        "get_arg_keys": [],
-        "immutable_keys": [],
-        "password_keys": [],
-        "primary_key": "",
-        "primary_key_composite": [],
-        "readwrite_arguments": {},
-        "singleton": True,
-        "update_payload_keys": [],
-    },
     "systemnsbtracing": {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59428,6 +60317,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59600,6 +60490,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "create", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": ["filename"],
             "force": [],
             "import": [],
@@ -59627,6 +60518,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "kill"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59657,6 +60549,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59684,6 +60577,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": ["name", "src", "sshkeytype"],
@@ -59727,6 +60621,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59791,6 +60686,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -59807,6 +60703,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -59837,6 +60734,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59866,6 +60764,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59904,6 +60803,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -59975,6 +60875,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60005,6 +60906,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60035,6 +60937,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60145,6 +61048,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60204,6 +61108,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60643,6 +61548,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60734,6 +61640,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60818,6 +61725,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60857,6 +61765,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60950,6 +61859,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -60981,6 +61891,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Traceroute"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61024,6 +61935,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Traceroute6"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61072,6 +61984,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61129,6 +62042,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61212,6 +62126,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61244,6 +62159,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -61270,6 +62186,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61303,6 +62220,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -61322,6 +62240,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61384,6 +62303,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61420,6 +62340,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61565,6 +62486,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61600,6 +62522,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61635,6 +62558,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61677,6 +62601,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61730,6 +62655,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61782,6 +62708,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61824,6 +62751,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -61857,6 +62785,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61893,6 +62822,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -61912,6 +62842,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -61966,6 +62897,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62040,6 +62972,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62123,6 +63056,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62165,6 +63099,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62207,6 +63142,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62240,6 +63176,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62276,6 +63213,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62295,6 +63233,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62349,6 +63288,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62387,6 +63327,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62450,6 +63391,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62466,6 +63408,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62482,6 +63425,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62498,6 +63442,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62514,6 +63459,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62540,6 +63486,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62571,6 +63518,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62602,6 +63550,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62633,6 +63582,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62665,6 +63615,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62705,6 +63656,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62771,6 +63723,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62810,6 +63763,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62880,6 +63834,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62911,6 +63866,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -62946,6 +63902,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63017,6 +63974,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63046,6 +64004,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63090,6 +64049,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63134,6 +64094,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63178,6 +64139,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63222,6 +64184,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63266,6 +64229,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63310,6 +64274,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63354,6 +64319,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63398,6 +64364,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63442,6 +64409,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63486,6 +64454,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63530,6 +64499,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63559,6 +64529,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63589,6 +64560,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63619,6 +64591,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63648,6 +64621,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63677,6 +64651,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63732,6 +64707,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63766,6 +64742,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63911,6 +64888,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63940,6 +64918,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63969,6 +64948,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -63998,6 +64978,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64027,6 +65008,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64151,6 +65133,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64195,6 +65178,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64224,6 +65208,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64274,6 +65259,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64306,6 +65292,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64380,6 +65367,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64432,6 +65420,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64903,6 +65892,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64942,6 +65932,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -64996,6 +65987,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65027,6 +66019,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65069,6 +66062,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65512,6 +66506,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -65990,6 +66985,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66029,6 +67025,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66112,6 +67109,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66151,6 +67149,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66245,6 +67244,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66337,6 +67337,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66384,6 +67385,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -66657,6 +67659,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66673,6 +67676,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66689,6 +67693,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66705,6 +67710,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66721,6 +67727,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66737,6 +67744,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66753,6 +67761,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66769,6 +67778,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66785,6 +67795,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66801,6 +67812,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66817,6 +67829,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66833,6 +67846,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66849,6 +67863,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66865,6 +67880,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66881,6 +67897,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66897,6 +67914,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66913,6 +67931,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66929,6 +67948,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66945,6 +67965,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66961,6 +67982,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66977,6 +67999,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -66993,6 +68016,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67009,6 +68033,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67025,6 +68050,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67041,6 +68067,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67057,6 +68084,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67073,6 +68101,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67089,6 +68118,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67105,6 +68135,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67121,6 +68152,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67137,6 +68169,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67153,6 +68186,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67169,6 +68203,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67185,6 +68220,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67201,6 +68237,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67217,6 +68254,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67233,6 +68271,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67249,6 +68288,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67265,6 +68305,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67281,6 +68322,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67297,6 +68339,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67364,6 +68407,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67425,6 +68469,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67454,6 +68499,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67483,6 +68529,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67544,6 +68591,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67605,6 +68653,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67666,6 +68715,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67727,6 +68777,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67788,6 +68839,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67849,6 +68901,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67910,6 +68963,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -67971,6 +69025,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68032,6 +69087,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68093,6 +69149,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68154,6 +69211,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68215,6 +69273,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68276,6 +69335,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68337,6 +69397,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68398,6 +69459,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68459,6 +69521,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68520,6 +69583,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68581,6 +69645,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68642,6 +69707,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68703,6 +69769,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68764,6 +69831,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68794,6 +69862,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68824,6 +69893,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68885,6 +69955,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68946,6 +70017,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -68975,6 +70047,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69004,6 +70077,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69038,6 +70112,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69099,6 +70174,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69129,6 +70205,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69158,6 +70235,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69187,6 +70265,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69216,6 +70295,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69245,6 +70325,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69306,6 +70387,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69367,6 +70449,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69396,6 +70479,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69465,6 +70549,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69536,6 +70621,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69552,6 +70638,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69568,6 +70655,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69584,6 +70672,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69600,6 +70689,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69616,6 +70706,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69652,6 +70743,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69720,6 +70812,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69736,6 +70829,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69752,6 +70846,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -69780,6 +70875,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69809,6 +70905,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69838,6 +70935,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69867,6 +70965,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69896,6 +70995,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69925,6 +71025,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69954,6 +71055,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -69989,6 +71091,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["delete", "disable", "enable", "update"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -70049,6 +71152,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -70119,6 +71223,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70135,6 +71240,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70151,6 +71257,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70167,6 +71274,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70193,6 +71301,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -70223,6 +71332,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -70253,6 +71363,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -70282,6 +71393,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
@@ -70308,6 +71420,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
+                        "description": "List " "of " "binding " "members",
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70327,6 +71440,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "apply": [],
+            "change": [],
             "create": [],
             "force": [],
             "import": [],
