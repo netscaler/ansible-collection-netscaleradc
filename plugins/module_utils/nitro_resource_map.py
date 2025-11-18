@@ -150,7 +150,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -167,7 +167,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -184,7 +184,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -201,7 +201,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -218,7 +218,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -235,7 +235,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -252,7 +252,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -269,7 +269,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -286,7 +286,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -303,7 +303,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -320,7 +320,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -337,7 +337,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1731,7 +1731,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1748,7 +1748,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1765,7 +1765,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1782,7 +1782,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1799,7 +1799,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1816,7 +1816,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1833,7 +1833,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1850,7 +1850,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1867,7 +1867,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1884,7 +1884,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -1901,7 +1901,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -2892,7 +2892,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -3119,7 +3119,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -3744,7 +3744,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -3803,7 +3803,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -4752,7 +4752,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -4812,7 +4812,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5241,7 +5241,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5258,7 +5258,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5275,7 +5275,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5292,7 +5292,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5309,7 +5309,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5326,7 +5326,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5343,7 +5343,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5360,7 +5360,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5377,7 +5377,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5394,7 +5394,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5411,7 +5411,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5428,7 +5428,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5445,7 +5445,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5462,7 +5462,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5479,7 +5479,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5496,7 +5496,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5513,7 +5513,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5530,7 +5530,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5547,7 +5547,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5564,7 +5564,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5581,7 +5581,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5598,7 +5598,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5615,7 +5615,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5632,7 +5632,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5649,7 +5649,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5666,7 +5666,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5683,7 +5683,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5700,7 +5700,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5717,7 +5717,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5734,7 +5734,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5751,7 +5751,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5768,7 +5768,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5785,7 +5785,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -5802,7 +5802,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -12800,7 +12800,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -12869,7 +12869,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14580,7 +14580,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14597,7 +14597,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14614,7 +14614,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14631,7 +14631,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14648,7 +14648,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14665,7 +14665,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14682,7 +14682,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14699,7 +14699,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14716,7 +14716,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14733,7 +14733,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14750,7 +14750,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14767,7 +14767,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14784,7 +14784,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14801,7 +14801,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14818,7 +14818,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14835,7 +14835,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14852,7 +14852,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14869,7 +14869,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14886,7 +14886,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14903,7 +14903,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -14920,7 +14920,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -16502,7 +16502,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -16559,7 +16559,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17114,7 +17114,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17182,7 +17182,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17392,7 +17392,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17409,7 +17409,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17426,7 +17426,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17443,7 +17443,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17460,7 +17460,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17477,7 +17477,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17494,7 +17494,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17511,7 +17511,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -17528,7 +17528,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -18691,7 +18691,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -18708,7 +18708,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -18725,7 +18725,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -19437,7 +19437,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -19510,7 +19510,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -19791,7 +19791,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20513,7 +20513,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20530,7 +20530,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20547,7 +20547,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20564,7 +20564,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20581,7 +20581,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20598,7 +20598,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20615,7 +20615,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20632,7 +20632,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20649,7 +20649,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20666,7 +20666,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20683,7 +20683,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20700,7 +20700,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20962,7 +20962,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20979,7 +20979,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -20996,7 +20996,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21013,7 +21013,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21030,7 +21030,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21047,7 +21047,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21064,7 +21064,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21081,7 +21081,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21098,7 +21098,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21115,7 +21115,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21132,7 +21132,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21149,7 +21149,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21263,7 +21263,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21280,7 +21280,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21297,7 +21297,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21314,7 +21314,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21331,7 +21331,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21348,7 +21348,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21365,7 +21365,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21382,7 +21382,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21399,7 +21399,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21416,7 +21416,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -21433,7 +21433,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22104,7 +22104,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22162,7 +22162,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22528,7 +22528,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22595,7 +22595,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22949,7 +22949,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22966,7 +22966,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -22983,7 +22983,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23000,7 +23000,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23017,7 +23017,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23034,7 +23034,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23051,7 +23051,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23068,7 +23068,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23085,7 +23085,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23102,7 +23102,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23119,7 +23119,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23136,7 +23136,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23153,7 +23153,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23170,7 +23170,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -23187,7 +23187,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24359,7 +24359,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24417,7 +24417,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24757,7 +24757,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24774,7 +24774,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24791,7 +24791,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24808,7 +24808,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24825,7 +24825,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24842,7 +24842,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24859,7 +24859,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24876,7 +24876,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24893,7 +24893,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24910,7 +24910,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24927,7 +24927,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24944,7 +24944,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24961,7 +24961,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24978,7 +24978,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -24995,7 +24995,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -25012,7 +25012,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -25029,7 +25029,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -25046,7 +25046,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -25063,7 +25063,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -25080,7 +25080,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -25097,7 +25097,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -25114,7 +25114,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -27789,7 +27789,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -27889,7 +27889,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28931,7 +28931,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -28948,7 +28948,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29428,7 +29428,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29445,7 +29445,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29462,7 +29462,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29479,7 +29479,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29771,7 +29771,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -29788,7 +29788,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30296,7 +30296,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30313,7 +30313,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30330,7 +30330,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30347,7 +30347,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30364,7 +30364,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30864,7 +30864,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -30881,7 +30881,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -32309,7 +32309,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -32326,7 +32326,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -32662,7 +32662,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33275,7 +33275,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33393,7 +33393,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33727,7 +33727,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -33744,7 +33744,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34384,7 +34384,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -34452,7 +34452,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35166,7 +35166,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35183,7 +35183,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35200,7 +35200,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35217,7 +35217,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35234,7 +35234,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35251,7 +35251,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35268,7 +35268,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35285,7 +35285,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35302,7 +35302,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35319,7 +35319,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35336,7 +35336,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35353,7 +35353,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35370,7 +35370,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35387,7 +35387,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35404,7 +35404,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35421,7 +35421,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35438,7 +35438,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35455,7 +35455,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35472,7 +35472,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35489,7 +35489,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35506,7 +35506,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35523,7 +35523,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -35540,7 +35540,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37344,7 +37344,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37423,7 +37423,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37440,7 +37440,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -37984,7 +37984,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38001,7 +38001,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38141,7 +38141,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38158,7 +38158,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38175,7 +38175,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38192,7 +38192,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38430,7 +38430,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38447,7 +38447,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38464,7 +38464,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38481,7 +38481,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38498,7 +38498,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38515,7 +38515,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38532,7 +38532,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38549,7 +38549,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -38566,7 +38566,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39169,7 +39169,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39736,7 +39736,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39849,7 +39849,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39973,7 +39973,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -39990,7 +39990,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40007,7 +40007,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40024,7 +40024,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40041,7 +40041,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40058,7 +40058,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40075,7 +40075,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40092,7 +40092,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40109,7 +40109,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40678,7 +40678,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40760,7 +40760,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40884,7 +40884,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40901,7 +40901,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40918,7 +40918,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -40935,7 +40935,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -41133,7 +41133,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -41150,7 +41150,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -44969,7 +44969,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -44986,7 +44986,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -45003,7 +45003,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -45923,7 +45923,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -47064,7 +47064,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -47283,7 +47283,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -47300,7 +47300,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -47317,7 +47317,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -48380,7 +48380,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -48691,7 +48691,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -48904,7 +48904,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -49984,7 +49984,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50071,7 +50071,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50428,7 +50428,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50494,7 +50494,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50674,7 +50674,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50691,7 +50691,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50708,7 +50708,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50725,7 +50725,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -50814,7 +50814,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -51705,7 +51705,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -51722,7 +51722,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -51739,7 +51739,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -52116,7 +52116,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -52133,7 +52133,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -53071,7 +53071,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -53580,7 +53580,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -53698,7 +53698,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -53918,7 +53918,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -54118,7 +54118,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55468,7 +55468,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55516,7 +55516,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55973,7 +55973,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -55990,7 +55990,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56007,7 +56007,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56024,7 +56024,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56041,7 +56041,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56568,7 +56568,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56585,7 +56585,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56602,7 +56602,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56619,7 +56619,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56636,7 +56636,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56653,7 +56653,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56670,7 +56670,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56687,7 +56687,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56704,7 +56704,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56721,7 +56721,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -56738,7 +56738,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57165,7 +57165,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57182,7 +57182,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57199,7 +57199,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57216,7 +57216,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57233,7 +57233,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57688,7 +57688,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57705,7 +57705,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57722,7 +57722,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57739,7 +57739,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57756,7 +57756,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57773,7 +57773,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57790,7 +57790,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57807,7 +57807,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57824,7 +57824,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57841,7 +57841,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57858,7 +57858,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57875,7 +57875,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57892,7 +57892,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57909,7 +57909,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -57926,7 +57926,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -58442,7 +58442,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -60077,7 +60077,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -60094,7 +60094,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -60111,7 +60111,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -60686,7 +60686,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -60703,7 +60703,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62159,7 +62159,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62220,7 +62220,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62751,7 +62751,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -62822,7 +62822,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -63142,7 +63142,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -63213,7 +63213,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -63391,7 +63391,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -63408,7 +63408,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -63425,7 +63425,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -63442,7 +63442,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -63459,7 +63459,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67659,7 +67659,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67676,7 +67676,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67693,7 +67693,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67710,7 +67710,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67727,7 +67727,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67744,7 +67744,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67761,7 +67761,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67778,7 +67778,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67795,7 +67795,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67812,7 +67812,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67829,7 +67829,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67846,7 +67846,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67863,7 +67863,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67880,7 +67880,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67897,7 +67897,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67914,7 +67914,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67931,7 +67931,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67948,7 +67948,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67965,7 +67965,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67982,7 +67982,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -67999,7 +67999,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68016,7 +68016,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68033,7 +68033,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68050,7 +68050,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68067,7 +68067,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68084,7 +68084,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68101,7 +68101,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68118,7 +68118,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68135,7 +68135,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68152,7 +68152,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68169,7 +68169,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68186,7 +68186,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68203,7 +68203,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68220,7 +68220,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68237,7 +68237,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68254,7 +68254,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68271,7 +68271,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68288,7 +68288,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68305,7 +68305,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68322,7 +68322,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -68339,7 +68339,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70621,7 +70621,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70638,7 +70638,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70655,7 +70655,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70672,7 +70672,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70689,7 +70689,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70706,7 +70706,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70812,7 +70812,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70829,7 +70829,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -70846,7 +70846,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -71223,7 +71223,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -71240,7 +71240,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -71257,7 +71257,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -71274,7 +71274,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
@@ -71420,7 +71420,7 @@ NITRO_RESOURCE_MAP = {
                 "options": {
                     "binding_members": {
                         "default": [],
-                        "description": "List " "of " "binding " "members",
+
                         "elements": "dict",
                         "type": "list",
                     },
