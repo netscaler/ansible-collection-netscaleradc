@@ -135,7 +135,7 @@ class NitroAPIClient(object):
             if isinstance(val, bool):
                 return str(val).lower()
             return str(val)
-        
+
         args_val = ",".join(
             ["%s:%s" % (k, quote(codecs.encode(format_value(args[k])), safe="")) for k in args]
         )
