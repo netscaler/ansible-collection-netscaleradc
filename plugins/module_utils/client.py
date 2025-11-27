@@ -121,14 +121,23 @@ class NitroAPIClient(object):
             # http://NSIP/nitro/v1/config/nd6ravariables/1 -- This works
             if isinstance(id, float) and id == int(id):
                 id = int(id)
+            # Convert boolean to lowercase string
+            if isinstance(id, bool):
+                id = str(id).lower()
             # Double encode the id
             # https://owasp.org/www-community/Double_Encoding
             url = "%s/%s" % (url, quote(quote(str(id), safe=""), safe=""))
 
         # Query String Builder
         # Construct args
+        def format_value(val):
+            """Convert value to appropriate string format for NITRO API"""
+            if isinstance(val, bool):
+                return str(val).lower()
+            return str(val)
+
         args_val = ",".join(
-            ["%s:%s" % (k, quote(codecs.encode(str(args[k])), safe="")) for k in args]
+            ["%s:%s" % (k, quote(codecs.encode(format_value(args[k])), safe="")) for k in args]
         )
         args_val = ("args=%s" % args_val) if args_val != "" else ""
 
@@ -139,10 +148,9 @@ class NitroAPIClient(object):
         # Construct filters
         # if filter = {'key1':'value1', 'key2':'value2'}
         # filter_val=key1:value1,key2:value2
-        # filter_val = ",".join(["%s:%s" % (k, filter[k]) for k in filter])
         filter_val = ",".join(
             [
-                "%s:%s" % (k, quote(codecs.encode(str(filter[k])), safe=""))
+                "%s:%s" % (k, quote(codecs.encode(format_value(filter[k])), safe=""))
                 for k in filter
             ]
         )
