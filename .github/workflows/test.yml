@@ -22,13 +22,13 @@ jobs:
           - "3.11"
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Build the collection
         run: |
           echo "> ansible-galaxy collection build --force"
           ansible-galaxy collection build --force
       - name: Setup Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
@@ -66,9 +66,9 @@ jobs:
           - "3.11"
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -119,7 +119,7 @@ jobs:
           - 14.1-43.50
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Start NetScaler CPX container
         run: |
           # docker-compose -f "docker-compose.yml" up -d
@@ -162,7 +162,7 @@ jobs:
           echo "> curl -kL http://$NETSCALER_NSIP/nitro/v1/config/nsip -u nsroot:$NETSCALER_NITRO_PASS"
           curl -kL http://$NETSCALER_NSIP/nitro/v1/config/nsip -u nsroot:$NETSCALER_NITRO_PASS
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
