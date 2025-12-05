@@ -391,18 +391,35 @@ def _return_tuple_manipulate(func):
     def wrapped(self, *args, **kwargs):
         return_tuple = func(self, *args, **kwargs)
         return_tuple = list(return_tuple)
-        subst = ""
+        
+        # Decode stdout
+        stdout = codecs.decode(return_tuple[1], errors='ignore')
+        
+        # Remove "Done" messages with surrounding newlines
         regex = r"(\r\n|\r|\n|)( Done)(\r\n|\r|\n)+"
-        return_tuple[1] = re.sub(regex, subst, codecs.decode(return_tuple[1]), 0, re.UNICODE)
-
-        # Ansible needs some data from return_tuple[1](or stdout). So, we are returning the same to ansible
+        stdout = re.sub(regex, "", stdout, 0, re.UNICODE)
+        
+        # Remove Warning messages (multi-line)
+        warning_regex = r"Warning: \[[\s\S]*?\]\s*"
+        stdout = re.sub(warning_regex, "", stdout, 0, re.UNICODE)
+        
+        # Remove leading "]" characters that might remain
+        stdout = re.sub(r"^\]\s*", "", stdout, re.MULTILINE)
+        
+        # Remove extra blank lines
+        stdout = re.sub(r"\n\s*\n", "\n", stdout)
+        
+        # Try to extract JSON if present
         regex2 = r'{.*}'
         try:
-            return_tuple[1] = re.findall(regex2, str(return_tuple[1]))[0]
-        except IndexError:
+            json_match = re.findall(regex2, stdout)
+            if json_match:
+                stdout = json_match[0]
+        except (IndexError, AttributeError):
             pass
-            # If no match, return the old `return_tuple[1]` (i.e., stdout)
-
+            # If no match, use the cleaned stdout
+        
+        return_tuple[1] = stdout.encode() if isinstance(return_tuple[1], bytes) else stdout
         return_tuple = tuple(return_tuple)
         return return_tuple
     return wrapped
@@ -455,3 +472,48 @@ class Connection(ConnectionSsh):
         ''' run a command on the remote host '''
 
         return super(Connection, self).exec_command(cmd, in_data=in_data, sudoable=sudoable)
+
+    @_return_tuple_manipulate
+    def _bare_run(self, cmd, in_data, sudoable=True, checkrc=True):
+        """
+        Wrapper around parent _bare_run to clean NetScaler output
+        """
+        return super(Connection, self)._bare_run(cmd, in_data, sudoable=sudoable, checkrc=checkrc)
+
+    def put_file(self, in_path, out_path):
+        """
+        Transfer a file from local to remote using piped method due to NetScaler limitations
+        """
+        display.vvv(u"PUT {0} TO {1}".format(in_path, out_path), host=self.host)
+        
+        # Force piped transfer for NetScaler
+        # Save original transfer method
+        original_method = self.get_option('ssh_transfer_method')
+        
+        try:
+            # Temporarily set to piped
+            self._options['ssh_transfer_method'] = 'piped'
+            return super(Connection, self).put_file(in_path, out_path)
+        finally:
+            # Restore original method
+            if original_method:
+                self._options['ssh_transfer_method'] = original_method
+
+    def fetch_file(self, in_path, out_path):
+        """
+        Fetch a file from remote to local using piped method due to NetScaler limitations
+        """
+        display.vvv(u"FETCH {0} TO {1}".format(in_path, out_path), host=self.host)
+        
+        # Force piped transfer for NetScaler
+        # Save original transfer method
+        original_method = self.get_option('ssh_transfer_method')
+        
+        try:
+            # Temporarily set to piped
+            self._options['ssh_transfer_method'] = 'piped'
+            return super(Connection, self).fetch_file(in_path, out_path)
+        finally:
+            # Restore original method
+            if original_method:
+                self._options['ssh_transfer_method'] = original_method
