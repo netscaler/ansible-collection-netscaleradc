@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.12.0] - 2025-12-8
+
+# Added
+
+- supporting reboot action
+
+# Fixed
+
+- Issue with running cli commands through ansible using ssh connection.
+- Resolving url builder issue when filterargs has bool datatype.
+- Issue with get_args keys in HAnode module.
+
 ## [2.11.0] - 2025-10-31
 
 # Added 
@@ -212,7 +224,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.11.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.12.0...HEAD
+[2.12.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.11.0...2.12.0
 [2.11.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.10.1...2.11.0
 [2.10.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.10.0...2.10.1
 [2.10.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.9.2...2.10.0
