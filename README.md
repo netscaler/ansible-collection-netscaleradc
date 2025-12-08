@@ -132,9 +132,122 @@ Refer to the [NetScaler ADM as an API proxy server](https://docs.netscaler.com/e
 Refer to the [sample_playboook](https://github.com/netscaler/ansible-collection-netscaleradc/tree/main/examples) and [playbook_anatomy.md](https://github.com/netscaler/ansible-collection-netscaleradc/blob/main/playbook_anatomy.md). 
 
 
-### SSH_connections 
+### SSH Connection Plugin
 
-Refer to [SSH_connections examples](https://github.com/netscaler/ansible-collection-netscaleradc/tree/main/examples/ssh_connections) to know how `ansible.builtins.` plugins can be used to configure the NetScaler ADC. 
+The collection provides an SSH connection plugin (`netscaler.adc.ssh_netscaler_adc`) that enables direct SSH connectivity to NetScaler ADC devices for executing shell commands and CLI operations.
+
+#### Prerequisites
+
+- SSH key-based authentication must be configured
+- SSH access to the NetScaler ADC device
+- Private SSH key file available on the control machine
+
+#### Inventory Configuration
+
+Configure your inventory file with the required SSH parameters:
+
+**Example 1: Group-based inventory**
+```ini
+[demo_netscaler1]
+demo_netscalers
+
+[demo_netscaler1:vars]
+ansible_host=10.10.10.10
+ansible_user=nsroot
+ansible_ssh_private_key_file=~/.ssh/id_rsa
+nitro_pass=YourPassword
+```
+
+**Example 2: Inline inventory**
+```ini
+[demo_netscalers]
+netscaler_adc ansible_host=10.10.10.10 ansible_user=nsroot ansible_ssh_private_key_file=~/.ssh/id_rsa
+```
+
+**Required inventory parameters:**
+- `ansible_host` - IP address or hostname of NetScaler ADC
+- `ansible_user` - SSH username (typically `nsroot`)
+- `ansible_ssh_private_key_file` - Path to SSH private key
+- `nitro_pass` - Password for nscli commands (required when using CLI commands)
+
+#### Playbook Structure for Shell Commands
+
+To execute FreeBSD shell commands on the NetScaler appliance:
+
+```yaml
+---
+- name: Execute shell commands on NetScaler
+  hosts: demo_netscalers
+  connection: netscaler.adc.ssh_netscaler_adc
+  remote_user: nsroot
+  gather_facts: false
+
+  vars:
+    ansible_python_interpreter: /var/python/bin/python
+
+  tasks:
+    - name: List files in /var/tmp
+      ansible.builtin.command: "ls -lhrt /var/tmp/"
+      register: result
+      changed_when: false
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ result.stdout_lines }}"
+```
+
+**Required settings for shell access:**
+- `connection: netscaler.adc.ssh_netscaler_adc` - Use the SSH connection plugin
+- `ansible_python_interpreter: /var/python/bin/python` - Required for shell command execution
+- `gather_facts: false` - Fact gathering is not supported
+
+#### Playbook Structure for NetScaler CLI Commands
+
+To execute NetScaler CLI commands using nscli:
+
+```yaml
+---
+- name: Execute NetScaler CLI commands
+  hosts: demo_netscalers
+  connection: netscaler.adc.ssh_netscaler_adc
+  remote_user: nsroot
+  gather_facts: false
+
+  vars:
+    ansible_python_interpreter: /var/python/bin/python
+    nscli_command: "show ns version"
+
+  tasks:
+    - name: Run NetScaler CLI command
+      ansible.builtin.command: "nscli -s -U :nsroot:{{ nitro_pass }} {{ nscli_command }}"
+      register: cli_result
+      changed_when: false
+
+    - name: Display CLI output
+      ansible.builtin.debug:
+        msg: "{{ cli_result.stdout_lines }}"
+```
+
+**CLI command format:**
+- Use `nscli -s -U :nsroot:{{ nitro_pass }} <command>` to execute NetScaler CLI commands
+- The `-s` flag runs in non-interactive mode
+- The `-U :nsroot:{{ nitro_pass }}` provides authentication credentials
+- Replace `<command>` with any valid NetScaler CLI command (e.g., `show ns ip`, `show lb vserver`)
+
+#### Running the Playbook
+
+```bash
+ansible-playbook playbook.yaml -i inventory.ini
+```
+
+Add `-vvvv` for verbose debugging output if needed:
+```bash
+ansible-playbook playbook.yaml -i inventory.ini -vvvv
+```
+
+#### Additional Examples
+
+For more complete examples and use cases, refer to the [SSH connections examples](https://github.com/netscaler/ansible-collection-netscaleradc/tree/main/examples/ssh_connections) directory. 
 
 ### Authentication
 
