@@ -403,8 +403,8 @@ def _return_tuple_manipulate(func):
         warning_regex = r"Warning: \[[\s\S]*?\]\s*"
         stdout = re.sub(warning_regex, "", stdout, 0, re.UNICODE)
 
-        # Remove RPC node password warnings that contaminate stdout
-        rpc_warning_regex = r"Warning: One or more RPC nodes are configured with default passwords[^\r\n]*"
+        # # Remove RPC node password warnings that contaminate stdout
+        rpc_warning_regex = r"Warning: One or more RPC nodes are configured with default passwords. For enhanced security, you must change the default RPC node password."
         stdout = re.sub(rpc_warning_regex, "", stdout, 0, re.UNICODE)
 
         # Remove leading "]" characters that might remain
