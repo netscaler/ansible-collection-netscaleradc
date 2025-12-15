@@ -7,14 +7,15 @@ namespace: netscaler
 # The name of the collection. Has the same character restrictions as 'namespace'
 name: adc
 # The version of the collection. Must be compatible with semantic versioning
-version: 2.12.0
+version: 2.13.0
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-  - Sumanth Lingappa <sumanth.lingappa@cloud.com>
-  - Shiva Shankar Vaddepally <shivashankar.vaddepally@cloud.com>
+  - Sumanth Lingappa <sumanth.lingappa@citrix.com>
+  - Shiva Shankar Vaddepally <shivashankar.vaddepally@citrix.com>
+  - Lakshman M J <lakshman.mj@citrix.com>
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
 description: Ansible Collection Modules for NetScaler ADC
