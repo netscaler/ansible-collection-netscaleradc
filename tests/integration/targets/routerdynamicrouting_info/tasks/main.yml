@@ -15,7 +15,7 @@
 
 - name: Assert show command succeeded
   tags: test
-  assert:
+  ansible.builtin.assert:
     that:
       - not result.changed
       - not result.failed
@@ -38,7 +38,7 @@
 
 - name: Assert sh command succeeded
   tags: test
-  assert:
+  ansible.builtin.assert:
     that:
       - not result.changed
       - not result.failed
@@ -61,7 +61,7 @@
 
 - name: Assert uppercase SHOW command succeeded
   tags: test
-  assert:
+  ansible.builtin.assert:
     that:
       - not result.changed
       - not result.failed
@@ -84,7 +84,7 @@
 
 - name: Assert invalid command failed
   tags: test
-  assert:
+  ansible.builtin.assert:
     that:
       - result.failed
       - "'must start with' in result.msg"
@@ -106,7 +106,7 @@
 
 - name: Assert delete command failed
   tags: test
-  assert:
+  ansible.builtin.assert:
     that:
       - result.failed
       - "'must start with' in result.msg"
@@ -127,7 +127,7 @@
 
 - name: Assert command with whitespace succeeded
   tags: test
-  assert:
+  ansible.builtin.assert:
     that:
       - not result.changed
       - not result.failed
