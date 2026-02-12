@@ -20,7 +20,7 @@ DOCUMENTATION = r"""
 ---
 module: routerdynamicrouting_info
 short_description: Retrieve information from dynamic routing configuration.
-description: 
+description:
   - Retrieve information from dynamic routing configuration.
   - This module is a read-only data source that executes show commands.
   - The commandstring parameter must start with 'sh' or 'show' for security.

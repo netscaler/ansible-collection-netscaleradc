@@ -17,7 +17,7 @@
       register: bgp_summary
 
     - name: Display BGP summary
-      debug:
+      ansible.builtin.debug:
         var: bgp_summary.info
 
     - name: Get IP routing table
@@ -32,7 +32,7 @@
       register: ip_route
 
     - name: Display routing table
-      debug:
+      ansible.builtin.debug:
         var: ip_route.info
 
     - name: Get OSPF neighbor information
@@ -47,5 +47,5 @@
       register: ospf_neighbors
 
     - name: Display OSPF neighbors
-      debug:
+      ansible.builtin.debug:
         var: ospf_neighbors.info

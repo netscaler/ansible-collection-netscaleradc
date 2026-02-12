@@ -1,10 +1,9 @@
 ---
 - name: Test routerdynamicrouting_info module
-  hosts: citrix_adc
-  gather_facts: false
-  collections:
-    - netscaler.adc
-
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
   tasks:
     # Test 1: Valid command with "show"
     - name: Test valid show command
