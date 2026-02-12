@@ -137,7 +137,10 @@ class NitroAPIClient(object):
             return str(val)
 
         args_val = ",".join(
-            ["%s:%s" % (k, quote(codecs.encode(format_value(args[k])), safe="")) for k in args]
+            [
+                "%s:%s" % (k, quote(codecs.encode(format_value(args[k])), safe=""))
+                for k in args
+            ]
         )
         args_val = ("args=%s" % args_val) if args_val != "" else ""
 

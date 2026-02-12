@@ -22,7 +22,7 @@ resource_map = {
     "citrix_adc_cs_policy": "netscaler.adc.cspolicy",
     "citrix_adc_cs_vserver": "netscaler.adc.csvserver",
     "citrix_adc_dnsnsrec": "netscaler.adc.dnsnsrec",
-    "citrix_adc_get_bearer_token": "netscaler.adc.get_bearer_token", # nosec
+    "citrix_adc_get_bearer_token": "netscaler.adc.get_bearer_token",  # nosec
     "citrix_adc_gslb_service": "netscaler.adc.gslbservice",
     "citrix_adc_gslb_site": "netscaler.adc.gslbsite",
     "citrix_adc_gslb_vserver": "netscaler.adc.gslbvserver",
@@ -30,7 +30,7 @@ resource_map = {
     "citrix_adc_lb_vserver": "netscaler.adc.lbvserver",
     "citrix_adc_nsip": "netscaler.adc.nsip",
     "citrix_adc_nspartition": "netscaler.adc.nspartition",
-    "citrix_adc_password_reset": "netscaler.adc.password_reset", # nosec
+    "citrix_adc_password_reset": "netscaler.adc.password_reset",  # nosec
     "citrix_adc_save_config": "netscaler.adc.save_config",
     "citrix_adc_server": "netscaler.adc.server",
     "citrix_adc_servicegroup": "netscaler.adc.servicegroup",
