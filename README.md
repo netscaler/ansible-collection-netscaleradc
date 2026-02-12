@@ -135,12 +135,13 @@ Refer to the [sample_playboook](https://github.com/netscaler/ansible-collection-
 ### SSH Connection Plugin
 
 The collection provides an SSH connection plugin (`netscaler.adc.ssh_netscaler_adc`) that enables direct SSH connectivity to NetScaler ADC devices for executing shell commands and CLI operations.
+The collection supports both SSH key-based authentication and SSH password based authentication.
 
 #### Prerequisites
 
-- SSH key-based authentication must be configured
-- SSH access to the NetScaler ADC device
-- Private SSH key file available on the control machine
+- SSH access to the NetScaler ADC device.
+- Private SSH key file available on the control machine (required when using SSH key-based authentication). Refer [Configure SSH key-based authentication](https://docs.netscaler.com/en-us/citrix-adc/current-release/system/authentication-and-authorization-for-system-user/ssh-key-based-authentication-for-system-users.html#configure-ssh-key-based-authentication-for-the-netscaler-local-system-users-by-using-cli)
+- SSH username and password (required when using SSH password based authentication).
 
 #### Inventory Configuration
 
@@ -167,7 +168,7 @@ netscaler_adc ansible_host=10.10.10.10 ansible_user=nsroot ansible_ssh_private_k
 **Required inventory parameters:**
 - `ansible_host` - IP address or hostname of NetScaler ADC
 - `ansible_user` - SSH username (typically `nsroot`)
-- `ansible_ssh_private_key_file` - Path to SSH private key
+- `ansible_ssh_private_key_file` - Path to SSH private key (required when using SSH key-based authentication)
 - `nitro_pass` - Password for nscli commands (required when using CLI commands)
 
 #### Playbook Structure for Shell Commands
@@ -238,6 +239,11 @@ To execute NetScaler CLI commands using nscli:
 
 ```bash
 ansible-playbook playbook.yaml -i inventory.ini
+```
+
+Use --ask-pass to key in SSH password on demand in case of SSH password based authentication.
+```bash
+ansible-playbook playbook.yaml -i inventory.ini --ask-pass
 ```
 
 Add `-vvvv` for verbose debugging output if needed:
