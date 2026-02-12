@@ -625,6 +625,7 @@ plugins/modules/rnatsession.py validate-modules:missing-gplv3-license # We use M
 plugins/modules/route.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/route6.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/routerdynamicrouting.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/routerdynamicrouting_info.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/rsskeytype.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/save_config.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/server.py validate-modules:missing-gplv3-license # We use MIT license
