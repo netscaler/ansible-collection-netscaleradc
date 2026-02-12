@@ -2,8 +2,6 @@
 - name: Sample routerdynamicrouting_info playbook
   hosts: demo_netscalers
   gather_facts: false
-  collections:
-    - netscaler.adc
   tasks:
     - name: Get BGP routing summary
       delegate_to: localhost
