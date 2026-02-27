@@ -1,0 +1,49 @@
+---
+- name: Sample routerdynamicrouting_info playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get BGP routing summary
+      delegate_to: localhost
+      netscaler.adc.routerdynamicrouting_info:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: false
+        commandstring: "show ip bgp summary"
+      register: bgp_summary
+
+    - name: Display BGP summary
+      ansible.builtin.debug:
+        var: bgp_summary.info
+
+    - name: Get IP routing table
+      delegate_to: localhost
+      netscaler.adc.routerdynamicrouting_info:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: false
+        commandstring: "sh ip route"
+      register: ip_route
+
+    - name: Display routing table
+      ansible.builtin.debug:
+        var: ip_route.info
+
+    - name: Get OSPF neighbor information
+      delegate_to: localhost
+      netscaler.adc.routerdynamicrouting_info:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: false
+        commandstring: "show ip ospf neighbor"
+      register: ospf_neighbors
+
+    - name: Display OSPF neighbors
+      ansible.builtin.debug:
+        var: ospf_neighbors.info

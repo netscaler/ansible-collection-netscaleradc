@@ -1,0 +1,134 @@
+---
+# Test 1: Valid command with "show"
+- name: Test valid show command
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.routerdynamicrouting_info:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    commandstring: "show ip route"
+
+- name: Assert show command succeeded
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - not result.changed
+      - not result.failed
+      - result.info is defined
+      - result.info.commandstring == "show ip route"
+
+# Test 2: Valid command with "sh"
+- name: Test valid sh command
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.routerdynamicrouting_info:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    commandstring: "sh ip bgp summary"
+
+- name: Assert sh command succeeded
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - not result.changed
+      - not result.failed
+      - result.info is defined
+      - result.info.commandstring == "sh ip bgp summary"
+
+# Test 3: Command with uppercase SHOW
+- name: Test uppercase SHOW command
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.routerdynamicrouting_info:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    commandstring: "SHOW ip ospf neighbor"
+
+- name: Assert uppercase SHOW command succeeded
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - not result.changed
+      - not result.failed
+      - result.info is defined
+
+# Test 4: Invalid command (should fail)
+- name: Test invalid command (not starting with sh/show)
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.routerdynamicrouting_info:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    commandstring: "configure terminal"
+  ignore_errors: true
+
+- name: Assert invalid command failed
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - result.failed
+      - "'must start with' in result.msg"
+
+# Test 5: Another invalid command
+- name: Test another invalid command
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.routerdynamicrouting_info:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    commandstring: "delete ip route"
+  ignore_errors: true
+
+- name: Assert delete command failed
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - result.failed
+      - "'must start with' in result.msg"
+
+# Test 6: Command with leading whitespace
+- name: Test command with leading whitespace
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.routerdynamicrouting_info:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    commandstring: "  show ip route"
+
+- name: Assert command with whitespace succeeded
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - not result.changed
+      - not result.failed
+      - result.info is defined
