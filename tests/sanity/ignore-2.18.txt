@@ -577,7 +577,9 @@ plugins/modules/onlinkipv6prefix.py validate-modules:missing-gplv3-license # We 
 plugins/modules/pcpprofile.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/pcpserver.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/ping.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/ping.py validate-modules:option-equal-up-to-casing # Options I/i, S/s, T/t match NetScaler API
 plugins/modules/ping6.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/ping6.py validate-modules:option-equal-up-to-casing # Options I/i, S/s, T/t match NetScaler API
 plugins/modules/policydataset.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/policydataset_value_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/policyexpression.py validate-modules:missing-gplv3-license # We use MIT license
@@ -754,6 +756,7 @@ plugins/modules/tmsessionpolicy.py validate-modules:missing-gplv3-license # We u
 plugins/modules/tmtrafficaction.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/tmtrafficpolicy.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/traceroute.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/traceroute.py validate-modules:option-equal-up-to-casing # Options M/m, P/p, S/s, T/t match NetScaler API
 plugins/modules/traceroute6.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/transformaction.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/transformglobal_transformpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
