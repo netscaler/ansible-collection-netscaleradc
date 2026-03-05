@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.14.0] - 2026-03-05
+
+# Added
+
+- Supporting routerdynamicrouting_info in netscaler.adc collections
+
 ## [2.13.0] - 2025-12-14
 
 # Fixed
@@ -230,7 +236,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.13.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.14.0...HEAD
+[2.14.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.13.0...2.14.0
 [2.13.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.12.0...2.13.0
 [2.12.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.11.0...2.12.0
 [2.11.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.10.1...2.11.0
