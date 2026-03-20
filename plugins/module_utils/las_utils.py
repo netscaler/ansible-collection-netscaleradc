@@ -11,6 +11,7 @@ import json
 import os
 import re
 import subprocess
+import tempfile
 import uuid
 
 from ansible.module_utils.urls import open_url
@@ -207,7 +208,8 @@ def build_multipart(fields, files):
 class LASClient:
     """Client for the LAS (License Activation Service) cloud API."""
 
-    _BEARER_CACHE = "/tmp/r56_bearer"
+    # Namespaced by effective user ID to avoid insecure shared /tmp file access.
+    _BEARER_CACHE = os.path.join(tempfile.gettempdir(), "r56_bearer_{0}".format(os.geteuid()))
 
     def __init__(self, lsguid, secret_file):
         self.endpoint = "netscalerfixedbw"
@@ -317,9 +319,16 @@ class LASClient:
 # ---------------------------------------------------------------------------
 
 
-def sftp_get(ip, username, password, remote_path, local_path, loglines):
+def sftp_get(ip, username, password, remote_path, local_path, loglines, host_key_checking=True):
     ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.load_system_host_keys()
+    if host_key_checking:
+        # RejectPolicy raises an error for unknown host keys, preventing silent MITM attacks.
+        # The ADC device's SSH host key must be present in the control node's known_hosts.
+        ssh.set_missing_host_key_policy(paramiko.RejectPolicy())
+    else:
+        # User explicitly opted out of host key checking (host_key_checking=false).
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     sftp = None
     try:
         ssh.connect(ip, username=username, password=password)
@@ -334,9 +343,16 @@ def sftp_get(ip, username, password, remote_path, local_path, loglines):
         ssh.close()
 
 
-def sftp_put(ip, username, password, local_path, remote_path, loglines):
+def sftp_put(ip, username, password, local_path, remote_path, loglines, host_key_checking=True):
     ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.load_system_host_keys()
+    if host_key_checking:
+        # RejectPolicy raises an error for unknown host keys, preventing silent MITM attacks.
+        # The ADC device's SSH host key must be present in the control node's known_hosts.
+        ssh.set_missing_host_key_policy(paramiko.RejectPolicy())
+    else:
+        # User explicitly opted out of host key checking (host_key_checking=false).
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     sftp = None
     try:
         ssh.connect(ip, port=22, username=username, password=password)
@@ -427,7 +443,7 @@ def check_if_new_api(mapping, release, major, minor):
 # ---------------------------------------------------------------------------
 
 
-def get_offline_request_package(nitro, ip, username, password, local_dir, new_api, loglines):
+def get_offline_request_package(nitro, ip, username, password, local_dir, new_api, loglines, host_key_checking=True):
     """Trigger NITRO to generate the NS offline activation request tgz, then SFTP it to local_dir."""
     resource = "nslicenseactivationdata?args=usehostname:true" if new_api else "nslicenseactivationdata"
     o = nitro.get(resource)
@@ -438,7 +454,7 @@ def get_offline_request_package(nitro, ip, username, password, local_dir, new_ap
         return ""
 
     local_path = os.path.join(local_dir, src_file)
-    sftp_get(ip, username, password, "/nsconfig/license/" + src_file, local_path, loglines)
+    sftp_get(ip, username, password, "/nsconfig/license/" + src_file, local_path, loglines, host_key_checking)
     return src_file
 
 
@@ -449,7 +465,13 @@ def get_offline_request_package(nitro, ip, username, password, local_dir, new_ap
 
 def extract_lsguid(file_path, loglines):
     dest_dir = os.path.dirname(file_path)
+    # Validate that file_path is within dest_dir to guard against path traversal.
+    real_file_path = os.path.realpath(file_path)
+    real_dest_dir = os.path.realpath(dest_dir)
+    if not real_file_path.startswith(real_dest_dir + os.sep):
+        raise RuntimeError("Invalid file path outside temp directory: {0}".format(file_path))
     json_file = "ns_offline_activation_request.json"
+    # shell=False ensures no shell metacharacter interpretation; all args are controlled internally.
     cmd = [
         "tar",
         "-xvf",
@@ -479,12 +501,12 @@ def extract_lsguid(file_path, loglines):
 
     try:
         os.remove(json_path)
-    except Exception:
-        pass
+    except Exception as e:
+        loglines.append("DEBUG: Could not remove temp file {0}: {1}".format(json_path, str(e)))
     try:
         os.remove(os.path.join(dest_dir, "lasData.tgz"))
-    except Exception:
-        pass
+    except Exception as e:
+        loglines.append("DEBUG: Could not remove temp file lasData.tgz: {0}".format(str(e)))
 
     lsguid = data["lsguid"]
     loglines.append("INFO: Extracted lsguid: {0}".format(lsguid))
@@ -496,8 +518,8 @@ def extract_lsguid(file_path, loglines):
 # ---------------------------------------------------------------------------
 
 
-def apply_license_blob_ns(nitro, ip, username, password, fname, loglines):
-    sftp_put(ip, username, password, fname, "/nsconfig/license/" + fname, loglines)
+def apply_license_blob_ns(nitro, ip, username, password, fname, loglines, host_key_checking=True):
+    sftp_put(ip, username, password, fname, "/nsconfig/license/" + fname, loglines, host_key_checking)
     payload = {
         "params": {"action": "apply", "warning": "YES"},
         "nslaslicense": {"filename": fname, "filelocation": "/nsconfig/license", "fixedbandwidth": True},
