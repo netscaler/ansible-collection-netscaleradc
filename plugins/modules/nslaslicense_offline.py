@@ -124,8 +124,8 @@ EXAMPLES = r"""
     request_pem: CNS_8905_SERVER
     request_ed: Standard
     las_secrets_json: /etc/netscaler/zmcd_secrets.json
-
 """
+
 RETURN = r"""
 ---
 changed:

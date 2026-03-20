@@ -20,4 +20,3 @@
     - name: Display license result
       ansible.builtin.debug:
         var: lic_result
-
