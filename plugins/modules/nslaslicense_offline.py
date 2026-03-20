@@ -43,14 +43,12 @@ options:
       - Can also be set via the C(NETSCALER_NITRO_USER) environment variable.
     type: str
     required: true
-    no_log: true
   nitro_pass:
     description:
       - The password for the NetScaler ADC appliance.
       - Can also be set via the C(NETSCALER_NITRO_PASS) environment variable.
     type: str
     required: true
-    no_log: true
   nitro_protocol:
     description:
       - Protocol used to communicate with the NITRO API.
@@ -148,7 +146,6 @@ EXAMPLES = r"""
     las_secrets_json: /etc/netscaler/zmcd_secrets.json
 
 """
-
 RETURN = r"""
 ---
 changed:
@@ -213,7 +210,7 @@ def main():
         request_pem=dict(required=True, type="str"),
         request_ed=dict(required=True, type="str", choices=["Advanced", "Premium", "Standard"]),
         is_fips=dict(type="bool", default=False),
-        las_secrets_json=dict(required=True, type="str"),
+        las_secrets_json=dict(required=True, type="str", no_log=False),
         host_key_checking=dict(type="bool", default=True),
     )
 
