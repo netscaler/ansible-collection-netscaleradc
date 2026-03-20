@@ -87,14 +87,6 @@ options:
       - The file must contain the keys C(ccid), C(client), C(password), C(las_endpoint), and C(cc_endpoint).
     type: str
     required: true
-  host_key_checking:
-    description:
-      - If C(false), the ADC device's SSH host key will not be validated during SFTP transfers.
-      - Disabling this is insecure and should only be used in trusted, isolated environments.
-      - When C(true) (default), the device's SSH host key must be present in the control node's known_hosts file.
-        Use C(ssh-keyscan <nsip> >> ~/.ssh/known_hosts) to add it.
-    type: bool
-    default: true
 """
 
 EXAMPLES = r"""
@@ -131,18 +123,6 @@ EXAMPLES = r"""
     nitro_pass: "{{ nitro_pass }}"
     request_pem: CNS_8905_SERVER
     request_ed: Standard
-    las_secrets_json: /etc/netscaler/zmcd_secrets.json
-
-- name: Apply offline LAS license with host key checking disabled (trusted isolated environment)
-  delegate_to: localhost
-  netscaler.adc.nslaslicense_offline:
-    nsip: 10.102.201.230
-    nitro_user: nsroot
-    nitro_pass: "{{ nitro_pass }}"
-    validate_certs: false
-    host_key_checking: false
-    request_pem: CNS_8905_SERVER
-    request_ed: Premium
     las_secrets_json: /etc/netscaler/zmcd_secrets.json
 
 """
@@ -211,7 +191,6 @@ def main():
         request_ed=dict(required=True, type="str", choices=["Advanced", "Premium", "Standard"]),
         is_fips=dict(type="bool", default=False),
         las_secrets_json=dict(required=True, type="str", no_log=False),
-        host_key_checking=dict(type="bool", default=True),
     )
 
     module = AnsibleModule(
@@ -232,7 +211,6 @@ def main():
     request_ed = module.params["request_ed"]
     is_fips = module.params["is_fips"]
     las_secrets_json = module.params["las_secrets_json"]
-    host_key_checking = module.params["host_key_checking"]
     if username != "nsroot":
         module.fail_json(msg="Only the 'nsroot' account is supported. Got: '{0}'".format(username), **result)
 
@@ -271,7 +249,7 @@ def main():
     # Get activation request package from device
     temp_dir = os.path.join(tempfile.mkdtemp(prefix="nslas_"), "")
     try:
-        ns_file_name = get_offline_request_package(nitro, ip, username, password, temp_dir, new_api, loglines, host_key_checking)
+        ns_file_name = get_offline_request_package(nitro, ip, username, password, temp_dir, new_api, loglines)
         if not ns_file_name:
             module.fail_json(msg="Failed to retrieve activation request package from device", **result)
 
@@ -283,7 +261,7 @@ def main():
             lsguid = extract_lsguid(request_file, loglines)
         except Exception as e:
             loglines.append("WARNING: First parse attempt failed ({0}), re-downloading package".format(str(e)))
-            ns_file_name = get_offline_request_package(nitro, ip, username, password, temp_dir, new_api, loglines, host_key_checking)
+            ns_file_name = get_offline_request_package(nitro, ip, username, password, temp_dir, new_api, loglines)
             if not ns_file_name:
                 module.fail_json(msg="Re-download of activation request package failed", **result)
             request_file = os.path.join(temp_dir, ns_file_name)
@@ -295,7 +273,7 @@ def main():
             module.fail_json(msg="Failed to generate offline license token from LAS", **result)
 
         # Apply license blob to device
-        apply_license_blob_ns(nitro, ip, username, password, output_file, loglines, host_key_checking)
+        apply_license_blob_ns(nitro, ip, username, password, output_file, loglines)
 
         result["changed"] = True
         result["output_file"] = output_file

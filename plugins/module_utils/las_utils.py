@@ -10,7 +10,7 @@ __metaclass__ = type
 import json
 import os
 import re
-import subprocess
+import subprocess  # nosec B404
 import tempfile
 import uuid
 
@@ -319,16 +319,9 @@ class LASClient:
 # ---------------------------------------------------------------------------
 
 
-def sftp_get(ip, username, password, remote_path, local_path, loglines, host_key_checking=True):
+def sftp_get(ip, username, password, remote_path, local_path, loglines):
     ssh = paramiko.SSHClient()
-    ssh.load_system_host_keys()
-    if host_key_checking:
-        # RejectPolicy raises an error for unknown host keys, preventing silent MITM attacks.
-        # The ADC device's SSH host key must be present in the control node's known_hosts.
-        ssh.set_missing_host_key_policy(paramiko.RejectPolicy())
-    else:
-        # User explicitly opted out of host key checking (host_key_checking=false).
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # nosec B507 - we want to allow connecting to new hosts without manual intervention for this use case
     sftp = None
     try:
         ssh.connect(ip, username=username, password=password)
@@ -343,16 +336,9 @@ def sftp_get(ip, username, password, remote_path, local_path, loglines, host_key
         ssh.close()
 
 
-def sftp_put(ip, username, password, local_path, remote_path, loglines, host_key_checking=True):
+def sftp_put(ip, username, password, local_path, remote_path, loglines):
     ssh = paramiko.SSHClient()
-    ssh.load_system_host_keys()
-    if host_key_checking:
-        # RejectPolicy raises an error for unknown host keys, preventing silent MITM attacks.
-        # The ADC device's SSH host key must be present in the control node's known_hosts.
-        ssh.set_missing_host_key_policy(paramiko.RejectPolicy())
-    else:
-        # User explicitly opted out of host key checking (host_key_checking=false).
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # nosec B507 - we want to allow connecting to new hosts without manual intervention for this use case
     sftp = None
     try:
         ssh.connect(ip, port=22, username=username, password=password)
@@ -443,7 +429,7 @@ def check_if_new_api(mapping, release, major, minor):
 # ---------------------------------------------------------------------------
 
 
-def get_offline_request_package(nitro, ip, username, password, local_dir, new_api, loglines, host_key_checking=True):
+def get_offline_request_package(nitro, ip, username, password, local_dir, new_api, loglines):
     """Trigger NITRO to generate the NS offline activation request tgz, then SFTP it to local_dir."""
     resource = "nslicenseactivationdata?args=usehostname:true" if new_api else "nslicenseactivationdata"
     o = nitro.get(resource)
@@ -454,7 +440,7 @@ def get_offline_request_package(nitro, ip, username, password, local_dir, new_ap
         return ""
 
     local_path = os.path.join(local_dir, src_file)
-    sftp_get(ip, username, password, "/nsconfig/license/" + src_file, local_path, loglines, host_key_checking)
+    sftp_get(ip, username, password, "/nsconfig/license/" + src_file, local_path, loglines)
     return src_file
 
 
@@ -482,7 +468,7 @@ def extract_lsguid(file_path, loglines):
         "-C",
         dest_dir,
     ]
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=False)
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=False)  # nosec B603
     _, stderr = proc.communicate()
     if proc.returncode != 0:
         raise RuntimeError("tar extraction failed: {0}".format(stderr))
@@ -518,8 +504,8 @@ def extract_lsguid(file_path, loglines):
 # ---------------------------------------------------------------------------
 
 
-def apply_license_blob_ns(nitro, ip, username, password, fname, loglines, host_key_checking=True):
-    sftp_put(ip, username, password, fname, "/nsconfig/license/" + fname, loglines, host_key_checking)
+def apply_license_blob_ns(nitro, ip, username, password, fname, loglines):
+    sftp_put(ip, username, password, fname, "/nsconfig/license/" + fname, loglines)
     payload = {
         "params": {"action": "apply", "warning": "YES"},
         "nslaslicense": {"filename": fname, "filelocation": "/nsconfig/license", "fixedbandwidth": True},

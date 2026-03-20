@@ -21,21 +21,3 @@
       ansible.builtin.debug:
         var: lic_result
 
-    - name: Apply offline LAS license with host key checking disabled (trusted isolated environment)
-      delegate_to: localhost
-      netscaler.adc.nslaslicense_offline:
-        nsip: "{{ nsip }}"
-        nitro_user: "{{ nitro_user }}"
-        nitro_pass: "{{ nitro_pass }}"
-        nitro_protocol: "{{ nitro_protocol | default('https') }}"
-        validate_certs: false
-        host_key_checking: false
-        request_pem: CNS_V10000_SERVER
-        request_ed: Premium
-        is_fips: false
-        las_secrets_json: /path/to/las_secrets.json
-      register: lic_result_no_hkc
-
-    - name: Display license result (no host key checking)
-      ansible.builtin.debug:
-        var: lic_result_no_hkc
