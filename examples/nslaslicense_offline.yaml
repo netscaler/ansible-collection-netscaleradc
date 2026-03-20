@@ -1,0 +1,22 @@
+---
+- name: Sample nslaslicense_offline playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Apply offline LAS license to NetScaler ADC
+      delegate_to: localhost
+      netscaler.adc.nslaslicense_offline:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol | default('https') }}"
+        validate_certs: false
+        request_pem: CNS_V10000_SERVER
+        request_ed: Premium
+        is_fips: false
+        las_secrets_json: /path/to/las_secrets.json
+      register: lic_result
+
+    - name: Display license result
+      ansible.builtin.debug:
+        var: lic_result
