@@ -321,7 +321,7 @@ class LASClient:
 
 def sftp_get(ip, username, password, remote_path, local_path, loglines):
     ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # nosec B507 - we want to allow connecting to new hosts without manual intervention for this use case
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # nosec B507
     sftp = None
     try:
         ssh.connect(ip, username=username, password=password)
@@ -338,7 +338,7 @@ def sftp_get(ip, username, password, remote_path, local_path, loglines):
 
 def sftp_put(ip, username, password, local_path, remote_path, loglines):
     ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # nosec B507 - we want to allow connecting to new hosts without manual intervention for this use case
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # nosec B507
     sftp = None
     try:
         ssh.connect(ip, port=22, username=username, password=password)
@@ -469,7 +469,7 @@ def extract_lsguid(file_path, loglines):
         dest_dir,
     ]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=False)  # nosec B603
-    _, stderr = proc.communicate()
+    stdout, stderr = proc.communicate()
     if proc.returncode != 0:
         raise RuntimeError("tar extraction failed: {0}".format(stderr))
 
