@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.15.0] - 2026-03-24
+
+### Added
+
+- Supporting Offline LAS licensing of ADCs in netscaler.adc collections.
+
+### Updated
+
+- Bumped aquasecurity/trivy-action from 0.33.1 to 0.35.0.
+- Bumped actions/upload-artifact from 5 to 7.
+- Bumped github/codeql-action from 3 to 4.
+- Bumped actions/checkout from 5 to 6.
+
 ## [2.14.0] - 2026-03-05
 
 # Added
@@ -236,7 +249,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.14.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.15.0...HEAD
+[2.15.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.14.0...2.15.0
 [2.14.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.13.0...2.14.0
 [2.13.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.12.0...2.13.0
 [2.12.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.11.0...2.12.0
