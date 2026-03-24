@@ -953,3 +953,4 @@ plugins/modules/ospf6router.py validate-modules:missing-gplv3-license # We use M
 plugins/modules/ospfrouter.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/ospfinterface.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/bgprouter.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/nslaslicense_offline.py validate-modules:missing-gplv3-license # We use MIT license
