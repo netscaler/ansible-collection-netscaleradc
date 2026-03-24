@@ -62,20 +62,12 @@ options:
       - If C(false), SSL certificates will not be validated.
     type: bool
     default: true
-  request_pem:
+  entitlement_name:
     description:
-      - The PEM entitlement identifier for the device (e.g. C(CNS_8905_SERVER)).
+      - The full entitlement name for the device license (e.g. C(MPX 8905 Premium)).
+      - Combines the device model and edition, with an optional C(FIPS) prefix for FIPS appliances.
     type: str
     required: true
-  request_ed:
-    description:
-      - The license edition.
-    type: str
-    required: true
-    choices:
-      - Advanced
-      - Premium
-      - Standard
   is_fips:
     description:
       - Set to C(true) for FIPS-enabled appliances.
@@ -99,8 +91,7 @@ EXAMPLES = r"""
     nitro_pass: "{{ nitro_pass }}"
     nitro_protocol: https
     validate_certs: false
-    request_pem: CNS_8905_SERVER
-    request_ed: Premium
+    entitlement_name: MPX 8905 Premium
     is_fips: false
     las_secrets_json: /etc/netscaler/zmcd_secrets.json
 
@@ -110,19 +101,17 @@ EXAMPLES = r"""
     nsip: 10.102.201.231
     nitro_user: nsroot
     nitro_pass: "{{ nitro_pass }}"
-    request_pem: CNS_V5000_SERVER
-    request_ed: Premium
+    entitlement_name: FIPS VPX 5000 Premium
     is_fips: true
     las_secrets_json: /etc/netscaler/zmcd_secrets.json
 
-- name: Retrieve activation request package only (for debugging)
+- name: Generate and apply offline LAS license for NS (MPX) Standard edition
   delegate_to: localhost
   netscaler.adc.nslaslicense_offline:
     nsip: 10.102.201.230
     nitro_user: nsroot
     nitro_pass: "{{ nitro_pass }}"
-    request_pem: CNS_8905_SERVER
-    request_ed: Standard
+    entitlement_name: MPX 8905 Standard
     las_secrets_json: /etc/netscaler/zmcd_secrets.json
 """
 
@@ -161,7 +150,7 @@ from ansible.module_utils.basic import AnsibleModule, env_fallback
 
 from ..module_utils.las_utils import (
     HAS_PARAMIKO,
-    MPX14K_PEMS,
+    LASClient,
     NEW_API_MAPPING_FIPS,
     NEW_API_MAPPING_NS,
     NitroHelper,
@@ -170,7 +159,6 @@ from ..module_utils.las_utils import (
     check_ns_version,
     extract_lsguid,
     generate_offline_package,
-    get_ent_name,
     get_offline_request_package,
 )
 
@@ -187,8 +175,7 @@ def main():
         nitro_pass=dict(required=True, type="str", no_log=True, fallback=(env_fallback, ["NETSCALER_NITRO_PASS"])),
         nitro_protocol=dict(type="str", choices=["http", "https"], default="https"),
         validate_certs=dict(type="bool", default=True, fallback=(env_fallback, ["NETSCALER_VALIDATE_CERTS"])),
-        request_pem=dict(required=True, type="str"),
-        request_ed=dict(required=True, type="str", choices=["Advanced", "Premium", "Standard"]),
+        entitlement_name=dict(required=True, type="str"),
         is_fips=dict(type="bool", default=False),
         las_secrets_json=dict(required=True, type="str", no_log=False),
     )
@@ -207,25 +194,72 @@ def main():
     ip = module.params["nsip"]
     username = module.params["nitro_user"]
     password = module.params["nitro_pass"]
-    request_pem = module.params["request_pem"]
-    request_ed = module.params["request_ed"]
+    ent_name = module.params["entitlement_name"]
     is_fips = module.params["is_fips"]
     las_secrets_json = module.params["las_secrets_json"]
     if username != "nsroot":
         module.fail_json(msg="Only the 'nsroot' account is supported. Got: '{0}'".format(username), **result)
 
-    if is_fips and request_pem in MPX14K_PEMS:
-        module.fail_json(msg="MPX 14K devices (CNS_14xxx) do not require the is_fips argument", **result)
-
     if not os.path.isfile(las_secrets_json):
         module.fail_json(msg="las_secrets_json not found: {0}".format(las_secrets_json), **result)
 
-    ent_name = get_ent_name(request_pem, request_ed, is_fips, loglines)
-    if not ent_name:
+    _valid_ent_prefixes = (
+        "FIPS MPX 14",
+        "FIPS MPS 15",
+        "FIPS MPX 16",
+        "FIPS MPS 89",
+        "FIPS MPX 91",
+        "FIPS MPX 92",
+        "MPS 14",
+        "MPX 15",
+        "MPX 16",
+        "MPX 17",
+        "MPS 25",
+        "MPX 26",
+        "MPX 59",
+        "MPX 89",
+        "MPX 91",
+        "MPX 92",
+        "VPX",
+    )
+    if not ent_name.startswith(_valid_ent_prefixes):
         module.fail_json(
-            msg="Could not resolve entitlement name for pem={0}, ed={1}, fips={2}".format(request_pem, request_ed, is_fips),
+            msg="Invalid entitlement_name '{0}'. Must start with one of: {1}".format(ent_name, ", ".join(_valid_ent_prefixes)),
             **result,
         )
+
+    # Derive LAS platform from the matched prefix (spaces → underscores)
+    matched_prefix = next(p for p in _valid_ent_prefixes if ent_name.startswith(p))
+    platform = matched_prefix.replace(" ", "_")
+
+    # Validate entitlement_name against customer entitlements from LAS
+    las_client = LASClient("", las_secrets_json)
+    bearer = las_client.validate_bearer_cache()
+    if not bearer:
+        bearer = las_client.generate_bearer_token()
+        loglines.append("INFO: New bearer token generated for entitlement validation")
+    else:
+        loglines.append("INFO: Using cached bearer token for entitlement validation")
+    if not bearer:
+        module.fail_json(msg="Failed to obtain bearer token from LAS to validate entitlement_name", **result)
+
+    ent_resp = las_client.get_customer_entitlements(bearer, platform, loglines)
+    if ent_resp is None:
+        module.fail_json(
+            msg="Failed to fetch customer entitlements from LAS for platform '{0}'".format(platform),
+            **result,
+        )
+
+    valid_entitlements = [e.get("type", "") for e in ent_resp.get("entitlements", [])]
+    loglines.append("INFO: Valid entitlements for platform '{0}': {1}".format(platform, valid_entitlements))
+    if ent_name not in valid_entitlements:
+        module.fail_json(
+            msg="entitlement_name '{0}' is not a valid customer entitlement for platform '{1}'. Valid entitlements: [{2}]".format(
+                ent_name, platform, ", ".join(valid_entitlements) if valid_entitlements else "none found"
+            ),
+            **result,
+        )
+    loglines.append("INFO: entitlement_name '{0}' validated successfully against LAS".format(ent_name))
 
     nitro = NitroHelper(ip, module.params["nitro_protocol"], username, password, module.params["validate_certs"], loglines)
 

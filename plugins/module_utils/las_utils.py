@@ -266,11 +266,20 @@ class LASClient:
             ls_list = self._post_json(url, headers, {"ver": "1.0"})
             for ls in ls_list.get("lstlasactivatedls", []):
                 if ls["lsguid"] == self.lsguid:
-                    break
+                    return ls.get("lsfingerprint", "") or ""
             return ""
         except Exception as e:
             loglines.append("ERROR: get_fingerprint_for_lsguid: {0}".format(str(e)))
             return "EXCEPTION ERROR"
+
+    def get_customer_entitlements(self, bearer, platform, loglines):
+        url = "{0}/{1}/netscalerfixedbw/customerentitlements".format(self._base_url, self._ccid)
+        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
+        try:
+            return self._post_json(url, headers, {"ver": "1.0", "platform": platform})
+        except Exception as e:
+            loglines.append("ERROR: get_customer_entitlements platform={0}: {1}".format(platform, str(e)))
+            return None
 
     def import_offline_activation_request(self, request_file, fingerprint, bearer, loglines):
         url = "{0}/support/{1}/{2}/importofflineactivationrequest".format(self._base_url, self._ccid, self.endpoint)
