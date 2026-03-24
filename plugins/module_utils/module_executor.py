@@ -325,7 +325,10 @@ class ModuleExecutor(object):
 
         log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
-            if not k.endswith("_binding") and k in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"]:
+            if (
+                not k.endswith("_binding")
+                and k in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"]
+            ):
                 cleaned_value = filter_values(v)
                 if cleaned_value is not None:
                     self.resource_module_params[k] = cleaned_value
