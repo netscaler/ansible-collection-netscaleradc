@@ -64,8 +64,7 @@ options:
     default: true
   entitlement_name:
     description:
-      - The full entitlement name for the device license (e.g. C(MPX 8905 Premium)).
-      - Combines the device model and edition, with an optional C(FIPS) prefix for FIPS appliances.
+      - Entitlement name for the VPX/MPX license as listed in LAS customer entitlements (e.g., `VPX 10000 Premium`).
     type: str
     required: true
   is_fips:
