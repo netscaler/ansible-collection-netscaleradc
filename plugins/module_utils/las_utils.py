@@ -299,6 +299,17 @@ class LASClient:
             loglines.append("ERROR: import_offline_activation_request: {0}".format(str(e)))
             return "EXCEPTION ERROR"
 
+    def import_restricted_offline_activation_request(self, lsid, pubkey, bearer, loglines):
+        url = "{0}/support/{1}/importrestrictedofflineactivationrequest".format(self._base_url, self._ccid)
+        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
+        payload = {"ver": "1.0", "lsid": lsid, "pubkey": pubkey}
+        try:
+            result = self._post_json(url, headers, payload)
+            return result.get("importrequesttoken", "")
+        except Exception as e:
+            loglines.append("ERROR: import_restricted_offline_activation_request: {0}".format(str(e)))
+            return "EXCEPTION ERROR"
+
     def generate_offline_activation(self, import_token, bearer, ent_name, loglines):
         url = "{0}/{1}/{2}/generateofflineactivation".format(self._base_url, self._ccid, self.endpoint)
         headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
@@ -458,7 +469,8 @@ def get_offline_request_package(nitro, ip, username, password, local_dir, new_ap
 # ---------------------------------------------------------------------------
 
 
-def extract_lsguid(file_path, loglines):
+def extract_request_fields(file_path, loglines):
+    """Extract lsguid, lsid, and pubkey from the NS offline activation request tgz in one pass."""
     dest_dir = os.path.dirname(file_path)
     # Validate that file_path is within dest_dir to guard against path traversal.
     real_file_path = os.path.realpath(file_path)
@@ -504,8 +516,12 @@ def extract_lsguid(file_path, loglines):
         loglines.append("DEBUG: Could not remove temp file lasData.tgz: {0}".format(str(e)))
 
     lsguid = data["lsguid"]
+    inner = data.get("data", {})
+    lsid = inner["lsid"]
+    pubkey = inner["pubkey"]
     loglines.append("INFO: Extracted lsguid: {0}".format(lsguid))
-    return lsguid
+    loglines.append("INFO: Extracted lsid: {0}".format(lsid))
+    return lsguid, lsid, pubkey
 
 
 # ---------------------------------------------------------------------------
@@ -558,7 +574,7 @@ def get_ent_name(request_pem, request_ed, is_fips, loglines):
 # ---------------------------------------------------------------------------
 
 
-def generate_offline_package(lsguid, request_file, output_file, ent_name, secret_file, loglines):
+def generate_offline_package(lsguid, request_file, output_file, ent_name, secret_file, loglines, restricted_mode=False, lsid=None, pubkey=None):
     client = LASClient(lsguid, secret_file)
 
     bearer = client.validate_bearer_cache()
@@ -572,13 +588,16 @@ def generate_offline_package(lsguid, request_file, output_file, ent_name, secret
         loglines.append("ERROR: Failed to obtain bearer token from LAS")
         return None
 
-    fingerprint = client.get_fingerprint_for_lsguid(bearer, loglines)
-    if "ERROR" in str(fingerprint):
-        loglines.append("ERROR: Failed to get device fingerprint for lsguid {0}".format(lsguid))
-        return None
-    loglines.append("INFO: Device fingerprint in LAS: {0!r}".format(fingerprint))
+    if restricted_mode:
+        import_token = client.import_restricted_offline_activation_request(lsid, pubkey, bearer, loglines)
+    else:
+        fingerprint = client.get_fingerprint_for_lsguid(bearer, loglines)
+        if "ERROR" in str(fingerprint):
+            loglines.append("ERROR: Failed to get device fingerprint for lsguid {0}".format(lsguid))
+            return None
+        loglines.append("INFO: Device fingerprint in LAS: {0!r}".format(fingerprint))
+        import_token = client.import_offline_activation_request(request_file, fingerprint, bearer, loglines)
 
-    import_token = client.import_offline_activation_request(request_file, fingerprint, bearer, loglines)
     if not import_token or "ERROR" in import_token:
         loglines.append("ERROR: Failed to import offline activation request")
         return None

@@ -78,6 +78,13 @@ options:
       - The file must contain the keys C(ccid), C(client), C(password), C(las_endpoint), and C(cc_endpoint).
     type: str
     required: true
+  restricted_mode:
+    description:
+      - Set to C(true) to use the restricted offline activation request flow.
+      - When enabled, the module extracts C(lsid) and C(pubkey) from the activation request package
+        and calls the restricted import endpoint instead of the standard file-upload endpoint.
+    type: bool
+    default: false
 """
 
 EXAMPLES = r"""
@@ -112,6 +119,19 @@ EXAMPLES = r"""
     nitro_pass: "{{ nitro_pass }}"
     entitlement_name: "MPX 8905 Standard"
     las_secrets_json: ./path/to/las_secrets.json
+
+- name: Generate and apply offline LAS license using restricted mode (no file upload)
+  delegate_to: localhost
+  netscaler.adc.nslaslicense_offline:
+    nsip: 10.102.201.230
+    nitro_user: nsroot
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: https
+    validate_certs: false
+    entitlement_name: "VPX 10000 Premium"
+    is_fips: false
+    las_secrets_json: ./path/to/las_secrets.json
+    restricted_mode: true
 """
 
 RETURN = r"""
@@ -156,7 +176,7 @@ from ..module_utils.las_utils import (
     apply_license_blob_ns,
     check_if_new_api,
     check_ns_version,
-    extract_lsguid,
+    extract_request_fields,
     generate_offline_package,
     get_offline_request_package,
 )
@@ -177,6 +197,7 @@ def main():
         entitlement_name=dict(required=True, type="str"),
         is_fips=dict(type="bool", default=False),
         las_secrets_json=dict(required=True, type="str", no_log=False),
+        restricted_mode=dict(type="bool", default=False),
     )
 
     module = AnsibleModule(
@@ -196,6 +217,7 @@ def main():
     ent_name = module.params["entitlement_name"]
     is_fips = module.params["is_fips"]
     las_secrets_json = module.params["las_secrets_json"]
+    restricted_mode = module.params["restricted_mode"]
     if username != "nsroot":
         module.fail_json(msg="Only the 'nsroot' account is supported. Got: '{0}'".format(username), **result)
 
@@ -289,20 +311,23 @@ def main():
         request_file = os.path.join(temp_dir, ns_file_name)
         loglines.append("INFO: Got request package: {0}".format(request_file))
 
-        # Extract lsguid (retry once on parse failure)
+        # Extract lsguid (always) and lsid+pubkey (retry once on parse failure)
         try:
-            lsguid = extract_lsguid(request_file, loglines)
+            lsguid, lsid, pubkey = extract_request_fields(request_file, loglines)
         except Exception as e:
             loglines.append("WARNING: First parse attempt failed ({0}), re-downloading package".format(str(e)))
             ns_file_name = get_offline_request_package(nitro, ip, username, password, temp_dir, new_api, loglines)
             if not ns_file_name:
                 module.fail_json(msg="Re-download of activation request package failed", **result)
             request_file = os.path.join(temp_dir, ns_file_name)
-            lsguid = extract_lsguid(request_file, loglines)
+            lsguid, lsid, pubkey = extract_request_fields(request_file, loglines)
 
         # Generate offline token from LAS cloud
         output_file = "offline_token_{0}_activation.blob.tgz".format(ip)
-        if generate_offline_package(lsguid, request_file, output_file, ent_name, las_secrets_json, loglines) is None:
+        if generate_offline_package(
+            lsguid, request_file, output_file, ent_name, las_secrets_json, loglines,
+            restricted_mode=restricted_mode, lsid=lsid if restricted_mode else None, pubkey=pubkey if restricted_mode else None,
+        ) is None:
             module.fail_json(msg="Failed to generate offline license token from LAS", **result)
 
         # Apply license blob to device
