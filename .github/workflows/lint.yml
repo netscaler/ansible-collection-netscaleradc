@@ -20,15 +20,19 @@ on:
       - .whitesource
       - .yamlfmt
       - .yamllint
+permissions: read-all
 jobs:
   ansible-lint:
     name: ansible-lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
       - name: Set up Python 3.11
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
         with:
           python-version: 3.11
       - name: Install ansible-lint
@@ -36,7 +40,7 @@ jobs:
       - name: Run ansible-lint
         run: ansible-lint
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v4
+        uses: github/codeql-action/upload-sarif@256d634097be96e792d6764f9edaefc4320557b1  # v4
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: ansible_lint_result.sarif

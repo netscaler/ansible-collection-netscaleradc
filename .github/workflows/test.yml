@@ -12,23 +12,26 @@ on:
     paths:
       - plugins/**
       - tests/**
+permissions: read-all
 jobs:
   ansible-galaxy-importer:
     name: ansible-galaxy-importer
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         python-version:
           - "3.11"
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
       - name: Build the collection
         run: |
           echo "> ansible-galaxy collection build --force"
           ansible-galaxy collection build --force
       - name: Setup Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
@@ -48,7 +51,7 @@ jobs:
             exit 1
           fi
       - name: Archive recent build
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f  # v7.0.0
         with:
           name: collection-build
           path: netscaler-adc-*.tar.gz
@@ -56,6 +59,8 @@ jobs:
   sanity-test:
     name: Sanity test with Ansible ${{ matrix.ansible }} and Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         ansible:
@@ -66,9 +71,9 @@ jobs:
           - "3.11"
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -108,6 +113,8 @@ jobs:
       Integration test with Ansible ${{ matrix.ansible }} and Python ${{ matrix.python-version }}
       against NetScaler ${{ matrix.netscaler-version }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         ansible:
@@ -119,7 +126,7 @@ jobs:
           - 14.1-43.50
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
       - name: Start NetScaler CPX container
         run: |
           # docker-compose -f "docker-compose.yml" up -d
@@ -162,7 +169,7 @@ jobs:
           echo "> curl -kL http://$NETSCALER_NSIP/nitro/v1/config/nsip -u nsroot:$NETSCALER_NITRO_PASS"
           curl -kL http://$NETSCALER_NSIP/nitro/v1/config/nsip -u nsroot:$NETSCALER_NITRO_PASS
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies

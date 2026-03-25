@@ -5,9 +5,10 @@ on:
   schedule:
     - cron: "0 12 1,15 * *"  # run 12pm on the 1st and 15th of the month
   workflow_dispatch:
+permissions: read-all
 jobs:
   refresh:
-    uses: ansible/ansible-content-actions/.github/workflows/refresh_ah_token.yaml@main
+    uses: ansible/ansible-content-actions/.github/workflows/refresh_ah_token.yaml@8d811a21e588dc6692299797e9a2bab1205365dc  # main
     with:
       environment: release
     secrets:
