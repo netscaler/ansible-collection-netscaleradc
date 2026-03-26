@@ -109,7 +109,13 @@ FIPS_MPX_PREMIUM_ONLY_PEMS = frozenset(
 )
 
 MPX14K_PEMS = frozenset(
-    ("CNS_14020_SERVER", "CNS_14030_SERVER", "CNS_14060_SERVER", "CNS_14080_SERVER", "CNS_14500_SERVER")
+    (
+        "CNS_14020_SERVER",
+        "CNS_14030_SERVER",
+        "CNS_14060_SERVER",
+        "CNS_14080_SERVER",
+        "CNS_14500_SERVER",
+    )
 )
 
 
@@ -134,7 +140,9 @@ class NitroHelper:
         self.last_response_body = ""
 
     def _url(self, resource):
-        return "{0}://{1}/nitro/v1/config/{2}".format(self._protocol, self._ip, resource)
+        return "{0}://{1}/nitro/v1/config/{2}".format(
+            self._protocol, self._ip, resource
+        )
 
     def get(self, resource):
         url = self._url(resource)
@@ -147,7 +155,11 @@ class NitroHelper:
                 method="GET",
             )
             body = resp.read()
-            self._loglines.append("DEBUG: NITRO GET response: {0}".format(body.decode("utf-8", errors="replace").strip()))
+            self._loglines.append(
+                "DEBUG: NITRO GET response: {0}".format(
+                    body.decode("utf-8", errors="replace").strip()
+                )
+            )
             return json.loads(body) if body.strip() else {}
         except Exception as e:
             self._loglines.append("DEBUG: NITRO GET exception: {0}".format(str(e)))
@@ -157,7 +169,9 @@ class NitroHelper:
         url = self._url(resource)
         if action:
             url += "?action={0}".format(action)
-        self._loglines.append("DEBUG: NITRO POST {0} request: {1}".format(url, json.dumps(payload)))
+        self._loglines.append(
+            "DEBUG: NITRO POST {0} request: {1}".format(url, json.dumps(payload))
+        )
         try:
             resp = open_url(
                 url,
@@ -168,7 +182,9 @@ class NitroHelper:
             )
             body = resp.read()
             self.last_response_body = body.decode("utf-8", errors="replace").strip()
-            self._loglines.append("DEBUG: NITRO POST response: {0!r}".format(self.last_response_body))
+            self._loglines.append(
+                "DEBUG: NITRO POST response: {0!r}".format(self.last_response_body)
+            )
             return json.loads(body) if body.strip() else {}
         except Exception as e:
             self._loglines.append("DEBUG: NITRO POST exception: {0}".format(str(e)))
@@ -187,7 +203,13 @@ def build_multipart(fields, files):
     body = b""
     for name, value in fields.items():
         body += b"--" + boundary.encode() + crlf
-        body += b'Content-Disposition: form-data; name="' + name.encode() + b'"' + crlf + crlf
+        body += (
+            b'Content-Disposition: form-data; name="'
+            + name.encode()
+            + b'"'
+            + crlf
+            + crlf
+        )
         body += value.encode() + crlf
     for name, (filename, file_content) in files.items():
         body += b"--" + boundary.encode() + crlf
@@ -209,9 +231,11 @@ class LASClient:
     """Client for the LAS (License Activation Service) cloud API."""
 
     # Namespaced by effective user ID to avoid insecure shared /tmp file access.
-    _BEARER_CACHE = os.path.join(tempfile.gettempdir(), "r56_bearer_{0}".format(os.geteuid()))
+    _BEARER_CACHE = os.path.join(
+        tempfile.gettempdir(), "r56_bearer_{0}".format(os.geteuid())
+    )
 
-    def __init__(self, lsguid, secret_file):
+    def __init__(self, lsguid, secret_file, loglines=None):
         self.endpoint = "netscalerfixedbw"
         self.lsguid = lsguid
         with open(secret_file, "r") as f:
@@ -221,16 +245,47 @@ class LASClient:
         self._client_secret = x["password"]
         self._base_url = x["las_endpoint"]
         self._cc_token_url = x["cc_endpoint"]
+        self._loglines = loglines if loglines is not None else []
 
-    def _post_json(self, url, headers, payload):
-        resp = open_url(
-            url,
-            headers=headers,
-            method="POST",
-            data=json.dumps(payload).encode("utf-8"),
-            timeout=60,
+    def _post_json(self, url, headers, payload, log_payload=True):
+        logged_payload = (
+            payload
+            if log_payload
+            else {
+                k: ("***" if k in ("clientSecret", "password") else v)
+                for k, v in payload.items()
+            }
         )
-        return json.loads(resp.read())
+        self._loglines.append(
+            "DEBUG: LAS POST {0} request: {1}".format(url, json.dumps(logged_payload))
+        )
+        try:
+            resp = open_url(
+                url,
+                headers=headers,
+                method="POST",
+                data=json.dumps(payload).encode("utf-8"),
+                timeout=60,
+            )
+            body = resp.read()
+            self._loglines.append(
+                "DEBUG: LAS POST response: {0}".format(
+                    body.decode("utf-8", errors="replace").strip()
+                )
+            )
+            return json.loads(body)
+        except Exception as e:
+            error_body = ""
+            if hasattr(e, "read"):
+                try:
+                    error_body = e.read().decode("utf-8", errors="replace").strip()
+                except Exception:
+                    pass
+            msg = "DEBUG: LAS POST exception: {0}".format(str(e))
+            if error_body:
+                msg += " response_body={0}".format(error_body)
+            self._loglines.append(msg)
+            raise
 
     def generate_bearer_token(self):
         headers = {"Content-Type": "application/json"}
@@ -238,6 +293,7 @@ class LASClient:
             self._cc_token_url,
             headers,
             {"clientId": self._client_id, "clientSecret": self._client_secret},
+            log_payload=False,
         )
         token = result.get("token", "")
         with open(self._BEARER_CACHE, "w") as f:
@@ -251,17 +307,30 @@ class LASClient:
             bearer = f.read().strip()
         if not bearer:
             return None
-        url = "{0}/support/{1}/{2}/listls".format(self._base_url, self._ccid, self.endpoint)
-        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
+        url = "{0}/support/{1}/{2}/listls".format(
+            self._base_url, self._ccid, self.endpoint
+        )
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "CWSAuth bearer={0}".format(bearer),
+        }
         try:
             self._post_json(url, headers, {"ver": "1.0"})
             return bearer
-        except Exception:
+        except Exception as e:
+            self._loglines.append(
+                "DEBUG: LAS bearer cache validation failed: {0}".format(str(e))
+            )
             return None
 
     def get_fingerprint_for_lsguid(self, bearer, loglines):
-        url = "{0}/support/{1}/{2}/listls".format(self._base_url, self._ccid, self.endpoint)
-        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
+        url = "{0}/support/{1}/{2}/listls".format(
+            self._base_url, self._ccid, self.endpoint
+        )
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "CWSAuth bearer={0}".format(bearer),
+        }
         try:
             ls_list = self._post_json(url, headers, {"ver": "1.0"})
             for ls in ls_list.get("lstlasactivatedls", []):
@@ -273,16 +342,29 @@ class LASClient:
             return "EXCEPTION ERROR"
 
     def get_customer_entitlements(self, bearer, platform, loglines):
-        url = "{0}/{1}/netscalerfixedbw/customerentitlements".format(self._base_url, self._ccid)
-        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
+        url = "{0}/{1}/netscalerfixedbw/customerentitlements".format(
+            self._base_url, self._ccid
+        )
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "CWSAuth bearer={0}".format(bearer),
+        }
         try:
             return self._post_json(url, headers, {"ver": "1.0", "platform": platform})
         except Exception as e:
-            loglines.append("ERROR: get_customer_entitlements platform={0}: {1}".format(platform, str(e)))
+            loglines.append(
+                "ERROR: get_customer_entitlements platform={0}: {1}".format(
+                    platform, str(e)
+                )
+            )
             return None
 
-    def import_offline_activation_request(self, request_file, fingerprint, bearer, loglines):
-        url = "{0}/support/{1}/{2}/importofflineactivationrequest".format(self._base_url, self._ccid, self.endpoint)
+    def import_offline_activation_request(
+        self, request_file, fingerprint, bearer, loglines
+    ):
+        url = "{0}/support/{1}/{2}/importofflineactivationrequest".format(
+            self._base_url, self._ccid, self.endpoint
+        )
         base_data = json.dumps({"ver": "1.0", "lsfingerprint": fingerprint})
         with open(request_file, "rb") as f:
             file_content = f.read()
@@ -290,44 +372,104 @@ class LASClient:
             fields={"data": base_data},
             files={"file": (os.path.basename(request_file), file_content)},
         )
-        headers = {"Authorization": "CWSAuth bearer={0}".format(bearer), "Content-Type": content_type}
+        headers = {
+            "Authorization": "CWSAuth bearer={0}".format(bearer),
+            "Content-Type": content_type,
+        }
+        loglines.append(
+            "DEBUG: LAS POST {0} request: multipart/form-data file={1}".format(
+                url, os.path.basename(request_file)
+            )
+        )
         try:
             resp = open_url(url, headers=headers, method="POST", data=body, timeout=120)
-            result = json.loads(resp.read())
+            raw = resp.read()
+            loglines.append(
+                "DEBUG: LAS POST response: {0}".format(
+                    raw.decode("utf-8", errors="replace").strip()
+                )
+            )
+            result = json.loads(raw)
             return result.get("importrequesttoken", "")
         except Exception as e:
-            loglines.append("ERROR: import_offline_activation_request: {0}".format(str(e)))
+            loglines.append(
+                "ERROR: import_offline_activation_request: {0}".format(str(e))
+            )
             return "EXCEPTION ERROR"
 
-    def import_restricted_offline_activation_request(self, lsid, pubkey, bearer, loglines):
-        url = "{0}/support/{1}/importrestrictedofflineactivationrequest".format(self._base_url, self._ccid)
-        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
+    def import_restricted_offline_activation_request(
+        self, lsid, pubkey, bearer, loglines
+    ):
+        url = "{0}/support/{1}/{2}/importrestrictedofflineactivationrequest".format(
+            self._base_url, self._ccid, self.endpoint
+        )
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "CWSAuth bearer={0}".format(bearer),
+        }
         payload = {"ver": "1.0", "lsid": lsid, "pubkey": pubkey}
         try:
             result = self._post_json(url, headers, payload)
             return result.get("importrequesttoken", "")
         except Exception as e:
-            loglines.append("ERROR: import_restricted_offline_activation_request: {0}".format(str(e)))
+            loglines.append(
+                "ERROR: import_restricted_offline_activation_request: {0}".format(
+                    str(e)
+                )
+            )
             return "EXCEPTION ERROR"
 
     def generate_offline_activation(self, import_token, bearer, ent_name, loglines):
-        url = "{0}/{1}/{2}/generateofflineactivation".format(self._base_url, self._ccid, self.endpoint)
-        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
-        data = {"ver": "1.0", "importrequesttoken": import_token, "entitlementname": ent_name}
+        url = "{0}/{1}/{2}/generateofflineactivation".format(
+            self._base_url, self._ccid, self.endpoint
+        )
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "CWSAuth bearer={0}".format(bearer),
+        }
+        data = {
+            "ver": "1.0",
+            "importrequesttoken": import_token,
+            "entitlementname": ent_name,
+        }
         try:
             return self._post_json(url, headers, data)
         except Exception as e:
             loglines.append("ERROR: generate_offline_activation: {0}".format(str(e)))
             return "EXCEPTION ERROR"
 
-    def get_blob_from_las(self, newactivationid, lsfingerprint, output_file, bearer, loglines):
-        url = "{0}/support/{1}/{2}/exportofflineactivationresponse".format(self._base_url, self._ccid, self.endpoint)
-        headers = {"Content-Type": "application/json", "Authorization": "CWSAuth bearer={0}".format(bearer)}
-        payload = {"ver": "1.0", "lsfingerprint": lsfingerprint, "newactivationid": newactivationid}
+    def get_blob_from_las(
+        self, newactivationid, lsfingerprint, output_file, bearer, loglines
+    ):
+        url = "{0}/support/{1}/{2}/exportofflineactivationresponse".format(
+            self._base_url, self._ccid, self.endpoint
+        )
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "CWSAuth bearer={0}".format(bearer),
+        }
+        payload = {
+            "ver": "1.0",
+            "lsfingerprint": lsfingerprint,
+            "newactivationid": newactivationid,
+        }
+        loglines.append(
+            "DEBUG: LAS POST {0} request: {1}".format(url, json.dumps(payload))
+        )
         try:
-            resp = open_url(url, headers=headers, method="POST", data=json.dumps(payload).encode("utf-8"), timeout=120)
+            resp = open_url(
+                url,
+                headers=headers,
+                method="POST",
+                data=json.dumps(payload).encode("utf-8"),
+                timeout=120,
+            )
+            blob = resp.read()
+            loglines.append(
+                "DEBUG: LAS POST response: <binary blob {0} bytes>".format(len(blob))
+            )
             with open(output_file, "wb") as f:
-                f.write(resp.read())
+                f.write(blob)
             return "SUCCESS"
         except Exception as e:
             loglines.append("ERROR: get_blob_from_las: {0}".format(str(e)))
@@ -347,9 +489,13 @@ def sftp_get(ip, username, password, remote_path, local_path, loglines):
         ssh.connect(ip, username=username, password=password)
         sftp = ssh.open_sftp()
         sftp.get(remote_path, local_path)
-        loglines.append("INFO: SFTP downloaded {0} -> {1}".format(remote_path, local_path))
+        loglines.append(
+            "INFO: SFTP downloaded {0} -> {1}".format(remote_path, local_path)
+        )
     except Exception as e:
-        raise RuntimeError("SFTP get failed ({0} -> {1}): {2}".format(remote_path, local_path, str(e)))
+        raise RuntimeError(
+            "SFTP get failed ({0} -> {1}): {2}".format(remote_path, local_path, str(e))
+        )
     finally:
         if sftp:
             sftp.close()
@@ -364,9 +510,13 @@ def sftp_put(ip, username, password, local_path, remote_path, loglines):
         ssh.connect(ip, port=22, username=username, password=password)
         sftp = ssh.open_sftp()
         sftp.put(local_path, remote_path)
-        loglines.append("INFO: SFTP uploaded {0} -> {1}".format(local_path, remote_path))
+        loglines.append(
+            "INFO: SFTP uploaded {0} -> {1}".format(local_path, remote_path)
+        )
     except Exception as e:
-        raise RuntimeError("SFTP put failed ({0} -> {1}): {2}".format(local_path, remote_path, str(e)))
+        raise RuntimeError(
+            "SFTP put failed ({0} -> {1}): {2}".format(local_path, remote_path, str(e))
+        )
     finally:
         if sftp:
             sftp.close()
@@ -387,20 +537,40 @@ def check_ns_version(nitro, is_fips, loglines):
     o = nitro.get("nsversion")
     ns = o.get("nsversion", {})
     if not isinstance(ns, dict):
-        return {"version": None, "build": None, "las_ok": False, "reason": "Missing nsversion in NITRO response"}
+        return {
+            "version": None,
+            "build": None,
+            "las_ok": False,
+            "reason": "Missing nsversion in NITRO response",
+        }
     ver_str = ns.get("version", "")
     if not ver_str:
-        return {"version": None, "build": None, "las_ok": False, "reason": "Empty version field in nsversion"}
+        return {
+            "version": None,
+            "build": None,
+            "las_ok": False,
+            "reason": "Empty version field in nsversion",
+        }
     loglines.append("INFO: NS version string: {0}".format(ver_str))
 
     version_match = re.search(r"NS(\d+\.\d+)", ver_str)
     if not version_match:
-        return {"version": None, "build": None, "las_ok": False, "reason": "Unable to parse version from: {0}".format(ver_str)}
+        return {
+            "version": None,
+            "build": None,
+            "las_ok": False,
+            "reason": "Unable to parse version from: {0}".format(ver_str),
+        }
     version = version_match.group(1)
 
     build_match = re.search(r"Build\s+(\d+)\.(\d+)", ver_str)
     if not build_match:
-        return {"version": version, "build": None, "las_ok": False, "reason": "Unable to parse build from: {0}".format(ver_str)}
+        return {
+            "version": version,
+            "build": None,
+            "las_ok": False,
+            "reason": "Unable to parse build from: {0}".format(ver_str),
+        }
     major_build = int(build_match.group(1))
     minor_build = int(build_match.group(2))
 
@@ -412,14 +582,27 @@ def check_ns_version(nitro, is_fips, loglines):
     elif version == "13.1":
         if is_fips:
             las_ok = is_build_ge(major_build, minor_build, 37, 247)
-            reason = "Minimum required build is 13.1-37.247 (FIPS)" if not las_ok else "Meets minimum build 13.1-37.247 (FIPS)"
+            reason = (
+                "Minimum required build is 13.1-37.247 (FIPS)"
+                if not las_ok
+                else "Meets minimum build 13.1-37.247 (FIPS)"
+            )
         else:
             las_ok = is_build_ge(major_build, minor_build, 60, 29)
-            reason = "Minimum required build is 13.1-60.29" if not las_ok else "Meets minimum build 13.1-60.29"
+            reason = (
+                "Minimum required build is 13.1-60.29"
+                if not las_ok
+                else "Meets minimum build 13.1-60.29"
+            )
     else:
         reason = "Unsupported version {0} for LAS offline licensing".format(version)
 
-    return {"version": version, "build": "{0}.{1}".format(major_build, minor_build), "las_ok": las_ok, "reason": reason}
+    return {
+        "version": version,
+        "build": "{0}.{1}".format(major_build, minor_build),
+        "las_ok": las_ok,
+        "reason": reason,
+    }
 
 
 def check_if_new_api(mapping, release, major, minor):
@@ -449,18 +632,28 @@ def check_if_new_api(mapping, release, major, minor):
 # ---------------------------------------------------------------------------
 
 
-def get_offline_request_package(nitro, ip, username, password, local_dir, new_api, loglines):
+def get_offline_request_package(
+    nitro, ip, username, password, local_dir, new_api, loglines
+):
     """Trigger NITRO to generate the NS offline activation request tgz, then SFTP it to local_dir."""
-    resource = "nslicenseactivationdata?args=usehostname:true" if new_api else "nslicenseactivationdata"
+    resource = (
+        "nslicenseactivationdata?args=usehostname:true"
+        if new_api
+        else "nslicenseactivationdata"
+    )
     o = nitro.get(resource)
     src_file = (o.get("nslicenseactivationdata") or {}).get("filename", "")
 
     if not src_file:
-        loglines.append("ERROR: Could not get package filename from NITRO response: {0}".format(o))
+        loglines.append(
+            "ERROR: Could not get package filename from NITRO response: {0}".format(o)
+        )
         return ""
 
     local_path = os.path.join(local_dir, src_file)
-    sftp_get(ip, username, password, "/nsconfig/license/" + src_file, local_path, loglines)
+    sftp_get(
+        ip, username, password, "/nsconfig/license/" + src_file, local_path, loglines
+    )
     return src_file
 
 
@@ -476,7 +669,9 @@ def extract_request_fields(file_path, loglines):
     real_file_path = os.path.realpath(file_path)
     real_dest_dir = os.path.realpath(dest_dir)
     if not real_file_path.startswith(real_dest_dir + os.sep):
-        raise RuntimeError("Invalid file path outside temp directory: {0}".format(file_path))
+        raise RuntimeError(
+            "Invalid file path outside temp directory: {0}".format(file_path)
+        )
     json_file = "ns_offline_activation_request.json"
     # shell=False ensures no shell metacharacter interpretation; all args are controlled internally.
     cmd = [
@@ -489,7 +684,9 @@ def extract_request_fields(file_path, loglines):
         "-C",
         dest_dir,
     ]
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=False)  # nosec B603
+    proc = subprocess.Popen(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=False
+    )  # nosec B603
     stdout, stderr = proc.communicate()
     if proc.returncode != 0:
         raise RuntimeError("tar extraction failed: {0}".format(stderr))
@@ -509,11 +706,15 @@ def extract_request_fields(file_path, loglines):
     try:
         os.remove(json_path)
     except Exception as e:
-        loglines.append("DEBUG: Could not remove temp file {0}: {1}".format(json_path, str(e)))
+        loglines.append(
+            "DEBUG: Could not remove temp file {0}: {1}".format(json_path, str(e))
+        )
     try:
         os.remove(os.path.join(dest_dir, "lasData.tgz"))
     except Exception as e:
-        loglines.append("DEBUG: Could not remove temp file lasData.tgz: {0}".format(str(e)))
+        loglines.append(
+            "DEBUG: Could not remove temp file lasData.tgz: {0}".format(str(e))
+        )
 
     lsguid = data["lsguid"]
     inner = data.get("data", {})
@@ -533,7 +734,11 @@ def apply_license_blob_ns(nitro, ip, username, password, fname, loglines):
     sftp_put(ip, username, password, fname, "/nsconfig/license/" + fname, loglines)
     payload = {
         "params": {"action": "apply", "warning": "YES"},
-        "nslaslicense": {"filename": fname, "filelocation": "/nsconfig/license", "fixedbandwidth": True},
+        "nslaslicense": {
+            "filename": fname,
+            "filelocation": "/nsconfig/license",
+            "fixedbandwidth": True,
+        },
     }
     r = nitro.post("nslaslicense", payload, action="apply")
     if r.get("errorcode") == 1043:
@@ -550,7 +755,9 @@ def apply_license_blob_ns(nitro, ip, username, password, fname, loglines):
 def get_ent_name(request_pem, request_ed, is_fips, loglines):
     base_ent = PEM_ENT_NAME_MAPPING.get(request_pem)
     if not base_ent:
-        loglines.append("ERROR: PEM {0} not found in entitlement mapping".format(request_pem))
+        loglines.append(
+            "ERROR: PEM {0} not found in entitlement mapping".format(request_pem)
+        )
         return None
 
     if is_fips:
@@ -560,10 +767,16 @@ def get_ent_name(request_pem, request_ed, is_fips, loglines):
         if request_pem in FIPS_MPX_PREMIUM_ONLY_PEMS and request_ed != "Premium":
             loglines.append("ERROR: FIPS MPX devices only support the Premium edition")
             return None
-        base_ent = "FIPS MPX 15120-50G" if request_pem == "CNS_15120_SERVER" else "FIPS " + base_ent
+        base_ent = (
+            "FIPS MPX 15120-50G"
+            if request_pem == "CNS_15120_SERVER"
+            else "FIPS " + base_ent
+        )
 
     if request_ed not in ("Advanced", "Standard", "Premium"):
-        loglines.append("ERROR: Invalid edition {0} for PEM {1}".format(request_ed, request_pem))
+        loglines.append(
+            "ERROR: Invalid edition {0} for PEM {1}".format(request_ed, request_pem)
+        )
         return None
 
     return base_ent + " " + request_ed
@@ -574,8 +787,18 @@ def get_ent_name(request_pem, request_ed, is_fips, loglines):
 # ---------------------------------------------------------------------------
 
 
-def generate_offline_package(lsguid, request_file, output_file, ent_name, secret_file, loglines, restricted_mode=False, lsid=None, pubkey=None):
-    client = LASClient(lsguid, secret_file)
+def generate_offline_package(
+    lsguid,
+    request_file,
+    output_file,
+    ent_name,
+    secret_file,
+    loglines,
+    restricted_mode=False,
+    lsid=None,
+    pubkey=None,
+):
+    client = LASClient(lsguid, secret_file, loglines=loglines)
 
     bearer = client.validate_bearer_cache()
     if not bearer:
@@ -589,27 +812,46 @@ def generate_offline_package(lsguid, request_file, output_file, ent_name, secret
         return None
 
     if restricted_mode:
-        import_token = client.import_restricted_offline_activation_request(lsid, pubkey, bearer, loglines)
+        import_token = client.import_restricted_offline_activation_request(
+            lsid, pubkey, bearer, loglines
+        )
     else:
         fingerprint = client.get_fingerprint_for_lsguid(bearer, loglines)
         if "ERROR" in str(fingerprint):
-            loglines.append("ERROR: Failed to get device fingerprint for lsguid {0}".format(lsguid))
+            loglines.append(
+                "ERROR: Failed to get device fingerprint for lsguid {0}".format(lsguid)
+            )
             return None
         loglines.append("INFO: Device fingerprint in LAS: {0!r}".format(fingerprint))
-        import_token = client.import_offline_activation_request(request_file, fingerprint, bearer, loglines)
+        import_token = client.import_offline_activation_request(
+            request_file, fingerprint, bearer, loglines
+        )
 
     if not import_token or "ERROR" in import_token:
         loglines.append("ERROR: Failed to import offline activation request")
         return None
     loglines.append("INFO: Import token: {0}".format(import_token))
 
-    gen_resp = client.generate_offline_activation(import_token, bearer, ent_name, loglines)
+    gen_resp = client.generate_offline_activation(
+        import_token, bearer, ent_name, loglines
+    )
     if not isinstance(gen_resp, dict):
         loglines.append("ERROR: Failed to generate offline activation from LAS")
         return None
-    loglines.append("INFO: New activation ID: {0}".format(gen_resp.get("newactivationid")))
+    loglines.append(
+        "INFO: New activation ID: {0}".format(gen_resp.get("newactivationid"))
+    )
 
-    if client.get_blob_from_las(gen_resp["newactivationid"], gen_resp["lsfingerprint"], output_file, bearer, loglines) != "SUCCESS":
+    if (
+        client.get_blob_from_las(
+            gen_resp["newactivationid"],
+            gen_resp["lsfingerprint"],
+            output_file,
+            bearer,
+            loglines,
+        )
+        != "SUCCESS"
+    ):
         loglines.append("ERROR: Failed to retrieve license blob from LAS")
         return None
 
