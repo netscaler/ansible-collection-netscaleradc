@@ -3,7 +3,7 @@
   hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Apply offline LAS license to NetScaler ADC
+    - name: Apply offline LAS license to NetScaler ADC (standard mode)
       delegate_to: localhost
       netscaler.adc.nslaslicense_offline:
         nsip: "{{ nsip }}"
@@ -19,3 +19,21 @@
     - name: Display license result
       ansible.builtin.debug:
         var: lic_result
+
+    - name: Apply offline LAS license to NetScaler ADC (restricted mode)
+      delegate_to: localhost
+      netscaler.adc.nslaslicense_offline:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol | default('https') }}"
+        validate_certs: false
+        entitlement_name: "VPX 10000 Premium"
+        is_fips: false
+        las_secrets_json: /path/to/las_secrets.json
+        restricted_mode: true
+      register: lic_result_restricted
+
+    - name: Display restricted mode license result
+      ansible.builtin.debug:
+        var: lic_result_restricted

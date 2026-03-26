@@ -78,6 +78,13 @@ options:
       - The file must contain the keys C(ccid), C(client), C(password), C(las_endpoint), and C(cc_endpoint).
     type: str
     required: true
+  restricted_mode:
+    description:
+      - Set to C(true) to use the restricted offline activation request flow.
+      - When enabled, the module extracts C(lsid) and C(pubkey) from the activation request package
+        and calls the restricted import endpoint instead of the standard file-upload endpoint.
+    type: bool
+    default: false
 """
 
 EXAMPLES = r"""
@@ -112,6 +119,19 @@ EXAMPLES = r"""
     nitro_pass: "{{ nitro_pass }}"
     entitlement_name: "MPX 8905 Standard"
     las_secrets_json: ./path/to/las_secrets.json
+
+- name: Generate and apply offline LAS license using restricted mode (no file upload)
+  delegate_to: localhost
+  netscaler.adc.nslaslicense_offline:
+    nsip: 10.102.201.231
+    nitro_user: nsroot
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: https
+    validate_certs: false
+    entitlement_name: "VPX 10000 Premium"
+    is_fips: false
+    las_secrets_json: ./path/to/las_secrets.json
+    restricted_mode: true
 """
 
 RETURN = r"""
@@ -156,7 +176,7 @@ from ..module_utils.las_utils import (
     apply_license_blob_ns,
     check_if_new_api,
     check_ns_version,
-    extract_lsguid,
+    extract_request_fields,
     generate_offline_package,
     get_offline_request_package,
 )
@@ -169,14 +189,31 @@ from ..module_utils.las_utils import (
 
 def main():
     argument_spec = dict(
-        nsip=dict(required=True, type="str", fallback=(env_fallback, ["NETSCALER_NSIP"])),
-        nitro_user=dict(required=True, type="str", no_log=True, fallback=(env_fallback, ["NETSCALER_NITRO_USER"])),
-        nitro_pass=dict(required=True, type="str", no_log=True, fallback=(env_fallback, ["NETSCALER_NITRO_PASS"])),
+        nsip=dict(
+            required=True, type="str", fallback=(env_fallback, ["NETSCALER_NSIP"])
+        ),
+        nitro_user=dict(
+            required=True,
+            type="str",
+            no_log=True,
+            fallback=(env_fallback, ["NETSCALER_NITRO_USER"]),
+        ),
+        nitro_pass=dict(
+            required=True,
+            type="str",
+            no_log=True,
+            fallback=(env_fallback, ["NETSCALER_NITRO_PASS"]),
+        ),
         nitro_protocol=dict(type="str", choices=["http", "https"], default="https"),
-        validate_certs=dict(type="bool", default=True, fallback=(env_fallback, ["NETSCALER_VALIDATE_CERTS"])),
+        validate_certs=dict(
+            type="bool",
+            default=True,
+            fallback=(env_fallback, ["NETSCALER_VALIDATE_CERTS"]),
+        ),
         entitlement_name=dict(required=True, type="str"),
         is_fips=dict(type="bool", default=False),
         las_secrets_json=dict(required=True, type="str", no_log=False),
+        restricted_mode=dict(type="bool", default=False),
     )
 
     module = AnsibleModule(
@@ -185,7 +222,9 @@ def main():
     )
 
     if not HAS_PARAMIKO:
-        module.fail_json(msg="The 'paramiko' Python library is required. Install it with: pip install paramiko")
+        module.fail_json(
+            msg="The 'paramiko' Python library is required. Install it with: pip install paramiko"
+        )
 
     loglines = []
     result = dict(changed=False, failed=False, loglines=loglines)
@@ -196,11 +235,17 @@ def main():
     ent_name = module.params["entitlement_name"]
     is_fips = module.params["is_fips"]
     las_secrets_json = module.params["las_secrets_json"]
+    restricted_mode = module.params["restricted_mode"]
     if username != "nsroot":
-        module.fail_json(msg="Only the 'nsroot' account is supported. Got: '{0}'".format(username), **result)
+        module.fail_json(
+            msg="Only the 'nsroot' account is supported. Got: '{0}'".format(username),
+            **result,
+        )
 
     if not os.path.isfile(las_secrets_json):
-        module.fail_json(msg="las_secrets_json not found: {0}".format(las_secrets_json), **result)
+        module.fail_json(
+            msg="las_secrets_json not found: {0}".format(las_secrets_json), **result
+        )
 
     _valid_ent_prefixes = (
         "FIPS MPX 14",
@@ -223,7 +268,9 @@ def main():
     )
     if not ent_name.startswith(_valid_ent_prefixes):
         module.fail_json(
-            msg="Invalid entitlement_name '{0}'. Must start with one of: {1}".format(ent_name, ", ".join(_valid_ent_prefixes)),
+            msg="Invalid entitlement_name '{0}'. Must start with one of: {1}".format(
+                ent_name, ", ".join(_valid_ent_prefixes)
+            ),
             **result,
         )
 
@@ -240,27 +287,49 @@ def main():
     else:
         loglines.append("INFO: Using cached bearer token for entitlement validation")
     if not bearer:
-        module.fail_json(msg="Failed to obtain bearer token from LAS to validate entitlement_name", **result)
+        module.fail_json(
+            msg="Failed to obtain bearer token from LAS to validate entitlement_name",
+            **result,
+        )
 
     ent_resp = las_client.get_customer_entitlements(bearer, platform, loglines)
     if ent_resp is None:
         module.fail_json(
-            msg="Failed to fetch customer entitlements from LAS for platform '{0}'".format(platform),
+            msg="Failed to fetch customer entitlements from LAS for platform '{0}'".format(
+                platform
+            ),
             **result,
         )
 
     valid_entitlements = [e.get("type", "") for e in ent_resp.get("entitlements", [])]
-    loglines.append("INFO: Valid entitlements for platform '{0}': {1}".format(platform, valid_entitlements))
+    loglines.append(
+        "INFO: Valid entitlements for platform '{0}': {1}".format(
+            platform, valid_entitlements
+        )
+    )
     if ent_name not in valid_entitlements:
         module.fail_json(
             msg="entitlement_name '{0}' is not a valid customer entitlement for platform '{1}'. Valid entitlements: [{2}]".format(
-                ent_name, platform, ", ".join(valid_entitlements) if valid_entitlements else "none found"
+                ent_name,
+                platform,
+                ", ".join(valid_entitlements) if valid_entitlements else "none found",
             ),
             **result,
         )
-    loglines.append("INFO: entitlement_name '{0}' validated successfully against LAS".format(ent_name))
+    loglines.append(
+        "INFO: entitlement_name '{0}' validated successfully against LAS".format(
+            ent_name
+        )
+    )
 
-    nitro = NitroHelper(ip, module.params["nitro_protocol"], username, password, module.params["validate_certs"], loglines)
+    nitro = NitroHelper(
+        ip,
+        module.params["nitro_protocol"],
+        username,
+        password,
+        module.params["validate_certs"],
+        loglines,
+    )
 
     # Version check and new_api flag
     ver_info = check_ns_version(nitro, is_fips, loglines)
@@ -276,41 +345,77 @@ def main():
     release = ver_info["version"]
     build = ver_info["build"]
     mapping = NEW_API_MAPPING_FIPS if is_fips else NEW_API_MAPPING_NS
-    new_api = check_if_new_api(mapping, release, build.split(".")[0], build.split(".")[-1])
-    loglines.append("INFO: release={0} build={1} new_api={2}".format(release, build, new_api))
+    new_api = check_if_new_api(
+        mapping, release, build.split(".")[0], build.split(".")[-1]
+    )
+    loglines.append(
+        "INFO: release={0} build={1} new_api={2}".format(release, build, new_api)
+    )
 
     # Get activation request package from device
     temp_dir = os.path.join(tempfile.mkdtemp(prefix="nslas_"), "")
     try:
-        ns_file_name = get_offline_request_package(nitro, ip, username, password, temp_dir, new_api, loglines)
+        ns_file_name = get_offline_request_package(
+            nitro, ip, username, password, temp_dir, new_api, loglines
+        )
         if not ns_file_name:
-            module.fail_json(msg="Failed to retrieve activation request package from device", **result)
+            module.fail_json(
+                msg="Failed to retrieve activation request package from device",
+                **result,
+            )
 
         request_file = os.path.join(temp_dir, ns_file_name)
         loglines.append("INFO: Got request package: {0}".format(request_file))
 
-        # Extract lsguid (retry once on parse failure)
+        # Extract lsguid (always) and lsid+pubkey (retry once on parse failure)
         try:
-            lsguid = extract_lsguid(request_file, loglines)
+            lsguid, lsid, pubkey = extract_request_fields(request_file, loglines)
         except Exception as e:
-            loglines.append("WARNING: First parse attempt failed ({0}), re-downloading package".format(str(e)))
-            ns_file_name = get_offline_request_package(nitro, ip, username, password, temp_dir, new_api, loglines)
+            loglines.append(
+                "WARNING: First parse attempt failed ({0}), re-downloading package".format(
+                    str(e)
+                )
+            )
+            ns_file_name = get_offline_request_package(
+                nitro, ip, username, password, temp_dir, new_api, loglines
+            )
             if not ns_file_name:
-                module.fail_json(msg="Re-download of activation request package failed", **result)
+                module.fail_json(
+                    msg="Re-download of activation request package failed", **result
+                )
             request_file = os.path.join(temp_dir, ns_file_name)
-            lsguid = extract_lsguid(request_file, loglines)
+            lsguid, lsid, pubkey = extract_request_fields(request_file, loglines)
 
         # Generate offline token from LAS cloud
         output_file = "offline_token_{0}_activation.blob.tgz".format(ip)
-        if generate_offline_package(lsguid, request_file, output_file, ent_name, las_secrets_json, loglines) is None:
-            module.fail_json(msg="Failed to generate offline license token from LAS", **result)
+        if (
+            generate_offline_package(
+                lsguid,
+                request_file,
+                output_file,
+                ent_name,
+                las_secrets_json,
+                loglines,
+                restricted_mode=restricted_mode,
+                lsid=lsid if restricted_mode else None,
+                pubkey=pubkey if restricted_mode else None,
+            )
+            is None
+        ):
+            module.fail_json(
+                msg="Failed to generate offline license token from LAS", **result
+            )
 
         # Apply license blob to device
         apply_license_blob_ns(nitro, ip, username, password, output_file, loglines)
 
         result["changed"] = True
         result["output_file"] = output_file
-        loglines.append("INFO: Successfully generated and applied offline license blob to {0}".format(ip))
+        loglines.append(
+            "INFO: Successfully generated and applied offline license blob to {0}".format(
+                ip
+            )
+        )
 
     except Exception as e:
         loglines.append("ERROR: {0}".format(str(e)))

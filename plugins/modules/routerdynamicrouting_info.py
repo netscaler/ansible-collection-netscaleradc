@@ -232,7 +232,7 @@ def main():
         if is_exist and response:
             module_result["info"] = {
                 "commandstring": commandstring,
-                "response": response[0].get("output", "")
+                "response": response[0].get("output", ""),
             }
             log("INFO: Successfully retrieved routing information")
         else:
