@@ -280,7 +280,7 @@ class LASClient:
                 try:
                     error_body = e.read().decode("utf-8", errors="replace").strip()
                 except Exception:
-                    pass
+                    error_body = ""
             msg = "DEBUG: LAS POST exception: {0}".format(str(e))
             if error_body:
                 msg += " response_body={0}".format(error_body)
