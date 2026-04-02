@@ -8,7 +8,7 @@ jobs:
   release:
     permissions:
       contents: write
-    uses: ansible/team-devtools/.github/workflows/release_collection.yml@a7f2500fb428f217418c6c39c016319cd76df408  # main
+    uses: ansible/team-devtools/.github/workflows/release_collection.yml@84807a505faaf826f9a26c2528d5bb0a5950b6fa  # main
     with:
       environment: release
     secrets:
