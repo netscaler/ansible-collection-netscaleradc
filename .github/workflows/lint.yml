@@ -7,7 +7,6 @@ on:
       - .github/**
       - assets/**
       - docs/**
-      - .whitesource
       - .yamlfmt
       - .yamllint
   push:
@@ -17,7 +16,6 @@ on:
       - .github/**
       - assets/**
       - docs/**
-      - .whitesource
       - .yamlfmt
       - .yamllint
 permissions: read-all
