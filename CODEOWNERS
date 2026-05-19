@@ -1,5 +1,6 @@
 # Refer https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 * @sumanth-lingappa
+* @swetha-garipally
 
-.github/workflows @sumanth-lingappa
+.github/workflows @sumanth-lingappa @swetha-garipally
