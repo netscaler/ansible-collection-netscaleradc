@@ -81,12 +81,12 @@ EXAMPLES = r"""
 RETURN = r"""
 ---
 changed:
-  description: Always false for info modules as they do not modify state
+  description: Always false for info modules as they do not modify state.
   returned: always
   type: bool
   sample: false
 info:
-  description: Information retrieved from the dynamic routing configuration
+  description: Information retrieved from the dynamic routing configuration.
   returned: success
   type: dict
   sample: {
@@ -94,12 +94,12 @@ info:
     "response": "router response data here"
   }
 failed:
-  description: Indicates if the module failed or not
+  description: Indicates if the module failed or not.
   returned: always
   type: bool
   sample: false
 loglines:
-  description: list of logged messages by the module
+  description: list of logged messages by the module.
   returned: always
   type: list
   sample: ['message 1', 'message 2']
