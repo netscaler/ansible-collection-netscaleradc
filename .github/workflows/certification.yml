@@ -1,12 +1,13 @@
 ---
-# This workflow calls a pinned version of the
-# reusable workflow. Copy this file into your
-# repository to check against pinned versions
-# of Automation Hub tests.
-# The version is pinned to an exact release tag
-# (e.g. @v1.2.0) for supply chain security.
-# Use Dependabot to receive automatic PRs when
-# new versions are released.
+# Self-managed certification workflow.
+# Inlined from ansible-collections/partner-certification-checker v1.2.0
+# to avoid cross-org reusable workflow restrictions.
+#
+# Pinned package versions match Automation Hub import process:
+#   ansible-core: 2.16.0
+#   galaxy-importer: 0.4.31
+#   ansible-lint: 24.12.2
+#   ansible-test: stable-2.16
 name: Run collection certification checks
 
 permissions:
@@ -23,31 +24,115 @@ concurrency:
   group: cert-ver-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
-# Files that are not related to the core functionality
-# of your collection can cause Ansible Lint to fail.
-# If this happens, add an .ansible-lint file that includes
-# those files and directories to the root of your
-# repository; for example:
-# https://github.com/ansible-collections/partner-certification-checker/blob/main/.ansible-lint
-# https://github.com/ansible-collections/partner-certification-checker/blob/main/.ansible-lint
+env:
+  ANSIBLE_CORE_VERSION: "2.16.0"
+  COLLECTION_ROOT: "."
 
-# If there are sanity test failures that cannot be fixed and are allowed to ignore
-# https://docs.ansible.com/projects/lint/rules/sanity/, create a sanity ignore file
-# https://docs.ansible.com/projects/ansible/devel/dev_guide/testing/sanity/ignores.html#ignore-file-location
-# for each affected version of ansible-core (for example, `tests/sanity/ignore-2.18.txt`) and add corresponding entries.
 jobs:
-  call:
-    uses: ansible-collections/partner-certification-checker/.github/workflows/certification-reusable.yml@v1.2.0 # zizmor: ignore[unpinned-uses]
-    # If the minimal Ansible Core version your collection supports Ansible
-    # is greater than 2.16.0, specify it below.
-    # You might also have to specify Python version supported by that version,
-    # see https://docs.ansible.com/projects/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix
-    # with:
-    #   ansible-core-version: '2.17.0'
-    #   python-versions: '["3.7", "3.8", "3.9", "3.10", "3.11", "3.12"]'
-    #   collection-root: 'ansible_collections/junipernetworks/junos'
-    #   automation-hub: true
-    # Uncomment the lines below if you have 'automation-hub: true' and need to install collections from Red Hat Ansible Automation Hub.
-    # This requires setting a repository secret called 'AH_TOKEN' which value contains a Red Hat Ansible Automation Hub token.
-    # secrets:
-    #   AH_TOKEN: ${{ secrets.AH_TOKEN }}
+  # Build the collection and run galaxy-importer
+  build-import:
+    name: "Build & import collection"
+    runs-on: ubuntu-latest
+    env:
+      CHECK_REQUIRED_TAGS: "True"
+      RUN_ANSIBLE_LINT: "False"
+      GALAXY_IMPORTER_VER: "0.4.31"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ansible-core
+        run: pip install ansible-core=="${{ env.ANSIBLE_CORE_VERSION }}"
+
+      - name: Install galaxy-importer
+        run: pip install galaxy-importer==${{ env.GALAXY_IMPORTER_VER }}
+
+      - name: Update galaxy-importer.cfg
+        run: |
+          cat > /tmp/galaxy-importer.cfg << EOF
+          [galaxy-importer]
+          CHECK_REQUIRED_TAGS=${{ env.CHECK_REQUIRED_TAGS }}
+          RUN_ANSIBLE_LINT=${{ env.RUN_ANSIBLE_LINT }}
+          EOF
+          echo "GALAXY_IMPORTER_CONFIG=/tmp/galaxy-importer.cfg" >> "${GITHUB_ENV}"
+
+      - name: Build and run galaxy-importer
+        run: python -m galaxy_importer.main --git-clone-path "${{ env.COLLECTION_ROOT }}" --output-path /tmp
+
+  # Run ansible-lint with profile "production", skipping sanity (separate job)
+  lint:
+    name: "Lint production"
+    runs-on: ubuntu-latest
+    env:
+      LINT_VER: "24.12.2"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ansible-core
+        run: pip install ansible-core=="${{ env.ANSIBLE_CORE_VERSION }}"
+
+      - name: Determine compatible ansible-lint version
+        run: |
+          major_minor=$(echo "${{ env.ANSIBLE_CORE_VERSION }}" | cut -d. -f1,2)
+          minor=$(echo "${major_minor}" | cut -d. -f2)
+          if [ "${minor}" -ge 19 ]; then
+            echo "LINT_VER=25.2.0" >> "${GITHUB_ENV}"
+          fi
+
+      - name: Install ansible-lint
+        run: pip install ansible-lint==${{ env.LINT_VER }}
+
+      - name: Run ansible-lint
+        run: |
+          if [ "${{ env.COLLECTION_ROOT }}" != "." ]; then
+            cd "${{ env.COLLECTION_ROOT }}"
+          fi
+          ansible-lint --profile=production --skip-list sanity
+
+  # Run sanity checks inside Docker with ansible-test
+  sanity:
+    name: "Sanity (stable-2.16, Python ${{ matrix.python }})"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python:
+          - "3.6"
+          - "3.7"
+          - "3.8"
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: ansible_collections/netscaler/adc
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ansible-core (stable-2.16)
+        run: pip install https://github.com/ansible/ansible/archive/stable-2.16.tar.gz
+
+      - name: Run sanity tests
+        working-directory: ansible_collections/netscaler/adc
+        run: ansible-test sanity --docker default --python ${{ matrix.python }} -v --color
