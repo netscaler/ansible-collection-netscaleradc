@@ -1,3 +1,5 @@
 ---
 modules:
   python_requires: '>=3.9'
+exclude_paths:
+  - docs/
