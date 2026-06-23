@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `cspolicylabel_cspolicy_binding`: binding a content switching policy to a policy
+  label no longer fails with `Required argument missing [labelName]`. NITRO expects
+  the label name as `labelName` (camelCase) in the bind payload, so the module now
+  emits it via a `NITRO_ATTRIBUTES_ALIASES` entry while keeping `labelname` as the
+  module parameter ([#619](https://github.com/netscaler/ansible-collection-netscaleradc/issues/619)).
+
 ### Changed
 
 - Minimum required Python version raised from 3.11 to 3.12.
