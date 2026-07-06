@@ -14,6 +14,7 @@ def trace(func):
     def wrapper(*args, **kwargs):
         module = func.__module__
         module = module.split(".")[-1]
+        print("TRACE: entering {}.{}()".format(module, func.__name__))
         log(
             "TRACE: ENTRY: {}.{}() called with {}, {}".format(
                 module, func.__name__, args, kwargs

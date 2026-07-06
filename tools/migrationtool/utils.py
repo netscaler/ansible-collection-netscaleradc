@@ -128,4 +128,5 @@ netscaler_login_specifics = [
     "nitro_protocol",
 ]
 if __name__ == "__main__":
+    print("Migration tool utils loaded successfully")
     pass
