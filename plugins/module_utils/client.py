@@ -184,7 +184,10 @@ class NitroAPIClient(object):
         # if status_code == -1:
         #     log("ERROR: Could not connect to the target Netscaler instance: %s" % url)
         #     return status_code, {}
-        body = r.read() if r else None
+        if r:
+            body = r.read()
+        else:
+            body = None
         # info['body'] will not be present for status_codes < 400
         if status_code >= 400:
             try:
