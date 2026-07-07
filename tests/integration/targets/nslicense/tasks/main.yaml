@@ -1,0 +1,19 @@
+---
+- name: NSLICENSE | GET
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.nslicense:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+- name: Assert | NSLICENSE | GET
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
