@@ -1,0 +1,13 @@
+---
+- name: Sample vpnsfconfig playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get current vpnsfconfig
+      delegate_to: localhost
+      register: current
+      netscaler.adc.vpnsfconfig:
+
+    - name: Display current vpnsfconfig
+      ansible.builtin.debug:
+        var: current

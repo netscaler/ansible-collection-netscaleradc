@@ -1,0 +1,23 @@
+---
+- name: Sample nsrunningconfig playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get nsrunningconfig information
+      delegate_to: localhost
+      register: result
+      netscaler.adc.nsrunningconfig:
+
+    - name: Display nsrunningconfig
+      ansible.builtin.debug:
+        var: result
+
+    - name: Get nsrunningconfig with defaults included
+      delegate_to: localhost
+      register: result_with_defaults
+      netscaler.adc.nsrunningconfig:
+        withdefaults: true
+
+    - name: Display nsrunningconfig with defaults
+      ansible.builtin.debug:
+        var: result_with_defaults

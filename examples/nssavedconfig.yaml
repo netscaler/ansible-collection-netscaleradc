@@ -1,0 +1,13 @@
+---
+- name: Sample nssavedconfig playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get saved configuration
+      delegate_to: localhost
+      register: saved_config
+      netscaler.adc.nssavedconfig:
+
+    - name: Display saved configuration
+      ansible.builtin.debug:
+        var: saved_config

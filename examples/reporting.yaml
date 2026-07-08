@@ -1,0 +1,13 @@
+---
+- name: Sample reporting playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get reporting information
+      delegate_to: localhost
+      register: result
+      netscaler.adc.reporting:
+
+    - name: Display reporting
+      ansible.builtin.debug:
+        var: result

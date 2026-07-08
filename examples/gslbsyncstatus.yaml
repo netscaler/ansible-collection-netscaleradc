@@ -1,0 +1,13 @@
+---
+- name: Sample gslbsyncstatus playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get gslbsyncstatus information
+      delegate_to: localhost
+      register: result
+      netscaler.adc.gslbsyncstatus:
+
+    - name: Display gslbsyncstatus
+      ansible.builtin.debug:
+        var: result

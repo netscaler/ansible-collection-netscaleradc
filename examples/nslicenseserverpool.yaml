@@ -1,0 +1,13 @@
+---
+- name: Sample nslicenseserverpool playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get nslicenseserverpool information
+      delegate_to: localhost
+      register: pool_info
+      netscaler.adc.nslicenseserverpool:
+
+    - name: Display nslicenseserverpool details
+      ansible.builtin.debug:
+        var: pool_info

@@ -1,0 +1,19 @@
+---
+- name: REPORTING | GET
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.reporting:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+- name: Assert | REPORTING | GET
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"

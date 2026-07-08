@@ -1,0 +1,40 @@
+---
+- name: VPNSFCONFIG | UPDATE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.vpnsfconfig:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+
+- name: Assert | VPNSFCONFIG | UPDATE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+
+- name: VPNSFCONFIG | GET
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.vpnsfconfig:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+
+- name: Assert | VPNSFCONFIG | GET
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"

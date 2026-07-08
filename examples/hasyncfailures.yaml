@@ -1,0 +1,13 @@
+---
+- name: Sample hasyncfailures playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get hasyncfailures information
+      delegate_to: localhost
+      register: result
+      netscaler.adc.hasyncfailures:
+
+    - name: Display hasyncfailures
+      ansible.builtin.debug:
+        var: result

@@ -1,0 +1,15 @@
+---
+- name: Sample craction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get cache redirection action CACHE
+      delegate_to: localhost
+      register: result
+      netscaler.adc.craction:
+        state: present
+        name: CACHE
+
+    - name: Display craction details
+      ansible.builtin.debug:
+        var: result

@@ -141,6 +141,7 @@ GETALL_ONLY_RESOURCES = [
     "gslbldnsentry",
     "locationfile",
     "locationfile6",
+    "nstimezone",
     "routerdynamicrouting",
     "sslcertbundle",
     "sslcertfile",

@@ -1,0 +1,14 @@
+---
+- name: Sample nsversion playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get nsversion information
+      delegate_to: localhost
+      register: result
+      netscaler.adc.nsversion:
+        state: present
+
+    - name: Display nsversion
+      ansible.builtin.debug:
+        var: result

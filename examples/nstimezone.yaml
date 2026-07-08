@@ -1,0 +1,13 @@
+---
+- name: Sample nstimezone playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get all supported timezone values
+      delegate_to: localhost
+      register: result
+      netscaler.adc.nstimezone:
+
+    - name: Display timezone list
+      ansible.builtin.debug:
+        var: result

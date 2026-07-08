@@ -1,0 +1,13 @@
+---
+- name: Sample sslcertlink playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get sslcertlink information
+      delegate_to: localhost
+      register: result
+      netscaler.adc.sslcertlink:
+
+    - name: Display sslcertlink
+      ansible.builtin.debug:
+        var: result

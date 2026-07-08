@@ -1,0 +1,13 @@
+---
+- name: Sample nshardware playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get nshardware information
+      delegate_to: localhost
+      register: result
+      netscaler.adc.nshardware:
+
+    - name: Display nshardware
+      ansible.builtin.debug:
+        var: result
