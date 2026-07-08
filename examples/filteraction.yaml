@@ -1,0 +1,18 @@
+---
+- name: Sample filteraction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure filteraction - DROP
+      delegate_to: localhost
+      netscaler.adc.filteraction:
+        state: present
+        name: drop_action
+        qual: DROP
+
+    - name: Delete filteraction
+      delegate_to: localhost
+      ignore_errors: true
+      netscaler.adc.filteraction:
+        state: absent
+        name: drop_action

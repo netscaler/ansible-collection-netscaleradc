@@ -20,6 +20,7 @@ NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES = [
 ]
 
 ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE = {
+    "authorizationaction": {"qual"},
     "sslcertkey": {"password"},
 }
 

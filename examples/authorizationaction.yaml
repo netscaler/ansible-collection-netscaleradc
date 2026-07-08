@@ -1,0 +1,25 @@
+---
+- name: Sample authorizationaction playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure authorizationaction - ALLOW
+      delegate_to: localhost
+      netscaler.adc.authorizationaction:
+        state: present
+        name: allow_action
+        qual: ALLOW
+
+    - name: Configure authorizationaction - DENY
+      delegate_to: localhost
+      netscaler.adc.authorizationaction:
+        state: present
+        name: deny_action
+        qual: DENY
+
+    - name: Delete authorizationaction
+      delegate_to: localhost
+      ignore_errors: true
+      netscaler.adc.authorizationaction:
+        state: absent
+        name: allow_action

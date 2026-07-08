@@ -1,0 +1,13 @@
+---
+- name: Sample nslicense playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get license information
+      delegate_to: localhost
+      register: license_info
+      netscaler.adc.nslicense:
+
+    - name: Display license details
+      ansible.builtin.debug:
+        var: license_info

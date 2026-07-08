@@ -1,0 +1,43 @@
+---
+- name: Sample filterpolicy playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Create prerequisite filteraction
+      delegate_to: localhost
+      netscaler.adc.filteraction:
+        state: present
+        name: drop_action
+        qual: DROP
+
+    - name: Configure filterpolicy - drop matching requests
+      delegate_to: localhost
+      ignore_errors: true
+      netscaler.adc.filterpolicy:
+        state: present
+        name: block_url_policy
+        rule: "REQ.HTTP.URL CONTAINS /admin"
+        reqaction: drop_action
+
+    - name: Configure filterpolicy - match all requests
+      delegate_to: localhost
+      ignore_errors: true
+      netscaler.adc.filterpolicy:
+        state: present
+        name: match_all_policy
+        rule: "TRUE"
+        reqaction: drop_action
+
+    - name: Delete filterpolicy
+      delegate_to: localhost
+      ignore_errors: true
+      netscaler.adc.filterpolicy:
+        state: absent
+        name: block_url_policy
+
+    - name: Delete prerequisite filteraction
+      delegate_to: localhost
+      ignore_errors: true
+      netscaler.adc.filteraction:
+        state: absent
+        name: drop_action

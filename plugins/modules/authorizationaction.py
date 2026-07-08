@@ -50,6 +50,15 @@ options:
     type: str
     description:
       - Name of the authorization action.
+  qual:
+    type: str
+    description:
+      - >-
+        Qualifier specifying whether to ALLOW or DENY requests. Cannot be
+        changed after the action is created.
+    choices:
+      - ALLOW
+      - DENY
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

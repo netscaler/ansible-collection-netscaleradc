@@ -14,6 +14,7 @@
     state: present
 
     name: test_authorizationaction
+    qual: ALLOW
 
 - name: Assert | AUTHORIZATIONACTION | ADD | --check
   tags: test
@@ -37,6 +38,7 @@
     state: present
 
     name: test_authorizationaction
+    qual: ALLOW
 
 - name: Assert | AUTHORIZATIONACTION | ADD
   ansible.builtin.assert:
@@ -59,6 +61,7 @@
     state: present
 
     name: test_authorizationaction
+    qual: ALLOW
 
 - name: Assert | AUTHORIZATIONACTION | ADD | idempotent
   tags: test
@@ -82,6 +85,7 @@
     state: absent
 
     name: test_authorizationaction
+    qual: ALLOW
 
 - name: Assert | AUTHORIZATIONACTION | DELETE | --check
   tags: test
@@ -105,6 +109,7 @@
     state: absent
 
     name: test_authorizationaction
+    qual: ALLOW
 
 - name: Assert | AUTHORIZATIONACTION | DELETE
   ansible.builtin.assert:
@@ -127,6 +132,7 @@
     state: absent
 
     name: test_authorizationaction
+    qual: ALLOW
 
 - name: Assert | AUTHORIZATIONACTION | DELETE | idempotent
   tags: test

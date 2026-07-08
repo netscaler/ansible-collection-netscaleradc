@@ -1,0 +1,19 @@
+---
+- name: Sample systemcollectionparam playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Get current system collection parameters
+      delegate_to: localhost
+      register: current_params
+      netscaler.adc.systemcollectionparam:
+
+    - name: Display current parameters
+      ansible.builtin.debug:
+        var: current_params
+
+    - name: Update system collection parameters
+      delegate_to: localhost
+      netscaler.adc.systemcollectionparam:
+        communityname: public
+        loglevel: WARNING
