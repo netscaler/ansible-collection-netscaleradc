@@ -236,6 +236,11 @@ options:
       - Minimum number of HTTP2 connections established to backend server, on receiving
         HTTP requests from client before multiplexing the streams into the available
         HTTP/2 connections.
+  http2smallwndtimeout:
+    type: int
+    description:
+      - Timeout, in seconds, for HTTP/2 small-window stalled streams. Introduced in
+        firmware 14.1-72.61 to mitigate CVE-2026-13474.
   http2strictcipher:
     type: str
     choices:
