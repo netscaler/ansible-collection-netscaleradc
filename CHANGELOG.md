@@ -7,13 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.17.0] - 2026-07-14
+
+### Added
+
+- Added certification checker to GitHub workflows to assess collection readiness for Red Hat Automation Hub certification.
+
 ### Changed
 
 - Minimum required Python version raised from 3.11 to 3.12.
-- Replaced `ansible.module_utils.six.moves.urllib.parse.quote` with `urllib.parse.quote` in `client.py` — the `six` compatibility shim is no longer needed.
-- Removed `__metaclass__ = type` boilerplate from all 965 plugin files — dead code in Python 3.
-- CI test matrices updated: Python 3.12 added to all jobs.
 - Minimum required Ansible Core version raised from 2.15 to 2.16.
+- Replaced Trivy with Mend for security scanning in GitHub workflows.
+
+### Fixed
+
+- Added `http2smallwndtimeout` parameter to `nshttpprofile` for CVE-2026-13474.
 
 ## [2.16.0] - 2026-03-26
 
@@ -263,7 +271,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.16.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.17.0...HEAD
+[2.17.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.16.0...2.17.0
 [2.16.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.15.0...2.16.0
 [2.15.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.14.0...2.15.0
 [2.14.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.13.0...2.14.0
