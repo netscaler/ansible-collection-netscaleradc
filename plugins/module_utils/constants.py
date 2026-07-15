@@ -33,7 +33,14 @@ NITRO_ATTRIBUTES_ALIASES = {
     "gslbservice": {
         "ip": "ipaddress",
         "ipaddress": "ip",  # For PUT payloads and GET responses
-    }
+    },
+    # NITRO expects the policy label name as "labelName" (camelCase) in the
+    # cspolicylabel_cspolicy_binding payload, even though the module exposes it
+    # as "labelname". Without the alias the bind request fails with
+    # "Required argument missing [labelName]".
+    "cspolicylabel_cspolicy_binding": {
+        "labelname": "labelName",
+    },
 }
 
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
