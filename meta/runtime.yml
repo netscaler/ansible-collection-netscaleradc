@@ -1,7 +1,7 @@
 ---
 # Collections must specify a minimum required ansible version to upload
 # to galaxy
-requires_ansible: '>=2.16.0'
+requires_ansible: '>=2.16.0'  # Option A: floor intentionally kept at >=2.16.0 while ansible-core 2.18 is validated in CI
 # Content that Ansible needs to load from another location or that has
 # been deprecated/removed
 # plugin_routing:
