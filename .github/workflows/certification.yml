@@ -4,15 +4,10 @@
 # to avoid cross-org reusable workflow restrictions.
 #
 # Pinned package versions match Automation Hub import process:
-#   ansible-core: 2.18.0
+#   ansible-core: 2.16.0
 #   galaxy-importer: 0.4.31
 #   ansible-lint: 24.12.2
-#   ansible-test: stable-2.18
-#
-# NOTE (2026-07-17): Certification baseline bumped to ansible-core 2.18.0 to check
-# whether the Automation Hub-aligned certification checks pass on 2.18. If this
-# workflow fails because the Hub import process has not yet adopted 2.18, revert
-# this baseline to 2.16.0 (2.18 is also validated independently in test.yml).
+#   ansible-test: stable-2.16
 name: Run collection certification checks
 
 permissions:
@@ -28,7 +23,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  ANSIBLE_CORE_VERSION: "2.18.0"
+  ANSIBLE_CORE_VERSION: "2.16.0"
   COLLECTION_ROOT: "."
 
 jobs:
@@ -109,7 +104,7 @@ jobs:
 
   # Run sanity checks inside Docker with ansible-test
   sanity:
-    name: "Sanity (stable-2.18, Python ${{ matrix.python }})"
+    name: "Sanity (stable-2.16, Python ${{ matrix.python }})"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -130,8 +125,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install ansible-core (stable-2.18)
-        run: pip install https://github.com/ansible/ansible/archive/stable-2.18.tar.gz
+      - name: Install ansible-core (stable-2.16)
+        run: pip install https://github.com/ansible/ansible/archive/stable-2.16.tar.gz
 
       - name: Run sanity tests
         working-directory: ansible_collections/netscaler/adc

@@ -17,7 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `plugins/module_utils/client.py`: migrated `ansible.module_utils._text` import to `ansible.module_utils.common.text.converters` (deprecation hygiene).
 - `plugins/connection/ssh_netscaler_adc.py`: annotated ansible-core-versioned options with `version_added_collection: ansible.builtin` for 2.18 sanity cleanliness.
-- `.github/workflows/certification.yml`: bumped certification baseline to ansible-core 2.18.0 (from 2.16.0) to validate against the Automation Hub-aligned toolchain on 2.18.
+- `tests/sanity/ignore-2.18.txt`: added `option-equal-up-to-casing` ignores for `ping`, `ping6`, and `traceroute` (new-in-2.18 validate-modules check; their single-letter flags mirror the NITRO/BSD CLI and are intentionally case-distinct).
+- `.github/workflows/test.yml`: added `stable-2.18` to the sanity and integration CI lanes (floor unchanged at `>=2.16.0`). Certification baseline remains ansible-core 2.16.0 to match the Automation Hub import process.
 
 ## [2.17.0] - 2026-07-14
 
