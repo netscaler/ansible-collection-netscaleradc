@@ -15,10 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `ping`, `ping6`, `traceroute`: renamed the case-colliding single-letter options to descriptive snake_case names to satisfy the ansible-core 2.18 `validate-modules:option-equal-up-to-casing` check (`I`->`interface`, `i`->`interval`, `S`->`source_ip`, `s`->`packet_size`, `T`->`traffic_domain`, `t`->`timeout`; traceroute additionally `M`->`min_ttl`, `m`->`max_ttl`, `P`->`protocol`, `p`->`base_port`, `S`->`summary`, `t`->`tos`). The old single-letter names continue to work via a pre-parse translation shim in `ModuleExecutor` and now emit a deprecation warning (to be removed in 3.0.0). No breaking change.
 - `plugins/module_utils/client.py`: migrated `ansible.module_utils._text` import to `ansible.module_utils.common.text.converters` (deprecation hygiene).
 - `plugins/connection/ssh_netscaler_adc.py`: annotated ansible-core-versioned options with `version_added_collection: ansible.builtin` for 2.18 sanity cleanliness.
-- `tests/sanity/ignore-2.18.txt`: added `option-equal-up-to-casing` ignores for `ping`, `ping6`, and `traceroute` (new-in-2.18 validate-modules check; their single-letter flags mirror the NITRO/BSD CLI and are intentionally case-distinct).
 - `.github/workflows/test.yml`: added `stable-2.18` to the sanity and integration CI lanes (floor unchanged at `>=2.16.0`). Certification baseline remains ansible-core 2.16.0 to match the Automation Hub import process.
+
+### Deprecated
+
+- `ping`, `ping6`, `traceroute`: the legacy single-letter option names (e.g. `I`, `i`, `S`, `s`, `T`, `t`, `M`, `m`, `P`, `p`) are deprecated in favor of the new descriptive names and will be removed in 3.0.0.
 
 ## [2.17.0] - 2026-07-14
 

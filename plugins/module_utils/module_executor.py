@@ -4,9 +4,11 @@
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 
+import json
 import os
 import re
 
+from ansible.module_utils import basic
 from ansible.module_utils.basic import AnsibleModule
 
 from .client import NitroAPIClient
@@ -35,12 +37,53 @@ from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
     GETALL_ONLY_RESOURCES,
     HTTP_RESOURCE_ALREADY_EXISTS,
+    LEGACY_ARG_ALIASES,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
 )
 from .decorators import trace
 from .logger import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
+
+
+def _apply_legacy_arg_aliases(resource_name):
+    """Translate deprecated single-letter params to their new snake_case names in
+    the raw module args, so ``AnsibleModule`` (ansible-core >= 2.18) never sees
+    the case-colliding options rejected by ``option-equal-up-to-casing``.
+
+    The raw ``basic._ANSIBLE_ARGS`` bytes must be rewritten (not the dict
+    returned by ``_load_params()``), because ``AnsibleModule.__init__`` re-decodes
+    those bytes itself. Returns the list of ``(old, new)`` pairs actually renamed
+    so the caller can emit deprecation warnings after the module is built.
+    """
+    legacy_map = LEGACY_ARG_ALIASES.get(resource_name)
+    if not legacy_map:
+        return []
+    try:
+        # Populate basic._ANSIBLE_ARGS via ansible's own loader. This can fail in
+        # contexts where module args are not available (e.g. validate-modules
+        # argspec introspection, or if the arg-serialization internals change in
+        # a future ansible-core); in that case there is nothing to translate.
+        basic._load_params()
+        data = json.loads(basic._ANSIBLE_ARGS.decode())
+    except Exception:
+        return []
+    args = data.get("ANSIBLE_MODULE_ARGS", {})
+    renamed = []
+    modified = False
+    for old, new in legacy_map.items():
+        if old in args:
+            if new not in args:  # new name wins if both were supplied
+                args[new] = args[old]
+                renamed.append((old, new))
+            # Always drop the legacy key so AnsibleModule (which re-decodes these
+            # bytes) never sees the case-colliding name, even when both the old
+            # and new names were supplied.
+            del args[old]
+            modified = True
+    if modified:
+        basic._ANSIBLE_ARGS = json.dumps(data).encode()
+    return renamed
 
 
 class ModuleExecutor(object):
@@ -85,6 +128,11 @@ class ModuleExecutor(object):
         )
         argument_spec.update(module_state_argument)
         argument_spec.update(module_remove_non_updatable_params)
+
+        # Translate any deprecated single-letter params (ping/ping6/traceroute)
+        # to their new names before AnsibleModule parses the argument spec.
+        self._renamed_legacy_args = _apply_legacy_arg_aliases(self.resource_name)
+
         self.module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
@@ -117,6 +165,13 @@ class ModuleExecutor(object):
                 ),
             ],
         )
+
+        for old, new in self._renamed_legacy_args:
+            self.module.deprecate(
+                "Option '%s' is deprecated; use '%s' instead." % (old, new),
+                version="3.0.0",  # next major of netscaler.adc
+                collection_name="netscaler.adc",
+            )
 
         self.netscaler_console_as_proxy_server = self.module.params[
             "netscaler_console_as_proxy_server"

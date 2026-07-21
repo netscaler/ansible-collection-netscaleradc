@@ -39,40 +39,46 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  M:
+  min_ttl:
     type: int
     description:
       - Minimum TTL value used in outgoing probe packets.
-  P:
+      - 'Deprecated alias: C(M).'
+  protocol:
     type: str
     description:
       - Send packets of specified IP protocol. The currently supported protocols are
         UDP and ICMP.
-  S:
+      - 'Deprecated alias: C(P).'
+  summary:
     type: bool
     description:
       - Print a summary of how many probes were not answered for each hop.
-  T:
+      - 'Deprecated alias: C(S).'
+  traffic_domain:
     type: int
     description:
       - Traffic Domain Id
+      - 'Deprecated alias: C(T).'
   host:
     type: str
     description:
       - Destination host IP address or name.
-  m:
+  max_ttl:
     type: int
     description:
       - Maximum TTL value used in outgoing probe packets. For Nitro API, default value
         is taken as 10.
+      - 'Deprecated alias: C(m).'
   n:
     type: bool
     description:
       - Print hop addresses numerically instead of symbolically and numerically.
-  p:
+  base_port:
     type: int
     description:
       - Base port number used in probes.
+      - 'Deprecated alias: C(p).'
   packetlen:
     type: int
     description:
@@ -86,15 +92,17 @@ options:
     description:
       - Bypass normal routing tables and send directly to a host on an attached network.
         If the host is not on a directly attached network, an error is returned.
-  s:
+  source_ip:
     type: str
     description:
       - Source IP address to use in the outgoing query packets. If the IP address
         does not belong to this appliance,  an error is returned and nothing is sent.
-  t:
+      - 'Deprecated alias: C(s).'
+  tos:
     type: int
     description:
       - Type-of-service in query packets.
+      - 'Deprecated alias: C(t).'
   v:
     type: bool
     description:

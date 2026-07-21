@@ -39,19 +39,22 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  I:
+  interface:
     type: str
     description:
       - Network interface on which to ping, if you have multiple interfaces.
-  S:
+      - 'Deprecated alias: C(I).'
+  source_ip:
     type: str
     description:
       - Source IP address to be used in the outgoing query packets. If the IP addrESS
         does not belongs to this appliance, an error is returned and nothing is sent.
-  T:
+      - 'Deprecated alias: C(S).'
+  traffic_domain:
     type: int
     description:
       - Traffic Domain Id
+      - 'Deprecated alias: C(T).'
   c:
     type: int
     description:
@@ -61,10 +64,11 @@ options:
     type: str
     description:
       - Address of host to ping.
-  i:
+  interval:
     type: int
     description:
       - Waiting time, in seconds. The default value is 1 second.
+      - 'Deprecated alias: C(i).'
   n:
     type: bool
     description:
@@ -79,14 +83,16 @@ options:
     description:
       - Quiet output. Only the summary is printed. For Nitro API, this flag is set
         by default.
-  s:
+  packet_size:
     type: int
     description:
       - Data size, in bytes. The default value is 56.
-  t:
+      - 'Deprecated alias: C(s).'
+  timeout:
     type: int
     description:
       - Time-out, in seconds, before ping exits.
+      - 'Deprecated alias: C(t).'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

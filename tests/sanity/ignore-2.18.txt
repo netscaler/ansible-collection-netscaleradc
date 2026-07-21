@@ -954,6 +954,3 @@ plugins/modules/ospfrouter.py validate-modules:missing-gplv3-license # We use MI
 plugins/modules/ospfinterface.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/bgprouter.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/nslaslicense_offline.py validate-modules:missing-gplv3-license # We use MIT license
-plugins/modules/ping.py validate-modules:option-equal-up-to-casing # NITRO/BSD ping flags are intentionally case-distinct (e.g. -I interface vs -i interval)
-plugins/modules/ping6.py validate-modules:option-equal-up-to-casing # NITRO/BSD ping6 flags are intentionally case-distinct (e.g. -I interface vs -i interval)
-plugins/modules/traceroute.py validate-modules:option-equal-up-to-casing # NITRO/BSD traceroute flags are intentionally case-distinct (e.g. -M vs -m, -P vs -p)
