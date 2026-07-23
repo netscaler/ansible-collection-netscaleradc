@@ -45,7 +45,7 @@
         c: 3
         interval: 1     # was i
         timeout: 5      # was t
-        packet_size: 56 # was s  (default; keep <= 56 on VPX)
+        packet_size: 56  # was s  (default; keep <= 56 on VPX)
         q: true         # quiet: summary only
         n: true         # numeric output, no DNS resolution
 
