@@ -29,6 +29,7 @@ from .common import (
     is_global_binding,
     is_resource_exists,
     is_singleton_resource,
+    run_operational_command,
     save_config,
     unbind_resource,
     update_resource,
@@ -40,6 +41,7 @@ from .constants import (
     LEGACY_ARG_ALIASES,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
+    OPERATIONAL_UTILITY_RESOURCES,
 )
 from .decorators import trace
 from .logger import log, loglines
@@ -1217,9 +1219,60 @@ class ModuleExecutor(object):
         self.return_success()
 
     @trace
+    def _to_wire_payload(self):
+        """Restore the single-letter NITRO wire field names for operational resources
+        whose options were renamed to snake_case for ansible-core 2.18
+        (ping/ping6/traceroute -- see LEGACY_ARG_ALIASES).
+
+        LEGACY_ARG_ALIASES maps ``wire (old) -> option (new)``; we invert it to
+        ``option (new) -> wire (old)`` and translate the collected module params
+        back to what the ADC expects. Keys that were never renamed (already wire
+        names, e.g. ``hostName``, ``c``, ``host``) and resources with no alias map
+        (e.g. traceroute6) pass through unchanged.
+        """
+        legacy_map = LEGACY_ARG_ALIASES.get(self.resource_name, {})
+        option_to_wire = {new: old for old, new in legacy_map.items()}
+        return {
+            option_to_wire.get(k, k): v
+            for k, v in self.resource_module_params.items()
+        }
+
+    @trace
+    def run_operational_action(self):
+        """Execute a synchronous operational command (ping/ping6/traceroute/traceroute6).
+
+        These resources do not store config, so they bypass the create/update/delete
+        flow: the collected module params are sent -- with the single-letter NITRO wire
+        field names restored -- as a plain POST, and the ADC's command output is surfaced
+        under a result key named after the resource (e.g. ``result.ping.response`` holds
+        the ping stdout). Reports ``changed=False`` because a diagnostic command mutates
+        no configuration.
+        """
+        post_data = self._to_wire_payload()
+        self.module_result["changed"] = False
+        if self.module.check_mode:
+            self.module_result[self.resource_name] = {}
+            return
+        ok, response = run_operational_command(
+            self.client, self.resource_name, post_data
+        )
+        if not ok:
+            self.return_failure(response)
+        # The NITRO body wraps the result in the resource name, e.g.
+        # {"ping": {..., "response": "<output>"}}. Unwrap it so callers reach the
+        # output at result.<resource>.response instead of result.<resource>.<resource>.
+        if isinstance(response, dict) and self.resource_name in response:
+            response = response[self.resource_name]
+        self.module_result[self.resource_name] = response
+
+    @trace
     def main(self):
         try:
-            if self.module.params["state"] in {"present", "enabled", "disabled"}:
+            if self.resource_name in OPERATIONAL_UTILITY_RESOURCES:
+                # ping/ping6/traceroute/traceroute6: run the diagnostic command and
+                # return its output instead of the normal create/update/delete flow.
+                self.run_operational_action()
+            elif self.module.params["state"] in {"present", "enabled", "disabled"}:
                 if (
                     "add" in self.supported_operations
                     or "update" in self.supported_operations

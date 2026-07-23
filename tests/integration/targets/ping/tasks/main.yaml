@@ -1,0 +1,156 @@
+---
+# Integration tests for the `ping` operational utility module.
+#
+# `ping` is an operational (utility) resource: it runs the BSD `ping` command on
+# the ADC and returns its output in the NITRO response body. It stores no config,
+# so unlike a normal resource there is no add/update/absent/idempotency flow --
+# every invocation reports `changed=false`, and the assertions below check the
+# returned command output instead of a configured object.
+
+# ---------------------------------------------------------------------------
+# check mode: the diagnostic command must NOT be sent to the ADC.
+# ---------------------------------------------------------------------------
+- name: PING | CHECK MODE
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  netscaler.adc.ping:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: 127.0.0.1
+    c: 2
+- name: Assert | PING | CHECK MODE
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - result.ping == {}
+
+# ---------------------------------------------------------------------------
+# basic ping of the ADC loopback using the descriptive (2.18) option names.
+# ---------------------------------------------------------------------------
+- name: PING | BASIC (new option names)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: 127.0.0.1
+    c: 4
+- name: Assert | PING | BASIC
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'packets transmitted' in result.ping.response"
+      - "'packet loss' in result.ping.response"
+
+# ---------------------------------------------------------------------------
+# tuning flags: count + interval + timeout + quiet + numeric output.
+# ---------------------------------------------------------------------------
+- name: PING | WITH OPTIONS (count/interval/timeout/quiet/numeric)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: 127.0.0.1
+    c: 3
+    interval: 1
+    timeout: 5
+    q: true
+    n: true
+- name: Assert | PING | WITH OPTIONS
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'127.0.0.1' in result.ping.response"
+
+# ---------------------------------------------------------------------------
+# data size (default 56 bytes) and a fill pattern.
+# ---------------------------------------------------------------------------
+- name: PING | PACKET SIZE + PATTERN
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: 127.0.0.1
+    c: 2
+    packet_size: 56
+    p: "ff"
+- name: Assert | PING | PACKET SIZE + PATTERN
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'56 data bytes' in result.ping.response"
+
+# ---------------------------------------------------------------------------
+# legacy single-letter option names must still work (ansible-core 2.18 rename
+# back-compat shim). This emits deprecation warnings but behaves identically.
+#   i -> interval, t -> timeout
+# ---------------------------------------------------------------------------
+- name: PING | LEGACY OPTION NAMES (deprecated, still supported)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: 127.0.0.1
+    c: 2
+    i: 1
+    t: 5
+- name: Assert | PING | LEGACY OPTION NAMES
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'packet loss' in result.ping.response"
+
+# ---------------------------------------------------------------------------
+# negative: a source_ip that does not belong to the appliance must fail. NITRO
+# rejects it ("If the IP address does not belong to this appliance, an error is
+# returned"), and the module must surface that as a task failure -- 203.0.113.0/24
+# is RFC 5737 TEST-NET-3, guaranteed not to be an appliance IP.
+# ---------------------------------------------------------------------------
+- name: PING | NEGATIVE (source_ip not on appliance)
+  delegate_to: localhost
+  register: result
+  ignore_errors: true
+  netscaler.adc.ping:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: 127.0.0.1
+    c: 2
+    source_ip: 203.0.113.7
+- name: Assert | PING | NEGATIVE
+  ansible.builtin.assert:
+    that:
+      - result.failed == true
+      - result.changed == false

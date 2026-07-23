@@ -111,6 +111,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ping6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Ping an IPv6 host from the NetScaler ADC
+      delegate_to: localhost
+      register: ping6_result
+      netscaler.adc.ping6:
+        state: present
+        hostName: "::1"
+        c: 4                # number of packets to send
+        packet_size: 32     # data size in bytes (deprecated alias: s)
+        interval: 1         # seconds between packets (deprecated alias: i)
+        timeout: 5          # seconds before ping6 exits (deprecated alias: t)
+
+    - name: Show the ping6 command output
+      delegate_to: localhost
+      ansible.builtin.debug:
+        var: ping6_result.ping6
 """
 
 RETURN = r"""
@@ -120,6 +140,13 @@ changed:
   returned: always
   type: bool
   sample: true
+ping6:
+  description: Result of the ping6 command. The command output is in the C(response) field.
+  returned: on success (not in check mode)
+  type: dict
+  sample: {'response': 'PING6(56=40+8+8 bytes) ::1 --> ::1\n16 bytes from ::1, icmp_seq=0
+      hlim=64 time=0.052 ms\n\n--- ::1 ping6 statistics ---\n3 packets transmitted,
+      3 packets received, 0.0% packet loss'}
 diff:
   description: Dictionary of before and after changes
   returned: always

@@ -1,0 +1,166 @@
+---
+# Integration tests for the `traceroute` operational utility module.
+#
+# `traceroute` is an operational (utility) resource: it runs the BSD `traceroute`
+# command on the ADC and returns its output in the NITRO response body. It stores
+# no config, so there is no add/update/absent/idempotency flow -- every invocation
+# reports `changed=false`, and the assertions below check the returned output.
+#
+# Every task bounds the probe with max_ttl / w (wait) / q (queries) so the
+# synchronous NITRO call cannot hang: the target is the loopback (one hop away).
+
+# ---------------------------------------------------------------------------
+# check mode: the diagnostic command must NOT be sent to the ADC.
+# ---------------------------------------------------------------------------
+- name: TRACEROUTE | CHECK MODE
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  netscaler.adc.traceroute:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    host: 127.0.0.1
+    max_ttl: 1
+- name: Assert | TRACEROUTE | CHECK MODE
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - result.traceroute == {}
+
+# ---------------------------------------------------------------------------
+# basic traceroute of the ADC loopback, numeric output (new option names).
+# ---------------------------------------------------------------------------
+- name: TRACEROUTE | BASIC (numeric, new option names)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.traceroute:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    host: 127.0.0.1
+    max_ttl: 1
+    w: 2
+    q: 1
+    n: true
+- name: Assert | TRACEROUTE | BASIC
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'127.0.0.1' in result.traceroute.response"
+      - "'ms' in result.traceroute.response"
+
+# ---------------------------------------------------------------------------
+# ICMP probes instead of the default UDP.
+# ---------------------------------------------------------------------------
+- name: TRACEROUTE | ICMP PROTOCOL
+  delegate_to: localhost
+  register: result
+  netscaler.adc.traceroute:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    host: 127.0.0.1
+    protocol: ICMP
+    max_ttl: 1
+    w: 2
+    q: 1
+    n: true
+- name: Assert | TRACEROUTE | ICMP PROTOCOL
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'ms' in result.traceroute.response"
+
+# ---------------------------------------------------------------------------
+# summary output (per-hop probe loss).
+# ---------------------------------------------------------------------------
+- name: TRACEROUTE | SUMMARY
+  delegate_to: localhost
+  register: result
+  netscaler.adc.traceroute:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    host: 127.0.0.1
+    max_ttl: 1
+    w: 2
+    q: 1
+    summary: true
+- name: Assert | TRACEROUTE | SUMMARY
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'loss' in result.traceroute.response"
+
+# ---------------------------------------------------------------------------
+# legacy single-letter option names must still work (ansible-core 2.18 rename
+# back-compat shim). This emits deprecation warnings but behaves identically.
+#   M -> min_ttl, m -> max_ttl
+# ---------------------------------------------------------------------------
+- name: TRACEROUTE | LEGACY OPTION NAMES (deprecated, still supported)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.traceroute:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    host: 127.0.0.1
+    M: 1
+    m: 1
+    w: 2
+    q: 1
+    n: true
+- name: Assert | TRACEROUTE | LEGACY OPTION NAMES
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'ms' in result.traceroute.response"
+
+# ---------------------------------------------------------------------------
+# negative: a source_ip that does not belong to the appliance must fail. NITRO
+# rejects it ("If the IP address does not belong to this appliance, an error is
+# returned"), and the module must surface that as a task failure -- 203.0.113.0/24
+# is RFC 5737 TEST-NET-3, guaranteed not to be an appliance IP.
+# ---------------------------------------------------------------------------
+- name: TRACEROUTE | NEGATIVE (source_ip not on appliance)
+  delegate_to: localhost
+  register: result
+  ignore_errors: true
+  netscaler.adc.traceroute:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    host: 127.0.0.1
+    max_ttl: 1
+    w: 2
+    q: 1
+    source_ip: 203.0.113.7
+- name: Assert | TRACEROUTE | NEGATIVE
+  ansible.builtin.assert:
+    that:
+      - result.failed == true
+      - result.changed == false

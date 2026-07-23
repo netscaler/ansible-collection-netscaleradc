@@ -96,6 +96,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample traceroute6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Traceroute to an IPv6 host from the NetScaler ADC
+      delegate_to: localhost
+      register: traceroute6_result
+      netscaler.adc.traceroute6:
+        state: present
+        host: "::1"
+        m: 10                # maximum hop value
+        q: 1                 # probes per hop
+
+    - name: Show the traceroute6 command output
+      delegate_to: localhost
+      ansible.builtin.debug:
+        var: traceroute6_result.traceroute6
 """
 
 RETURN = r"""
@@ -105,6 +123,12 @@ changed:
   returned: always
   type: bool
   sample: true
+traceroute6:
+  description: Result of the traceroute6 command. The command output is in the C(response) field.
+  returned: on success (not in check mode)
+  type: dict
+  sample: {'response': 'traceroute6 to ::1 (::1) from ::1, 10 hops max, 12 byte packets\n
+      1  ::1 (::1)  0.512 ms  0.498 ms  0.489 ms'}
 diff:
   description: Dictionary of before and after changes
   returned: always

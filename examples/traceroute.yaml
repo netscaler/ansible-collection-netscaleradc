@@ -1,0 +1,76 @@
+---
+# Example: run the ADC `traceroute` diagnostic with the netscaler.adc collection.
+#
+# `traceroute` is an operational utility -- it runs `traceroute` ON the NetScaler
+# ADC and returns the command output. It changes no configuration (always
+# changed=false).
+#
+# Run it:
+#   export NETSCALER_NSIP=10.102.201.42
+#   export NETSCALER_NITRO_USER=nsroot
+#   export NETSCALER_NITRO_PASS='ConfigADC#123'
+#   ansible-playbook examples/traceroute.yaml
+#
+# (nsip/nitro_user/nitro_pass fall back to those env vars automatically, so the
+#  tasks below omit them; override on the CLI with -e nsip=... if you prefer.)
+- name: NetScaler ADC traceroute diagnostics
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    # -------------------------------------------------------------------
+    # Simplest form: trace the route to a host from the ADC.
+    # -------------------------------------------------------------------
+    - name: Traceroute to a host from the ADC
+      delegate_to: localhost
+      register: tr_basic
+      netscaler.adc.traceroute:
+        validate_certs: false
+        host: 127.0.0.1
+
+    - name: Show the raw traceroute output
+      ansible.builtin.debug:
+        var: tr_basic.traceroute
+
+    # -------------------------------------------------------------------
+    # Tuned run using the descriptive (ansible-core 2.18) option names.
+    #   min_ttl / max_ttl / protocol / base_port / summary / source_ip /
+    #   traffic_domain / tos  were the old single-letter flags
+    #   M / m / P / p / S / s / T / t.
+    # -------------------------------------------------------------------
+    - name: Traceroute with tuned options
+      delegate_to: localhost
+      register: tr_tuned
+      netscaler.adc.traceroute:
+        validate_certs: false
+        host: 127.0.0.1
+        min_ttl: 1       # was M
+        max_ttl: 10      # was m
+        protocol: UDP    # was P
+        summary: true    # was S
+        n: true          # numeric output, no DNS resolution
+
+    - name: Show the tuned traceroute result
+      ansible.builtin.debug:
+        var: tr_tuned.traceroute
+
+    # -------------------------------------------------------------------
+    # Legacy single-letter names still work but print a deprecation
+    # warning (removed in netscaler.adc 3.0.0). Prefer the names above.
+    #
+    # NOTE the case-sensitive twins that forced the 2.18 rename:
+    #   S (summary) vs s (source_ip),  M (min_ttl) vs m (max_ttl),
+    #   P (protocol) vs p (base_port), T (traffic_domain) vs t (tos).
+    # -------------------------------------------------------------------
+    - name: Traceroute using legacy option names (deprecated)
+      delegate_to: localhost
+      register: tr_legacy
+      netscaler.adc.traceroute:
+        validate_certs: false
+        host: 127.0.0.1
+        M: 1             # deprecated alias for min_ttl
+        m: 10            # deprecated alias for max_ttl
+        S: true          # deprecated alias for summary
+
+    - name: Confirm the legacy call ran
+      ansible.builtin.debug:
+        msg: "changed={{ tr_legacy.changed }} (traceroute never changes config)"

@@ -117,6 +117,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample traceroute playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Traceroute to a host from the NetScaler ADC
+      delegate_to: localhost
+      register: traceroute_result
+      netscaler.adc.traceroute:
+        state: present
+        host: 127.0.0.1
+        min_ttl: 1           # deprecated alias: M
+        max_ttl: 10          # deprecated alias: m
+        protocol: UDP        # deprecated alias: P
+        summary: true        # deprecated alias: S
+
+    - name: Show the traceroute command output
+      delegate_to: localhost
+      ansible.builtin.debug:
+        var: traceroute_result.traceroute
 """
 
 RETURN = r"""
@@ -126,6 +146,13 @@ changed:
   returned: always
   type: bool
   sample: true
+traceroute:
+  description: Result of the traceroute command. The command output is in the C(response) field.
+  returned: on success (not in check mode)
+  type: dict
+  sample: {'response': 'traceroute to 8.8.8.8 (8.8.8.8), 10 hops max, 40 byte packets\n
+      1  10.102.201.1 (10.102.201.1)  0.512 ms  0.498 ms  0.489 ms\n 2  8.8.8.8 (8.8.8.8)
+      1.234 ms  1.198 ms  1.187 ms'}
 diff:
   description: Dictionary of before and after changes
   returned: always

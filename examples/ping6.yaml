@@ -1,0 +1,72 @@
+---
+# Example: run the ADC `ping6` diagnostic with the netscaler.adc collection.
+#
+# `ping6` is an operational utility -- it runs `ping6` ON the NetScaler ADC and
+# returns the command output. It changes no configuration (always changed=false).
+#
+# Run it:
+#   export NETSCALER_NSIP=10.102.201.42
+#   export NETSCALER_NITRO_USER=nsroot
+#   export NETSCALER_NITRO_PASS='ConfigADC#123'
+#   ansible-playbook examples/ping6.yaml
+#
+# (nsip/nitro_user/nitro_pass fall back to those env vars automatically, so the
+#  tasks below omit them; override on the CLI with -e nsip=... if you prefer.)
+- name: NetScaler ADC ping6 diagnostics
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    # -------------------------------------------------------------------
+    # Simplest form: send 4 ICMPv6 echoes to a host from the ADC.
+    # -------------------------------------------------------------------
+    - name: Ping6 a host from the ADC
+      delegate_to: localhost
+      register: ping6_basic
+      netscaler.adc.ping6:
+        validate_certs: false
+        hostName: "::1"
+        c: 4
+
+    - name: Show the raw ping6 output
+      ansible.builtin.debug:
+        var: ping6_basic.ping6
+
+    # -------------------------------------------------------------------
+    # Tuned run using the descriptive (ansible-core 2.18) option names.
+    #   interval / timeout / packet_size / source_ip / traffic_domain
+    #   were the old single-letter flags i / t / s / S / T.
+    # -------------------------------------------------------------------
+    - name: Ping6 with tuned options (quiet, numeric, sized)
+      delegate_to: localhost
+      register: ping6_tuned
+      netscaler.adc.ping6:
+        validate_certs: false
+        hostName: "::1"
+        c: 3
+        interval: 1      # was i
+        timeout: 5       # was t
+        packet_size: 32  # was s  (default for ping6)
+        q: true          # quiet: summary only
+        n: true          # numeric output, no DNS resolution
+
+    - name: Show the tuned ping6 result
+      ansible.builtin.debug:
+        var: ping6_tuned.ping6
+
+    # -------------------------------------------------------------------
+    # Legacy single-letter names still work but print a deprecation
+    # warning (removed in netscaler.adc 3.0.0). Prefer the names above.
+    # -------------------------------------------------------------------
+    - name: Ping6 using legacy option names (deprecated)
+      delegate_to: localhost
+      register: ping6_legacy
+      netscaler.adc.ping6:
+        validate_certs: false
+        hostName: "::1"
+        c: 2
+        i: 1            # deprecated alias for interval
+        t: 5            # deprecated alias for timeout
+
+    - name: Confirm the legacy call ran
+      ansible.builtin.debug:
+        msg: "changed={{ ping6_legacy.changed }} (ping6 never changes config)"

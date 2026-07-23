@@ -70,6 +70,15 @@ LEGACY_ARG_ALIASES = {
     },
 }
 
+# Operational "utility" resources: they do not store config. Each is a synchronous
+# NITRO action (plain POST to /nitro/v1/config/<resource>, no `?action=`) that runs a
+# BSD command on the ADC and returns its output in the response body.
+# ModuleExecutor.main() dispatches these to `run_operational_action` instead of the
+# normal create/update/delete flow. For the renamed modules (ping/ping6/traceroute)
+# the snake_case options are translated back to the single-letter NITRO wire fields by
+# inverting LEGACY_ARG_ALIASES before the POST (see ModuleExecutor._to_wire_payload).
+OPERATIONAL_UTILITY_RESOURCES = {"ping", "ping6", "traceroute", "traceroute6"}
+
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
 NETSCALER_COMMON_ARGUMENTS = dict(
     nsip=dict(

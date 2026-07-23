@@ -98,6 +98,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ping playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Ping a host from the NetScaler ADC
+      delegate_to: localhost
+      register: ping_result
+      netscaler.adc.ping:
+        state: present
+        hostName: 127.0.0.1
+        c: 4                # number of packets to send
+        packet_size: 56     # data size in bytes (deprecated alias: s)
+        interval: 1         # seconds between packets (deprecated alias: i)
+        timeout: 5          # seconds before ping exits (deprecated alias: t)
+
+    - name: Show the ping command output
+      delegate_to: localhost
+      ansible.builtin.debug:
+        msg: "{{ ping_result.ping.response }}"
 """
 
 RETURN = r"""
@@ -107,6 +127,13 @@ changed:
   returned: always
   type: bool
   sample: true
+ping:
+  description: Result of the ping command. The command output is in the C(response) field.
+  returned: on success (not in check mode)
+  type: dict
+  sample: {'response': 'PING 127.0.0.1 (127.0.0.1): 56 data bytes\n64 bytes from 127.0.0.1:
+      icmp_seq=0 ttl=64 time=0.045 ms\n\n--- 127.0.0.1 ping statistics ---\n3 packets
+      transmitted, 3 packets received, 0.0% packet loss'}
 diff:
   description: Dictionary of before and after changes
   returned: always

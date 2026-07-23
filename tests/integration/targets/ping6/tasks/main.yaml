@@ -1,0 +1,157 @@
+---
+# Integration tests for the `ping6` operational utility module.
+#
+# `ping6` is an operational (utility) resource: it runs the BSD `ping6` command on
+# the ADC and returns its output in the NITRO response body. It stores no config,
+# so there is no add/update/absent/idempotency flow -- every invocation reports
+# `changed=false`, and the assertions below check the returned command output.
+#
+# NOTE: the positive cases ping the IPv6 loopback (::1) from the ADC, so the ADC
+# must have a working IPv6 stack. On appliances where IPv6 is disabled the send
+# will error; only the check-mode case is environment-independent.
+
+# ---------------------------------------------------------------------------
+# check mode: the diagnostic command must NOT be sent to the ADC.
+# ---------------------------------------------------------------------------
+- name: PING6 | CHECK MODE
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  netscaler.adc.ping6:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: "::1"
+    c: 2
+- name: Assert | PING6 | CHECK MODE
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - result.ping6 == {}
+
+# ---------------------------------------------------------------------------
+# basic ping6 of the ADC IPv6 loopback using the descriptive (2.18) names.
+# ---------------------------------------------------------------------------
+- name: PING6 | BASIC (new option names)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping6:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: "::1"
+    c: 4
+- name: Assert | PING6 | BASIC
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'packets transmitted' in result.ping6.response"
+      - "'packet loss' in result.ping6.response"
+
+# ---------------------------------------------------------------------------
+# tuning flags: count + interval + timeout + quiet + numeric output.
+# ---------------------------------------------------------------------------
+- name: PING6 | WITH OPTIONS (count/interval/timeout/quiet/numeric)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping6:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: "::1"
+    c: 3
+    interval: 1
+    timeout: 5
+    q: true
+    n: true
+- name: Assert | PING6 | WITH OPTIONS
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'::1' in result.ping6.response"
+
+# ---------------------------------------------------------------------------
+# data size (ping6 default is 32 bytes) and a fill pattern.
+# ---------------------------------------------------------------------------
+- name: PING6 | PACKET SIZE + PATTERN
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping6:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: "::1"
+    c: 2
+    packet_size: 32
+    p: "ff"
+- name: Assert | PING6 | PACKET SIZE + PATTERN
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'data bytes' in result.ping6.response"
+
+# ---------------------------------------------------------------------------
+# legacy single-letter option names must still work (ansible-core 2.18 rename
+# back-compat shim). This emits deprecation warnings but behaves identically.
+#   i -> interval, t -> timeout
+# ---------------------------------------------------------------------------
+- name: PING6 | LEGACY OPTION NAMES (deprecated, still supported)
+  delegate_to: localhost
+  register: result
+  netscaler.adc.ping6:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: "::1"
+    c: 2
+    i: 1
+    t: 5
+- name: Assert | PING6 | LEGACY OPTION NAMES
+  ansible.builtin.assert:
+    that:
+      - result.failed == false
+      - result.changed == false
+      - "'packet loss' in result.ping6.response"
+
+# ---------------------------------------------------------------------------
+# negative: a source_ip that does not belong to the appliance must fail, and the
+# module must surface that as a task failure.
+# ---------------------------------------------------------------------------
+- name: PING6 | NEGATIVE (source_ip not on appliance)
+  delegate_to: localhost
+  register: result
+  ignore_errors: true
+  netscaler.adc.ping6:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    hostName: "::1"
+    c: 2
+    source_ip: "2001:db8::1"
+- name: Assert | PING6 | NEGATIVE
+  ansible.builtin.assert:
+    that:
+      - result.failed == true
+      - result.changed == false

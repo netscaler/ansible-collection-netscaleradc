@@ -1,0 +1,72 @@
+---
+# Example: run the ADC `ping` diagnostic with the netscaler.adc collection.
+#
+# `ping` is an operational utility -- it runs `ping` ON the NetScaler ADC and
+# returns the command output. It changes no configuration (always changed=false).
+#
+# Run it:
+#   export NETSCALER_NSIP=10.102.201.42
+#   export NETSCALER_NITRO_USER=nsroot
+#   export NETSCALER_NITRO_PASS='ConfigADC#123'
+#   ansible-playbook examples/ping.yaml
+#
+# (nsip/nitro_user/nitro_pass fall back to those env vars automatically, so the
+#  tasks below omit them; override on the CLI with -e nsip=... if you prefer.)
+- name: NetScaler ADC ping diagnostics
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    # -------------------------------------------------------------------
+    # Simplest form: send 4 ICMP echoes to a host from the ADC.
+    # -------------------------------------------------------------------
+    - name: Ping a host from the ADC
+      delegate_to: localhost
+      register: ping_basic
+      netscaler.adc.ping:
+        validate_certs: false
+        hostName: 127.0.0.1
+        c: 4
+
+    - name: Show the raw ping output
+      ansible.builtin.debug:
+        msg: "{{ ping_basic.ping.response.split('\n') }}"
+
+    # -------------------------------------------------------------------
+    # Tuned run using the descriptive (ansible-core 2.18) option names.
+    #   interval / timeout / packet_size / source_ip / traffic_domain
+    #   were the old single-letter flags i / t / s / S / T.
+    # -------------------------------------------------------------------
+    - name: Ping with tuned options (quiet, numeric, sized)
+      delegate_to: localhost
+      register: ping_tuned
+      netscaler.adc.ping:
+        validate_certs: false
+        hostName: 127.0.0.1
+        c: 3
+        interval: 1     # was i
+        timeout: 5      # was t
+        packet_size: 56 # was s  (default; keep <= 56 on VPX)
+        q: true         # quiet: summary only
+        n: true         # numeric output, no DNS resolution
+
+    - name: Show the packet-loss line
+      ansible.builtin.debug:
+        msg: "{{ ping_tuned.ping.response.split('\n') | select('search', 'packet loss') | first }}"
+
+    # -------------------------------------------------------------------
+    # Legacy single-letter names still work but print a deprecation
+    # warning (removed in netscaler.adc 3.0.0). Prefer the names above.
+    # -------------------------------------------------------------------
+    - name: Ping using legacy option names (deprecated)
+      delegate_to: localhost
+      register: ping_legacy
+      netscaler.adc.ping:
+        validate_certs: false
+        hostName: 127.0.0.1
+        c: 2
+        i: 1            # deprecated alias for interval
+        t: 5            # deprecated alias for timeout
+
+    - name: Confirm the legacy call ran
+      ansible.builtin.debug:
+        msg: "changed={{ ping_legacy.changed }} (ping never changes config)"
