@@ -5,9 +5,9 @@
 # returns the command output. It changes no configuration (always changed=false).
 #
 # Run it:
-#   export NETSCALER_NSIP=10.102.201.42
+#   export NETSCALER_NSIP=<your-adc-ip>
 #   export NETSCALER_NITRO_USER=nsroot
-#   export NETSCALER_NITRO_PASS='ConfigADC#123'
+#   export NETSCALER_NITRO_PASS='<your-adc-password>'
 #   ansible-playbook examples/ping.yaml
 #
 # (nsip/nitro_user/nitro_pass fall back to those env vars automatically, so the
