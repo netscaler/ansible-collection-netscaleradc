@@ -104,7 +104,8 @@
     that:
       - result.failed == false
       - result.changed == false
-      - "'data bytes' in result.ping6.response"
+      # BSD ping6 prints "N data bytes"; Linux/iputils prints "N(M) bytes of data".
+      - result.ping6.response is search('data bytes|bytes of data')
 
 # ---------------------------------------------------------------------------
 # legacy single-letter option names must still work (ansible-core 2.18 rename

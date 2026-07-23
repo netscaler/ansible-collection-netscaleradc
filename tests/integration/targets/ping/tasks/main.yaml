@@ -101,7 +101,9 @@
     that:
       - result.failed == false
       - result.changed == false
-      - "'56 data bytes' in result.ping.response"
+      # Header format is firmware-dependent: BSD ping prints "56 data bytes",
+      # Linux/iputils ping prints "56(84) bytes of data." -- accept either.
+      - result.ping.response is search('56 data bytes|56\(\d+\) bytes of data')
 
 # ---------------------------------------------------------------------------
 # legacy single-letter option names must still work (ansible-core 2.18 rename
