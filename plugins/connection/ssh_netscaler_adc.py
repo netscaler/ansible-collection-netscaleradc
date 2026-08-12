@@ -60,6 +60,7 @@ DOCUMENTATION = r"""
               - sshpass
               - disable
           version_added: '2.19.0'
+          version_added_collection: ansible.builtin
           env:
               - name: ANSIBLE_SSH_PASSWORD_MECHANISM
           ini:
@@ -271,6 +272,7 @@ DOCUMENTATION = r"""
             - name: ansible_private_key
             - name: ansible_ssh_private_key
           version_added: '2.19.0'
+          version_added_collection: ansible.builtin
       private_key_passphrase:
           description:
             - Private key passphrase, dependent on O(private_key).
@@ -282,6 +284,7 @@ DOCUMENTATION = r"""
             - name: ansible_private_key_passphrase
             - name: ansible_ssh_private_key_passphrase
           version_added: '2.19.0'
+          version_added_collection: ansible.builtin
       sftp_batch_mode:
         default: 'yes'
         description: 'TODO: write it'
@@ -351,6 +354,7 @@ DOCUMENTATION = r"""
             - name: ansible_pkcs11_provider
       verbosity:
         version_added: '2.19.0'
+        version_added_collection: ansible.builtin
         default: 0
         type: int
         description:

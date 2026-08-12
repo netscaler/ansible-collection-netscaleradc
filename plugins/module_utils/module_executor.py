@@ -4,9 +4,11 @@
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
 
+import json
 import os
 import re
 
+from ansible.module_utils import basic
 from ansible.module_utils.basic import AnsibleModule
 
 from .client import NitroAPIClient
@@ -27,6 +29,7 @@ from .common import (
     is_global_binding,
     is_resource_exists,
     is_singleton_resource,
+    run_operational_command,
     save_config,
     unbind_resource,
     update_resource,
@@ -35,12 +38,54 @@ from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
     GETALL_ONLY_RESOURCES,
     HTTP_RESOURCE_ALREADY_EXISTS,
+    LEGACY_ARG_ALIASES,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
+    OPERATIONAL_UTILITY_RESOURCES,
 )
 from .decorators import trace
 from .logger import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
+
+
+def _apply_legacy_arg_aliases(resource_name):
+    """Translate deprecated single-letter params to their new snake_case names in
+    the raw module args, so ``AnsibleModule`` (ansible-core >= 2.18) never sees
+    the case-colliding options rejected by ``option-equal-up-to-casing``.
+
+    The raw ``basic._ANSIBLE_ARGS`` bytes must be rewritten (not the dict
+    returned by ``_load_params()``), because ``AnsibleModule.__init__`` re-decodes
+    those bytes itself. Returns the list of ``(old, new)`` pairs actually renamed
+    so the caller can emit deprecation warnings after the module is built.
+    """
+    legacy_map = LEGACY_ARG_ALIASES.get(resource_name)
+    if not legacy_map:
+        return []
+    try:
+        # Populate basic._ANSIBLE_ARGS via ansible's own loader. This can fail in
+        # contexts where module args are not available (e.g. validate-modules
+        # argspec introspection, or if the arg-serialization internals change in
+        # a future ansible-core); in that case there is nothing to translate.
+        basic._load_params()
+        data = json.loads(basic._ANSIBLE_ARGS.decode())
+    except Exception:
+        return []
+    args = data.get("ANSIBLE_MODULE_ARGS", {})
+    renamed = []
+    modified = False
+    for old, new in legacy_map.items():
+        if old in args:
+            if new not in args:  # new name wins if both were supplied
+                args[new] = args[old]
+                renamed.append((old, new))
+            # Always drop the legacy key so AnsibleModule (which re-decodes these
+            # bytes) never sees the case-colliding name, even when both the old
+            # and new names were supplied.
+            del args[old]
+            modified = True
+    if modified:
+        basic._ANSIBLE_ARGS = json.dumps(data).encode()
+    return renamed
 
 
 class ModuleExecutor(object):
@@ -85,6 +130,11 @@ class ModuleExecutor(object):
         )
         argument_spec.update(module_state_argument)
         argument_spec.update(module_remove_non_updatable_params)
+
+        # Translate any deprecated single-letter params (ping/ping6/traceroute)
+        # to their new names before AnsibleModule parses the argument spec.
+        self._renamed_legacy_args = _apply_legacy_arg_aliases(self.resource_name)
+
         self.module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
@@ -117,6 +167,13 @@ class ModuleExecutor(object):
                 ),
             ],
         )
+
+        for old, new in self._renamed_legacy_args:
+            self.module.deprecate(
+                "Option '%s' is deprecated; use '%s' instead." % (old, new),
+                version="3.0.0",  # next major of netscaler.adc
+                collection_name="netscaler.adc",
+            )
 
         self.netscaler_console_as_proxy_server = self.module.params[
             "netscaler_console_as_proxy_server"
@@ -1162,9 +1219,60 @@ class ModuleExecutor(object):
         self.return_success()
 
     @trace
+    def _to_wire_payload(self):
+        """Restore the single-letter NITRO wire field names for operational resources
+        whose options were renamed to snake_case for ansible-core 2.18
+        (ping/ping6/traceroute -- see LEGACY_ARG_ALIASES).
+
+        LEGACY_ARG_ALIASES maps ``wire (old) -> option (new)``; we invert it to
+        ``option (new) -> wire (old)`` and translate the collected module params
+        back to what the ADC expects. Keys that were never renamed (already wire
+        names, e.g. ``hostName``, ``c``, ``host``) and resources with no alias map
+        (e.g. traceroute6) pass through unchanged.
+        """
+        legacy_map = LEGACY_ARG_ALIASES.get(self.resource_name, {})
+        option_to_wire = {new: old for old, new in legacy_map.items()}
+        return {
+            option_to_wire.get(k, k): v
+            for k, v in self.resource_module_params.items()
+        }
+
+    @trace
+    def run_operational_action(self):
+        """Execute a synchronous operational command (ping/ping6/traceroute/traceroute6).
+
+        These resources do not store config, so they bypass the create/update/delete
+        flow: the collected module params are sent -- with the single-letter NITRO wire
+        field names restored -- as a plain POST, and the ADC's command output is surfaced
+        under a result key named after the resource (e.g. ``result.ping.response`` holds
+        the ping stdout). Reports ``changed=False`` because a diagnostic command mutates
+        no configuration.
+        """
+        post_data = self._to_wire_payload()
+        self.module_result["changed"] = False
+        if self.module.check_mode:
+            self.module_result[self.resource_name] = {}
+            return
+        ok, response = run_operational_command(
+            self.client, self.resource_name, post_data
+        )
+        if not ok:
+            self.return_failure(response)
+        # The NITRO body wraps the result in the resource name, e.g.
+        # {"ping": {..., "response": "<output>"}}. Unwrap it so callers reach the
+        # output at result.<resource>.response instead of result.<resource>.<resource>.
+        if isinstance(response, dict) and self.resource_name in response:
+            response = response[self.resource_name]
+        self.module_result[self.resource_name] = response
+
+    @trace
     def main(self):
         try:
-            if self.module.params["state"] in {"present", "enabled", "disabled"}:
+            if self.resource_name in OPERATIONAL_UTILITY_RESOURCES:
+                # ping/ping6/traceroute/traceroute6: run the diagnostic command and
+                # return its output instead of the normal create/update/delete flow.
+                self.run_operational_action()
+            elif self.module.params["state"] in {"present", "enabled", "disabled"}:
                 if (
                     "add" in self.supported_operations
                     or "update" in self.supported_operations

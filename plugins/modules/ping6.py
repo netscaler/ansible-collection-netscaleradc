@@ -23,7 +23,8 @@ author:
   - Shiva Shankar Vaddepally (@shivashankar-vaddepally)
 options:
   state:
-    choices: []
+    choices:
+      - present
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,18 +40,21 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  I:
+  interface:
     type: str
     description:
       - Network interface on which to ping, if you have multiple interfaces.
-  S:
+      - 'Deprecated alias: C(I).'
+  source_ip:
     type: str
     description:
       - Source IP address to be used in the outgoing query packets.
-  T:
+      - 'Deprecated alias: C(S).'
+  traffic_domain:
     type: int
     description:
       - Traffic Domain Id
+      - 'Deprecated alias: C(T).'
   V:
     type: int
     description:
@@ -69,10 +73,11 @@ options:
     type: str
     description:
       - Address of host to ping.
-  i:
+  interval:
     type: int
     description:
       - Waiting time, in seconds. The default value is 1 second.
+      - 'Deprecated alias: C(i).'
   m:
     type: bool
     description:
@@ -92,19 +97,41 @@ options:
     description:
       - Quiet output. Only summary is printed. For Nitro API, this flag is set by
         default
-  s:
+  packet_size:
     type: int
     description:
       - Data size, in bytes. The default value is 32.
-  t:
+      - 'Deprecated alias: C(s).'
+  timeout:
     type: int
     description:
       - Timeout in seconds before ping6 exits
+      - 'Deprecated alias: C(t).'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+- name: Sample ping6 playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Ping an IPv6 host from the NetScaler ADC
+      delegate_to: localhost
+      register: ping6_result
+      netscaler.adc.ping6:
+        state: present
+        hostName: "::1"
+        c: 4                # number of packets to send
+        packet_size: 32     # data size in bytes (deprecated alias: s)
+        interval: 1         # seconds between packets (deprecated alias: i)
+        timeout: 5          # seconds before ping6 exits (deprecated alias: t)
+
+    - name: Show the ping6 command output
+      delegate_to: localhost
+      ansible.builtin.debug:
+        var: ping6_result.ping6
 """
 
 RETURN = r"""
@@ -114,6 +141,13 @@ changed:
   returned: always
   type: bool
   sample: true
+ping6:
+  description: Result of the ping6 command. The command output is in the C(response) field.
+  returned: on success (not in check mode)
+  type: dict
+  sample: {'response': 'PING6(56=40+8+8 bytes) ::1 --> ::1\n16 bytes from ::1, icmp_seq=0
+      hlim=64 time=0.052 ms\n\n--- ::1 ping6 statistics ---\n3 packets transmitted,
+      3 packets received, 0.0% packet loss'}
 diff:
   description: Dictionary of before and after changes
   returned: always

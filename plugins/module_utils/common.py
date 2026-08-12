@@ -316,6 +316,30 @@ def create_resource(client, resource_name, resource_module_params, action=None):
 
 
 @trace
+def run_operational_command(client, resource_name, post_data):
+    """Run a synchronous operational NITRO action (ping/ping6/traceroute/traceroute6).
+
+    These resources store no config: the payload keys are the command flags and the
+    ADC returns the command output in the response body. It is a plain
+    ``POST /nitro/v1/config/<resource>`` with no ``?action=`` and, unlike
+    ``create_resource``, the payload is sent as-is (it is not filtered against
+    ``add_payload_keys``, which is empty for these resources). Callers must supply
+    ``post_data`` already keyed by the single-letter NITRO wire field names.
+    """
+    status_code, response_body = client.post(
+        post_data={resource_name: post_data},
+        resource=resource_name,
+        action=None,
+    )
+    return return_response(
+        status_code=status_code,
+        response_body=response_body,
+        operation="run_operational_command",
+        resource_name=resource_name,
+    )
+
+
+@trace
 def get_bindprimary_key(binding_name, binding_member):
     bindprimary_key = NITRO_RESOURCE_MAP[binding_name]["bindprimary_key"]
 
@@ -664,6 +688,16 @@ def get_valid_desired_states(resource_name):
         desired_states.add("rebooted")
     if "change" in supported_operations:
         desired_states.add("changed")
+    # Operational "utility" resources (ping/ping6/traceroute/traceroute6) expose only
+    # a synchronous action (e.g. "Ping") and store no config. They have no add/update
+    # op, so without this they would end up with an empty `state` choices list and the
+    # default `state=present` would be rejected at argument validation. Accept
+    # `state=present` so they can be dispatched to `run_operational_action`.
+    if any(
+        op in supported_operations
+        for op in ("Ping", "Ping6", "Traceroute", "Traceroute6")
+    ):
+        desired_states.add("present")
     return desired_states
 
 
