@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -182,6 +186,14 @@ options:
     description:
       - Use the ADC location instead of client IP for static proximity LB or GSLB
         decision.
+  radiusmessageauthenticator:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - If enabled, NetScaler will verify the message authenticator and also generate
+        message authenticator if not present.
   retainservicestate:
     type: str
     choices:

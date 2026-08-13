@@ -1,0 +1,10 @@
+---
+- name: Sample systemglobal playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemglobal
+      delegate_to: localhost
+      netscaler.adc.systemglobal:
+        state: present
+        policyname: acsPolicy

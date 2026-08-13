@@ -1,12 +1,16 @@
 ---
-- name: Sample Playbook
-  hosts: localhost
+- name: Sample nsfeature playbook
+  hosts: demo_netscalers
   gather_facts: false
   tasks:
-    - name: Sample Task | nsfeature
+    - name: Configure nsfeature
       delegate_to: localhost
       netscaler.adc.nsfeature:
-        state: enabled
-        feature:
-          - CS
-          - LB
+        state: present
+        wl: 'true'
+        sp: 'true'
+        lb: 'true'
+        ssl: 'true'
+        sslvpn: 'true'
+        aaa: 'true'
+        rewrite: 'true'

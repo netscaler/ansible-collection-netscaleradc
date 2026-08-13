@@ -1,0 +1,10 @@
+---
+- name: Sample lsndeterministicnat playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure lsndeterministicnat
+      delegate_to: localhost
+      netscaler.adc.lsndeterministicnat:
+        state: present
+        clientname: c1

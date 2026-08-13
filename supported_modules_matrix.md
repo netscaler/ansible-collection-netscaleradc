@@ -4,13 +4,13 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 
 ---
 
-- Total number of resources: **940**
-- Total number of supported resources: **940**
+- Total number of resources: **963**
+- Total number of supported resources: **961**
 - Total number of supported resources with examples: **502**
-- Total number of unsupported resources: **0**
-- Percentage of supported resources: **100.0%**
-- Percentage of supported resources with examples: **53.29%**
-- Percentage of unsupported resources: **0.0%**
+- Total number of unsupported resources: **2**
+- Percentage of supported resources: **99.79%**
+- Percentage of supported resources with examples: **52.13%**
+- Percentage of unsupported resources: **0.21%**
 
 ---
 
@@ -30,6 +30,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [aaagroup_intranetip_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaagroup_intranetip_binding_module.html) | ✅ | ✅ |
 | [aaagroup_tmsessionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaagroup_tmsessionpolicy_binding_module.html) | ✅ | ✅ |
 | [aaagroup_vpnintranetapplication_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaagroup_vpnintranetapplication_binding_module.html) | ✅ | ✅ |
+| [aaagroup_vpnsecureprivateaccessprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaagroup_vpnsecureprivateaccessprofile_binding_module.html) | ✅ | ❌ |
 | [aaagroup_vpnsessionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaagroup_vpnsessionpolicy_binding_module.html) | ✅ | ✅ |
 | [aaagroup_vpntrafficpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaagroup_vpntrafficpolicy_binding_module.html) | ✅ | ❌ |
 | [aaagroup_vpnurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaagroup_vpnurl_binding_module.html) | ✅ | ✅ |
@@ -41,6 +42,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [aaapreauthenticationaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaapreauthenticationaction_module.html) | ✅ | ✅ |
 | [aaapreauthenticationparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaapreauthenticationparameter_module.html) | ✅ | ❌ |
 | [aaapreauthenticationpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaapreauthenticationpolicy_module.html) | ✅ | ✅ |
+| [aaaproxyparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaaproxyparam_module.html) | ✅ | ❌ |
 | [aaaradiusparams](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaaradiusparams_module.html) | ✅ | ✅ |
 | [aaasession](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaasession_module.html) | ✅ | ❌ |
 | [aaassoprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaassoprofile_module.html) | ✅ | ❌ |
@@ -53,6 +55,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [aaauser_intranetip_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaauser_intranetip_binding_module.html) | ✅ | ✅ |
 | [aaauser_tmsessionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaauser_tmsessionpolicy_binding_module.html) | ✅ | ✅ |
 | [aaauser_vpnintranetapplication_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaauser_vpnintranetapplication_binding_module.html) | ✅ | ✅ |
+| [aaauser_vpnsecureprivateaccessprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaauser_vpnsecureprivateaccessprofile_binding_module.html) | ✅ | ❌ |
 | [aaauser_vpnsessionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaauser_vpnsessionpolicy_binding_module.html) | ✅ | ✅ |
 | [aaauser_vpntrafficpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaauser_vpntrafficpolicy_binding_module.html) | ✅ | ❌ |
 | [aaauser_vpnurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/aaauser_vpnurl_binding_module.html) | ✅ | ✅ |
@@ -257,11 +260,14 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [cloudallowedngsticketprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudallowedngsticketprofile_module.html) | ✅ | ❌ |
 | [cloudawsparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudawsparam_module.html) | ✅ | ❌ |
 | [cloudcredential](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudcredential_module.html) | ✅ | ❌ |
+| [cloudgcpstaticroutes](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudgcpstaticroutes_module.html) | ✅ | ❌ |
 | [cloudngsparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudngsparameter_module.html) | ✅ | ❌ |
 | [cloudparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudparameter_module.html) | ✅ | ✅ |
 | [cloudparaminternal](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudparaminternal_module.html) | ✅ | ❌ |
 | [cloudprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudprofile_module.html) | ✅ | ❌ |
+| [cloudroutes](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudroutes_module.html) | ✅ | ❌ |
 | [cloudservice](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudservice_module.html) | ✅ | ❌ |
+| [cloudtrafficroutes](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudtrafficroutes_module.html) | ✅ | ❌ |
 | [cloudtunnelparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudtunnelparameter_module.html) | ✅ | ❌ |
 | [cloudtunnelvserver](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cloudtunnelvserver_module.html) | ✅ | ❌ |
 | [cluster](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/cluster_module.html) | ✅ | ❌ |
@@ -297,6 +303,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [contentinspectionpolicylabel](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/contentinspectionpolicylabel_module.html) | ✅ | ❌ |
 | [contentinspectionpolicylabel_contentinspectionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/contentinspectionpolicylabel_contentinspectionpolicy_binding_module.html) | ✅ | ❌ |
 | [contentinspectionprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/contentinspectionprofile_module.html) | ✅ | ❌ |
+| [contentinspectionwasmprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/contentinspectionwasmprofile_module.html) | ✅ | ❌ |
 | [crpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/crpolicy_module.html) | ✅ | ✅ |
 | [crvserver](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/crvserver_module.html) | ✅ | ✅ |
 | [crvserver_analyticsprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/crvserver_analyticsprofile_binding_module.html) | ✅ | ❌ |
@@ -369,9 +376,11 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [dnssrvrec](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dnssrvrec_module.html) | ✅ | ✅ |
 | [dnssubnetcache](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dnssubnetcache_module.html) | ✅ | ❌ |
 | [dnssuffix](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dnssuffix_module.html) | ✅ | ✅ |
+| [dnssvcbrec](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dnssvcbrec_module.html) | ✅ | ❌ |
 | [dnstxtrec](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dnstxtrec_module.html) | ✅ | ✅ |
 | [dnsview](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dnsview_module.html) | ✅ | ✅ |
 | [dnszone](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dnszone_module.html) | ✅ | ✅ |
+| [dpsparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/dpsparameter_module.html) | ✅ | ❌ |
 | [endpointinfo](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/endpointinfo_module.html) | ✅ | ❌ |
 | [extendedmemoryparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/extendedmemoryparam_module.html) | ✅ | ✅ |
 | [feoaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/feoaction_module.html) | ✅ | ✅ |
@@ -405,6 +414,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [hanode](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/hanode_module.html) | ✅ | ✅ |
 | [hanode_routemonitor6_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/hanode_routemonitor6_binding_module.html) | ✅ | ❌ |
 | [hanode_routemonitor_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/hanode_routemonitor_binding_module.html) | ✅ | ❌ |
+| [hasecureheartbeats](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/hasecureheartbeats_module.html) | ✅ | ❌ |
 | [hasync](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/hasync_module.html) | ✅ | ❌ |
 | [icaaccessprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/icaaccessprofile_module.html) | ✅ | ✅ |
 | [icaaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/icaaction_module.html) | ✅ | ✅ |
@@ -526,6 +536,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [mapdmr](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/mapdmr_module.html) | ✅ | ✅ |
 | [mapdomain](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/mapdomain_module.html) | ✅ | ✅ |
 | [mapdomain_mapbmr_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/mapdomain_mapbmr_binding_module.html) | ✅ | ✅ |
+| [mcpprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/mcpprofile_module.html) | ✅ | ❌ |
 | [metricsprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_module.html) | ✅ | ❌ |
 | [metricsprofile_authenticationvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_authenticationvserver_binding_module.html) | ✅ | ❌ |
 | [metricsprofile_crvserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/metricsprofile_crvserver_binding_module.html) | ✅ | ❌ |
@@ -553,6 +564,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [nsacl6](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsacl6_module.html) | ✅ | ✅ |
 | [nsacls](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsacls_module.html) | ✅ | ✅ |
 | [nsacls6](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsacls6_module.html) | ✅ | ❌ |
+| [nsaigwprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsaigwprofile_module.html) | ✅ | ❌ |
 | [nsappflowcollector](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsappflowcollector_module.html) | ✅ | ❌ |
 | [nsappflowparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsappflowparam_module.html) | ✅ | ❌ |
 | [nsaptlicense](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsaptlicense_module.html) | ✅ | ❌ |
@@ -586,6 +598,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [nslimitidentifier](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nslimitidentifier_module.html) | ✅ | ✅ |
 | [nslimitselector](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nslimitselector_module.html) | ✅ | ❌ |
 | [nslimitsessions](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nslimitsessions_module.html) | ✅ | ❌ |
+| nsmemrecovery | ❌ | ❌ |
 | [nsmgmtparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmgmtparam_module.html) | ✅ | ❌ |
 | [nsmigration](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmigration_module.html) | ✅ | ❌ |
 | [nsmode](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/nsmode_module.html) | ✅ | ✅ |
@@ -724,6 +737,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [ssldhfile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/ssldhfile_module.html) | ✅ | ❌ |
 | [ssldhparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/ssldhparam_module.html) | ✅ | ✅ |
 | [ssldtlsprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/ssldtlsprofile_module.html) | ✅ | ❌ |
+| [ssldynamicclientcertcache](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/ssldynamicclientcertcache_module.html) | ✅ | ❌ |
 | [sslecdsakey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslecdsakey_module.html) | ✅ | ❌ |
 | [sslechconfig](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslechconfig_module.html) | ✅ | ❌ |
 | [sslfips](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslfips_module.html) | ✅ | ❌ |
@@ -771,6 +785,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [sslvserver_sslciphersuite_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslvserver_sslciphersuite_binding_module.html) | ✅ | ❌ |
 | [sslvserver_sslpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslvserver_sslpolicy_binding_module.html) | ✅ | ✅ |
 | [sslwrapkey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslwrapkey_module.html) | ✅ | ❌ |
+| [sslzerotouchparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/sslzerotouchparam_module.html) | ✅ | ❌ |
 | [streamidentifier](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/streamidentifier_module.html) | ✅ | ✅ |
 | [streamidentifier_analyticsprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/streamidentifier_analyticsprofile_binding_module.html) | ✅ | ❌ |
 | [streamselector](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/streamselector_module.html) | ✅ | ✅ |
@@ -782,6 +797,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [subscribersessions](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/subscribersessions_module.html) | ✅ | ❌ |
 | [systemadmuserinfo](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemadmuserinfo_module.html) | ✅ | ❌ |
 | [systemautorestorefeature](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemautorestorefeature_module.html) | ✅ | ❌ |
+| [systemautosaveparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemautosaveparam_module.html) | ✅ | ❌ |
 | [systembackup](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systembackup_module.html) | ✅ | ❌ |
 | [systemcmdpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemcmdpolicy_module.html) | ✅ | ✅ |
 | [systemcpuparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemcpuparam_module.html) | ✅ | ❌ |
@@ -803,6 +819,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [systemnsbtracing](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemnsbtracing_module.html) | ✅ | ❌ |
 | [systemparameter](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemparameter_module.html) | ✅ | ✅ |
 | [systemrestorepoint](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemrestorepoint_module.html) | ✅ | ❌ |
+| [systemscalablemgmtthreads](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemscalablemgmtthreads_module.html) | ✅ | ❌ |
 | [systemsession](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemsession_module.html) | ✅ | ❌ |
 | [systemsignedexereport](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemsignedexereport_module.html) | ✅ | ❌ |
 | [systemsshkey](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemsshkey_module.html) | ✅ | ❌ |
@@ -856,6 +873,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [vpnepaprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnepaprofile_module.html) | ✅ | ❌ |
 | [vpneula](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpneula_module.html) | ✅ | ✅ |
 | [vpnformssoaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnformssoaction_module.html) | ✅ | ✅ |
+| vpnglobal_aaapreauthenticationpolicy_binding | ❌ | ❌ |
 | [vpnglobal_appcontroller_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_appcontroller_binding_module.html) | ✅ | ❌ |
 | [vpnglobal_appfwpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_appfwpolicy_binding_module.html) | ✅ | ❌ |
 | [vpnglobal_auditnslogpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_auditnslogpolicy_binding_module.html) | ✅ | ❌ |
@@ -880,6 +898,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [vpnglobal_vpnintranetapplication_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_vpnintranetapplication_binding_module.html) | ✅ | ✅ |
 | [vpnglobal_vpnnexthopserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_vpnnexthopserver_binding_module.html) | ✅ | ❌ |
 | [vpnglobal_vpnportaltheme_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_vpnportaltheme_binding_module.html) | ✅ | ✅ |
+| [vpnglobal_vpnsecureprivateaccessprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_vpnsecureprivateaccessprofile_binding_module.html) | ✅ | ❌ |
 | [vpnglobal_vpnsessionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_vpnsessionpolicy_binding_module.html) | ✅ | ✅ |
 | [vpnglobal_vpntrafficpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_vpntrafficpolicy_binding_module.html) | ✅ | ❌ |
 | [vpnglobal_vpnurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnglobal_vpnurl_binding_module.html) | ✅ | ✅ |
@@ -893,6 +912,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [vpnpcoipvserverprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnpcoipvserverprofile_module.html) | ✅ | ✅ |
 | [vpnportaltheme](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnportaltheme_module.html) | ✅ | ✅ |
 | [vpnsamlssoprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnsamlssoprofile_module.html) | ✅ | ✅ |
+| [vpnsecureprivateaccessprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnsecureprivateaccessprofile_module.html) | ✅ | ❌ |
 | [vpnsessionaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnsessionaction_module.html) | ✅ | ✅ |
 | [vpnsessionpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnsessionpolicy_module.html) | ✅ | ✅ |
 | [vpntrafficaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpntrafficaction_module.html) | ✅ | ✅ |
@@ -938,6 +958,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [vpnvserver_vpnintranetapplication_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_vpnintranetapplication_binding_module.html) | ✅ | ✅ |
 | [vpnvserver_vpnnexthopserver_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_vpnnexthopserver_binding_module.html) | ✅ | ✅ |
 | [vpnvserver_vpnportaltheme_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_vpnportaltheme_binding_module.html) | ✅ | ✅ |
+| [vpnvserver_vpnsecureprivateaccessprofile_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_vpnsecureprivateaccessprofile_binding_module.html) | ✅ | ❌ |
 | [vpnvserver_vpnsessionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_vpnsessionpolicy_binding_module.html) | ✅ | ✅ |
 | [vpnvserver_vpntrafficpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_vpntrafficpolicy_binding_module.html) | ✅ | ✅ |
 | [vpnvserver_vpnurl_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vpnvserver_vpnurl_binding_module.html) | ✅ | ✅ |
@@ -958,3 +979,5 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [vxlan_srcip_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vxlan_srcip_binding_module.html) | ✅ | ❌ |
 | [vxlanvlanmap](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vxlanvlanmap_module.html) | ✅ | ✅ |
 | [vxlanvlanmap_vxlan_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/vxlanvlanmap_vxlan_binding_module.html) | ✅ | ✅ |
+| [wasmfile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/wasmfile_module.html) | ✅ | ❌ |
+| [wasmmodule](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/wasmmodule_module.html) | ✅ | ❌ |

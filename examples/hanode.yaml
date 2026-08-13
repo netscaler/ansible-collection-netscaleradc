@@ -7,6 +7,9 @@
       delegate_to: localhost
       netscaler.adc.hanode:
         state: present
-        ipaddress: 10.189.96.60
-        inc: ENABLED
-        hanode_id: '1'
+        hellointerval: 200
+        deadinterval: 3
+        failsafe: 'ON'
+        maxflips: '23'
+        maxfliptime: '23'
+        syncvlan: '60'

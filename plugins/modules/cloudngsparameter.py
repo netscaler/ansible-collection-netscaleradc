@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -76,6 +80,18 @@ options:
     description:
       - Enables Decoupling CSVSERVER state from Ticketing Service state in the CGS
         deployment
+  wafprotection:
+    type: str
+    choices:
+      - DEFAULT
+      - DISABLED
+      - EDGE
+    description:
+      - 'Configure WAF protection for CGS deployment. The available options are:'
+      - '* C(EDGE) - Edge APIs are WAF protected.'
+      - '* C(DEFAULT) - NetScaler decides which endpoints have WAF protection enabled
+        for CGS deployment.'
+      - '* C(DISABLED) - WAF protection is disabled.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

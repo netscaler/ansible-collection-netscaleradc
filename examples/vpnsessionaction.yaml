@@ -7,13 +7,5 @@
       delegate_to: localhost
       netscaler.adc.vpnsessionaction:
         state: present
-        name: External_receiver_session_prof
-        sesstimeout: 20
-        transparentinterception: 'OFF'
-        defaultauthorizationaction: ALLOW
-        clientidletimeout: 20
-        sso: 'ON'
-        ssocredential: SECONDARY
-        icaproxy: 'ON'
-        wihome: https://10.189.130.10/Citrix/ProdExternal
-        clientlessvpnmode: 'ON'
+        name: s1
+        pcoipprofilename: p1

@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -70,10 +74,9 @@ options:
       - Mark the IP address as one that belongs to a local recursive DNS server on
         the Citrix ADC. The appliance recursively resolves queries received on an
         IP address that is marked as being local. For recursive resolution to work,
-        the global DNS parameter, Recursion, must also be set.
-      - ''
-      - If no name server is marked as being local, the appliance functions as a stub
-        resolver and load balances the name servers.
+        the global DNS parameter, Recursion, must also be set. From 14.1 47.x build
+        , it is recommended to use ADNS and ADNS_TCP service and associating a DNS
+        profile with recursiveResolution parameter enabled to achieve the same functionality.
   type:
     type: str
     choices:

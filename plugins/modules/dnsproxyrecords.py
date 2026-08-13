@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -67,6 +71,8 @@ options:
       - TXT
       - NAPTR
       - CAA
+      - SVCB
+      - HTTPS
     description:
       - Filter the DNS records to be flushed.e.g flush dns proxyRecords -type C(A)   will
         flush only the C(A) records from the cache.

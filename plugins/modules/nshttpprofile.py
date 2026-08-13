@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -239,8 +243,9 @@ options:
   http2smallwndtimeout:
     type: int
     description:
-      - Timeout, in seconds, for HTTP/2 small-window stalled streams. Introduced in
-        firmware 14.1-72.61 to mitigate CVE-2026-13474.
+      - Timeout in seconds for HTTP/2 small window stalled streams. Connection is
+        silently closed if a stream remains stalled with zero or small window for
+        this duration. 0 disables the check.
   http2strictcipher:
     type: str
     choices:
@@ -378,6 +383,22 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks \(for example, "my http profile" or ''my http profile''\).'
+  normalizeurl:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable RFC 3986 normalization of incoming URL before validation
+        or consumption.
+  normalizeurltoorigin:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable RFC 3986 URL normalization for request sent to the origin
+        server.
   passprotocolupgrade:
     type: str
     choices:

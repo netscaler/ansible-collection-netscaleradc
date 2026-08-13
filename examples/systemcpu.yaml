@@ -1,0 +1,9 @@
+---
+- name: Sample systemcpu playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure systemcpu
+      delegate_to: localhost
+      netscaler.adc.systemcpu:
+        state: present

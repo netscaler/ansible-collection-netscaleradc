@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -234,6 +238,13 @@ options:
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
+  dynamicclientcert:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable Dynamic Client Certificate Generation for SSL sessions.
   encryptedclienthello:
     type: str
     choices:
@@ -575,6 +586,13 @@ options:
       - 'NO'
     description:
       - Enable strict CA certificate checks on the appliance.
+  strictclientekucheck:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable strict EKU extension check during client authentication.
   strictsigdigestcheck:
     type: str
     choices:

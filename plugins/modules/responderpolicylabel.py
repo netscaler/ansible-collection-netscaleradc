@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -87,6 +91,7 @@ options:
       - MQTT_JUMBO
       - QUIC_BRIDGE
       - HTTP_QUIC
+      - UDP
     description:
       - 'Type of responses sent by the policies bound to this policy label. Types
         are:'

@@ -1,0 +1,13 @@
+---
+- name: Sample qosparameters playbook
+  hosts: demo_netscalers
+  gather_facts: 'false'
+  tasks:
+    - name: Configure qosparameters
+      delegate_to: localhost
+      netscaler.adc.qosparameters:
+        state: present
+        debuglevel: '0'
+        dumpcore: '4294967295'
+        dumpsession: '0'
+        dumpqp: '0'

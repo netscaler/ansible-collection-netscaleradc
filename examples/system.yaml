@@ -1,0 +1,9 @@
+---
+- name: Sample system playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Configure system
+      delegate_to: localhost
+      netscaler.adc.system:
+        state: present

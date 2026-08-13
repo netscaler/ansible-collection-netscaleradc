@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -330,6 +334,14 @@ options:
       - DISABLED
     description:
       - Enable or disable Selective ACKnowledgement (SACK).
+  sendresetreasoncode:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - If enabled, NetScaler includes a debug code indicating the reason for the
+        reset in the TCP Window header field of outgoing TCP RST segments
   slowstartincr:
     type: int
     description:
