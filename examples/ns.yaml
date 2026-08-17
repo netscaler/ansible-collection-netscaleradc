@@ -1,9 +1,0 @@
----
-- name: Sample ns playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Configure ns
-      delegate_to: localhost
-      netscaler.adc.ns:
-        state: present
