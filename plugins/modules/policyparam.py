@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -44,6 +48,24 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  maxeventsize:
+    type: int
+    description:
+      - Maximum event size in kilobytes that the policy engine will process. When
+        event data exceeds this limit, the action specified by maxEventSizeExceedAction
+        is taken. This parameter helps prevent resource exhaustion from processing
+        extremely large events.
+  maxeventsizeexceedaction:
+    type: str
+    choices:
+      - RESET
+      - BYPASS
+    description:
+      - 'Action to take when event data exceeds maxEventSize:'
+      - '* C(RESET) - Terminate the connection immediately with TCP RST (most secure).'
+      - '* C(BYPASS) - When the limit is exceeded, forward the entire event to the
+        client without policy evaluation or processing. All event data (both parsed
+        and remaining) is sent as-is until the event boundary is reached.'
   timeout:
     type: int
     description:

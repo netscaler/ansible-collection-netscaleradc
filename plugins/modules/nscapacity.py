@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -56,6 +60,10 @@ options:
       - Platinum
     description:
       - Product edition.
+  ignoreexpiry:
+    type: bool
+    description:
+      - Value to mention if days to expire data needs to be fetched or not.
   nodeid:
     type: int
     description:

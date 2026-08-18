@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -99,6 +103,7 @@ options:
       - httpquic_res
       - mqtt_req
       - mqtt_res
+      - http_event_res
     description:
       - 'Types of transformations allowed by the policies bound to the label. For
         Rewrite, the following types are supported:'
@@ -120,6 +125,7 @@ options:
       - '* C(dns_res) - DNS responses'
       - '* C(mqtt_req) - MQTT requests'
       - '* C(mqtt_res) - MQTT responses'
+      - '* C(http_event_res) - HTTP event responses'
   rewritepolicylabel_rewritepolicy_binding:
     type: dict
     description: Bindings for rewritepolicylabel_rewritepolicy_binding resource

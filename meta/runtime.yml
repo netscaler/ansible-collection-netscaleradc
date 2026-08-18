@@ -515,7 +515,6 @@ action_groups:
     - linkset_channel_binding
     - linkset_interface_binding
     - linkset
-    - list.txt
     - lldpneighbors
     - lldpparam
     - locationdata
@@ -1009,3 +1008,24 @@ action_groups:
     - ospfrouter
     - ospfinterface
     - bgprouter
+    - aaagroup_vpnsecureprivateaccessprofile_binding
+    - aaaproxyparam
+    - aaauser_vpnsecureprivateaccessprofile_binding
+    - cloudgcpstaticroutes
+    - cloudroutes
+    - cloudtrafficroutes
+    - contentinspectionwasmprofile
+    - dnssvcbrec
+    - dpsparameter
+    - hasecureheartbeats
+    - mcpprofile
+    - nsaigwprofile
+    - ssldynamicclientcertcache
+    - sslzerotouchparam
+    - systemautosaveparam
+    - systemscalablemgmtthreads
+    - vpnglobal_vpnsecureprivateaccessprofile_binding
+    - vpnsecureprivateaccessprofile
+    - vpnvserver_vpnsecureprivateaccessprofile_binding
+    - wasmfile
+    - wasmmodule

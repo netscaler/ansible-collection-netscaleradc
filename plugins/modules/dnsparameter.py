@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -214,7 +218,10 @@ options:
         external name servers configured on the appliance (for a forwarder configuration)
         are unavailable. When external name servers are unavailable, the appliance
         queries a root server and resolves the request recursively, as it does for
-        an end resolver configuration.
+        an end resolver configuration. This parameter will be effective only for queries
+        recieved on nameserver with local flag. To enable recursion for queries recieved
+        through ADNS service , CS vserver and LB vserver it is recommended to use
+        recursiveResolution parameter on DNS profile.
   resolutionorder:
     type: str
     choices:

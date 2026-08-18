@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -60,6 +64,10 @@ options:
       - 'Cluster IP address. Specify this parameter to connect to the remote cluster
         site for GSLB auto-sync. Note: The cluster IP address is defined when creating
         the cluster.'
+  krpcnodesrcip:
+    type: str
+    description:
+      - Source IP address to be used to communicate with this GSLB site.
   metricexchange:
     type: str
     choices:

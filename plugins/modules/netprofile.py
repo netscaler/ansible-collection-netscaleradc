@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -46,6 +50,10 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  badipactionthreshold:
+    type: int
+    description:
+      - Number of protocol violation from an IP address before taking action.
   mbf:
     type: str
     choices:

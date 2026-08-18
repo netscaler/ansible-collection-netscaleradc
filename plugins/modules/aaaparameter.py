@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -100,6 +104,13 @@ options:
       - DISABLED
     description:
       - Option to enable/disable API cache feature.
+  classicendpoints:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Parameter to enable/disable classic endpoints
   defaultauthtype:
     type: str
     choices:
@@ -260,6 +271,13 @@ options:
       - '* C(DISABLED) - No Endpoint WAF protection.'
       - Currently supported only in default partition
     elements: str
+  webviewendpoints:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Parameter to enable/disable webview endpoints
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

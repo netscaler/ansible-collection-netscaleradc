@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -57,6 +61,12 @@ options:
     description:
       - Name of the adfsProxy profile to be used to support ADFSPIP protocol for ADFS
         servers.
+  aigwprofilename:
+    type: str
+    description:
+      - Name of the AIGW frontend profile. For the LB vserver to function as AI gateway,
+        this parameter must be set. Once this parameter is set using add lb vserver,
+        it cannot be unset
   apiprofile:
     type: str
     description:
@@ -365,6 +375,7 @@ options:
       - AUDITLOGHASH
       - STATICPROXIMITY
       - USER_TOKEN
+      - LEASTLLMTOKENLATENCY
     description:
       - 'Load balancing method.  The available settings function as follows:'
       - '* C(ROUNDROBIN) - Distribute requests in rotation, regardless of the load.
@@ -404,6 +415,7 @@ options:
       - '* C(CALLIDHASH) - Create a hash of the SIP Call-ID header.'
       - '* C(USER_TOKEN) - Same as C(TOKEN) LB method but token needs to be provided
         from an extension.'
+      - '* C(LEASTLLMTOKENLATENCY) - Select the service with the least LLM token latency.'
   lbprofilename:
     type: str
     description:
@@ -458,6 +470,11 @@ options:
     type: int
     description:
       - Maximum number of members expected to be present when vserver is used in Autoscale.
+  mcpprofilename:
+    type: str
+    description:
+      - Name of the MCP profile to attach to this lb vserver. Enables MCP protocol
+        processing.
   minautoscalemembers:
     type: int
     description:
@@ -892,6 +909,7 @@ options:
       - DYNAMICCONNECTION
       - BANDWIDTH
       - HEALTH
+      - LLMQUOTA
       - NONE
     description:
       - 'Type of threshold that, when exceeded, triggers spillover. Available settings
@@ -910,6 +928,10 @@ options:
         and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the
         spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and
         svc3 transition to DOWN.'
+      - '* C(LLMQUOTA) - Spillover occurs when the LLM token quota of all the services
+        bound the vserver is exhausted. Do not specify a spillover threshold for this
+        setting, because the threshold is implied by the max tokens settings on the
+        bound services.'
       - '* C(NONE) - Spillover does not occur.'
   sopersistence:
     type: str
@@ -984,6 +1006,10 @@ options:
     type: str
     description:
       - Name for the inserted header. The default name is vip-header.
+  wasmmodule:
+    type: str
+    description:
+      - Name of the WASM module to assign to this virtual server.
   weight:
     type: int
     description:

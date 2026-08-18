@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -48,6 +52,14 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  holdtime:
+    type: int
+    description:
+      - Hold time Interval, in seconds, at which the Citrix ADC generates SNMP trap
+        messages when the conditions specified in the SNMP alarm are met recursively
+        for a given period of time. It is recommended to have the hold time interval
+        period in multiple of 7 seconds as the ADC tries to validate the alarms every
+        7 seconds. Can only be specified for the MGMT-CPU-USAGE alarm.
   logging:
     type: str
     choices:
@@ -262,6 +274,9 @@ options:
       - SSL-ASYM-CRYPTO-UTILIZATION
       - SSL-SYM-CRYPTO-UTILIZATION
       - INTERFACE-AUTO-RECOVERY
+      - SYS-KERNEL-ERROR
+      - AVG-MGMT-CPU-USE
+      - EXTRA-MGMT-CPU-USE
     description:
       - Name of the SNMP alarm. This parameter is required for identifying the SNMP
         alarm and cannot be modified.

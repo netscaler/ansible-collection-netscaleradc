@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -111,7 +115,7 @@ options:
   src:
     type: str
     description:
-      - URL (protocol, host, path, and file name) for the location at which to store
+      - URL (protocol, host, path, and file name) for the location from which to fetch
         the imported signatures object.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'

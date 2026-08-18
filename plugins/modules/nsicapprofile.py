@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -84,6 +88,13 @@ options:
         can be specified as "User-Agent: NS-ICAP-Client/V1.0\r\nX-Client-IP: "+CLIENT.IP.SRC+"\r\n".'
       - The Citrix ADC does not check the validity of the specified header name-value.
         You must manually validate the specified header syntax.
+  inspecthttp2:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or Disable ICAP inspection for HTTP/2 traffic.
   logaction:
     type: str
     description:

@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -54,6 +58,7 @@ options:
       - ICA_REQUEST
       - OTHERTCP_REQUEST
       - MQTT_JUMBO_REQ
+      - HTTP_EVENT_RESPONSE
     description:
       - The bindpoint to which the policy is bound
   gotopriorityexpression:
@@ -74,6 +79,7 @@ options:
     choices:
       - reqvserver
       - resvserver
+      - resHttpEventvserver
       - policylabel
     description:
       - Type of label to be invoked.

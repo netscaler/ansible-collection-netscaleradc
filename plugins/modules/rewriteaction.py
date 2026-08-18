@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -166,6 +170,8 @@ options:
       - insert_mqtt
       - insert_before_mqtt
       - insert_after_mqtt
+      - insert_http_event_field
+      - delete_http_event_field
     description:
       - 'Type of user-defined rewrite action. The information that you provide for,
         and the effect of, each type are as follows:: '
@@ -181,7 +187,8 @@ options:
       - '* INSERT_HTTP_HEADER <header_string_builder_expr> <contents_string_builder_expr>.
         Inserts the HTTP header specified by <header_string_builder_expr> and header
         contents specified by <contents_string_builder_expr>.'
-      - '* DELETE_HTTP_HEADER <target>. Deletes the HTTP header specified by <target>.'
+      - '* DELETE_HTTP_HEADER <target>. Deletes all the instances of the HTTP header
+        specified by <target>.'
       - '* CORRUPT_HTTP_HEADER <target>. Replaces the header name of all occurrences
         of the HTTP header specified by <target> with a corrupted name, so that it
         will not be recognized by the receiver  Example: MY_HEADER is changed to MHEY_ADER.'
@@ -223,6 +230,11 @@ options:
         specified in <string_builder_expr> in the MQTT Subscribe or Unsubscribe message
         before the specified target_expr.'
       - '* DELETE_MQTT <target> : Deletes the specified target in the MQTT message.'
+      - '* DELETE_HTTP_EVENT_FIELD <target>. Deletes all the instances of the field
+        specified by <target>.'
+      - '* INSERT_HTTP_EVENT_FIELD <event_field_string_builder_expr> <contents_string_builder_expr>.
+        Inserts the HTTP event field specified by <event_field_string_builder_expr>
+        and field contents specified by <contents_string_builder_expr>.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

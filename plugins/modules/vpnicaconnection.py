@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -47,6 +51,14 @@ options:
     type: int
     description:
       - Unique number that identifies the cluster node.
+  productname:
+    type: str
+    description:
+      - Product name for which ica connections needs to be terminated.
+  tenantname:
+    type: str
+    description:
+      - Tenant name for which ica connections needs to be terminated.
   transproto:
     type: str
     choices:
