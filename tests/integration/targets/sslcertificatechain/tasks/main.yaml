@@ -1,0 +1,72 @@
+---
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: setup.yaml
+
+- name: SSLCERTIFICATECHAIN | LINK | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.sslcertificatechain:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    certkeyname: "{{ leaf_cert }}"
+
+- name: Assert | SSLCERTIFICATECHAIN | LINK | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: SSLCERTIFICATECHAIN | LINK
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.sslcertificatechain:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    certkeyname: "{{ leaf_cert }}"
+
+- name: Assert | SSLCERTIFICATECHAIN | LINK
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: SSLCERTIFICATECHAIN | LINK | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.sslcertificatechain:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    certkeyname: "{{ leaf_cert }}"
+
+- name: Assert | SSLCERTIFICATECHAIN | LINK | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+
+- name: Include teardown tasks
+  ansible.builtin.include_tasks: teardown.yaml

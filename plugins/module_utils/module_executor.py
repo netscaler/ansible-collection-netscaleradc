@@ -635,13 +635,55 @@ class ModuleExecutor(object):
             # non-updatable resources
             is_identical, immutable_keys_list = self.is_resource_identical()
             if is_identical:
-                log(
-                    "INFO: Resource `%s:%s` exists and is identical. No change required."
-                    % (
-                        self.resource_name,
-                        self.resource_id,
+                # For sslcertificatechain, the GET returns chain status but the
+                # POST triggers auto-linking. If the chain is incomplete, we must
+                # still POST to link it, even though the resource "exists".
+                if (
+                    self.resource_name == "sslcertificatechain"
+                    and self.existing_resource.get("chaincomplete") == "0"
+                ):
+                    log(
+                        "INFO: Resource `%s:%s` chain is incomplete (chaincomplete=0). Will POST to trigger auto-linking."
+                        % (
+                            self.resource_name,
+                            self.resource_id,
+                        )
                     )
-                )
+                    self.module_result["changed"] = True
+                    # Build diff showing the chain linking that will occur
+                    possible_links = self.existing_resource.get(
+                        "chainpossiblelinks", []
+                    )
+                    current_links = self.existing_resource.get("chainlinked", [])
+                    self.update_diff_list(
+                        existing={
+                            "certkeyname": self.resource_id,
+                            "chaincomplete": "0",
+                            "chainlinked": current_links,
+                            "chainpossiblelinks": possible_links,
+                        },
+                        desired={
+                            "certkeyname": self.resource_id,
+                            "chaincomplete": "1",
+                            "chainlinked": current_links + possible_links,
+                            "chainpossiblelinks": [],
+                        },
+                    )
+                    ok, err = create_resource(
+                        self.client,
+                        self.resource_name,
+                        self.resource_module_params,
+                    )
+                    if not ok:
+                        self.return_failure(err)
+                else:
+                    log(
+                        "INFO: Resource `%s:%s` exists and is identical. No change required."
+                        % (
+                            self.resource_name,
+                            self.resource_id,
+                        )
+                    )
             else:
                 self.module_result["changed"] = True
                 if self.resource_name == "systemfile":

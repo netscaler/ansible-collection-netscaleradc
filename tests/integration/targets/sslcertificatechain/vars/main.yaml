@@ -1,0 +1,4 @@
+---
+root_cert: "TestChain-RootCA"
+intermediate_cert: "TestChain-IntermediateCA"
+leaf_cert: "TestChain-Leaf"
