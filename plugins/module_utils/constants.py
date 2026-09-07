@@ -36,39 +36,13 @@ NITRO_ATTRIBUTES_ALIASES = {
     }
 }
 
-# Legacy single-letter option names that collided under ansible-core >= 2.18
-# `validate-modules:option-equal-up-to-casing` (e.g. I/i, S/s, T/t). The options
-# were renamed to descriptive snake_case names; these mappings keep old playbooks
-# working via a pre-parse translation shim in ModuleExecutor (with a deprecation
-# warning). Remove in the next major release.
-LEGACY_ARG_ALIASES = {
-    "ping": {
-        "I": "interface",
-        "i": "interval",
-        "S": "source_ip",
-        "s": "packet_size",
-        "T": "traffic_domain",
-        "t": "timeout",
-    },
-    "ping6": {
-        "I": "interface",
-        "i": "interval",
-        "S": "source_ip",
-        "s": "packet_size",
-        "T": "traffic_domain",
-        "t": "timeout",
-    },
-    "traceroute": {
-        "M": "min_ttl",
-        "m": "max_ttl",
-        "P": "protocol",
-        "p": "base_port",
-        "S": "summary",
-        "s": "source_ip",
-        "T": "traffic_domain",
-        "t": "tos",
-    },
-}
+# Deprecated single-letter option names that collided under ansible-core >= 2.18
+# `validate-modules:option-equal-up-to-casing` (e.g. I/i, S/s, T/t) are no longer
+# tracked here. The generator now emits, per affected resource, a
+# `deprecated_aliases` map ({old_name: new_snake_case}) directly in
+# NITRO_RESOURCE_MAP -- the single source of truth. ModuleExecutor reads it to keep
+# old playbooks working (pre-parse translation + deprecation warning) and to restore
+# the single-letter NITRO wire fields before the POST.
 
 # Operational "utility" resources: they do not store config. Each is a synchronous
 # NITRO action (plain POST to /nitro/v1/config/<resource>, no `?action=`) that runs a
@@ -76,7 +50,8 @@ LEGACY_ARG_ALIASES = {
 # ModuleExecutor.main() dispatches these to `run_operational_action` instead of the
 # normal create/update/delete flow. For the renamed modules (ping/ping6/traceroute)
 # the snake_case options are translated back to the single-letter NITRO wire fields by
-# inverting LEGACY_ARG_ALIASES before the POST (see ModuleExecutor._to_wire_payload).
+# inverting the resource's `deprecated_aliases` map before the POST
+# (see ModuleExecutor._to_wire_payload).
 OPERATIONAL_UTILITY_RESOURCES = {"ping", "ping6", "traceroute", "traceroute6"}
 
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
