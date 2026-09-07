@@ -38,7 +38,6 @@ from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
     GETALL_ONLY_RESOURCES,
     HTTP_RESOURCE_ALREADY_EXISTS,
-    LEGACY_ARG_ALIASES,
     NETSCALER_COMMON_ARGUMENTS,
     NITRO_ATTRIBUTES_ALIASES,
     OPERATIONAL_UTILITY_RESOURCES,
@@ -57,8 +56,11 @@ def _apply_legacy_arg_aliases(resource_name):
     returned by ``_load_params()``), because ``AnsibleModule.__init__`` re-decodes
     those bytes itself. Returns the list of ``(old, new)`` pairs actually renamed
     so the caller can emit deprecation warnings after the module is built.
+
+    The ``{old_name: new_name}`` map is sourced from the resource's
+    ``deprecated_aliases`` in NITRO_RESOURCE_MAP (emitted by the generator).
     """
-    legacy_map = LEGACY_ARG_ALIASES.get(resource_name)
+    legacy_map = NITRO_RESOURCE_MAP.get(resource_name, {}).get("deprecated_aliases")
     if not legacy_map:
         return []
     try:
@@ -1222,15 +1224,18 @@ class ModuleExecutor(object):
     def _to_wire_payload(self):
         """Restore the single-letter NITRO wire field names for operational resources
         whose options were renamed to snake_case for ansible-core 2.18
-        (ping/ping6/traceroute -- see LEGACY_ARG_ALIASES).
+        (ping/ping6/traceroute -- see each resource's ``deprecated_aliases``).
 
-        LEGACY_ARG_ALIASES maps ``wire (old) -> option (new)``; we invert it to
-        ``option (new) -> wire (old)`` and translate the collected module params
-        back to what the ADC expects. Keys that were never renamed (already wire
-        names, e.g. ``hostName``, ``c``, ``host``) and resources with no alias map
-        (e.g. traceroute6) pass through unchanged.
+        The resource's ``deprecated_aliases`` (in NITRO_RESOURCE_MAP) maps
+        ``wire (old) -> option (new)``; we invert it to ``option (new) -> wire
+        (old)`` and translate the collected module params back to what the ADC
+        expects. Keys that were never renamed (already wire names, e.g.
+        ``hostName``, ``c``, ``host``) and resources with no alias map (e.g.
+        traceroute6) pass through unchanged.
         """
-        legacy_map = LEGACY_ARG_ALIASES.get(self.resource_name, {})
+        legacy_map = NITRO_RESOURCE_MAP.get(self.resource_name, {}).get(
+            "deprecated_aliases", {}
+        )
         option_to_wire = {new: old for old, new in legacy_map.items()}
         return {
             option_to_wire.get(k, k): v
