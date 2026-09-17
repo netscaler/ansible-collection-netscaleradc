@@ -4,9 +4,10 @@
 # to avoid cross-org reusable workflow restrictions.
 #
 # Pinned package versions match Automation Hub import process:
-#   ansible-core: 2.16.0
+#   ansible-core: 2.18.19
 #   galaxy-importer: 0.4.31
 #   ansible-lint: 24.12.2
+#   ansible-compat: 24.10.0
 #   ansible-test: stable-2.16
 name: Run collection certification checks
 
@@ -23,7 +24,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  ANSIBLE_CORE_VERSION: "2.16.0"
+  ANSIBLE_CORE_VERSION: "2.18.19"
   COLLECTION_ROOT: "."
 
 jobs:
@@ -70,6 +71,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LINT_VER: "24.12.2"
+      # ansible-lint 24.12.2 depends on ansible-compat with no upper bound, so a
+      # bare install resolves the latest ansible-compat. The latest floors
+      # ansible-core at ">=2.16.19,!=2.17.*", which silently upgrades the pinned
+      # ansible-core to 2.19+ -- where ansible.parsing.yaml.constructor was
+      # removed and ansible-lint 24.12.2 fails to import. Pin ansible-compat to a
+      # release contemporaneous with the pinned toolchain.
+      COMPAT_VER: "24.10.0"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -84,16 +92,25 @@ jobs:
       - name: Install ansible-core
         run: pip install ansible-core=="${{ env.ANSIBLE_CORE_VERSION }}"
 
-      - name: Determine compatible ansible-lint version
+      - name: Determine compatible ansible-lint / ansible-compat versions
         run: |
           major_minor=$(echo "${{ env.ANSIBLE_CORE_VERSION }}" | cut -d. -f1,2)
           minor=$(echo "${major_minor}" | cut -d. -f2)
           if [ "${minor}" -ge 19 ]; then
+            # ansible-core >=2.19 removed ansible.parsing.yaml.constructor; use a
+            # lint release that supports it. The latest ansible-compat is
+            # compatible with 2.19+, so let pip resolve it (no pin).
             echo "LINT_VER=25.2.0" >> "${GITHUB_ENV}"
+            echo "COMPAT_VER=" >> "${GITHUB_ENV}"
           fi
 
       - name: Install ansible-lint
-        run: pip install ansible-lint==${{ env.LINT_VER }}
+        run: |
+          if [ -n "${COMPAT_VER}" ]; then
+            pip install "ansible-lint==${LINT_VER}" "ansible-compat==${COMPAT_VER}"
+          else
+            pip install "ansible-lint==${LINT_VER}"
+          fi
 
       - name: Run ansible-lint
         run: |

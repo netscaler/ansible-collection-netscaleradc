@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -92,6 +96,7 @@ options:
       - INLINEINSPECTION
       - MIRROR
       - NOINSPECTION
+      - WASM
     description:
       - 'Type of operation this action is going to perform. following actions are
         available to configure:'
@@ -103,6 +108,10 @@ options:
       - '* C(NOINSPECTION) - This does not forward incoming and outgoing packets to
         the Inspection device.'
       - '* NSTRACE - capture current and further incoming packets on this transaction.'
+  wasmprofilename:
+    type: str
+    description:
+      - Name of the CI WASM profile to be attached to the contentInspection action.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -7,6 +7,5 @@
       delegate_to: localhost
       netscaler.adc.systemglobal_authenticationpolicy_binding:
         state: present
-        policyname: ldap_mgmt_pol
-        priority: '100'
-        gotopriorityexpression: NEXT
+        policyname: acsPolicy
+        priority: '1'

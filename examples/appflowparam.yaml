@@ -9,12 +9,9 @@
         state: present
         templaterefresh: 3600
         httpurl: ENABLED
+        httpcookie: ENABLED
+        httpreferer: ENABLED
         httpmethod: ENABLED
         httphost: ENABLED
         httpuseragent: ENABLED
         httpcontenttype: ENABLED
-        cacheinsight: ENABLED
-        httpquerywithurl: ENABLED
-        metrics: ENABLED
-        events: ENABLED
-        observationpointid: '843103498'

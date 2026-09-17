@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -46,6 +50,12 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  alertsintimeslice:
+    type: int
+    description:
+      - Number of appflow alerts to be sent in the timeslice configured. A value of
+        0 indicates that alerts are disabled. A value of 65535 indicates no limit
+        on number of appflow alerts.
   limitidentifier:
     type: str
     description:
@@ -64,6 +74,7 @@ options:
       - '* C(BURSTY) - When you want the permitted number of requests to exhaust the
         quota anytime within the timeslice.'
       - This argument is needed only when the mode is set to REQUEST_RATE.
+      - Mode TOKEN_RATE only supports C(BURSTY) type
   maxbandwidth:
     type: int
     description:
@@ -73,11 +84,14 @@ options:
     choices:
       - CONNECTION
       - REQUEST_RATE
+      - TOKEN_RATE
       - NONE
     description:
       - Defines the type of traffic to be tracked.
       - '* C(REQUEST_RATE) - Tracks requests/timeslice.'
       - '* C(CONNECTION) - Tracks active transactions.'
+      - '* C(TOKEN_RATE) - Tracks total input+output tokens/minute for LLM chat completions,
+        Timeslice is fixed at 60000 ms, Useful on applications serving LLM services.'
       - ''
       - Examples
       - ''
@@ -97,9 +111,14 @@ options:
       - set limitidentifier limit_req -mode request_rate -timeslice 1000 -Threshold
         5 -limitType smooth -trapsInTimeSlice 8
       - ''
-      - '5. To permit 5000 requests in 1000 ms and 200 traps in 1000 ms:'
+      - '5. To permit 5000 requests in 1000 ms and 200 traps in 1000 ms and 20 appflow
+        alerts in 1000ms:'
       - set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold
-        5000 -limitType BURSTY
+        5000 -limitType BURSTY -trapsInTimeSlice 200 -alertsInTimeSlice 20
+      - ''
+      - '6. To permit 100000 tokens in 60000 ms and 100 appflow alerts in 60000ms:'
+      - set limitidentifier limit_tokens -mode token_rate -timeSlice 60000 -Threshold
+        100000 -limittype BURSTY -alertsInTimeSlice 100
   selectorname:
     type: str
     description:
@@ -114,12 +133,24 @@ options:
         (mode is set as REQUEST_RATE) are tracked per timeslice.
       - When connections (mode is set as CONNECTION) are tracked, it is the total
         number of connections that would be let through.
+      - Maximum number of tokens that are allowed in the given timeslice when Tokens
+        (mode is set to TOKEN_RATE) are tracked per timeslice.
+  timealign:
+    type: str
+    choices:
+      - NONE
+      - MINUTE
+    description:
+      - 'Value C(MINUTE) will align the time windows for a configured timeslice to
+        Minute boundary. TimeSlice values should be integrals of 60000ms when value
+        C(MINUTE) is choosen. Default : C(NONE), timeslice alignments will happen
+        with next 10ms'
   timeslice:
     type: int
     description:
       - Time interval, in milliseconds, specified in multiples of 10, during which
-        requests are tracked to check if they cross the threshold. This argument is
-        needed only when the mode is set to REQUEST_RATE.
+        requests/tokens are tracked to check if they cross the threshold. This argument
+        is needed only when the mode is set to REQUEST_RATE or TOKEN_RATE.
   trapsintimeslice:
     type: int
     description:

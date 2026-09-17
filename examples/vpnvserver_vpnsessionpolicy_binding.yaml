@@ -7,8 +7,5 @@
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpnsessionpolicy_binding:
         state: present
-        name: portal.bx.com
-        policy: External_receiver_session_pol
-        priority: '130'
-        gotopriorityexpression: NEXT
-        bindpoint: REQUEST
+        name: ns.pcoip.net
+        policy: pcoip_sess_policy

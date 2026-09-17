@@ -7,5 +7,9 @@
       delegate_to: localhost
       netscaler.adc.sslcertkey:
         state: present
-        certkey: callback.blackstone.com
-        linkcertkeyname: blackstone_sub
+        certkey: samlssokp1
+        cert: ns-root.cert
+        inform: PEM
+        expirymonitor: ENABLED
+        notificationperiod: '30'
+        bundle: 'NO'

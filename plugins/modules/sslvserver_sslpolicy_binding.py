@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -81,9 +85,10 @@ options:
       - INTERCEPT_REQ
       - REQUEST
       - CLIENTHELLO_REQ
+      - CLIENT_AUTH_VAL
     description:
-      - 'Bind point to which to bind the policy. Possible Values: C(REQUEST), C(INTERCEPT_REQ)
-        and C(CLIENTHELLO_REQ). These bindpoints mean:'
+      - 'Bind point to which to bind the policy. Possible Values: C(REQUEST), C(INTERCEPT_REQ),
+        C(CLIENTHELLO_REQ) and CLIENT_AUTH_VAL_REQ. These bindpoints mean:'
       - '1. C(REQUEST): Policy evaluation will be done at appplication above SSL.
         This bindpoint is default and is used for actions based on clientauth and
         client cert.'
@@ -91,8 +96,10 @@ options:
         to decide whether to intercept or not. Actions allowed with this type are:
         INTERCEPT, BYPASS and RESET.'
       - '3. C(CLIENTHELLO_REQ): Policy evaluation will be done during handling of
-        Client Hello Request. Action allowed with this type is: RESET, FORWARD and
-        PICKCACERTGRP.'
+        Client Hello Request. Action allowed with this type is: RESET, FORWARD, PICKCACERTGRP
+        and OCSPSTAPLING.'
+      - '4. CLIENT_AUTH_VAL_REQ: Policy evaluation will be performed during the verification
+        of the client certificate. Action allowed with this type is: OCSPCERTVALIDATION.'
   vservername:
     type: str
     description:

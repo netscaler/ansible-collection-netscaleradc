@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -52,6 +56,7 @@ options:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
+      - HTTP_EVENT_RESPONSE
     description:
       - Bind point to which to bind the policy.
   gotopriorityexpression:
@@ -73,6 +78,7 @@ options:
     choices:
       - reqvserver
       - resvserver
+      - resHttpEventvserver
       - policylabel
     description:
       - 'Type of policy label to invoke. Applicable only to rewrite, videooptimization
@@ -81,6 +87,8 @@ options:
         bound to the specified virtual server.'
       - '* C(resvserver) - Evaluate the response against the response-based policies
         bound to the specified virtual server.'
+      - '* resHttpEventVserver - Evaluate the response against the HTTP event response
+        based policies bound to the specified virtual server.'
       - '* C(policylabel) - invoke the request or response against the specified user-defined
         policy label.'
   name:

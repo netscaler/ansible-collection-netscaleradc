@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -91,6 +95,14 @@ options:
     description:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
+  insightonlytodirector:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/Disable HDX Insight data to Director even if HDX Insight policy is
+        not configured on Gateway and Network Telemtry policy is enabled on VDA.
   l7latencyfrequency:
     type: int
     description:

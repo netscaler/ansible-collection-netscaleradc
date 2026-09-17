@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -433,6 +437,10 @@ options:
       - Insert a via header in each HTTP request. In the case of a cache miss, the
         request is redirected from the cache server to the origin server. This header
         indicates whether the request is being sent from a cache server.
+  wasmmodule:
+    type: str
+    description:
+      - Name of the WASM module to assign to this virtual server.
   crvserver_analyticsprofile_binding:
     type: dict
     description: Bindings for crvserver_analyticsprofile_binding resource

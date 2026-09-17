@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -88,6 +92,13 @@ options:
       - '* C(MMDDYYYY). -U.S. style month/date/year format.'
       - '* C(DDMMYYYY) - European style date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
+  denylistviolations:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Log denylist violations
   dns:
     type: str
     choices:
@@ -115,6 +126,10 @@ options:
     type: str
     description:
       - The URL at which to upload the logs messages on the endpoint
+  httpschemafile:
+    type: str
+    description:
+      - HTTP Schema file to input tokens to be sent in log message to log server
   lbvservername:
     type: str
     description:
@@ -306,14 +321,6 @@ options:
       - 'Supported settings are:'
       - '* C(GMT_TIME). Coordinated Universal time.'
       - '* C(LOCAL_TIME). Use the server''s timezone setting.'
-  trafficplane:
-    type: str
-    choices:
-      - MGMT
-      - DATA
-    description:
-      - Valid only when Secure Management feature is enabled. Traffic Plane to which
-        the auditlogs will be sent.
   transport:
     type: str
     choices:

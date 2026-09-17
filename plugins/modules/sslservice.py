@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -308,6 +312,14 @@ options:
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
+  strictclientekucheck:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable strict EKU extension check during client authentication. This can be
+        set to C(DISABLED) only for SSL service types Internal and Transparent.
   strictsigdigestcheck:
     type: str
     choices:

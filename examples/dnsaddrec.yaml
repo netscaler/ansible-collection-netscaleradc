@@ -7,7 +7,6 @@
       delegate_to: localhost
       netscaler.adc.dnsaddrec:
         state: present
-        hostname: e.root-servers.net
+        hostname: fef.dmsua01.manage-dogfood.microsoft.com
         ipaddress:
-          - 192.203.230.10
-        ttl: 3600000
+          - 110.102.222.205

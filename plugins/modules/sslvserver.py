@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -335,6 +339,13 @@ options:
       - URL of the page to which to redirect the client in case of a protocol version
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
+  strictclientekucheck:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable strict EKU extension check during client authentication.
   strictsigdigestcheck:
     type: str
     choices:

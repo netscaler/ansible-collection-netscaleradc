@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -128,6 +132,18 @@ options:
     description:
       - IP address (or) Fully-qualified domain name(FQDN) of the RDP Listener with
         the port in the format IP:Port (or) FQDN:Port
+  rdpurlmaxlen:
+    type: int
+    description:
+      - Indicates the permissible max length of the RDP URL. Set to 256 by default.
+  rdpurlmaxlencheck:
+    type: str
+    choices:
+      - ENABLE
+      - DISABLE
+    description:
+      - This setting determines whether the RDP URL max length check is enforced during
+        RDP file generation
   rdpurloverride:
     type: str
     choices:

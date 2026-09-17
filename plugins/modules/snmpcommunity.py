@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -47,7 +51,7 @@ options:
   communityname:
     type: str
     description:
-      - The SNMP community string. Can consist of 1 to 31 characters that include
+      - The SNMP community string. Can consist of 1 to 32 characters that include
         uppercase and lowercase letters,numbers and special characters.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'

@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.systemgroup_systemcmdpolicy_binding:
         state: present
-        groupname: Network - CitrixADC - P - ReadOnly
-        policyname: read-only
-        priority: '100'
+        groupname: network
+        policyname: network
+        priority: '0'

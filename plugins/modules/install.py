@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -60,19 +64,62 @@ options:
         send system, usage and telemetry data to Citrix ADM service. View here [https://docs.citrix.com/en-us/citrix-adc/13/data-governance.html]
         to learn more about this feature. Use of this feature is subject to the Citrix
         End User ServiceAgreement. View here [https://www.citrix.com/buy/licensing/agreements.html].
-  enhancedupgrade:
+  advancedoptions:
+    type: str
+    description:
+      - Use this string to pass extra flags which are not yet supported.
+      - 'Example: -flag1 -flag2 -flag3'
+  answeryestoall:
     type: bool
     description:
-      - Use this flag for upgrading from/to enhancement mode.
+      - Use this flag to answer yes to all prompts.
+  deletesigfiles:
+    type: bool
+    description:
+      - Use this flag to delete all signature files and associated kernel images during
+        installation.
+  dontchecknsconf:
+    type: bool
+    description:
+      - Use this flag to skip ns.conf version equivalence check during downgrade.
+  dontreboot:
+    type: bool
+    description:
+      - Use this flag to prevent reboot after installation when answerYesToAll is
+        true.
+  exitonlicserverconnerror:
+    type: bool
+    description:
+      - Use this flag to exit on license server connectivity errors.
+  fipsinstall:
+    type: bool
+    description:
+      - Use this flag to perform FIPS installation.
+  ignorecertcheckerrors:
+    type: bool
+    description:
+      - Use this flag to ignore certificate digest verification errors during build
+        update.
+  ignorensapimgrerrors:
+    type: bool
+    description:
+      - Use this flag to ignore nsapimgr symbols not found error(s) during installation.
+  ignoreunsavedconfig:
+    type: bool
+    description:
+      - Use this flag to ignore unsaved config check during build update.
+  ignoreunsyncedconfig:
+    type: bool
+    description:
+      - Use this flag to ignore unsynced HA config check during build update.
   l:
     type: bool
     description:
       - Use this flag to enable callhome.
-  resizeswapvar:
+  precheck:
     type: bool
     description:
-      - Use this flag to change swap size on ONLY 64bit nCore/MCNS/VMPE systems NON-VPX
-        systems.
+      - Use this flag to run all installation pre-checks in a single step
   url:
     type: str
     description:

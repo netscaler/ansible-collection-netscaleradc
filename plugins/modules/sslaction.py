@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -44,6 +48,14 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  alpnhttp2:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This option is used to enable or disable the HTTP/2 application protocol based
+        on policy evaluation performed during ClientHello handshake message processing.
   cacertgrpname:
     type: str
     description:
@@ -196,6 +208,27 @@ options:
     description:
       - This action takes an argument a vserver name, to this vserver one will be
         able to forward all the packets.
+  inhandshakeclientauth:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This option dynamically enables client authentication for the specific SSL
+        connection based on policy evaluation performed during ClientHello handshake
+        message processing. It overrides the clientAuth setting configured on the
+        SSL virtual server or the SSL frontend profile.
+  inhandshakeclientcertverification:
+    type: str
+    choices:
+      - Mandatory
+      - Optional
+    description:
+      - Specifies the type of client authentication and is applicable only when inHandshakeClientAuth
+        is ENABLED. If set to MANDATORY, the appliance terminates the SSL handshake
+        when the client fails to present a valid certificate. If set to OPTIONAL,
+        the appliance requests a client certificate but continues the SSL transaction
+        even if the certificate is missing or invalid. Default value is MANDATORY.
   name:
     type: str
     description:
@@ -207,6 +240,31 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
+  ocspcache:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable cache of OCSP response. Caching of response received from the OCSP
+        responder enables faster response to the client and reduces the load on the
+        OCSP responder.
+  ocspcertvalidation:
+    type: str
+    choices:
+      - DISABLE
+      - OPTIONAL
+      - MANDATORY
+    description:
+      - This option is used to check the revocation status of client/server certificate
+        in SSL handshake using OCSP.
+  ocspstapling:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This option is used to enable ocspStapling parameter for the SSL connection.
   owasupport:
     type: str
     choices:

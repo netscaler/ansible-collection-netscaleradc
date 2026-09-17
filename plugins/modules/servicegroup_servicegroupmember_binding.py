@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -50,6 +54,14 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  aigwprofilename:
+    type: str
+    description:
+      - Name of the backend AIGW Profile which will be attached to the servicegroup.
+        This parameter enables the servicegroup to process the LLM request/response
+        based on the profile config. Any service item bound to the servicegroup will
+        inherit the backend AIGW Profile bound at the servicegroup level, if it does
+        not have an explicit AIGW Profile given at bind time.
   customserverid:
     type: str
     description:

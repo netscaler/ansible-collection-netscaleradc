@@ -7,7 +7,7 @@
       delegate_to: localhost
       netscaler.adc.cachepolicylabel_cachepolicy_binding:
         state: present
-        labelname: _httpquicResBuiltinDefaults
-        policyname: _personalizedRes
-        priority: '800'
+        labelname: _reqBuiltinDefaults
+        policyname: SecureAccess_cache_policy
+        priority: '10'
         gotopriorityexpression: END

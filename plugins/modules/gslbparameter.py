@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -131,6 +135,14 @@ options:
         is less than or equal to the specified tolerance value, the LDNS entry in
         the network metric table is not updated with the new RTT value. Prevents the
         exchange of metrics when variations in RTT values are negligible.
+  sourceipwhitelisting:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - If enabled, local gslb site private IP would be used as the source IP while
+        initiating MEP/GSLB sync connection if srcIP is not configured for GSLB site.
   svcstatelearningtime:
     type: int
     description:
@@ -150,6 +162,13 @@ options:
       - '* RESET - Reset the request and notify the user, so that the user can resend
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
+  usekrpcchannelforsync:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This option is to use Krpc channel for GSLB sync.
   v6ldnsmasklen:
     type: int
     description:

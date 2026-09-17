@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -74,6 +78,10 @@ options:
       - 'IP address or range of IP addresses to match against the destination IP address
         of an outgoing IPv4 packet.  In the command line interface, separate the range
         with a hyphen. For example: 10.102.29.30-10.102.29.189.'
+  destipdataset:
+    type: str
+    description:
+      - Policy dataset which can have multiple IP ranges bound to it.
   destipop:
     type: str
     choices:
@@ -97,6 +105,10 @@ options:
         the range with a hyphen. For example: 40-90.'
       - ''
       - 'Note: The destination port can be specified only for TCP and UDP protocols.'
+  destportdataset:
+    type: str
+    description:
+      - Policy dataset which can have multiple port ranges bound to it.
   destportop:
     type: str
     choices:
@@ -324,6 +336,10 @@ options:
       - 'IP address or range of IP addresses to match against the source IP address
         of an outgoing IPv4 packet. In the command line interface, separate the range
         with a hyphen. For example: 10.102.29.30-10.102.29.189.'
+  srcipdataset:
+    type: str
+    description:
+      - Policy dataset which can have multiple IP ranges bound to it.
   srcipop:
     type: str
     choices:
@@ -357,6 +373,10 @@ options:
         with a hyphen. For example: 40-90.'
       - ''
       - 'Note: The destination port can be specified only for TCP and UDP protocols.'
+  srcportdataset:
+    type: str
+    description:
+      - Policy dataset which can have multiple port ranges bound to it.
   srcportop:
     type: str
     choices:
@@ -375,14 +395,10 @@ options:
       - ''
       - 'Note: The destination port can be specified only for TCP and UDP protocols.'
   targettd:
-    type: bool
+    type: int
     description:
       - Integer value that uniquely identifies the traffic domain to which you want
         to send packet to.
-  targettdval:
-    type: int
-    description:
-      - Integer value that uniquely identifies the traffic domain to send packet to.
   td:
     type: int
     description:

@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.authenticationvserver:
         state: present
-        name: Citrix_AAA_vServer
+        name: authVserver
         servicetype: SSL
         ipv46: 0.0.0.0

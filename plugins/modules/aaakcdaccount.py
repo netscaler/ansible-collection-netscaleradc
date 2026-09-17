@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -76,6 +80,16 @@ options:
     type: str
     description:
       - Kerberos Realm.
+  saltexpression:
+    type: str
+    description:
+      - Salt expression used by Kerberos impersonation. When configured, this expression
+        will be used for key
+      - derivation with AES-128 or AES-256 encryption types. For RC4 encryption, the
+        salt is not used.
+      - ''
+      - If the salt expression is not set, the default behavior is to derive the salt
+        value from the Kerberos principal.
   servicespn:
     type: str
     description:

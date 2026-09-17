@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -52,6 +56,12 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  aigwprofilename:
+    type: str
+    description:
+      - Name of the AIGW frontend profile. For the content switching vserver to function
+        as AI gateway, this parameter must be set. Once this parameter is set using
+        add cs vserver, it cannot be unset
   apiprofile:
     type: str
     description:
@@ -304,6 +314,11 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
+  mcpprofilename:
+    type: str
+    description:
+      - Name of the MCP profile to attach to this cs vserver. Enables MCP protocol
+        processing.
   mssqlserverversion:
     type: str
     choices:
@@ -564,6 +579,7 @@ options:
       - DYNAMICCONNECTION
       - BANDWIDTH
       - HEALTH
+      - LLMQUOTA
       - NONE
     description:
       - Type of spillover used to divert traffic to the backup virtual server when
@@ -645,6 +661,10 @@ options:
     description:
       - Name of virtual server IP and port header, for use with the VServer IP Port
         Insertion parameter.
+  wasmmodule:
+    type: str
+    description:
+      - Name of the WASM module to assign to this virtual server.
   csvserver_analyticsprofile_binding:
     type: dict
     description: Bindings for csvserver_analyticsprofile_binding resource

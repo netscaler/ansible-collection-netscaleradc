@@ -7,4 +7,4 @@
       delegate_to: localhost
       netscaler.adc.aaagroup:
         state: present
-        groupname: External
+        groupname: clt_scrgrp1

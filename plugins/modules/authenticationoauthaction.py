@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -52,6 +56,7 @@ options:
       - HS256
       - RS256
       - RS512
+      - HS512
     description:
       - Multivalued option to specify allowed token verification algorithms.
     elements: str
@@ -287,6 +292,12 @@ options:
     type: str
     description:
       - Resource URL for Oauth configuration.
+  scopes:
+    type: str
+    description:
+      - OAuth Scopes expected. Please specify scopes in space separated format as
+        per RFC 6749 (OAuth 2.0). Each scope value can contain any printable ASCII
+        character except double-quote (") and backslash (\). Maximum length is 1024
   skewtime:
     type: int
     description:

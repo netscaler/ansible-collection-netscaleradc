@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -86,6 +90,13 @@ options:
       - '* C(MMDDYYYY) - U.S. style month/date/year format.'
       - '* C(DDMMYYYY) - European style date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
+  denylistviolations:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Log denylist violations
   logfacility:
     type: str
     choices:

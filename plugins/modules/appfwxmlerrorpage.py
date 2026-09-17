@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -61,8 +65,8 @@ options:
   src:
     type: str
     description:
-      - URL (protocol, host, path, and name) for the location at which to store the
-        imported XML error object.
+      - URL (protocol, host, path, and name) for the location from which to fetch
+        the imported XML error object.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc

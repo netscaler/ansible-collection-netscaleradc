@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.19.0] - 2026-08-17
+
+### Added
+
+- Refreshed the `netscaler.adc` collection metadata to NetScaler ADC 14.1-73.29 (73.x), generated from the `ns-ansible-tools-73.29` package. Supported resources grew from 940 to 963.
+- 21 new modules:
+  - Secure Private Access: `vpnsecureprivateaccessprofile`, `aaagroup_vpnsecureprivateaccessprofile_binding`, `aaauser_vpnsecureprivateaccessprofile_binding`, `vpnglobal_vpnsecureprivateaccessprofile_binding`, `vpnvserver_vpnsecureprivateaccessprofile_binding`.
+  - WASM / content inspection: `wasmfile`, `wasmmodule`, `contentinspectionwasmprofile`.
+  - AI gateway / MCP: `nsaigwprofile`, `mcpprofile`.
+  - Cloud routing: `cloudroutes`, `cloudtrafficroutes`, `cloudgcpstaticroutes`.
+  - Other: `aaaproxyparam`, `dnssvcbrec`, `dpsparameter`, `hasecureheartbeats`, `ssldynamicclientcertcache`, `sslzerotouchparam`, `systemautosaveparam`, `systemscalablemgmtthreads`.
+- Registered all 21 new modules in the `default_args` action group in `meta/runtime.yml` so they support group-level `module_defaults`, and added their `missing-gplv3-license` entries to the sanity ignore files (`ignore-2.15.txt` through `ignore-2.18.txt`).
+- New options and choices on existing resources from 73.29 (for example `aigwprofilename` and the `LEASTLLMTOKENLATENCY` load-balancing method on `lbvserver`).
+
+### Changed
+
+- Added the `from __future__ import absolute_import, division, print_function` / `__metaclass__ = type` boilerplate to all generated modules.
+- Regenerated `supported_modules_matrix.md` for the 73.29 resource set.
+- The `ping`, `ping6`, and `traceroute` case-colliding option renames introduced in 2.18.0 are preserved on top of the 73.29 refresh (the raw single-letter NITRO names in the 73.29 source are not reintroduced).
+
 ## [2.18.0] - 2026-07-17
 
 ### Added

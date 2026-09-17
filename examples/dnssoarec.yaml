@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.dnssoarec:
         state: present
-        domain: gslb.blackstone.com
-        originserver: portal-adnsuse1.bx.com
-        contact: stephen.tozzi.blackstone.com
+        domain: com
+        originserver: n1.com
+        contact: n1.com

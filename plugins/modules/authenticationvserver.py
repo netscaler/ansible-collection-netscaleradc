@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -154,6 +158,10 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
+  wasmmodule:
+    type: str
+    description:
+      - Name of the WASM module to assign to this virtual server.
   authenticationvserver_auditnslogpolicy_binding:
     type: dict
     description: Bindings for authenticationvserver_auditnslogpolicy_binding resource

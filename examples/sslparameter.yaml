@@ -7,4 +7,5 @@
       delegate_to: localhost
       netscaler.adc.sslparameter:
         state: present
+        force: true
         defaultprofile: ENABLED

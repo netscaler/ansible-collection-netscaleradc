@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -72,13 +76,17 @@ options:
     choices:
       - reqvserver
       - resvserver
+      - resHttpEventvserver
       - policylabel
     description:
       - 'Type of invocation. Available settings function as follows:'
-      - '* C(reqvserver) - Forward the request to the specified request virtual server.'
-      - '* C(resvserver) - Forward the response to the specified response virtual
-        server.'
-      - '* C(policylabel) - Invoke the specified policy label.'
+      - '* C(reqvserver) - Invoke policies bound to the virtual server at the REQUEST
+        bindpoint'
+      - '* C(resvserver) - Invoke policies bound to the virtual server at the RESPONSE
+        bindpoint'
+      - '* resHttpEventVserver - Invoke policies bound to the virtual server at the
+        HTTP_EVENT_RESPONSE bindpoint'
+      - '* C(policylabel) - Invoke policies bound at the specified policy label.'
   policyname:
     type: str
     description:

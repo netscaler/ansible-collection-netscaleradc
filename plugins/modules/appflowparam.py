@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -266,6 +270,14 @@ options:
       - DISABLED
     description:
       - Include the stream identifier session name to be exported.
+  logalljsonfields:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Overrides the field filtering for all analytics profiles, and sends all the
+        fields for the configured insights.
   logstreamovernsip:
     type: str
     choices:

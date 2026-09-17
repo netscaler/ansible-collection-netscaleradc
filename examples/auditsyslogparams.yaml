@@ -8,8 +8,4 @@
       netscaler.adc.auditsyslogparams:
         state: present
         loglevel:
-          - EMERGENCY
-          - ALERT
-          - CRITICAL
-          - ERROR
-          - WARNING
+          - ALL

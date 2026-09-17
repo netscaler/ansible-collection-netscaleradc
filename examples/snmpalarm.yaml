@@ -7,5 +7,4 @@
       delegate_to: localhost
       netscaler.adc.snmpalarm:
         state: present
-        trapname: SYSLOG-CONNECTION-DROPPED
-        time: 0
+        trapname: VSERVER-SPILLOVER

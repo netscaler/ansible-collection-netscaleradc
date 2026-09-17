@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -81,19 +85,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
----
-- name: Create ssl hsm key
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Create ssl hsm key
-      delegate_to: localhost
-      netscaler.adc.sslhsmkey:
-        state: present
-        hsmkeyname: "hsmk1"
-        hsmtype: "SAFENET"
-        serialnum: "116877xxxx465464"
-        password: "xxxxxxx"
 """
 
 RETURN = r"""

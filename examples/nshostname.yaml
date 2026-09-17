@@ -7,4 +7,4 @@
       delegate_to: localhost
       netscaler.adc.nshostname:
         state: present
-        hostname: ns
+        hostname: ns1_172.191.127.50

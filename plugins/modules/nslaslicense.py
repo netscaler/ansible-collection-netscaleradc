@@ -5,6 +5,10 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -49,6 +53,14 @@ options:
     type: str
     description:
       - Name of the file. It should not include filepath.
+  fixedbandwidth:
+    type: bool
+    description:
+      - apply fixed bandwidth license on ADC
+  nodeid:
+    type: int
+    description:
+      - Unique number that identifies the cluster node.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
