@@ -7,7 +7,7 @@ namespace: netscaler
 # The name of the collection. Has the same character restrictions as 'namespace'
 name: adc
 # The version of the collection. Must be compatible with semantic versioning
-version: 2.19.0
+version: 2.20.0
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
@@ -62,6 +62,12 @@ build_ignore:
   - "issues"
   - "**/netscaler-adc-*.tar.gz"
   - "Makefile"
+  # Generator metadata snapshot folders (e.g. 13_4/, 73_29/). These are ephemeral,
+  # git-ignored, and copied into the collection via `make refresh VERSION=<folder>`.
+  # Excluding them here keeps a local `make build`/`make install` (and the
+  # ansible-test sanity that runs over the installed collection) from bundling the
+  # raw generator output, which is not pep8-clean. See metadatarefresh.md.
+  - "[0-9]*_[0-9]*"
 
 # A dict controlling use of manifest directives used in building the collection artifact. The key 'directives' is a
 # list of MANIFEST.in style

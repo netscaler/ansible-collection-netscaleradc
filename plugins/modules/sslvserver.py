@@ -238,6 +238,10 @@ options:
       - '* TIMER - PUSH packet triggering encryption is delayed by the time defined
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
+  quicsslprofilename:
+    type: str
+    description:
+      - Name of the SSL profile to be used for ICA QUIC on this VPN virtual server.
   redirectportrewrite:
     type: str
     choices:

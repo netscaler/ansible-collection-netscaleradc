@@ -4,12 +4,12 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 
 ---
 
-- Total number of resources: **963**
-- Total number of supported resources: **961**
+- Total number of resources: **966**
+- Total number of supported resources: **964**
 - Total number of supported resources with examples: **502**
 - Total number of unsupported resources: **2**
 - Percentage of supported resources: **99.79%**
-- Percentage of supported resources with examples: **52.13%**
+- Percentage of supported resources with examples: **51.97%**
 - Percentage of unsupported resources: **0.21%**
 
 ---
@@ -145,6 +145,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [appqoepolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/appqoepolicy_module.html) | ✅ | ✅ |
 | [arp](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/arp_module.html) | ✅ | ✅ |
 | [arpparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/arpparam_module.html) | ✅ | ✅ |
+| [auditlogprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/auditlogprofile_module.html) | ✅ | ❌ |
 | [auditmessageaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/auditmessageaction_module.html) | ✅ | ✅ |
 | [auditnslogaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/auditnslogaction_module.html) | ✅ | ✅ |
 | [auditnslogglobal_auditnslogpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/auditnslogglobal_auditnslogpolicy_binding_module.html) | ✅ | ✅ |
@@ -215,6 +216,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [authenticationvserver_tmsessionpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/authenticationvserver_tmsessionpolicy_binding_module.html) | ✅ | ❌ |
 | [authenticationvserver_vpnportaltheme_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/authenticationvserver_vpnportaltheme_binding_module.html) | ✅ | ✅ |
 | [authenticationwebauthaction](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/authenticationwebauthaction_module.html) | ✅ | ✅ |
+| [authenticationwebauthnprofile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/authenticationwebauthnprofile_module.html) | ✅ | ❌ |
 | [authenticationwebauthpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/authenticationwebauthpolicy_module.html) | ✅ | ✅ |
 | [authorizationpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/authorizationpolicy_module.html) | ✅ | ✅ |
 | [authorizationpolicylabel](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/authorizationpolicylabel_module.html) | ✅ | ❌ |
@@ -801,6 +803,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [systembackup](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systembackup_module.html) | ✅ | ❌ |
 | [systemcmdpolicy](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemcmdpolicy_module.html) | ✅ | ✅ |
 | [systemcpuparam](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemcpuparam_module.html) | ✅ | ❌ |
+| [systemdek](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemdek_module.html) | ✅ | ❌ |
 | [systemextramgmtcpu](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemextramgmtcpu_module.html) | ✅ | ✅ |
 | [systemfile](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemfile_module.html) | ✅ | ❌ |
 | [systemglobal_auditnslogpolicy_binding](https://netscaler.github.io/ansible-collection-netscaleradc/collections/netscaler/adc/systemglobal_auditnslogpolicy_binding_module.html) | ✅ | ❌ |

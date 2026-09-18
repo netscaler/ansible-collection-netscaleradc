@@ -68,14 +68,16 @@ options:
       - compress
       - gzip
       - deflate
+      - brotli
       - nocompress
     description:
       - Type of compression performed by this action.
       - 'Available settings function as follows:'
-      - '* COMPRESS - Apply GZIP or DEFLATE compression to the response, depending
+      - '* COMPRESS - Apply GZIP, DEFLATE or BROTLI compression to the response, depending
         on the request header. Prefer GZIP.'
       - '* GZIP - Apply GZIP compression.'
       - '* DEFLATE - Apply DEFLATE compression.'
+      - '* BROTLI - Apply BROTLI compression.'
       - '* NOCOMPRESS - Do not C(compress) the response if the request matches a policy
         that uses this action.'
   deltatype:

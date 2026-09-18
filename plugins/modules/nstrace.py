@@ -261,7 +261,7 @@ options:
       - NS_FR_TX
       - APPFW
       - MPTCP
-      - PolicyBased
+      - POLICY_RECORD
       - HTTP_QUIC
     description:
       - 'Capturing mode for trace. Mode can be any of the following values or combination
@@ -276,6 +276,7 @@ options:
       - '      C(NS_FR_TX)    C(TX)/C(TXB) packets are not captured in flow receiver.'
       - '      C(MPTCP)       C(MPTCP) master flow'
       - '      C(HTTP_QUIC)   HTTP-over-QUIC stream data and stream events'
+      - '      C(POLICY_RECORD)   Capture the policies evaluated on the transaction'
       - '      Default mode: C(NEW_RX) C(TXB)'
     elements: str
   nf:

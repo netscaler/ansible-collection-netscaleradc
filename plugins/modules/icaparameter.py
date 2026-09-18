@@ -55,6 +55,44 @@ options:
       - DISABLED
     description:
       - Enable/Disable DF Persistence
+  edtgwinputholdsize:
+    type: int
+    description:
+      - Size (in entries, must be a power of 2) of the per-direction EDT gateway out-of-order
+        inputhold ring buffer allocated when gateway-side EDT termination is enabled.
+        Non-power-of-2 values fall back to the compile-time default.
+  edtgwrtxbufsize:
+    type: int
+    description:
+      - Size (in entries, must be a power of 2) of the per-direction EDT retransmit
+        ring buffer allocated when gateway-side EDT termination is enabled. Non-power-of-2
+        values fall back to the compile-time default.
+  edtgwtermination:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/Disable gateway-side EDT termination. When C(ENABLED), the NetScaler
+        gateway terminates the EDT/UDT connection from the peer and originates a new
+        EDT connection toward the backend (independent ISNs per leg, gateway-level
+        OOO buffering, gateway-originated NAKs, retransmit buffering). When C(DISABLED),
+        EDT is forwarded transparently.
+  edtholdqpctenabled:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable strict per-channel HoldQ partitioning based on edtHoldqPrimaryPercent.
+        When C(DISABLED) (default), lossy packets are dropped only when total queue
+        space is at or below the primary reserve. When C(ENABLED), each channel gets
+        a strict budget and packets are dropped when their channel partition is full.
+  edtholdqprimarypercent:
+    type: int
+    description:
+      - Percentage of EDT DTLS HoldQ reserved for primary (reliable) channel. Lossy
+        channel gets the remainder. Default is 50.
   edtlosstolerant:
     type: str
     choices:
@@ -109,6 +147,14 @@ options:
       - Specify the time interval/period for which L7 Client Latency value is to be
         calculated. By default, L7 Client Latency is calculated for every packet.
         The default value is 0
+  supporticawithsesstimeout:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable ICA launch support with client detection when ICA session
+        timeout or Smartcontrol is enabled. It is C(DISABLED) by default.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

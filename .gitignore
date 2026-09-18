@@ -23,3 +23,11 @@ tests/integration/integration_config.yml
 
 importer_result.json
 ansible-test-integration.help
+
+# Generator metadata snapshot folders (ephemeral; e.g. 13_4/, 73_29/).
+# Refresh the collection from one with `make refresh VERSION=<folder>`.
+/[0-9]*_[0-9]*/
+
+# ansible-lint SARIF output
+ansible_lint_result.sarif
+.ansible/

@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.20.0] - 2026-09-18
+
+### Added
+
+- Refreshed the `netscaler.adc` collection metadata from the new `13_4` generator snapshot. This is the first refresh in which the `ping`/`ping6`/`traceroute` case-collision fix is produced by the generator itself — per-resource `deprecated_aliases` are emitted directly into `nitro_resource_map.py` — rather than hand-patched into the collection after every regeneration.
+- 3 new modules: `auditlogprofile` (module-level log profile), `authenticationwebauthnprofile` (FIDO2 WebAuthn profile), and `systemdek` (system data-encryption key). Registered all three in the `default_args` action group in `meta/runtime.yml` so they support group-level `module_defaults`, and added their `missing-gplv3-license` entries to the sanity ignore files (`ignore-2.15.txt` through `ignore-2.18.txt`).
+- New and updated options/choices on existing resources, reflected from the refreshed NITRO schema, and a regenerated `supported_modules_matrix.md`.
+- `make refresh VERSION=<snapshot>` — a one-shot metadata-refresh workflow (copy the snapshot → prune orphan examples → reconcile operational docs → format), plus the supporting `make copy`, `make prune_examples`, `make check_examples`, and `make fix_docs` targets. Documented end-to-end in `metadatarefresh.md`.
+- `tools/prune_examples.py` — deletes (or, with `--check`, flags for CI) any `examples/*.yaml` that references a `netscaler.adc.<module>` with no corresponding `plugins/modules/<module>.py`.
+- `tools/fix_operational_state_docs.py` — keeps the `state.choices` DOCUMENTATION of the operational-utility modules (`ping`, `ping6`, `traceroute`, `traceroute6`) in sync with their runtime argument spec, so a refresh cannot reintroduce a `validate-modules:doc-choices-do-not-match-spec` failure.
+
+### Changed
+
+- The `ping`/`ping6`/`traceroute` deprecated single-letter option aliases are now sourced generically from `deprecated_aliases` in `NITRO_RESOURCE_MAP`; the hand-maintained `LEGACY_ARG_ALIASES` table in `constants.py` has been removed. `ModuleExecutor` reads the map for both the backward-compatible option translation and the NITRO wire-name inversion, so a metadata refresh can no longer revert the fix. No change to playbook behaviour or the NITRO wire contract.
+- `routerdynamicrouting_info` (the collection's only hand-written module) now defines its argument spec inline instead of importing it from `NITRO_RESOURCE_MAP`, so a wholesale map regeneration can never drop its entry and break the module.
+- Excluded generator snapshot folders (e.g. `13_4/`) from the built artifact (`galaxy.yml` `build_ignore`) and from version control (`.gitignore`), so a local `make build`/`make install` no longer bundles the raw, non-pep8-clean generator output.
+
 ## [2.19.0] - 2026-08-17
 
 ### Added

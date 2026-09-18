@@ -210,6 +210,13 @@ options:
     description:
       - This option determines if an existing ICA Proxy session is transferred when
         the user logs on from another device.
+  icaquic:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - This option enables/disables QUIC on the VPN vserver.
   icmpvsrresponse:
     type: str
     choices:

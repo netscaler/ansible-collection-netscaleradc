@@ -515,8 +515,8 @@ options:
   send:
     type: str
     description:
-      - String to send to the service. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV
-        monitors.
+      - String to send to the service. Applicable to TCP-ECV, HTTP-ECV, MCP and UDP-ECV
+        monitors. In case of MCP monitors mention only the URL without the method.
   servicegroupname:
     type: str
     description:
@@ -704,6 +704,8 @@ options:
       - DTLS
       - QUIC
       - KAFKA-AUTODISCOVER
+      - MCP
+      - CITRIX-STA-CONFIG
     description:
       - Type of monitor that you want to create.
   units1:

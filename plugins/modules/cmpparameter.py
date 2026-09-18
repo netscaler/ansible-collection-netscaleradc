@@ -70,9 +70,11 @@ options:
       - bestcompression
     description:
       - 'Specify a compression level. Available settings function as follows:'
-      - ' * Optimal - Corresponds to a gzip GZIP level of 5-7.'
-      - ' * Best speed - Corresponds to a gzip level of 1.'
-      - ' * Best compression - Corresponds to a gzip level of 9.'
+      - ' * Optimal - Corresponds to a gzip level of 5-7 or Brotli quality level 6.'
+      - ' * Best speed - Corresponds to a gzip level of 1 or Brotli quality level
+        2.'
+      - ' * Best compression - Corresponds to a gzip level of 9 or Brotli quality
+        level 9.'
   cmponpush:
     type: str
     choices:
@@ -123,7 +125,9 @@ options:
   quantumsize:
     type: int
     description:
-      - Minimum quantum of data to be filled before compression begins.
+      - Minimum quantum of data to be filled before compression begins. Also used
+        to derive the Brotli sliding window size (floor of log2 of the quantum size,
+        clamped to 10-24).
   randomgzipfilename:
     type: str
     choices:

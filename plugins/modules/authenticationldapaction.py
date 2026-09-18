@@ -376,6 +376,10 @@ options:
       - 'NO'
     description:
       - When to validate LDAP server certs
+  webauthnprofile:
+    type: str
+    description:
+      - Name of the webauthn profile used for FIDO2
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -453,6 +453,38 @@ options:
     type: int
     description:
       - The Session timeout value in seconds.
+  sigdigesttype:
+    type: list
+    choices:
+      - ALL
+      - RSA-MD5
+      - RSA-SHA1
+      - RSA-SHA224
+      - RSA-SHA256
+      - RSA-SHA384
+      - RSA-SHA512
+      - DSA-SHA1
+      - DSA-SHA224
+      - DSA-SHA256
+      - DSA-SHA384
+      - DSA-SHA512
+      - ECDSA-SHA1
+      - ECDSA-SHA224
+      - ECDSA-SHA256
+      - ECDSA-SHA384
+      - ECDSA-SHA512
+    description:
+      - Signature Digest Algorithms that are supported by appliance. Default value
+        is "C(ALL)" and it will enable the following algorithms depending on the platform.
+      - 'On VPX: C(ECDSA-SHA1) C(ECDSA-SHA224) C(ECDSA-SHA256) C(ECDSA-SHA384) C(ECDSA-SHA512)
+        C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512) C(DSA-SHA1)
+        C(DSA-SHA224) C(DSA-SHA256) C(DSA-SHA384) C(DSA-SHA512)'
+      - 'On MPX with Nitrox-III and coleto cards: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256)
+        C(RSA-SHA384) C(RSA-SHA512) C(ECDSA-SHA1) C(ECDSA-SHA224) C(ECDSA-SHA256)
+        C(ECDSA-SHA384) C(ECDSA-SHA512)'
+      - 'Others: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512).'
+      - 'Note: C(ALL) does not include C(RSA-MD5) for any platform.'
+    elements: str
   skipclientcertpolicycheck:
     type: str
     choices:
