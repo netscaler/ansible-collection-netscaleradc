@@ -54,6 +54,22 @@ options:
     type: str
     description:
       - The name of the ssllogprofile.
+  ssllogbehs:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - log all back-end SSL handshake events (success and failure). Applicable only
+        to a BackEnd SSL log profile.
+  ssllogbehsfailures:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - log back-end SSL handshake failure events only. Applicable only to a BackEnd
+        SSL log profile.
   ssllogclauth:
     type: str
     choices:
@@ -82,6 +98,33 @@ options:
       - DISABLED
     description:
       - log all SSL HS error events.
+  ssllogprofiletype:
+    type: str
+    choices:
+      - FrontEnd
+      - BackEnd
+    description:
+      - The SSL log profile frontEnd (default) controls client-authentication and
+        front-end (vserver) handshake logging; C(BackEnd) controls server-authentication
+        and back-end (service) handshake logging. A C(FrontEnd) log profile can be
+        bound only to a front-end SSL profile/action and a C(BackEnd) log profile
+        only to a back-end SSL profile. Cannot be changed after the profile is created.
+  ssllogsvrauth:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - log all server-authentication events (success and failure). Applicable only
+        to a BackEnd SSL log profile.
+  ssllogsvrauthfailures:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - log server-authentication failure events only. Applicable only to a BackEnd
+        SSL log profile.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

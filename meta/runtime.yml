@@ -172,6 +172,7 @@ action_groups:
     - appqoepolicy
     - arpparam
     - arp
+    - auditlogprofile
     - auditmessageaction
     - auditnslogaction
     - auditnslogglobal_auditnslogpolicy_binding
@@ -242,6 +243,7 @@ action_groups:
     - authenticationvserver_tmsessionpolicy_binding
     - authenticationvserver_vpnportaltheme_binding
     - authenticationwebauthaction
+    - authenticationwebauthnprofile
     - authenticationwebauthpolicy
     - authorizationpolicylabel_authorizationpolicy_binding
     - authorizationpolicylabel
@@ -824,6 +826,7 @@ action_groups:
     - systemcmdpolicy
     - systemcollectionparam
     - systemcpuparam
+    - systemdek
     - systementitydata
     - systemextramgmtcpu
     - systemfile

@@ -177,6 +177,11 @@ options:
       - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
     elements: str
+  logprofile:
+    type: str
+    description:
+      - Name of the log profile to associate with this action. The profile defines
+        module-level logging configuration.
   lsn:
     type: str
     choices:

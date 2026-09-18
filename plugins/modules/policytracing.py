@@ -65,6 +65,10 @@ options:
     type: int
     description:
       - Unique number that identifies the cluster node.
+  policytraceid:
+    type: str
+    description:
+      - Unique ID to identify the current transaction
   protocoltype:
     type: str
     choices:

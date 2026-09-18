@@ -234,7 +234,7 @@ options:
         C(RSA-SHA384) C(RSA-SHA512) C(ECDSA-SHA1) C(ECDSA-SHA224) C(ECDSA-SHA256)
         C(ECDSA-SHA384) C(ECDSA-SHA512)'
       - 'Others: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512).'
-      - Note:C(ALL) doesnot include C(RSA-MD5) for any platform.
+      - 'Note: C(ALL) does not include C(RSA-MD5) for any platform.'
     elements: str
   snihttphostmatch:
     type: str

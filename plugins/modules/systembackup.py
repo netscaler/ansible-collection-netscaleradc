@@ -72,6 +72,11 @@ options:
       - full
     description:
       - Level of data to be backed up.
+  password:
+    type: str
+    description:
+      - Password to encrypt the backup archive during create, or decrypt during restore.
+        If not specified, backup is stored unencrypted.
   skipbackup:
     type: bool
     description:

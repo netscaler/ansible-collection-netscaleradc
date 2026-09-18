@@ -68,6 +68,20 @@ options:
         header in a particular format, specify the complete format as the value to
         this parameter. For eg., in case of splunk, the Authorizaiton header is required
         to be of the form - Splunk <auth-token>.
+  analyticsencoding:
+    type: str
+    choices:
+      - none
+      - ipfix
+      - logstream
+      - json
+      - otel-protobuf
+    description:
+      - Encoding type for the exported analytics data. Set to C(none) when no collector
+        is configured (default). Automatically set to C(ipfix) when an C(ipfix) collector
+        is specified, and to C(logstream) when a C(logstream) collector is configured.
+        When an HTTP/SSL collector is specified, defaults to C(json) but can be set
+        to C(otel-protobuf).
   analyticsendpointcontenttype:
     type: str
     description:
@@ -343,6 +357,21 @@ options:
     description:
       - On enabling this topn support, the topn information of the stream identifier
         this profile is bound to will be exported to the analytics endpoint.
+  traceendpointurl:
+    type: str
+    description:
+      - The OTLP /v1/traces endpoint URL to which OpenTelemetry trace spans are exported.
+        Supported only on webInsight and securityInsight profiles. Coexists with analyticsEndpointUrl
+        (used for logs).
+  tracing:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Export transaction records as OpenTelemetry trace spans (in addition to logs).
+        Supported only on webInsight and securityInsight profiles; requires analyticsEncoding
+        otel-protobuf. Spans are sent to traceEndpointUrl.
   type:
     type: str
     choices:
@@ -360,6 +389,7 @@ options:
       - udpinsight
       - ngsinsight
       - streaminsight
+      - policytrace
     description:
       - This option indicates what information needs to be collected and exported.
   urlcategory:

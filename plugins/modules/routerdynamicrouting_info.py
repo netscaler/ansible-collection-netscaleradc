@@ -110,7 +110,6 @@ from ..module_utils.client import NitroAPIClient
 from ..module_utils.common import get_resource
 from ..module_utils.constants import NETSCALER_COMMON_ARGUMENTS
 from ..module_utils.logger import log, loglines
-from ..module_utils.nitro_resource_map import NITRO_RESOURCE_MAP
 
 RESOURCE_NAME = os.path.basename(__file__).replace(".py", "")
 
@@ -139,7 +138,15 @@ def validate_commandstring(commandstring):
 
 
 def main():
-    module_specific_arguments = NITRO_RESOURCE_MAP[RESOURCE_NAME]["readwrite_arguments"]
+    # This is the only hand-written module in the collection; it is a facade over
+    # the real ``routerdynamicrouting`` NITRO GET endpoint and NITRO has no
+    # matching ``*_info`` resource. Its argument spec is defined inline (rather than
+    # read from NITRO_RESOURCE_MAP) so that a metadata refresh -- which regenerates
+    # the map wholesale -- can never drop this module's entry and break it.
+    module_specific_arguments = dict(
+        commandstring=dict(type="str", required=True),
+        nodeid=dict(type="int"),
+    )
     argument_spec = dict()
     argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
     argument_spec.update(module_specific_arguments)

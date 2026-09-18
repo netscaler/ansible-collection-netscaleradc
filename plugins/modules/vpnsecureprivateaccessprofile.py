@@ -85,6 +85,12 @@ options:
     type: str
     description:
       - Secure Private Access Shared Secret.
+  tokenlifetime:
+    type: int
+    description:
+      - Lifetime, in seconds, of the security tokens issued to the Secure Private
+        Access server. The tokens are automatically refreshed before expiry. Minimum
+        300 (5 minutes), maximum 86400 (1 day), default 900 (15 minutes).
   url:
     type: str
     description:

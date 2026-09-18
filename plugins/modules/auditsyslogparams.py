@@ -145,6 +145,11 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(NONE) - No events.'
     elements: str
+  logprofile:
+    type: str
+    description:
+      - Name of the log profile to associate with syslog params. The profile defines
+        module-level logging configuration.
   lsn:
     type: str
     choices:

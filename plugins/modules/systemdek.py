@@ -18,9 +18,9 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 ---
-module: traceroute6
-short_description: Configuration for 0 resource.
-description: Configuration for 0 resource.
+module: systemdek
+short_description: Configuration for system DEK resource.
+description: Configuration for system DEK resource.
 version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
@@ -29,10 +29,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(present), the resource will be added/updated configured according to
+        the module's parameters.
+      - When C(absent), the resource will be deleted from the NetScaler ADC node.
     type: str
   remove_non_updatable_params:
     choices:
@@ -44,58 +48,14 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
-  I:
-    type: bool
-    description:
-      - Use ICMP ECHO for probes.
-  T:
-    type: int
-    description:
-      - Traffic Domain Id
-  host:
+  keylabel:
     type: str
     description:
-      - Destination host IP address or name.
-  m:
-    type: int
-    description:
-      - Maximum hop value for outgoing probe packets. For Nitro API, default value
-        is taken as 10.
-  n:
-    type: bool
-    description:
-      - Print hop addresses numerically rather than symbolically and numerically.
-  p:
-    type: int
-    description:
-      - Base port number used in probes.
-  packetlen:
-    type: int
-    description:
-      - Length (in bytes) of the query packets.
-  q:
-    type: int
-    description:
-      - Number of probes per hop. For Nitro API, default value is taken as 1.
-  r:
-    type: bool
-    description:
-      - Bypass normal routing tables and send directly to a host on an attached network.
-        If the host is not on a directly attached network, an error is returned.
-  s:
+      - Label identifying the Data Encryption Key (DEK).
+  value:
     type: str
     description:
-      - Source IP address to use in the outgoing query packets. If the IP address
-        does not belong to this appliance,  an error is returned and nothing is sent.
-  v:
-    type: bool
-    description:
-      - Verbose output. List received ICMP packets other than TIME_EXCEEDED and UNREACHABLE.
-  w:
-    type: int
-    description:
-      - Time (in seconds) to wait for a response to a query. For Nitro API, defalut
-        value is set to 3.
+      - Base64-encoded Data Encryption Key (DEK) value, used to decrypt assets.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

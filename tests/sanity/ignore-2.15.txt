@@ -118,6 +118,7 @@ plugins/modules/appqoeparameter.py validate-modules:missing-gplv3-license # We u
 plugins/modules/appqoepolicy.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/arp.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/arpparam.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/auditlogprofile.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/auditmessageaction.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/auditnslogaction.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/auditnslogglobal_auditnslogpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
@@ -187,6 +188,7 @@ plugins/modules/authenticationvserver_rewritepolicy_binding.py validate-modules:
 plugins/modules/authenticationvserver_tmsessionpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/authenticationvserver_vpnportaltheme_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/authenticationwebauthaction.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/authenticationwebauthnprofile.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/authenticationwebauthpolicy.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/authorizationpolicy.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/authorizationpolicylabel.py validate-modules:missing-gplv3-license # We use MIT license
@@ -720,6 +722,7 @@ plugins/modules/systemadmuserinfo.py validate-modules:missing-gplv3-license # We
 plugins/modules/systembackup.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemcmdpolicy.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemcpuparam.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/systemdek.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemextramgmtcpu.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemfile.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/systemglobal_auditnslogpolicy_binding.py validate-modules:missing-gplv3-license # We use MIT license
