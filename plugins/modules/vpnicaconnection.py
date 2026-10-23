@@ -51,6 +51,14 @@ options:
     type: int
     description:
       - Unique number that identifies the cluster node.
+  productname:
+    type: str
+    description:
+      - Product name for which ica connections needs to be terminated.
+  tenantname:
+    type: str
+    description:
+      - Tenant name for which ica connections needs to be terminated.
   transproto:
     type: str
     choices:

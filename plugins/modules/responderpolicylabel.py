@@ -91,6 +91,7 @@ options:
       - MQTT_JUMBO
       - QUIC_BRIDGE
       - HTTP_QUIC
+      - UDP
     description:
       - 'Type of responses sent by the policies bound to this policy label. Types
         are:'

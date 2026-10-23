@@ -3,9 +3,6 @@
 # Copyright (c) 2025 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
-from __future__ import absolute_import, division, print_function
-
-__metaclass__ = type
 
 from ansible.module_utils.basic import env_fallback
 
@@ -38,6 +35,20 @@ NITRO_ATTRIBUTES_ALIASES = {
         "ipaddress": "ip",  # For PUT payloads and GET responses
     }
 }
+
+# Deprecated single-letter option names that collided under ansible-core >= 2.18
+# `validate-modules:option-equal-up-to-casing` (e.g. I/i, S/s, T/t) are no longer
+# tracked here. The generator now emits, per affected resource, a
+# `deprecated_aliases` map ({old_name: new_snake_case}) directly in NITRO_RESOURCE_MAP
+# ModuleExecutor reads it to keep old playbooks working (pre-parse translation + deprecation warning) and to restore
+# the single-letter NITRO wire fields before the POST.
+
+# Operational "utility" resources: they do not store config. Each is a synchronous
+# NITRO action (plain POST to /nitro/v1/config/<resource>, no `?action=`) that runs a
+# BSD command on the ADC and returns its output in the response body.
+# ModuleExecutor.main() dispatches these to `run_operational_action` instead of the
+# normal create/update/delete flow.
+OPERATIONAL_UTILITY_RESOURCES = {"ping", "ping6", "traceroute", "traceroute6"}
 
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
 NETSCALER_COMMON_ARGUMENTS = dict(

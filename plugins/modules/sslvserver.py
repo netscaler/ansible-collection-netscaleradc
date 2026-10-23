@@ -339,6 +339,13 @@ options:
       - URL of the page to which to redirect the client in case of a protocol version
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
+  strictclientekucheck:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable strict EKU extension check during client authentication.
   strictsigdigestcheck:
     type: str
     choices:

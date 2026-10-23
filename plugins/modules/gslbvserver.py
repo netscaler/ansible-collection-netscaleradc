@@ -331,6 +331,7 @@ options:
       - DYNAMICCONNECTION
       - BANDWIDTH
       - HEALTH
+      - LLMQUOTA
       - NONE
     description:
       - 'Type of threshold that, when exceeded, triggers spillover. Available settings

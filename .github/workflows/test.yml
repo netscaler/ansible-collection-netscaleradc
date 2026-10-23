@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.11"
+          - "3.12"
     steps:
       - name: Checkout the repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
@@ -51,7 +51,7 @@ jobs:
             exit 1
           fi
       - name: Archive recent build
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f  # v7.0.0
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
         with:
           name: collection-build
           path: netscaler-adc-*.tar.gz
@@ -64,11 +64,11 @@ jobs:
     strategy:
       matrix:
         ansible:
-          - stable-2.15
           - stable-2.16
           - stable-2.17
+          - stable-2.18
         python-version:
-          - "3.11"
+          - "3.12"
     steps:
       - name: Checkout the repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
@@ -118,12 +118,13 @@ jobs:
     strategy:
       matrix:
         ansible:
-          - stable-2.15
+          - stable-2.16
+          - stable-2.18
         python-version:
-          - 3.11
+          - 3.12
         netscaler-version:
-          - 13.1-59.19
-          - 14.1-43.50
+          - 13.1-63.19
+          - 14.1-73.30
     steps:
       - name: Checkout the repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2

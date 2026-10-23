@@ -63,6 +63,10 @@ options:
       - 'OFF'
     description:
       - DHCP acquired routes are saved on the Citrix ADC.
+  subnetselection:
+    type: str
+    description:
+      - Subnet Selection option (RFC 3011) to request IP from a specific subnet.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

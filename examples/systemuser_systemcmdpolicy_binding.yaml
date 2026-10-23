@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.systemuser_systemcmdpolicy_binding:
         state: present
-        username: GD-CTRLUPADC-P-APP
+        username: guest
         policyname: read-only
         priority: '100'

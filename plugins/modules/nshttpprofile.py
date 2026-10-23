@@ -240,6 +240,12 @@ options:
       - Minimum number of HTTP2 connections established to backend server, on receiving
         HTTP requests from client before multiplexing the streams into the available
         HTTP/2 connections.
+  http2smallwndtimeout:
+    type: int
+    description:
+      - Timeout in seconds for HTTP/2 small window stalled streams. Connection is
+        silently closed if a stream remains stalled with zero or small window for
+        this duration. 0 disables the check.
   http2strictcipher:
     type: str
     choices:
@@ -377,6 +383,22 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks \(for example, "my http profile" or ''my http profile''\).'
+  normalizeurl:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable RFC 3986 normalization of incoming URL before validation
+        or consumption.
+  normalizeurltoorigin:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable or disable RFC 3986 URL normalization for request sent to the origin
+        server.
   passprotocolupgrade:
     type: str
     choices:

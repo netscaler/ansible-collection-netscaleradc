@@ -72,6 +72,10 @@ options:
       - SSL
     description:
       - Transport layer's protocol.
+  wasmmodule:
+    type: str
+    description:
+      - Wasm module needs to attach with the user protocol
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

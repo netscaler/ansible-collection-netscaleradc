@@ -126,6 +126,8 @@ options:
       - QUIC_DEFAULT
       - HTTPQUIC_REQ_OVERRIDE
       - HTTPQUIC_REQ_DEFAULT
+      - UDP_REQ_OVERRIDE
+      - UDP_REQ_DEFAULT
     description:
       - 'Specifies the bind point whose policies you want to display. Available settings
         function as follows:'
@@ -155,6 +157,8 @@ options:
         queue.'
       - '* C(HTTPQUIC_REQ_DEFAULT) - Binds the policy to the HTTP_QUIC default response
         queue.'
+      - '* C(UDP_REQ_OVERRIDE) - Binds the policy to the UDP request override queue.'
+      - '* C(UDP_REQ_DEFAULT) - Binds the policy to the UDP request default queue.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -62,7 +62,7 @@ options:
   src:
     type: str
     description:
-      - URL (protocol, host, path, and file name) for the location at which to store
+      - URL (protocol, host, path, and file name) for the location from which to fetch
         the imported XML Schema.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'

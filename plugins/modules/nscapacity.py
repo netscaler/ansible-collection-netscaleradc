@@ -60,6 +60,10 @@ options:
       - Platinum
     description:
       - Product edition.
+  ignoreexpiry:
+    type: bool
+    description:
+      - Value to mention if days to expire data needs to be fetched or not.
   nodeid:
     type: int
     description:

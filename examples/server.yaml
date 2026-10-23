@@ -7,5 +7,5 @@
       delegate_to: localhost
       netscaler.adc.server:
         state: present
-        name: 10.79.42.253
-        ipaddress: 10.79.42.253
+        name: STA_SERVER
+        domain: sta.devalab.com

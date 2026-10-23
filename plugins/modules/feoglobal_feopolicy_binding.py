@@ -82,7 +82,6 @@ options:
       - RES_DEFAULT
       - HTTPQUIC_REQ_OVERRIDE
       - HTTPQUIC_REQ_DEFAULT
-      - NONE
     description:
       - Bindpoint to which the policy is bound.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

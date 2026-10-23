@@ -6,7 +6,7 @@ description: Create a report to help us improve
 title: "[Bug]: "
 labels: ["bug", "triage"]
 # assignees:
-#   - 
+#   -
 projects: ["netscaler/1"]
 body:
   - type: markdown

@@ -7,12 +7,5 @@
       delegate_to: localhost
       netscaler.adc.nsip:
         state: present
-        ipaddress: 10.189.130.5
-        netmask: 255.255.255.255
-        type: GSLBsiteIP
-        vserver: DISABLED
-        telnet: DISABLED
-        ftp: DISABLED
-        gui: DISABLED
-        snmp: DISABLED
-        mgmtaccess: ENABLED
+        ipaddress: 41.4.4.5
+        netmask: 255.255.255.0

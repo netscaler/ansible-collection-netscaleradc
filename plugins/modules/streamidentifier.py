@@ -130,6 +130,7 @@ options:
       - RESPTIME
       - BANDWIDTH
       - RESPTIME_BREACHES
+      - TOKENS
       - NONE
     description:
       - Sort stored records by the specified statistics column, in descending order.
@@ -148,10 +149,14 @@ options:
     type: str
     choices:
       - RESPTIME
+      - TOKENS
       - NONE
     description:
       - 'Track transactions exceeding configured threshold. Transaction tracking can
-        be enabled for following metric: ResponseTime.'
+        be enabled for following metrics: ResponseTime (C(RESPTIME)) or LLM token
+        consumption (C(TOKENS)).'
+      - When set to C(TOKENS), minTransactionThreshold, maxTransactionThreshold, acceptanceThreshold
+        and breachThreshold are not applicable.
       - By default transaction tracking is disabled
   streamidentifier_analyticsprofile_binding:
     type: dict

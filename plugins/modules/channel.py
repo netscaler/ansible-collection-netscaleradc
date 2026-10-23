@@ -204,6 +204,7 @@ options:
       - '40000'
       - '50000'
       - '100000'
+      - '200000'
     description:
       - Ethernet speed of the channel, in Mbps. If the speed of any bound interface
         is greater than or equal to the value set for this parameter, the state of

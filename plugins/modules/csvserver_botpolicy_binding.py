@@ -58,6 +58,7 @@ options:
       - ICA_REQUEST
       - OTHERTCP_REQUEST
       - MQTT_JUMBO_REQ
+      - HTTP_EVENT_RESPONSE
     description:
       - 'Bind point at which policy needs to be bound. Note: Content switching policies
         are evaluated only at request time.'
@@ -79,6 +80,7 @@ options:
     choices:
       - reqvserver
       - resvserver
+      - resHttpEventvserver
       - policylabel
     description:
       - The invocation type.

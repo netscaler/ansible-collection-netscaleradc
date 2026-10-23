@@ -270,6 +270,7 @@ options:
       - '40000'
       - '50000'
       - '100000'
+      - '200000'
     description:
       - Ethernet speed of the interface, in Mbps.
       - 'Notes:'

@@ -5,10 +5,6 @@
 # Copyright (c) 2023 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
-from __future__ import absolute_import, division, print_function
-
-__metaclass__ = type
-
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",

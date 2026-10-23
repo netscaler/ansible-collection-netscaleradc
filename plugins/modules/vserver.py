@@ -90,6 +90,7 @@ options:
       - DYNAMICCONNECTION
       - BANDWIDTH
       - HEALTH
+      - LLMQUOTA
       - NONE
     description:
       - The spillover factor. The system will use this value to determine if it should

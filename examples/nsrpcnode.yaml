@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.nsrpcnode:
         state: present
-        ipaddress: 10.76.126.5
+        ipaddress: 172.16.1.110
         password: REQ_PASSWORD
-        srcip: '*'
+        srcip: 172.16.1.110

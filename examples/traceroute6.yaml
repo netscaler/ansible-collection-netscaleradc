@@ -1,0 +1,54 @@
+---
+# Example: run the ADC `traceroute6` diagnostic with the netscaler.adc collection.
+#
+# `traceroute6` is an operational utility -- it runs `traceroute6` ON the
+# NetScaler ADC and returns the command output. It changes no configuration
+# (always changed=false).
+#
+# Unlike ping/ping6/traceroute, traceroute6 options were NOT renamed for
+# ansible-core 2.18 -- none of its single-letter flags collide by case, so they
+# are used as-is below.
+#
+# Run it:
+#   export NETSCALER_NSIP=<your-adc-ip>
+#   export NETSCALER_NITRO_USER=nsroot
+#   export NETSCALER_NITRO_PASS='<your-adc-password>'
+#   ansible-playbook examples/traceroute6.yaml
+#
+# (nsip/nitro_user/nitro_pass fall back to those env vars automatically, so the
+#  tasks below omit them; override on the CLI with -e nsip=... if you prefer.)
+- name: NetScaler ADC traceroute6 diagnostics
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    # -------------------------------------------------------------------
+    # Simplest form: trace the route to an IPv6 host from the ADC.
+    # -------------------------------------------------------------------
+    - name: Traceroute6 to a host from the ADC
+      delegate_to: localhost
+      register: tr6_basic
+      netscaler.adc.traceroute6:
+        validate_certs: false
+        host: "::1"
+
+    - name: Show the raw traceroute6 output
+      ansible.builtin.debug:
+        var: tr6_basic.traceroute6
+
+    # -------------------------------------------------------------------
+    # Tuned run. traceroute6 keeps its single-letter option names.
+    # -------------------------------------------------------------------
+    - name: Traceroute6 with tuned options
+      delegate_to: localhost
+      register: tr6_tuned
+      netscaler.adc.traceroute6:
+        validate_certs: false
+        host: "::1"
+        I: true          # use ICMP ECHO for probes
+        m: 10            # maximum hop value
+        q: 1             # probes per hop
+        n: true          # numeric output, no DNS resolution
+
+    - name: Show the tuned traceroute6 result
+      ansible.builtin.debug:
+        var: tr6_tuned.traceroute6

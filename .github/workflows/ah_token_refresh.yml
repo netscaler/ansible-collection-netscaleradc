@@ -8,7 +8,8 @@ on:
 permissions: read-all
 jobs:
   refresh:
-    uses: ansible/ansible-content-actions/.github/workflows/refresh_ah_token.yaml@8d811a21e588dc6692299797e9a2bab1205365dc  # main
+    # yamllint disable-line rule:line-length
+    uses: ansible/ansible-content-actions/.github/workflows/refresh_ah_token.yaml@cbdec1f72eeee38b7e60d0f2346c66e622eea02a  # main
     with:
       environment: release
     secrets:

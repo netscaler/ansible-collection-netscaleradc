@@ -1,0 +1,277 @@
+---
+- name: Get NS version
+  delegate_to: localhost
+  ansible.builtin.uri:
+    url: "{{ nitro_protocol }}://{{ nsip }}/nitro/v1/config/nsversion"
+    method: GET
+    headers:
+      X-NITRO-USER: "{{ nitro_user }}"
+      X-NITRO-PASS: "{{ nitro_pass }}"
+    validate_certs: "{{ validate_certs }}"
+  register: ns_ver_resp
+
+- name: Set firmware capability facts
+  ansible.builtin.set_fact:
+    _ns_major: "{{ ns_ver_resp.json.nsversion.version | regex_search('NS(\\d+\\.\\d+)', '\\1') | first | float }}"
+    _ns_build: "{{ ns_ver_resp.json.nsversion.version | regex_search('Build (\\d+\\.\\d+)', '\\1') | first | float }}"
+
+- name: Set http2smallwndtimeout support fact (requires 14.1-72.61+)
+  ansible.builtin.set_fact:
+    supports_http2smallwndtimeout: >-
+      {{ (_ns_major | float > 14.1) or (_ns_major | float == 14.1 and _ns_build | float >= 72.61) }}
+
+- name: NSHTTPPROFILE | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+- name: Assert | NSHTTPPROFILE | ADD | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSHTTPPROFILE | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+- name: Assert | NSHTTPPROFILE | ADD
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSHTTPPROFILE | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+- name: Assert | NSHTTPPROFILE | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+
+# http2smallwndtimeout was added in firmware 14.1-72.61 (CVE-2026-13474).
+# Skip these tasks on older firmware to keep CI green across all test targets.
+- name: NSHTTPPROFILE | SET http2smallwndtimeout | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  when: supports_http2smallwndtimeout
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+    http2smallwndtimeout: 30
+- name: Assert | NSHTTPPROFILE | SET http2smallwndtimeout | --check
+  tags: test
+  when: supports_http2smallwndtimeout
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSHTTPPROFILE | SET http2smallwndtimeout
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  when: supports_http2smallwndtimeout
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+    http2smallwndtimeout: 30
+- name: Assert | NSHTTPPROFILE | SET http2smallwndtimeout
+  tags: test
+  when: supports_http2smallwndtimeout
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSHTTPPROFILE | SET http2smallwndtimeout | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  when: supports_http2smallwndtimeout
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+    http2smallwndtimeout: 30
+- name: Assert | NSHTTPPROFILE | SET http2smallwndtimeout | idempotent
+  tags: test
+  when: supports_http2smallwndtimeout
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+
+- name: NSHTTPPROFILE | UPDATE http2smallwndtimeout
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  when: supports_http2smallwndtimeout
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+    http2smallwndtimeout: 60
+- name: Assert | NSHTTPPROFILE | UPDATE http2smallwndtimeout
+  tags: test
+  when: supports_http2smallwndtimeout
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSHTTPPROFILE | UPDATE http2smallwndtimeout | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  when: supports_http2smallwndtimeout
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: ansible_test_httpprofile
+    http2: ENABLED
+    http2smallwndtimeout: 60
+- name: Assert | NSHTTPPROFILE | UPDATE http2smallwndtimeout | idempotent
+  tags: test
+  when: supports_http2smallwndtimeout
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+
+- name: NSHTTPPROFILE | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    name: ansible_test_httpprofile
+- name: Assert | NSHTTPPROFILE | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSHTTPPROFILE | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    name: ansible_test_httpprofile
+- name: Assert | NSHTTPPROFILE | DELETE
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSHTTPPROFILE | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.nshttpprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    name: ansible_test_httpprofile
+- name: Assert | NSHTTPPROFILE | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"

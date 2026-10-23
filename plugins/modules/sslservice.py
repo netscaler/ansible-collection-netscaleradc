@@ -312,6 +312,14 @@ options:
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
+  strictclientekucheck:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable strict EKU extension check during client authentication. This can be
+        set to C(DISABLED) only for SSL service types Internal and Transparent.
   strictsigdigestcheck:
     type: str
     choices:

@@ -76,6 +76,7 @@ options:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
+      - HTTP_EVENT_RESPONSE
     description:
       - Type of statistics to display.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

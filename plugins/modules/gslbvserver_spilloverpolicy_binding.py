@@ -95,6 +95,7 @@ options:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
+      - HTTP_EVENT_RESPONSE
     description:
       - The bindpoint to which the policy is bound
 extends_documentation_fragment: netscaler.adc.netscaler_adc

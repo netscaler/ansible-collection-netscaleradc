@@ -283,6 +283,16 @@ options:
       - DISABLED
     description:
       - Allow password change requests.
+  passwordlessmgmtaccess:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - This feature configures NetScaler management access to use LDAP exclusively
+        for retrieving user group information. It ensures that LDAP is not used for
+        authenticating user logins (i.e., verifying passwords) for NetScaler management
+        access.
   pushservice:
     type: str
     description:

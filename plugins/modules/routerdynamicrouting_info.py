@@ -5,10 +5,6 @@
 # Copyright (c) 2026 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
 
-from __future__ import absolute_import, division, print_function
-
-__metaclass__ = type
-
 
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -232,7 +228,7 @@ def main():
         if is_exist and response:
             module_result["info"] = {
                 "commandstring": commandstring,
-                "response": response[0].get("output", "")
+                "response": response[0].get("output", ""),
             }
             log("INFO: Successfully retrieved routing information")
         else:

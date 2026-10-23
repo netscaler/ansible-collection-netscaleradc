@@ -9,5 +9,5 @@
         state: present
         nsvlan: '10'
         ifnum:
-          - 1/1
+          - 0/1
         tagged: 'NO'

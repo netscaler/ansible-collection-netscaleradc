@@ -83,6 +83,24 @@ options:
     description:
       - Password expiry days for all the system users. The daystoexpire value ranges
         from 30 to 255.
+  denylist:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - 'Enable or disable denylist protection. The available options are:'
+      - '* C(ON) - Denylist feature is enabled.'
+      - '* C(OFF) - Denylist feature is disabled.'
+  denylistlogging:
+    type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - 'Enable or disable denylist protection logging. The available options are:'
+      - '* C(ON) - Denylist logging is enabled.'
+      - '* C(OFF) - Denylist logging is disabled.'
   doppler:
     type: str
     choices:

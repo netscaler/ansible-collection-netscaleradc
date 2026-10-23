@@ -7,6 +7,8 @@
       delegate_to: localhost
       netscaler.adc.vpnvserver_vpntrafficpolicy_binding:
         state: present
-        name: nsgw_wp_direct2dll_com
-        policy: traffic_pol_vpn_sso_gw
-        priority: '64000'
+        name: Storefront_Gateway
+        policy: Proxy_Apps_Traffic_Policy
+        priority: '240'
+        gotopriorityexpression: END
+        bindpoint: REQUEST

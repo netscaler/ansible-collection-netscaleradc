@@ -7,5 +7,6 @@
       delegate_to: localhost
       netscaler.adc.gslbservice_lbmonitor_binding:
         state: present
-        servicename: GSLB_SVC_USE1_storefront.blackstone.com
-        monitor_name: tcp
+        servicename: gslbService1
+        monitor_name: http
+        weight: '34'

@@ -270,6 +270,14 @@ options:
       - DISABLED
     description:
       - Include the stream identifier session name to be exported.
+  logalljsonfields:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Overrides the field filtering for all analytics profiles, and sends all the
+        fields for the configured insights.
   logstreamovernsip:
     type: str
     choices:

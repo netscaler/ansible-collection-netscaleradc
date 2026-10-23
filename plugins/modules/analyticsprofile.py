@@ -109,7 +109,9 @@ options:
     type: str
     description:
       - This option is for configuring the file containing the data format and metadata
-        required by the analytics endpoint.
+        required by the analytics endpoint. Note that the fields to be exported will
+        be honoured only if the option logAllJsonFields is disabled under appflow
+        param.
   events:
     type: str
     choices:
@@ -274,6 +276,13 @@ options:
       - This option indicates the whether managementlog should be sent to the REST
         collector.
     elements: str
+  mcpsummary:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Enable/disable appflow logging for MCP (Model Context Protocol) traffic.
   metrics:
     type: str
     choices:

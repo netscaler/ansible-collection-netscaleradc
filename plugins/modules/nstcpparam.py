@@ -334,6 +334,14 @@ options:
       - DISABLED
     description:
       - Enable or disable Selective ACKnowledgement (SACK).
+  sendresetreasoncode:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - If enabled, NetScaler includes a debug code indicating the reason for the
+        reset in the TCP Window header field of outgoing TCP RST segments
   slowstartincr:
     type: int
     description:

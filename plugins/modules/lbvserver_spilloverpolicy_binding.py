@@ -56,6 +56,7 @@ options:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
+      - HTTP_EVENT_RESPONSE
     description:
       - The bindpoint to which the policy is bound
   gotopriorityexpression:
@@ -77,6 +78,7 @@ options:
     choices:
       - reqvserver
       - resvserver
+      - resHttpEventvserver
       - policylabel
     description:
       - 'Type of policy label to invoke. Applicable only to rewrite, videooptimization
@@ -85,6 +87,8 @@ options:
         bound to the specified virtual server.'
       - '* C(resvserver) - Evaluate the response against the response-based policies
         bound to the specified virtual server.'
+      - '* resHttpEventVserver - Evaluate the response against the HTTP event response
+        based policies bound to the specified virtual server.'
       - '* C(policylabel) - invoke the request or response against the specified user-defined
         policy label.'
   name:

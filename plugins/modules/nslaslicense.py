@@ -53,6 +53,14 @@ options:
     type: str
     description:
       - Name of the file. It should not include filepath.
+  fixedbandwidth:
+    type: bool
+    description:
+      - apply fixed bandwidth license on ADC
+  nodeid:
+    type: int
+    description:
+      - Unique number that identifies the cluster node.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -7,3 +7,4 @@
       delegate_to: localhost
       netscaler.adc.gslbparameter:
         state: present
+        gslbsvcstatedelaytime: 0

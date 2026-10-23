@@ -50,6 +50,10 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  badipactionthreshold:
+    type: int
+    description:
+      - Number of protocol violation from an IP address before taking action.
   mbf:
     type: str
     choices:

@@ -56,6 +56,14 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  aigwprofilename:
+    type: str
+    description:
+      - Name of the backend AIGW Profile which will be attached to the servicegroup.
+        This parameter enables the servicegroup to process the LLM request/response
+        based on the profile config. Any service item bound to the servicegroup will
+        inherit the backend AIGW Profile bound at the servicegroup level, if it does
+        not have an explicit AIGW Profile given at bind time.
   appflowlog:
     type: str
     choices:
@@ -244,6 +252,10 @@ options:
       - Maximum number of requests that can be sent on a persistent connection to
         the service group.
       - 'Note: Connection requests beyond this value are rejected.'
+  mcpprofilename:
+    type: str
+    description:
+      - Name of MCP profile which will be attached to the servicegroup.
   memberport:
     type: int
     description:
@@ -440,6 +452,10 @@ options:
         to the server. With the C(NO) setting, which is the default, a mapped IP (MIP)
         address or subnet IP (SNIP) address is used as the source IP address to initiate
         server side connections.
+  wasmmodule:
+    type: str
+    description:
+      - Name of the WASM module to bind to this service.
   weight:
     type: int
     description:

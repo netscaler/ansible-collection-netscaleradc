@@ -60,6 +60,12 @@ options:
     description:
       - Maximum number of otp devices user can register. Default value is 4. Max value
         is 255
+  otptype:
+    type: str
+    choices:
+      - gwtest
+    description:
+      - Input flag to generate OTP for the given type.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

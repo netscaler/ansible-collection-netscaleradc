@@ -65,8 +65,8 @@ options:
   src:
     type: str
     description:
-      - URL (protocol, host, path, and name) for the location at which to store the
-        imported JSON error object.
+      - URL (protocol, host, path, and name) for the location from which to fetch
+        the imported JSON error object.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc

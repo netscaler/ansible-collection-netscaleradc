@@ -50,6 +50,14 @@ options:
         in the resource.
       - If no, the module will return error if any non-updatable parameters are provided.
     type: str
+  aigwprofilename:
+    type: str
+    description:
+      - Name of the backend AIGW Profile which will be attached to the servicegroup.
+        This parameter enables the servicegroup to process the LLM request/response
+        based on the profile config. Any service item bound to the servicegroup will
+        inherit the backend AIGW Profile bound at the servicegroup level, if it does
+        not have an explicit AIGW Profile given at bind time.
   customserverid:
     type: str
     description:

@@ -7,5 +7,6 @@
       delegate_to: localhost
       netscaler.adc.gslbvserver_gslbservice_binding:
         state: present
-        name: backup_gslb_portal.bx.com
-        servicename: GSLB_SVC_USE2_portal.bx.com
+        name: gslbVserver1
+        servicename: gslbService1
+        weight: '23'

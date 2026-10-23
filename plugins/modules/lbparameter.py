@@ -186,6 +186,14 @@ options:
     description:
       - Use the ADC location instead of client IP for static proximity LB or GSLB
         decision.
+  radiusmessageauthenticator:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - If enabled, NetScaler will verify the message authenticator and also generate
+        message authenticator if not present.
   retainservicestate:
     type: str
     choices:

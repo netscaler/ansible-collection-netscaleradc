@@ -51,7 +51,7 @@ options:
   communityname:
     type: str
     description:
-      - The SNMP community string. Can consist of 1 to 31 characters that include
+      - The SNMP community string. Can consist of 1 to 32 characters that include
         uppercase and lowercase letters,numbers and special characters.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'

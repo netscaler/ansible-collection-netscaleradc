@@ -7,9 +7,5 @@
       delegate_to: localhost
       netscaler.adc.lbvserver:
         state: present
-        name: lb_dns_01
-        servicetype: DNS
-        ipv46: 169.254.100.2
-        port: 53
-        persistencetype: NONE
-        clttimeout: 120
+        name: lb4
+        servicetype: SSL

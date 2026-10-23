@@ -30,6 +30,7 @@ options:
     choices:
       - present
       - absent
+      - flushed
       - unset
     default: present
     description:
@@ -38,6 +39,7 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(flushed), the resource will be flushed on the NetScaler ADC node.
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   remove_non_updatable_params:

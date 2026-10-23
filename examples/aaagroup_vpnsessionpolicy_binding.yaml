@@ -7,7 +7,6 @@
       delegate_to: localhost
       netscaler.adc.aaagroup_vpnsessionpolicy_binding:
         state: present
-        groupname: External
-        policy: External_receiver_session_pol
-        priority: '110'
-        gotopriorityexpression: NEXT
+        groupname: group1
+        policy: vpn_sespol2
+        priority: '15'

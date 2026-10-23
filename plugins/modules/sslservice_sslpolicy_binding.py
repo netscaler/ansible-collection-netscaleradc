@@ -83,6 +83,15 @@ options:
     type: str
     description:
       - Name of the SSL service for which to set advanced configuration.
+  type:
+    type: str
+    choices:
+      - SERVER_AUTH_VAL
+    description:
+      - 'The phase of the SSL connection in which the policy rule is evaluated. Possible
+        Value: SERVER_AUTH_VAL_REQ. The bindpoint means::'
+      - '1. SERVER_AUTH_VAL_REQ: Policy evaluation will be performed during the verification
+        of the server certificate. Action allowed with this type is: OCSPCERTVALIDATION.'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

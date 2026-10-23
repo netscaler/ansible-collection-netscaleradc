@@ -383,8 +383,9 @@ options:
       - 'ON'
       - 'OFF'
     description:
-      - Enable or disable HTTP tracking for packets proxied via vpn vserver using
-        GSLB connection proxy feature.
+      - Use separate TCP connections for each connection proxy request in GSLB Active-Active
+        setups. Improves session isolation but may impact performance due to increased
+        connections and TLS overhead. Disabled by default.
   icaproxy:
     type: str
     choices:
@@ -571,6 +572,10 @@ options:
       - DISABLED
     description:
       - Enables or disables the secure private access configuration.
+  secureprivateaccessprofile:
+    type: str
+    description:
+      - Clears Secure Private Access profile that may be set.
   sesstimeout:
     type: int
     description:

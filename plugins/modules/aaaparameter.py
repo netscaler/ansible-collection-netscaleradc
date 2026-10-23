@@ -104,6 +104,13 @@ options:
       - DISABLED
     description:
       - Option to enable/disable API cache feature.
+  classicendpoints:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Parameter to enable/disable classic endpoints
   defaultauthtype:
     type: str
     choices:
@@ -264,6 +271,13 @@ options:
       - '* C(DISABLED) - No Endpoint WAF protection.'
       - Currently supported only in default partition
     elements: str
+  webviewendpoints:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Parameter to enable/disable webview endpoints
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

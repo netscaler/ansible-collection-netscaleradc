@@ -71,6 +71,8 @@ options:
       - TXT
       - NAPTR
       - CAA
+      - SVCB
+      - HTTPS
     description:
       - Filter the DNS records to be flushed.e.g flush dns proxyRecords -type C(A)   will
         flush only the C(A) records from the cache.

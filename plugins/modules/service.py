@@ -69,6 +69,10 @@ options:
       - Use Layer 2 mode to bridge the packets sent to this service if it is marked
         as DOWN. If the service is DOWN, and this parameter is disabled, the packets
         are dropped.
+  aigwprofilename:
+    type: str
+    description:
+      - Name of the AIGW Profile that contains AIGW Endpoint setting for the service.
   all:
     type: bool
     description:
@@ -229,6 +233,10 @@ options:
       - Maximum number of requests that can be sent on a persistent connection to
         the service.
       - 'Note: Connection requests beyond this value are rejected.'
+  mcpprofilename:
+    type: str
+    description:
+      - Name of MCP profile which will be attached to the service.
   monconnectionclose:
     type: str
     choices:
@@ -420,6 +428,10 @@ options:
         ns mode and disable ns mode CLI commands, or in the System > Settings > Configure
         modes > Configure Modes dialog box). However, you can override this setting
         after you create the service.
+  wasmmodule:
+    type: str
+    description:
+      - Name of the WASM module to bind to this service.
   weight:
     type: int
     description:

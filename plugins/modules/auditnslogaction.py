@@ -92,6 +92,13 @@ options:
       - '* C(MMDDYYYY) - U.S. style month/date/year format.'
       - '* C(DDMMYYYY) - European style date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
+  denylistviolations:
+    type: str
+    choices:
+      - ENABLED
+      - DISABLED
+    description:
+      - Log denylist violations
   domainresolvenow:
     type: bool
     description:
@@ -212,13 +219,6 @@ options:
       - 'Available settings function as follows:'
       - '* C(GMT_TIME). Coordinated Universal Time.'
       - '* C(LOCAL_TIME). The server''s timezone setting.'
-  trafficplane:
-    type: str
-    choices:
-      - MGMT
-      - DATA
-    description:
-      - Traffic Plane to which the logs will be sent.
   urlfiltering:
     type: str
     choices:

@@ -58,6 +58,7 @@ options:
       - ICA_REQUEST
       - OTHERTCP_REQUEST
       - MQTT_JUMBO_REQ
+      - HTTP_EVENT_RESPONSE
     description:
       - The bindpoint to which the policy is bound
   gotopriorityexpression:
@@ -78,6 +79,7 @@ options:
     choices:
       - reqvserver
       - resvserver
+      - resHttpEventvserver
       - policylabel
     description:
       - The invocation type.

@@ -64,6 +64,10 @@ options:
       - 'Cluster IP address. Specify this parameter to connect to the remote cluster
         site for GSLB auto-sync. Note: The cluster IP address is defined when creating
         the cluster.'
+  krpcnodesrcip:
+    type: str
+    description:
+      - Source IP address to be used to communicate with this GSLB site.
   metricexchange:
     type: str
     choices:

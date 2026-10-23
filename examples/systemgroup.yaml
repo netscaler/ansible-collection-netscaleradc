@@ -7,6 +7,6 @@
       delegate_to: localhost
       netscaler.adc.systemgroup:
         state: present
-        groupname: Network - CitrixADC - P - ReadOnly
-        allowedmanagementinterface:
-          - API
+        groupname: network
+        promptstring: network-%u
+        timeout: 1800
