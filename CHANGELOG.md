@@ -7,44 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.19.0] - 2026-08-17
+## [3.0.0] - 2026-10-22
 
 ### Added
 
-- Refreshed the `netscaler.adc` collection metadata to NetScaler ADC 14.1-73.29 (73.x), generated from the `ns-ansible-tools-73.29` package. Supported resources grew from 940 to 963.
+- Refreshed the `netscaler.adc` collection metadata to NetScaler ADC 14.1-73.x.
 - 21 new modules:
   - Secure Private Access: `vpnsecureprivateaccessprofile`, `aaagroup_vpnsecureprivateaccessprofile_binding`, `aaauser_vpnsecureprivateaccessprofile_binding`, `vpnglobal_vpnsecureprivateaccessprofile_binding`, `vpnvserver_vpnsecureprivateaccessprofile_binding`.
   - WASM / content inspection: `wasmfile`, `wasmmodule`, `contentinspectionwasmprofile`.
   - AI gateway / MCP: `nsaigwprofile`, `mcpprofile`.
   - Cloud routing: `cloudroutes`, `cloudtrafficroutes`, `cloudgcpstaticroutes`.
   - Other: `aaaproxyparam`, `dnssvcbrec`, `dpsparameter`, `hasecureheartbeats`, `ssldynamicclientcertcache`, `sslzerotouchparam`, `systemautosaveparam`, `systemscalablemgmtthreads`.
-- Registered all 21 new modules in the `default_args` action group in `meta/runtime.yml` so they support group-level `module_defaults`, and added their `missing-gplv3-license` entries to the sanity ignore files (`ignore-2.15.txt` through `ignore-2.18.txt`).
-- New options and choices on existing resources from 73.29 (for example `aigwprofilename` and the `LEASTLLMTOKENLATENCY` load-balancing method on `lbvserver`).
+- New options and choices on existing resources from 73.x (for example `aigwprofilename` and the `LEASTLLMTOKENLATENCY` load-balancing method on `lbvserver`).
 
 ### Changed
 
-- Added the `from __future__ import absolute_import, division, print_function` / `__metaclass__ = type` boilerplate to all generated modules.
-- Regenerated `supported_modules_matrix.md` for the 73.29 resource set.
-- The `ping`, `ping6`, and `traceroute` case-colliding option renames introduced in 2.18.0 are preserved on top of the 73.29 refresh (the raw single-letter NITRO names in the 73.29 source are not reintroduced).
+- `ping`, `ping6`, `traceroute`: renamed the case-colliding single-letter options to descriptive snake_case names to satisfy the ansible-core 2.18 check (`I`->`interface`, `i`->`interval`, `S`->`source_ip`, `s`->`packet_size`, `T`->`traffic_domain`, `t`->`timeout`; traceroute additionally `M`->`min_ttl`, `m`->`max_ttl`, `P`->`protocol`, `p`->`base_port`, `S`->`summary`, `s`->`source_ip`, `t`->`tos`). The old single-letter names continue to work via a pre-parse translation shim in `ModuleExecutor` and emit a deprecation warning.
 
-## [2.18.0] - 2026-07-17
+### Updated
 
-### Added
-
-- Officially validated on ansible-core 2.18 (CI sanity and integration lanes added). Minimum required Ansible Core version floor kept at `>=2.16.0` (Option A, no breaking change).
-- `ping`, `ping6`, `traceroute`, `traceroute6`: these operational commands now actually execute against the ADC. `ModuleExecutor` dispatches them to a new `run_operational_action` path (plain `POST /nitro/v1/config/<resource>`, no `?action=`) and returns the ADC command output under a result key named after the resource (the NITRO body is unwrapped, so the command output is at `result.<resource>.response`). For the renamed modules the snake_case options are translated back to the single-letter NITRO wire fields (by inverting `LEGACY_ARG_ALIASES` in `ModuleExecutor._to_wire_payload`) before the POST, so the wire contract is unchanged. `get_valid_desired_states` now accepts `state=present` for these resources so they can be invoked (previously an empty `state` choices list rejected the default).
-- `ping`, `ping6`, `traceroute`, `traceroute6`: added example playbooks under `examples/` and populated each module's `EXAMPLES` documentation block, demonstrating the new snake_case option names, the retained (deprecated) single-letter aliases, and how to read the command output from `result.<resource>`.
-
-### Changed
-
-- `ping`, `ping6`, `traceroute`: renamed the case-colliding single-letter options to descriptive snake_case names to satisfy the ansible-core 2.18 `validate-modules:option-equal-up-to-casing` check (`I`->`interface`, `i`->`interval`, `S`->`source_ip`, `s`->`packet_size`, `T`->`traffic_domain`, `t`->`timeout`; traceroute additionally `M`->`min_ttl`, `m`->`max_ttl`, `P`->`protocol`, `p`->`base_port`, `S`->`summary`, `s`->`source_ip`, `t`->`tos`). The old single-letter names continue to work via a pre-parse translation shim in `ModuleExecutor` and now emit a deprecation warning (to be removed in 3.0.0). No breaking change.
-- `plugins/module_utils/client.py`: migrated `ansible.module_utils._text` import to `ansible.module_utils.common.text.converters` (deprecation hygiene).
-- `plugins/connection/ssh_netscaler_adc.py`: annotated ansible-core-versioned options with `version_added_collection: ansible.builtin` for 2.18 sanity cleanliness.
-- `.github/workflows/test.yml`: added `stable-2.18` to the sanity and integration CI lanes (floor unchanged at `>=2.16.0`). Certification baseline remains ansible-core 2.16.0 to match the Automation Hub import process.
+- Added `stable-2.18` to the sanity and integration CI lanes (floor unchanged at `>=2.16.0`).
+- Integration tests now run against NetScaler CPX `13.1-63.19` and `14.1-73.30`.
+- Bumped actions/upload-artifact from 7.0.0 to 7.0.2.
+- Bumped ossf/scorecard-action to commit `4eaacf05` (v2.4.3).
+- Bumped the ansible/team-devtools `release_collection.yml` reusable workflow to commit `a8b84b38`.
+- Bumped the ansible/ansible-content-actions `refresh_ah_token.yaml` reusable workflow to commit `cbdec1f7`.
 
 ### Deprecated
 
-- `ping`, `ping6`, `traceroute`: the legacy single-letter option names (e.g. `I`, `i`, `S`, `s`, `T`, `t`, `M`, `m`, `P`, `p`) are deprecated in favor of the new descriptive names and will be removed in 3.0.0.
+- `ping`, `ping6`, `traceroute`: the legacy single-letter option names (e.g. `I`, `i`, `S`, `s`, `T`, `t`, `M`, `m`, `P`, `p`) are deprecated in favor of the new descriptive names.
+
 
 ## [2.17.0] - 2026-07-14
 
@@ -310,7 +302,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.17.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.17.0...3.0.0
 [2.17.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.16.0...2.17.0
 [2.16.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.15.0...2.16.0
 [2.15.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.14.0...2.15.0
