@@ -37,6 +37,13 @@ def get_netscaler_version(client):
         return (0.0, 0.0)  # return a dummy version
 
 
+# NITRO-BUG: Some resources return GET response under a different key than the resource name.
+# Map resource_name -> actual response key in the JSON body.
+NITRO_RESPONSE_KEY_ALIASES = {
+    "nslimitselector": "streamselector",
+}
+
+
 @trace
 def get_resource(client, resource_name, resource_id=None, resource_module_params=None):
     if resource_module_params is None:
@@ -112,8 +119,10 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
         return False, []
     if status_code in HTTP_SUCCESS_CODES:
         # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
+        # NITRO-BUG: Some resources return data under a different key (e.g. nslimitselector -> streamselector)
+        response_key = NITRO_RESPONSE_KEY_ALIASES.get(resource_name, resource_name)
         if (
-            resource_name not in response_body
+            response_key not in response_body
             and resource_name not in DYNAMIC_PROTOCOLS
         ):
             if resource_name == "sslcipher":
@@ -129,7 +138,7 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
                 DYNAMIC_PROTOCOLS_ALIAS[resource_name], {}
             )
         else:
-            return_response = response_body[resource_name]
+            return_response = response_body[response_key]
         # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
         # So, we are converting the keys to lowercase.
         # except for `ping` and `traceroute`, all the othe resources returns a keys with lowercase.
