@@ -11,8 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Refreshed the `netscaler.adc` collection metadata to NetScaler ADC 14.1-73.x. Supported resources grew from 940 to 963.
-- 21 new modules ([#630]):
+- Refreshed the `netscaler.adc` collection metadata to NetScaler ADC 14.1-73.x.
+- 21 new modules:
   - Secure Private Access: `vpnsecureprivateaccessprofile`, `aaagroup_vpnsecureprivateaccessprofile_binding`, `aaauser_vpnsecureprivateaccessprofile_binding`, `vpnglobal_vpnsecureprivateaccessprofile_binding`, `vpnvserver_vpnsecureprivateaccessprofile_binding`.
   - WASM / content inspection: `wasmfile`, `wasmmodule`, `contentinspectionwasmprofile`.
   - AI gateway / MCP: `nsaigwprofile`, `mcpprofile`.
