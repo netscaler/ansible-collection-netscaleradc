@@ -173,7 +173,7 @@ class ModuleExecutor(object):
         for old, new in self._renamed_legacy_args:
             self.module.deprecate(
                 "Option '%s' is deprecated; use '%s' instead." % (old, new),
-                version="3.0.0",  # next major of netscaler.adc
+                version="4.0.0",  # next major of netscaler.adc
                 collection_name="netscaler.adc",
             )
 
