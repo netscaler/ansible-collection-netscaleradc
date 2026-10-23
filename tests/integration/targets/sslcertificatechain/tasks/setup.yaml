@@ -1,0 +1,159 @@
+---
+# Setup: Create a root CA, intermediate CA, and leaf cert for chain linking tests.
+# The leaf is linked to the intermediate via linkcertkeyname, but the intermediate
+# is NOT linked to root. This tests that sslcertificatechain POST completes the chain.
+
+- name: Generate test certificates locally
+  delegate_to: localhost
+  block:
+    - name: Create temp directory
+      ansible.builtin.tempfile:
+        state: directory
+        prefix: sslchain_test_
+      register: cert_dir
+
+    - name: Generate Root CA key and cert
+      ansible.builtin.command:
+        cmd: >
+          openssl req -x509 -newkey rsa:2048 -nodes
+          -keyout {{ cert_dir.path }}/root.key
+          -out {{ cert_dir.path }}/root.crt
+          -days 365 -subj "/CN=TestChain-RootCA"
+
+    - name: Generate Intermediate key and CSR
+      ansible.builtin.command:
+        cmd: >
+          openssl req -newkey rsa:2048 -nodes
+          -keyout {{ cert_dir.path }}/intermediate.key
+          -out {{ cert_dir.path }}/intermediate.csr
+          -subj "/CN=TestChain-IntermediateCA"
+
+    - name: Sign Intermediate with Root
+      ansible.builtin.command:
+        cmd: >
+          openssl x509 -req
+          -in {{ cert_dir.path }}/intermediate.csr
+          -CA {{ cert_dir.path }}/root.crt
+          -CAkey {{ cert_dir.path }}/root.key
+          -CAcreateserial
+          -out {{ cert_dir.path }}/intermediate.crt
+          -days 365 -extfile /dev/stdin
+        stdin: |
+          basicConstraints=critical,CA:true,pathlen:0
+          keyUsage=critical,keyCertSign,cRLSign
+
+    - name: Generate Leaf key and CSR
+      ansible.builtin.command:
+        cmd: >
+          openssl req -newkey rsa:2048 -nodes
+          -keyout {{ cert_dir.path }}/leaf.key
+          -out {{ cert_dir.path }}/leaf.csr
+          -subj "/CN=TestChain-Leaf"
+
+    - name: Sign Leaf with Intermediate
+      ansible.builtin.command:
+        cmd: >
+          openssl x509 -req
+          -in {{ cert_dir.path }}/leaf.csr
+          -CA {{ cert_dir.path }}/intermediate.crt
+          -CAkey {{ cert_dir.path }}/intermediate.key
+          -CAcreateserial
+          -out {{ cert_dir.path }}/leaf.crt
+          -days 365
+
+- name: Upload Root CA cert file
+  delegate_to: localhost
+  netscaler.adc.systemfile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    filename: "TestChain-RootCA.crt"
+    filelocation: "/nsconfig/ssl/"
+    fileencoding: "BASE64"
+    filecontent: "{{ lookup('file', cert_dir.path ~ '/root.crt') | b64encode }}"
+
+- name: Upload Intermediate CA cert file
+  delegate_to: localhost
+  netscaler.adc.systemfile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    filename: "TestChain-IntermediateCA.crt"
+    filelocation: "/nsconfig/ssl/"
+    fileencoding: "BASE64"
+    filecontent: "{{ lookup('file', cert_dir.path ~ '/intermediate.crt') | b64encode }}"
+
+- name: Upload Leaf cert file (leaf + intermediate + root concatenated)
+  delegate_to: localhost
+  netscaler.adc.systemfile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    filename: "TestChain-Leaf.crt"
+    filelocation: "/nsconfig/ssl/"
+    fileencoding: "BASE64"
+    filecontent: "{{ (lookup('file', cert_dir.path ~ '/leaf.crt') ~ '\n' ~ lookup('file', cert_dir.path ~ '/intermediate.crt') ~ '\n' ~ lookup('file', cert_dir.path ~ '/root.crt')) | b64encode }}"
+
+- name: Upload Leaf key file
+  delegate_to: localhost
+  netscaler.adc.systemfile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    filename: "TestChain-Leaf.key"
+    filelocation: "/nsconfig/ssl/"
+    fileencoding: "BASE64"
+    filecontent: "{{ lookup('file', cert_dir.path ~ '/leaf.key') | b64encode }}"
+
+- name: Create Root CA certkey
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    certkey: "{{ root_cert }}"
+    cert: "TestChain-RootCA.crt"
+    inform: PEM
+
+- name: Create Intermediate CA certkey (NOT linked to root)
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    certkey: "{{ intermediate_cert }}"
+    cert: "TestChain-IntermediateCA.crt"
+    inform: PEM
+
+- name: Create Leaf certkey (linked to intermediate only)
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    certkey: "{{ leaf_cert }}"
+    cert: "TestChain-Leaf.crt"
+    key: "TestChain-Leaf.key"
+    inform: PEM
+    linkcertkeyname: "{{ intermediate_cert }}"

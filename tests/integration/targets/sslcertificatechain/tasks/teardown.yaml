@@ -1,0 +1,33 @@
+---
+- name: Delete Leaf certkey
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    certkey: "{{ leaf_cert }}"
+
+- name: Delete Intermediate certkey
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    certkey: "{{ intermediate_cert }}"
+
+- name: Delete Root certkey
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    certkey: "{{ root_cert }}"
