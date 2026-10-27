@@ -13,6 +13,8 @@ from .constants import (
     HTTP_RESOURCE_ALREADY_EXISTS,
     HTTP_RESOURCE_NOT_FOUND,
     HTTP_SUCCESS_CODES,
+    NITRO_BOOLEAN_FALSE_VALUES,
+    NITRO_BOOLEAN_TRUE_VALUES,
 )
 from .decorators import trace
 from .logger import log
@@ -156,9 +158,59 @@ def get_resource(client, resource_name, resource_id=None, resource_module_params
     return False, []
 
 
+def _normalize_boolean_synonyms(resource_name, readwrite_arguments, resource):
+    # FIXME: NITRO-BUG: some boolean-like attributes are read back in a different vocabulary
+    # than the one NITRO accepts on write. Eg: `nsrpcnode.secure` is set with YES/NO, but GET
+    # returns ON/OFF. Map such a value to the declared choice with the same meaning, so that it
+    # can be compared with the playbook value. Values that already are one of the declared
+    # choices, and values that are not boolean-like (eg: numbers), are left untouched.
+    # The rewritten values must not be sent back to NITRO as GET args/filters, since NITRO
+    # matches those against the vocabulary it returns. GET results are only sent back for
+    # bindings (update_bindings/delete_bindings); no *_binding resource has an affected
+    # get/delete arg key or bindprimary key today.
+    # Refer Issue: #636 (https://github.com/netscaler/ansible-collection-netscaleradc/issues/636)
+    for attribute, value in list(resource.items()):
+        if not isinstance(value, str):
+            continue
+        attribute_spec = readwrite_arguments.get(attribute)
+        if not isinstance(attribute_spec, dict):
+            continue
+        choices = attribute_spec.get("choices") or []
+        if len(choices) != 2:
+            continue
+        declared = {str(choice).upper(): choice for choice in choices}
+        if value.upper() in declared:
+            continue
+        true_choices = [
+            c for u, c in declared.items() if u in NITRO_BOOLEAN_TRUE_VALUES
+        ]
+        false_choices = [
+            c for u, c in declared.items() if u in NITRO_BOOLEAN_FALSE_VALUES
+        ]
+        if len(true_choices) != 1 or len(false_choices) != 1:
+            continue
+        if value.upper() in NITRO_BOOLEAN_TRUE_VALUES:
+            normalized_value = true_choices[0]
+        elif value.upper() in NITRO_BOOLEAN_FALSE_VALUES:
+            normalized_value = false_choices[0]
+        else:
+            continue
+        log(
+            "DEBUG: NITRO returned `%s` for `%s.%s` (declared choices: %s). Treating it as `%s`"
+            % (value, resource_name, attribute, choices, normalized_value)
+        )
+        resource[attribute] = normalized_value
+
+
 @trace
 def fix_nitro_anomolies(resource_name, resource_module_params, return_response):
+    readwrite_arguments = NITRO_RESOURCE_MAP.get(resource_name, {}).get(
+        "readwrite_arguments", {}
+    )
     for resource in return_response:
+        if isinstance(resource, dict):
+            _normalize_boolean_synonyms(resource_name, readwrite_arguments, resource)
+
         # FIXME: NITRO-BUG: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
         # Hence, we will set it to `SEC` to make it idempotent
         # Refer Issue: #324 (https://github.com/netscaler/ansible-collection-netscaleradc/issues/324)

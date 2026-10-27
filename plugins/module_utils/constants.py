@@ -21,6 +21,11 @@ NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES = [
 
 ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE = {
     "sslcertkey": {"password"},
+    # action-only parameters of `disable`: never returned by GET, not in add/update payloads
+    "server": {"delay", "graceful"},
+    "service": {"delay", "graceful"},
+    "servicegroup": {"delay", "graceful"},
+    "gslbservicegroup": {"delay", "graceful"},
 }
 
 # NITRO accepts some attributes with a name and responsds with a different name in its GET reponse.
@@ -34,6 +39,73 @@ NITRO_ATTRIBUTES_ALIASES = {
         "ip": "ipaddress",
         "ipaddress": "ip",  # For PUT payloads and GET responses
     }
+}
+
+# NITRO-BUG (issue #636): for some boolean-like attributes NITRO accepts one vocabulary on
+# write but returns another one in its GET response. Eg: `nsrpcnode.secure` is set with
+# YES/NO but read back as ON/OFF; `nsappflowparam.http*` are set with ENABLED/DISABLED but
+# read back as ON/OFF. `fix_nitro_anomolies()` rewrites such a GET value to the declared
+# choice with the same meaning, but only when the attribute's declared choices are exactly
+# one word from each set below and the returned value is not one of the declared choices.
+# Do not relax the "exactly 2 choices" rule: NITRO does not treat these words as synonyms
+# everywhere. Eg: `vpnsessionaction.clientlessvpnmode` declares ON/OFF/DISABLED, and there
+# OFF != DISABLED. Note also that widening the generated choices of an affected attribute
+# (eg: adding ON/OFF to `nsrpcnode.secure`) silently disables this rule for it.
+NITRO_BOOLEAN_TRUE_VALUES = {"YES", "ON", "ENABLED", "ENABLE", "TRUE"}
+NITRO_BOOLEAN_FALSE_VALUES = {"NO", "OFF", "DISABLED", "DISABLE", "FALSE"}
+
+# `state: enabled|disabled` sends the enable/disable action only when the current state read
+# from the GET response differs (issue #636). The current state is read from the attribute
+# listed here, or from `state` for resources not listed. `None` means that the state cannot be
+# read reliably, so the action is always sent (legacy behaviour).
+ENABLE_DISABLE_STATE_ATTRIBUTE = {
+    # GET returns no `state` for lbvserver; its operational `curstate` is read instead
+    # (see ENABLE_DISABLE_CURSTATE_VALUES)
+    "lbvserver": "curstate",
+    "systemextramgmtcpu": "configuredstate",
+    "systemnsbtracing": "configuredstate",
+    # only `effectivestate` is returned, which may differ from the configured state until reboot
+    "filesystemencryption": None,
+    # the enabled features/modes are returned as a list, not as a single state
+    "nsfeature": None,
+    "nsmode": None,
+    # NITRO enable/disable of lbmonitor always targets a monitor binding (servicename/servicegroupname
+    # is mandatory, errorcode 1095); the monitor's own `state` is not what the action changes
+    "lbmonitor": None,
+    # GET returns no `state`; `svrstate` is OUT OF SERVICE and `dup_state` vanishes also when only the
+    # parent server is disabled, so the service's own admin state cannot be read (14.1-73.33)
+    "service": None,
+    # enable/disable is redirected to `service`; same ambiguity (not verified on a device)
+    "gslbservice": None,
+    # GET is identical for an enabled and a disabled authentication vserver (14.1-73.33)
+    "authenticationvserver": None,
+}
+
+# For these singletons the GET returns one boolean per feature/mode, keyed by the lower-case short
+# code (eg: `lb`, `usnip`). Long aliases (eg: `LoadBalancing`) have no such key and are "unknown".
+ENABLE_DISABLE_LIST_ATTRIBUTE = {"nsfeature": "feature", "nsmode": "mode"}
+
+# Values of the above state attributes and the configured state that they imply. Any other
+# value (eg: `UNSET` for snmpalarm, `GOING OUT OF SERVICE`) is treated as unknown.
+ENABLE_DISABLE_STATE_VALUES = {
+    "ENABLED": "ENABLED",
+    "DISABLED": "DISABLED",
+}
+# Operational vserver state values; only used for attributes named `curstate` (see above).
+# UP/DOWN imply that the vserver itself is enabled. `OUT OF SERVICE` is deliberately not
+# mapped: it is also reported for an enabled vserver whose VIP is disabled (14.1-73.33), so
+# it is treated as unknown and the disable action is always sent.
+ENABLE_DISABLE_CURSTATE_VALUES = dict(
+    ENABLE_DISABLE_STATE_VALUES,
+    **{"UP": "ENABLED", "DOWN": "ENABLED"},
+)
+
+# Enable/disable payload keys that redirect the action to a sub-object (eg: a servicegroup member
+# or a monitor bound to a service). The state of that sub-object is not the `state` returned for the
+# resource itself, so the action is always sent when any of these keys is given.
+ENABLE_DISABLE_SUBOBJECT_KEYS = {
+    "gslbservicegroup": {"servername", "port"},
+    "servicegroup": {"servername", "port"},
 }
 
 # Deprecated single-letter option names that collided under ansible-core >= 2.18

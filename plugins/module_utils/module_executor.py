@@ -36,6 +36,11 @@ from .common import (
 )
 from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
+    ENABLE_DISABLE_CURSTATE_VALUES,
+    ENABLE_DISABLE_LIST_ATTRIBUTE,
+    ENABLE_DISABLE_STATE_ATTRIBUTE,
+    ENABLE_DISABLE_STATE_VALUES,
+    ENABLE_DISABLE_SUBOBJECT_KEYS,
     GETALL_ONLY_RESOURCES,
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
@@ -703,6 +708,11 @@ class ModuleExecutor(object):
                     # in case user wants to remove non-updatable params, we will remove them from the module_params
                     for key in immutable_keys_list:
                         self.resource_module_params.pop(key)
+                    # Keep --diff in line with what is applied: drop the ignored keys from before/after
+                    self.update_diff_list(
+                        existing=self.existing_resource,
+                        desired=self.resource_module_params,
+                    )
 
                     is_identical, temp_immutable_list = self.is_resource_identical()
                     # temp_immutable_list is a dummy as '_' is not allowed in lint.
@@ -714,7 +724,9 @@ class ModuleExecutor(object):
                         self.module.warn(msg)
                         log(msg)
                         self.module_result["changed"] = False
-                        self.module.exit_json(**self.module_result)
+                        # Do not exit here: main() must still apply state=enabled/disabled,
+                        # sync bindings, save the config and log out
+                        return
                     else:
                         if self.resource_name.endswith(
                             "_binding"
@@ -749,23 +761,103 @@ class ModuleExecutor(object):
                             self.return_failure(err)
 
     @trace
-    def enable_or_disable(self, desired_state):
-        not_implemented_msg = (
-            "--diff mode is not implemented for enable/disable operations"
+    def get_existing_admin_state(self):
+        """
+        Return the current state (`ENABLED`/`DISABLED`) of the resource as read from its GET
+        response, or None if it cannot be determined reliably.
+        """
+        if not self.existing_resource:
+            return None
+        list_attribute = ENABLE_DISABLE_LIST_ATTRIBUTE.get(self.resource_name)
+        if list_attribute:
+            flags = [
+                self.existing_resource.get(str(item).lower())
+                for item in self.resource_module_params.get(list_attribute) or []
+            ]
+            if not flags or not all(isinstance(flag, bool) for flag in flags):
+                return None
+            if all(flags):
+                return "ENABLED"
+            if not any(flags):
+                return "DISABLED"
+            return None
+        state_attribute = ENABLE_DISABLE_STATE_ATTRIBUTE.get(
+            self.resource_name, "state"
         )
-        self.update_diff_list(custom_msg=not_implemented_msg)
+        if not state_attribute:
+            return None
+        if ENABLE_DISABLE_SUBOBJECT_KEYS.get(self.resource_name, set()) & set(
+            self.resource_module_params.keys()
+        ):
+            # The action targets a sub-object (eg: a servicegroup member), not the resource itself
+            return None
+        existing_state = self.existing_resource.get(state_attribute)
+        if not isinstance(existing_state, str):
+            return None
+        values = (
+            ENABLE_DISABLE_CURSTATE_VALUES
+            if state_attribute == "curstate"
+            else ENABLE_DISABLE_STATE_VALUES
+        )
+        return values.get(existing_state.upper())
+
+    @trace
+    def enable_or_disable(self, desired_state):
+        if self.resource_name.endswith("_binding"):
+            # For bindings, `state` is part of the binding payload and is already
+            # reconciled by create_or_update(). No separate enable/disable call is made.
+            return
+        desired_admin_state = desired_state.upper()
+        existing_admin_state = self.get_existing_admin_state()
+        if existing_admin_state == desired_admin_state:
+            log(
+                "INFO: Resource `%s:%s` is already %s. No change required."
+                % (self.resource_name, self.resource_id, existing_admin_state)
+            )
+            return
+
         self.module_result["changed"] = True
-        if not self.resource_name.endswith("_binding"):
-            if desired_state == "enabled":
-                ok, err = enable_resource(
-                    self.client, self.resource_name, self.resource_module_params
+        if existing_admin_state is None:
+            log(
+                "INFO: Current state of resource `%s:%s` could not be determined. Will be %s."
+                % (self.resource_name, self.resource_id, desired_admin_state)
+            )
+            self.update_diff_list(
+                custom_msg="+   state: %s (current state unknown)" % desired_admin_state
+            )
+        else:
+            log(
+                "INFO: Resource `%s:%s` is %s. Will be %s."
+                % (
+                    self.resource_name,
+                    self.resource_id,
+                    existing_admin_state,
+                    desired_admin_state,
                 )
-            else:
-                ok, err = disable_resource(
-                    self.client, self.resource_name, self.resource_module_params
-                )
-            if not ok:
-                self.return_failure(err)
+            )
+            self.diff_dict["before"] = dict(
+                self.diff_dict.get("before", {}), state=existing_admin_state
+            )
+            self.diff_dict["after"] = dict(
+                self.diff_dict.get("after", {}), state=desired_admin_state
+            )
+
+        if self.module.check_mode:
+            log(
+                "DEBUG: check_mode is enabled, skipping the `%s` action for resource `%s`"
+                % (desired_state, self.resource_name)
+            )
+            return
+        if desired_state == "enabled":
+            ok, err = enable_resource(
+                self.client, self.resource_name, self.resource_module_params
+            )
+        else:
+            ok, err = disable_resource(
+                self.client, self.resource_name, self.resource_module_params
+            )
+        if not ok:
+            self.return_failure(err)
 
     @trace
     def delete(self):
@@ -1283,13 +1375,8 @@ class ModuleExecutor(object):
                     if "linkcertkeyname" in self.resource_module_params:
                         self.act_on_resource(action="link")
                 if self.module.params["state"] in {"enabled", "disabled"}:
-                    if self.module.check_mode:
-                        log(
-                            "WARNING: --check mode not implemented for state=%s"
-                            % self.module.params["state"]
-                        )
-                    else:
-                        self.enable_or_disable(self.module.params["state"])
+                    # In check mode, enable_or_disable() only reports the predicted change
+                    self.enable_or_disable(self.module.params["state"])
                 # Bindings
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
