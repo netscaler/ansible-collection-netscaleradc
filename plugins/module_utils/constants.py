@@ -38,7 +38,25 @@ NITRO_ATTRIBUTES_ALIASES = {
     "gslbservice": {
         "ip": "ipaddress",
         "ipaddress": "ip",  # For PUT payloads and GET responses
-    }
+    },
+    # NITRO returns `name` instead of `selectorname` in the `nslimitselector`
+    # GET response (see NITRO_RESPONSE_KEY_ALIASES below).
+    "nslimitselector": {
+        "name": "selectorname",
+    },
+}
+
+# NITRO returns the GET response of some resources under a top-level key other than
+# the resource name. `get_resource()` always looks for the resource name first and
+# only falls back to the alias key when the resource name is not in the response.
+# Eg: `nslimitselector` and `streamselector` are the same object on the NetScaler.
+# GET /nitro/v1/config/nslimitselector[/<name>] returns
+# {"streamselector": [{"name": ..., "rule": [...]}]} instead of the documented
+# {"nslimitselector": [{"selectorname": ..., "rule": [...]}]} (seen on 14.1-60.57,
+# 14.1-72.61, 14.1-73.33 and 14.1-73.121). Refer PR: #628
+NITRO_RESPONSE_KEY_ALIASES = {
+    # "resource": "response_key_alias",
+    "nslimitselector": "streamselector",
 }
 
 # NITRO-BUG (issue #636): for some boolean-like attributes NITRO accepts one vocabulary on
