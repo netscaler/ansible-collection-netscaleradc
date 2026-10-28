@@ -1,0 +1,604 @@
+---
+- name: CSPOLICYLABEL_CSPOLICY_BINDING | tests with setup and teardown
+  tags: test
+  block:
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | SETUP | lbvserver
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.lbvserver:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        name: ansible_test_cspl_lb
+        servicetype: HTTP
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | SETUP | csaction
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.csaction:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        name: ansible_test_cspl_action
+        targetlbvserver: ansible_test_cspl_lb
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | SETUP | cspolicy with action
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicy:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        policyname: ansible_test_cspl_policy_action
+        rule: HTTP.REQ.URL.STARTSWITH("/a")
+        action: ansible_test_cspl_action
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | SETUP | cspolicy without action
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicy:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        policyname: ansible_test_cspl_policy_noaction
+        rule: HTTP.REQ.URL.STARTSWITH("/b")
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | SETUP | cspolicylabel
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        cspolicylabeltype: HTTP
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | SETUP | cspolicylabel to invoke
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label_target
+        cspolicylabeltype: HTTP
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+        priority: 100
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+        priority: 100
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND | idempotent | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+        priority: 100
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND | idempotent | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND | idempotent
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+        priority: 100
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND | idempotent
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | missing invoke_labelname | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      failed_when: false
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+        priority: 200
+        invoke: true
+        labeltype: policylabel
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | missing invoke_labelname | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.changed==false"
+          - "result.msg is search('requires `labeltype` and `invoke_labelname`')"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | missing invoke_labelname
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      failed_when: false
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+        priority: 200
+        invoke: true
+        labeltype: policylabel
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | missing invoke_labelname
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.changed==false"
+          - "result.msg is search('requires `labeltype` and `invoke_labelname`')"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+        priority: 200
+        invoke: true
+        labeltype: policylabel
+        invoke_labelname: ansible_test_cspl_label_target
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+        priority: 200
+        invoke: true
+        labeltype: policylabel
+        invoke_labelname: ansible_test_cspl_label_target
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | idempotent | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+        priority: 200
+        invoke: true
+        labeltype: policylabel
+        invoke_labelname: ansible_test_cspl_label_target
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | idempotent | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | idempotent
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+        priority: 200
+        invoke: true
+        labeltype: policylabel
+        invoke_labelname: ansible_test_cspl_label_target
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | BIND INVOKE | idempotent
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | NESTED BIND INVOKE | missing invoke_labelname
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      failed_when: false
+      netscaler.adc.cspolicylabel:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        labelname: ansible_test_cspl_label
+        cspolicylabeltype: HTTP
+        cspolicylabel_cspolicy_binding:
+          mode: bind
+          binding_members:
+            - labelname: ansible_test_cspl_label
+              policyname: ansible_test_cspl_policy_noaction
+              priority: 300
+              invoke: true
+              labeltype: policylabel
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | NESTED BIND INVOKE | missing invoke_labelname
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.changed==false"
+          - "result.msg is search('requires `labeltype` and `invoke_labelname`')"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND | idempotent
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND | idempotent
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND INVOKE | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND INVOKE | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND INVOKE
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND INVOKE
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND INVOKE | idempotent
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+    - name: Assert | CSPOLICYLABEL_CSPOLICY_BINDING | UNBIND INVOKE | idempotent
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+  always:
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | unbind ansible_test_cspl_policy_action
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_action
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | unbind ansible_test_cspl_policy_noaction
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel_cspolicy_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+        policyname: ansible_test_cspl_policy_noaction
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | cspolicylabel
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | cspolicylabel to invoke
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicylabel:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        labelname: ansible_test_cspl_label_target
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | cspolicy with action
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicy:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        policyname: ansible_test_cspl_policy_action
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | cspolicy without action
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.cspolicy:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        policyname: ansible_test_cspl_policy_noaction
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | csaction
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.csaction:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        name: ansible_test_cspl_action
+    - name: CSPOLICYLABEL_CSPOLICY_BINDING | TEARDOWN | lbvserver
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.lbvserver:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        name: ansible_test_cspl_lb

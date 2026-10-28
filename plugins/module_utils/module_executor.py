@@ -10,6 +10,7 @@ import re
 
 from ansible.module_utils import basic
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.parsing.convert_bool import boolean
 
 from .client import NitroAPIClient
 from .common import (
@@ -93,6 +94,33 @@ def _apply_legacy_arg_aliases(resource_name):
     if modified:
         basic._ANSIBLE_ARGS = json.dumps(data).encode()
     return renamed
+
+
+def _get_invoke_label_option(resource_name):
+    """Return the option naming the policy label / virtual server that `invoke: true` invokes:
+    `invoke_labelname` for `*policylabel_*_binding` resources (where `labelname` is the label
+    being bound), `labelname` for virtual server and global policy bindings. None if the
+    resource has no `invoke` option."""
+    resource = NITRO_RESOURCE_MAP.get(resource_name, {})
+    args = resource.get("readwrite_arguments", {})
+    if "invoke" not in args or "labeltype" not in args:
+        return None
+    if "invoke_labelname" in args:
+        return "invoke_labelname"
+    if "labelname" in args and resource.get("primary_key") != "labelname":
+        return "labelname"
+    return None
+
+
+def _get_missing_invoke_options(resource_name, params):
+    """Return the options that NITRO requires together with `invoke: true` but are not set."""
+    label_option = _get_invoke_label_option(resource_name)
+    invoke = params.get("invoke")
+    if isinstance(invoke, str):
+        invoke = boolean(invoke, strict=False)
+    if not label_option or invoke is not True:
+        return []
+    return [k for k in ("labeltype", label_option) if params.get(k) in (None, "")]
 
 
 class ModuleExecutor(object):
@@ -181,6 +209,8 @@ class ModuleExecutor(object):
                 version="4.0.0",  # next major of netscaler.adc
                 collection_name="netscaler.adc",
             )
+
+        self._validate_invoke_params()
 
         self.netscaler_console_as_proxy_server = self.module.params[
             "netscaler_console_as_proxy_server"
@@ -302,6 +332,53 @@ class ModuleExecutor(object):
                 log("INFO: Logout successful")
                 self.client._headers["Cookie"] = ""
         self.module.exit_json(**self.module_result)
+
+    def _validate_invoke_params(self):
+        """
+        `invoke: true` needs `labeltype` and the name of the label to invoke. NITRO reports a
+        missing one by its CLI argument name (eg: `Required argument missing [labelName]` when
+        `invoke_labelname` is not set on a `*policylabel_*_binding`), which does not match any
+        module option. So, check it before sending anything. Covers the resource itself and
+        the binding members of its nested binding options.
+        Refer Issue: #619 (https://github.com/netscaler/ansible-collection-netscaleradc/issues/619)
+        """
+        if self.module.params.get("state") != "present":
+            return
+        problems = []
+        missing = _get_missing_invoke_options(self.resource_name, self.module.params)
+        if missing:
+            problems.append(
+                "`invoke: true` requires `labeltype` and `%s`; missing: %s"
+                % (_get_invoke_label_option(self.resource_name), ", ".join(missing))
+            )
+        for binding_name in NITRO_RESOURCE_MAP[self.resource_name].get("bindings", []):
+            binding_option = self.module.params.get(binding_name)
+            if not isinstance(binding_option, dict):
+                continue
+            if binding_option.get("mode") == "unbind":
+                continue
+            for member in binding_option.get("binding_members") or []:
+                if not isinstance(member, dict):
+                    continue
+                missing = _get_missing_invoke_options(binding_name, member)
+                if missing:
+                    problems.append(
+                        "`%s` member %s: `invoke: true` requires `labeltype` and `%s`; missing: %s"
+                        % (
+                            binding_name,
+                            member,
+                            _get_invoke_label_option(binding_name),
+                            ", ".join(missing),
+                        )
+                    )
+        if problems:
+            msg = (
+                "ERROR: %s. `labeltype` is the type of the target to invoke and the label "
+                "option is its name (NITRO reports them as `labelType` and `labelName`)."
+                % "; ".join(problems)
+            )
+            log(msg)
+            self.module.fail_json(msg=msg, **self.module_result)
 
     @trace
     def update_diff_list(self, existing=None, desired=None, delete=False, **kwargs):
