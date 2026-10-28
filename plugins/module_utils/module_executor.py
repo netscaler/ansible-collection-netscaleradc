@@ -612,6 +612,93 @@ class ModuleExecutor(object):
             self.return_failure(err)
 
     @trace
+    def link_certificate_chain(self):
+        """
+        NITRO-QUIRK: for `sslcertificatechain`, GET returns the chain status of an existing certkey
+        (`chainlinked`, `chainpossiblelinks`, `chaincomplete`), while POST is an action that links
+        the certkey to the issuer certificates installed on the NetScaler, all the way up the chain.
+        The only module option is `certkeyname`, so the generic comparison always finds the
+        resource identical and never POSTs.
+        So, POST when NITRO lists certificates that can be linked. Not merely when the chain is
+        incomplete: a self-signed root, or a chain whose issuer is not installed, stays at
+        `chaincomplete: 0` for ever; and NITRO links only non-CA certificates (errorcode 3418).
+        Refer PR: #621 (https://github.com/netscaler/ansible-collection-netscaleradc/pull/621)
+        """
+
+        def chain_status(resource):
+            return {
+                "certkeyname": self.resource_id,
+                "chainlinked": resource.get("chainlinked") or [],
+                "chainpossiblelinks": resource.get("chainpossiblelinks") or [],
+                "chaincomplete": resource.get("chaincomplete"),
+            }
+
+        before = chain_status(self.existing_resource)
+        if not before["chainpossiblelinks"]:
+            log(
+                "INFO: Resource `%s:%s` has no certificate to link (chaincomplete=%s). No change required."
+                % (self.resource_name, self.resource_id, before["chaincomplete"])
+            )
+            return
+
+        is_exist, certkeys = get_resource(
+            self.client,
+            resource_name="sslcertkey",
+            resource_id=self.resource_id,
+            resource_module_params={"certkey": self.resource_id},
+        )
+        certificate_types = set(
+            certkeys[0].get("certificatetype") or [] if is_exist and certkeys else []
+        )
+        if certificate_types & {"ROOT_CERT", "INTM_CERT"}:
+            msg = (
+                "Certificate chain of `%s` is not linked: it is a CA certificate (%s), and NetScaler "
+                "links certificate chains only from a non-CA (leaf) certificate. Link the chain from "
+                "the leaf certificate, or use `linkcertkeyname` of the `sslcertkey` module."
+                % (self.resource_id, ", ".join(sorted(certificate_types)))
+            )
+            log("WARNING: %s" % msg)
+            self.module.warn(msg)
+            return
+
+        self.module_result["changed"] = True
+        log(
+            "INFO: Resource `%s:%s` can be linked to %s. Will link the certificate chain."
+            % (self.resource_name, self.resource_id, before["chainpossiblelinks"])
+        )
+        ok, err = create_resource(
+            self.client, self.resource_name, self.resource_module_params
+        )
+        if not ok:
+            self.return_failure(err)
+
+        if self.module.check_mode:
+            # Predict the outcome: whether the chain becomes complete is not known
+            after = {
+                "certkeyname": self.resource_id,
+                "chainlinked": before["chainlinked"] + before["chainpossiblelinks"],
+                "chainpossiblelinks": [],
+            }
+        else:
+            is_exist, chains = get_resource(
+                self.client,
+                resource_name=self.resource_name,
+                resource_id=self.resource_id,
+                resource_module_params=self.resource_module_params,
+            )
+            linked_chain = chains[0] if is_exist and chains else {}
+            after = chain_status(linked_chain)
+            if after["chaincomplete"] != "1":
+                msg = (
+                    "Certificate chain of `%s` is linked but still incomplete: its issuer `%s` is not "
+                    "installed on the NetScaler."
+                    % (self.resource_id, linked_chain.get("chainissuer", "").strip())
+                )
+                log("WARNING: %s" % msg)
+                self.module.warn(msg)
+        self.update_diff_list(existing=before, desired=after)
+
+    @trace
     def create_or_update(self):
         desired_state = self.module.params["state"]
         remove_non_updatable_params = self.module.params.get(
@@ -623,6 +710,9 @@ class ModuleExecutor(object):
             and "state" in self.resource_module_params
         ):
             self.resource_module_params.pop("state")
+        if self.resource_name == "sslcertificatechain" and self.existing_resource:
+            self.link_certificate_chain()
+            return
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
