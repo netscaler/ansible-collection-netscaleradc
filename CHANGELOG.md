@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.0.0] - 2026-10-22
+## [3.0.0] - 2026-10-28
 
 ### Added
 
@@ -24,12 +24,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ping`, `ping6`, `traceroute`: renamed the case-colliding single-letter options to descriptive snake_case names to satisfy the ansible-core 2.18 check (`I`->`interface`, `i`->`interval`, `S`->`source_ip`, `s`->`packet_size`, `T`->`traffic_domain`, `t`->`timeout`; traceroute additionally `M`->`min_ttl`, `m`->`max_ttl`, `P`->`protocol`, `p`->`base_port`, `S`->`summary`, `s`->`source_ip`, `t`->`tos`). The old single-letter names continue to work via a pre-parse translation shim in `ModuleExecutor` and emit a deprecation warning.
 
+### Fixed
+
+- `nsrpcnode` (`secure`) and `nsappflowparam` (`http*` options) are now idempotent; NetScaler reads these values back as `ON`/`OFF` ([#636]).
+- `nslimitselector`: reruns no longer fail with `Resource already exists`, and rule updates and `state: absent` now work.
+- `invoke: true` without `labeltype` or the label to invoke (`invoke_labelname`/`labelname`) now fails with a clear message instead of NetScaler's `Required argument missing [labelName]` ([#619]).
+- `sslcertificatechain` now links the certificate chain and is idempotent.
+
 ### Updated
 
 - Added `stable-2.18` to the sanity and integration CI lanes (floor unchanged at `>=2.16.0`).
 - Integration tests now run against NetScaler CPX `13.1-63.19` and `14.1-73.30`.
 - Bumped actions/upload-artifact from 7.0.0 to 7.0.2.
-- Bumped ossf/scorecard-action to commit `4eaacf05` (v2.4.3).
+- Bumped actions/checkout from 6.0.2 to 7.0.1.
+- Bumped actions/setup-python from 6.2.0 to 7.1.0.
+- Bumped ossf/scorecard-action to commit `fa7117db` (v2.5.0).
 - Bumped the ansible/team-devtools `release_collection.yml` reusable workflow to commit `a8b84b38`.
 - Bumped the ansible/ansible-content-actions `refresh_ah_token.yaml` reusable workflow to commit `cbdec1f7`.
 
@@ -360,3 +369,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#377]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/377
 [#400]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/400
 [#462]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/462
+[#619]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/619
+[#621]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/621
+[#628]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/628
+[#636]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/636
