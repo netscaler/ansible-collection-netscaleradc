@@ -1,0 +1,647 @@
+---
+- name: SSLCERTIFICATECHAIN | tests with setup and teardown
+  tags: test
+  block:
+    - name: SSLCERTIFICATECHAIN | SETUP | rsakey root
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslrsakey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        keyfile: ansible_test_chain_root.key
+        bits: 2048
+        exponent: F4
+        keyform: PEM
+    - name: SSLCERTIFICATECHAIN | SETUP | certreq root
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertreq:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        reqfile: ansible_test_chain_root.csr
+        keyfile: ansible_test_chain_root.key
+        keyform: PEM
+        countryname: US
+        statename: CA
+        organizationname: example
+        commonname: ansible_test_chain_root
+    - name: SSLCERTIFICATECHAIN | SETUP | rsakey int
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslrsakey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        keyfile: ansible_test_chain_int.key
+        bits: 2048
+        exponent: F4
+        keyform: PEM
+    - name: SSLCERTIFICATECHAIN | SETUP | certreq int
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertreq:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        reqfile: ansible_test_chain_int.csr
+        keyfile: ansible_test_chain_int.key
+        keyform: PEM
+        countryname: US
+        statename: CA
+        organizationname: example
+        commonname: ansible_test_chain_int
+    - name: SSLCERTIFICATECHAIN | SETUP | rsakey leaf
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslrsakey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        keyfile: ansible_test_chain_leaf.key
+        bits: 2048
+        exponent: F4
+        keyform: PEM
+    - name: SSLCERTIFICATECHAIN | SETUP | certreq leaf
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertreq:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        reqfile: ansible_test_chain_leaf.csr
+        keyfile: ansible_test_chain_leaf.key
+        keyform: PEM
+        countryname: US
+        statename: CA
+        organizationname: example
+        commonname: ansible_test_chain_leaf
+    - name: SSLCERTIFICATECHAIN | SETUP | root CA cert (self-signed)
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcert:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        certfile: ansible_test_chain_root.crt
+        reqfile: ansible_test_chain_root.csr
+        certtype: ROOT_CERT
+        keyfile: ansible_test_chain_root.key
+        keyform: PEM
+        certform: PEM
+        days: 30
+    - name: SSLCERTIFICATECHAIN | SETUP | intermediate CA cert (signed by root)
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcert:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        certfile: ansible_test_chain_int.crt
+        reqfile: ansible_test_chain_int.csr
+        certtype: INTM_CERT
+        cacert: ansible_test_chain_root.crt
+        cacertform: PEM
+        cakey: ansible_test_chain_root.key
+        cakeyform: PEM
+        caserial: ansible_test_chain_root.srl
+        certform: PEM
+        days: 30
+    - name: SSLCERTIFICATECHAIN | SETUP | leaf cert (signed by intermediate)
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcert:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: created
+        certfile: ansible_test_chain_leaf.crt
+        reqfile: ansible_test_chain_leaf.csr
+        certtype: SRVR_CERT
+        cacert: ansible_test_chain_int.crt
+        cacertform: PEM
+        cakey: ansible_test_chain_int.key
+        cakeyform: PEM
+        caserial: ansible_test_chain_int.srl
+        certform: PEM
+        days: 30
+    - name: SSLCERTIFICATECHAIN | SETUP | intermediate certkey
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertkey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkey: ansible_test_chain_int
+        cert: ansible_test_chain_int.crt
+        inform: PEM
+    - name: SSLCERTIFICATECHAIN | SETUP | leaf certkey (not linked)
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertkey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkey: ansible_test_chain_leaf
+        cert: ansible_test_chain_leaf.crt
+        key: ansible_test_chain_leaf.key
+        inform: PEM
+    - name: SSLCERTIFICATECHAIN | LINK | root not installed | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_leaf
+    - name: Assert | SSLCERTIFICATECHAIN | LINK | root not installed | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: SSLCERTIFICATECHAIN | LINK | root not installed
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_leaf
+    - name: Assert | SSLCERTIFICATECHAIN | LINK | root not installed
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+          - "result.diff.after.chainlinked == ['ansible_test_chain_int']"
+          - "'still incomplete' in (result.warnings | default([]) | join(' '))"
+    - name: SSLCERTIFICATECHAIN | LINK | root not installed | idempotent
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_leaf
+    - name: Assert | SSLCERTIFICATECHAIN | LINK | root not installed | idempotent
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+          - "result.warnings | default([]) | length == 0"
+    - name: SSLCERTIFICATECHAIN | SETUP | root certkey
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertkey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkey: ansible_test_chain_root
+        cert: ansible_test_chain_root.crt
+        key: ansible_test_chain_root.key
+        inform: PEM
+    - name: SSLCERTIFICATECHAIN | CA certificate with a linkable issuer
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_int
+    - name: Assert | SSLCERTIFICATECHAIN | CA certificate with a linkable issuer
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+          - "'CA certificate' in (result.warnings | default([]) | join(' '))"
+    - name: SSLCERTIFICATECHAIN | LINK | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_leaf
+    - name: Assert | SSLCERTIFICATECHAIN | LINK | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+    - name: SSLCERTIFICATECHAIN | LINK
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_leaf
+    - name: Assert | SSLCERTIFICATECHAIN | LINK
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==true"
+          - "result.diff.after.chaincomplete == '1'"
+          - "result.diff.after.chainlinked == ['ansible_test_chain_int', 'ansible_test_chain_root']"
+          - "result.warnings | default([]) | length == 0"
+    - name: SSLCERTIFICATECHAIN | LINK | idempotent | --check
+      delegate_to: localhost
+      register: result
+      check_mode: true
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_leaf
+    - name: Assert | SSLCERTIFICATECHAIN | LINK | idempotent | --check
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+    - name: SSLCERTIFICATECHAIN | LINK | idempotent
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_leaf
+    - name: Assert | SSLCERTIFICATECHAIN | LINK | idempotent
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+    - name: SSLCERTIFICATECHAIN | root CA certificate
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_root
+    - name: Assert | SSLCERTIFICATECHAIN | root CA certificate
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "result.failed==false"
+          - "result.changed==false"
+          - "result.warnings | default([]) | length == 0"
+    - name: SSLCERTIFICATECHAIN | certkey does not exist
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      failed_when: false
+      netscaler.adc.sslcertificatechain:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: present
+        certkeyname: ansible_test_chain_missing
+    - name: Assert | SSLCERTIFICATECHAIN | certkey does not exist
+      tags: test
+      ansible.builtin.assert:
+        that:
+          - "'Certificate does not exist' in result.msg"
+  always:
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | certkey leaf
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertkey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        certkey: ansible_test_chain_leaf
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | certkey int
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertkey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        certkey: ansible_test_chain_int
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | certkey root
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.sslcertkey:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        certkey: ansible_test_chain_root
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_leaf.crt
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_leaf.crt
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_leaf.csr
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_leaf.csr
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_leaf.key
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_leaf.key
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_int.crt
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_int.crt
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_int.csr
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_int.csr
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_int.key
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_int.key
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_root.crt
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_root.crt
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_root.csr
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_root.csr
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_root.key
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_root.key
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_int.srl
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_int.srl
+        filelocation: /nsconfig/ssl/
+    - name: SSLCERTIFICATECHAIN | TEARDOWN | file ansible_test_chain_root.srl
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.systemfile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+        save_config: "{{ save_config }}"
+        state: absent
+        filename: ansible_test_chain_root.srl
+        filelocation: /nsconfig/ssl/
