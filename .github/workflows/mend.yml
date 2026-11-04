@@ -66,7 +66,7 @@ jobs:
 
       - name: Upload Mend SARIF to GitHub Security tab
         if: always() && hashFiles('mend-output.sarif') != ''
-        uses: github/codeql-action/upload-sarif@256d634097be96e792d6764f9edaefc4320557b1  # v4
+        uses: github/codeql-action/upload-sarif@0911ee96d2d6c8def97122c36c5cadd93829a4b4  # v4
         with:
           sarif_file: mend-output.sarif
 
